@@ -1,0 +1,45 @@
+/* pages/my_invitation/index.wxss */
+page{
+  font-size: 28rpx;
+  color: #444;
+}
+swiper{
+  margin-top: 20rpx;
+}
+.wux-tabs__tab--balanced .wux-tabs__tab-bar {
+  background-color: #4AD6A3 !important;
+}
+.item{
+  padding: 22rpx 32rpx;
+  border-bottom: 1px solid #eee;
+}
+.lmitem image{
+  width:175rpx;
+  height:112rpx;
+  margin-right: 35rpx;
+}
+ .item .flex_col{
+  width: 476rpx;
+}
+.ywitem image{
+  width:130rpx;
+  height:130rpx;
+  border-radius:50%;
+  margin-right: 80rpx;
+}
+.detail-container {
+flex: 1;
+height: 100%;
+background-color: white;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}

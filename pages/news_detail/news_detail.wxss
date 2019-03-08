@@ -1,0 +1,14 @@
+/* pages/news_detail/news_detail.wxss */
+@import"../../wxParse/wxParse.wxss";
+page{
+  /* background-color: rgb(247, 247, 247); */
+  padding-bottom: 140rpx;
+  background-color: white;
+}
+.bg{
+  background-color: white;
+}
+.container{
+  width: 672rpx;
+  margin:  20rpx auto;
+}

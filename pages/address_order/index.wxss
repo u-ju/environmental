@@ -1,0 +1,25 @@
+/* pages/address_order/index.wxss */
+page{
+  color: #444;
+  font-size: 28rpx;
+}
+.adItem{
+  padding: 35rpx 0;
+  margin: 0 32rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.adItem .choose{
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 84rpx;
+}
+.adItem .edit{
+  width: 35rpx;
+  height: 35rpx;
+}
+.marginl50{
+  margin-left: 50rpx;
+}
+.marginb24{
+  margin-bottom: 24rpx;
+}

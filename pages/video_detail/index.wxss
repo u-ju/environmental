@@ -1,0 +1,56 @@
+/* pages/video_detail/index.wxss */
+@import '../dynamic/dynamic';
+.head_video{
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 50%;
+  margin-right: 35px;
+}
+.video_btm{
+  width:92%;
+  height:107rpx;
+  box-shadow:0px 4rpx 9rpx 0px rgba(191,189,189,1);
+  padding: 0 4%; 
+}
+.hf_btn{
+  display: inline-block;
+  width:84rpx;
+  height:36rpx;
+  background:rgba(238,238,238,1);
+  border-radius:18rpx;
+  margin-left: 36rpx;
+  color: #444;
+  line-height: 36rpx;
+  text-align: center;
+}
+.video_d_btm{
+  width:92%;
+height:64rpx;
+background:rgba(255,255,255,1);
+border:1rpx solid rgba(238,238,238,1);
+padding: 17rpx 4% ;
+position: fixed;
+bottom: 0;
+z-index: 1;
+}
+.video_d_btm_pl{
+  width:265rpx;
+  padding: 0 30rpx;
+height:64rpx;
+line-height: 64rpx;
+background:rgba(238,238,238,1);
+border-radius:33rpx;
+color: #909090
+}
+.dj_item{color:#C3C3C3;background-color: transparent;padding: 0;margin: 0}
+.image{width: 40rpx;height: 40rpx;}
+.container>view:nth-of-type(1) .message{
+  margin-top: 30rpx;
+}
+.video-image-play{
+  width: 100%;
+  height: 100%;
+}
+.visible{
+  overflow: visible
+}

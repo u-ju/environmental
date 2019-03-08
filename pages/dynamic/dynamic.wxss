@@ -1,0 +1,250 @@
+/* pages/dynamic/dynamic.wxss */
+@import"../../wxParse/wxParse.wxss";
+.video{
+	/* margin-bottom: 40rpx; */
+	position: relative;
+  /* background-color: rgba(0, 0, 0, 1) */
+}
+.model-img{
+	border-radius: 10rpx;
+}
+.video{
+  /* background-color: #0e0f1a; */
+}
+.model-btn{
+	position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    right:0;
+    margin:auto;
+    width:90rpx;
+    height:90rpx;
+    border-radius:50%;
+    /* background-color: rgba(0,0,0,.3); */
+    /* border: 4px solid white; */
+}
+.play-icon{
+    width:90rpx;
+    height:90rpx;
+}
+.container{
+  width: 686rpx;
+  margin: auto;
+  color: #444;
+  padding: 30rpx 0 50rpx 0;
+}
+.xian{
+  width:100%;
+  height:16rpx;
+  background:rgba(232,232,232,1);
+}
+.input_null{
+color: #C9C9C9;
+}
+ 
+.release{
+display: flex;
+align-items: flex-end; /*底部对齐*/
+justify-content: space-between; /*两端对齐*/
+box-sizing: border-box;
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+padding: 18rpx 0 18rpx 4%;
+background-color: #F7F8F7;
+font-size: 28rpx;
+z-index: 999;
+}
+.release .text{
+width: 80%;
+min-height: 34rpx;
+max-height: 102rpx; /*最多显示三行*/
+border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
+border-style: solid;
+border-color: #ffffff;
+line-height: 34rpx;
+font-size: 28rpx;
+background-color: #ffffff;
+border-radius: 4rpx;
+}
+.release .submit{
+width: 16%;
+height: 64rpx;
+line-height: 70rpx;
+text-align: center;
+color: #66CC00;
+font-size: 24rpx;
+padding: 0;
+display: inline-block;
+}
+.head{
+  width:72rpx;
+  height:72rpx;
+  border-radius:50%;
+  margin-right: 20rpx;
+}
+.msg,.love{
+  width: 30rpx;
+  height: 30rpx;
+  margin: 0 15rpx 0 62rpx;
+}
+.love{
+  /* width:38rpx;
+height:22rpx; */
+
+}
+.width594{
+  width: 594rpx;
+}
+/* .width594>.flex_btw {
+  margin-bottom: 10rpx;
+} */
+.pl_con{
+  margin: 10rpx 0 0 92rpx;
+}
+
+.replay{
+  background-color: #F6F6F6;
+  padding: 20rpx;
+  
+}
+.replay .color9{
+  margin-bottom: 28rpx;
+}
+.message{
+  margin-top: 60rpx;
+}
+.container>view:nth-of-type(2){
+  margin-top: 30rpx;
+}
+.con{
+  margin-bottom: 30rpx;
+}
+.zzc{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0);
+  top: 0;
+  z-index: 11;
+}
+.zzc{
+  background:rgba(0,0,0,.5);
+}
+form{
+  width: 100%;
+}
+.share{
+  width: auto;
+  height: 144rpx;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  position: relative;
+  font-size: 24rpx;
+  color: #444;
+}
+.share::after{
+  background-color: transparent;
+  border: none;
+}
+.share image{
+  width: 106rpx;
+  height: 106rpx;
+}
+.share view{
+  font-size: 24rpx;
+  color: #444;
+  height: 28rpx;
+  line-height: 28rpx;
+  position: absolute;
+  bottom: 0;
+}
+.zzc1_con image{
+  width: 106rpx;
+  height: 106rpx;
+}
+.zzc1_con .flex_ard{
+  background-color: white;
+  width: 580rpx;
+  border-radius:18rpx;
+  padding: 65rpx;
+}
+.zzc1_con{
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%,0);
+  color: #444;
+}
+.zzc1_con .size32{
+  width:710rpx;
+  height:98rpx;
+  background:rgba(255,255,255,1);
+  border-radius:18rpx;
+  line-height: 98rpx;
+  text-align: center;
+  margin:20rpx 0; 
+}
+.all{
+  padding: 50rpx;
+  text-align: center
+}
+.martop{
+  margin-top: 20rpx;
+}
+.myCanvas{
+  width: 100%;
+  height: 1600rpx;
+}
+.zzc2_con{
+  width: 450rpx;
+  height: 450rpx;
+  position: fixed;
+  z-index: 999;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+}
+.zzc2_con image{
+  width: 200rpx;
+  height: 200rpx;
+  margin:50rpx 0;
+}
+.savepic{
+  /* width:288px; */
+  height:70rpx;
+  line-height: 70rpx;
+  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
+  box-shadow:0px 4rpx 13rpx 0rpx rgba(68,213,162,0.23);
+  border-radius:35rpx;
+  text-align: center;
+  color: white;
+  width: 90%;
+  margin: auto;
+}
+.icon-cuohao{
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  font-size: 36rpx;
+}
+.hf{
+  margin: 10rpx 0 0 92rpx;
+  width:554rpx;
+  background:rgba(246,246,246,1);
+  border-radius:18rpx;
+  padding: 20rpx;
+}
+.color6ADB7A{
+  display: inline-block;
+  margin-right: 10rpx;
+}
+.huifu_item{
+  margin-bottom: 10rpx;
+  line-height: 34rpx;
+}

@@ -1,0 +1,63 @@
+<!--pages/my_order_detail/index.wxml-->
+
+<view class='pad32 top flex_btw align_center'>
+  <!-- <text>您已付款，请等待平台发货</text> -->
+  <view>
+    <view>成都百合仓[李军]已收件</view>
+    <view><text class='marginr'>2019-2-15</text><text>12:15</text></view>
+  </view>
+  <text class='iconfont icon-jiantou'></text>
+</view>
+
+<view class='pad32 information'>
+  <view><text>收货人：张三 </text><text>1528788945665</text></view>
+  <view>收货地址：北京市朝阳区望京街8号</view>
+</view>
+<view class='fkItem  shitem'>
+  <view class='fkItem_goods flex'>
+    <image src='../../images/catering_test.png' class='goospic'></image>
+    <view class='fkItem_goods_ms '>
+      <view class='color4 size28 flex_btw'><text class='one-hidden width'>小清新手工陶制餐具</text> <text class='color898989'><text class='iconfont icon-cuohao size22'></text>1</text></view>
+      <view class='color4 size28 one-hidden'>贝壳；7.25寸</view>
+      <view class='colorFE2C2C size28'>￥400</view>
+    </view>
+  </view>
+  <view class='flex_btw align_center reicon color898989'>
+    <text>配送方式</text>
+    <text>快递免邮</text>
+  </view>
+</view>
+<view class='moneyinfor'>
+  <view class='flex_btw align_center reicon'>
+    <text>商品总金额</text>
+    <text>￥400</text>
+  </view>
+  <view class='flex_btw align_center reicon'>
+    <text>首付金额</text>
+    <text>￥200</text>
+  </view>
+  <view class='flex_btw align_center reicon'>
+    <text>分期金额</text>
+    <text>￥200</text>
+  </view>
+  <view class='flex_btw align_center reicon'>
+    <text>期数</text>
+    <text>2期</text>
+  </view>
+  <view class='flex_btw align_center reicon'>
+    <text>运费</text>
+    <text>￥0</text>
+  </view>
+  <view class='flex_btw align_center reicon'>
+    <text>实付</text>
+    <text class='colorEA2C2C'>￥400</text>
+  </view>
+</view>
+<view class='ddxx'>
+  <view class=' reicon color898989'>订单号：15623456889</view>
+  <view class=' reicon color898989'>订单状态：待发货</view>
+  <view class=' reicon color898989'>创建时间：2019-2-3</view>
+</view>
+<view class='flex row-reverse'>
+  <view class='btndd size32'>取消订单</view>
+</view>

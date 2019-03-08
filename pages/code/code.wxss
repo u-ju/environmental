@@ -1,0 +1,23 @@
+/* pages/code/code.wxss */
+@import "../../Components/code/component.wxss";
+@import "../login/login.wxss";
+.flex_btw{
+  margin-bottom: 46rpx;
+}
+button{
+  width: 672rpx;
+}
+.send_code{
+  background-color: transparent;
+  width: 100rpx;
+  height: 30rpx;
+  font-size: 24rpx;
+  padding: 0;
+  line-height: 24rpx;
+  float: right;
+  margin: 0;
+}
+.send_code[disabled]:not([type]){
+  background-color: transparent;
+  color:rgb(20, 176, 223);
+}

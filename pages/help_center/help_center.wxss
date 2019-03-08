@@ -1,0 +1,40 @@
+/* pages/help_center/help_center.wxss */
+.title{
+  height: 40rpx;
+  padding: 20rpx 0;
+  border-bottom: 10rpx solid #F7F7F7;
+  border-top: 10rpx solid #F7F7F7;
+}
+.title>view{
+  width: 50%;
+  
+}
+.title>view:nth-of-type(1){
+  border-right: 1px solid #FF0000;
+}
+.xinshou image{
+  width: 49rpx;
+  height: 40rpx;
+  margin-right: 11rpx;
+}
+.calling image{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 11rpx;
+}
+.con{
+  width: 686rpx;
+  margin: auto;
+  padding-bottom: 40rpx;
+}
+.color4{
+  padding: 20rpx 0;
+}
+.con image{
+  width: 14rpx;
+  height: 28rpx;
+}
+.con .flex_btw{
+  padding: 20rpx 0 20rpx 0;
+   border-bottom:1px solid #E8E8E8;
+}

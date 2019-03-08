@@ -1,0 +1,8 @@
+<wux-result
+    title="支付成功"
+    
+    buttons="{{ buttons }}"
+    
+    fixed
+    bind:click="onClick"
+/>

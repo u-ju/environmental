@@ -1,0 +1,99 @@
+/*mask dialog start*/
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right:0;
+  bottom:0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+ 
+/*content*/
+ 
+.drawer_box {
+  width: 650rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 1001;
+  background: #fafafa;
+  margin: -480rpx 50rpx 0 50rpx;
+  border-radius: 6px;
+}
+ 
+.drawer_title {
+  padding: 15px;
+  font: 20px "microsoft yahei";
+  text-align: center;
+}
+ 
+.drawer_content {
+  height: 720rpx;
+  /*overflow-y: scroll; 超出父盒子高度可滚动*/
+}
+ 
+.btn_ok {
+  padding: 10px;
+  font: 20px "microsoft yahei";
+  text-align: center;
+  border-top: 1rpx solid #e8e8ea;
+  color: #3cc51f;
+}
+ 
+.btn_ok_hover {
+  color: #aaa;
+  background: #d9d9d9;
+}
+ 
+.top {
+  padding-top: 8px;
+}
+ 
+.input_base {
+  border: 2rpx solid #ccc;
+  border-radius: 20rpx;
+  padding-left: 20rpx;
+  margin-right: 20rpx;
+}
+ 
+.input_h30 {
+  height: 30px;
+  line-height: 30px;
+}
+ 
+.title {
+  height: 30px;
+  line-height: 30px;
+  width: 40rpx;
+  text-align: center;
+  display: inline-block;
+  font: 300 28rpx/30px "microsoft yahei";
+}
+ 
+.grid {
+  display: -webkit-box;
+  display: box;
+}
+ 
+.col-0 {
+  -webkit-box-flex: 0;
+  box-flex: 0;
+}
+ 
+.col-1 {
+  -webkit-box-flex: 1;
+  box-flex: 1;
+}
+ 
+/*mask dialog end*/
+ 
+.row {
+  display: flex;
+  flex-direction: row;
+}

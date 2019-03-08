@@ -1,0 +1,11 @@
+<!--pages/price_information/price_information.wxml-->
+<view class='head color4'>
+  <view class='width45'>还款日</view>
+  <view class='width25'>应还金额</view>
+  <view class='width30'>是否还款</view>
+</view>
+<view class='head color4 bgfff'>
+  <view class=''>2019/2/3</view>
+  <view class=''>￥110</view>
+  <view class='{{color?"color4DBF72":"colorFD0909"}}' >未还款</view>
+</view>

@@ -1,0 +1,27 @@
+<!--pages/catering/index.wxml-->
+<view class='banner'>
+  <image  src='../../images/catering.png'></image>
+  <!-- <text class='bannerzi size28'>为您提供最专业的 \n 商务服务</text> -->
+</view>
+<view class='flex wrap choose_item'>
+  <view class='item' wx:for="{{items}}" wx:key='index' data-index='{{index}}' data-choose='{{item.choose}}' bindtap='choose'>
+    <text class='item_zi {{item.choose?"choose":""}}'>{{item.title}}</text>
+  </view>
+</view>
+<view class='tuijian'>
+  <view class='size30 color4 padding34'>美食推荐</view>
+  <view class='tuijian_item flex align_center' wx:for="{{3}}">
+    <image src='../../images/catering_test.png'></image>
+    <view class='miaoshu flex_col_1 justify_btw'>
+      <view class='one-hidden size28'>大红帽火锅</view>
+      <view class='renzh'>口碑人气好店</view>
+      <view class='flex align_center'>
+        <text class='colorC3'>欢迎来电咨询</text>
+      </view>
+    </view>
+    <view class='flex_col_1 icon'>
+      <image class='catering_lca' src='../../images/catering_lca.png'></image>
+      <image class='phone' src='../../images/phone@2x.png'></image>
+    </view>
+  </view>
+</view>

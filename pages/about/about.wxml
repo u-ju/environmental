@@ -1,0 +1,129 @@
+<!--pages/about/about.wxml-->
+<view class='topTabSwiper fixed'>
+  <block wx:for="{{tab}}" wx:key="index">
+    <view class='tab  {{currentData == index ? "tabBorer" : ""}}' style='width:{{100/tab.length}}%'  data-current = "{{index}}" data-cate_id = "{{item.id}}" bindtap='checkCurrent'>{{item.name}}</view>
+  </block>
+</view>
+<view class='swiper_con' wx:if ="{{currentData==0}}">
+  <view>奥特利环保科技有限公司成立于2017年8月8号，注册资金一亿元人民币，是中国的一家高科技公司。</view>
+  <view class='mar'>奥特利通过大数据、人工智能和物联网等先进科技，实现对生活垃圾前端分类回收、中端统一运输、末端集中处理的“物联网+智能回收”新模式。并打通线上线下回收行业生态圈，有效的将广大群众，废品回收商、再生资源产业、垃圾处理事业单位等有机整合，打造一套完整的废品回收生态链，极大地减少填埋焚烧垃圾量，解决垃圾回收最后一公里的难题。</view>
+  <view class='size32 color4 bold center'>发展历程</view>
+
+<view class='g_con'>
+
+  <!-- 物流时间轴 -->
+  <view class='expressRecord'>
+    <!-- 单个物流记录点时间轴：已经过去的物流状态 -->
+    <view class='expressRecord-single-close'>
+      <view class='expressRecord-single-noReach-online-top-close'>
+        <view class='online-top-close'></view>
+        <view class='dot-close_cricle'>           <view class='dot-close'></view>         </view>
+        <view class='online-bottom'></view>
+      </view>
+
+      <view class='expressRecord-text'>
+        <view class='expressRecord-status-address'>奥特利环保赞助和支持第五届环卫工人运动会</view>
+      </view>
+      <view class='expressRecord-date'>
+        <view class='expressRecord-date-text'>
+         2018.09.26
+        </view>
+        
+      </view>
+    </view>
+
+
+
+
+    <view class='expressRecord-single-close'>
+      <view class='expressRecord-single-noReach-online-top-close'>
+        <view class='online-top-close'></view>
+          <view class='dot-close_cricle'>           <view class='dot-close'></view>         </view>
+        <view class='online-bottom'></view>
+      </view>
+      <view class='expressRecord-text'>
+         <view class='expressRecord-status-address'>奥特利环保赞助和支持第五届环卫工人运动会奥特利环保入选商务部再生资源创新回收模式案例</view>
+      </view>
+      <view class='expressRecord-date'>
+        <view class='expressRecord-date-text'>
+         2018.09.26
+        </view>
+      </view>
+    </view>
+
+
+
+
+    <view class='expressRecord-single-close'>
+      <view class='expressRecord-single-noReach-online-top-close'>
+        <view class='online-top-close'></view>
+        <view class='dot-close_cricle'>           <view class='dot-close'></view>         </view>
+        <view class='online-bottom'></view>
+      </view>
+      <view class='expressRecord-text'>
+         <view class='expressRecord-status-address'>奥特利环保赞助和支持第五届环卫工人运动会</view>
+      </view>
+      <view class='expressRecord-date'>
+        <view class='expressRecord-date-text'>
+         2018.09.26
+        </view>
+      </view>
+    </view>
+
+
+
+
+
+    <view class='expressRecord-single-close'>
+      <view class='expressRecord-single-noReach-online-top-close'>
+        <view class='online-top-close'></view>
+        <view class='dot-close_cricle'>           <view class='dot-close'></view>         </view>
+        <!-- 起始位置，下半个时间轴线不用 -->
+        <view class='online-bottom-start'></view>
+      </view>
+      <view class='expressRecord-text'>
+         <view class='expressRecord-status-address'>奥特利环保赞助和支持第五届环卫工人运动会</view>
+      </view>
+      <view class='expressRecord-date'>
+        <view class='expressRecord-date-text'>
+         2018.09.26
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+<view class='swiper_con' wx:else>
+  <view class='flex_btw'>
+    <view class='lx_item'>
+      <image src='../../images/phone2x.png'></image>
+      <view class='size28 color6'>联系电话</view>
+      <view class='color6 margin'>400-633-2333</view>
+      <view class='size20 color9'>周一至周日9:00-21:00</view>
+    </view>
+    <view class='lx_item'>
+      <image src='../../images/company@2x.png'></image>
+      <view class='size28 color6'>商家合作</view>
+      <view class='color6 margin'>wjm@163.com</view>
+    </view>
+  </view>
+  <view class='location flex align_center'>
+    <image src='../../images/icon_location@2x.png' class='left'></image>
+    <text>地址：四川省成都市金牛区解放路一段192号</text>
+  </view>
+<map
+  id="map"
+  longitude="{{longitude}}"
+  latitude="{{latitude}}"
+  scale="14"
+  controls="{{controls}}"
+  bindcontroltap="controltap"
+  bindmarkertap="markertap"
+  bindregionchange="regionchange"
+  show-location
+></map>
+  <view class='center erwm'>
+    <image src='{{official_qr}}'></image>
+    <view class='color6 center'>扫一扫关注微信公众号</view>
+  </view>
+</view>

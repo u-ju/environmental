@@ -1,0 +1,31 @@
+/* pages/business_details/business_details.wxss */
+swiper-item image,swiper{
+  width: 100%;
+  height: 494rpx;
+}
+.con{
+  padding: 50rpx 30rpx;
+}
+.location{
+  width: 22rpx;
+  height: 27rpx;
+  margin-right: 18rpx;
+}
+.dingwei{
+  width: 30rpx;
+  height: 30rpx;
+}
+.size32{
+  margin-bottom: 20rpx;
+}
+.con>.color9{
+  margin: 45rpx 0;
+}
+.big{
+  padding: 28rpx 0;
+  border-top: 1px solid #E8E8E8;
+}
+
+.marl{
+  margin-left: 50rpx;
+}

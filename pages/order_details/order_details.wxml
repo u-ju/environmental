@@ -1,0 +1,79 @@
+<!--pages/order_details/order_details.wxml-->
+<view class='container'>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>提交时间</text>
+    <text class='size28 color9'>{{list.created_at}}</text>
+  </view>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>预计接单时间</text>
+    <text class='size28 color9'>{{list.appoint_time}}</text>
+  </view>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>物品描述</text>
+    <text class='size28 color9'>{{list.intro}}</text>
+  </view>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>地址</text>
+    <text class='size28 color9'>{{list.address}}</text>
+  </view>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>图片展示</text>
+    <view class='images'>
+      <block wx:for='{{list.images}}'>
+        <image src='{{item}}'></image>
+      </block>
+    </view>
+  </view>
+  <block>
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>发起人</text>
+      <text class='size28 color9'>{{list.contacts}} </text>
+    </view>
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>发起人电话</text>
+      <text class='size28 color9'>{{list.contact}}</text>
+    </view>
+  </block>
+  
+  
+</view>
+<form  bindsubmit="formSubmit" wx:if="{{list.order_amount}}">
+<view class='container border_top'>
+  <view class='color4 size32'>评估</view>
+  <view class='color6 size28'>备注</view>
+  <textarea placeholder='点击添加更多物品描述...' name='assess_intro'></textarea>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>评估价格</text>
+    <input class='size28 colorFB5A3E' placeholder='请输入价格' name='order_amount'></input>
+    <!-- <text class='size28 colorFB5A3E'>￥100</text> -->
+  </view>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>发起人</text>
+    <view class='relative'>
+      <picker bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}" range-key="name">
+        <view>
+          <text class='size28 color9'>{{casArray[casIndex].name}}</text>
+        </view>
+      </picker>
+      <text class='iconfont icon-ai-arrow-down color9'></text>
+    </view>
+  </view>
+  
+  <button formType="submit" disabled='{{disabled}}'>提交订单</button>
+</view>
+</form>
+<view class='container border_top' wx:else>
+  <view class='color4 size32'>评估</view>
+  <view class='color6 size28'>备注</view>
+  <textarea disabled='disabled' value='{{list.assess_intro}}'></textarea>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>评估价格</text>
+    <view class='size28 colorFB5A3E'>￥{{list.order_amount}}</view>
+  </view>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>处理类型</text>
+    <text class='size28 color6'>{{casArray[list.order_type-1].name}}</text>
+  </view>
+  <button wx:if='{{home}}' bindtap='open2' wx:if='{{list.order_type==1}}'>确认支付</button>
+  <view wx:else class='btn size32' wx:else>等待支付</view>
+</view>

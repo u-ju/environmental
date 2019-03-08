@@ -1,0 +1,106 @@
+{
+  "pages":[ 
+    "pages/index/index",
+    "pages/my_paymentGoods/index",
+    "pages/my_bankcard/index",
+    "pages/my_bankcard_add/index",
+    "pages/address/index",
+    "pages/address_edit/index",
+    "pages/address_order/index",
+    "pages/installment/installment",
+    "pages/my_order_detail/index",
+    "pages/agent/index",
+    "pages/my_invitation/index",
+    "pages/history/index",
+    "pages/price_information/price_information",
+    "pages/reimbursement/index",
+    "pages/tenantsIndex/index",
+    "pages/my_release/index",
+    "pages/neighbourhood_release/index",
+    "pages/neighbourhood/neighbourhood",
+    "pages/realname_authentication/realname_authentication",
+    "pages/bill/index",
+    "pages/installment_repayment/index",
+    "pages/ban/index",
+    "pages/tenants/tenants",
+    "pages/order_detail/index",
+    "pages/installment_details/installment_details",
+    "pages/order/index",
+    
+    "pages/comment/index",
+    
+    "pages/place_order/place_order",
+    "pages/promote/index",
+    
+    "pages/convenience_service/index",
+    "pages/business/index",
+    "pages/catering/index",
+    "pages/payment/index",
+    "pages/video_detail/index",
+    "pages/video/index",
+    "pages/personal_center/personal_center",
+    "pages/realname_suc/index",
+    "pages/success/success",
+    "pages/error/error",
+    "pages/page/index",
+    "pages/payShop/index",
+    
+    "pages/pay/index",
+    "pages/edsc_site/edsc_site",
+    "pages/edcs_choose/edcs_choose",
+    "pages/application_bag/application_bag",
+    "pages/ecofer/ecofer",
+    "pages/neighbourhood_detail/neighbourhood_detail",
+    
+    "pages/edcs/edcs",
+    "pages/find/find",
+    "pages/dynamic/dynamic",
+    
+    "pages/phone/phone",
+    "pages/phone_new/phone_new",
+    "pages/delivery_station/delivery_station",
+    "pages/business_details/business_details",
+    "pages/delivery_station_list/delivery_station_list",
+    "pages/setting/setting",
+    "pages/help_center/help_center",
+    "pages/login/login",
+    "pages/news/news",
+    "pages/code/code",
+    "pages/shopping_mall/shopping_mall",
+    "pages/news_detail/news_detail",
+    
+    "pages/qrcode/qrcode",
+    "pages/put/put",
+    "pages/sorting_all/sorting_all",
+    "pages/sorting_list_detail/index",
+    "pages/sorting_order/sorting_order",
+    "pages/sorting/sorting",
+    "pages/home_orders/home_orders",
+    
+    "pages/withdrawal_record/withdrawal_record",
+    "pages/withdrawal/withdrawal",
+    "pages/my_deposit/my_deposit",
+    "pages/message/message",
+    
+    "pages/about/about",
+    "pages/tailor/tailor",
+    "pages/modify_nickname/modify_nickname",
+    "pages/cumulative_delivery/cumulative_delivery",
+    "pages/order_details_bill/order_details_bill",
+    "pages/order_details/order_details",
+    "pages/my_gold/my_gold",
+    "pages/share/share",
+    "pages/sign/sign"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "奥特利环保",
+    "navigationBarTextStyle": "black"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "签到领积分",
+  "navigationBarBackgroundColor": "#99E4AB",
+  "usingComponents": {
+    "wux-divider": "../../Components/divider/index"
+  }
+}

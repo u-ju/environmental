@@ -1,0 +1,83 @@
+/* pages/tenantsIndex/index.wxss */
+@import '../shopping_mall/shopping_mall';
+.wei{
+  height: 400rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 400rpx;
+}
+.width100{
+  width: 500rpx;
+}
+.inner{
+  padding: 0 2%;
+  width: 96%;
+}
+.renzheng {
+  font-size: 20rpx;
+}
+.zzc{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,.5);
+  top: 0;
+  z-index: 11;
+}
+.zzc_con{
+  background:rgba(255,255,255,1);
+  border-radius:10rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 22;
+  width: 700rpx;
+  padding: 56rpx 0;
+}
+.icon-cuohao{
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  font-size: 30rpx;
+}
+.phone,.renzheng{
+  width: auto;
+  height: auto;
+  border: none
+}
+.phone image {
+width:40rpx;
+height:40rpx;
+float:left;
+margin:10rpx 0rpx 0 8rpx;
+
+}
+.location {
+  margin: 0 10rpx 0 0 ;
+}
+.describe {
+  height: 120rpx;
+  padding: 12rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.icon-erweima{
+  font-size: 40rpx;
+  
+}
+.button{
+  width: 400rpx;
+  margin: 40rpx auto;
+  
+  height:82rpx;
+  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
+  box-shadow:0rpx 3rpx 7rpx 0rpx rgba(82, 164, 215, 0.35);
+  border-radius:41rpx;
+  color: white;
+  text-align: center;
+  line-height: 82rpx;
+
+}

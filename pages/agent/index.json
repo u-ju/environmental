@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "业务专员申请",
+  "usingComponents": {
+    "wux-popup": "../../Components/popup/index",
+    "empty": "../../Components/empty/index",
+    "wux-qrcode": "../../Components/qrcode/index"
+  }
+}

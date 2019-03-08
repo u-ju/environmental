@@ -1,0 +1,8 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class='size36 color0'>登录/注册</view>
+  <form  bindsubmit="formSubmit">
+    <input type='number' maxlength='11' bindinput='phone' placeholder='请输入手机号' name='phone' placeholder-class='placeholder' value='{{phone}}'></input>
+    <button formType="submit" disabled='{{disabled}}' class='{{disabled?"bgDDDDDD":""}}'>获取短信验证码</button>
+  </form>
+</view>

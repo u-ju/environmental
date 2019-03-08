@@ -1,0 +1,8 @@
+<!--pages/my_paymentGoods/index.wxml-->
+<view class='item flex_btw align_center' wx:for="{{list}}" wx:key="index">
+  <view>
+    <view class='bold color6 marginb'>{{item.intro}}</view>
+    <view class='color9 size24'>{{item.created_at}}</view>
+  </view>
+  <view class='bold color727272 size36'>{{item.value}}</view>
+</view>

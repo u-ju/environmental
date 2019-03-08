@@ -1,0 +1,25 @@
+<!--pages/setting/setting.wxml-->
+<!-- <view class='item flex_btw align_center'>
+  <text class='color4 size28'>清除缓存</text>
+  <view class='flex_btw align_center'>
+    <text class='color6 size28'>5M</text>
+    <image mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
+  </view>
+</view> -->
+<view class='item flex_btw align_center'>
+  <text class='color4 size28'>当前版本：{{version}}</text>
+</view>
+<block wx:for="{{items}}" wx:key="index">
+<view class='item flex_btw align_center' bindtap='link' data-url="{{item.url}}">
+  <text class='color4 size28'>{{item.title}}</text>
+  <view class='flex_btw align_center'>
+    <image mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
+  </view>
+</view>
+</block>
+<!-- <view class='item flex_btw align_center'>
+  <text class='color4 size28'>关于我们</text>
+  <view class='flex_btw align_center'>
+    <image mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
+  </view>
+</view> -->

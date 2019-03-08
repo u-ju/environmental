@@ -1,0 +1,70 @@
+/* pages/phone/phone.wxss */
+button::after{
+  border: none;
+}
+.yzm{
+  height: 114rpx;
+  
+}
+.yzm_btn{
+  width: 204rpx;
+  height: 62rpx;
+  border-radius: 26rpx;
+  color: #fff;
+  font-size: 24rpx;
+  background: -webkit-linear-gradient(#44D5A2,#99E4AB);
+	background: -o-linear-gradient(#44D5A2,#99E4AB);
+	background: -moz-linear-gradient(#44D5A2,#99E4AB);
+	background: -mos-linear-gradient(#44D5A2,#99E4AB);
+	background: linear-gradient(#44D5A2,#99E4AB);
+}
+.all input{
+  height: 62rpx;
+  padding: 26rpx 0;
+  width: 400rpx;
+}
+.all{
+  width: 686rpx;
+  margin: auto;
+  padding-top: 70rpx;
+  border-bottom: 1px solid #E8E8E8;
+}
+.all .width100{
+  width: 100%;
+}
+.sure{
+  width: 288rpx;
+  height: 86rpx;
+  border-radius: 43rpx;
+  font-size: 32rpx;
+  color: white;
+  margin-top: 132rpx;
+  background: -webkit-linear-gradient(#44D5A2,#99E4AB);
+	background: -o-linear-gradient(#44D5A2,#99E4AB);
+	background: -moz-linear-gradient(#44D5A2,#99E4AB);
+	background: -mos-linear-gradient(#44D5A2,#99E4AB);
+	background: linear-gradient(#44D5A2,#99E4AB);
+}
+.bgDDDDDD{
+  background: #DDDDDD;
+  color: white;
+}
+button[disabled]:not([type]){
+  background-color: #ddd;
+  color: white;
+}
+.color299EF0{
+  margin-top: 330rpx;
+}
+navigator{
+  display: inline-block;
+}
+.choose{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.choose image{
+  width: 30rpx;
+  height: 30rpx;
+}

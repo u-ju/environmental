@@ -1,0 +1,18 @@
+<!--pages/payment/index.wxml-->
+<view>
+  <image class='payment_pic' src='../../images/payment.png'></image>
+</view>
+<view class='payment flex_btw'>
+  <view class='payment_item'>
+    <image src='../../images/payment_1.png' class='payment_item_pic' mode='aspectFit'></image>
+    <view class='ljjf siz28'>立即缴费</view>
+  </view>
+  <view class='payment_item'>
+    <image src='../../images/payment_2.png' class='payment_item_pic' mode='aspectFit'></image>
+    <view class='ljjf siz28'>立即缴费</view>
+  </view>
+  <view class='payment_item'>
+    <image src='../../images/payment_3.png' class='payment_item_pic' mode='aspectFit'></image>
+    <view class='ljjf siz28'>立即缴费</view>
+  </view>
+</view>

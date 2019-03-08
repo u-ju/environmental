@@ -1,0 +1,17 @@
+<!--pages/delivery_station_list/delivery_station_list.wxml-->
+<view class='map size28 color4' bindtap='map'>地图模式</view>
+<block wx:if="{{list.length>0}}">
+<view class='item' wx:for="{{list}}" wx:key="{{item.garbage_ark_id}}">
+  <view class='flex align_center border'>
+    <image class='location' src='../../images/icon_location.png'></image> 
+    <text class='size28 color4'>{{item.address}}</text>
+  </view>
+  <view class='flex_btw align_center'>
+    <text class='size28 color4'  decode="{{true}}" space="{{true}}">距离&nbsp;&nbsp;&nbsp;&nbsp;{{item.distance}}km</text>
+    <view class='color2EB354 size28'data-data='{{item}}' bindtap='map_xx'>
+      点击进入导航
+    </view>
+  </view>
+</view>
+</block>
+  <empty wx:else />

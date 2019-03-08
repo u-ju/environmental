@@ -1,0 +1,8 @@
+/* pages/history/index.wxss */
+@import '../order/index';
+.fkItem{
+  margin: 35rpx auto;
+}
+.his_con .his_con_left{
+  margin-right: 50rpx;
+}

@@ -1,0 +1,59 @@
+/* pages/my_bankcard/index.wxss */
+.nocard_pic{
+  width: 310rpx;
+  height: 260rpx;
+  margin: 90rpx 0 30rpx 0;
+}
+.nocard{
+  text-align: center;
+  color: #4AD6A3;
+  font-size: 32rpx;
+  height: 540rpx;
+}
+.click{
+  width:612rpx;
+  height:110rpx;
+  border:2rpx solid rgba(191,191,191,1);
+  border-radius:10rpx;
+  margin: 50rpx auto;
+  color: #4AD6A3
+}
+.click navigator{
+  height:110rpx;
+}
+.icon-jiahao{
+  font-size: 40rpx;
+  margin: 0 20rpx 0 34rpx;
+}
+.bankcard{
+  width:512rpx;
+  height:230rpx;
+  background:linear-gradient(156deg,rgba(117,131,245,1) 0%,rgba(73,188,250,1) 100%);
+  box-shadow:0px 4rpx 16rpx 1px rgba(88,168,248,0.52);
+  border-radius:10rpx;
+  margin: 25rpx auto 50rpx auto;
+  padding: 25rpx 50rpx;
+  color: white;
+}
+.bankcard image{
+  width: 82rpx;
+  height: 82rpx;
+  margin-right: 12rpx;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.bankcard>.center{
+  margin-top: 60rpx;
+}
+.bankcard2{
+  background:linear-gradient(89deg,rgba(255,110,2,1) 0%,rgba(255,183,21,1) 100%);
+  box-shadow:0px 4rpx 16rpx 1px rgba(255,183,21,0.52);
+}
+.bankcard3{
+  background:linear-gradient(89deg,#64deaa  0%,#9cefbd 100%);
+  box-shadow:0px 4rpx 16rpx 1px rgba(138,226,169,0.52);
+}
+.bankcard4{
+  background:linear-gradient(89deg,#9681fe 0%,#93bef8 100%);
+  box-shadow:0px 4rpx 16rpx 1px rgba(147,190,248,0.52);
+}

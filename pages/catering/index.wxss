@@ -1,0 +1,17 @@
+/* pages/catering/index.wxss */
+@import '../business/index';
+.hidden2 {
+  margin: 0
+}
+.renzh{
+  border-radius: 6rpx;
+  width:157rpx;
+}
+.tuijian_item .catering_lca{
+  width:36rpx;
+  height: 48rpx;
+  margin: 0 0 30rpx 32rpx;
+}
+.icon{
+  height: 146rpx;
+}

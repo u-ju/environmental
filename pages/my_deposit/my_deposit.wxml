@@ -1,0 +1,11 @@
+<!--pages/my_deposit/my_deposit.wxml-->
+<view class='deposit_item'>
+  <view class='flex_col justify_center align_center'>
+    <view class='flex align_center'>
+      <image src='../../images/pig@2x.png'></image>
+      <text class='size20 color9'>当前金额（元）</text>
+    </view>
+    <view class='size40 bold center'>20.0</view>
+  </view>
+  <view class='color44D5A2 size30 center'>退押金</view>
+</view>

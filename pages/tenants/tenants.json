@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "商家入驻",
+  "usingComponents": {
+    "wux-cell-group": "../../Components/cell-group/index",
+    "wux-cell": "../../Components/cell/index",
+    "wux-cascader": "../../Components/cascader/index"
+  }
+}

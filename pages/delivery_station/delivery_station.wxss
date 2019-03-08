@@ -1,0 +1,32 @@
+/* pages/delivery_station/delivery_station.wxss */
+page{
+  height: 100%;
+  margin-top: -1rpx;
+}
+.location{
+  color: #2EB354;
+  font-size: 32rpx;
+  width: 230rpx;
+  height: 72rpx;
+  text-align: center;
+  line-height: 72rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  position: fixed;
+  top: 340rpx;
+  right: 5rpx;
+  box-shadow: 0rpx 0rpx 2rpx 2rpx rgba(0, 0, 0, .35);
+}
+.list{
+  width: 142rpx;
+  height: 63rpx;
+  text-align: center;
+  line-height: 63rpx;
+  background-color: white;
+  border-radius: 25rpx;
+  color: #444;
+  position: fixed;
+  top: 150rpx;
+  right: 32rpx;
+  font-size: 28rpx;
+}

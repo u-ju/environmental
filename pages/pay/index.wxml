@@ -1,0 +1,12 @@
+<!--pages/pay/index.wxml-->
+<view class='size32 colorFB5A3E bold title_num center'>￥{{result.pay_amount}}</view>
+  <radio-group class="radio-group" bindchange="radioChange">
+      <label wx:for="{{payment_usable}}" class="radio flex_btw align_center" >
+        <view class='flex align_center'>
+          <image src='{{item.image}}'></image>
+          <text class='color6 size26'>{{item.text}}</text>
+        </view>
+        <radio value="{{item.key}}" checked="{{item.checked}}"/>
+      </label>
+  </radio-group>
+<button bindtap="pays"  class='pay'>确认支付</button>

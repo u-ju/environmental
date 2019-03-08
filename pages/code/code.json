@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "paySix": "../../Components/code/component"
+  }
+}

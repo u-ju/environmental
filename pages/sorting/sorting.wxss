@@ -1,0 +1,178 @@
+/* pages/sorting/sorting.wxss */
+@import '../edcs/edcs';
+page{
+  overflow-y: visible;
+  border: none;
+  color: #444;
+  font-size: 20rpx;
+}
+.page{
+  background-size: cover;
+  transform:rotate(90deg);
+  transform-origin: 0 0;
+  background-color: transparent;
+  position: relative;
+  margin-left: 100%;
+  overflow: hidden;
+}
+.bg{
+  position: absolute;
+  z-index: -1;
+}
+
+.scroll{
+  /* width:92%;
+  margin:4% 5% 0 auto;
+  height: 82%;
+  border-radius: 10px; */
+  width:92%;
+  margin:3.5% 5% 0 auto;
+  height:80%;
+  border-radius:10px;
+}
+.flex1{
+  width: 14%;
+}
+.flex2{
+  width: 26%;
+  word-wrap: break-word;
+}
+.flex3{
+  width: 12%;
+  position: relative;
+}
+.flex3_1{
+  width: 20%;
+  position: relative;
+}
+.flex4{
+  width: 6%;
+}
+.flex4_1{
+  width: 10%;
+}
+.flex5{
+  width: 6%;
+}
+.flex5_1{
+  width: 10%;
+}
+.flex6{
+  width: 8%;
+}
+.flex6_1{
+  width: 13.33%;
+}
+.flex7{
+  width: 8%;
+}
+.flex7_1{
+  width: 13.33%;
+}
+.flex8{
+  width: 20%;
+}
+.flex8_1{
+  width: 33.33%;
+}
+.flex{
+  border-bottom: 1rpx dashed #f1f1f1;
+}
+.flex>.bor,.rigth_flex>view{
+  padding: 20rpx 0;
+  text-align: center;
+  /* border-right:  1rpx dashed #f1f1f1; */
+}
+.flex>.bor{
+  border-right:  1rpx dashed #f1f1f1;
+}
+.rigth_flex>view:last-of-type{
+  border-bottom: none
+}
+/* .rigth_flex>view,.flex1,.flex2{
+  border-top: 1rpx dashed #f1f1f1;
+} */
+.flex>view:last-of-type,.rigth_flex>view:last-of-type{
+  border-right: none;
+}
+.add{
+  width: 110rpx;
+  height: 30rpx;
+  background-color: #44D5A2;
+  color: white;
+  text-align: center;
+  margin: auto;
+  line-height: 30rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  padding: 0
+}
+.ksfj{
+  width: auto;
+  border: none;
+}
+.flex3_relative{
+  position: relative;
+  margin: auto;
+  text-align: center;
+  z-index: 220;
+}
+.del image{
+  width: 31rpx;
+  height: 37rpx;
+}
+.rigth_flex{
+  width: 60%;
+}
+.wux-popover{
+  font-size: 18rpx;
+  top: -20rpx;
+  z-index: 999;
+  left: 80rpx;
+}
+.wux-popover__title{
+  min-width: 80rpx;
+  padding: 8rpx 12rpx;
+  height: 40rpx;
+  min-height: 40rpx;
+}
+.ksfj image{
+  margin-left: 20rpx;
+}
+.wux-popover__arrow{
+  /* background-color: red; */
+}
+.zzc{
+  background-color: rgba(0, 0, 0, .1)
+}
+.wux-popover--placement-right, .wux-popover--placement-rightBottom, .wux-popover--placement-rightTop {
+padding: 0;
+padding-left:20rpx;
+
+}
+
+.wux-popover--placement-rightBottom .wux-popover__arrow {
+top:24rpx;
+left:8rpx;
+border-left-width:0;
+border-right-color:#fff
+}
+.placeholder{
+  font-size: 20rpx;
+}
+/* input{
+  height: auto;
+  min-height:auto;
+} */
+
+/* input{
+  line-height: 30rpx;
+  height: 30rpx;
+  min-height: 30rpx;
+} */
+input.flex4_1{
+  height: 40rpx;
+  line-height: 30rpx;
+  text-align:center;
+  width: 100% ;
+}

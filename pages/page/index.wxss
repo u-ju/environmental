@@ -1,0 +1,9 @@
+/* pages/page/index.wxss */
+.rule{
+  padding: 32rpx;
+  font-size: 28rpx;
+  color: #444;
+}
+.rule>view{
+  margin-bottom: 40rpx;
+}

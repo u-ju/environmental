@@ -1,0 +1,43 @@
+<!--pages/payShop/index.wxml-->
+<view class='infor' >
+  <image class='head' src='{{shopdetail.thumb}}'></image>
+  <view><text>{{shopdetail.title}}</text></view>
+</view>
+<!-- <view class='money'>
+  <view class='size30'>转账金额</view>
+  <wux-input label="￥" placeholder="请输入转账金额"  type="number" value="{{ value }}" class='huhu'  bind:change="onChange" />
+  <view class='bag flex'>
+    <view wx:for="{{eco_bag_type}}" wx:key="index" data-key='{{item.key}}' bindtap='bag' class='bag_item {{bagkey==item.key?"choose":""}}'>
+      {{item.name}}
+    </view>
+  </view>
+  <view class='sure' bindtap='open2'>确认</view>
+</view> -->
+<view class='pay_big'>
+  <view class='pay_item flex align_center'>
+    <view class='z_right'>当前金额（元）</view>
+    <view class='z_left'> <input name='amount' placeholder="请输入金额" placeholder-style='font-size: 24rpx' bindinput='onChange' ></input></view>
+  </view>
+  <view wx:for="{{eco_bag_type}}" wx:key="index" data-key='{{item.key}}' bindtap='bag' class='pay_item flex align_center '>
+   <view class='z_right '> <image src='{{bagkey==item.key?chooseimage:item.image}}'></image> {{item.name}}</view>
+   <view class='z_left'>{{item.integral}}环保金</view>
+  </view>
+  <view class='pay_item flex align_center bottom'>
+    <view class='center' bindtap='back'>取消</view>
+    <view class='center'  bindtap='open2'>确定</view>
+  </view>
+</view>
+<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
+  <view class='size28 colorFB5A3E bold title_num'>￥{{result.pay_amount}}</view>
+  <radio-group class="radio-group" bindchange="radioChange">
+      <label wx:for="{{pay}}" wx:key="index" class="radio flex_btw align_center" >
+        <view class='flex align_center'>
+          <image src='{{item.image}}'></image>
+          <text class='color6 size26'>{{item.text}}</text>
+        </view>
+        <radio value="{{item.key}}" checked="{{item.checked}}"/>
+      </label>
+  </radio-group>
+
+  <button bindtap="close2" class='pay'>确认支付</button>
+</wux-popup>

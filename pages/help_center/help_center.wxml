@@ -1,0 +1,21 @@
+<!--pages/help_center/help_center.wxml-->
+<view class='title flex_btw'>
+  <view class='xinshou flex align_center justify_center'>
+    <image src='../../images/book@2x.png'></image>
+    <text class='size28 color6'>新手入门</text>
+  </view>
+  <view class='calling flex align_center justify_center' bindtap='call'>
+    <image src='../../images/phone_red@2x.png'></image>
+    <text class='size28 color6'>拨打电话客服</text>
+  </view>
+</view>
+<view class='con'>
+  <view class='size28 color4'>其他常见问题</view>
+  <block wx:if="{{list.length>0}}">
+  <view  wx:for="{{list}}" wx:key="index" class='flex_btw align_center' bindtap='detail' data-help_id='{{item.help_id}}'>
+    <text class='color6'>{{item.title}}</text>
+    <image src='../../images/list_icon_next@2x.png'></image>
+  </view>
+  </block>
+  <empty wx:else />
+</view>

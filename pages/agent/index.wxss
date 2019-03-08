@@ -1,0 +1,83 @@
+/* pages/agent/index.wxss */
+@import '../edcs/edcs';
+page{
+  background-color: white;
+  font-size: 28rpx;
+}
+.wei{
+  /* height: 400rpx; */
+  font-size: 30rpx;
+  text-align: center;
+  /* line-height: 400rpx; */
+}
+.card{
+  width: 650rpx;
+  padding: 30rpx 18rpx;
+  box-shadow:0px 4px 8px 0px rgba(151, 151, 151, 0.35);
+  border-radius:10px;
+  background-color: white;
+  margin: 40rpx auto;
+}
+.card .left{
+  width: 210rpx;
+}
+.card .right{
+  width: 400rpx;
+}
+.card>.flex{
+  padding: 20rpx 0 20rpx 40rpx;
+}
+
+.section{
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx;
+  text-align: left;
+  align-items: center;
+}
+.section view{
+  margin-right: 20rpx;
+  width: 240rpx;
+}
+button{
+  width: 90%;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.btndl{
+  width:353rpx;
+  height:100rpx;
+  background:rgba(74,214,163,1);
+  border-radius:50rpx;
+  margin: 100rpx auto 0 auto;
+  color: white;
+  text-align: center;
+  line-height: 100rpx;
+}
+.link{
+  width: 220rpx;
+  margin: 100rpx auto;
+  text-align: center;
+}
+.gznr{
+  width:687rpx;
+  height:520rpx;
+  padding: 30rpx 0;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 4rpx 14rpx 1px rgba(191,189,189,0.52);
+  border-radius:15rpx;
+  color: #444;
+  margin: auto;
+  
+}
+.gznr>view{
+  text-align: left;
+  width: 550rpx;
+  margin: 0 auto 50rpx auto;
+}
+.weizi{
+  margin: 130rpx auto;
+}
+.gznr .size30{
+  margin-bottom: 10rpx;
+}

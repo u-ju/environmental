@@ -1,0 +1,24 @@
+/* pages/comment/index.wxss */
+@import '../comment/index';
+input{
+  width: 686rpx;
+  border: none;
+  border-bottom: 1px solid #eee;
+  margin: 40rpx auto 0 auto;
+  font-size: 28rpx;
+}
+.placeholder{
+  font-size: 28rpx;
+  color: #444;
+  text-indent: 16rpx;
+}
+textarea{
+  height:580rpx;
+  
+}
+.btnsure{
+  margin-top: 30rpx;
+}
+.picture_item .del{
+  background-color: transparent
+}

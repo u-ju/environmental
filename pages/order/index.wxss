@@ -1,0 +1,219 @@
+/* pages/order/index.wxss */
+
+.bordered:before {
+	content: " ";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 2rpx;
+	/* border-bottom: 2rpx solid #D9D9D9; */
+	color: #D9D9D9;
+	transform-origin: 0 100%;
+	transform: scaleY(0.5);
+}
+
+.content {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    background-color: #fff;
+}
+swiper{
+  /* padding: 20rpx 0; */
+  min-height: 1116rpx;
+}
+.fkItem{
+  width:650rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 3rpx 10rpx 0px rgba(191,189,189,1);
+  border-radius:5rpx;
+  padding: 18rpx;
+  margin-bottom: 45rpx;
+}
+.zitem{
+  padding: 10rpx 32rpx 0 32rpx;
+  width: 686rpx !important;
+}
+.goospic{
+  width:205rpx;
+  height:150rpx;
+  margin-right: 40rpx;
+}
+.fkItem_goods{
+  margin-top: 20rpx;
+  /* width: 600rpx; */
+}
+.fkItem_goods_ms .colorFE2C2C{
+  margin-top: 12rpx;
+}
+checkbox .wx-checkbox-input{
+   border-radius: 50%;/* 圆角 */
+   width: 44rpx;
+   height: 44rpx;
+   margin-right: 20rpx;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 44rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 44rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 44rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   background: rgba(9, 187, 7, 1);
+   border-color: rgba(9, 187, 7, 1);
+}
+.btnsure{
+  width:686rpx;
+  height:86rpx;
+  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
+  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
+  border-radius:43rpx;
+  text-align: center;
+  color: white;
+  line-height: 86rpx;
+  margin: 44rpx 0 10rpx 0
+}
+.footer{
+  position: fixed;
+  bottom: 0rpx;
+}
+.shitem .colorFE2C2C {
+  margin:10rpx 0;
+}
+.shitem .fkItem_goods_ms{
+  width: 360rpx;
+}
+.btnck,.btnyqx{
+  width:150rpx;
+height:50rpx;
+border:4rpx solid rgba(191,191,191,1);
+border-radius:15rpx;
+text-align: center;
+line-height: 50rpx;
+
+}
+.btnyqx{
+  border-color: transparent;
+}
+.marginr57{
+  margin-right: 57rpx;
+}
+.popup__button{
+  width:569rpx;
+height:86rpx;
+background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
+box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
+border-radius:43rpx;
+color: white;
+margin: 0 auto  42rpx auto;
+font-size: 30rpx;
+line-height: 86rpx;
+}
+.shouhuopic{
+  width:180rpx;
+  height:180rpx;
+  margin: 54rpx auto;
+}
+.shouhu .size28{
+  margin-top: 36rpx;
+}
+.weui-cell-third{
+  background: #fff;
+  padding-bottom: 50rpx;
+}
+.weui-cell-list{
+  background: #fff;
+  margin: 5px 32rpx 5px 32rpx;
+  position: relative;
+  width: 600rpx;
+}
+.weui-cell-line{
+/* width: 100px; */
+  margin-left: 12rpx;
+  border-left: 4px solid #ddd;
+  height: 90rpx; 
+  background: #fff
+}
+.weui-cell-circle{
+  width:32rpx;
+height:32rpx;
+background-color:rgba(46,179,84,1);
+border-radius:50%;
+margin:-12rpx 0 0 0;
+}
+.weui-cell-con{
+  position: absolute;
+  top: -24rpx;
+  left: 60rpx;
+  width: 600rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.weui-cell-time{
+  /* width: 50px; */
+  /* float: left; */
+  /* font-size:14px;
+  padding-left: 15px;
+  width: 72px; */
+ 
+}
+.weui-cell-event{
+ 
+  /* padding-top: 15px;
+  padding-left: 15px; */
+}
+.weui-cell-name{
+/* font-size:14px;
+height:23px;
+margin-left: 100px; */
+ 
+ 
+}
+.page__title{
+  font-size: 36rpx;
+  margin: 36rpx 0 45rpx 0;
+}
+.kdnr{
+  margin: 0 0 76rpx 0;
+}
+.shbtn{
+  width:180rpx;
+height:88rpx;
+text-align: center;
+line-height: 88rpx;
+border:4rpx solid rgba(46,179,84,1);
+border-radius:15rpx;
+font-size:30rpx;
+font-family:PingFang-SC-Regular;
+font-weight:bold;
+color:rgba(46,179,84,1);
+}
+.shbtnitem{
+  width: 510rpx;
+  margin-top: 60rpx;
+}
+.bgBFBFBF{
+  background-color: #BFBFBF;
+}
+.choose{
+  width: 44rpx;
+  height: 44rpx;
+}
+.fhItem_goods_ms{
+  width: 400rpx;
+}
+.flex_reverse{
+  display: flex;
+  flex-direction: row-reverse
+}

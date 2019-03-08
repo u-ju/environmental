@@ -1,0 +1,7 @@
+<!--pages/convenience_service/index.wxml-->
+<view class='con flex wrap'>
+  <view class='item' wx:for='{{items}}' wx:key="index" data-url='{{item.url}}' bindtap='link'>
+    <image src='{{item.images}}'></image>
+    <view class='color4 size28 flex_ard align_center'><text>{{item.title}}</text></view>
+  </view>
+</view>

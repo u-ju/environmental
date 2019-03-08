@@ -1,0 +1,42 @@
+<!--pages/installment/installment.wxml-->
+<!-- <view class='title'bindtap='model'>活动方式</view>
+<view class='installment flex_btw' bindtap='detail'>
+  <image src='../../images/decorate@2x.png'></image>
+  <view class='installment_right'>
+    <view class='center size28 color4'>智能家居冰箱</view>
+    <view class='color6'>西门子对开门冰箱，电脑控温，风冷无霜，矢量变频</view>
+    <view class='through color9'> <text class='marginr' decode="{{true}}" space="{{true}}">市场价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;￥4155</text> </view>
+    <view class='color9'> <text>厂家直供价</text><text class='colorEA2C2C'>￥3155</text> </view>
+    <view class='right size20'>查看详情</view>
+  </view>
+</view>
+<view class='installment flex_btw'>
+  <image src='../../images/decorate@2x.png'></image>
+  <view class='installment_right'>
+    <view class='center size28 color4'>智能家居冰箱</view>
+    <view class='color6'>西门子对开门冰箱，电脑控温，风冷无霜，矢量变频</view>
+    <view class='through color9'> <text class='marginr' decode="{{true}}" space="{{true}}">市场价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;￥4155</text> </view>
+    <view class='color9'> <text>厂家直供价</text><text class='colorEA2C2C'>￥3155</text> </view>
+    <view class='right size20'>查看详情</view>
+  </view>
+</view>
+<view class='zzc' bindtap='model' wx:if="{{showmodel}}">
+  
+</view>
+<view class='zzc_con' wx:if="{{showmodel}}">
+    <view class='color6 bold size30 center'>活动方式</view>
+    <view class='color6'>1.活动时间：</view>
+    <view class='color9'>2018年12月1日-2018年12月28日</view>
+</view> -->
+
+<view class='pageType flex_btw wrap' wx:if="{{list.length>0}}">
+  <view class='goods' wx:for="{{list}}" wx:key='index' bindtap='detail' data-sku_id='{{item.sku_id}}'>
+    <image mode='aspectFit' src='{{item.thumb}}' class='goodspic'></image>
+    <view>
+      <view class='color4 size28 one-hidden margint6'>{{item.spu_name}}</view>
+      <view class='colorFE2C2C line-through size26 margint6'>市场价：￥{{item.market_price}}</view>
+      <view class='colorFE2C2C size26 margint6'>分期价：￥{{item.nper_price}}</view>
+    </view>
+  </view>
+</view>
+<empty wx:else />

@@ -1,0 +1,4 @@
+<!--pages/ban/index.wxml-->
+<view class='center'>
+  你已被禁止使用此平台
+</view>

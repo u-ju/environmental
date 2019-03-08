@@ -1,0 +1,32 @@
+/* pages/reimbursement/index.wxss */
+@import '../order_detail/index';
+.reimbursementtop{
+  padding: 20rpx 60rpx 34rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.icon-cuohao{
+  position: static;
+  font-size: 22rpx;
+}
+.reicon{
+  padding: 20rpx 0;
+}
+.bottom{
+  padding: 40rpx 32rpx;
+}
+.size48{
+  font-size: 48rpx;
+  margin: 40rpx 0 90rpx 0;
+}
+.btn{
+  width:686rpx;
+  height:86rpx;
+  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
+  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
+  border-radius:43rpx;
+  color: white;
+  font-size: 32rpx;
+  line-height: 86rpx;
+  text-align: center;
+  margin: auto;
+}

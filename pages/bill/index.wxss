@@ -1,0 +1,36 @@
+/* pages/bill/index.wxss */
+page{
+  color: #444;
+  font-size: 28rpx;
+}
+.top{
+  width:100%;
+  padding: 30rpx 0;
+  background:linear-gradient(0deg,rgba(153,228,171,1) 0%,rgba(77,215,163,1) 100%);
+}
+.top>view{
+  width: 50%;
+  color: white;
+  text-align: center;
+  font-size: 28rpx;
+}
+.rightb{
+  border-right: 1px solid #fff;
+}
+.marginb{
+  margin-bottom: 12rpx;
+}
+.time{
+  padding: 18rpx 50rpx;
+  background-color: #EEEEEE;
+}
+.billItem{
+  padding: 30rpx 50rpx 16rpx 50rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.marginr{
+  width: 170rpx;
+}
+.billItem .size36{
+  color: #444
+}

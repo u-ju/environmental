@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "wux-qrcode": "../../Components/qrcode/index"
+  }
+}

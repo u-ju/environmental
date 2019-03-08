@@ -1,0 +1,58 @@
+<!--pages/ecofer/ecofer.wxml-->
+<menu hidden id='menu' bind:addEvent="_addEvent" />
+<view class='topTabSwiper fixed'>
+  <block wx:for="{{tab}}" wx:key="index">
+    <view class='tab  {{currentData == index ? "tabBorer" : ""}}' style='width:{{100/tab.length}}%'  data-current = "{{index}}" data-cate_id = "{{item.id}}" bindtap='checkCurrent'>{{item.name}}</view>
+  </block>
+</view>
+<view wx:if="{{currentData==0}}" class='flex_ard lags'>
+  <block wx:for='{{eco_bag_type}}' wx:key="index">
+    <view class='lags_item' bindtap='model' data-price='{{item.integral}}' data-key='{{item.key}}'>
+      <image src='{{item.images}}'></image>
+      <view class='minuet'>
+        <image src='../../images/minuet@2x.png'></image>
+        <text>{{item.integral}}</text>
+      </view>
+    </view>
+  </block>
+  <!-- <view class='lags_item'>
+    <image src='../../images/small@2x.png'></image>
+    <view class='minuet'>
+      <image src='../../images/minuet@2x.png'></image>
+      <text>5</text>
+    </view>
+  </view> -->
+  <!-- <view class='tijiao'>提交</view> -->
+</view>
+<view wx:if="{{currentData==1}}" class='jilu'>
+  <view class='jilu_item flex_btw align_center'>
+    <view>
+      <view class='size28 color6 bold'>大环保袋</view>
+      <view class='color9'>2018-12-05  11:12</view>
+    </view>
+    <view class='size36 colorEA2C2C bold'>100</view>
+  </view>
+  <view class='jilu_item flex_btw align_center'>
+    <view>
+      <view class='size28 color6 bold'>小环保袋</view>
+      <view class='color9'>2018-12-05  11:12</view>
+    </view>
+    <view class='size36 colorEA2C2C bold'>100</view>
+  </view>
+</view>
+<view class='zzc' bindtap='model' wx:if="{{showmodel}}">
+</view>
+
+<view class='zzc_con {{ewmshow?"":"zzc_con2"}}' wx:if="{{showmodel}}">
+  <view class='iconfont icon-cuohao' bindtap='model' ></view>
+  <form bindsubmit="formSubmit" wx:if="{{ewmshow}}">
+    <view class='flex align_center input_item'><text>数量</text> <input placeholder='请输入数量' name='bag_count' value='' bindinput='shuliang'></input></view>
+   <view class='flex align_center input_item'><text>环保金</text> <text class='color8BDAA5'>{{money}}</text></view>
+   <view wx:if="{{disabled}}" class='tijiao1' disabled='true'>确定兑换</view>
+  <button wx:else class='tijiao' disabled='{{disabled}}' form-type="submit" >确定兑换</button>
+  </form>
+  <block wx:else>
+    <wux-qrcode  id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+  </block>
+  
+</view>

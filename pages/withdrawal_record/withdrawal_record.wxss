@@ -1,0 +1,31 @@
+/* pages/withdrawal_record/withdrawal_record.wxss */
+@import '../home_orders/home_orders';
+@import '../my_gold/my_gold';
+page{
+  padding: 0;
+  /* background-color: #F7F7F7; */
+}
+.swiper_con{
+  padding: 55rpx 32rpx 0 32rpx;
+  width: auto;
+  min-height:1000rpx;
+}
+.bad{
+  width: 600rpx;
+  margin: auto;
+  background-color: white;
+  padding: 0 43rpx;
+  margin-top: 15rpx;
+  border-radius: 10rpx;
+  box-shadow:0rpx 4rpx 8rpx 0rpx rgba(151, 151, 151, 0.35);
+}
+.bad .zuo{
+  width: 300rpx;
+  border-right: 1px solid #DDDDDD;
+}
+.bad .colorC70000{
+  width: 300rpx;
+}
+.bad>.color9{
+  padding: 32rpx 0 39rpx 0;
+}

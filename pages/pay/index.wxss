@@ -1,0 +1,11 @@
+/* pages/pay/index.wxss */
+@import '../order_details_bill/order_details_bill';
+.radio{
+  border-top: none;
+  border-bottom:1px solid #E8E8E8;
+}
+.pay{
+  height:62rpx;
+  line-height:62rpx;
+  color:white;
+}

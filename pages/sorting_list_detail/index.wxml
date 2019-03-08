@@ -1,0 +1,125 @@
+<!--pages/sorting_list_detail/index.wxml-->
+<!--pages/sorting_all/sorting_all.wxml-->
+<view class='page' style='width:{{windowWidth}}px;height:{{windowHeight}}px'>
+<image src='../../images/background@2x.png' class='bg' style='width:{{windowWidth}}px;height:{{windowHeight}}px'></image>
+<scroll-view scroll-y class='scroll'>
+  
+  <view class='flex'>
+    <view class='flex1 bor'>日期</view>
+    <view class='flex2 bor'>口袋编号</view>
+    <view class='flex3 bor'>分拣类型</view>
+    <view class='flex4 bor'>数量</view>
+    <view class='flex5 bor'>重量</view>
+    <view class='flex6 bor'>单价</view>
+    <view class='flex7 bor'>合计</view>
+    <view class='flex8 flex_ard align_center bor'><view class='add' bindtap='add'>新增</view></view>
+  </view>
+<block wx:for="{{bag_order_arr}}" wx:key="index" wx:for-item='order'>
+  <view class='flex align_center auto_flex'>
+    <view class='flex1'>{{order.created_at}}</view>
+     <view class='flex2'>{{order.bag_no}}</view>
+    <view class=' rigth_flex'>
+      <view class='flex align_center' wx:for="{{order.details}}" wx:key="index" wx:for-item='detail'>
+        <view class='flex3_1'>
+          <view class='flex3_relative'>
+            <view class='ksfj'  data-index='{{index}}'>{{detail.garbage_cate_name}}<image src='../../images/la_g@2x.png'></image></view>
+          </view>
+        </view>
+        <view class='flex4_1'>{{detail.count}}</view>
+        <view class='flex5_1'>{{detail.weight}}</view>
+        <!-- <input class='flex4_1' disabled='{{disabled}}' bindinput='input' data-name='count'  data-index='{{index}}' placeholder-class='placeholder' name='detail[{{index}}][count]' value='{{detail.count}}'></input>
+        
+        <input class='flex5_1' disabled='{{disabled}}' bindinput='input' data-name='weight'  data-index='{{index}}'  placeholder-class='placeholder'  name='detail[{{index}}][weight]'  value='{{detail.weight}}'></input> -->
+        
+        <view class='flex6_1'>{{detail.price}}</view>
+        <view class='flex7_1'>{{detail.amount}}</view>
+        <view class='flex8_1 del' bindtap='del' data-index='{{index}}' >
+          <!-- <image src='../../images/delet@2x.png'></image>
+          <view class='color44D5A2'>删除</view> -->
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+    <view class='flex'>
+      <view class='flex1 bor'></view>
+      <view class='flex2 bor'> </view>
+      <view class='flex3 bor'> </view>
+      <view class='flex4 bor'> </view>
+      <view class='flex5 bor'> </view>
+      <view class='flex6 bor'>总计</view>
+      <view class='flex7 bor color6ADB7A'>{{bag_stat.amount}}元</view>
+      <view class='flex8 bor'></view>
+    </view>
+    <form  bindsubmit="formSubmit">
+    <view class='flex'>
+      <view class='flex1 bor'>分拣类型</view>
+      <view class='flex2 bor'>数量</view>
+      <view class='flex3 bor'>重量</view>
+      <view class='flex4 bor'>单价</view>
+      <view class='flex5 bor'>合计</view>
+      <view class='flex6 bor'>总计</view>
+      <view class='flex7 bor color6ADB7A'></view>
+      <view class='flex8 bor'></view>
+    </view>
+    
+    <view class='flex'>
+      <view class='width64'>
+      <view class='flex' wx:for="{{details}}" wx:key="index" wx:for-item='garbage'>
+        <view class='flex1 bor relative'>
+          <view class='ksfj' bindtap='xiala' data-index='{{index}}'>{{garbage.garbage_cate_name}}<image src='../../images/la_g@2x.png'></image></view>
+            <view class="wux-popover wux-popover--theme-light wux-popover--placement-rightBottom"  hidden='{{!garbage.xiala}}'>
+                <view class="wux-popover__content">
+                    <view class="wux-popover__arrow"></view>
+                    <view class="wux-popover__inner">
+                        <view>
+                        <block wx:for="{{tab}}" wx:key="{{cell.id}}"  wx:for-item="cell" >
+                           <view class="wux-popover__title" bindtap='select' data-id='{{cell.id}}' data-price='{{cell.price}}' data-name='{{cell.name}}' data-ids='{{garbage.ids}}'>{{cell.name}}</view>
+                          </block>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='flex2 bor'>{{garbage.count}}</view>
+        <view class='flex3 bor'>{{garbage.weight}}</view>
+        <view  class='flex4 bor padding0'>
+          <input bindinput='input' data-index='{{index}}' name='detail[{{index}}][price]' value='{{garbage.price}}'></input>
+        </view>
+        <view class='flex5 bor bor_r'>{{garbage.amount}}</view>
+      </view>
+    </view>
+      <view class='flex width36 align_center auto_flex'>
+        <view class='flex6 bor color6ADB7A' >{{bag_stat.amount}}</view>
+        <view class='flex7 bor'></view>
+        <view class='flex8 flex_ard align_center ' wx:if="{{!pay}}"><view class='add' bindtap='pay_true'>提交</view></view>
+        
+        <view class='flex8 flex_ard align_center bor' wx:else >
+          <view class='add' bindtap='open2'>支付</view>
+        </view>
+      </view>
+    </view>
+  </form>
+</scroll-view>
+</view>
+<view class='zzc' bindtap='model' wx:if="{{showmodel}}">
+</view>
+
+<view class='zzc_con' wx:if="{{showmodel}}">
+<view class='iconfont icon-cuohao' bindtap='model' ></view>
+  <wux-qrcode  id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+</view>
+<!-- <wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
+  <view class='size28 colorFB5A3E bold title_num'>￥{{result.pay_amount}}</view>
+  <radio-group class="radio-group" bindchange="radioChange">
+      <label wx:for="{{payment_usable}}" class="radio flex_btw align_center" >
+        <view class='flex align_center'>
+          <image src='{{item.image}}'></image>
+          <text class='color6 size26'>{{item.text}}</text>
+        </view>
+        <radio value="{{item.key}}" checked="{{item.checked}}"/>
+      </label>
+  </radio-group>
+
+  <button bindtap="close2" class='pay'>确认支付</button>
+</wux-popup> -->

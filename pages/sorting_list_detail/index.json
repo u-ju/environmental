@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "wux-popup": "../../Components/popup/index",
+    "menu": "../../Components/menu/index",
+    "wux-qrcode": "../../Components/qrcode/index"
+  }
+}

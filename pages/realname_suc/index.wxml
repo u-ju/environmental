@@ -1,0 +1,25 @@
+<!--pages/realname_suc/index.wxml-->
+<view class='item'>
+  <view class='flex'>
+    <view class='left_item'>姓名</view>
+    <view class='right_item'>{{result.realname}}</view>
+  </view>
+  <view class='flex'>
+    <view class='left_item'>身份证号</view>
+    <view class='right_item'>{{result.idcard}}</view>
+  </view>
+  <view class='flex'>
+    <view class='left_item'>地址</view>
+    <view class='right_item'>{{result.address}}</view>
+  </view>
+  <view class='flex'>
+    <view class='left_item'>是否实名</view>
+    <view class='right_item'>{{result.status_name}}</view>
+  </view>
+  <view class='flex' wx:if='{{result.status_remark}}'>
+    <view class='left_item'>备注</view>
+    <view class='right_item color6'>{{result.status_remark}}</view>
+  </view>
+  
+</view>
+<view class='btn size30' wx:if='{{result.status==2}}'><navigator url='../phone/phone?type=1'>实名认证</navigator></view>

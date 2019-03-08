@@ -1,0 +1,42 @@
+/* pages/installment_repayment/index.wxss */
+page{
+  color: white;
+}
+.card{
+  width:626rpx;
+  height:364rpx;
+  background:linear-gradient(0deg,rgba(151,228,171,1) 0%,rgba(68,213,162,1) 100%);
+  border-radius:20rpx;
+  padding: 18rpx 20rpx 18rpx 40rpx;
+  margin: auto;
+  
+}
+.payment_i{
+  width: 350rpx;
+  height: 340rpx;
+}
+.size60{
+  font-size: 60rpx;
+}
+.flex_col{
+  justify-content: space-between;
+  padding: 60rpx 0 40rpx 0;
+}
+.xian{
+  width:240rpx;
+  height:1px;
+  background:rgba(255,255,255,1)
+}
+.btn{
+  width:686rpx;
+  height:86rpx;
+  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
+  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
+  border-radius:43rpx;
+  margin: 80rpx auto 30rpx auto;
+  line-height: 86rpx;
+}
+.next{
+  padding: 44rpx 44rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}

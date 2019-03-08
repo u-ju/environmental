@@ -1,0 +1,6 @@
+/* pages/ban/index.wxss */
+.center{
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 200rpx;
+}

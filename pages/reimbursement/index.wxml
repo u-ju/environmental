@@ -1,0 +1,32 @@
+<!--pages/reimbursement/index.wxml-->
+<view class='fkItem  shitem'>
+  <view class='fkItem_goods flex'>
+    <image src='../../images/catering_test.png' class='goospic'></image>
+    <view class='fkItem_goods_ms '>
+      <view class='color4 size28 flex_btw'><text class='one-hidden width'>小清新手工陶制餐具</text> <text class='color898989'><text class='iconfont icon-cuohao size22'></text>1</text></view>
+      <view class='color4 size28 one-hidden'>贝壳；7.25寸</view>
+      <view class='colorFE2C2C size28'>￥400</view>
+    </view>
+  </view>
+  <view class='flex_btw align_center reicon'>
+    <text>商品金额：</text>
+    <text>￥400</text>
+  </view>
+  <view class='flex_btw align_center reicon'>
+    <text>应还金额：</text>
+    <text>￥200</text>
+  </view>
+  <view class='flex_btw align_center reicon'>
+    <text>期数：</text>
+    <text>2期</text>
+  </view>
+  <view class='flex_btw align_center reicon'>
+    <text>还款日期：</text>
+    <text>2019-3-2</text>
+  </view>
+</view>
+<view class='bottom'>
+  <view class='size28 color4'>还款金额</view>
+  <view class='size48 color4'>￥：200</view>
+  <view class='btn'>确认还款</view>
+</view>

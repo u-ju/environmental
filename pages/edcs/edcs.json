@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "分拣中心",
+  "usingComponents": {
+    "wux-popup": "../../Components/popup/index",
+    "empty": "../../Components/empty/index"
+  }
+}

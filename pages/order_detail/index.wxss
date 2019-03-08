@@ -1,0 +1,69 @@
+/* pages/order_detail/index.wxss */
+@import '../order/index';
+@import '../installment_details/installment_details';
+.marginl54{
+  display: inline-block;
+  margin-left: 56rpx;
+}
+page{
+  color: #444;
+  font-size: 28rpx;
+}
+.margt42{
+  margin-top: 42rpx;
+}
+.orderTitle{
+  padding: 34rpx 40rpx;
+  border-bottom: 20rpx solid #eee;
+}
+.fkItem{
+  width: 686rpx;
+  padding: 36rpx 34rpx;
+  box-shadow: none;
+  border-bottom: 20rpx solid #eee;
+  margin-bottom: 0;
+}
+.fkItem_goods_ms{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.fkItem_goods{
+  margin: 0;
+  width: 686rpx;
+}
+
+.width{
+  width: 350rpx;
+  display: inline-block;
+}
+.shitem .fkItem_goods_ms{
+  width: 430rpx;
+}
+.kdxx{
+  width: 686rpx;
+  margin: auto;
+}
+.kdxx view{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.btnsure{
+  margin: 100rpx auto
+}
+.label{
+  border: none;
+}
+.radioitem{
+  padding: 14rpx 0;
+}
+.goodsBuy{
+  margin: 40rpx auto 60rpx auto;
+}
+.choose{
+  width: 38rpx;
+  height: 38rpx;
+}
+.shitem .colorFE2C2C {
+  margin:0 0;
+}

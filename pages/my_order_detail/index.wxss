@@ -1,0 +1,56 @@
+/* pages/my_order_detail/index.wxss */
+@import '../reimbursement/index';
+page{
+  font-size: 28rpx;
+  color: #444;
+}
+.pad32{
+  padding: 20rpx 32rpx;
+}
+.top{
+  background-color: #EEEEEE;
+
+}
+.information,.reiconb{
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.information text{
+  display: inline-block;
+  margin: 0 50rpx 10rpx 0;
+}
+.fkItem{
+  width: 100%;
+  padding: 36rpx 0 10rpx 0;
+}
+.reicon{
+  padding: 10rpx 32rpx;
+}
+.fkItem_goods{
+  padding: 0 32rpx;
+}
+.moneyinfor{
+  border-bottom: 20rpx solid #EEEEEE;
+  padding: 10rpx 0;
+}
+.ddxx{
+  padding: 10rpx 0;
+  border-bottom: 1px solid #EEEEEE;
+}
+.row-reverse{
+  flex-direction: row-reverse
+}
+.btndd{
+  width:202rpx;
+  height:86rpx;
+  border:4rpx solid rgba(210,210,210,1);
+  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
+  border-radius:15rpx;
+  text-align: center;
+  line-height: 86rpx;
+  margin: 20rpx 32rpx 0 0;
+}
+.marginr{
+  display: inline-block;
+  margin: 10rpx 50rpx 0 0;
+
+}

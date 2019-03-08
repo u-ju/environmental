@@ -1,0 +1,24 @@
+<!--pages/business/index.wxml-->
+<view class='banner'>
+  <image  src='{{banner}}'></image>
+  <text class='bannerzi size28' hidden='{{type=="housekeeping"}}'>为您提供最专业的 \n 商务服务</text>
+</view>
+<view class='flex wrap choose_item'>
+  <view class='item' wx:for="{{items}}" wx:key='index' data-index='{{index}}' data-choose='{{item.choose}}' bindtap='choose'>
+    <text class='item_zi {{item.choose?"choose":""}}'>{{item.title}}</text>
+  </view>
+</view>
+<view class='tuijian'>
+  <view class='size30 color4 padding34'>为您推荐</view>
+  <view class='tuijian_item flex align_center' wx:for="{{3}}">
+    <image src='../../images/swbanner@2x.png'></image>
+    <view class='miaoshu flex_col_1 justify_btw'>
+      <view class='hidden2 size28'>工程图打印归档扫描晒图彩 色打印复印</view>
+      <view class='flex align_center'>
+        <text class='renzh'>企业已认证</text>
+        <text class='colorC3'>欢迎来电咨询</text>
+      </view>
+    </view>
+    <image class='phone' src='../../images/phone@2x.png'></image>
+  </view>
+</view>

@@ -1,0 +1,33 @@
+<!--pages/phone/phone.wxml-->
+<!-- <block wx:if="{{result.status！=-1}}"> -->
+<form>
+<view class='all'>
+  <view class='size28 color9'>手机号</view>
+  <view>
+    <view class='yzm flex_btw align_center'>
+      <input type='number' maxlength='11' bindinput='phone' placeholder='请输入当前手机号' name='phone' placeholder-class='colorc size32' value='{{phone}}'></input>
+      <button disabled='{{disabled}}' class='yzm_btn {{disabled?"bgDDDDDD":""}}' data-id="2" bindtap="getVerificationCode">{{time}}</button>
+      
+    </view>
+  </view>
+</view>
+<view class='all'>
+  <view class='size28 color9'>验证号</view>
+  <input placeholder-class='colorc size32' maxlength='6' class='width100' placeholder='请输入验证号' value='{{code}}' bindinput='code'></input>    
+</view>
+  <button formType="submit" disabled='{{sure}}' bindtap='newphone' class='sure {{sure?"bgDDDDDD":""}}'>下一步</button>
+</form>
+<view wx:if="{{type==1}}" class='color299EF0 size28 center flex justify_center align_center'>
+  <view class='choose' bindtap='choose'>
+    <image src='../../images/choose.png' wx:if="{{choosed==0}}"></image>
+    <image src='../../images/choosed.png' wx:else></image>
+  </view>
+  
+  <navigator url='../page/index?url={{privacy_policy}}'>
+    用户协议
+  </navigator>
+</view>
+<!-- </block>
+<view wx:else>
+  {{result.status_name}}
+</view> -->

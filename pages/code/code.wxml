@@ -1,0 +1,25 @@
+<!--pages/code/code.wxml-->
+<view class="container">
+  <view class='flex_btw'>
+    <view class='size28 color0'>验证码发送至{{mobile}}</view>
+    <!-- <view class='color20'  bindtap="getCode">{{times}}</view> -->
+    <button class='color20 send_code'  bindtap="getCode" disabled='{{send_code}}'>{{times}}</button>
+  </view>
+</view>
+ <!-- bindvalueSix="valueSix"  --><!--  输入六位时判断-->
+ 
+<paySix 
+ 
+  bindvalueNow="valueNow" 
+  input_value="{{inputData.input_value}}" 
+  value_length="{{inputData.value_length}}" 
+  isNext="{{inputData.isNext}}" 
+  get_focus="{{inputData.get_focus}}" 
+  focus_class="{{inputData.focus_class}}" 
+  value_num="{{inputData.value_num}}"
+  height="{{inputData.height}}" 
+  width="{{inputData.width}}" 
+  see="{{inputData.see}}" 
+  interval="{{inputData.interval}}">
+  </paySix>
+  <button bindtap='submit' disabled='{{disabled}}'>确认</button>

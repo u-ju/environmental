@@ -1,0 +1,15 @@
+/* pages/convenience_service/index.wxss */
+image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 22rpx;
+}
+.item{
+  margin: 40rpx 0 50rpx 0;
+  width: 25%;
+  text-align: center;
+}
+.size28 {
+  font-size:28rpx;
+  height: 76rpx;
+}

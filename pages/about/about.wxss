@@ -1,0 +1,186 @@
+/* pages/about/about.wxss */
+@import '../home_orders/home_orders';
+.swiper_con{
+  width: 686rpx;
+  margin: 34rpx auto;
+  color: #666;
+}
+.mar{
+  margin: 54rpx 0 64rpx 0;
+}
+.g_con {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+
+
+.expressRecord {
+  width: 710rpx;
+  padding-top: 30rpx;
+  padding-bottom: 200rpx;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 10rpx;
+}
+.noReach-online-top-close {
+  width: 1rpx;
+  height: 50rpx;
+  background: #d7d7d7;
+  margin-left: 95rpx;
+}
+
+.expressRecord-single-close {
+  width: 100%;
+  height: 122rpx;
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+  position: relative;
+}
+
+.expressRecord-single-noReach-online-top-close {
+  display: flex;
+  flex-direction: column;
+}
+
+.online-top-closing {
+  width: 1rpx;
+  height: 50rpx;
+  background: #d7d7d7;
+  margin-left: 95rpx;
+}
+
+.online-top-close {
+  width: 1rpx;
+  height: 50rpx;
+  background: #2EB354;
+  margin-left: 170rpx;
+}
+.dot-close {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  margin:-4rpx 0 0 -4rpx; 
+  background: #2EB354;
+}
+
+.online-bottom {
+  width: 1rpx;
+  height: 50rpx;
+  background: #2EB354;
+  margin-left: 170rpx;
+}
+
+.online-bottom-start {
+  width: 1rpx;
+  height: 50rpx;
+  /* background: #999; */
+  margin-left: 170rpx;
+  background: #2EB354;
+}
+
+.expressRecord-text {
+  margin: 44rpx  0 0 30rpx;
+}
+
+.expressRecord-statusing {
+  font-size: 26rpx;
+  color: #333;
+}
+
+.expressRecord-status-addressing {
+  font-size: 22rpx;
+  color: #333;
+}
+
+
+
+
+.expressRecord-status-address {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.expressRecord-dating {
+  position: absolute;
+  height: 100%;
+  /* top: 0;
+  bottom: 0; */
+  left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #333;
+}
+
+.expressRecord-date {
+  position: absolute;
+  height: 100%;
+  /* top: 0;
+  bottom: 0; */
+  left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #999;
+}
+
+.expressRecord-date-text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.expressRecord-date-time {
+  font-size: 18rpx;
+}
+.dot-close_cricle{
+  border: 1px solid #2EB354;
+  border-radius: 50%;
+  width: 20rpx;
+  height: 20rpx;
+  margin-left:160rpx;
+  background-color: transparent;
+  position: relative;
+}
+.lx_item{
+  width:330rpx;
+  height:347rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 3rpx 7rpx 0rpx rgba(227, 227, 228, 0.35);
+  border-radius:10rpx;
+  text-align: center;
+}
+.lx_item image{
+  width: 78rpx;
+  height: 82rpx;
+  margin: 60rpx 0 40rpx 0; 
+}
+.lx_item .margin{
+  margin: 8rpx 0 16rpx 0; 
+}
+.location image{
+  width:30rpx;
+  height:38rpx;
+  margin-right: 5rpx;
+}
+.location{
+  margin: 88rpx 0 10rpx 0;
+}
+map{
+  width:686rpx;
+height:220rpx;
+}
+.erwm image{
+  width:126rpx;
+  height:126rpx;
+  margin-bottom: 10rpx;
+}
+.erwm{
+  margin-top:150rpx;
+}

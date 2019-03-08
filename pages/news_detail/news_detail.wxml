@@ -1,0 +1,13 @@
+<!--pages/news_detail/news_detail.wxml-->
+<view class='bg'>
+  <view class="container">
+    <view wx:if="{{content_source=='text'}}">{{content}}</view>
+    <web-view  wx:if="{{content_source=='url'}}" src="{{content}}"></web-view>
+    <block wx:else>
+    <import src="../../wxParse/wxParse.wxml"/> 
+    <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,13 @@
+<!--pages/address_order/index.wxml-->
+<view class='adItem flex_btw align_center' wx:for="{{list}}" wx:key="index" >
+  <view class='flex align_center'>
+    <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}"></image>
+    <image src='../../images/choose.png' bindtap='choose' data-id="{{index}}" class='choose' wx:else></image>
+    <view>
+      <view class='marginb24'>张三       <text class='marginl50'>1528788945665</text></view>
+      <view>北京市朝阳区望京街8号</view>
+    </view>
+  </view>
+  <image src='../../images/edit.png' class='edit'></image>
+</view>
+

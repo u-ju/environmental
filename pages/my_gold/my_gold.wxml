@@ -1,0 +1,56 @@
+<!--pages/my_gold/my_gold.wxml-->
+
+<block wx:if="{{gold}}">
+  <view class='size36 color918F8F center'>可提现余额</view>
+  <view class='money justify_center flex align_center'>
+    <image src='../../images/gold@2x.png'></image>
+    <text class='size50 colorC70000'>{{balance}}</text>
+  </view>
+  <view class='size36 colorC70000 withdrawal'><navigator url='../withdrawal/withdrawal?balance={{balance}}&is_password={{is_password}}'>提现</navigator></view>
+  
+  <view class='flex align_center justify_center brx'>
+    <!-- <view class='color4588EC size28' >提现规则</view> -->
+    <!-- bindtap='showRule' -->
+    <navigator url='../page/index?name=1'>
+      <view class='color4588EC size28 br'>提现规则</view>
+    </navigator>
+    <navigator url='../withdrawal_record/withdrawal_record'>
+      <view class='color4588EC size28'>提现记录</view>
+    </navigator>
+  </view>
+</block>
+<block wx:else>
+  <view class='size36 color918F8F center'>当前积分</view>
+  <view class='money justify_center flex align_center'>
+    <image src='../../images/minuet@2x.png'></image>
+    <text class='size50 colorFFBF1A'>{{integral}}</text>
+  </view>
+  <view  class='xian'></view>
+</block>
+
+<view class='detailed'>
+<view class='color4 size36 bold500'>明细</view>
+  <block  wx:if="{{list.length>0}}">
+    <view class='item flex_btw align_center' wx:for="{{list}}" wx:key="index">
+      <view class='zuo'>
+        <view class='color6 size28 bold'><text decode="{{true}}" space="{{true}}">{{item.intro}}</text></view>
+        <view class='color9'>{{item.created_at}}</view>
+      </view>
+      <view class='size36 color727272 bold'>{{item.value}}</view>
+    </view>
+  </block>
+  <view wx:else>
+    <empty  />
+  </view>
+  
+</view>
+<!--  规则提示  -->
+    <view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}">
+        <view class='ruleZhezhaoContent'>
+            <!-- <view class='ruleZhezhaoText'> -->
+               <text class='color9 size26'>提现收费规则： 自2018年3月1日起，每人累计享有1000元（指提现金额）免费提现额度。超出额度后按提现金额的0.1%收取手</text>
+            <!-- </view> -->
+            <text class='iconfont icon-ziyuanldpi ruleHide color6' bindtap='hideRule'></text>
+        </view>
+    </view>
+    <!--  end  -->

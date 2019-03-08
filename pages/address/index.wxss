@@ -1,0 +1,27 @@
+/* pages/address/index.wxss */
+page{
+  font-size: 28rpx;
+  color: #444;
+}
+.marginl50{
+  margin-left: 50rpx;
+}
+.address_top{
+  border-bottom: 1px solid #eee;
+  padding: 43rpx 0  32rpx 0;
+}
+.address{
+  padding: 0 32rpx;
+  border-bottom: 20rpx solid #eee;
+}
+.add_pname{
+  margin-bottom: 40rpx;
+}
+.czuo image{
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 16rpx;
+}
+.czuo{
+  padding: 32rpx 0 28rpx 0;
+}

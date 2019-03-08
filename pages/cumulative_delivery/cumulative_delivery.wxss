@@ -1,0 +1,19 @@
+/* pages/cumulative_delivery/cumulative_delivery.wxss */
+.all{
+  width: 42rpx;
+  height: 38rpx;
+  margin: 0 24rpx 0 32rpx;
+}
+.title{
+  display: flex;
+  align-items: center;
+  padding: 28rpx 0;
+  border-top: 1px solid #E8E8E8;
+}
+.item{
+  padding: 30rpx;
+  border-bottom: 1px solid #E8E8E8;
+}
+.item .size28{
+  margin-bottom: 10rpx;
+}

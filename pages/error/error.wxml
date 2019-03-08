@@ -1,0 +1,9 @@
+<wux-result
+    icon="{{ icon }}"
+    title="支付失败"
+    
+    buttons="{{ buttons }}"
+    
+    fixed
+    bind:click="onClick"
+/>

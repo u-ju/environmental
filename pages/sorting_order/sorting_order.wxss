@@ -1,0 +1,2 @@
+/* pages/sorting_order/sorting_order.wxss */
+@import '../sorting_all/sorting_all';

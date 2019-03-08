@@ -1,0 +1,23 @@
+<!--pages/installment_repayment/index.wxml-->
+<view class='card size28 flex_btw'>
+  <view class='flex_col'>
+    <view>待还总金额（元）</view>
+    <view class='size60'>452.15</view>
+    <view class='xian'></view>
+    <view>到期时间：2019.5.15</view>
+  </view>
+  <image src='../../images/payment_i.png' class='payment_i'></image>
+</view>
+<view class='btn size32 center'>立即还款</view>
+<view class='flex_btw align_center next'>
+  <text class='color4'>账单查询</text>
+  <text class='iconfont icon-jiantou color9'></text>
+</view>
+<view class='flex_btw align_center next'>
+  <text class='color4'>历史账单</text>
+  <text class='iconfont icon-jiantou color9'></text>
+</view>
+<view class='flex_btw align_center next'>
+  <text class='color4'>分期记录</text>
+  <text class='iconfont icon-jiantou color9'></text>
+</view>

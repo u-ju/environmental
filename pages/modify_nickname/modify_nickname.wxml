@@ -1,0 +1,9 @@
+<!--pages/modify_nickname/modify_nickname.wxml-->
+<form  bindsubmit="formSubmit">
+
+<view class='all'>
+  <view class='size28 color9'>昵称</view>
+  <input placeholder-class='colorc size32' class='width100' placeholder='请输入昵称' name="name" value='{{name}}' bindinput='name'></input>    
+</view>
+  <button formType="submit" disabled='{{sure}}' class='sure {{sure?"bgDDDDDD":""}}'>完成</button>
+</form>

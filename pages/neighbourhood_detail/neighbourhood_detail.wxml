@@ -1,0 +1,125 @@
+
+<!--pages/dynamic/dynamic.wxml-->
+<block wx:if="{{result.content_source=='url'}}">
+  <web-view src="{{result.content}}"> </web-view>
+  <!-- <canvas  canvas-id='shareCanvas' class='myCanvas'></canvas> -->
+</block>
+<block wx:else>
+<!-- <menu hidden id='menu' bind:addEvent="_addEvent" /> -->
+<view class='itemll'  data-id='{{result.vicinage_id}}'>
+  <view  class='flex'>
+    <image src='{{result.avatar}}' class='headll' mode='aspectFill'></image>
+    <view class='rightll flex_btw align_center'>
+      <view class='titlell'>
+        <text class='color4 size28 one-hidden'>{{result.nickname}}</text>
+        <view class='color898989 size22'>{{result.created_at}}</view>
+      </view>
+      <!-- <image src='../../images/delete_.png' class='delete' bindtap='delete' ></image> -->
+      
+    </view>
+  </view>
+  <view class='color4 size28 titlell'>{{result.title}}</view>
+  <view class='color898989 size28 intro11'>{{result.content}}</view>
+    <view class='flex_btw wrap imagell'>
+      <block wx:for="{{result.images}}" wx:key ="index">
+        <image src='{{item}}' mode='aspectFill' class='pic1 {{result.images.length%2==0?"pic2":"" }} {{result.images.length%3==0?"pic3":"" }}'></image>
+      </block>
+    </view>
+    <view class='flex_btw align_center czbtn' wx:if="{{result.status==1}}">
+      <view class='flex_btw align_center'  data-index='{{index}}' bindtap='like' data-vicinage_id='{{result.vicinage_id}}' data-praise='{{result.praise}}'>
+        <image wx:if='{{result.praise==0}}'  src='../../images/lo@2x.png' mode='aspectFit'></image>
+        <image wx:if='{{result.praise==1}}'  src='../../images/love@2x.png' mode='aspectFit' ></image>
+        <text class='color898989'>{{result.like}}</text>
+      </view>
+      <view class='flex_btw align_center' bindtap="bindReply" data-releaseName='评论'>
+        <image src='../../images/mess@2x.png' mode='aspectFit'></image>
+        <text class='color898989'>{{result.reply}}</text>
+      </view>
+      <view  bindtap='share_zzc'>
+        <!-- <button open-type="share" data-name="pageShare" id="share" class='share'> -->
+          <image src='../../images/video_fx.png'></image>
+        <!-- </button> -->
+      </view>
+    </view>
+</view>
+<view class='container' hidden='{{list.length==0}}'>
+  <view class='size28 pl' >全部评论 ({{result.reply}})</view>
+  
+  <block wx:for='{{list}}' wx:key="index">
+  <view class='itempl'>
+    <view class='flex message align_center'>
+      <image src='{{item.avatar}}' class='head'></image>
+      <view class='width594'>
+        <view class='flex_btw align_center'>
+          <view>
+            <view class='size26 color6'>{{item.nickname}}</view>
+            <view class='size16 color9'>{{item.created_at}}</view>
+          </view>
+          <view class='flex_btw align_center'>
+            <image src='../../images/mess@2x.png' bindtap="bindReply" data-reply_id='{{item.reply_id}}' data-releaseName='回复{{item.nickname}}' class='msg'></image>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+    <view class='color6 pl_con'>
+      {{item.content}}
+    </view>
+    <view class='hf' wx:if='{{item.child_count>0}}'>
+      <view wx:if="{{item.huifu}}" >
+        <block wx:for='{{item.count}}' wx:key="index" wx:for-item='hfitem'>
+          <view class='size22 huifu_item'> <text class='color6ADB7A'>{{hfitem.nickname}}:</text><text class='color9'>{{hfitem.content}}</text></view>
+        </block>
+      </view>
+      <view class='size22 color6'   bindtap='lookallhuifu' data-reply_id='{{item.reply_id}}' hidden='{{item.page.last_page&&item.page.last_page==item.page.current_page}}' data-index='{{index}}'>查看全部回复 ></view>
+    </view>
+  </view>
+  </block> 
+</view>
+<view class='size28 color4 all' bindtap='lookall' hidden='{{page.last_page==page.current_page}}'>查看全部评论</view>
+ <view class='zzc' hidden="{{!releaseFocus}}" bindtap='hide'></view>
+  <view class="release" hidden="{{!releaseFocus}}">
+  <form bindsubmit="formSubmit">
+  <view  class='flex_btw width100'>
+  <textarea class="text"
+    placeholder-class="input_null"
+    name='pinglun'
+    fixed="true"
+    maxlength="-1"
+    show-confirm-bar="false"
+    cursor-spacing="15"
+    auto-height="true"
+    focus="{{releaseFocus}}"
+    value='{{textarea}}'
+    placeholder="{{releaseName}}"></textarea>
+  <button formType="submit"  class="submit">发送</button>
+  </view>
+  </form>
+</view>
+
+<view class='zzc zzc1'  bindtap='share_zzc' hidden="{{!share_zzc}}" ></view>
+<view class='zzc1_con' hidden="{{!share_zzc}}" >
+  <view class='flex_ard align_center'>
+    <button open-type="share" data-name="pageShare" id="share" class='share'>
+      <image src='../../images/video_icon_sha_wechat@2x.png'></image>
+      <view>微信好友</view>
+    </button>
+    <view class='center'  bindtap='share_zzc2'>
+      <image src='../../images/video_icon_sha_cir@2x.png'></image>
+      <view>朋友圈</view>
+    </view>
+  </view>
+  <view class='size32 color4' bindtap='share_zzc'>取消</view>
+</view>
+<view class='zzc zzc2'  bindtap='share_zzc2' hidden="{{!share_zzc2}}" ></view>
+<view class='zzc2_con' hidden="{{!share_zzc2}}">
+  <text class='iconfont icon-cuohao'bindtap='share_zzc2'></text>
+  <view class='flex_ard align_center'>
+    <image src='../../images/erwm.jpg'></image>
+  </view>
+  <view class='size28 savepic ' bindtap='savepic'>点击保存二维码分享到朋友圈</view>
+</view>
+</block>
+<view class='bottom'>
+  <input class='' placeholder='评论这个帖子......' disabled='disabled'  bindtap="bindReply" data-releaseName='评论'> </input>
+</view>

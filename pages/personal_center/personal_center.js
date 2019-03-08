@@ -1,0 +1,231 @@
+// pages/personal_center/personal_center.js
+const app = getApp()
+var util = require('../../utils/util.js');
+var apiurl = require('../../utils/api.js');
+var template = require('../../Components/tab-bar/tab-bar.js');
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    // item1:[
+    //   { title: "手机", value: "", url: "../phone/phone", or:"../phone_new/phone_new"},
+    //   { title: "我的积分", value: "", url: "../my_gold/my_gold?gold=1"},
+    //   { title: "我的环保金", value: "", url:"../my_gold/my_gold" },
+    //   { title: "上门回收订单", value: "", url:"../home_orders/home_orders" },
+    //   { title: "我的二维码", value: "", url: "../qrcode/qrcode" },
+    //   { title: "垃圾二维码", value: "", url: "../qrcode/qrcode" },
+    //   { title: "分拣中心", value: "", url: "../edcs/edcs", qrcode: '', is_sorter: ''  },
+    //   { title: "帮助中心", value: "", url: "../help_center/help_center", qrcode: '' },
+    // ],
+    // item2:[
+      // { title: "关于我们", value: "", url: "../about/about" },
+      // { title: "商家入驻", value: "", url: "../tenantsIndex/index"},
+      // { title: "实名认证", value: "", url: "../phone/phone?type=1", is_rm:0},
+      // { title: "消息中心", value: "", url: "../message/message"},
+      // { title: "产品分期", value: "", url: "../installment/installment"},
+      // { title: "申请环保袋", value: "", url: "../application_bag/application_bag" },
+      // { title: "设置", value: "", url: "../setting/setting" },
+      // { title: "环保金兑换环保袋", value: "", url: "../ecofer/ecofer" },
+    // ],
+    item1:[
+      { title: "手机", value: "", url: "../phone/phone", or:"../phone_new/phone_new"},
+      { title: "我的积分", value: "", url: "../my_gold/my_gold?gold=1"},
+      { title: "我的环保金", value: "", url:"../my_gold/my_gold" },
+      { title: "实名认证", value: "", url: "../phone/phone?type=1", is_rm: 0 },
+      { title: "我的发布", value: "", url: "../my_release/index" },
+      { title: "我的货款", value: "", url: "../my_paymentGoods/index" },
+      
+    ],
+    item2:[
+      // { title: "推广中心", value: "", url: "../promote/index" },
+      { title: "业务专员申请", value: "", url: "../agent/index" },
+      { title: "我的银行卡", value: "", url: "../my_bankcard/index" },
+      { title: "收货地址", value: "", url: "../address/index" },
+      // { title: "上门回收订单", value: "", url: "../home_orders/home_orders" },
+      { title: "帮助中心", value: "", url: "../help_center/help_center"},
+      { title: "设置", value: "", url: "../setting/setting" },
+    ],
+    user:[],
+    result:{},
+    tabbarid:2
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    
+    // console.log(util.getToken())
+    this.init()
+  },
+  init(){
+    var that = this, item1 = that.data.item1, item2 = that.data.item2;
+    util.getJSON({ apiUrl: apiurl.user }, function (res) {
+      var result = res.data.result
+      app.globalData.userInfo = result
+      item1[0].value = result.mobile
+      item1[1].value = result.integral
+      item1[2].value = result.balance
+      // item1[4].qrcode = result.qrcode.user
+      // item1[5].qrcode = result.qrcode.bag
+      // item1[6].is_sorter = result.is_sorter
+      // item1[4].url = "../qrcode/qrcode?qrcode=" + result.qrcode.user
+      // item1[5].url = "../qrcode/qrcode?qrcode=" + result.qrcode.bag
+      wx.setStorageSync('pay_deposit', '')
+      that.setData({
+        result: result,
+        item1: item1
+      })
+      util.hideLoading()
+    })
+    util.getJSON({ apiUrl: apiurl.realname }, function (res) {
+      if (res.data.result.status!=-1){
+        item1[3].url = '../realname_suc/index?result=' + JSON.stringify(res.data.result)
+        item1[3].value = res.data.result.status_name
+      }
+      that.setData({
+        item1: item1
+      })
+    })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    template.tabbar("tabBar", 2, this) //0表示第一个tabbar
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+  show() {//不跳页面
+    util.scan()
+  },
+  /**
+     * 小程序用户头像上传
+     */
+  uploadHeadPhoto: function () {
+    // console.log('upload photo .... ');
+    var that = this;
+    wx.chooseImage({
+      sizeType: ['compressed'],
+      ourceType: ['album', 'camera'],
+      count: 1,
+      success(res) {
+        const tempFilePaths = res.tempFilePaths;
+        // 只能选择一张图片进行上传
+        if (tempFilePaths.length != 1) {
+          wxUtil.info_dialog("不允许多图上传");
+          return;
+        }
+        var tempFilesSize = res.tempFiles[0].size;
+        // console.log(tempFilesSize)
+        if (tempFilesSize <= 2000000) {//图片小于或者等于2M时 可以执行获取图片
+          if (that.allowUploadFormat(tempFilePaths)) {
+            // console.log(' ----- 验证后 ----- ')
+            // console.log(tempFilePaths[0])
+            const src = res.tempFilePaths[0]
+            wx.navigateTo({
+              url: `../tailor/tailor?src=${src}`
+            })
+
+          } else {
+            wxUtil.info_dialog("上传头像格式不合法!")
+          }
+        } else {
+          wxUtil.info_dialog("上传图片不能大于2M!")
+        }
+      }
+    })
+  },
+  /**
+     * 上传头像格式验证
+     * @param tempFiles 头像图片
+     * @returns {boolean} true 检测通过 false 检测失败
+     */
+    allowUploadFormat: function (tempFiles = []) {
+      // 允许上传的图片格式
+      var allow_head_photo = ['.jpg', '.jpeg', '.png'];
+
+      for (let idx in tempFiles) {
+        if (tempFiles[idx].match(/.jpg|.png|.jpeg/)) {
+          var upload_pic_ext = tempFiles[idx].match(/.jpg|.png|.jpeg/)[0].trim();
+          var allow_format = allow_head_photo.join("");
+          if (allow_format.indexOf(upload_pic_ext) >= 0) {
+            return true;
+          }
+        }
+        return false;
+      }
+    },
+  name(e){
+    // console.log(e.currentTarget.dataset.name)
+    wx.navigateTo({
+      url: '../modify_nickname/modify_nickname?name=' + e.currentTarget.dataset.name,
+    })
+  },
+  link(e){
+    // console.log(e)
+    util.loading()
+    var url = e.currentTarget.dataset.url
+    if (e.currentTarget.dataset.value == "" && e.currentTarget.dataset.or) {
+      url = e.currentTarget.dataset.or
+    }
+    if (e.currentTarget.dataset.is_sorter==0){
+      return util.alert("你还不是分拣员")
+    }
+    
+    
+    // console.log(url)
+    wx.navigateTo({
+      url: url,
+    })
+  },
+  tabarUrl(e) {
+    // console.log(e);
+    if (this.data.tabbarid != e.currentTarget.dataset.id) {
+      wx.redirectTo({
+        url: e.currentTarget.dataset.url,
+      })
+    }
+  },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

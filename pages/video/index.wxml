@@ -1,0 +1,66 @@
+<!--pages/video/index.wxml-->
+<view class="container" wx:if="{{tab.length>0}}">
+  <view class='top'>
+    <view class='sousuo flex_btw align_center'>
+      <input></input>
+      <image src='../../images/video_cz.png' class='video_cz' mode='aspectFill'></image>
+    </view>
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+        <block wx:for="{{tab}}"  wx:key="index">
+          <view class="tab-item {{currentTab==index?'active':''}}" data-cate_id='{{item.id}}' data-current="{{index}}" bindtap="swichNav">{{item.name}}</view>
+        </block>
+    </scroll-view>
+  </view>
+  <view class='top1'></view>
+  <scroll-view class='nav-page'>
+    <view class="item-box " wx:for="{{list}}" wx:key="item">
+      <!-- 标题层 -->
+      
+
+      <!-- 视频图片层 -->
+      <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+        <view class="video-cover-box">
+          <image class="video-image" src="{{item.thumb}}" mode="aspectFit">
+          </image>
+        </view>
+        <view class="video-title-box">
+          <view class='video-title'>{{item.title}}</view>
+        </view>
+        <!-- 视频按钮 -->
+        <image class="video-image-play" src="../../images/video_bf.png"  mode='aspectFit'></image>
+        <!-- 头像 -->
+        <view class="head">
+          <image src="../../images/logo.png"   mode='aspectFit'></image>
+        </view>
+        <view class='flex align_center look_item'>
+          <image class="video-look " src="../../images/video_k.png"  mode='aspectFit'></image>
+          <text>{{item.view}}</text>
+        </view>
+      </view>
+
+      <!-- 视频播放层 -->
+      <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video>
+      <view class='video_btm flex_btw align_center'>
+        <text class='size20 color6'>奥特利环保</text>
+        <view  class='flex align_center'>
+          <view class='flex align_center dj_item' bindtap='like' data-id='{{item.video_id}}' data-praise='{{item.praise}}' data-index='{{index}}'>
+            <image class="image" wx:if="{{item.praise==0}}" src="../../images/video_z1.png"  mode='aspectFit'></image>
+            <image class="image" wx:if="{{item.praise==1}}" src="../../images/video_z2.png"  mode='aspectFit'></image>
+            <text>{{item.like}}</text>
+          </view>
+          <view class='flex align_center dj_item' bindtap='details' data-id='{{item.video_id}}'>
+            <image class="image" src="../../images/mess@2x.png"  mode='aspectFit'></image>
+            <text>{{item.reply}}</text>
+          </view>
+          <button open-type='share' class='flex align_center dj_item' data-id='{{item.video_id}}'>
+            <image class="image" src="../../images/video_fx.png"  mode='aspectFit'></image>
+          </button>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{list.length==0}}" class='empty'>
+      <empty  />
+    </view>
+  </scroll-view>
+</view>
+<empty  wx:else />

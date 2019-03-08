@@ -1,0 +1,16 @@
+/* pages/my_paymentGoods/index.wxss */
+page{
+  font-size: 26rpx;
+}
+.item{
+  padding: 30rpx 0;
+  width: 686rpx;
+  border-bottom: 1px solid #E8E8E8;
+  margin: auto;
+}
+.color727272{
+  color:#727272
+}
+.marginb{
+  margin-bottom: 10rpx;
+}

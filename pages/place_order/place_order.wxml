@@ -1,0 +1,145 @@
+<!--pages/place_order/place_order.wxml-->
+<!-- <import src="../../Components/model/model.wxml"/> -->
+<!-- <template is="areaData" data="{{...item}}"/> -->
+<form bindsubmit="formSubmit" >
+<view class='bg over_hid margin_btn26'>
+  <view class="container">
+    <view class='color153'>
+    <text>
+    大件类型：\n家具：柜子、床、桌子等\n电器：电视、洗衣机、冰箱、热水器等\n建筑垃圾：水泥、钢筋、玻璃等\n在线预约上门服务评估价格回收后环保金到账
+    </text>
+    </view>
+    
+    <view class="picture_list">
+      <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+        <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+        <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+        <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
+        <text class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
+      </view>
+
+      <view class='picture_item'>
+        <view class="add-image click_camera flex_col align_center" bindtap='uploadpic'>
+          <image mode='aspectFill' class='camera' src='../../images/camera@2x.png'></image>
+          <view class='color153'>点击拍照</view> 
+        </view>
+      </view>
+    </view>
+    <textarea placeholder='点击添加更多物品描述...' placeholder-class='color153' name='intro'></textarea>
+  </view>
+</view>
+<view class='bg over_hid'>
+  <view class="container paddind40">
+    <view class='flex align_center message'>
+      <view class='size28 color4 width160'>联系人</view>
+      <input class='size28 color9' placeholder-class='color163' name='contacts' placeholder='姓名'></input>
+    </view>
+    <view class='flex align_center message'>
+      <view class='size28 color4 width160'>电话</view>
+      <input class='size28 color9' type='number' maxlength='11' name='contact' placeholder-class='color163' placeholder='手机号'></input>
+    </view>
+    <view class='flex align_center message'>
+      <view class='size28 color4 width160'>地址</view>
+      
+      <input class="size28 color9"  disabled='disabled' name='area_id' placeholder-class='color163' value='{{areaSelectedStr}}' placeholder='详细地址' bindtap="cascadePopup" ></input>
+      
+      <image class='right' mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
+    </view>
+    <view class='flex align_center message'>
+      <view class='size28 color4 width160'>门牌号</view>
+      <input class='size28 color9' placeholder-class='color163' name='address' placeholder='例:8栋2单元305'></input>
+    </view>
+    <view class='flex align_center message'>
+      <view class='size28 color4 width160'>预约时间</view>
+      <!-- <input class='size28 color4' placeholder-class='color163' placeholder='点击选择'></input> -->
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <input class='size28 color9' placeholder-class='color163' name='appoint_time' disabled='disabled' value='{{time}}' placeholder='点击选择'/>
+      </picker>
+      <image class='right' mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
+    </view>
+    
+  </view>
+  <button formType="submit" disabled='{{disabled}}'>提交订单</button>
+  <!-- disabled='{{disabled}}'  class='{{disabled?"bgDDDDDD":""}}' -->
+</view>
+</form>
+
+
+<!-- 
+<view class="picture_list">
+
+    <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+      <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+      <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+      <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
+      <text class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
+    </view>
+
+    <view class='picture_item'>
+      <view class="add-image" bindtap='uploadpic'>
+        <text>+</text>
+      </view>
+    </view>
+  </view>
+  <button bindtap='uploadimage' class='yes-upload'>确定上传</button> -->
+  <view class="modal">
+	<view class="modal-mask {{maskVisual}}" bindtap="cascadeDismiss"></view>
+	<view animation="{{animationData}}" class="modal-content">
+	    <view class="modal-header">
+	        <text class="modal-title">所在地区</text>
+          
+	        <image src="../../images/cuo.png" class="modal-close" bindtap="cascadeDismiss" />
+	    </view>
+	    <view class="modal-body">
+
+	    	<text class="viewpager-title {{current == 0 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="0">{{provinceName}}</text>
+	    	<text class="viewpager-title {{current == 1 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="1">{{cityName}}</text>
+	    	<text class="viewpager-title {{current == 2 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="2">{{regionName}}</text>
+	    	<text class="viewpager-title {{current == 3 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="3">{{townName}}</text>
+
+			<view class="viewpager-divider"></view>
+			<swiper class="swiper-area" current="{{current}}" bindchange="currentChanged">
+				<block wx:if="{{province.length > 0}}">
+					<swiper-item>
+						<scroll-view scroll-y="true" class="viewpager-listview">
+							<view wx:for="{{province}}" wx:key="index" data-index="{{index}}" bindtap="provinceTapped">
+								<text wx:if="{{index == provinceIndex}}" class="area-selected">{{item}}</text>
+								<text wx:else>{{item}}</text>
+							</view>
+						</scroll-view>
+					</swiper-item>
+				</block>
+				<block wx:if="{{city.length > 0}}">
+					<swiper-item>
+						<scroll-view scroll-y="true" class="viewpager-listview">
+							<view wx:for="{{city}}" wx:key="index" data-index="{{index}}" bindtap="cityTapped">
+								<text wx:if="{{index == cityIndex}}" class="area-selected">{{item}}</text>
+								<text wx:else>{{item}}</text>
+							</view>
+						</scroll-view>
+					</swiper-item>
+				</block>
+				<block wx:if="{{region.length > 0}}">
+					<swiper-item>
+						<scroll-view scroll-y="true" class="viewpager-listview">
+							<view wx:for="{{region}}" wx:key="index" data-index="{{index}}" bindtap="regionTapped">
+								<text wx:if="{{index == regionIndex}}" class="area-selected">{{item}}</text>
+								<text wx:else>{{item}}</text>
+							</view>
+						</scroll-view>
+					</swiper-item>
+				</block>
+				<block wx:if="{{town.length > 0}}">
+					<swiper-item>
+						<scroll-view scroll-y="true" class="viewpager-listview">
+							<view wx:for="{{town}}" wx:key="index" data-index="{{index}}" bindtap="townTapped">
+								<text wx:if="{{index == townIndex}}" class="area-selected">{{item}}</text>
+								<text wx:else>{{item}}</text>
+							</view>
+						</scroll-view>
+					</swiper-item>
+				</block>
+			</swiper>
+	    </view>
+	</view>
+</view>

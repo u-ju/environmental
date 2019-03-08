@@ -1,0 +1,247 @@
+/* pages/installment_details/installment_details.wxss */
+@import '../video_detail/index';
+/* @import '../business_details/business_details';
+.size32{
+  width: 480rpx;
+}
+.flex_btw .color44D5A2{
+  width: 200rpx;
+  text-align: right
+}
+.big{
+  padding: 30rpx 0 16rpx 0;
+  color: #666;
+}
+.marginb10{
+  margin-bottom: 20rpx;
+}
+.big .size28{
+  margin-bottom: 16rpx;
+}
+radio {
+  transform:scale(0.5);
+  border-color: #44D5A2;
+}
+.submit{
+  width:149rpx;
+  height:44rpx;
+  background:rgba(68,213,162,1);
+  border-radius:10rpx;
+  text-align: center;
+  color: white;
+  margin: auto;
+  line-height: 44rpx;
+}
+.zzc{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,.5);
+  top: 0;
+  z-index: 11;
+}
+.zzc_con{
+  width:626rpx;
+  background:rgba(255,255,255,1);
+  border-radius:10rpx;
+  padding: 60rpx 30rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 22;
+}
+
+.zzc_con .color9{
+  text-indent: 16rpx;
+}
+.zzc_con view{
+  margin-bottom: 8rpx;
+}
+.zzc_con .size30{
+  margin-bottom: 40rpx;
+}
+.zzc_con image{
+  width:236rpx;
+height:158rpx;
+margin: 10rpx auto;
+} */
+swiper,swiper image{
+  width: 100%;
+  height: 518rpx;
+}
+
+.line-through{
+  margin-left: 40rpx;
+}
+.goods_intr1,.goods_intr2{
+  padding: 20rpx 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.goods_intr3{
+  padding: 32rpx 32rpx 150rpx 32rpx;
+}
+.colorFE2C2C{
+  margin: 20rpx 0;
+}
+.yihid{
+  width: 400rpx;
+
+}
+.marginb30{
+  margin-bottom: 30rpx;
+}
+.message{
+  margin-top: 35rpx;
+}
+.head{
+  width:58rpx;
+  height:58rpx;
+}
+.goodsBuy{
+  width:686rpx;
+  height:86rpx;
+  line-height: 86rpx;
+  text-align: center;
+  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
+  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
+  border-radius:43rpx;
+  color: white;
+  font-size: 28rpx;
+  margin: auto
+}
+.fixed{
+  position: fixed;
+  bottom: 6rpx;
+  left: 50%;
+  margin-left: -343rpx;
+}
+.csItemL{
+  display: inline-block;
+  width: 200rpx;
+}
+.csItem{
+  width: 686rpx;
+  margin: auto;
+  padding: 36rpx 0;
+  text-align: left;
+  border-bottom: 1px solid #EEEEEE;
+}
+.csmt{
+  padding: 30rpx 0 50rpx 0;
+}
+.csgg{
+  padding: 30rpx 0 0 0;
+}
+.icon-cuohao {
+  top: 32rpx;
+  right: 32rpx;
+}
+.ggcc{
+  width:126rpx;
+  height:48rpx;
+  background:rgba(238,238,238,1);
+  border-radius:10rpx;
+  line-height: 52rpx;
+  border: 2rpx solid #eee;
+  margin:  0 26rpx 30rpx 26rpx;
+}
+.active{
+  border-color: #2EB354;
+  background-color: white;
+}
+.gg_item{
+  margin: 30rpx 0;
+}
+.text_left{
+  text-align: left;
+  width: 686rpx;
+  margin: auto;
+  overflow: hidden;
+  border-bottom: 1px solid #EEEEEE;
+}
+.gg_itemxz{
+  margin: 0 -26rpx;
+}
+.input {
+	width: 80rpx !important;
+  height: 55rpx !important;
+  background-color: #E5E5E5;
+  margin: 0 6rpx;
+  border-radius: 15rpx !important;
+}
+
+.sub,
+.add {
+	width: 57rpx !important;
+  height: 55rpx !important;
+  padding: 0 !important;
+	background-color: #E5E5E5;
+  border-radius: 10rpx !important;
+}
+.buynum{
+  width: 686rpx;
+  margin: auto;
+  padding: 30rpx 0;
+}
+.buysure{
+  width: 100%;
+  height: 110rpx;
+  text-align: center;
+  color: white;
+  background-color: #F55C95;
+  line-height: 110rpx;
+}
+.left{
+  text-align: left;
+}
+.radioitem{
+  padding: 34rpx 0;
+  height: 76rpx;
+}
+.label{
+  display: block;
+  width: 686rpx;
+  margin: auto;
+  border-bottom: 1px solid #EEEEEE;
+}
+/*  重写 radio 样式  */
+/* 未选中的 背景样式 */
+radio .wx-radio-input,checkbox .wx-checkbox-input{
+   border-radius: 50%;/* 圆角 */
+   width: 30rpx;
+   height: 30rpx;
+   margin-right: 20rpx;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before,checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 30rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 30rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 30rpx;
+   text-align: center;
+   font-size:24rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   background: rgba(9, 187, 7, 1);
+   border-color: rgba(9, 187, 7, 1);
+}
+checkbox-group{
+  margin-bottom: 40rpx;
+}
+.labelnone{
+  border: none;
+}
+.choose{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 22rpx;
+}
+.marginb60{
+  margin-bottom: 60rpx;
+}

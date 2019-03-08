@@ -1,0 +1,44 @@
+<!--pages/sign/sign.wxml-->
+<view class='rule'>
+  <view class='qd'>
+    <wux-divider text="{{task_name}}" />
+  </view>
+  <view class='jf center'>获取<text class='colorFB5A3E'>{{integral}}</text>个积分</view>
+</view>
+<view class='ph'>
+  <view class='sign_in'>
+    <view class='flex_btw'>
+    <block  wx:for="{{6}}" wx:key="index">
+      <view class='red flex_col align_center {{(index+1)>ing?"wei":""}}'>
+        <view>{{index+1}}天</view>
+        <image wx:if="{{(index+1)>ing}}" class='location' src='../../images/jifen@2x.png'></image>
+        <image  wx:else class='location' src='../../images/yes@2x.png'></image> 
+      </view>
+    </block>
+    
+    <view wx:if="{{ing==7}}" class='red flex_col align_center'>
+        <view>7天</view>
+        <image class='location' src='../../images/yes@2x.png'></image> 
+    </view>
+    <view wx:else class='red  flex_col align_center sev'>
+        <view class='num size36 bold500'>3</view>
+        <image class='minuet_red' src='../../images/minuet_red@2x.png'></image>
+    </view>
+    </view>
+    <view class='button' wx:if="{{status==1}}" bindtap='qiandao'>签到</view>
+    <view class='button bgd' wx:else>已签到</view>
+  </view>
+  <view class='phb'>
+    <view class='size32 color4 bold600'>积分排行榜</view>
+    <block  wx:for="{{list}}" wx:key="index">
+    <view class='flex_btw align_center'>
+      <view class='phb_n flex align_center'>
+        <view class='phb_nv size32 {{index==0?"bg1":""}} {{index==1?"bg2":""}} {{index==2?"bg3":""}}'>{{index+1}}</view>
+        <image class='phb_ni' src='{{item.avatar}}'></image>
+        <view class='size28 color4 phb_nn bold600'>{{item.nickname}}</view>
+      </view>
+      <view class='size28 jf_c bold600'>{{item.integral}}</view>
+    </view>
+    </block>
+  </view>
+</view>

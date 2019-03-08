@@ -1,0 +1,80 @@
+/* pages/neighbourhood_detail/neighbourhood_detail.wxss */
+@import '../dynamic/dynamic';
+@import '../neighbourhood/neighbourhood';
+page{
+  padding-bottom: 110rpx;
+}
+.czbtn>view{
+  margin-right: 100rpx;
+}
+.czbtn>view:last-of-type{
+  margin-right: 0;
+}
+.czbtn{
+  justify-content: flex-end;
+  padding: 20rpx 0;
+}
+.itemll{
+  border-bottom: 1px solid #eee;
+}
+.container{
+  width: 100%;
+}
+.pl{
+  padding: 0 34rpx;
+}
+.itempl{
+  padding: 24rpx 34rpx;
+  border-bottom: 1px solid #eee;
+}
+.message{
+  margin: 0
+}
+.intro11{
+  text-indent: 56rpx;
+}
+.titlell{
+  margin: 20rpx 0;
+}
+.share {
+  height: 152rpx;
+  font-size:28rpx;
+
+}
+.bottom{
+  width:750rpx;
+  height:106rpx;
+  background:rgba(255,255,255,1);
+  border:1px solid rgba(238,238,238,1);
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+}
+.bottom>input{
+  width:686rpx;
+  height:66rpx;
+  background:rgba(238,238,238,1);
+  border-radius:33rpx;
+  margin: 20rpx auto;
+  text-indent: 32rpx;
+}
+.container>view{
+  border: none;
+}
+.imagell .pic1{
+  width:686rpx;
+  height:500rpx;
+}
+.imagell .pic2{
+  width:330rpx;
+  height:300rpx;
+}
+.imagell .pic3{
+  width:215rpx;
+  height:185rpx;
+}
+.delete{
+  width: 36rpx;
+  height: 38rpx;
+}

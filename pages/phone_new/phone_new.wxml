@@ -1,0 +1,18 @@
+<!--pages/phone_new/phone_new.wxml-->
+<!-- <form bindtap='newphone'> -->
+<view class='all'>
+  <view class='size28 color9'>手机号</view>
+  <view>
+    <view class='yzm flex_btw align_center'>
+      <input type='number' maxlength='11' bindinput='phone' placeholder='{{bangding?"请输入手机号":"请输入新的手机号"}}' name='phone' placeholder-class='colorc size32' value='{{phone}}'></input>
+      <button disabled='{{disabled}}' class='yzm_btn {{disabled?"bgDDDDDD":""}}' data-id="2" bindtap="getVerificationCode">{{time}}</button>
+      
+    </view>
+  </view>
+</view>
+<view class='all'>
+  <view class='size28 color9'>验证号</view>
+  <input placeholder-class='colorc size32' maxlength='6' class='width100' name='code' placeholder='请输入验证号' value='{{code}}' bindinput='code'></input>    
+</view>
+  <button formType="submit" disabled='{{sure}}' bindtap='newphone' class='sure {{sure?"bgDDDDDD":""}}'>确认</button>
+<!-- </form> -->

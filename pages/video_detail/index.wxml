@@ -1,0 +1,118 @@
+<!--pages/video_detail/index.wxml-->
+
+<view wx:if="{{result.title}}" class='visible'>
+  
+  <view class='color6 con'> 
+    <view class="margin_bottom--100">
+      <view class="video-container">
+          <view class="video center" data-id="{{result.video_id}}" bindtap="videoPlay">
+          <video    style="width: 100%;height: 420rpx;" id="myVideo" src="{{result.content}}" autoplay='autoplay' custom-cache='{{false}}'  poster="{{result.poster}}" objectFit="contain" controls bindprogress='hhh'></video>
+              <!-- <video wx:if="{{curr_id == result.video_id}}"    style="width: 100%;height: 420rpx;" id="myVideo" src="{{result.content}}" custom-cache='{{false}}'  poster="{{result.poster}}" objectFit="contain" controls bindprogress='hhh'></video>
+              <view wx:else class='center'>
+                  <image class="model-img" mode="aspectFit"  style="width: 100%;height: 420rpx;" mode='aspectFit' src="{{result.poster}}"></image>
+                  <view class="model-btn">
+                      <image class="video-image-play" src="../../images/video_bf.png" mode="scaleToFill"></image>
+                  </view>
+              </view> -->
+          </view>
+      </view>
+  </view>
+  </view>
+
+  <!-- <view class='flex_btw align_center martop'>
+    <view></view>
+    <view class='flex_btw align_center'>
+      <view class='flex_btw align_center'>
+        <image src='../../images/mess@2x.png' class='msg' bindtap="bindReply" data-releaseName='评论'></image>
+        <text class='color6'>{{result.reply}}</text>
+      </view>
+      <view class='flex_btw align_center' bindtap='like' data-praise='{{result.praise}}'>
+        <image wx:if='{{result.praise==0}}' src='../../images/lo@2x.png' class='love'></image>
+        <image wx:if='{{result.praise==1}}' src='../../images/lo_red@2x.png' class='love'></image>
+        <text class='color6'>{{result.like}}</text>
+      </view>
+        <image src='../../images/fen@2x.png' class='msg'  bindtap='share_zzc'></image>
+    </view>
+  </view> -->
+  <view class='video_btm flex align_center'>
+    <image src='../../images/logo.png' class='head_video'></image>
+    <text class='size36 color4'>奥特利环保</text>
+  </view>
+</view>
+<!-- <view class='xian'></view> -->
+<view class='container' hidden='{{list.length==0}}'>
+  <!-- <view class='size28' >全部评论</view> -->
+  
+  <block wx:for='{{list}}' wx:key="index">
+  <view>
+    <view class='flex message align_center'>
+      <image src='{{item.avatar}}' class='head'></image>
+      <view class='width594'>
+        <view class='flex_btw align_center'>
+          <view>
+            <view class='size26 color6'>{{item.nickname}}</view>
+          </view>
+          <view class='flex_btw align_center'>
+            <image class="image" wx:if="{{item.praise==0}}" src="../../images/video_z1.png" mode="scaleToFill"></image>
+            <image class="image" wx:if="{{item.praise==1}}" src="../../images/video_z2.png" mode="scaleToFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='color6 pl_con'>
+      {{item.content}}
+    </view>
+    <view class='pl_con'>
+    <text class='size24 color9'>{{item.created_at}}</text> 
+    <text class='hf_btn' bindtap="bindReply" data-reply_id='{{item.reply_id}}' data-releaseName='回复{{item.nickname}}'>回复</text>
+    </view>
+    <view class='hf' wx:if='{{item.child_count>0}}'>
+      <view wx:if="{{item.huifu}}" >
+        <block wx:for='{{item.count}}' wx:key="index" wx:for-item='hfitem'>
+          <view class='size22 huifu_item'> <text class='color6ADB7A'>{{hfitem.nickname}}:</text><text class='color9'>{{hfitem.content}}</text></view>
+        </block>
+      </view>
+      <view class='size22 color6'   bindtap='lookallhuifu' data-reply_id='{{item.reply_id}}' hidden='{{item.page.last_page&&item.page.last_page==item.page.current_page}}' data-index='{{index}}'>查看全部回复 ></view>
+    </view>
+  </view>
+  </block> 
+</view>
+
+<view class='xian'></view>
+<view class='size28 color4 all' bindtap='lookall' hidden='{{page.last_page==page.current_page}}'>查看全部评论</view>
+ <view class='zzc' hidden="{{!releaseFocus}}" bindtap='hide'></view>
+  <view class="release" hidden="{{!releaseFocus}}">
+  <form bindsubmit="formSubmit">
+  <view  class='flex_btw width100'>
+  <textarea class="text"
+    placeholder-class="input_null"
+    name='pinglun'
+    fixed="true"
+    maxlength="-1"
+    show-confirm-bar="false"
+    cursor-spacing="15"
+    auto-height="true"
+    focus="{{releaseFocus}}"
+    value='{{textarea}}'
+    placeholder="{{releaseName}}"></textarea>
+  <button formType="submit"  class="submit">发送</button>
+  </view>
+  </form>
+</view>
+
+<view class='video_d_btm flex_btw align_center'>
+
+  <view class='video_d_btm_pl' bindtap="bindReply" data-releaseName='评论'>说点什么......</view>
+    <view class='flex align_center dj_item' bindtap="bindReply" data-releaseName='评论'>
+      <image class="image" src="../../images/mess@2x.png" mode="scaleToFill"></image>
+    </view>
+    <view class='flex align_center dj_item' bindtap='like' data-id='{{result.video_id}}'>
+      <image class="image" wx:if="{{result.praise==0}}" src="../../images/video_z1.png" mode="scaleToFill"></image>
+      <image class="image" wx:if="{{result.praise==1}}" src="../../images/video_z2.png" mode="scaleToFill"></image>
+    </view>
+    
+    <button open-type='share' class='flex align_center dj_item' data-id='{{item.video_id}}'>
+      <image class="image" src="../../images/video_fx.png" mode="scaleToFill"></image>
+      
+    </button>
+</view>

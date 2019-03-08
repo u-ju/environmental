@@ -1,0 +1,28 @@
+<!--pages/home_orders/home_orders.wxml-->
+<view class='topTabSwiper fixed'>
+  <block wx:for="{{tab}}" wx:key="index">
+    <view class='tab  {{currentData == index ? "tabBorer" : ""}}' style='width:{{100/tab.length}}%'  data-current = "{{index}}" data-order_status = "{{item.id}}" bindtap='checkCurrent'>{{item.name}}</view>
+  </block>
+</view>
+<!-- <view class='topTabSwiper'>
+  
+</view> -->
+
+<block wx:if="{{list.length>0}}">
+  <view wx:for="{{list}}" wx:for-item='list' wx:key="index" class='swiper_con' bindtap='detail' data-id='{{list.order_id}}'>
+    <view class='news_items flex'>
+      <view class='image'>
+        <image src="{{list.thumb}}" class="slide-image" mode='aspectFill'/>
+      </view>
+      <view class='describe flex_col'>
+        <view class='color6'>提交时间：{{list.created_at}}</view>
+        <view class='color6 margin'>预交上门时间：{{list.appoint_time}}</view>
+        <view class='color6 one-hidden'>物品描述：{{list.intro}}</view>
+      </view>
+    </view>
+  </view>  
+</block>
+<empty wx:else />
+<view wx:if="{{last}}" class='center'>
+  已经到底啦
+</view>

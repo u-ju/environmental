@@ -1,0 +1,13 @@
+canvas{
+  margin: 60rpx auto;
+}
+.center{
+  text-align: center;
+  font-size: 30rpx;
+}
+.savepic{
+  padding: 6rpx 20rpx;
+  margin: auto;
+  width: 200rpx;
+  text-align: center;
+}

@@ -1,0 +1,96 @@
+<!--pages/edcs/edcs.wxml-->
+<view class='topTabSwiper fixed'>
+  <block wx:for="{{tab}}" wx:key="index">
+    <view class='tab  {{currentData == index ? "tabBorer" : ""}}' style='width:{{100/tab.length}}%'  data-current = "{{index}}" data-cate_id = "{{item.id}}" bindtap='checkCurrent'>{{item.name}}</view>
+  </block>
+</view>
+<view   wx:if="{{currentData==0}}">
+<view class='title'>
+  <!-- <text class='ksfj color44D5A2'>开始分拣</text> -->
+  <view class='ksfj_la'>
+    <view class='ksfj color44D5A2' bindtap='xiala'>{{pay}}<image src='../../images/la@2x.png'></image></view>
+    <view class="wux-class wux-popover wux-popover--theme-light wux-popover--placement-bottomRight"  hidden='{{!xiala}}'>
+        <view class="wux-popover__content">
+            <view class="wux-popover__arrow"></view>
+            <view class="wux-popover__inner">
+                <view>
+                  <block wx:for='{{station}}' wx:key='index'>
+                    <view class="wux-popover__title" bindtap='select' data-id='{{item.id}}' data-name='{{item.name}}'>{{item.name}}</view>
+                  </block>
+                    
+                    <!-- <view class="wux-popover__title" bindtap='select' data-pay='未支付'>未支付</view> -->
+                </view>
+            </view>
+        </view>
+    </view>
+  </view>
+</view>
+<block wx:if="{{list.length>0}}">
+  <view class='bad' wx:for="{{list}}" wx:key='index'>
+    <view class='item flex align_center'>
+      <view class='zuo'>
+        <view class='color6 size28 bold'><text decode="{{true}}" space="{{true}}">环保金提现</text></view>
+        <view class='color9'>{{item.created_at}}</view>
+      </view>
+      <view class='size36 colorC70000  center'>￥{{item.order_amount}}</view>
+    </view>
+    <view class='color9'>
+      <text>口袋编号：{{item.order_no}}</text>
+      <view class='color44D5A2 size28 center' bindtap='order' data-order_id='{{item.order_id}}'>查看详情</view>
+    </view>
+  </view>
+</block>
+<empty  wx:else />
+</view>
+<view wx:else>
+<view class='title'>
+  <text class='ksfj color44D5A2' bindtap='show'>开始分拣</text>
+  <view class='ksfj_la'>
+    <view class='ksfj color44D5A2' bindtap='xiala'>{{pay1}}<image src='../../images/la@2x.png'></image></view>
+    <view class="wux-class wux-popover wux-popover--theme-light wux-popover--placement-bottomRight"  hidden='{{!xiala}}'>
+        <view class="wux-popover__content">
+            <view class="wux-popover__arrow"></view>
+            <view class="wux-popover__inner">
+                <view>
+                    <block wx:for='{{bag}}' wx:key='index'>
+                      <view class="wux-popover__title" bindtap='select1' data-id='{{item.id}}' data-name='{{item.name}}'>{{item.name}}</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+  </view>
+</view>
+<block wx:if="{{list1.length>0}}">
+  <view class='bad' wx:for="{{list1}}" wx:key='index' >
+    <view class='item flex align_center'>
+      <view class='zuo'>
+        <view class='color6 size28 bold'><text decode="{{true}}" space="{{true}}">环保金提现</text></view>
+        <view class='color9'>{{item.created_at}}</view>
+      </view>
+      <view class='size36 colorC70000  center'>￥{{item.order_amount}}</view>
+    </view>
+    <view class='color9'>
+      <text>口袋编号：{{item.bag_no}}</text>
+      <view class='color44D5A2 size28 center' data-order_id='{{item.order_id}}' bindtap='fenjian'>查看详情</view>
+    </view>
+  </view>
+  </block>
+<empty  wx:else />
+  <view class='all_order' wx:if='{{pay1=="分拣中"&&list1.length>0}}' bindtap='all_order'>生成总订单</view>
+</view>
+<view class='zzc' hidden='{{!xiala}}'  bindtap='xiala'></view>
+<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
+  <view class='size28 colorFB5A3E bold title_num'>￥{{result.pay_amount}}</view>
+  <radio-group class="radio-group" bindchange="radioChange">
+      <label wx:for="{{payment_usable}}" class="radio flex_btw align_center" >
+        <view class='flex align_center'>
+          <image src='{{item.image}}'></image>
+          <text class='color6 size26'>{{item.text}}</text>
+        </view>
+        <radio value="{{item.key}}" checked="{{item.checked}}"/>
+      </label>
+  </radio-group>
+
+  <button bindtap="close2" class='pay'>确认支付</button>
+</wux-popup>

@@ -1,0 +1,14 @@
+/* pages/message/message.wxss */
+page{
+  background-color: #F7F7F7;
+  padding-top: 40rpx;
+}
+.massage_item{
+  padding: 20rpx 26rpx;
+  background-color: white;
+  margin: 18rpx auto 70rpx auto;
+  width: 634rpx;
+}
+.massage_item .size30{
+  margin-bottom: 6rpx;
+}

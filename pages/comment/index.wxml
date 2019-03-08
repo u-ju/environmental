@@ -1,0 +1,32 @@
+<!--pages/comment/index.wxml-->
+<view class='type'>
+  <view class='contet-text '>
+  <view  class='note'>{{evaluations.note}}</view>
+  <view class='content-body'>
+  <block wx:for='{{starMap}}' wx:for-item='j' wx:key=''>
+    <view class='image-container' data-index='{{evaluations.id}}' bindtap='chooseStar'>
+      <image wx:if='{{evaluations.star >= index + 1}}' data-star='{{index + 1}}' src='{{starCheckedImgUrl}}' bin></image>
+      <image wx:if='{{evaluations.star < index + 1}}' data-star='{{index + 1}}' src='{{starUnCheckedImgUrl}}'></image>
+    </view>
+  </block>
+  </view>
+</view>
+  <textarea></textarea>
+  <view class="picture_list">
+      <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+        <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+        <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+        <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
+        <view class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"><image src='../../images/delete_pic.png'></image></view>
+      </view>
+
+      <view class='picture_item'>
+        <view class="add-image click_camera flex_col align_center" bindtap='uploadpic'>
+          <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+          <!-- <view class='color153'>点击拍照</view>  -->
+        </view>
+      </view>
+    </view>
+    <view class='btnsure size30'> 发表评论</view>
+</view>
+

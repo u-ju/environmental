@@ -1,0 +1,42 @@
+/* pages/delivery_station_list/delivery_station_list.wxss */
+page{
+  background-color: #F7F7F7;
+}
+.location{
+  width: 37rpx;
+  height: 46rpx;
+  margin-right: 14rpx;
+}
+.color2EB354{
+  border: 1px solid #2EB354;
+  border-radius: 10rpx;
+  width: 177rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center
+}
+.item>view{
+  width: 686rpx;
+  margin: auto;
+  padding: 17rpx 0;
+}
+.item{
+  background-color: white;
+  margin-top: 10rpx;
+}
+.item>.border{
+  border-bottom: 1px solid #E8E8E8;
+  padding: 23rpx 0 19rpx 0;
+}
+.map{
+  width: 142rpx;
+  height: 63rpx;
+  line-height: 63rpx;
+  border-radius: 25rpx;
+  text-align: center;
+  position: fixed;
+  top: 24rpx;
+  right: 13rpx;
+  font-size: 28rpx;
+  box-shadow: 0rpx 0rpx 2rpx 2rpx rgba(173, 179, 177, 0.23);
+}

@@ -1,0 +1,27 @@
+/* pages/withdrawal/withdrawal.wxss */
+@import '../phone/phone';
+page{
+  background-color: #F7F7F7;
+}
+.item{
+  line-height: 90rpx;
+  height: 90rpx;
+  background-color: white;
+  padding-left: 32rpx;
+  margin-top: 30rpx;
+}
+.color9{
+  padding: 23rpx 32rpx;
+}
+.colorC70000{
+  display: inline-block;
+  margin-right: 30rpx;
+}
+.sure{
+  width: 686rpx;
+  height: 57rpx;
+  line-height: 57rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}

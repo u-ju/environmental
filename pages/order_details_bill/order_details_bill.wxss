@@ -1,0 +1,60 @@
+/* pages/order_details_bill/order_details_bill.wxss */
+@import '../order_details/order_details';
+.btn{
+  width:686rpx;
+  height:82rpx;
+  background:rgba(213,211,211,1);
+  border-radius:41rpx;
+  color: white;
+  text-align: center;
+  line-height: 82rpx;
+  margin-top: 30rpx;
+}
+.title_num{
+  height: 72rpx;
+  line-height: 72rpx;
+}
+.con{
+  width:686rpx;
+}
+.radio{
+  /* display: block; */
+  border-top: 1px solid #E8E8E8;
+  height: 90rpx;
+}
+.radio image{
+  width: 53rpx;
+  height: 53rpx;
+  margin-right: 40rpx;
+}
+.radio-group{
+  width: 686rpx;
+  margin: auto;
+}
+
+radio .wx-radio-input{
+  border-radius: 50%; 
+  width: 24rpx;
+  height: 24rpx;
+  background-color: #fff;
+  float: left;
+}
+ 
+/* 选中后的样式 （可根据设计稿需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before{
+  border-radius: 50%;
+  width: 24rpx; 
+  height: 24rpx; 
+  line-height: 24rpx;
+  text-align: center;
+  font-size: 20rpx; /* 对勾大小 26rpx */
+  color:#fff; /* 对勾颜色 */
+  border: none;
+}
+.pay{
+  width:234rpx;
+  height:41rpx;
+  font-size: 26rpx;
+  margin: 26rpx auto;
+  line-height: 41rpx;
+}

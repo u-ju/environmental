@@ -1,0 +1,53 @@
+<!--pages/neighbourhood/neighbourhood.wxml-->
+<!-- <menu hidden id='menu' bind:addEvent="_addEvent" /> -->
+<view wx:if="{{tab.length>0}}">
+<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+      <block wx:for="{{tab}}"  wx:key="index">
+        <view  class="tab-item {{currentTab==index?'active':''}}" style='width:{{33.33}}%' data-id='{{item.id}}' data-value='{{item.value}}' data-current="{{index}}" bindtap="swichNav">{{item.name}}</view>
+      </block>
+</scroll-view>
+<block wx:for="{{news}}" wx:key="index" wx:for-item='news'>
+<view  data-id='{{news.vicinage_id}}' bindtap='details'>
+<view class='flex itemll' >
+  <image src='{{news.avatar}}' class='headll' mode='aspectFill'></image>
+  <view class='flex_btw titlell rightll'>
+    <text class='color4 size28 one-hidden'>{{news.nickname}}</text>
+    <text class='color898989 size22'>{{news.created_at}}</text>
+  </view>
+</view>
+<view class='con'>
+  <view class='color4 size28 intro11'>{{news.title}}</view>
+  <view class='flex_btw imagell'>
+    <image  src='{{news.thumb}}' wx:if="{{news.thumb}}" mode='aspectFill'></image>
+    <text class='{{news.thumb.length==0?"apic": "color898989"}}'>{{news.intro}}</text>
+  </view>
+  
+</view>
+<view class='czbtn_w'>
+  <view class='flex_btw align_center czbtn'>
+    <view class='flex_btw align_center'  data-index='{{index}}' catchtap='like' data-vicinage_id='{{news.vicinage_id}}' data-praise='{{news.praise}}'>
+      <image wx:if='{{news.praise==0}}'  src='../../images/love_n.png' mode='aspectFit'></image>
+      <image wx:if='{{news.praise==1}}'  src='../../images/love@2x.png' mode='aspectFit' ></image>
+      <text class='color898989'>{{news.like}}</text>
+    </view>
+    <view class='flex_btw align_center' >
+      <image src='../../images/mess@2x.png' mode='aspectFit'></image>
+      <text class='color898989'>{{news.reply}}</text>
+    </view>
+    <view catchtap='share'>
+      <button open-type="share" data-name="pageShare" id="share" class='share'>
+        <image src='../../images/video_fx.png'></image>
+      </button>
+    </view>
+  </view>
+</view>
+</view>
+</block>
+  <view wx:if="{{news.length==0}}">
+    <empty  />
+  </view>
+  <navigator url='../neighbourhood_release/index' class='editll'>
+    <image src='../../images/editll.png'></image>
+  </navigator>
+</view>
+<empty wx:else />

@@ -1,0 +1,61 @@
+/* pages/personal_center/personal_center.wxss */
+page{
+  background-color: rgb(247, 247, 247);
+  border: none;
+  padding-bottom:140rpx; 
+}
+.bg{
+  background-color: white;
+  padding: 20rpx 0 26rpx 0;
+  margin-bottom: 20rpx;
+}
+.container{
+  width: 672rpx;
+  margin: auto;
+}
+.head{
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+  background-color: rgb(239, 224, 224);
+  margin: 0 auto 12rpx auto;
+  position: relative;
+}
+.camera{
+  width: 22rpx;
+  height: 20rpx;
+  position: absolute;
+  left: 120rpx;
+  bottom: 0;
+}
+.header{
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+}
+.item{
+  height: 100rpx;
+  width: 100%;
+  background-color: white;
+}
+.marb20{
+  margin-bottom: 20rpx;
+}
+.marb20>view:last-of-type .container{
+  border-bottom-color: white;
+}
+.item_right image{
+  width: 14rpx;
+  height: 26rpx;
+  margin-left: 20rpx;
+}
+.pen{
+  width: 19rpx;
+  height: 19rpx;
+  margin-left: 13rpx;
+}
+.item .container{
+  line-height: 98rpx;
+  height: 98rpx;
+  border-bottom: 2rpx solid #E8E8E8;
+}

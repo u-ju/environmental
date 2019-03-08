@@ -1,0 +1,23 @@
+/* pages/my_deposit/my_deposit.wxss */
+.deposit_item{
+  width:686rpx;
+  height:285rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 4rpx 8rpx 0rpx rgba(151, 151, 151, 0.35);
+  border-radius:10rpx;
+  margin: 20rpx auto;
+}
+.deposit_item image{
+  width:  32rpx;
+  height: 31rpx;
+}
+.flex_col{
+  padding: 50rpx 0;
+}
+.flex_col>.flex{
+  margin-bottom: 10rpx;
+}
+.color44D5A2{
+  border-top: 1px solid #f1f1f1;
+  line-height: 80rpx;
+}

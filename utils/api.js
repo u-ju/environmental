@@ -1,0 +1,298 @@
+// const basePath = 'https://wyhb.zgwyhb.com/api';
+const basePath = 'https://wyhb.zhanghi.cn/api';
+const apiList = {
+
+  // PayController
+  // POST 第三方支付信息创建
+  vendor: basePath + '/common/pay/vendor', 
+  // POST 支付结果查询
+  query: basePath + '/common/pay/query', 
+  // POST 上门回收订单创建
+  create: basePath + '/common/pay/create', 
+  // // POST 支付结果查询
+  // query: basePath + '/common/pay/query', 
+  // // POST 支付结果查询
+  // query: basePath + '/common/pay/query', 
+
+
+
+  // Common
+  // 垃圾袋二维码解码
+  decode: basePath + '/common/qrCode/decode',//0
+
+  // 垃圾袋二维码解码
+  action: basePath + '/common/qrCode/action',
+  area: basePath +'/common/area/index?parent_id=' ,
+  
+  // CaptchaController
+  // 发送手机验证码
+  captcha: basePath + '/common/captcha/mobile',//0
+
+  // UploadController
+  // POST 图片上传
+  upload_image: basePath + '/common/upload/image',
+
+
+  //AuthController
+  //POST 登录
+  login: basePath + '/auth/login',
+  // POST 手机验证码登录
+  mobileLogin: basePath + '/auth/mobileLogin',
+  // POST 微信小程序尝试登录
+  wechatLetAttemptLogin: basePath + '/auth/wechatLetAttemptLogin',
+  // POST 微信小程序登录
+  wechatLetLogin: basePath + '/auth/wechatLetLogin',
+  //POST 退出
+  logout: basePath + '/auth/logout',
+  //POST 忘记密码
+  forget: basePath + '/auth/forget',
+
+
+
+
+
+  // Front
+
+  //HomeController
+  // GET 首页信息
+  index: basePath + '/front',//0
+  // GET 公共配置
+  config: basePath + '/front/config',
+
+
+  // UserController
+  // GET 用户信息
+  user: basePath + '/front/user',//0
+  // POST 用户信息更新
+  user_update: basePath + '/front/user/update',
+  // POST 用户手机号更新
+  mobileUpdate: basePath + '/front/user/mobileUpdate',
+
+
+  // RealnameController
+  // GET  实名信息
+  realname: basePath + '/front/realname',
+  // POST 实名校验
+  realname_verify: basePath + '/front/realname/verify',
+
+  // AgentController 代理中心
+  // GET  代理信息
+  agent: basePath + '/front/agent',
+  // POST 设置推荐人
+  agent_sharerSet: basePath + '/front/agent/sharerSet',
+  
+  agent_shopIndex: basePath + '/front/agent/shopIndex',
+
+  agent_agentIndex: basePath + '/front/agent/agentIndex',
+
+
+
+  // WalletController
+  // GET 钱包信息
+  wallet: basePath + '/front/wallet',
+  // GET 零钱记录列表
+  balanceIndex: basePath + '/front/wallet/balanceIndex',
+  // GET 积分记录列表
+  integralIndex: basePath + '/front/wallet/integralIndex',
+  // POST 零钱提现提交
+  balanceWithdraw: basePath + '/front/wallet/balanceWithdraw',
+  // GET 零钱提现列表
+  balanceWithdrawIndex: basePath + '/front/wallet/balanceWithdrawIndex',
+  // GET 积分记录列表
+  settleIndex: basePath + '/front/wallet/settleIndex',
+
+
+  // ShareController
+  // GET 分享信息
+  share: basePath + '/front/share',
+
+
+
+  // OnsiteRecycleController
+  // GET 上门回收信息
+  onsiteRecycle: basePath + '/front/onsiteRecycle',
+  // POST 订单创建提交
+  onsiteRecycle_orderStore: basePath + '/front/onsiteRecycle/orderStore',
+  // GET 发起人订单列表
+  onsiteRecycle_orderIndex: basePath + '/front/onsiteRecycle/orderIndex',
+  // GET 发起人订单详情
+  onsiteRecycle_orderShow: basePath + '/front/onsiteRecycle/orderShow',
+  // GET 回收人订单列表
+  onsiteRecycle_orderRecycleIndex: basePath + '/front/onsiteRecycle/orderRecycleIndex',
+  // GET 回收人订单详情
+  onsiteRecycle_orderRecycleShow: basePath + '/front/onsiteRecycle/orderRecycleShow',
+  // POST 订单评估提交
+  onsiteRecycle_orderEvaluate: basePath + '/front/onsiteRecycle/orderEvaluate',
+
+
+  // GarbageController
+  // 垃圾投放记录列表
+  putRecordIndex: basePath + '/front/garbage/putRecordIndex',
+  // 垃圾柜列表
+  arkIndex: basePath + '/front/garbage/arkIndex',
+  // 垃圾柜详情
+  arkShow: basePath + '/front/garbage/arkShow',
+  // POST 垃圾袋订单提交
+  bagOrderStore: basePath + '/front/garbage/bagOrderStore',
+  // 投放人垃圾袋订单列表
+  bagOrderIndex: basePath + '/front/garbage/bagOrderIndex',
+  // 投放人垃圾袋订单详情
+  bagOrderShow: basePath + '/front/garbage/bagOrderShow',
+  // 分拣人垃圾袋订单列表
+  bagOrderSorterIndex: basePath + '/front/garbage/bagOrderSorterIndex',
+  // 分拣人垃圾袋订单详情
+  bagOrderSorterShow: basePath + '/front/garbage/bagOrderSorterShow',
+  // POST 垃圾袋订单更新
+  bagOrderUpdate: basePath + '/front/garbage/bagOrderUpdate',
+  // POST 垃圾袋订单删除
+  bagOrderDestroy: basePath + '/front/garbage/bagOrderDestroy',
+  // 站点订单预览
+  stationOrderPreview: basePath + '/front/garbage/stationOrderPreview',
+  // POST 站点订单提交
+  stationOrderStore: basePath + '/front/garbage/stationOrderStore',
+  // GET 分拣人站点订单列表
+  stationOrderIndex: basePath + '/front/garbage/stationOrderIndex',
+  // GET 分拣人站点订单详情
+  stationOrderShow: basePath + '/front/garbage/stationOrderShow',
+  // POST 站点订单更新
+  stationOrderUpdate: basePath + '/front/garbage/stationOrderUpdate',
+
+
+  //ShopController
+  //GET 商家列表
+  shop: basePath + '/front/shop/index?type=2',
+  //GET 商家详情
+  shop_show: basePath + '/front/shop/show',
+  //GET 商家详情
+  gatherPayCreate: basePath + '/front/shop/gatherPayCreate?shop_id=',
+  
+
+  //TShopController
+  //GET 便民列表
+  tshop: basePath + '/front/shop/index?type=1',
+  //GET 便民详情
+  tshop_show: basePath + '/front/shop/show',
+
+
+
+  //TopController
+  //GET 积分排行榜
+  integral: basePath + '/front/top/integral',
+
+
+  //TaskController
+  //GET 任务详情
+  task_show: basePath + '/front/task/show',
+  //POST 任务更新
+  task_update: basePath + '/front/task/update',
+
+
+
+  //HelpController
+  // GET 帮助列表
+  help: basePath + '/front/help/index',//0
+  // GET 帮助详情
+  help_show: basePath + '/front/help/show',//0
+
+  //NewsController
+  // GET 新闻列表
+  news: basePath + '/front/news/index',//0
+  // GET 新闻详情
+  news_show: basePath + '/front/news/show',//0
+  // POST 新闻回复提交
+  news_replyStore: basePath + '/front/news/replyStore',
+  //GET 新闻回复列表
+  news_replyIndex: basePath + '/front/news/replyIndex',
+  news_praiseStore: basePath + '/front/news/praiseStore',
+  // ShopSettledController
+  // GET 入驻首页
+  shopSettled: basePath + '/front/shopSettled',
+  // POST 入驻申请
+  shopSettled_apply: basePath + '/front/shopSettled/apply',
+  // GET 入驻详情
+  shopSettled_show: basePath + '/front/shopSettled/show',
+  // POST 入驻更新
+  shopSettled_update: basePath + '/front/shopSettled/update',
+
+  // VicinageController
+  // GET 邻里守望列表
+  vicinage: basePath + '/front/vicinage/index',//0
+  // GET 邻里守望详情
+  vicinage_show: basePath + '/front/vicinage/show',//0
+  // POST 邻里守望回复提交
+  vicinage_replyStore: basePath + '/front/vicinage/replyStore',
+  //GET 邻里守望回复列表
+  vicinage_replyIndex: basePath + '/front/vicinage/replyIndex',
+
+  vicinage_praiseStore: basePath + '/front/vicinage/praiseStore',
+
+  vicinage_replyPraiseStore: basePath + '/front/vicinage/replyPraiseStore',
+  
+  vicinage_userStore: basePath + '/front/vicinage/userStore',
+
+  vicinage_userIndex: basePath + '/front/vicinage/userIndex',
+
+  vicinage_userShow: basePath + '/front/vicinage/userShow',
+
+  vicinage_userUpdate: basePath + '/front/vicinage/userUpdate',
+
+  vicinage_userDestroy: basePath + '/front/vicinage/userDestroy',
+
+  // EcoBagController
+  // POST 环保袋申请提交
+  ecoBag_apply: basePath + '/front/ecoBag/apply',
+  // GET 环保袋申请列表
+  ecoBag_applyIndex: basePath + '/front/ecoBag/applyIndex',
+  // POST 环保袋兑换提交
+  ecoBag_exchange: basePath + '/front/ecoBag/exchange',
+  // GET 环保袋兑换列表
+  ecoBag_exchangeIndex: basePath + '/front/ecoBag/exchangeIndex',
+
+  video_index: basePath + '/front/video/index',
+  video_show: basePath + '/front/video/show',
+  video_replyStore: basePath + '/front/video/replyStore',
+  video_replyIndex: basePath + '/front/video/replyIndex',
+  video_praiseStore: basePath + '/front/video/praiseStore',
+
+  goods: basePath + '/front/goods/index',
+  goods_show: basePath + '/front/goods/show?sku_id=',
+  goods_commentIndex: basePath + '/front/goods/show',
+
+  // shippingAddress: basePath + '/front/shippingAddress/store',
+  // shippingAddress_index: basePath + '/front/shippingAddress/index',
+  // shippingAddress_update: basePath + '/front/shippingAddress/update',
+  // shippingAddress_destroy: basePath + '/front/shippingAddress/destroy',
+
+  
+
+  // ShippingAddressController 收货地址
+  // POST 地址添加
+  shippingAddress_store: basePath + '/front/shippingAddress/store',
+  // GET 地址列表
+  shippingAddress_index: basePath + '/front/shippingAddress/index',
+  // POST  地址更新
+  shippingAddress_update: basePath + '/front/shippingAddress/update',
+  // POST 地址删除
+  shippingAddress_destroy: basePath + '/front/shippingAddress/destroy',
+
+  // OrderController 商品订单管理
+  // POST 支付信息
+  order_payShow: basePath + '/front/order/payShow',
+
+  // UserOrderController 用户商品订单管理
+
+  // POST  订单列表
+  userOrder_index: basePath + '/front/userOrder/index',
+  // POST 订单详情
+  userOrder_show: basePath + '/front/userOrder/show',
+
+  // BankCardController 银行卡管理
+
+  // POST 银行卡添加
+  bankCard_store: basePath + '/front/bankCard/store',
+  // GET 银行卡列表
+  bankCard_index: basePath + '/front/bankCard/index',
+  // POST 银行卡添加
+  bankCard_destroy: basePath + '/front/bankCard/destroy',
+}
+module.exports = apiList;

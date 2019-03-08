@@ -1,0 +1,8 @@
+<!--pages/edcs_choose/edcs_choose.wxml-->
+<view>
+  <block wx:for="{{action}}" wx:key="index">
+    <view class='link' data-key='{{item.key}}' bindtap='bag'>{{item.name}}</view>
+  </block>
+  
+  
+</view>

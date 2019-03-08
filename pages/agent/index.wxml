@@ -1,0 +1,91 @@
+<!--pages/agent/index.wxml-->
+<view class='wei' wx:if="{{is_agent==0}}">
+  <view class='weizi'>你还没有成为业务专员，前往申请成为<text class='color5DC47A' bindtap='open2'>业务专员 》</text></view>
+  <view class='gznr'>
+    <view>
+      <text class='size30'>具备条件： </text>
+      <text> \n 1.发展线下联盟商家。 \n 2.招贤纳士，推荐业务专员。</text>
+    </view>
+    <view>
+      <text class='size30'>工作内容：</text>
+      <text> \n 1.成为业务专员需缴纳1500元培训费用。\n 2.经过公司培训后方可发展联盟商家。</text>
+    </view>
+    <view>
+      <text class='size30'>薪资待遇：</text>
+      <text> \n  1.以业绩效果发放薪资。\n 2.月收入5000元以上需缴纳个人所得税 </text>
+    </view>
+  </view>
+</view>
+<view  wx:elif="{{is_agent==1}}">
+<view class='card'>
+  <!-- <view class='flex align_center'>
+    <view class='left'>代理id</view>
+    <view class='right'>{{agent.agent_id}}</view>
+  </view> -->
+  <view class='flex align_center'>
+    <view class='left'>金额</view>
+    <view class='right'>{{agent.amount}}</view>
+  </view>
+  
+  <view class='flex align_center'>
+    <view class='left'>收入</view>
+    <view class='right'>{{agent.earn}}</view>
+  </view>
+  <view class='flex align_center'>
+    <view class='left'>等级</view>
+    <view class='right'>{{agent.level_name}}</view>
+  </view>
+  <!-- <view class='flex align_center'>
+    <view class='left'>推荐人</view>
+    <view wx:if='{{agent.share_nickname}}' class='right'>{{agent.share_nickname}}</view>
+    <text wx:else class='color5DC47A' bindtap='sharerSet'>设置推荐人</text>
+  </view> -->
+  <view class='flex align_center'>
+    <view class='left'>区域</view>
+    <view class='right'>{{agent.area_name}}</view>
+  </view>
+  <view class='flex align_center'>
+    <view class='left'>注册时间</view>
+    <view class='right'>{{agent.created_at}}</view>
+  </view>
+  
+</view>
+<view class='size36 btndl' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
+<view class='size36 btndl' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请业务专员</view>
+<navigator class='link' url='../my_invitation/index'>
+  查看我的邀请<text class='color5DC47A'> 》</text>
+</navigator>
+</view>
+<view class='wei' wx:else>
+</view>
+
+<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
+  <view class='size28 colorFB5A3E bold title_num'>￥{{result.pay_amount}}</view>
+  <radio-group class="radio-group" bindchange="radioChange">
+      <label wx:for="{{payment_usable}}" class="radio flex_btw align_center" >
+        <view class='flex align_center'>
+          <image src='{{item.image}}'></image>
+          <text class='color6 size26'>{{item.text}}</text>
+        </view>
+        <radio value="{{item.key}}" checked="{{item.checked}}"/>
+      </label>
+  </radio-group>
+
+  <button bindtap="close2" class='pay'>确认支付</button>
+</wux-popup>
+<wux-popup closable visible="{{ visible1 }}"  bind:close="onClose1" bind:closed="onClosed1">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="section">
+      <view class="section__title">代理id</view>
+      <input name="agent_id" placeholder="代理id" />
+    </view>
+    <view class="section">
+      <view class="section__title">推荐人手机号</view>
+      <input name="share_mobile" placeholder="推荐人手机号" maxlength='11' />
+    </view>
+    <button formType="submit">提交</button>
+</form>
+</wux-popup>
+<wux-popup closable visible="{{ visible3 }}"  bind:close="onClose3" bind:closed="onClosed3">
+  <wux-qrcode  id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+</wux-popup>

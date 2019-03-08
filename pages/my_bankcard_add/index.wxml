@@ -1,0 +1,27 @@
+<!--pages/my_bankcard_add/index.wxml-->
+<form  bindsubmit="formSubmit">
+  <view class='message'>
+    <view class='flex align_center'>
+      <view class='left color898989'>银行卡号</view>
+      <input name='card_no' value='{{card_no}}'></input>
+    </view>
+  <!-- <view class='flex_btw align_center'>
+    <view class='left color898989'>银行</view>
+    <view></view>
+  </view>
+  <view class='flex_btw align_center'>
+    <view class='left color898989'>卡类型</view>
+    <view></view>
+  </view> -->
+  </view>
+
+  <checkbox-group bindchange="checkboxChange">
+    <label class="checkbox" wx:for="{{items}}" wx:key="index">
+      <checkbox value="{{item.name}}" checked="{{item.checked}}" />
+      {{item.value}}<navigator>《用户协议》</navigator>
+    </label>
+  </checkbox-group>
+
+<!-- <view class='btnsure size32'>确定</view> -->
+  <button class='btnsure size32' disabled='{{disabled}}'  form-type="submit">保存</button>
+</form>

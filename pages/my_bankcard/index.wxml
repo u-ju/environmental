@@ -1,0 +1,23 @@
+<!--pages/my_bankcard/index.wxml-->
+<view class='nocard' wx:if="{{list.length==0}}">
+  <image src='../../images/b_card.png' class='nocard_pic'></image>
+  <view>你还没有添加银行卡</view>
+</view>
+<block wx:else>
+<view  wx:for="{{list}}" wx:key="index" class='bankcard {{(index+1)%4==2?"bankcard2":""}} {{(index+1)%4==3?"bankcard3":""}} {{(index+1)%4==0?"bankcard4":""}}' bindlongtap='detele' data-id='{{item.card_id}}' >
+  <view class='flex align_center'>
+    <image src='{{item.bank_icon}}'></image>
+    <view>
+      <view class='size28'>{{item.bank_name}}</view>
+      <view class='size22'>{{item.card_type_name}}</view>
+    </view>
+  </view>
+  <view class='size36 center'>{{item.card_no}}</view>
+</view>
+</block> 
+<view class='click'>
+  <navigator class='flex align_center'> 
+    <text class='iconfont icon-jiahao'></text>
+    <text class='size32'>添加银行卡</text>
+  </navigator>
+</view>

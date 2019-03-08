@@ -1,0 +1,38 @@
+/* pages/news/news.wxss */
+page{
+  background-color: rgb(247, 247, 247);
+  font-size: 24rpx;
+}
+.tab{float: left; width: 50%;text-align: center;padding: 10rpx 0;color: rgb(153, 153, 153);font-size: 28rpx;font-weight: 500;background-color: white;}
+.topTabSwiper{ zoom: 1;margin-bottom: 20rpx;height: 62rpx;width: 100%;}
+.topTabSwiper:after{content: ""; clear: both;display: block;}
+.tabBorer{border-bottom: 1px solid rgb(46,179, 84); color: rgb(46,179, 84);}
+.swiper{width: 100%;height: auto;}
+.swiper_con{text-align: center; width: 100%;background-color: white; }
+.image{height: 156rpx;width: 222rpx;overflow: hidden;background-color: rgb(241, 241, 241);margin-right: 70rpx;border-radius: 10rpx;}
+.image image{width: 100%;height: 100%;}
+.news_items{
+  padding: 26rpx 0;width: 672rpx; margin: 0 auto 26rpx auto;
+}
+.news_items .color102{
+  margin: 26rpx 0 40rpx 0;
+}
+.describe>view{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-align: left;
+}
+.describe{
+  width: 420rpx;
+}
+.fixed{
+  position: fixed;
+  top: 0;
+}
+.center{
+  padding-bottom: 20rpx;
+}

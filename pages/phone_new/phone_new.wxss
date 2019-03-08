@@ -1,0 +1,2 @@
+/* pages/phone_new/phone_new.wxss */
+@import '../phone/phone';

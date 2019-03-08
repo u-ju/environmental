@@ -1,0 +1,57 @@
+/* pages/share/share.wxss */
+page{
+  padding-top: 40rpx;
+  border-top: 1px solid #E8E8E8;
+  overflow-y: visible;
+}
+button::after {
+  border: none;
+}
+button {
+  background-color: #fff;
+}
+.red_envelopes{
+  width: 340rpx;
+  height: 440rpx;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+.red_envelopes image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.red_envelopes view{
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  line-height: 50rpx;
+}
+.red_envelopes .size30{
+  margin: 60rpx 0 30rpx 0;
+}
+.size40{
+  color: #C70000;
+  width: 240rpx;
+  margin: 20rpx auto 10rpx auto;
+  padding: 0;
+}
+.process image{
+  width: 56rpx;
+  height: 18rpx;
+}
+.process{
+  color: #999;
+  text-align: center;
+  width: 640rpx;
+  margin: 70rpx auto;
+}
+.process view{
+  width: 154rpx;
+  font-size: 30rpx;
+}
+.participate{
+  margin-top: 240rpx;
+}

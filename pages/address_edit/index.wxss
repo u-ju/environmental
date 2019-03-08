@@ -1,0 +1,30 @@
+/* pages/address_edit/index.wxss */
+@import '../place_order/place_order';
+.left{
+  width: 250rpx;
+}
+.flex{
+  width: 686rpx;
+  height: 110rpx;
+  font-size: 28rpx;
+  color: #444;
+  margin: auto;
+  border-bottom: 1px solid #eee;
+}
+input{
+  color: #898989;
+  width: 430rpx;
+  height:110rpx;
+line-height: 110rpx;
+}
+.btnsure{
+  width:686rpx;
+  height:86rpx;
+  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
+  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
+  border-radius:43rpx;
+  text-align: center;
+  color: white;
+  line-height: 86rpx;
+  margin: 100rpx auto 10rpx auto;
+}

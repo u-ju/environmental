@@ -1,0 +1,5 @@
+<!--pages/delivery_station/delivery_station.wxml-->
+<map id="map" longitude='{{longitude}}' latitude='{{latitude}}'  scale="{{scale}}" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="regionchange" show-location style="width: 100%; height: 100%;">
+  <cover-view class='location' bindtap='nav'>点击进入导航</cover-view>
+  <cover-view class='list' bindtap='list'>列表模式</cover-view>
+</map>

@@ -1,0 +1,14 @@
+<!--pages/withdrawal/withdrawal.wxml-->
+<wux-keyboard id="wux-keyboard" />
+<!-- <form  bindsubmit="formSubmit"> -->
+<view class='item size28 color4'>提到微信余额</view>
+
+<view class='item size28 color4'>
+  <wux-input label="提现金额"  value="{{ money }}" controlled placeholder="请输入提现金额"  name="money" type="number" bind:change="onChange" />
+  <!-- <wux-input wx:else label="提现金额" placeholder="请输入提现金额"  name="money" defaultValue="{{yu}}" clear type="number" bind:change="onChange" /> -->
+</view>
+<view class='color9'>余额 <text class='colorC70000'> {{yu}}元</text> <text class='color299EF0' bindtap='all'>全部提现</text></view>
+<button wx:if="{{is_password==1}}" formType="submit" disabled='{{sure}}' class='sure {{sure?"bgDDDDDD":""}}' bindtap='open'>下一步</button>
+<button wx:else formType="submit" disabled='{{sure}}' class='sure {{sure?"bgDDDDDD":""}}' bindtap='open_no'>下一步</button>
+
+<!-- </form> -->

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "环保金提现",
+  "usingComponents": {
+    "wux-input": "../../Components/input/index",
+    "wux-button": "../../Components/button/index",
+    "wux-keyboard": "../../Components/keyboard/index"
+  }
+}

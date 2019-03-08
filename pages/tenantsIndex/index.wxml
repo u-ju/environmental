@@ -1,0 +1,43 @@
+<!--pages/tenantsIndex/index.wxml-->
+<view  wx:if="{{list.length>0}}">
+<a wx:for="{{list}}" wx:key="index" wx:for-item="list">
+  <view class="inner" bindtap='detail' data-id='{{list.shop_id}}'>
+    <!-- <view class='zhekou'>
+      <image src="../../images/zhekou.png"   mode='aspectFit'/>
+      <text>9.1折</text>
+    </view> -->
+    <view class="cover">
+      <image src="{{list.thumb}}" class="cover-img" mode='aspectFill'/>
+      
+    </view>
+    <view class='describe width100'>
+      <view class='bold color51 size26'>{{list.title}}</view>
+      
+      
+      <view class='color153 flex_btw '>
+        <view class='flex align_center'>
+          <view class="location">
+            <text class='color153 size24'>{{list.type_name}}</text>
+          </view>
+          <view class="renzheng" >
+          {{list.status_name}}
+      </view>
+        </view>
+        <view class="phone" data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
+          <!-- <image src="../../images/ewm_dj.png" class="phone_icon" mode='aspectFit'/> -->
+          <text class='iconfont icon-erweima'></text>
+        </view>
+      </view>
+    </view>
+  </view>
+</a>
+  <view  class='button' bindtap='link'>商家入驻</view>
+  <!-- <view wx:if="{{list[list.length-1].status==2}}" class='button' bindtap='link'>重新入驻</view> -->
+</view>
+<view wx:elif="{{list.length==0}}" class='wei'>
+  你还没有入驻，前往 <text class='color5DC47A' bindtap='link'>申请入驻>></text>
+</view>
+<view class='zzc_con' wx:if="{{showmodel}}">
+  <view class='iconfont icon-cuohao' bindtap='model' ></view>
+  <wux-qrcode  id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+</view>

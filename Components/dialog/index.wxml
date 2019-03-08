@@ -1,0 +1,28 @@
+<!--mask dialog-->
+<view class="drawer_screen" bindtap="hideDialog" wx:if="{{isShow}}" catchtouchmove="myCatchTouch"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{isShow}}">
+ 
+  <!--drawer content-->
+  <view class='row'>
+    <view class="drawer_title" style='width:100%;padding-left:60rpx'>{{title}}</view>
+    <icon type="clear" style='margin-top:40rpx;margin-right:20rpx;' bindtap="hideDialog"></icon>
+  </view>
+  <form bindsubmit="_formSubmit">
+    <scroll-view scroll-y>
+      <view class="drawer_content">
+        <view wx:for="{{dataObject}}" wx:key="{{id}}">
+          <view class="top grid">
+            <label class="title col-0" style="color:red" wx:if="{{item.must}}">*</label>
+            <label class="title col-0" wx:else> </label>
+            <input class="input_base input_h30 col-1" placeholder='{{item.placeholder}}' wx:if="{{item.type === type_input}}" name="{{item.id}}" value="{{bean[item.id]}}"></input>
+            <view class="input_base input_h30 col-1" wx:elif="{{item.id === id_sex}}" hover-class='btn_ok_hover' bindtap='{{item.event}}'>{{sexDefault}}</view>
+            <view class="input_base input_h30 col-1" wx:elif="{{item.id === id_group}}" hover-class='btn_ok_hover' bindtap='{{item.event}}'>{{groupDefault}}</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <button class="btn_ok" hover-class='btn_ok_hover' formType="submit">确定</button>
+  </form>
+</view>

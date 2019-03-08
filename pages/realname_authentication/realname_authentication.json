@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "实名认证",
+  "usingComponents": {
+    "wux-upload": "../../Components/upload/index"
+  }
+}
