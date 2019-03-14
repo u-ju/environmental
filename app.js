@@ -43,6 +43,7 @@ App({
     baseUrl: "http://wyhb.zhanghi.cn/api",
     longitude: 104.05293,
     latitude: 30.69015,
-    config:[]
+    config:[],
+    controlContrast:[]
   }
 })

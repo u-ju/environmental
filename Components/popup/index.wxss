@@ -3,7 +3,8 @@
   z-index: 1000;
   width: 80%;
   max-width: 640px;
-  border-radius: 10rpx 10rpx 0 0;
+  /* border-radius: 10rpx 10rpx 0 0; */
+  overflow: hidden
 }
 .wux-popup-position.wux-popup-position--center .wux-popup {
   top: 50%;
@@ -58,7 +59,7 @@
   background-clip: padding-box;
   height: 100%;
   text-align: center;
-  overflow: hidden
+  overflow: hidden;
 }
 .wux-popup__title {
   font-weight: 400;

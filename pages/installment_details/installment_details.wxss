@@ -245,3 +245,11 @@ checkbox-group{
 .marginb60{
   margin-bottom: 60rpx;
 }
+.choosef{
+  color: #bbb;
+  text-decoration: line-through;
+}
+.disable{
+  background: #999;
+  box-shadow: transparent;
+}

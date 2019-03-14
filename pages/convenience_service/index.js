@@ -6,14 +6,18 @@ Page({
    */
   data: {
     items:[
-      { images: '../../images/bm_00.png', title: '大件\n垃圾回收', url: '' },
-      { images: '../../images/bm_17.png', title: '失物招领', url: '' },
-      { images: '../../images/bm_2.png', title: '社保服务', url: '' },
+      { images: '../../images/bm_00.png', title: '大件\n垃圾回收', url: '../place_order/place_order' },
       { images: '../../images/bm_3.png', title: '求职招聘', url: '' },
-      { images: '../../images/bm_14.png', title: '家政服务', url: '../business/index?type=housekeeping' },
-      { images: '../../images/bm_15.png', title: '维修服务', url: '' },
       { images: '../../images/bm_8.png', title: '租房服务', url: '' },
+      { images: '../../images/bm_15.png', title: '维修服务', url: '' },
+      { images: '../../images/bm_14.png', title: '家政服务', url: '../business/index?type=housekeeping' },
+      { images: '../../images/bm_17.png', title: '居家养老', url: '' },
+      { images: '../../images/bm_17.png', title: '失物招领', url: '' },
+      { images: '../../images/bmb_7.png', title: '法律援助', url: '' },
+      { images: '../../images/bm_2.png', title: '社保服务', url: '' },
+
       { images: '../../images/bm_1.png', title: '水电气缴纳', url: '../payment/index' },
+      
       // { images: '../../images/bm_0.png', title: '商务服务', url:'../business/index?type=business'},
       // { images: '../../images/bm_1.png', title: '水电气缴纳', url: '../payment/index' },
       // { images: '../../images/bm_2.png', title: '社保服务', url: '' },

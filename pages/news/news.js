@@ -142,17 +142,6 @@ Page({
       })
       wx.hideLoading()
     }
-    // util.getJSON({ apiUrl: apiurl.news }, function (res) {
-    //   var result = res.data.result;
-    //   var news = that.data.news;
-    //   console.log(news)
-    //   console.log(res)
-    //   that.setData({
-    //     news: news.concat(result.list)
-    //   })
-      
-    //   wx.hideLoading()
-    // })
     
 
   },

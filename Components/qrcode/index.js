@@ -25,7 +25,7 @@ const utf16to8 = (str) => {
 
     return out
 }
-
+var radarImg=''
 Component({
     properties: {
         typeNumber: {
@@ -95,7 +95,6 @@ Component({
                 })
             },
         },
-
     },
     methods: {
         /**
@@ -122,10 +121,10 @@ Component({
                     this.ctx.fillRect(Math.round(cdx * tileW), Math.round(rdx * tileH), w, h)
                 })
             })
-
             this.ctx.draw()
-            // console.log(canvasId)
-            
+          // setTimeout(() => {
+          //   this.saveCanvas()
+          // }, 1000);
         },
         /**
          * 手指触摸后马上离开
@@ -134,11 +133,28 @@ Component({
             this.triggerEvent('click')
             console.log(11)
         },
+    saveCanvas() {
+      wx.canvasToTempFilePath({
+        canvasId: 'wux-qrcode',
+        success: (res) => {
+          console.log(res)
+          this.setData({
+            QRImgUrl: res.tempFilePath
+          })
+        },
+        fail(e){
+          console.log(e)
+        }
+      })
+    },
     },
     attached() {
         this.draw()
+     
     },
     detached() {
         this.ctx = null
     },
+    
+  
 })

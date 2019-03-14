@@ -304,14 +304,14 @@ function getJSON(form = {}, call_success) {
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
   var header = { 'content-type': 'application/json', 'channel': 'let', 'build': 0 } // 默认值
-  if (!form.hasOwnProperty("token")) {
-    header = {
-      'content-type': 'application/json', // 默认值
-      'token': that.getToken(),
-      'channel':'let',
-      'build':0
-    }
-  }
+  // if (!form.hasOwnProperty("token")) {
+  //   header = {
+  //     'content-type': 'application/json', // 默认值
+  //     'token': that.getToken(),
+  //     'channel':'let',
+  //     'build':0
+  //   }
+  // }
   wx.request({
     url: apiUrl,
     data: formData,
@@ -351,16 +351,15 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
   var that = this;
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
-  var header = {
-    'content-type': 'application/x-www-form-urlencoded; charset=UTF-8','channel': 'let','build': 0} // 默认值
-  if (!form.hasOwnProperty("token")) {
-    header = {
-      'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', // 默认值
-      'token': that.getToken(),
-      'channel': 'let',
-      'build': 0
-    }
-  }
+  var header = {'content-type': 'application/x-www-form-urlencoded; charset=UTF-8','channel': 'let','build': 0} // 默认值
+  // if (!form.hasOwnProperty("token")) {
+  //   header = {
+  //     'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', // 默认值
+  //     'token': that.getToken(),
+  //     'channel': 'let',
+  //     'build': 0
+  //   }
+  // }
   wx.request({
     url: apiUrl,
     data: formData,
@@ -664,21 +663,26 @@ function scan(){
           that.postJSON({ apiUrl: apiurl.action, data: { action: result.action[0].key, code: result.code } }, function (res2) {
             var result2 = res2.data.result;
             
-            var url = link[result2.control];
-            if (result2 = res2.data.result){
-              url = link[result2.control] + result2.params.order_id
-            } else if (result2.params.shop_id) {
-              url = link[result2.control] + result2.params.shop_id
-            }
+           
             // that.hideLoading()
             if (result2.control){
+              var controlContrast = getApp().globalData.controlContrast, url='';
+              for (var i in controlContrast) {
+                if (controlContrast[i].control == result2.control) {
+                  url = controlContrast[i].contrast
+                }
+              }
+              if (result2.params.order_id) {
+                url = url + result2.params.order_id
+              } else if (result2.params.shop_id) {
+                url = url + result2.params.shop_id
+              }
               wx.navigateTo({
                 url: url,
               })
             }else{
               that.alert(res2.data.message)
             }
-            
           })
         }
         

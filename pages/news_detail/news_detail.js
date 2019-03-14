@@ -19,12 +19,12 @@ Page({
   onLoad: function (options) {
     var that = this;
     
-    var data = { news_id: Number(options.id)}
-    if (options.id_name =="help_id"){
-      data = { help_id: Number(options.id) }
-    }
+    // var data = { news_id: Number(options.id)}
+    // if (options.id_name =="help_id"){
+    var  data = { help_id: Number(options.id) }
+    // }
     console.log(data)
-    util.getJSON({ apiUrl: apiurl[options.url], data: data}, function (res) {
+    util.getJSON({ apiUrl: apiurl.help_show, data: data}, function (res) {
       var result = res.data.result
       // var result = {
       //   content_source:"url",

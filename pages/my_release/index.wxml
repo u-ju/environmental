@@ -9,8 +9,8 @@
     <view class='con'>
       <view class='color4 size28 intro11'>{{news.title}}</view>
       <view class='flex_btw imagell'>
-        <image  src='{{news.thumb}}' mode='aspectFill'></image>
-        <view class='flex_col align_btw {{news.thumb.length==1?"apic": "color898989"}}'>
+        <image  src='{{news.thumb}}' mode='aspectFill' wx:if="{{news.thumb}}"></image>
+        <view class='flex_col align_btw {{news.thumb.length==1?"color898989": "apic"}}'>
           <view class='hidden3'>{{news.intro}}</view>
           <view class='{{news.status==1?"color44D5A2":"colorEA2C2C"}} right size22'>{{news.status_name}}</view>
         </view>

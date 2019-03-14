@@ -23,3 +23,6 @@ page{
 .marginb24{
   margin-bottom: 24rpx;
 }
+.width500{
+  width: 500rpx;
+}

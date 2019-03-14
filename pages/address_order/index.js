@@ -1,14 +1,15 @@
 // pages/address_order/index.js
+const app = getApp()
+var util = require('../../utils/util.js');
+var apiurl = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[
-      { choosed: 1 },
-      { choosed: 0 },
-      { choosed: 0 },
+    list: [
+
     ]
   },
 
@@ -16,64 +17,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.init()
   },
-  choose(e){
-    var list  = this.data.list
-    for(let i in list){
-      list[i].choosed=0
-    }
-    list[e.currentTarget.dataset.id]["choosed"]=1
-    this.setData({
-      list:list
+  choose(e) {
+    var list = this.data.list
+    var that = this;
+    console.log()
+    util.postJSON({ apiUrl: apiurl.shippingAddress_update, data: { address_id: e.currentTarget.dataset.id, default: 1 } }, function (res) {
+      util.alert(res.data.message)
+      that.init()
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  init() {
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.shippingAddress_index }, function (res) {
+      var result = res.data.result
 
+      that.setData({
+        list: result.list,
+      })
+      util.hideLoading()
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  detail(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '../address_edit/index?item=' + JSON.stringify(e.currentTarget.dataset.item),
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

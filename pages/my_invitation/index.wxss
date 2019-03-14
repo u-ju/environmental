@@ -43,3 +43,6 @@ background-color: white;
   top: 0;
   overflow: hidden;
 }
+.market-scroll-list{
+  height: 100%;
+}

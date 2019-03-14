@@ -44,30 +44,27 @@
     <!-- placeholder='点击输入详细地址' -->
     <input class='size28 color9' name='address' bindinput='input' data-contact='addresst'  disabled='{{disabled1}}' value='{{address}}'  ></input>
   </view>
-  <view class='item  flex padding0'>
+  <!-- <view class='item  flex padding0'>
     <text class='size28 color6'>入驻类型</text>
     <radio-group class="radio-group" bindchange="radioChange" data-type="type">
       <label class="radio color9" wx:for="{{type_val}}" wx:key="index">
           <radio disabled='{{disabled1}}' value="{{item.id}}" checked="{{item.tchecked}}"/>{{item.name}}
       </label>
     </radio-group>
-  </view>
+  </view> -->
   <view class='item  flex'>
     <text class='size28 color6'>商城类型</text>
-    <radio-group class="radio-group" bindchange="radioChange">
+    <input class='size28 color9' disabled='disabled' name='cate_id' value='{{title1}}' bindtap="onOpen1" ></input>
+    <text class='iconfont icon-jiantou color9'></text>
+    <!-- <radio-group class="radio-group" bindchange="radioChange">
     
-    <block wx:if="{{type==2}}">
-      
+    <block >
       <label class="radio color9" wx:for="{{shop_cate}}" wx:key="index">
           <radio value="{{item.id}}" disabled='{{disabled1}}' checked="{{item.tchecked}}"/>{{item.name}}
       </label>
     </block>
-    <block   wx:else >
-      <label class="radio color9" wx:for="{{tshop_cate}}" wx:key="index">
-          <radio value="{{item.id}}" disabled='{{disabled1}}' checked="{{item.tchecked}}"/>{{item.name}}
-      </label>
-    </block>
-    </radio-group>
+    
+    </radio-group> -->
   </view>
   <view class='item  flex align_center'>
     <text class='size28 color6'>商城描述</text>
@@ -81,7 +78,7 @@
         <image wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" src="{{item.upload_picture_list[0].path}}" mode="aspectFill"></image>
         <image wx:if="{{item.upload_picture_list[0].upload_percent == 100}}" src="{{item.upload_picture_list[0].path_server}}" mode="aspectFill"></image>
         <view class="upload_progress" wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_picture_list[0].upload_percent}}%</view>
-        <text class='del' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}">×</text>
+        <text class='del iconfont  icon-cuohao' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></text>
       </view>
       <view wx:else  class='picture_item' bindtap='uploadpic'  data-index="{{index}}">
         <view class='bgg flex_ard align_center'>
@@ -100,7 +97,7 @@
         <image wx:if="{{upload_picture_list.upload_percent < 100}}" src="{{upload_picture_list.path}}" mode="aspectFill"></image>
         <image wx:if="{{upload_picture_list.upload_percent == 100}}" src="{{upload_picture_list.path_server}}" mode="aspectFill"></image>
         <view class="upload_progress" wx:if="{{upload_picture_list.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg1">{{upload_picture_list.upload_percent}}%</view>
-        <text class='del' bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}">×</text>
+        <text class='del  iconfont  icon-cuohao' bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}">×</text>
       </view>
       <view class='picture_item' bindtap='uploadpic1' wx:if="{{!disabled1}}" data-index="{{index}}">
         <view class='bgg flex_ard align_center'>
@@ -186,3 +183,4 @@
 	    </view>
 	</view>
 </view>
+<wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="商城描述" options="{{ shop_cate }}" bind:close="onClose1" bind:change="onChange1" />

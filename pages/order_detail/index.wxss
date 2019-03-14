@@ -10,7 +10,7 @@ page{
   font-size: 28rpx;
 }
 .margt42{
-  margin-top: 42rpx;
+  margin-top: 22rpx;
 }
 .orderTitle{
   padding: 34rpx 40rpx;
@@ -67,3 +67,22 @@ page{
 .shitem .colorFE2C2C {
   margin:0 0;
 }
+.width600{
+  width: 600rpx;
+}
+.fkItem_goods_ms .icon-cuohao{
+  position: static;
+  font-size: 22rpx;
+}
+.size60{
+  font-size: 60rpx;
+}
+.radioinstallment image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.radioinstallment{
+height:50rpx;
+margin-left:60rpx;
+}
+

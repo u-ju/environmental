@@ -3,34 +3,29 @@ page{
   color: #444;
   font-size: 28rpx;
 }
-.top{
-  width:100%;
-  padding: 30rpx 0;
-  background:linear-gradient(0deg,rgba(153,228,171,1) 0%,rgba(77,215,163,1) 100%);
+.wux-tabs__tab--balanced .wux-tabs__tab-bar {
+  background-color: #4AD6A3 !important;
 }
-.top>view{
-  width: 50%;
-  color: white;
+.hkitem{
+  padding: 30rpx 32rpx 40rpx 32rpx;
+  border-bottom:  20rpx solid #EEEEEE;
+  /* height: 160rpx;   */
+}
+.btnhk{
+  width:160rpx;
+  height:70rpx;
+  background:rgba(74,214,163,1);
+  border-radius:35rpx;
+  line-height: 70rpx;
   text-align: center;
+  color: white;
+}
+.icon-jiantou{
   font-size: 28rpx;
 }
-.rightb{
-  border-right: 1px solid #fff;
+.text_right{
+  text-align: right;
 }
-.marginb{
-  margin-bottom: 12rpx;
-}
-.time{
-  padding: 18rpx 50rpx;
-  background-color: #EEEEEE;
-}
-.billItem{
-  padding: 30rpx 50rpx 16rpx 50rpx;
-  border-bottom: 1px solid #EEEEEE;
-}
-.marginr{
-  width: 170rpx;
-}
-.billItem .size36{
-  color: #444
+.margint{
+  margin: 20rpx 0 6rpx 0;
 }

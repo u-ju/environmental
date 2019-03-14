@@ -1,66 +1,90 @@
 // pages/my_order_detail/index.js
+const app = getApp()
+var util = require('../../utils/util.js');
+var apiurl = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    result:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // this.init(options.id)
+    this.setData({
+      order_id: options.id
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow(){
+    if (this.data.order_id){
+      this.init(this.data.order_id)
+    }
   },
+  init(order_id) {
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.userOrder_show + "?order_id="+order_id }, function (res) {
+      var result = res.data.result
+      
+      that.setData({
+        result: result,
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+      })
+      wx.hideLoading()
+    })
   },
+  click(e){
+    console.log(e)
+    var that = this;
+    var btn = {
+      cancel:'userOrder_cancel',
+      receive:'userOrder_receive',
+      comment:'url'
+    }
+    for(var i in btn){
+      // console.log(i, btn[i], apiurl[btn[i]])
+      if (e.currentTarget.dataset.key==i){
+        if (btn[i]=="url"){
+          var order_goods = that.data.result.order_goods, pjurl=''
+          for (var i in order_goods) {
+            pjurl = pjurl + "&comment[" + i + "][sku_id]=" + order_goods[i].sku_id
+          }
+          return wx.navigateTo({
+            url: '../comment/index?id=' + that.data.result.order_id + pjurl,
+          })
+        }
+        var apiurlnow = apiurl[btn[i]]
+        wx.showModal({
+          title: '提醒',
+          content: '是否' + e.currentTarget.dataset.name + "?",
+          cancelText: '否',
+          cancelColor: '#2EB354',
+          confirmText: '是',
+          confirmColor: '#444444',
+          success: function (res) {
+            if (res.confirm) {
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+              util.postJSON({ apiUrl: apiurlnow, data: { order_id: that.data.order_id } }, function (res) {
+                var result = res.data.result
+                util.alert(res.data.message)
+                wx.navigateBack()
+                wx.showLoading({
+                  title: '加载中',
+                })
+              })
+            } else {
+              console.log('用户点击取消')
+            }
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+          }
+        })
+      }
+    }
+    
+    
   }
 })

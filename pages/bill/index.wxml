@@ -1,36 +1,23 @@
 <!--pages/bill/index.wxml-->
-<view class='top flex align_center justify_center'>
-  <view class='rightb'>
-    <view class='marginb'>账单总金额</view>
-    <view>￥1223.14</view>
+<wux-tabs wux-class="bordered" controlled current="{{ key }}" bindchange="onTabsChange">
+    <block wx:for="{{ tabs }}" wx:key="key">
+        <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+    </block>
+</wux-tabs>
+<view>
+  <view class='hkitem flex_btw' wx:for="{{list}}" wx:key="index" bindtap='detail' data-source='{{item.source}}' data-source_ext='{{item.source_ext}}'>
+    <view class='flex_col_1 flex_btw'>
+      <view>日期：{{item.created_at}}      </view>
+      <view class='margint'>总金额：￥{{item.nper_amount}}</view>
+      <view>待还款： <text class='colorFE3434 size48'>￥{{item.remain_amount}}</text></view>
+    </view>
+    <view class='color898989 flex_col_1 flex_btw text_right'>
+      <view>详情 <text class='iconfont icon-jiantou'></text></view>
+      <view>
+        <view class='btnhk' wx:if="{{item.order_status==1}}" catchtap='bill' data-id='{{item.order_id}}'>立即还款</view>
+        <text wx:elif="{{item.order_status==2}}">已还清</text>
+      </view>
+    </view>
   </view>
-  <view>
-    <view class='marginb'>待还款金额</view>
-    <view>￥452.15</view>
-  </view>
-</view>
-<view class='time flex_btw align_center'>
-  <view class='year'>2019年</view>
-  <view class='month'>1月</view>
-</view>
-<view class='billItem flex'>
-  <view class='marginr'>01/17</view>
-  <view>
-    <view class='one-hidden'>小清新手工陶制餐具</view>
-    <view class='size36'>￥400</view>
-  </view>
-</view>
-<view class='billItem flex'>
-  <view class='marginr'>01/17</view>
-  <view>
-    <view class='one-hidden'>小清新手工陶制餐具</view>
-    <view class='size36'>￥400</view>
-  </view>
-</view>
-<view class='billItem flex'>
-  <view class='marginr'>01/17</view>
-  <view>
-    <view class='one-hidden'>小清新手工陶制餐具</view>
-    <view class='size36'>￥400</view>
-  </view>
+  <empty wx:if="{{list.length==0}}" />
 </view>

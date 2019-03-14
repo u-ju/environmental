@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "dialog": "../../Components/dialog/index",
+    "menu": "../../Components/menu/index",
+    "empty": "../../Components/empty/index",
+    "wux-popup": "../../Components/popup/index"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}

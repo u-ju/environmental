@@ -1,4 +1,6 @@
-<canvas class="wux-class" canvas-id="{{ canvasId }}" style="width: {{ width + 'px' }}; height: {{ height + 'px' }};" ></canvas>
+<canvas  wx:if="{{!radarImg}}" class="wux-class" canvas-id="{{ canvasId }}" style="width: {{ width + 'px' }}; height: {{ height + 'px' }};" ></canvas>
+<image wx:else src="{{radarImg}}" style="width: {{ width + 'px' }}; height: {{ height + 'px' }};" ></image>
 <view class='center'>
+
 <view  bindtap='onTap' class='savepic'>点击保存图片</view>
 </view>

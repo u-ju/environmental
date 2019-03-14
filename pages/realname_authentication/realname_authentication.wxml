@@ -22,7 +22,7 @@
       <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
       <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
       <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
-      <text class='del iconfont icon-ziyuanldpi' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"></text>
+      <text class='del iconfont icon-cuohao' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"></text>
     </view>
     <view wx:if="{{upload_picture_list.length<1}}" class='picture_item' bindtap='uploadpic' data-image="image">
       <view class='bgg flex_ard align_center'>
@@ -36,7 +36,7 @@
       <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
       <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
       <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
-      <text class='del iconfont icon-ziyuanldpi' bindtap='deleteImg' data-src='{{image}}' data-image="image1" style='display:{{isDel}}' data-index="{{index}}"></text>
+      <text class='del iconfont icon-cuohao' bindtap='deleteImg' data-src='{{image}}' data-image="image1" style='display:{{isDel}}' data-index="{{index}}"></text>
     </view>
     <view wx:if="{{upload_picture_list1.length<1}}" class='picture_item' bindtap='uploadpic' data-image="image1">
       <view class='bgg flex_ard align_center'>
@@ -51,7 +51,7 @@
       <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
       <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
       <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
-      <text class='del iconfont icon-ziyuanldpi' bindtap='deleteImg' data-image="image2" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"></text>
+      <text class='del iconfont icon-cuohao' bindtap='deleteImg' data-image="image2" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"></text>
     </view>
     <view wx:if="{{upload_picture_list2.length<1}}" class='picture_item' bindtap='uploadpic' data-image="image2">
       <view class='bgg flex_ard align_center'>
@@ -68,7 +68,7 @@
   <view class="commodity_screen" wx:if="{{showModalStatus}}"></view>
   <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
     <view class='flex_btw align_center head'>
-      <text class='iconfont icon-ziyuanldpi color6 size24' bindtap="hideModal"></text>
+      <text class='iconfont icon-cuohao color6 size24' bindtap="hideModal"></text>
       <text class='size32 color4'>确认信息</text>
       <text class='color5ABB96 size32' bindtap="hideModal">确定</text>
     </view>

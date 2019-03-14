@@ -62,7 +62,9 @@ Page({
      function (res) {
       var result = res.data.result;
        wx.hideLoading()
-       util.deplay_navigateTo("../address/index")
+       wx.navigateBack({
+         delta: 1
+       })
     },function (){
        that.setData({
          disabled: false

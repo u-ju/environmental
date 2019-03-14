@@ -1,18 +1,28 @@
 // pages/installment_repayment/index.js
+const app = getApp()
+var util = require('../../utils/util.js');
+var apiurl = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    result:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that  = this
+    util.getJSON({ apiUrl: apiurl.userNper_home }, function (res) {
+      var result = res.data.result;
+      that.setData({
+        result: result
+      })
 
+    })
   },
 
   /**

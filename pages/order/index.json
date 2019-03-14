@@ -1,8 +1,11 @@
 {
   "navigationBarTitleText": "我的订单",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50,
   "usingComponents": {
     "wux-popup": "../../Components/popup/index",
     "wux-tabs": "../../Components/tabs/index",
+    "empty": "../../Components/empty/index",
     "wux-tab": "../../Components/tab/index"
   }
 }

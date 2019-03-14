@@ -7,10 +7,7 @@ const link = {
   // block
   front_shop_index: '../shopping_mall/shopping_mall',//积分商家
   front_shop_settled_home: "../tenantsIndex/index",//商家入驻
-  // front_shop_settled_home: "../tenants/tenants",//商家入驻
-  // tag
   front_tshop_index:'../convenience_service/index',
-  // front_tshop_index: '../shopping_mall/shopping_mall?type=1',//便民服务
   front_video_index: '../video/index',//视频专区
   front_news_index: "../find/find",//发现
   front_vicinage_index: '../neighbourhood/neighbourhood',//邻里守望
@@ -21,7 +18,9 @@ const link = {
   front_garbage_ark_index: "../delivery_station/delivery_station",//投放站-地图
   front_wallet_balance_index: "../my_gold/my_gold",//我的环保金
   front_garbage_put_record_index: "../cumulative_delivery/cumulative_delivery",//累计投放
-  delivery_station_list: "../delivery_station_list/delivery_station_list",//投放站-列表
+  delivery_station_list: "../delivery_station_list/delivery_station_list",//投放站-列表 
+ 
+ 
   order_details_bill: "../order_details_bill/order_details_bill",//订单详情-发起人看到
   order_details: "../order_details/order_details",//订单详情-接单人看到
   

@@ -1,84 +1,38 @@
 <!--pages/order/index.wxml-->
 <wux-tabs wux-class="bordered" controlled current="{{ key }}" bindchange="onTabsChange">
-    <block wx:for="{{ tabs }}" wx:key="key">
-        <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+    <block wx:for="{{ tabs }}" wx:key="index">
+        <wux-tab key="{{ item.key }}" title="{{ item.name }}"></wux-tab>
     </block>
 </wux-tabs>
-<swiper current="{{ index }}" bindchange="onSwiperChange">
-        <swiper-item class='zitem'>
-          <!-- <checkbox-group bindchange="checkboxChange" >    -->
-            <view class='fkItem'  wx:for="{{list}}" wx:key="index">
+<swiper current="{{ index }}" bindchange="onSwiperChange" style='height:{{height}}rpx;'>
+        <swiper-item class='zitem' wx:for="{{ tabs }}" wx:key ="index">
+            <view class='fkItem' wx:for="{{list}}"  wx:key="index" wx:for-index="listindex" bindtap='detail' data-id='{{item.order_id}}'>
               
               <view class='flex_btw'>
-                <text class='color4 size28'>订单号：15623456889 </text>
-                <text class='color2EB354 size22'>待发货 </text>
+                <text class='color4 size28'>订单号：{{item.order_no}}</text>
+                <text class='color2EB354 size22'>{{item.order_status_name}} </text>
               </view>
-              <view class='fkItem_goods  flex'>
-                <image src='../../images/catering_test.png' class='goospic'></image>
+              <view class='fkItem_goods  flex' wx:for="{{item.order_goods}}" wx:for-item="order_goods" wx:key="index">
+                <image src='{{order_goods.thumb}}' class='goospic' mode='aspectFill'></image>
                 <view class='fkItem_goods_ms fhItem_goods_ms'>
-                  <view class='color4 size28 one-hidden'>小清新手工陶制餐具</view>
-                  <view class='colorFE2C2C size28'>￥110.25 X 2期</view>
-                  <view class='flex_reverse size28'>
-                    <!-- <view class='color989898 btnyqx'>已取消</view> -->
-                    <view class='color989898 btnck' bindtap='cancle' >取消订单</view>
-                  </view>
+                  <view class='color4 size28 one-hidden'>{{order_goods.spu_name}}</view>
+                  <view class='colorFE2C2C size28'>{{order_goods.real_price}}</view>
+                  
                 </view>
+                
               </view>
               
-              <!-- <view class='choose' bindtap='choose' data-id="{{index}}" data-choosed="{{item.choosed}}">
-                <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
-                <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
-              </view> -->
-            </view>
-            
-          <!-- </checkbox-group> -->
-          <!-- <view class='footer'>
-            <view class='center size28'>合计： <text class='colorFE2C2C'>首付220.5元</text></view>
-            <view class='btnsure size32 '>结算</view>
-          </view> -->
-        </swiper-item>
-        <swiper-item class='zitem'> 
-          <view class='fkItem  shitem'>
-            <view class='color4 size28'>订单号：15623456889</view>
-            <view class='fkItem_goods flex'>
-              <image src='../../images/catering_test.png' class='goospic'></image>
-              <view class='fkItem_goods_ms'>
-                <view class='color4 size28 one-hidden'>小清新手工陶制餐具</view>
-                <view class='colorFE2C2C size28'>￥110.25 X 2期</view>
-                <view class='flex size28'>
-                  <view class='color989898 btnck marginr57'  bindtap='open2'>查看物流</view>
-                  <view class='color989898 btnck' bindtap='open1'>确认收货</view>
-                </view>
+              <view class='flex_reverse size28'>
+                <block  wx:for="{{item.button_arr}}" wx:for-item="button_arr" wx:key="index">
+                    <view class='color989898 btnck'  catchtap='{{button_arr.key}}' data-listindex='{{listindex}}' data-id='{{item.order_id}}' >{{button_arr.name}}</view>
+                </block>
               </view>
             </view>
-          </view>
-            
-          
+        <empty wx:if="{{list.length==0}}" />
         </swiper-item>
-        <swiper-item class='zitem'> 
-          <view class='fkItem  shitem'>
-            <view class='flex_btw'>
-            <text class='color4 size28'>订单号：15623456889 </text>
-            
-            <text class='color2EB354 size22'>交易成功 </text>
-            </view>
-            <view class='fkItem_goods flex'>
-              <image src='../../images/catering_test.png' class='goospic'></image>
-              <view class='fkItem_goods_ms'>
-                <view class='color4 size28 one-hidden'>小清新手工陶制餐具</view>
-                <view class='colorFE2C2C size28'>￥110.25 X 2期</view>
-                <view class='flex size28'>
-                  <view class='color989898 btnck marginr57'>再来一单 </view>
-                  <view class='color989898 btnck' >立即评价</view>
-                </view>
-              </view>
-            </view>
-          </view>
-            
-          
-        </swiper-item>
+        
 </swiper>
-<wux-popup closable visible="{{ visible1 }}"  bind:close="onClose1" bind:closed="onClosed1">
+<wux-popup closable visible="{{ visible1 }}"  bind:close="onClose1" >
     <view class='center shouhuo'>
       <image src='../../images/sh.png' class='shouhuopic'></image>
       <view class='size36 color4'>确认收货</view>
@@ -113,13 +67,13 @@
   </block>
 </view>
 </wux-popup>
-<wux-popup closable visible="{{ visible3 }}"  bind:close="onClose3" bind:closed="onClosed3">
+<wux-popup closable visible="{{ visible3 }}"  bind:close="onClose3">
     <view class='center shouhuo'>
       <image src='../../images/shouhuo@2x.png' class='shouhuopic'></image>
       <view class='size30 color2EB354'>商品已确认签收</view>
     </view>
     <view class='flex_btw shbtnitem'>
-      <view class='shbtn'>立即评价</view>
-      <view class='shbtn'>返回首页</view>
+      <view class='shbtn' bindtap='comment'>立即评价</view>
+      <view class='shbtn' bindtap='backindex'>返回首页</view>
     </view>
 </wux-popup>

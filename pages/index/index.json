@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "奥特利环保",
   "usingComponents": {
-    "menu": "../../Components/menu/index"
+    "menu": "../../Components/menu/index",
+    "wux-cascader": "../../Components/cascader/index"
   }
 }

@@ -31,6 +31,7 @@ swiper{
   border-radius:5rpx;
   padding: 18rpx;
   margin-bottom: 45rpx;
+  position: relative;
 }
 .zitem{
   padding: 10rpx 32rpx 0 32rpx;
@@ -100,8 +101,9 @@ border:4rpx solid rgba(191,191,191,1);
 border-radius:15rpx;
 text-align: center;
 line-height: 50rpx;
-
+margin-left: 10rpx;
 }
+
 .btnyqx{
   border-color: transparent;
 }
@@ -215,5 +217,8 @@ color:rgba(46,179,84,1);
 }
 .flex_reverse{
   display: flex;
-  flex-direction: row-reverse
+  flex-direction: row-reverse;
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
 }

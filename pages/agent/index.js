@@ -15,7 +15,7 @@ Page({
       { image: "../../images/gold.png", text: '余额支付', checked: 'true' },
       { image: "../../images/weixin@2x.png", text: '环保金支付', checked: '' }
     ],
-    value: '',
+    value: 'hhh',
     fgColor: 'black',
   },
 
@@ -132,14 +132,16 @@ Page({
   },
   open3(e) {
     console.log(e.currentTarget.dataset.invite)
-    if (e.currentTarget.dataset.invite==''){
-      return false
-    }
+    // if (e.currentTarget.dataset.invite==''){
+    //   return false
+    // }
     this.setData({
       visible3: true,
       value: e.currentTarget.dataset.invite
     })
+    
   },
+  
   close3() {
     this.setData({
       visible3: false,

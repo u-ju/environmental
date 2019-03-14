@@ -145,6 +145,9 @@ page{
 .size40{
   font-size: 40rpx;
 }
+.size48{
+  font-size: 48rpx;
+}
 .size50{
   font-size: 50rpx;
 }
@@ -240,6 +243,9 @@ page{
 }
 .colorFE2C2C{
   color: #FE2C2C
+}
+.colorFE3434{
+  color: #FE3434
 }
 .line-through{
   text-decoration: line-through

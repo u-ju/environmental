@@ -2,6 +2,12 @@
 const basePath = 'https://wyhb.zhanghi.cn/api';
 const apiList = {
 
+  // GET 控制对照
+  // GET 控制对照
+
+  controlContrast: basePath + '/front/controlContrast', 
+
+
   // PayController
   // POST 第三方支付信息创建
   vendor: basePath + '/common/pay/vendor', 
@@ -281,10 +287,18 @@ const apiList = {
 
   // UserOrderController 用户商品订单管理
 
-  // POST  订单列表
+  // GET  订单列表
   userOrder_index: basePath + '/front/userOrder/index',
-  // POST 订单详情
+  // GET 订单详情
   userOrder_show: basePath + '/front/userOrder/show',
+  // POST  订单取消
+  userOrder_cancel: basePath + '/front/userOrder/cancel',
+  // POST 订单收货
+  userOrder_receive: basePath + '/front/userOrder/receive',
+  // POST  订单评价
+  userOrder_comment: basePath + '/front/userOrder/comment',
+  // POST 订单删除
+  userOrder_destroy: basePath + '/front/userOrder/destroy',
 
   // BankCardController 银行卡管理
 
@@ -294,5 +308,17 @@ const apiList = {
   bankCard_index: basePath + '/front/bankCard/index',
   // POST 银行卡添加
   bankCard_destroy: basePath + '/front/bankCard/destroy',
+
+
+  // UserNperController 用户分期中心
+
+  // GET  分期信息
+  userNper_home: basePath + '/front/userNper/home',
+  // GET  账单列表
+  userNper_orderIndex: basePath + '/front/userNper/orderIndex',
+  // GET  账单详情
+  userNper_orderShow: basePath + '/front/userNper/orderShow?order_id=',
+  // GET  账单还款列表
+  userNper_repaymentIndex: basePath + '/front/userNper/repaymentIndex?order_id=',
 }
 module.exports = apiList;

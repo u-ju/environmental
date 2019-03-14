@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "分期还款",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "wux-tabs": "../../Components/tabs/index",
+    "wux-tab": "../../Components/tab/index",
+    "empty": "../../Components/empty/index"
+  }
 }

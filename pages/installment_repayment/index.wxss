@@ -1,6 +1,7 @@
 /* pages/installment_repayment/index.wxss */
 page{
   color: white;
+  font-size: 28rpx;
 }
 .card{
   width:626rpx;
@@ -20,7 +21,7 @@ page{
 }
 .flex_col{
   justify-content: space-between;
-  padding: 60rpx 0 40rpx 0;
+  padding: 60rpx 0 10rpx 0;
 }
 .xian{
   width:240rpx;
@@ -39,4 +40,7 @@ page{
 .next{
   padding: 44rpx 44rpx;
   border-bottom: 20rpx solid #EEEEEE;
+}
+.marginb10{
+  margin-bottom: 10rpx;
 }

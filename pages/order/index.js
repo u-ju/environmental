@@ -1,10 +1,14 @@
 // pages/order/index.js
+const app = getApp()
+var util = require('../../utils/util.js');
+var apiurl = require('../../utils/api.js');
 Page({
   data: {
     visible1: false,
     visible2: false,
     visible3: false,
-    current: '2',
+    current: '0',
+    height:1100,
     axis: [
       {
         time: '2018-2-15',
@@ -37,60 +41,94 @@ Page({
       { choosed: 0 },
       { choosed: 0 },
     ],
-    tabs: [
+    tabs: [],
+    page: {},
+    list:[],
+    receiveid:'',
+    order_id:[]
+  },
+  onLoad(e){
+    // console.log(app.globalData.config)
+    // app.globalData.config.order_info_search_status
+    util.loading()
+    var order_info_search_status = [
       {
-        key: '1',
-        title: '待发货',
-        content: 'Content of tab 1',
+        "id": "0",
+        "name": "待发货"
       },
       {
-        key: '2',
-        title: '待收货',
-        content: 'Content of tab 2',
+        "id": "1",
+        "name": "待收货"
       },
       {
-        key: '3',
-        title: '待评价',
-        content: 'Content of tab 3',
+        "id": "2",
+        "name": "已完成"
       },
       {
-        key: '4',
-        title: '分期还款',
-        content: 'Content of tab 3',
+        "id": "3",
+        "name": "已关闭"
       },
-    ],
+      {
+        "id": "4",
+        "name": "待评价"
+      }
+    ]
+    order_info_search_status[order_info_search_status.length] = {
+      "id": "5",
+      "name": "全部"
+    }
+    for (var i in order_info_search_status){
+      order_info_search_status[i]["key"] = order_info_search_status[i]["id"]
+    }
+    this.setData({
+      tabs:order_info_search_status
+    })
+    // this.init()
+    if (e.source_ext){
+      console.log(JSON.parse(e.source_ext))
+      this.setData({
+        order_id: JSON.parse(e.source_ext),
+        current:'5',
+        index:'5',
+        key:'5',
+        status:5
+      })
+    }
   },
   onChange(e) {
-    console.log('onChange', e)
     this.setData({
       current: e.detail.key,
     })
   },
   onTabsChange(e) {
-    console.log('onTabsChange', e)
     const { key } = e.detail
     const index = this.data.tabs.map((n) => n.key).indexOf(key)
-
+    
     this.setData({
       key,
       index,
     })
   },
   onSwiperChange(e) {
-    console.log('onSwiperChange', e)
+    util.loading()
     const { current: index, source } = e.detail
     const { key } = this.data.tabs[index]
-
+    
     if (!!source) {
       this.setData({
         key,
         index,
       })
     }
+    this.setData({
+      status: this.data.tabs[index].id
+    })
+    this.init(this.data.tabs[index].id)
   },
-  open1() {
+  receive(e) {
     this.setData({
       visible1: true,
+      receiveid: e.currentTarget.dataset.id
     })
   },
   open2() {
@@ -103,13 +141,25 @@ Page({
       visible3: true,
     })
   },
+  // 确认收货
   close1() {
-    this.setData({
-      visible1: false,
-      visible3: true,
+    var that = this;
+    util.postJSON({ apiUrl: apiurl.userOrder_receive, data: { order_id: that.data.receiveid } }, function (res) {
+      var result = res.data.result
+      util.alert(res.data.message)
+      that.setData({
+        visible1: false,
+        visible3: true,
+      })
+
+    that.init(that.data.status)
+      wx.hideLoading()
     })
+    
+
   },
   close2() {
+    
     this.setData({
       visible2: false,
     })
@@ -120,26 +170,27 @@ Page({
     })
   },
   onClose(key) {
-    console.log('onClose')
     this.setData({
       [key]: false,
     })
   },
   onClose1() {
-    this.onClose('visible1')
+    console.log('onClose1')
+    this.setData({
+      visible1: false,
+    })
   },
   onClose3() {
-    this.onClose('visible3')
+    this.setData({
+      visible3: false,
+    })
   },
   onClose2() {
-    this.onClose('visible2')
+    this.setData({
+      visible2: false,
+    })
   },
-  onClosed1() {
-    console.log('onClosed')
-  },
-  onClosed3() {
-    console.log('onClosed')
-  },
+ 
   choose(e) {
     var list = this.data.list
     
@@ -148,7 +199,8 @@ Page({
       list: list
     })
   },
-  cancle(){
+  cancel(e){
+    var that = this;
     wx.showModal({
       title: '提醒',
       content: '是否确定取消订单？',
@@ -159,11 +211,139 @@ Page({
       success: function (res) {
         if (res.confirm) {
           console.log('用户点击确定')
+          that._cancel(e.currentTarget.dataset.id)
         } else {
           console.log('用户点击取消')
         }
 
       }
     })
+  },
+  _cancel(order_id) {
+    var that = this;
+    util.postJSON({ apiUrl: apiurl.userOrder_cancel, data: { order_id: order_id } }, function (res) {
+      var result = res.data.result
+      util.alert(res.data.message)
+      // that.setData({
+      //   result: result
+      // })
+      that.init(that.data.status)
+      wx.hideLoading()
+    })
+  },
+  init(status = this.data.tabs[0]["id"],page = 1) {
+    var that = this,plurl='';
+    if (status == that.data.tabs.length-1){
+      status=''
+      if (that.data.order_id.length>0){
+        var order_id = that.data.order_id
+        for (var i in order_id){
+          plurl = plurl + "&order_id[" + i + "]=" + order_id[i]
+        }
+      }
+    }
+    
+    util.getJSON({ apiUrl: apiurl.userOrder_index + "?page=" + page + "&status=" + status + plurl }, function (res) {
+      var result = res.data.result
+      // console.log(result)
+      var list = result.list
+      if (page != 1) {
+        list = that.data.list.concat(list)
+      }
+      that.setData({
+        list: list,
+        page: result.page,
+        last: false,
+        height: list.length*290
+      })
+      wx.hideLoading()
+    })
+  },
+  again_buy(){
+    wx.navigateTo({
+      url: '../installment/installment',
+    })
+  },
+
+  comment(e) {
+    var id = this.data.receiveid;
+    var that = this;
+    wx.showLoading()
+    if (e.currentTarget.dataset.id){
+      id = e.currentTarget.dataset.id
+    }
+    util.getJSON({ apiUrl: apiurl.userOrder_index + "?order_id[0]=" + id  }, function (res) {
+      var order_goods = res.data.result.list[0].order_goods, pjurl=''
+       
+        for (var i in order_goods){
+          pjurl = pjurl +"&comment["+i+"][sku_id]="+order_goods[i].sku_id
+        }
+      console.log(pjurl)
+      wx.navigateTo({
+        url: '../comment/index?id=' + id+pjurl,
+      })
+        wx.hideLoading()
+      })
+    // var order_goods = this.data.list[e.currentTarget.dataset.listindex].order_goods
+    
+    
+    
+  },
+  backindex() {
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  },
+  detail(e){
+    // console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../my_order_detail/index?id=' + e.currentTarget.dataset.id,
+    })
+  },
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.userOrder_index + "?page=" + 1 + "&status=" + that.data.status }, function (res) {
+      var result = res.data.result
+      // console.log(result)
+      var list = result.list
+      
+      that.setData({
+        list: list,
+        page: result.page,
+        last: false,
+        height: list.length * 300
+      })
+      // 隐藏导航栏加载框
+      wx.hideNavigationBarLoading();
+      // 停止下拉动作
+      wx.stopPullDownRefresh();
+      wx.hideLoading()
+    })
+
+  },
+  
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+      that.init(Number(that.data.page.current_page) + 1, that.data.status)
+    } else {
+      that.setData({
+        last: true
+      })
+      wx.hideLoading()
+    }
+  },
+  onShow(){
+    this.init(this.data.status)
   }
 })

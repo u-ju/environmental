@@ -2,22 +2,26 @@
 <view class='card size28 flex_btw'>
   <view class='flex_col'>
     <view>待还总金额（元）</view>
-    <view class='size60'>452.15</view>
+    <view class='size60'>{{result.nper_amount}}</view>
     <view class='xian'></view>
-    <view>到期时间：2019.5.15</view>
+    <view><view class='marginb10'>分期总金额 </view>￥{{result.remain_amount}}</view>
   </view>
   <image src='../../images/payment_i.png' class='payment_i'></image>
 </view>
-<view class='btn size32 center'>立即还款</view>
-<view class='flex_btw align_center next'>
-  <text class='color4'>账单查询</text>
-  <text class='iconfont icon-jiantou color9'></text>
+<view class='btn size32 center'><navigator  url='../bill/index?current=0'>查看详情</navigator></view>
+<view class=' next'>
+  <navigator  url='../bill/index?current=1' class='flex_btw align_center'>
+    <text class='color4'>账单查询</text>
+    <text class='iconfont icon-jiantou color9'></text>
+  </navigator>
 </view>
-<view class='flex_btw align_center next'>
-  <text class='color4'>历史账单</text>
-  <text class='iconfont icon-jiantou color9'></text>
+<view class=' next'>
+  <navigator  url='../bill/index?current=2' class='flex_btw align_center'>
+    <text class='color4'>历史账单</text>
+    <text class='iconfont icon-jiantou color9'></text>
+  </navigator>
 </view>
-<view class='flex_btw align_center next'>
+<!-- <view class='flex_btw align_center next'>
   <text class='color4'>分期记录</text>
   <text class='iconfont icon-jiantou color9'></text>
-</view>
+</view> -->

@@ -1,6 +1,17 @@
 {
-  "pages":[ 
+  "pages":[
     "pages/index/index",
+    "pages/bill/index",
+    "pages/payment_details/index",
+    "pages/installment_repayment/index",
+    
+    
+    
+    
+    "pages/my_invitation/index",
+    "pages/history/index",
+    "pages/order/index",
+    "pages/installment_details/installment_details",
     "pages/my_paymentGoods/index",
     "pages/my_bankcard/index",
     "pages/my_bankcard_add/index",
@@ -10,22 +21,20 @@
     "pages/installment/installment",
     "pages/my_order_detail/index",
     "pages/agent/index",
-    "pages/my_invitation/index",
-    "pages/history/index",
-    "pages/price_information/price_information",
+    "pages/my_release/index",
     "pages/reimbursement/index",
     "pages/tenantsIndex/index",
-    "pages/my_release/index",
     "pages/neighbourhood_release/index",
     "pages/neighbourhood/neighbourhood",
     "pages/realname_authentication/realname_authentication",
-    "pages/bill/index",
-    "pages/installment_repayment/index",
+    
+
+
     "pages/ban/index",
     "pages/tenants/tenants",
     "pages/order_detail/index",
-    "pages/installment_details/installment_details",
-    "pages/order/index",
+    
+    
     
     "pages/comment/index",
     

@@ -1,7 +1,6 @@
 <!--index.wxml-->
-<!-- <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">授权登录</button> -->
+
 <block wx:if="{{token}}" >
-<!-- <menu hidden id='menu' bind:addEvent="_addEvent" /> -->
 <import src="../../Components/tab-bar/tab-bar.wxml"/>
 <template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
 <view class='indextop flex_btw align_center'>
@@ -21,16 +20,16 @@
     <image src='../../images/video_cz.png' class='search_pic'></image>
   </view>
 </view>
+
+
 <view class='bg' wx:if="{{tag.length>0}}">
 <view class="container">
   <view class='banner'>
     
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}">
         <block wx:for="{{banner}}" wx:key="index">
-          <swiper-item bindtap='link' data-link='{{item.attach.control}}'>
-            <!-- <navigator url="{{item.link}}" hover-class="navigator-hover"> -->
+          <swiper-item bindtap='link' data-link='{{item.attach.control}}' data-params='{{item.attach.params}}'>
               <image src="{{item.image}}" class="slide-image" />
-            <!-- </navigator>  -->
           </swiper-item>
         </block>
     </swiper>
@@ -42,7 +41,6 @@
         <image  mode='aspectFill' src='{{item.image}}'></image>
         <view class='flex_col' huhu="{{index}}">
           <view class='size26 relative'>{{item.title}}
-          <!-- <view class='red_cricle' wx:if="{{index==1}}"></view> -->
           </view>
           <view class='size22'>{{item.intro}}</view>
         </view>
@@ -64,14 +62,13 @@
 </view>
 <view class="ard_index" bindtap='link' data-link='installment'>
 <!--  -->
-  <image src="../../images/ard_index.png" />
+  <image src="{{result.nper.image}}" />
 </view>
 <view class='bg marginfff'>
   <view class="container over_hid flex_btw">
       <view class='index_putin border_right left'>
         <view class='size28 color3 flex'>
           <text >{{user.put_stat.title}}</text>
-          <!-- <navigator url='../cumulative_delivery/cumulative_delivery?time={{user.put_stat.value}}'> -->
           <view class='wallet color3 index_putin_right' bindtap='link' data-link='{{user.put_stat.button.attach.control}}' data-time='{{user.put_stat.value}}'>
             {{user.put_stat.button.title}}
           </view>
@@ -103,27 +100,11 @@
   <view class="container ">
     <view class='flex_btw padding26'>
       <view class='size28 color3'>联盟商家推荐</view>
-      <!-- <view class='color102 flex align_center'  bindtap='link' data-link='{{garbage.button.attach.control}}'>
-        <image class='location' src='{{garbage.button.icon}}'></image> 
-        <text class='color6'>{{garbage.button.title}}</text>
-      </view> -->
     </view>
-    <!-- <view class='flex_btw wrap '>
-     <view class='flex goods' wx:for='{{garbage.cate}}' wx:key="index">
-      <view class='goods_cri'>
-        <image  mode='aspectFill' src='{{item.image}}'></image>
-      </view>
-      <view class='color6 flex_col'>
-        <view class='size26 '>{{item.title}}</view>
-       <view class='size22'>{{item.intro}}</view>
-      </view>
-     </view>
-    </view> -->
     <view class='banner recommended' >
       <swiper   interval="5000" autoplay="{{autoplay}}" duration="{{duration}}"  >
           <block wx:for="{{shop_ad.length/3}}" wx:key="index" wx:for-item="num">
             <swiper-item class='flex_btw'>
-            <!-- <view>{{num}}</view> -->
               <view wx:for="012" class='item_lb_pic' wx:key="index" wx:for-item="image" bindtap='shopdetail' data-shop_id='{{shop_ad[(num-0)*3+(image-0)].shop_id}}'>
                 <image   src="{{shop_ad[(num-0)*3+(image-0)].thumb}}" class="tuijian_image" />
                 <view class='center color6'>{{shop_ad[(num-0)*3+(image-0)].title}}</view>
@@ -134,6 +115,17 @@
     </view>
   </view>
 </view>
+<view class="container ">
+  <view class='flex_btw padding26'>
+    <view class='size28 color3'>每周推荐</view>
+  </view>
+  <view class='recommended'>
+    <block wx:for="{{result.week_ad}}" wx:key ="index">
+      <image src="{{item.image}}" class="slide-image" />
+    </block>
+    
+  </view>
+</view>
 </block>
 <view class='login' wx:else>
   <view class='miaoshu'>登录后享受更多功能</view>
@@ -142,3 +134,4 @@
       <text>授权登录</text>
   </button>
 </view>
+<wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="所在地区" options="{{ shop_cate }}" bind:close="onClose1" bind:change="onChange1" />

@@ -63,6 +63,19 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  onOpen1() {
+    console.log("sssss")
+    this.setData({ visible1: true })
+  },
+  onClose1() {
+    this.setData({ visible1: false })
+  },
+  onChange1(e) {
+    this.setData({ title1: e.detail.options.map((n) => n.label).join('-'), cate_id: e.detail.options[e.detail.options.length - 1].id })
+    console.log('onChange1', e.detail)
+    wx.setStorageSync("cate_idt", e.detail.options[e.detail.options.length-1].id)
+    wx.setStorageSync("title1t", e.detail.options.map((n) => n.label).join('-'))
+  },
   onLoad: function (options) {
   
     var that = this;
@@ -77,9 +90,19 @@ Page({
         result[arr[a]][i]["tchecked"]=false
       }
     }
-      
+    var shop_cate = result.shop_cate, tshop_cate = result.tshop_cate
+      for (var i in shop_cate) {
+        shop_cate[i]["value"] = shop_cate[i]["id"]
+        shop_cate[i]["label"] = shop_cate[i]["name"]
+        if (shop_cate[i]["children"] && shop_cate[i]["children"].length > 0) {
+          for (var a in shop_cate[i].children) {
+            shop_cate[i]["children"][a]["value"] = shop_cate[i]["children"][a]["id"]
+            shop_cate[i]["children"][a]["label"] = shop_cate[i]["children"][a]["name"]
+          }
+        }
+      }
       that.setData({
-        shop_cate: result.shop_cate,
+        shop_cate: shop_cate,
         tshop_cate: result.tshop_cate,
         type_val: result.shop_type,
         type:''
@@ -101,59 +124,54 @@ Page({
         }
         var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
 
-        for (var a in type_val){
-          type_val[a]["tchecked"]=false
-          if (type_val[a].id == result.type){
-            type_val[a]["tchecked"] = true
-          }
-        }
-        that.setData({
-          type_val: type_val,
-
-        })
-        if (result.type==1){
-          for (var a in tshop_cate) {
-            tshop_cate[a]["tchecked"] = false
-            if (tshop_cate[a].id == result.cate_id) {
-              tshop_cate[a]["tchecked"] = true
-            }
-          }
-        }
-        if (result.type == 2) {
-          for (var a in shop_cate) {
-            shop_cate[a]["tchecked"] = false
-            if (shop_cate[a].id == result.cate_id) {
-              shop_cate[a]["tchecked"] = true
-            }
-          }
-        }
-        that.setData({
-          tshop_cate: tshop_cate,
-          shop_cate: shop_cate
-        })
+        // for (var a in type_val){
+        //   type_val[a]["tchecked"]=false
+        //   if (type_val[a].id == result.type){
+        //     type_val[a]["tchecked"] = true
+        //   }
+        // }
+        // that.setData({
+        //   type_val: type_val,
+        // })
+        // if (result.type==1){
+        //   for (var a in tshop_cate) {
+        //     tshop_cate[a]["tchecked"] = false
+        //     if (tshop_cate[a].id == result.cate_id) {
+        //       tshop_cate[a]["tchecked"] = true
+        //     }
+        //   }
+        // }
+        // if (result.type == 2) {
+        //   for (var a in shop_cate) {
+        //     shop_cate[a]["tchecked"] = false
+        //     if (shop_cate[a].id == result.cate_id) {
+        //       shop_cate[a]["tchecked"] = true
+        //     }
+        //   }
+        // }
         
         that.setData({
+          tshop_cate: tshop_cate,
+          shop_cate: shop_cate,
           shop_id: options.shop_id,
-          disabled1:true,
           result: result,
+          title1: result.cate_name,
           address: result.address,
           area_id: result.area_id,
           area_id_val: result.area_id,
           areaSelectedStr: result.area_name,
           contact: result.contact,
-          // images: result.images,
           intro: result.intro,
           latitude: result.latitude,
-          // license: result.license,
           longitude: result.longitude,
           shop_id: result.shop_id,
           status: result.status,
           status_name: result.status_name,
-          // thumb: result.thumb,
           title: result.title,
-          type: result.type,
+          // type: result.type,
           type_name: result.type_name,
           image: image,
+          cate_id: result.cate_id,
           upload_picture_list: upload_picture_list
         })
         wx.hideLoading()
@@ -166,43 +184,42 @@ Page({
       ], upload_picture_list = wx.getStorageSync("upload_picture_list")||[]
       
       var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
-      for (var a in type_val) {
-        type_val[a]["tchecked"] = false
-        if (type_val[a].id == wx.getStorageSync("typet")) {
-          type_val[a]["tchecked"] = true
-        }
-      }
-      if (wx.getStorageSync("typet")  == 1) {
-        for (var a in tshop_cate) {
-          tshop_cate[a]["tchecked"] = false
-          if (tshop_cate[a].id == wx.getStorageSync("cate_idt")) {
-            tshop_cate[a]["tchecked"] = true
-          }
-        }
-      }
-      if (wx.getStorageSync("typet") == 2) {
-        for (var a in shop_cate) {
-          shop_cate[a]["tchecked"] = false
-          if (shop_cate[a].id == wx.getStorageSync("cate_idt")) {
-            shop_cate[a]["tchecked"] = true
-          }
-        }
-      }
-      console.log(image)
+      // for (var a in type_val) {
+      //   type_val[a]["tchecked"] = false
+      //   if (type_val[a].id == wx.getStorageSync("typet")) {
+      //     type_val[a]["tchecked"] = true
+      //   }
+      // }
+      // if (wx.getStorageSync("typet")  == 1) {
+      //   for (var a in tshop_cate) {
+      //     tshop_cate[a]["tchecked"] = false
+      //     if (tshop_cate[a].id == wx.getStorageSync("cate_idt")) {
+      //       tshop_cate[a]["tchecked"] = true
+      //     }
+      //   }
+      // }
+      // if (wx.getStorageSync("typet") == 2) {
+      //   for (var a in shop_cate) {
+      //     shop_cate[a]["tchecked"] = false
+      //     if (shop_cate[a].id == wx.getStorageSync("cate_idt")) {
+      //       shop_cate[a]["tchecked"] = true
+      //     }
+      //   }
+      // }
       that.setData({
         contact: wx.getStorageSync("contactt"),
         title: wx.getStorageSync("titlet"),
         address: wx.getStorageSync("addresst"),
         intro: wx.getStorageSync("introt"),
-        // share_mobile: wx.getStorageSync("share_mobilet"),
         type_val: type_val,
         shop_cate: shop_cate,
         tshop_cate: tshop_cate,
         image: image,
         upload_picture_list: upload_picture_list,
-        type: wx.getStorageSync("typet"),
+        title1: wx.getStorageSync("title1t"),
         cate_id:wx.getStorageSync("cate_idt"),
-        areaSelectedStr: wx.getStorageSync('areaSelectedStrt')
+        areaSelectedStr: wx.getStorageSync('areaSelectedStrt'),
+        area_id_val: wx.getStorageSync('area_idt')
       })
       
     }
@@ -237,17 +254,17 @@ Page({
   },
   radioChange: function (e) {//入驻类型选择
   var that =this;
-    if (e.currentTarget.dataset.type=="type"){
-      that.setData({
-        type: e.detail.value
-      })
-      wx.setStorageSync('typet', e.detail.value)
-    }else{
-      that.setData({
-        cate_id: e.detail.value
-      })
-      wx.setStorageSync('cate_idt', e.detail.value)
-    }
+    // if (e.currentTarget.dataset.type=="type"){
+    //   that.setData({
+    //     type: e.detail.value
+    //   })
+    //   wx.setStorageSync('typet', e.detail.value)
+    // }else{
+    //   that.setData({
+    //     cate_id: e.detail.value
+    //   })
+    //   wx.setStorageSync('cate_idt', e.detail.value)
+    // }
     
   },
  
@@ -546,6 +563,7 @@ Page({
           area_id_val: that.data.cityObjects[index]["area_id"]
         });
         wx.setStorageSync('areaSelectedStrt', areaSelectedStr)
+        wx.setStorageSync('area_idt', that.data.cityObjects[index]["area_id"])
         that.cascadeDismiss();
         return;
       }
@@ -608,6 +626,7 @@ Page({
       area_id_val: that.data.townObjects[index]["area_id"]
     });
     wx.setStorageSync('areaSelectedStrt', areaSelectedStr)
+    wx.setStorageSync('area_idt', that.data.townObjects[index]["area_id"])
     this.cascadeDismiss();
   },
   currentChanged: function (e) {
@@ -674,7 +693,7 @@ Page({
     var data = e.detail.value;
     data.area_id = that.data.area_id_val
     // data.token = util.getToken()
-    data.type = that.data.type
+    data.type = 2
     data.cate_id = that.data.cate_id
     data["longitude"] = that.data.longitude
     data["latitude"] = that.data.latitude
@@ -701,9 +720,10 @@ Page({
       wx.setStorageSync("titlet", '')
       wx.setStorageSync("addresst", '')
       wx.setStorageSync("introt", '')
-
+      wx.setStorageSync("area_idt", '')
       wx.setStorageSync("typet", '')
       wx.setStorageSync("cate_idt", '')
+      wx.setStorageSync("title1", '')
       wx.setStorageSync("areaSelectedStrt", '')
       wx.setStorageSync("imagse0", [])
       wx.setStorageSync("imagse1", [])

@@ -27,6 +27,7 @@ page{
 }
 .fkItem_goods{
   padding: 0 32rpx;
+  margin-bottom: 10rpx;
 }
 .moneyinfor{
   border-bottom: 20rpx solid #EEEEEE;

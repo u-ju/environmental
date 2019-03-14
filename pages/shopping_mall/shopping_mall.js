@@ -32,6 +32,10 @@ Page({
     loadMoreData: '加载更多……'
   },
   change(e) {
+    console.log(e)
+    if (!e.detail.source){
+      return false;
+    }
     var shop_cate = this.data.shop_cate;
     for (var i in shop_cate) {
       if (shop_cate[i].children) {
@@ -49,8 +53,11 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+    this.init(Number(shop_cate[e.detail.current].id))
   },
   scrollTo(e) {
+    console.log(this.data.cate_id)
+    console.log(e)
     var shop_cate = this.data.shop_cate;
     for (var i in shop_cate) {
       if (shop_cate[i].children) {
@@ -59,7 +66,6 @@ Page({
         }
       }
     }
-    console.log(shop_cate)
     this.setData({
       indexSize: e.currentTarget.dataset.index,
       cate_id: e.currentTarget.dataset.current,
@@ -67,9 +73,9 @@ Page({
       shop_cate: shop_cate
     })
     
-    wx.showLoading({
-      title: '加载中',
-    })
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
     this.init(Number(e.currentTarget.dataset.current))
   },
   /**
@@ -111,7 +117,6 @@ Page({
 
   },
   init(cate_id = this.data.shop_cate[0].id,page=1 ) {
-    // console.log(this.data.shop_cate[0])
     var that = this;
     util.getJSON({
       apiUrl: apiurl.shop+"?type="+that.data.type, 
@@ -160,27 +165,28 @@ Page({
     }); 
   },
   chooseerji(e){
-    console.log(e.currentTarget.dataset.index)
-    console.log(e.currentTarget.dataset.id)
     var that = this, erji = that.data.erji;
+    wx.showLoading({
+      title: '加载中',
+    })
     for(var i in erji){
       
       erji[i]["active"] = 0
     }
-    console.log(erji[e.currentTarget.dataset.index])
     erji[e.currentTarget.dataset.index].active = 1
     that.setData({
       erji: erji,
       cate_id:e.currentTarget.dataset.id
     })
+    
     that.init(e.currentTarget.dataset.id)
   },
   calling: function (e) {//拨打电话
-    console.log(e)
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.contact, //此号码并非真实电话号码，仅用于测试
       success: function () {
         console.log("拨打电话成功！")
+        
       },
       fail: function () {
         console.log("拨打电话失败！")

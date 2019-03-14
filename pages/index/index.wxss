@@ -11,7 +11,7 @@ page{
   width: 686rpx;
   margin: auto;
 }
-.banner{
+.banner,.recommended{
   width: 686rpx;
   height: 250rpx;
   border-radius: 10rpx;
@@ -220,4 +220,7 @@ swiper {
   height:130rpx;
   text-align: center;
   background-color: white
+}
+.recommended{
+  height: 235rpx;
 }

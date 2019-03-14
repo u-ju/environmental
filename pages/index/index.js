@@ -39,10 +39,17 @@ Page({
       { title: '小雨', images: '../../images/rain@2x.png' },
       { title: '大雨', images: '../../images/heavy_rain@2x.png' },
       { title: '雪', images: '../../images/heavy_snow@2x.png' },
-    ]
+    ],
+    shop_cate:[],
+    visible1:false,
+    value1:[]
   },
+  
   onLoad: function (options) {
     var that  = this;
+    var str = '2012-2-2'
+    var str2 = str.replace(/-/g, '/');
+    console.log(str2)
     // wx.setStorageSync('tabbarmainid', '')
     util.loading()
     if (wx.getStorageSync('token')){
@@ -75,6 +82,7 @@ Page({
     util.getJSON({ apiUrl: apiurl.index }, function (res) {
       var result = res.data.result
       that.setData({
+        result: result,
         banner: result.banner,
         block: result.block,
         shop_ad: result.shop_ad,
@@ -83,10 +91,21 @@ Page({
       })
       util.hideLoading()
     })
+    // that.setData({
+    //   shop_cate: getApp().globalData.config.shop_cate
+    // })
     if (app.globalData.config.length==0){
       util.getJSON({ apiUrl: apiurl.config }, function (res) {
         var result = res.data.result;
         getApp().globalData.config = result;
+        
+      })
+    }
+    if (app.globalData.controlContrast.length == 0) {
+      util.getJSON({ apiUrl: apiurl.controlContrast }, function (res) {
+        var result = res.data.result;
+        getApp().globalData.controlContrast = result;
+
       })
     }
   },
@@ -127,10 +146,18 @@ Page({
     
   },
   link(e){
-    var url = link[e.currentTarget.dataset.link]
-
-    if (e.currentTarget.dataset.time!=''){
-      url = link[e.currentTarget.dataset.link] + "?time=" + e.currentTarget.dataset.time
+    var controlContrast = getApp().globalData.controlContrast,url='';
+    for (var i in controlContrast){
+      if (controlContrast[i].control == e.currentTarget.dataset.link){
+        url = controlContrast[i].contrast
+        
+      }
+    }
+    if (e.currentTarget.dataset.params != '' && e.currentTarget.dataset.params != undefined) {
+      url = url + e.currentTarget.dataset.params.id
+    }
+    if (e.currentTarget.dataset.time != '' && e.currentTarget.dataset.time !=undefined){
+      url = url + "?time=" + e.currentTarget.dataset.time
     }
     if (url =='undefined?time=undefined'){
       return false

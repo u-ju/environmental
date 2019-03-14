@@ -15,19 +15,55 @@ Page({
       { key: '3', name: '微信支付', choose: 0 },
       
     ],
-    visible3:true
+    visible3:false,
+    result:{},
+    address:{},
+    payment:'',
+    payment_ext:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // if (options.spec_value){
+    //   spec_value: 
+    // }
+    console.log(JSON.parse(options.result))
+    var result = JSON.parse(options.result)
+    this.setData({
+      result: result
+    })
+    
+    
+  },
+  address() {
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.shippingAddress_index +"?default=1" }, function (res) {
+      var result = res.data.result
 
+      that.setData({
+        address: result.list[0],
+      })
+      util.hideLoading()
+    })
   },
   open3() {
-    this.setData({
-      visible3: true,
-    })
+    var that = this;
+    util.postJSON({ apiUrl: apiurl.create, data: { pay_source: 'order', order_key: that.data.result.order_key, address_id: that.data.address.address_id} },
+      function (res) {
+        var result = res.data.result
+        for (let i in result.payment_usable) {
+          result.payment_usable[i].choosed = 0
+        }
+        result.payment_usable[0].choosed = 1
+        that.setData({
+          items: result,
+          visible3: true,
+          pay_amount: result.pay_amount,
+          payment: result["payment_usable"][0]["key"]
+        })
+      })
   },
   close3() {
     this.setData({
@@ -35,17 +71,114 @@ Page({
     })
   },
   onClose3() {
-    this.onClose('visible3')
+    this.setData({
+      visible3: false,
+    })
   },
   choose(e) {
-    var list = this.data.items
-    for (let i in list) {
-      list[i].choosed = 0
+    var items = this.data.items;
+    for (let i in items.payment_usable) {
+      items.payment_usable[i].choosed = 0
+      if (items.payment_usable[i].options && this.data.payment_ext){
+        for (let a in items.payment_usable[i].options) {
+          items.payment_usable[i].options[a].choosed = 0
+        }
+      }
     }
-    list[e.currentTarget.dataset.id]["choosed"] = 1
+    var payment_ext='';
+    items["payment_usable"][e.currentTarget.dataset.index]["choosed"] = 1
+    var pay_amount = items.pay_amount
     this.setData({
-      items: list
+      items: items,
+      fq: e.currentTarget.dataset.index,
+      payment_ext: payment_ext,
+      pay_amount: pay_amount,
+      payment: items["payment_usable"][e.currentTarget.dataset.index]["key"]
     })
+  },
+  choosed(e){
+    var that =this;
+    var items = that.data.items, fq = that.data.fq;
+    for (let i in items.payment_usable[fq].options) {
+      items.payment_usable[fq].options[i].choosed = 0
+    }
+    items.payment_usable[fq].options[e.currentTarget.dataset.index]["choosed"] = 1
+    var pay_amount = items.payment_usable[fq].options[e.currentTarget.dataset.index]["pay_amount"]
+    this.setData({
+      items: items,
+      payment_ext: items.payment_usable[fq].options[e.currentTarget.dataset.index]["key"],
+      pay_amount: pay_amount
+    })
+  },
+  link(){
+    wx.navigateTo({
+      url: '../address_order/index',
+    })
+  },
+  goodsBuy(){
+      var that = this;
+      that.setData({
+        visible3: false,
+      })
+      wx.showLoading({
+        title: '加载中',
+      })
+    var data = { pay_key: that.data.items.pay_key, payment: that.data.payment, pay_amount: that.data.pay_amount, pay_cash: that.data.pay_amount, payment_ext: that.data.payment_ext }
+    console.log(data)
+    util.postJSON({ apiUrl: apiurl.vendor, data: data },
+        function (res) {
+          var result = res.data.result
+          console.log(res)
+          if (result.payment == "balance" || result.payment == "installment") {
+            util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
+              util.alert("支付成功")
+              wx.navigateTo({
+                url: '../success/success',
+              })
+            }, function () {
+              wx.navigateTo({
+                url: '../error/error',
+              })
+            }, function () {
+              wx.navigateTo({
+                url: '../error/error',
+              })
+            })
+          } else if (result.payment == "wechat"){
+            wx.requestPayment({
+              timeStamp: result.pay_info.timeStamp,
+              nonceStr: result.pay_info.nonceStr,
+              package: result.pay_info.package,
+              signType: result.pay_info.signType,
+              paySign: result.pay_info.paySign,
+              success(res1) {
+                console.log(res1)
+                wx.hideLoading()
+                util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
+                  console.log("emmmmmmmmm")
+                  wx.navigateTo({
+                    url: '../success/success',
+                  })
+                }, function () {
+                  wx.navigateTo({
+                    url: '../error/error',
+                  })
+                }, function () {
+                  wx.navigateTo({
+                    url: '../error/error',
+                  })
+                })
+              },
+              fail(res) {
+                util.alert("支付失败")
+              }
+            })
+          }
+        })
+      // this.setData({
+      //   visible2: false,
+      // })
+  
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -58,7 +191,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.address()
   },
 
   /**

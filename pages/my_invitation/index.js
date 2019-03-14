@@ -37,13 +37,13 @@ Page({
     this.init1()
   },
   onChange(e) {
-    console.log('onChange', e)
+    // console.log('onChange', e)
     this.setData({
       current: e.detail.key,
     })
   },
   onTabsChange(e) {
-    console.log('onTabsChange', e)
+    // console.log('onTabsChange', e)
 
     const { key } = e.detail
     const index = this.data.tabs.map((n) => n.key).indexOf(key)
@@ -81,7 +81,7 @@ Page({
         height: list.length * 176
       })
       util.hideLoading()
-      console.log(list)
+      // console.log(list)
     })
   },
   init1(page = 1) {
@@ -98,7 +98,7 @@ Page({
         last: false,
         height1: list.length * 176
       })
-      console.log(list)
+      // console.log(list)
       util.hideLoading()
     })
   },

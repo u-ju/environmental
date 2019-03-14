@@ -30,16 +30,23 @@ Page({
     evaluations: 
       {
         id: 0,
-        star: 0,
-        note: ""
-      }
+        star: 1,
+        // note: ""
+      },
+    disabled:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    var s = { 'sku_id': "4", "id": "12"}
+    this.setData({
+      sku_id0: options["comment[0][sku_id]"],
+      order_id: options.id
+    })
+    wx.hideLoading()
   },
   /**
   * 评分
@@ -50,7 +57,7 @@ Page({
     let evaluations = this.data.evaluations;
     
     evaluations.star = star;
-    evaluations.note = this.data.starMap[star - 1];
+    // evaluations.note = this.data.starMap[star - 1];
     this.setData({
       evaluations: evaluations
     })
@@ -137,6 +144,38 @@ Page({
     this.setData({
       upload_picture_list: upload_picture_list
     });
+  },
+  formSubmit(e){
+    console.log(e);
+    var that =this,data={};
+    data['comment[0][comment_message]'] = e.detail.value.comment_message
+    data["comment[0][comment_level]"] = that.data.evaluations.star
+    data["comment[0][sku_id]"] = that.data.sku_id0
+    data["order_id"] = that.data.order_id
+    var upload_picture_list = that.data.upload_picture_list;
+    for (var i = 0; i < upload_picture_list.length; i++) {
+      // images[i] = upload_picture_list[i]['path_server'];
+      data['comment[0][comment_images][' + i + ']'] = upload_picture_list[i]['path_server']
+    }
+    that.setData({
+      disabled:true
+    })
+    util.postJSON({ apiUrl: apiurl.userOrder_comment, data: data }, function (res) {
+      var result = res.data.result
+      util.hideLoading()
+      wx.navigateBack()
+      that.setData({
+        disabled: false
+      })
+    }, function () {
+      that.setData({
+        disabled: false
+      })
+    }, function () {
+      that.setData({
+        disabled: false
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

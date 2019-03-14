@@ -1,0 +1,42 @@
+<!--pages/payment_details/index.wxml-->
+<view class='top'>
+  <view class='width400'>
+    <view>总金额：￥{{result.nper_amount}}</view>
+    <view>待还款：<text class='colorFE3434 size48'>￥{{result.remain_amount}}</text></view>
+  </view>
+  <view class='btn' bindtap='open1'>立即还款</view>
+</view>
+<view class='list'>
+  <view class='listitem flex_btw ' wx:for="{{list}}" wx:key="index">
+    <view>{{item.repay_dt}}</view>
+    <view>{{item.repay_type_name}}：<text class='colorFE3434'>￥{{item.amount}}</text></view>
+  </view>
+  <empty wx:if="{{list.length==0}}" />
+</view>
+
+<wux-popup closable visible="{{ visible1 }}" title="请输入还款金额" bind:close="close1">
+    <form bindsubmit="formSubmit">
+      <input name='amount' placeholder='请输入还款金额'></input>
+      <button form-type="submit" class='btn'>确认</button>
+    </form>
+</wux-popup>
+
+<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="close2">
+  <text class='iconfont icon-cuohao'  bindtap="close3"></text>
+    <view class='center color4 size36 csgg'>立即还款</view>
+    <view class='center color4 size60 csgg'>￥{{items.pay_amount}}</view>
+    <view  >
+      <view class='label' wx:for="{{items.payment_usable}}" wx:key ="index">
+        <view>
+        <view class='flex align_center radioitem'  bindtap='choose' data-index="{{index}}" data-key="{{item.key}}">
+          <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
+          <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
+          <!-- <view class='left'> -->
+            <text class='size28 color4'>{{item.name}} \n </text>
+          <!-- </view> -->
+        </view>
+        </view>
+      </view>  
+    </view> 
+    <view class='goodsBuy size36 marginb60' bindtap='goodsBuy'>立即支付</view>
+</wux-popup>

@@ -1,0 +1,50 @@
+/* pages/payment_details/index.wxss */
+@import '../order_detail/index';
+page{
+  font-size: 28rpx;
+  color: #444;
+}
+.btn{
+  width:686rpx;
+  height:86rpx;
+  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
+  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
+  border-radius:43rpx;
+  text-align: center;
+  line-height: 86rpx;
+  color: white;
+  font-size: 32rpx;
+  margin-top: 50rpx;
+}
+button.btn{
+  width: 500rpx;
+  margin: auto;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+}
+.top{
+  padding: 55rpx 32rpx 60rpx 32rpx;
+  border-bottom: 20rpx solid #eee;
+}
+.width400{
+  width: 400rpx;
+  margin: auto
+}
+.list{
+  /* padding: 0 32rpx; */
+}
+.listitem{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #eee;
+  width: 686rpx;
+  margin: auto;
+}
+.market-scroll-list{
+  height: 100%;
+}
+input{
+  border-bottom:1px solid #eee;
+  margin: 20rpx auto;
+  text-align: left;
+}

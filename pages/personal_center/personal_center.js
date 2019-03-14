@@ -36,10 +36,12 @@ Page({
       { title: "实名认证", value: "", url: "../phone/phone?type=1", is_rm: 0 },
       { title: "我的发布", value: "", url: "../my_release/index" },
       { title: "我的货款", value: "", url: "../my_paymentGoods/index" },
-      
+      { title: "我的订单", value: "", url: "../order/index" },
+      { title: "分期还款", value: "", url: "../installment_repayment/index" },
     ],
     item2:[
       // { title: "推广中心", value: "", url: "../promote/index" },
+      { title: "上门回收订单", value: "", url: "../home_orders/home_orders" },
       { title: "业务专员申请", value: "", url: "../agent/index" },
       { title: "我的银行卡", value: "", url: "../my_bankcard/index" },
       { title: "收货地址", value: "", url: "../address/index" },

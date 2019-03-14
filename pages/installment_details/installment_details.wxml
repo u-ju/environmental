@@ -1,4 +1,10 @@
 <!--pages/installment_details/installment_details.wxml-->
+<wxs module="m1">
+  var indexO=function(arr,val){
+    return arr.indexOf(val)
+  }
+  module.exports.indexO = indexO;
+</wxs>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" current="{{index}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}" bindchange='swiper'>
     <block wx:for="{{result.images}}" wx:key="index">
       <swiper-item>
@@ -8,7 +14,7 @@
 </swiper>
 <!-- <view class="imageCount">{{current+1}}/{{banner.length}}</view> -->
 <view class='goods_intr1'>
-  <view class='size28 color4'>{{result.spu_name}}</view>
+  <view class='size28 color4'>{{result.spu_name}} {{result.sku_name}}</view>
   <view class='size28 colorFE2C2C'>
     <text>分期价：{{result.nper_price}}</text>
     <text class='line-through'>市场价：{{result.market_price}}</text>
@@ -58,27 +64,29 @@
   </view>
   </block>
 </view>
-<view class='goodsBuy fixed'>
+<view class='goodsBuy fixed' bindtap='open1'>
   立即购买
 </view>
+
 <wux-popup position="bottom" visible="{{ visible1 }}" bind:close="onClose1">
     <text class='iconfont icon-cuohao'  bindtap="close1"></text>
     <view class='center color4 size36 csgg'>规格</view>
     <view>
-      <view class='text_left' wx:for="{{result.specs}}" wx:key="index">
+      <view class='text_left' wx:for="{{result.specs}}" wx:key="index" wx:for-index="specsindex" >
         <view class='gg_item'>{{item.spec_name}}</view>
         <view class='flex wrap gg_itemxz' >
           <block wx:for="{{item.spec_values}}" wx:key="index" wx:for-item="spec_values">
-          <view class='ggcc color898989 size28 center {{spec_values.active?"active":""}}' bindtap='choosespecs' data-spec_id='{{item.spec_id}}'  data-spec_value_id='{{spec_values.spec_value_id}}' data-index='{{index}}'>{{spec_values.spec_value}}</view>
+          <view class='ggcc color898989 size28 center  {{choosed[specsindex]==spec_values.spec_value_id?"active":""}} {{m1.indexO(arr[specsindex],spec_values.spec_value_id)==-1?"choosef":""}}' bindtap='choosespecs' data-choosed='{{specsindex}}' data-spec_id='{{item.spec_id}}'  data-click='{{m1.indexO(arr[specsindex],spec_values.spec_value_id)}}' data-spec_value_id='{{spec_values.spec_value_id}}' data-index='{{index}}'>{{spec_values.spec_value}}</view>
           </block>
         </view>
       </view>
     </view>
     <view class='flex_btw align_center buynum'>
       <text class='color898989 size28'>购买数量</text>
-      <wux-input-number wux-sub-class="sub"  default-value="1" min="{{ 1 }}" disabled="{{ false }}" wux-input-class="input" wux-add-class="add" slot="footer" color="656565" />
+      <wux-input-number wux-sub-class="sub" bind:change="onChange" default-value="1" min="{{ 1 }}" disabled="{{ false }}" wux-input-class="input" wux-add-class="add" slot="footer" color="656565" />
     </view>
-    <view class='goodsBuy size36 marginb60'>确定</view> 
+    <view class='goodsBuy size36 marginb60' bindtap='buy' wx:if="{{!buyok}}">立即购买</view> 
+    <view class='goodsBuy size36 marginb60 1' wx:else>立即购买</view>
 </wux-popup>
 <wux-popup position="bottom" visible="{{ visible2 }}" style="{{wrapStyle2}}"  bind:close="onClose2">
     <text class='iconfont icon-cuohao'  bindtap="close2"></text>
@@ -115,12 +123,8 @@
 <wux-popup position="bottom" visible="{{ visible3 }}" bind:close="onClose3">
     <text class='iconfont icon-cuohao'  bindtap="close3"></text>
     <view class='center color4 size36 csgg'>分期购买</view>
-    <!-- <radio-group class="radio-group" bindchange="radioChange">
-      <label class="radio" wx:for="{{items}}"> -->
         <view class='label' wx:for="{{items}}" wx:key = "index">
-          
           <view class='flex align_center radioitem'  bindtap='choose' data-id="{{index}}">
-            <!-- <radio value="{{item.name}}" checked="{{item.checked}}"/> -->
             <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
             <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
             <view class='left'>
@@ -129,19 +133,12 @@
             </view>
           </view>
         </view>
-      <!-- </label>
-    </radio-group> -->
-    <!-- <checkbox-group bindchange="checkboxChange" > -->
-       <!-- <label  wx:for="{{cartArr}}"> -->
        <view class='label labelnone' wx:for="{{cartArr}}" wx:key = "index">
           <view class='flex align_center radioitem'  bindtap='choosed' data-id="{{index}}" data-choosed="{{item.choosed}}" >
-            <!-- <checkbox value="{{item.name}}"></checkbox> -->
             <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
             <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
             <view class='left size28 color4'>{{item.value}}</view>
           </view> 
         </view>
-       <!-- </label>    -->
-   <!-- </checkbox-group> -->
     <view class='goodsBuy size36 marginb60' >立即分期</view>
 </wux-popup>

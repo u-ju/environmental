@@ -22,7 +22,7 @@ Page({
       { image: '../../images/catering_test.png' },
     ],
     result: "",
-    visible1: false,
+    visible1: true,
     visible2: false,
     visible3: false,
     cc:[
@@ -56,7 +56,10 @@ Page({
     result:{},
     page: {},
     choosespec:[],
-    specifications:[]
+    specifications:[],
+    disable:false,
+    count:1,
+    buyok:false
   },
   swiper(e){
     this.setData({
@@ -94,7 +97,6 @@ Page({
     })
   },
   onClose(key) {
-    console.log('onClose')
     this.setData({
       [key]: false,
     })
@@ -120,23 +122,136 @@ Page({
   
   onLoad: function (options) {
     var that = this;
-
-    util.getJSON({ apiUrl: apiurl.goods_show + options.sku_id }, function (res) {
+    // options.sku_id
+    util.getJSON({ apiUrl: apiurl.goods_show + "1" }, function (res) {
       var result = res.data.result
+      var choosed1 = [], choosed = []
+      for (var i in result.spec_values){
+        if (result.spec_values[i]["sku_id"] == result.sku_id){
+          choosed1 = result.spec_values[i]["spec_value"]
+        }
+      }
+      for (var n in choosed1){
+        choosed.push(choosed1[n])
+      }
+      // result.spec_values = [
+      //   {
+      //     "sku_id": "1",
+      //     "sku_name": "灰色-32GB",
+      //     "market_price": "1200.00",
+      //     "price": "1100.00",
+      //     "nper_price": "1150.00",
+      //     "spec_value": [
+      //       "1",
+      //       "5"
+      //     ]
+      //   },
+      //   {
+      //     "sku_id": "2",
+      //     "sku_name": "红色-64GB",
+      //     "market_price": "1400.00",
+      //     "price": "1300.00",
+      //     "nper_price": "1350.00",
+      //     "spec_value": [
+      //       "2",
+      //       "6"
+      //     ]
+      //   },
+      //   {
+      //     "sku_id": "3",
+      //     "sku_name": "红色-64GB",
+      //     "market_price": "1400.00",
+      //     "price": "1300.00",
+      //     "nper_price": "1350.00",
+      //     "spec_value": [
+      //       "1",
+      //       "6"
+      //     ]
+      //   }
+      // ]
       that.setData({
-        result: result
+        result: result,
+        choosed: choosed
       })
+      that._click(choosed, result.spec_values, result)
       util.hideLoading()
     })
   },
   commentIndex(){
-    util.getJSON({ apiUrl: apiurl.goods_commentIndex +"?sku_id="+ options.sku_id }, function (res) {
+    util.getJSON({ apiUrl: apiurl.goods_commentIndex +"?sku_id=1" }, function (res) {
       var result = res.data.result
       that.setData({
         list: result.list,
         page: result.page
       })
       util.hideLoading()
+    })
+  },
+  // 选择规格时的选项情况
+  _click(choosed, spec_values = this.data.result.spec_values, result = this.data.result){
+    // var disable = false
+    var arr = [],that = this;
+    for (var n in choosed) {
+      arr[n] = [];
+    }
+    // 都选时
+    for (var a in spec_values) {
+      for (var b in spec_values[a].spec_value) {
+        if (choosed[b] == spec_values[a].spec_value[b]) {
+          // console.log(spec_values[a].spec_value[b])
+          for (var c in spec_values[a].spec_value) {
+            if (arr[c].indexOf(spec_values[a].spec_value[c]) == -1) {
+              arr[c].push(spec_values[a].spec_value[c])
+              // console.log(arr[c])
+            }
+          }
+        }
+      }
+    }
+    // console.log(arr)
+    //未完全勾选时
+    if (choosed.indexOf(-1) != -1) {
+      // disable = true
+      var num=0
+      // 部分未勾选时
+      for (var m in choosed) {
+        if (choosed[m] != -1)  {
+          for (var a in spec_values) {
+            if (arr[m].indexOf(spec_values[a].spec_value[m]) == -1) {
+              arr[m].push(spec_values[a].spec_value[m])
+            }
+          }
+        }else{
+          num=num+1
+        }
+      }
+      // 全部未勾选时
+      if (num == choosed.length){
+        for (var p in choosed) {
+          for (var q in spec_values) {
+            if (arr[p].indexOf(spec_values[q].spec_value[p]) == -1) {
+              arr[p].push(spec_values[q].spec_value[p])
+            }
+          }
+        }
+      }
+    }else{
+      for (var d in spec_values) {
+        if (choosed.toString() == spec_values[d].spec_value.toString() ){
+          result.market_price = spec_values[d].market_price 
+          result.nper_price = spec_values[d].nper_price 
+          result.price = spec_values[d].price 
+          result.sku_id = spec_values[d].sku_id 
+          result.sku_name = spec_values[d].sku_name 
+        }
+      }
+    }
+    
+    // console.log(arr)
+    that.setData({
+      arr: arr,
+      result: result
+      // disable:disable
     })
   },
   /**
@@ -152,31 +267,7 @@ Page({
   onShow: function () {
 
   },
-  calling: function (e) {//拨打电话
-    console.log(e.target.dataset.phone)
-    wx.makePhoneCall({
-      phoneNumber: e.target.dataset.phone, //此号码并非真实电话号码，仅用于测试
-      success: function () {
-        console.log("拨打电话成功！")
-      },
-      fail: function () {
-        console.log("拨打电话失败！")
-      }
-    })
-  },
-  location() {
-    var that = this;
-    var result = that.data.result;
-    var data = {
-      latitude: result.latitude,
-      longitude: result.longitude,
-      address: result.address,
-      area_name: result.area_name,
-    }
-    wx.navigateTo({
-      url: '../delivery_station/delivery_station?data=' + JSON.stringify(data),
-    })
-  },
+  
   choose(e) {
     var list = this.data.items
     for (let i in list) {
@@ -189,35 +280,66 @@ Page({
   },
   choosed(e) {
     var list = this.data.cartArr
-
     list[e.currentTarget.dataset.id]["choosed"] = !e.currentTarget.dataset.choosed
     this.setData({
       cartArr: list
     })
+    
   },
   choosespecs(e){
-    console.log(e.currentTarget.dataset.spec_value_id)
-    console.log(this.data.result.spec_values)
-    var specs = this.data.result.specs
-    // var spec_values = this.data.result.spec_values
-    // for (var i in spec_values){
-    //   if (spec_values[i].spec_value.indexOf(e.currentTarget.dataset.spec_value_id)!=-1){
-    //     this.setData({
-    //       choosespec: spec_values[i].spec_value
-    //     })
-    //   }
-    // }
-    for (var i in specs){
-      if (specs[i].spec_id == e.currentTarget.dataset.spec_id){
-        for (var a in specs[i].spec_values){
-          specs[i].spec_values[a]["active"]=0
-        }
-        specs[i].spec_values[e.currentTarget.dataset.index]["active"] = !specs[i].spec_values[e.currentTarget.dataset.index]["active"]
-      }
+    if (e.currentTarget.dataset.click==-1){
+      return false
+    }
+    var choosed = this.data.choosed;
+    if (choosed[e.currentTarget.dataset.choosed] == e.currentTarget.dataset.spec_value_id){
+      choosed[e.currentTarget.dataset.choosed]=-1
+    }else{
+      choosed[e.currentTarget.dataset.choosed] = e.currentTarget.dataset.spec_value_id
     }
     this.setData({
-      "result.specs": specs
+      choosed: choosed
+    })
+    this._click(choosed)
+  },
+  buy(e){
+    var that = this;
+    if (that.data.choosed.indexOf(-1)!=-1){
+      return util.alert("请选择"+that.data.result.specs[that.data.choosed.indexOf(-1)]["spec_name"])
+    }
+    // console.log(that.data.result.sku_id)
+    // console.log(that.data.count)
+    var data ={
+      buy_type:"now",
+      'sku_arr[0][sku_id]': that.data.result.sku_id,
+      'sku_arr[0][count]': that.data.count
+    }
+    that.setData({
+      buyok: true
+    })
+    
+    util.postJSON({ apiUrl: apiurl.order_payShow,data:data }, function (res) {
+      var result = res.data.result
+      console.log(result )
+        wx.navigateTo({
+          url: '../order_detail/index?result='+ JSON.stringify(result),
+      })
+      // that.setData({
+      //   buyok: false
+      // })
+    },function(res){
+      that.setData({
+        buyok: false
+      })
+      }, function (res) {
+        that.setData({
+          buyok: false
+        })
+      })
+  },
+  onChange(e) {
+    console.log(e.detail.value)
+    this.setData({
+      count: e.detail.value,
     })
   },
-  
 })
