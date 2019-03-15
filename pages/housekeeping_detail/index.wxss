@@ -1,0 +1,50 @@
+/* pages/housekeeping_detail/index.wxss */
+@import '../business_details/business_details';
+.share{
+  width: 30rpx;
+  height: 30rpx;
+}
+.colorFE3939{
+  color: #FE3939
+}
+.titlexx{
+  padding: 26rpx 32rpx 14rpx 32rpx;
+  border-bottom: 20rpx solid #eee;
+}
+.con{
+  color: #444;
+  border-bottom: 20rpx solid #eee;
+}
+.big {
+  border: none;
+  padding: 10rpx 0;
+}
+.fwxq_bor{
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20rpx;
+  margin-bottom: 40rpx;
+}
+.fwxq{
+  padding: 35rpx 32rpx;
+}
+.calling{
+  width: 34rpx;
+  height: 31rpx;
+}
+.dingwei{
+  width: 29rpx;
+  height: 36rpx;
+}
+.big .align_center{
+  width: 600rpx;
+}
+button{
+  line-height:30rpx;
+  font-size: 22rpx;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+.flex-end{
+align-items: flex-end 
+}

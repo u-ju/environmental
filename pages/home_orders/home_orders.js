@@ -33,17 +33,35 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+    that.setData({
+      tab: app.globalData.config.onsite_recycle_order_status
+    })
     if (options.fill){
+      var tab = [{
+        "id": "1",
+        "name": "待收货"
+      },
+        {
+          "id": "2",
+          "name": "已完成"
+        },
+        {
+          "id": "3",
+          "name": "已关闭"
+        },
+        {
+          "id": "4",
+          "name": "待评价"
+        }]
       that.setData({
-        bill:true
+        bill:true,
+        tab: tab
       })
     }
     // util.getJSON({ apiUrl: apiurl.config }, function (res) {
       // var result = res.data.result
       // console.log(res)
-      that.setData({
-        tab: app.globalData.config.onsite_recycle_order_status
-      })
+      
     // })
     that.init()
   },

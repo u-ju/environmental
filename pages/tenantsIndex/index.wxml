@@ -23,7 +23,7 @@
           {{list.status_name}}
       </view>
         </view>
-        <view class="phone" data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
+        <view class="phone" wx:if="{{list.gather_qrcode}}" data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
           <!-- <image src="../../images/ewm_dj.png" class="phone_icon" mode='aspectFit'/> -->
           <text class='iconfont icon-erweima'></text>
         </view>
@@ -31,13 +31,18 @@
     </view>
   </view>
 </a>
-  <view  class='button' bindtap='link'>商家入驻</view>
+  <!-- <view  class='button' bindtap='link'>商家入驻</view> -->
   <!-- <view wx:if="{{list[list.length-1].status==2}}" class='button' bindtap='link'>重新入驻</view> -->
 </view>
 <view wx:elif="{{list.length==0}}" class='wei'>
   你还没有入驻，前往 <text class='color5DC47A' bindtap='link'>申请入驻>></text>
 </view>
+<!-- <view></view>
 <view class='zzc_con' wx:if="{{showmodel}}">
   <view class='iconfont icon-cuohao' bindtap='model' ></view>
+  
+</view> -->
+
+<wux-popup closable visible="{{ visible3 }}"  bind:close="onClose3" bind:closed="onClosed3">
   <wux-qrcode  id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
-</view>
+</wux-popup>

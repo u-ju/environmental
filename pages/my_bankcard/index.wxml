@@ -16,7 +16,7 @@
 </view>
 </block> 
 <view class='click'>
-  <navigator class='flex align_center'> 
+  <navigator url='../my_bankcard_add/index' class='flex align_center'> 
     <text class='iconfont icon-jiahao'></text>
     <text class='size32'>添加银行卡</text>
   </navigator>

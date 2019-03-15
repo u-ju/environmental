@@ -17,6 +17,13 @@ Page({
    */
   onLoad: function (options) {
     this.init()
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.wallet }, function (res) {
+      var result = res.data.result;
+      that.setData({
+        settle: result.settle
+      })
+    })
   },
   init(page = 1) {
     var that = this;

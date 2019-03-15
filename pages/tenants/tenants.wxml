@@ -97,7 +97,7 @@
         <image wx:if="{{upload_picture_list.upload_percent < 100}}" src="{{upload_picture_list.path}}" mode="aspectFill"></image>
         <image wx:if="{{upload_picture_list.upload_percent == 100}}" src="{{upload_picture_list.path_server}}" mode="aspectFill"></image>
         <view class="upload_progress" wx:if="{{upload_picture_list.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg1">{{upload_picture_list.upload_percent}}%</view>
-        <text class='del  iconfont  icon-cuohao' bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}">×</text>
+        <text class='del  iconfont  icon-cuohao' bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></text>
       </view>
       <view class='picture_item' bindtap='uploadpic1' wx:if="{{!disabled1}}" data-index="{{index}}">
         <view class='bgg flex_ard align_center'>
@@ -119,7 +119,7 @@
   </view>
 
   <view wx:if="{{disabled1}}" class='size32 button' bindtap='xiugai'>点击修改</view>
-  <button wx:else class='size32' formType="submit" >提交</button>
+  <button wx:else class='size32' formType="submit" disabled='{{post}}' >提交</button>
 </view>
 </form>
 <view class="modal">

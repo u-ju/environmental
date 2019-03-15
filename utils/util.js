@@ -304,14 +304,14 @@ function getJSON(form = {}, call_success) {
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
   var header = { 'content-type': 'application/json', 'channel': 'let', 'build': 0 } // 默认值
-  // if (!form.hasOwnProperty("token")) {
-  //   header = {
-  //     'content-type': 'application/json', // 默认值
-  //     'token': that.getToken(),
-  //     'channel':'let',
-  //     'build':0
-  //   }
-  // }
+  if (!form.hasOwnProperty("token")) {
+    header = {
+      'content-type': 'application/json', // 默认值
+      'token': that.getToken(),
+      'channel':'let',
+      'build':0
+    }
+  }
   wx.request({
     url: apiUrl,
     data: formData,
@@ -352,14 +352,14 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
   var header = {'content-type': 'application/x-www-form-urlencoded; charset=UTF-8','channel': 'let','build': 0} // 默认值
-  // if (!form.hasOwnProperty("token")) {
-  //   header = {
-  //     'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', // 默认值
-  //     'token': that.getToken(),
-  //     'channel': 'let',
-  //     'build': 0
-  //   }
-  // }
+  if (!form.hasOwnProperty("token")) {
+    header = {
+      'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', // 默认值
+      'token': that.getToken(),
+      'channel': 'let',
+      'build': 0
+    }
+  }
   wx.request({
     url: apiUrl,
     data: formData,

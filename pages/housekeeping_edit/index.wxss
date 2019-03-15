@@ -1,0 +1,12 @@
+/* pages/maintenance_worker/index.wxss */
+
+@import '../maintenance_worker/index';
+@import '../tenants/tenants';
+textarea{
+  border: none;
+  height: 230rpx;
+}
+.item{
+  width: 686rpx;
+  margin: auto;
+}

@@ -21,7 +21,7 @@ Page({
       that.setData({
         result: result
       })
-
+      wx.hideLoading()
     })
   },
 

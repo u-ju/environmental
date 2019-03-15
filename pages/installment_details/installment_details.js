@@ -22,7 +22,7 @@ Page({
       { image: '../../images/catering_test.png' },
     ],
     result: "",
-    visible1: true,
+    visible1: false,
     visible2: false,
     visible3: false,
     cc:[
@@ -115,6 +115,11 @@ Page({
   },
   checkboxChange: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+  },
+  link(e){
+    wx.navigateTo({
+      url: '../page/index?url=' + e.currentTarget.dataset.url,
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -322,6 +327,9 @@ Page({
       console.log(result )
         wx.navigateTo({
           url: '../order_detail/index?result='+ JSON.stringify(result),
+      })
+      that.setData({
+        buyok: false
       })
       // that.setData({
       //   buyok: false

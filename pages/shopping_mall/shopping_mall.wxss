@@ -109,7 +109,7 @@ height: 100%;
   width: 164rpx;
   height: 144rpx;
   background: #f6f6f6;
-  margin: 0 16rpx 0 10rpx;
+  margin: 0 36rpx 0 10rpx;
 }
   .cover-img {
     width: 100%;

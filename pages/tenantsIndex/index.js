@@ -10,6 +10,7 @@ Page({
   data: {
     value: '',
     fgColor: 'black',
+    visible3:false
   },
 
   /**
@@ -39,12 +40,31 @@ Page({
     if (e.currentTarget.dataset.gather_qrcode){
       this.setData({
         value: e.currentTarget.dataset.gather_qrcode,
-        showmodel: true
+        visible3: true
       })
     }else{
       util.alert('你还没有二维码')
     }
     
+  },
+  open3(e) {
+    this.setData({
+      visible3: true,
+      value: e.currentTarget.dataset.invite
+    })
+
+  },
+
+  close3() {
+    this.setData({
+      visible3: false,
+    })
+  },
+  onClose3() {
+    // this.onClose('visible1')
+    this.setData({
+      visible3: false,
+    })
   },
   model(){
     this.setData({

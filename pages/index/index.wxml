@@ -50,7 +50,7 @@
 
   <view class='flex_btw'>
     <block wx:for="{{tag}}" wx:key="index">
-      <view class='index_modular center' bindtap='link' data-link='{{item.attach.control}}'>
+      <view class='index_modular center' bindtap='link' data-link='{{item.attach.control}}' data-children='{{item.children}}'>
         <view class='index_modular_cri'>
           <image  mode='aspectFill' src='{{item.image}}'></image>
         </view>
@@ -60,7 +60,7 @@
   </view>
 </view>
 </view>
-<view class="ard_index" bindtap='link' data-link='installment'>
+<view class="ard_index" bindtap='link'  data-link='{{result.nper.attach.control}}' >
 <!--  -->
   <image src="{{result.nper.image}}" />
 </view>
@@ -121,7 +121,7 @@
   </view>
   <view class='recommended'>
     <block wx:for="{{result.week_ad}}" wx:key ="index">
-      <image src="{{item.image}}" class="slide-image" />
+      <image src="{{item.image}}" class="slide-image"  bindtap='link' data-link='{{item.attach.control}}' data-params='{{item.attach.params}}' />
     </block>
     
   </view>

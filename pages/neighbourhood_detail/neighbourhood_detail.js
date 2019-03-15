@@ -61,6 +61,7 @@ Page({
         });
         util.hideLoading()
       })
+      that.initreplyIndex(1,options.vicinage_id)
     }else{
       util.getJSON({ apiUrl: apiurl.vicinage_show + "?vicinage_id=" + options.id }, function (res) {
         if (res.data.result.content_source == "html") {
@@ -72,13 +73,18 @@ Page({
           vicinage_id: options.id
         });
       })
+      that.initreplyIndex(1,options.id)
     }
     
-    that.initreplyIndex()
+    
   },
-  initreplyIndex(page=1) {
-    var that = this
-    util.getJSON({ apiUrl: apiurl.vicinage_replyIndex + "?vicinage_id=" + that.data.vicinage_id+"&page="+page }, function (res) {
+  initreplyIndex(page = 1, vicinage_id='') {
+    var that = this;
+    if (vicinage_id==''){
+      vicinage_id = that.data.vicinage_id
+    }
+    
+    util.getJSON({ apiUrl: apiurl.vicinage_replyIndex + "?vicinage_id=" + vicinage_id + +"&page="+page }, function (res) {
       var list = res.data.result.list
       for (var i in list) {
         list[i]["huifu"] = false

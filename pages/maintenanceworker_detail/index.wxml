@@ -1,0 +1,26 @@
+<!--pages/maintenanceworker_detail/index.wxml-->
+<view class='top flex_btw align_center'>
+  <view class='flex_btw align_center'>
+    <image class='header' src='{{result.avatar}}'></image>
+    <view class='flex_col flex_ard'>
+      <view class='size36'>{{result.name}}</view>
+      <view>{{result.cate_name}}</view>
+    </view>
+  </view>
+  <image src='../../images/phone.png' data-phone='{{result.phone}}' bindtap='calling' class='phone'></image>
+</view>
+<view class='grxx'>
+  <view>
+    <text class='color898989'>联系人</text><text>{{result.name}}</text>
+  </view>
+  <view>
+    <text class='color898989'>联系电话</text><text>{{result.phone}}</text>
+  </view>
+  <view class='flex'>
+    <text class='color898989'>服务区域</text><text>{{result.area_name}}</text>
+  </view>
+</view>
+<view class='fwxq'>
+  <view class='fwxq_bor'>服务详情</view>
+  <view>{{result.intro}}</view>
+</view>

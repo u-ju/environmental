@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "注册商家",
+  "usingComponents": {
+    "wux-popup": "../../Components/popup/index",
+    "wux-cascader": "../../Components/cascader/index"
+  }
+}

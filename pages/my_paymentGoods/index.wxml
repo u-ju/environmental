@@ -1,4 +1,11 @@
 <!--pages/my_paymentGoods/index.wxml-->
+<view class='size36 color918F8F center'>当前货款</view>
+  <view class='money justify_center flex align_center'>
+    <image src='../../images/my_paymentGoods.png'></image>
+    <text class='size50 color4ad6a3'>{{settle}}</text>
+  </view>
+  <view  class='xian'></view>
+<view class='color4 size36 bold500'>明细</view>
 <block wx:if="{{list.length>0}}">
 <view class='item flex_btw align_center' wx:for="{{list}}" wx:key="index">
   <view>

@@ -35,3 +35,14 @@ page{
   height:38rpx;
   margin-left:260rpx;
 }
+.editll{
+  position: fixed;
+  bottom: 97rpx;
+  right: 33rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+.editll image{
+  width: 100rpx;
+  height: 100rpx;
+}

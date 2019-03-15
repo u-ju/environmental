@@ -1,0 +1,42 @@
+/* pages/maintenanceworker_detail/index.wxss */
+page{
+  font-size: 28rpx;
+  color: #444;
+}
+.top{
+  padding: 27rpx 34rpx 34rpx 34rpx;
+  border-bottom: 20rpx solid #eee;
+}
+.header{
+  width: 154rpx;
+  height: 154rpx;
+  margin-right: 60rpx;
+}
+.phone{
+  width: 64rpx;
+  height: 64rpx;
+}
+.size36{
+  margin-bottom: 30rpx;
+}
+.grxx{
+  padding: 34rpx 32rpx; 
+  border-bottom: 20rpx solid #eee;
+  line-height: 50rpx;
+}
+.grxx text{
+  display: inline-block;
+  width: 400rpx;
+}
+.grxx .color898989{
+  
+  width: 200rpx;
+}
+.fwxq_bor{
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20rpx;
+  margin-bottom: 40rpx;
+}
+.fwxq{
+  padding: 35rpx 32rpx;
+}

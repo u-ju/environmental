@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    post:false,
     options2: [
       {
         value: 'beijing',
@@ -712,6 +713,9 @@ Page({
       url = apiurl.shopSettled_update;
       data["shop_id"] = that.data.shop_id
     }
+    that.setData({
+      post:true
+    })
     util.postJSON({ apiUrl: url, data: data }, function (res) {
       var result = res.data.result
       
@@ -732,13 +736,24 @@ Page({
       wx.navigateTo({
         url: '../tenantsIndex/index',
       })
-    },function(res){
+      that.setData({
+        post: false
+      })
+    }, function (res) {
       console.log(res.data.message)
-      if(res.data.message=="更新成功"){
+      if (res.data.message == "更新成功") {
         wx.navigateTo({
           url: '../tenantsIndex/index',
         })
       }
-    })
+      that.setData({
+        post: false
+      })
+      }, function (res) {
+        
+        that.setData({
+          post: false
+        })
+      })
   }
 })

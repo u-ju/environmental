@@ -1,0 +1,14 @@
+@import '../business/index';
+.tuijian_item .images{
+  width:244rpx;
+  height:146rpx;
+  border-radius:5rpx;
+}
+.images image{
+  width:244rpx;
+  height:146rpx;
+  
+}
+.miaoshu{
+  width: 334rpx;
+}

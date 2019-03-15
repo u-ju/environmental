@@ -40,10 +40,12 @@ Page({
   address() {
     var that = this;
     util.getJSON({ apiUrl: apiurl.shippingAddress_index +"?default=1" }, function (res) {
-      var result = res.data.result
-
+      var result = res.data.result, address={}
+      if (result.list.length>0){
+        address=result.list[0]
+      }
       that.setData({
-        address: result.list[0],
+        address: address,
       })
       util.hideLoading()
     })
@@ -111,8 +113,12 @@ Page({
     })
   },
   link(){
+   var  url= '../address_order/index'
+    if (Object.keys(this.data.address).length ==0){
+      url = '../address/index'
+    }
     wx.navigateTo({
-      url: '../address_order/index',
+      url: url
     })
   },
   goodsBuy(){

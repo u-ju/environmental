@@ -23,7 +23,7 @@
 </view>
 </view>
 <view class='marb20'>
-<view class='item' wx:for='{{item2}}' wx:key="index" data-url='{{item.url}}'  data-or='{{item.or}}' data-value='{{item.value}}' data-renzhen='{{item.renzhen}}' bindtap='link'>
+<view class='item' wx:for='{{item2}}' wx:key="index" data-url='{{item.url}}'  data-or='{{item.or}}' data-value='{{item.value}}' data-renzhen='{{item.renzhen}}' bindtap='link' hidden='{{item.is_recycler==0}}'  >
   <view class="container flex_btw align_center">
     <view class='size28 color0'>{{item.title}}</view>
     <view class='item_right'>

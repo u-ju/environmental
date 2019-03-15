@@ -52,8 +52,8 @@
 </view>
 <!-- <view class='size36 btndl' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
 <view class='size36 btndl' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请业务专员</view> -->
-<view class='size36 btndl' data-invite='aaa'  bindtap='open3'>邀请联盟商家</view>
-<view class='size36 btndl' data-invite='bbb'  bindtap='open3'>邀请业务专员</view>
+<view class='size36 btndl' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
+<view class='size36 btndl' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请业务专员</view>
 <navigator class='link' url='../my_invitation/index'>
   查看我的邀请<text class='color5DC47A'> 》</text>
 </navigator>

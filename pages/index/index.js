@@ -47,9 +47,9 @@ Page({
   
   onLoad: function (options) {
     var that  = this;
-    var str = '2012-2-2'
-    var str2 = str.replace(/-/g, '/');
-    console.log(str2)
+    // var str = '2012-2-2'
+    // var str2 = str.replace(/-/g, '/');
+    // console.log(str2)
     // wx.setStorageSync('tabbarmainid', '')
     util.loading()
     if (wx.getStorageSync('token')){
@@ -159,7 +159,12 @@ Page({
     if (e.currentTarget.dataset.time != '' && e.currentTarget.dataset.time !=undefined){
       url = url + "?time=" + e.currentTarget.dataset.time
     }
-    if (url =='undefined?time=undefined'){
+    if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
+      url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)
+    }
+    console.log(url)
+    if (url == 'undefined?time=undefined' || url =="undefined"){
+      
       return false
     }
     wx.navigateTo({

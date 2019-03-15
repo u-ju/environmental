@@ -1,13 +1,20 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/housekeeping/index",
+    "pages/housekeeping_edit/index",
+    
+    "pages/repair/index",
+    
+    
+    "pages/business/index",
+    "pages/maintenanceworker_detail/index",
+    "pages/maintenance_worker/index",
+    "pages/housekeeping_detail/index",
+    "pages/maintenance/index",
     "pages/bill/index",
     "pages/payment_details/index",
     "pages/installment_repayment/index",
-    
-    
-    
-    
     "pages/my_invitation/index",
     "pages/history/index",
     "pages/order/index",
@@ -33,16 +40,13 @@
     "pages/ban/index",
     "pages/tenants/tenants",
     "pages/order_detail/index",
-    
-    
-    
     "pages/comment/index",
     
     "pages/place_order/place_order",
     "pages/promote/index",
     
     "pages/convenience_service/index",
-    "pages/business/index",
+    
     "pages/catering/index",
     "pages/payment/index",
     "pages/video_detail/index",
@@ -68,7 +72,7 @@
     "pages/phone/phone",
     "pages/phone_new/phone_new",
     "pages/delivery_station/delivery_station",
-    "pages/business_details/business_details",
+    
     "pages/delivery_station_list/delivery_station_list",
     "pages/setting/setting",
     "pages/help_center/help_center",

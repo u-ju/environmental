@@ -1,0 +1,2 @@
+/* pages/maintenance/index.wxss */
+@import '../business/index';

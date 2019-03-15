@@ -1,5 +1,5 @@
-// const basePath = 'https://wyhb.zgwyhb.com/api';
-const basePath = 'https://wyhb.zhanghi.cn/api';
+const basePath = 'https://wyhb.zgwyhb.com/api';
+// const basePath = 'https://wyhb.zhanghi.cn/api';
 const apiList = {
 
   // GET 控制对照
@@ -320,5 +320,34 @@ const apiList = {
   userNper_orderShow: basePath + '/front/userNper/orderShow?order_id=',
   // GET  账单还款列表
   userNper_repaymentIndex: basePath + '/front/userNper/repaymentIndex?order_id=',
+
+  // RepairController 维修服务
+
+
+  // POST 个人维修申请
+  repair_userStore: basePath + '/front/repair/userStore',
+  //GET 个人维修详情
+  repair_userShow: basePath + '/front/repair/userShow?repair_id=',
+  // POST 个人维修更新
+  repair_userUpdate: basePath + '/front/repair/userUpdate',
+  //GET 维修列表
+  repair_index: basePath + '/front/repair/index',
+  //GET 维修详情
+  repair_show: basePath + '/front/repair/show?repair_id=',
+  //GET 维修列表
+  repair_home: basePath + '/front/repair/home',
+
+  // POST 个人维修申请
+  jiazheng_userStore: basePath + '/front/jiazheng/userStore',
+  //GET 个人维修详情
+  jiazheng_userShow: basePath + '/front/jiazheng/userShow?jiazheng_id=',
+  // POST 个人维修更新
+  jiazheng_userUpdate: basePath + '/front/jiazheng/userUpdate',
+  //GET 维修列表
+  jiazheng_index: basePath + '/front/jiazheng/index',
+  //GET 维修详情
+  jiazheng_show: basePath + '/front/jiazheng/show?jiazheng_id=',
+  //GET 维修列表
+  jiazheng_home: basePath + '/front/jiazheng/home',
 }
 module.exports = apiList;

@@ -1,11 +1,8 @@
-
 <!--pages/dynamic/dynamic.wxml-->
 <block wx:if="{{result.content_source=='url'}}">
   <web-view src="{{result.content}}"> </web-view>
-  <!-- <canvas  canvas-id='shareCanvas' class='myCanvas'></canvas> -->
 </block>
 <block wx:else>
-<!-- <menu hidden id='menu' bind:addEvent="_addEvent" /> -->
 <view class='itemll'  data-id='{{result.vicinage_id}}'>
   <view  class='flex'>
     <image src='{{result.avatar}}' class='headll' mode='aspectFill'></image>
@@ -14,7 +11,6 @@
         <text class='color4 size28 one-hidden'>{{result.nickname}}</text>
         <view class='color898989 size22'>{{result.created_at}}</view>
       </view>
-      <!-- <image src='../../images/delete_.png' class='delete' bindtap='delete' ></image> -->
       
     </view>
   </view>
@@ -25,7 +21,7 @@
         <image src='{{item}}' mode='aspectFill' class='pic1 {{result.images.length%2==0?"pic2":"" }} {{result.images.length%3==0?"pic3":"" }}'></image>
       </block>
     </view>
-    <view class='flex_btw align_center czbtn' wx:if="{{result.status==1}}">
+    <view class='flex_btw align_center czbtn' hidden="{{result.status==0||result.status==2}}">
       <view class='flex_btw align_center'  data-index='{{index}}' bindtap='like' data-vicinage_id='{{result.vicinage_id}}' data-praise='{{result.praise}}'>
         <image wx:if='{{result.praise==0}}'  src='../../images/lo@2x.png' mode='aspectFit'></image>
         <image wx:if='{{result.praise==1}}'  src='../../images/love@2x.png' mode='aspectFit' ></image>
@@ -36,9 +32,7 @@
         <text class='color898989'>{{result.reply}}</text>
       </view>
       <view  bindtap='share_zzc'>
-        <!-- <button open-type="share" data-name="pageShare" id="share" class='share'> -->
           <image src='../../images/video_fx.png'></image>
-        <!-- </button> -->
       </view>
     </view>
 </view>

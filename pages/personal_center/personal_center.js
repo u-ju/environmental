@@ -41,7 +41,8 @@ Page({
     ],
     item2:[
       // { title: "推广中心", value: "", url: "../promote/index" },
-      { title: "上门回收订单", value: "", url: "../home_orders/home_orders" },
+      { title: "回收员上门订单", value: "", url: "../home_orders/home_orders?fill=true", is_recycler:0 },
+      { title: "上门回收订单", value: "", url: "../home_orders/home_orders", },
       { title: "业务专员申请", value: "", url: "../agent/index" },
       { title: "我的银行卡", value: "", url: "../my_bankcard/index" },
       { title: "收货地址", value: "", url: "../address/index" },
@@ -70,6 +71,8 @@ Page({
       item1[0].value = result.mobile
       item1[1].value = result.integral
       item1[2].value = result.balance
+      item2[0].is_recycler = 1
+      // result.is_recycler
       // item1[4].qrcode = result.qrcode.user
       // item1[5].qrcode = result.qrcode.bag
       // item1[6].is_sorter = result.is_sorter
@@ -78,7 +81,8 @@ Page({
       wx.setStorageSync('pay_deposit', '')
       that.setData({
         result: result,
-        item1: item1
+        item1: item1,
+        item2: item2
       })
       util.hideLoading()
     })

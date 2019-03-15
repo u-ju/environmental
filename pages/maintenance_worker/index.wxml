@@ -1,0 +1,102 @@
+<!--pages/maintenance_worker/index.wxml-->
+<form  bindsubmit="formSubmit">
+  <view class='wxgitem flex_btw '>
+    <view class='left'>联系人</view>
+    <input name='name' value='{{name}}'></input>
+  </view>
+  <view class='wxgitem flex_btw '>
+    <view class='left'>联系方式</view>
+    <input name='phone' value='{{phone}}' maxlength='11'></input>
+  </view>
+  <view class='wxgitem flex_btw '>
+    <view class='left'>服务区域</view>
+    <input  name='area_id' value='{{areaSelectedStr}}' disabled='disabled' bindtap="cascadePopup" ></input>
+  </view>
+  <view class='wxgitem flex_btw '>
+    <view class='left'>维修种类</view>
+    <input name='cate_id' value='{{cate_name}}' disabled='disabled' bindtap='onOpen1'></input>
+  </view>
+  <!-- <view class='wxgitem flex_btw '>
+    <view class='left'>从事维修年限</view>
+    <input name='' value=''></input>
+  </view> -->
+  <view class='textarea'>
+    <view >服务详情：</view>
+    <textarea name='intro' value='{{intro}}'>
+    </textarea>
+  </view>
+  <view class='wxgitem flex_btw ' wx:if="{{status_name}}">
+    <view class='left'>审核状态</view>
+     <view class='color46'>{{status_name}}</view>
+  </view>
+ 
+  <button class='btn' form-type="submit" disabled='{{post}}'>提交</button>
+</form>
+
+<wux-popup closable visible="{{ visible3 }}"  bind:close="close3">
+   <view class='ppcon'>
+    <text class='center'>提交成功！\n 请耐心等待后台审核</text>
+   </view>
+</wux-popup>
+<view class="modal">
+	<view class="modal-mask {{maskVisual}}" bindtap="cascadeDismiss"></view>
+	<view animation="{{animationData}}" class="modal-content">
+	    <view class="modal-header">
+	        <text class="modal-title">所在地区</text>
+          
+	        <image src="../../images/cuo.png" class="modal-close" bindtap="cascadeDismiss" />
+	    </view>
+	    <view class="modal-body">
+
+	    	<text class="viewpager-title {{current == 0 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="0">{{provinceName}}</text>
+	    	<text class="viewpager-title {{current == 1 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="1">{{cityName}}</text>
+	    	<text class="viewpager-title {{current == 2 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="2">{{regionName}}</text>
+	    	<text class="viewpager-title {{current == 3 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="3">{{townName}}</text>
+
+			<view class="viewpager-divider"></view>
+			<swiper class="swiper-area" current="{{current}}" bindchange="currentChanged">
+				<block wx:if="{{province.length > 0}}">
+					<swiper-item>
+						<scroll-view scroll-y="true" class="viewpager-listview">
+							<view wx:for="{{province}}" wx:key="index" data-index="{{index}}" bindtap="provinceTapped">
+								<text wx:if="{{index == provinceIndex}}" class="area-selected">{{item}}</text>
+								<text wx:else>{{item}}</text>
+							</view>
+						</scroll-view>
+					</swiper-item>
+				</block>
+				<block wx:if="{{city.length > 0}}">
+					<swiper-item>
+						<scroll-view scroll-y="true" class="viewpager-listview">
+							<view wx:for="{{city}}" wx:key="index" data-index="{{index}}" bindtap="cityTapped">
+								<text wx:if="{{index == cityIndex}}" class="area-selected">{{item}}</text>
+								<text wx:else>{{item}}</text>
+							</view>
+						</scroll-view>
+					</swiper-item>
+				</block>
+				<block wx:if="{{region.length > 0}}">
+					<swiper-item>
+						<scroll-view scroll-y="true" class="viewpager-listview">
+							<view wx:for="{{region}}" wx:key="index" data-index="{{index}}" bindtap="regionTapped">
+								<text wx:if="{{index == regionIndex}}" class="area-selected">{{item}}</text>
+								<text wx:else>{{item}}</text>
+							</view>
+						</scroll-view>
+					</swiper-item>
+				</block>
+				<block wx:if="{{town.length > 0}}">
+					<swiper-item>
+						<scroll-view scroll-y="true" class="viewpager-listview">
+							<view wx:for="{{town}}" wx:key="index" data-index="{{index}}" bindtap="townTapped">
+								<text wx:if="{{index == townIndex}}" class="area-selected">{{item}}</text>
+								<text wx:else>{{item}}</text>
+							</view>
+						</scroll-view>
+					</swiper-item>
+				</block>
+			</swiper>
+	    </view>
+	</view>
+</view>
+<wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="维修种类" options="{{ cate_arr }}" bind:close="onClose1" bind:change="onChange1" />

@@ -1,4 +1,5 @@
 /* pages/my_paymentGoods/index.wxss */
+@import '../my_gold/my_gold';
 page{
   font-size: 26rpx;
 }
@@ -6,11 +7,19 @@ page{
   padding: 30rpx 0;
   width: 686rpx;
   border-bottom: 1px solid #E8E8E8;
-  margin: auto;
+  
 }
 .color727272{
   color:#727272
 }
 .marginb{
   margin-bottom: 10rpx;
+}
+.color4ad6a3{
+  color: #4ad6a3
+}
+.bold500{
+  padding: 30rpx 0;
+  width: 686rpx;
+  margin: auto;
 }
