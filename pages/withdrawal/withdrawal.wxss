@@ -19,9 +19,9 @@ page{
 }
 .sure{
   width: 686rpx;
-  height: 57rpx;
-  line-height: 57rpx;
-  border-radius: 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
   margin-top: 20rpx;
   font-size: 28rpx;
 }

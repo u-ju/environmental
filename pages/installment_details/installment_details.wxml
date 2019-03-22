@@ -8,7 +8,7 @@
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" current="{{index}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}" bindchange='swiper'>
     <block wx:for="{{result.images}}" wx:key="index">
       <swiper-item>
-          <image src="{{item}}" class="slide-image" />
+          <image src="{{item}}" class="slide-image" mode='aspectFill' />
       </swiper-item>
     </block>
 </swiper>
@@ -47,7 +47,7 @@
 </view>
 <view class='goods_intr3'>
   <view class='size28 color4'>评价({{list.length}})</view>
-  <block wx:for='{{list.length}}' wx:key="index">
+  <block wx:for='{{list}}' wx:key="index">
   <view>
     <view class='flex message align_center'>
       <image src='{{item.avatar}}' class='head'></image>
@@ -60,7 +60,12 @@
       </view>
     </view>
     <view class='color898989 size26 pl_con'>
-      {{item.content}}
+      {{item.comment_message}}
+    </view>
+    <view class='color898989 size26 pl_con'>
+    <block wx:for='{{item.comment_images}}' wx:for-key="index">
+      <image src='{{item}}' class='imagepic' mode='aspectFill'></image>
+      </block>
     </view>
   </view>
   </block>

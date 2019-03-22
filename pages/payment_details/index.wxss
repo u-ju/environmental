@@ -45,6 +45,10 @@ button.btn{
 }
 input{
   border-bottom:1px solid #eee;
-  margin: 20rpx auto;
+  margin: 40rpx auto;
   text-align: left;
+}
+.hq{
+  background:#eee;
+  box-shadow:0px 4rpx 13rpx 0px #eee;
 }

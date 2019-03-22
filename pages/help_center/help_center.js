@@ -82,7 +82,7 @@ Page({
   },
   call(){
     wx.makePhoneCall({
-      phoneNumber: '17828075469', //此号码并非真实电话号码，仅用于测试
+      phoneNumber: '17780053344', //此号码并非真实电话号码，仅用于测试
       success: function () {
         console.log("拨打电话成功！")
       },

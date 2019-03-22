@@ -45,13 +45,18 @@ Page({
     page: {},
     list:[],
     receiveid:'',
-    order_id:[]
+    order_id:[],
+    order_logistics:[]
   },
   onLoad(e){
     // console.log(app.globalData.config)
     // app.globalData.config.order_info_search_status
     util.loading()
     var order_info_search_status = [
+      {
+        "id": "5",
+        "name": "全部"
+      },
       {
         "id": "0",
         "name": "待发货"
@@ -73,15 +78,12 @@ Page({
         "name": "待评价"
       }
     ]
-    order_info_search_status[order_info_search_status.length] = {
-      "id": "5",
-      "name": "全部"
-    }
     for (var i in order_info_search_status){
       order_info_search_status[i]["key"] = order_info_search_status[i]["id"]
     }
     this.setData({
-      tabs:order_info_search_status
+      tabs:order_info_search_status,
+      status: order_info_search_status[0]["id"]
     })
     // this.init()
     if (e.source_ext){
@@ -96,11 +98,13 @@ Page({
     }
   },
   onChange(e) {
+    console.log(e)
     this.setData({
       current: e.detail.key,
     })
   },
   onTabsChange(e) {
+    console.log(e)
     const { key } = e.detail
     const index = this.data.tabs.map((n) => n.key).indexOf(key)
     
@@ -108,6 +112,10 @@ Page({
       key,
       index,
     })
+    this.setData({
+      status: this.data.tabs[index].id
+    })
+    this.init(this.data.tabs[index].id)
   },
   onSwiperChange(e) {
     util.loading()
@@ -217,6 +225,17 @@ Page({
         }
 
       }
+    })
+  },
+  logistics(e){
+    console.log(e)
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.userOrder_show + "?order_id=" + e.currentTarget.dataset.id }, function (res) {
+      var result = res.data.result
+      that.setData({
+        order_logistics: result.order_logistics,
+        visible2:true
+      })
     })
   },
   _cancel(order_id) {

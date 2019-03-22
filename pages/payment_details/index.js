@@ -1,4 +1,5 @@
 // pages/payment_details/index.js
+
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');

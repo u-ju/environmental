@@ -25,7 +25,7 @@ Page({
     console.log()
     util.postJSON({ apiUrl: apiurl.shippingAddress_update, data: { address_id: e.currentTarget.dataset.id, default: 1 } }, function (res) {
       util.alert(res.data.message)
-      that.init()
+      wx.navigateBack()
     })
   },
   init() {

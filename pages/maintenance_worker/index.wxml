@@ -11,19 +11,23 @@
   <view class='wxgitem flex_btw '>
     <view class='left'>服务区域</view>
     <input  name='area_id' value='{{areaSelectedStr}}' disabled='disabled' bindtap="cascadePopup" ></input>
+    <text class='iconfont icon-jiantou color898989'></text>
   </view>
   <view class='wxgitem flex_btw '>
     <view class='left'>维修种类</view>
     <input name='cate_id' value='{{cate_name}}' disabled='disabled' bindtap='onOpen1'></input>
+    <text class='iconfont icon-jiantou color898989'></text>
   </view>
   <!-- <view class='wxgitem flex_btw '>
     <view class='left'>从事维修年限</view>
     <input name='' value=''></input>
   </view> -->
-  <view class='textarea'>
+  <view class='textarea1'>
     <view >服务详情：</view>
-    <textarea name='intro' value='{{intro}}'>
+    <textarea wx:if="{{textareahidden}}"  focus="{{textareahidden}}" class='size28 color9' bindinput='input' bindblur='unshow'  name='intro' value='{{intro}}' maxlength='1000'>
+    
     </textarea>
+    <view class='textareav' bindtap='show' wx:else>{{intro}}</view>
   </view>
   <view class='wxgitem flex_btw ' wx:if="{{status_name}}">
     <view class='left'>审核状态</view>

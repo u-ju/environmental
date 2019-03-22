@@ -4,7 +4,9 @@
     <view>总金额：￥{{result.nper_amount}}</view>
     <view>待还款：<text class='colorFE3434 size48'>￥{{result.remain_amount}}</text></view>
   </view>
-  <view class='btn' bindtap='open1'>立即还款</view>
+  <view class='btn hq' wx:if="{{result.order_status==2}}" >已还清</view>
+  <view class='btn' bindtap='open1' wx:else >立即还款</view>
+  
 </view>
 <view class='list'>
   <view class='listitem flex_btw ' wx:for="{{list}}" wx:key="index">
@@ -17,12 +19,12 @@
 <wux-popup closable visible="{{ visible1 }}" title="请输入还款金额" bind:close="close1">
     <form bindsubmit="formSubmit">
       <input name='amount' placeholder='请输入还款金额'></input>
-      <button form-type="submit" class='btn'>确认</button>
+      <button form-type="submit" class='btn '>确认</button>
     </form>
 </wux-popup>
 
-<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="close2">
-  <text class='iconfont icon-cuohao'  bindtap="close3"></text>
+<wux-popup position="bottom" visible="{{ visible2 }}" closable  bind:close="close2">
+  <!-- <text class='iconfont icon-cuohao'  bindtap="close2"></text> -->
     <view class='center color4 size36 csgg'>立即还款</view>
     <view class='center color4 size60 csgg'>￥{{items.pay_amount}}</view>
     <view  >

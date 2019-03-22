@@ -12,8 +12,8 @@ swiper-item image,swiper{
   margin-right: 18rpx;
 }
 .dingwei{
-  width: 30rpx;
-  height: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 .size32{
   margin-bottom: 20rpx;

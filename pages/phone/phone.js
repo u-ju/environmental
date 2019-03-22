@@ -109,7 +109,7 @@ Page({
       // })
     }
     this.setData({
-      privacy_policy: app.globalData.config.about
+      privacy_policy: app.globalData.config.privacy_policy
       })
     wx.setNavigationBarTitle({
       title: title

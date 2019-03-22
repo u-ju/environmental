@@ -20,19 +20,32 @@ Page({
   detail(e){
     console.log(e.currentTarget.dataset.sku_id)
     wx.navigateTo({
-      url: '../installment_details/installment_details?sku_id=' + e.currentTarget.dataset.sku_id,
+      url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.sku_id 
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.hideLoading()
-    this.init()
+    util.loading()
+    
+    if (options.keywords) {
+      var keywords = options.keywords
+      this.setData({
+        keywords: keywords,
+        search: options.keywords
+      })
+      this.init( 1, keywords)
+    }else{
+      this.init()
+    }
   },
-  init( page = 1) {
+  init(page = 1, keywords='') {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.goods + "?page=" + page }, function (res) {
+    if (that.data.keywords != '' && that.data.keywords != undefined) {
+      keywords = that.data.keywords
+    }
+    util.getJSON({ apiUrl: apiurl.goods + "?page=" + page + "&keywords="+ keywords }, function (res) {
       var result = res.data.result
       var list = result.list
       if (page != 1) {

@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    result:{}
+    result:{},
+    visible2: false,
+    order_logistics:[]
   },
 
   /**
@@ -16,6 +18,9 @@ Page({
    */
   onLoad: function (options) {
     // this.init(options.id)
+    wx.showLoading({
+      title: '加载中',
+    })
     this.setData({
       order_id: options.id
     })
@@ -25,6 +30,12 @@ Page({
       this.init(this.data.order_id)
     }
   },
+  tiaozhuan(e){
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.id,
+    })
+  },
   init(order_id) {
     var that = this;
     util.getJSON({ apiUrl: apiurl.userOrder_show + "?order_id="+order_id }, function (res) {
@@ -32,7 +43,7 @@ Page({
       
       that.setData({
         result: result,
-
+        order_logistics: result.order_logistics,
       })
       wx.hideLoading()
     })
@@ -86,5 +97,15 @@ Page({
     }
     
     
+  },
+  open2() {
+    this.setData({
+      visible2: true,
+    })
+  },
+  onClose2(){
+    this.setData({
+      visible2: false,
+    })
   }
 })

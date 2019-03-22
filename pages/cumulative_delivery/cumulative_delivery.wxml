@@ -1,8 +1,8 @@
 <!--pages/cumulative_delivery/cumulative_delivery.wxml-->
-<view class='title'>
+<!-- <view class='title'>
   <image class='all' src='../../images/all@2x.png'></image>
   <text class='size36 color2EB354'>总计：{{time}}次</text>
-</view>
+</view> -->
 <block wx:if="{{list.length>0}}">
   <view class='item' wx:for="{{list}}" wx:key="index">
     <view class='color6 size28'>{{item.source_name}}</view>

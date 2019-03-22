@@ -6,7 +6,7 @@ Page({
                 text: '确定',
             },
             {
-                type: 'light',
+              type: 'stable',
                 block: true,
                 text: '返回',
             },
@@ -20,11 +20,11 @@ Page({
         const { index } = e.detail
 
 
-      if (index === 0) {
+      if (index == 0) {
         wx.navigateTo({
-          url: '../index/index',
+          url: '../personal_center/personal_center',
         })
-      } else if (index === 1) {
+      } else if (index == 1) {
         wx.navigateBack()
       }
     },

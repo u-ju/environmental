@@ -14,6 +14,7 @@ Page({
     afterColor: "coral",//当前选中的指示点颜色
     beforeColor1:'#2EB354',
     interval: 5000,
+    interval1: 6000,
     duration: 1000,
     userInfo: {},
     banner: [],
@@ -44,9 +45,26 @@ Page({
     visible1:false,
     value1:[]
   },
-  
+  search(e) {
+    wx.navigateTo({
+      url: '../search/index',
+    })
+  },
+  // searchSubmit(e) {
+  //   var keywords = "&keywords=" + this.data.search
+  //   this.setData({
+  //     keywords: keywords
+  //   })
+    
+  // },
   onLoad: function (options) {
+    console.log(options)
     var that  = this;
+    console.log(wx.getStorageSync('formData'))
+    var formData = wx.getStorageSync('formData')
+    this.setData({
+      formData: formData
+    })
     // var str = '2012-2-2'
     // var str2 = str.replace(/-/g, '/');
     // console.log(str2)
@@ -116,7 +134,7 @@ Page({
       ak: that.data.ak
     });
     var fail = function (data) {
-      console.log(data);
+      // console.log(data);
     };
     var success = function (data) {
       var weatherData = data.currentWeather[0];
@@ -153,6 +171,9 @@ Page({
         
       }
     }
+    if (e.currentTarget.dataset.url != '' && e.currentTarget.dataset.url != undefined) {
+      url = url + e.currentTarget.dataset.url
+    }
     if (e.currentTarget.dataset.params != '' && e.currentTarget.dataset.params != undefined) {
       url = url + e.currentTarget.dataset.params.id
     }
@@ -162,7 +183,7 @@ Page({
     if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
       url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)
     }
-    console.log(url)
+    // console.log(url)
     if (url == 'undefined?time=undefined' || url =="undefined"){
       
       return false
@@ -203,6 +224,11 @@ Page({
                     url: that.data.pjurl,
                   })
                 }
+                if (that.data.formData["qrcode"]){
+                  wx.navigateTo({
+                    url: '../qrcode/index?q=' + that.data.formData["qrcode"],
+                  })
+                }
                 return that.init()
               } else {
                 wx.getUserInfo({
@@ -226,6 +252,11 @@ Page({
                       if (that.data.pjurl) {
                         return wx.navigateTo({
                           url: that.data.pjurl,
+                        })
+                      }
+                      if (that.data.formData["qrcode"]) {
+                        wx.navigateTo({
+                          url: '../qrcode/index?q=' + that.data.formData["qrcode"],
                         })
                       }
                      return that.init()

@@ -30,7 +30,7 @@
 </view> -->
 
 <view class='pageType flex_btw wrap' wx:if="{{list.length>0}}">
-  <view class='goods' wx:for="{{list}}" wx:key='index' bindtap='detail' data-sku_id='{{item.sku_id}}'>
+  <view class='goods' wx:for="{{list}}" wx:key='index' bindtap='detail' data-sku_id='{{item.sku_id}}' data-spu_id='{{item.spu_id}}'>
     <image mode='aspectFit' src='{{item.thumb}}' class='goodspic'></image>
     <view>
       <view class='color4 size28 one-hidden margint6'>{{item.spu_name}}</view>

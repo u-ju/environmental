@@ -127,11 +127,12 @@ Page({
   
   onLoad: function (options) {
     var that = this;
-    // options.sku_id
-    util.getJSON({ apiUrl: apiurl.goods_show + "1" }, function (res) {
+    util.loading()
+    
+    util.getJSON({ apiUrl: apiurl.goods_show + options.id }, function (res) {
       var result = res.data.result
       var choosed1 = [], choosed = []
-      for (var i in result.spec_values){
+      for (var i in result.spu_id){
         if (result.spec_values[i]["sku_id"] == result.sku_id){
           choosed1 = result.spec_values[i]["spec_value"]
         }
@@ -139,51 +140,20 @@ Page({
       for (var n in choosed1){
         choosed.push(choosed1[n])
       }
-      // result.spec_values = [
-      //   {
-      //     "sku_id": "1",
-      //     "sku_name": "灰色-32GB",
-      //     "market_price": "1200.00",
-      //     "price": "1100.00",
-      //     "nper_price": "1150.00",
-      //     "spec_value": [
-      //       "1",
-      //       "5"
-      //     ]
-      //   },
-      //   {
-      //     "sku_id": "2",
-      //     "sku_name": "红色-64GB",
-      //     "market_price": "1400.00",
-      //     "price": "1300.00",
-      //     "nper_price": "1350.00",
-      //     "spec_value": [
-      //       "2",
-      //       "6"
-      //     ]
-      //   },
-      //   {
-      //     "sku_id": "3",
-      //     "sku_name": "红色-64GB",
-      //     "market_price": "1400.00",
-      //     "price": "1300.00",
-      //     "nper_price": "1350.00",
-      //     "spec_value": [
-      //       "1",
-      //       "6"
-      //     ]
-      //   }
-      // ]
       that.setData({
         result: result,
-        choosed: choosed
+        choosed: choosed,
+        spu_id: result.spu_id
       })
+      that.commentIndex(result.spu_id)
       that._click(choosed, result.spec_values, result)
       util.hideLoading()
     })
+    
   },
-  commentIndex(){
-    util.getJSON({ apiUrl: apiurl.goods_commentIndex +"?sku_id=1" }, function (res) {
+  commentIndex(spu_id, page=1){
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.goods_commentIndex + spu_id+"&page="+page }, function (res) {
       var result = res.data.result
       that.setData({
         list: result.list,
@@ -349,5 +319,45 @@ Page({
     this.setData({
       count: e.detail.value,
     })
+  },
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+
+    var that = this;
+    util.getJSON({  apiUrl: apiurl.goods_commentIndex + that.spu_id + "&page=" + page}, function (res) {
+      var result = res.data.result
+      var list = result.list
+      that.setData({
+        list: list,
+        page: result.page,
+        last: false,
+      })
+      // 隐藏导航栏加载框
+      wx.hideNavigationBarLoading();
+      // 停止下拉动作
+      wx.stopPullDownRefresh();
+      util.hideLoading()
+    })
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+      that.commentIndex(that.spu_id,Number(that.data.page.current_page) + 1)
+    } else {
+      that.setData({
+        last: true
+      })
+      wx.hideLoading()
+    }
   },
 })

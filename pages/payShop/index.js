@@ -21,23 +21,19 @@ Page({
     result: {},
     payment: '',
     visible2:false,
-    chooseimage:'../../images/y@2x.png'
+    chooseimage:'../../images/choosed.png'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    // options["shop_id"]=8
-    util.getJSON({ apiUrl: apiurl.gatherPayCreate + options.shop_id},
-      function (res) {
-        that.setData({
-          shopdetail: res.data.result,
-          shop_id: options.shop_id
-        })
-      })
-    
+    var that = this;
+    var pages = getCurrentPages() //获取加载的页面
+    var currentPage = pages[pages.length - 1] //获取当前页面的对象
+    var url = currentPage.route 
+    console.log(url)
+    console.log(options)
       var eco_bag_type= [
         {
           "key": "big",
@@ -51,18 +47,29 @@ Page({
         }
       ]
     for (var i in eco_bag_type){
-      eco_bag_type[i]["image"]='../../images/yw@2x.png'
+      eco_bag_type[i]["image"] ='../../images/choose.png'
     }
-      // app.globalData.config.eco_bag_type
     this.setData({
       eco_bag_type: eco_bag_type
     })
-    
+    if (options.shop_id){
+      this.shop(options.shop_id)
+    }
+   
+  },
+  shop(shop_id){
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.gatherPayCreate + shop_id },
+      function (res) {
+        that.setData({
+          shopdetail: res.data.result,
+          shop_id: shop_id
+        })
+        wx.hideLoading()
+      })
   },
   back(){
-wx.redirectTo({
-  url: '../index/index',
-})
+    wx.navigateBack()
   },
   bag(e){
     console.log(e)
@@ -109,19 +116,43 @@ wx.redirectTo({
       function (res) {
         var result = res.data.result
         console.log(res)
-        var payment_usable = that.data.pay
-        for (var key in result.payment_usable) {
-          payment_usable[key]["text"] = result.payment_usable[key]["name"]
-          payment_usable[key]["key"] = result.payment_usable[key]["key"]
+        // var payment_usable = that.data.pay
+        // for (var key in result.payment_usable) {
+        //   payment_usable[key]["text"] = result.payment_usable[key]["name"]
+        //   payment_usable[key]["key"] = result.payment_usable[key]["key"]
+        // }
+        for (let i in result.payment_usable) {
+          result.payment_usable[i].choosed = 0
         }
+        result.payment_usable[0].choosed = 1
         that.setData({
           result: result,
-          pay: payment_usable,
+          items: result,
+          pay: result.payment_usable,
           visible2: true,
-          payment: payment_usable[0]["key"]
+          payment: result.payment_usable[0]["key"]
         })
       })
 
+  },
+  choose(e) {
+    var items = this.data.items;
+    for (let i in items.payment_usable) {
+      items.payment_usable[i].choosed = 0
+      if (items.payment_usable[i].options && this.data.payment_ext) {
+        for (let a in items.payment_usable[i].options) {
+          items.payment_usable[i].options[a].choosed = 0
+        }
+      }
+    }
+    items["payment_usable"][e.currentTarget.dataset.index]["choosed"] = 1
+    var pay_amount = items.pay_amount
+    this.setData({
+      items: items,
+      fq: e.currentTarget.dataset.index,
+      pay_amount: pay_amount,
+      payment: items["payment_usable"][e.currentTarget.dataset.index]["key"]
+    })
   },
   close2() {
     var that = this;
@@ -138,11 +169,17 @@ wx.redirectTo({
         if (result.payment == "balance") {
           util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
             util.alert("支付成功")
-            that.init()
+            wx.navigateTo({
+              url: '../success/success',
+            })
           }, function () {
-            that.init()
+            wx.navigateTo({
+              url: '../error/error',
+            })
           }, function () {
-            that.init()
+            wx.navigateTo({
+              url: '../error/error',
+            })
           })
         } else {
         wx.requestPayment({
@@ -185,7 +222,10 @@ wx.redirectTo({
     })
   },
   onClose2() {
-    this.onClose('visible2')
+    // this.onClose('visible2')
+    this.setData({
+      visible2: false,
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏

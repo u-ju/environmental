@@ -1,10 +1,10 @@
 <!--pages/business/index.wxml-->
 <view class='seach_item flex_btw align_center'>
   <view class='seach  flex_btw align_center'>
-    <input></input>
-    <image src='../../images/video_cz.png' class=''></image>
+    <input bindinput='search'  bindconfirm="searchSubmit" value='{{search}}' name='search' ></input>
+    <image src='../../images/video_cz.png' bindtap='searchSubmit' class='' ></image>
   </view>
-  <view class='color4AD6A3' bindtap='weixiu' data-jiazheng='{{jiazheng}}'>我是商家</view>
+  <view class='color4AD6A3' bindtap='weixiu' data-jiazheng='{{jiazheng}}'>成为商家</view>
 </view>
 <view class='banner'>
   <image  src='{{banner_arr[0].image}}'></image>

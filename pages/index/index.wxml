@@ -5,7 +5,6 @@
 <template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
 <view class='indextop flex_btw align_center'>
   <view class='weather flex align_center'>
-    
     <image src='{{futureWeather[0].dayPictureUrl}}' class='weather_pic' mode='aspectFit'></image>
     <view class=''>
       <view>
@@ -15,9 +14,10 @@
       <view class='size20'>{{weatherData.temperature}}</view>
     </view>
   </view>
-  <view class='search flex_btw align_center'> 
-    <input></input>
-    <image src='../../images/video_cz.png' class='search_pic'></image>
+  <view class='search flex_btw align_center' bindtap='search'> 
+    
+    <input  disabled='disabled' value='{{search}}' name='search' ></input>
+    <image src='../../images/video_cz.png'  class='search_pic' ></image>
   </view>
 </view>
 
@@ -65,22 +65,21 @@
   <image src="{{result.nper.image}}" />
 </view>
 <view class='bg marginfff'>
-  <view class="container over_hid flex_btw">
-      <view class='index_putin border_right left'>
+  <view class="container over_hid flex_btw twobr">
+      <view class='index_putin border_right left' wx:for="{{user}}" wx:key ="index">
         <view class='size28 color3 flex'>
-          <text >{{user.put_stat.title}}</text>
-          <view class='wallet color3 index_putin_right' bindtap='link' data-link='{{user.put_stat.button.attach.control}}' data-time='{{user.put_stat.value}}'>
-            {{user.put_stat.button.title}}
+          <text >{{item.title}}</text>
+          <view class='wallet color3 index_putin_right' bindtap='link' data-link='{{item.button.attach.control}}' data-time='{{item.value}}'>
+            {{item.button.title}}
           </view>
-        <!-- </navigator> -->
         </view>
         
         <view>
-          <text class='size36 color6ADB7A'>{{user.put_stat.value}}</text>
-          <text class='color102'>次</text>
+          <text class='size36 color6ADB7A'>{{item.value}}</text>
+          <!-- <text class='color102'>次</text> -->
         </view>
       </view>
-      <view class='index_putin left'>
+      <!-- <view class='index_putin left'>
         <view class='size28 color3 flex'>
           <text >{{user.wallet.title}}</text>
           <view class='wallet color3 index_putin_right'  bindtap='link' data-link='{{user.wallet.button.attach.control}}'>
@@ -91,7 +90,7 @@
           <text class='size36 color6ADB7A'>{{user.wallet.value}}</text>
           <text class='color102'>元</text>
         </view>
-      </view>
+      </view> -->
       
   </view>
 </view>
@@ -102,7 +101,7 @@
       <view class='size28 color3'>联盟商家推荐</view>
     </view>
     <view class='banner recommended' >
-      <swiper   interval="5000" autoplay="{{autoplay}}" duration="{{duration}}"  >
+      <swiper   interval="6000" autoplay="{{autoplay}}" duration="{{duration}}"  >
           <block wx:for="{{shop_ad.length/3}}" wx:key="index" wx:for-item="num">
             <swiper-item class='flex_btw'>
               <view wx:for="012" class='item_lb_pic' wx:key="index" wx:for-item="image" bindtap='shopdetail' data-shop_id='{{shop_ad[(num-0)*3+(image-0)].shop_id}}'>
@@ -121,7 +120,7 @@
   </view>
   <view class='recommended'>
     <block wx:for="{{result.week_ad}}" wx:key ="index">
-      <image src="{{item.image}}" class="slide-image"  bindtap='link' data-link='{{item.attach.control}}' data-params='{{item.attach.params}}' />
+      <image src="{{item.image}}" class="slide-image"   bindtap='link' data-link='{{item.attach.control}}' data-params='{{item.attach.params}}' data-url='?id=' />
     </block>
     
   </view>

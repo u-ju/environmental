@@ -31,6 +31,28 @@ Page({
     refreshTime: '', // 刷新的时间 
     loadMoreData: '加载更多……'
   },
+  search(e) {
+
+    this.setData({
+      search: e.detail.value
+    })
+    if (e.detail.value == '') {
+      this.setData({
+        keywords: ""
+      })
+      this.init(1, '')
+    }
+  },
+  searchSubmit(e) {
+    
+    var keywords =  this.data.search
+    this.setData({
+      keywords: keywords,
+      indexSize: -1
+    })
+    // console.log(keywords)
+    this.init('', 1)
+  },
   change(e) {
     console.log(e)
     if (!e.detail.source){
@@ -89,6 +111,7 @@ Page({
       type = options.type
       title = '便民服务'
     }
+    
     that.setData({
       type: type
     })
@@ -99,28 +122,45 @@ Page({
       title: '加载中',
     })
     var shop_cate = app.globalData.config.shop_cate
-      if (type==1){
-        shop_cate = app.globalData.config.tshop_cate
-      }
-      that.setData({
-        shop_cate: shop_cate,
-        erji: shop_cate[0].children,
-        cate_id: shop_cate[0].id
-      })
+    // if (type==1){
+    //   shop_cate = app.globalData.config.tshop_cate
+    // }
+    that.setData({
+      shop_cate: shop_cate,
+      erji: shop_cate[0].children,
+      cate_id: shop_cate[0].id
+    })
     if (shop_cate.length>0){
-      that.init();
-    }else{
-      wx.hideLoading()
-    }
+      if (options.keywords){
+        var keywords = options.keywords
+        this.setData({
+          keywords: keywords,
+          search: keywords,
+          indexSize: -1
+        })
+        console.log(keywords)
+        this.init('', 1, keywords)
+      }else{
+        that.init();
+      }
     
+  }else{
+    wx.hideLoading()
+    }
     that.address()
 
   },
-  init(cate_id = this.data.shop_cate[0].id,page=1 ) {
+  init(cate_id = this.data.shop_cate[0].id, page = 1, keywords='') {
     var that = this;
+    // console.log(keywords)
+    if (that.data.keywords != '' && that.data.keywords != undefined) {
+      keywords = that.data.keywords
+    }
+    console.log(keywords)
     util.getJSON({
-      apiUrl: apiurl.shop+"?type="+that.data.type, 
-      data: { cate_id: cate_id,page:page}
+      apiUrl: apiurl.shop + "?type=" + that.data.type ,
+      // + "&keywords" + keywords, 
+      data: { cate_id: cate_id, page: page, keywords: keywords}
       }, function (res) {
       var result = res.data.result
       var list = result.list
@@ -219,17 +259,19 @@ Page({
   loadMore: function () {
     var that = this;
     // 显示加载图标
-    wx.showLoading({
-      title: '玩命加载中',
-    })
+    
     // 页数+1
     if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+      wx.showLoading({
+        title: '玩命加载中',
+      })
       that.init(that.data.cate_id, Number(that.data.page.current_page) + 1)
     } else {
+      
       that.setData({
         last: true
       })
-      util.alert("加载完成")
+      // util.alert("加载完成")
     }
   },
   // 下拉刷新

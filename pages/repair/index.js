@@ -14,15 +14,26 @@ Page({
     list: [],
     page: {},
     choosed:[],
-    choose:''
+    choose:'',
+    search:'',
+    keywords:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.keywords){
+      var keywords = "&keywords=" + options.keywords
+      this.setData({
+        keywords: keywords,
+        search: options.keywords
+      })
+      this.init(1, keywords)
+    }else{
+      this.init()
+    }
     
-    this.init()
   },
 
   /**
@@ -30,6 +41,27 @@ Page({
    */
   onReady: function () {
 
+  },
+  search(e){
+    console.log(e)
+    if (e.detail.value==''){
+      this.setData({
+        keywords: "&keywords=" 
+      })
+      this.init(1, '')
+    }
+    this.setData({
+      search: e.detail.value
+    })
+  },
+  searchSubmit(e){
+    console.log(e)
+    console.log(this.data.search)
+    var keywords = "&keywords="+this.data.search
+    this.setData({
+      keywords: keywords
+    })
+    this.init(1, keywords)
   },
   choose(e){
     // console.log(e.currentTarget.dataset.choose)
@@ -70,12 +102,15 @@ Page({
       })
     })
   },
-  init(page = 1) {
+  init(page = 1, keywords='') {
     var that = this,pjurl='';
     if (that.data.choose != '' && that.data.choose !=undefined){
       pjurl = "&cate_id="+that.data.choose
     }
-    util.getJSON({ apiUrl: apiurl.repair_index + "?page=" + page + pjurl}, function (res) {
+    if (that.data.keywords != '' && that.data.keywords != undefined) {
+      keywords = that.data.keywords
+    }
+    util.getJSON({ apiUrl: apiurl.repair_index + "?page=" + page + pjurl + that.data.keywords}, function (res) {
       var result = res.data.result
       var list = result.list
       if (page != 1) {

@@ -1,23 +1,10 @@
-<!--pages/my_gold/my_gold.wxml-->
-
-<view class='size36 color918F8F center'>可提现余额</view>
+<!--pages/my_integral/index.wxml-->
+  <view class='size36 color918F8F center'>当前积分</view>
   <view class='money justify_center flex align_center'>
-    <image src='../../images/gold@2x.png'></image>
-    <text class='size50 colorC70000'>{{balance}}</text>
+    <image src='../../images/minuet@2x.png'></image>
+    <text class='size50 colorFFBF1A'>{{integral}}</text>
   </view>
-  <view class='size36 colorC70000 withdrawal'><navigator url='../withdrawal/withdrawal?balance={{balance}}&is_password={{is_password}}'>提现</navigator></view>
-  
-  <view class='flex align_center justify_center brx'>
-    <!-- <view class='color4588EC size28' >提现规则</view> -->
-    <!-- bindtap='showRule' -->
-    <navigator url='../page/index?name=1'>
-      <view class='color4588EC size28 br'>提现规则</view>
-    </navigator>
-    <navigator url='../withdrawal_record/withdrawal_record'>
-      <view class='color4588EC size28'>提现记录</view>
-    </navigator>
-  </view>
-
+  <view  class='xian'></view>
 
 
 <view class='detailed'>
@@ -45,3 +32,5 @@
             <text class='iconfont icon-ziyuanldpi ruleHide color6' bindtap='hideRule'></text>
         </view>
     </view>
+    <!--  end  -->
+  

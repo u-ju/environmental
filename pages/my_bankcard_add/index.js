@@ -12,7 +12,8 @@ Page({
       { name: 1, value: '同意' },
     ],
     choose:[],
-    disabled:false
+    disabled:false,
+    privacy_policy:''
   },
 
   checkboxChange(e) {
@@ -38,6 +39,9 @@ Page({
           icon: 'ios-checkbox-outline',
           title: '添加成功'
         })
+        that.setData({
+          disabled: false
+        })
         util.deplay_navigateTo("../my_bankcard/index")
       }, function () {
         that.setData({
@@ -53,7 +57,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      privacy_policy: app.globalData.config.privacy_policy
+    })
   },
 
   /**

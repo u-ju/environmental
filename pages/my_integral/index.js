@@ -1,4 +1,7 @@
-// pages/my_gold/my_gold.js
+// pages/my_integral/index.js
+
+
+
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
@@ -23,13 +26,15 @@ Page({
    */
   onLoad: function (options) {
     util.loading()
-    var url = apiurl.balanceIndex;
-    var that = this;
-    var title = '我的环保金';
+    var that = this
+    var url = apiurl.integralIndex;
+    var title = '我的积分'
+    this.setData({
+      gold: false,
+    })
     that.setData({
       url: url
     })
-    
     wx.setNavigationBarTitle({
       title: title,
     })

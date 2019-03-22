@@ -224,3 +224,6 @@ swiper {
 .recommended{
   height: 235rpx;
 }
+.twobr>view:last-of-type{
+  border: none
+}

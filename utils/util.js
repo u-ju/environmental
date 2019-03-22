@@ -1,6 +1,8 @@
 const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
+// var build = 99999999
+var build = 20190322
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -303,13 +305,13 @@ function getJSON(form = {}, call_success) {
   var that = this;
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
-  var header = { 'content-type': 'application/json', 'channel': 'let', 'build': 0 } // 默认值
+  var header = { 'content-type': 'application/json', 'channel': 'let', 'build': build } // 默认值
   if (!form.hasOwnProperty("token")) {
     header = {
       'content-type': 'application/json', // 默认值
       'token': that.getToken(),
       'channel':'let',
-      'build':0
+      'build': build
     }
   }
   wx.request({
@@ -318,6 +320,7 @@ function getJSON(form = {}, call_success) {
     method: 'GET',
     header: header,
     success: function(res){
+      
       if (res.data.status == 200) {
         call_success(res)
       } else if (res.data.status==801){
@@ -351,13 +354,13 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
   var that = this;
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
-  var header = {'content-type': 'application/x-www-form-urlencoded; charset=UTF-8','channel': 'let','build': 0} // 默认值
+  var header = { 'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', 'channel': 'let', 'build': build} // 默认值
   if (!form.hasOwnProperty("token")) {
     header = {
       'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', // 默认值
       'token': that.getToken(),
       'channel': 'let',
-      'build': 0
+      'build': build
     }
   }
   wx.request({
@@ -369,13 +372,16 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
       if (res.data.status == 200) {
         call_success(res)
       } else if (res.data.status == 801) {
+        
+        wx.setStorageSync('formData', formData)
         // that.getToken(801)
         // that.postJSON(form, call_success)
         // that.getToken(801, form, call_success, "post")
         // wx.setStorageSync("token", '')
+        console.log(801)
         wx.setStorageSync("token", "")
         wx.redirectTo({
-          url: 'pages/index/index',
+          url: '../index/index',
         })
       } else if (res.data.status == 802) {
         wx.redirectTo({

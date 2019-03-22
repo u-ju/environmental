@@ -6,7 +6,7 @@ const apiList = {
   // GET 控制对照
 
   controlContrast: basePath + '/front/controlContrast', 
-
+  search: basePath + '/front/search?keywords=',
 
   // PayController
   // POST 第三方支付信息创建
@@ -262,7 +262,7 @@ const apiList = {
 
   goods: basePath + '/front/goods/index',
   goods_show: basePath + '/front/goods/show?sku_id=',
-  goods_commentIndex: basePath + '/front/goods/show',
+  goods_commentIndex: basePath + '/front/goods/commentIndex?spu_id=',
 
   // shippingAddress: basePath + '/front/shippingAddress/store',
   // shippingAddress_index: basePath + '/front/shippingAddress/index',

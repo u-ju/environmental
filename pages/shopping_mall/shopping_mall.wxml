@@ -1,8 +1,10 @@
 <!--pages/shopping_mall/shopping_mall.wxml-->
 <view class="detail" wx:if="{{shop_cate.length>0}}">
-  <view class='sousuo flex_btw align_center'>
-    <input></input>
-    <image src='../../images/video_cz.png' class='video_cz' mode='aspectFill'></image>
+  <view class='sousuobig'>
+    <view class='sousuo flex_btw align_center'>
+      <input bindinput='search'  bindconfirm="searchSubmit" value='{{search}}' name='search'></input>
+      <image src='../../images/video_cz.png' bindtap='searchSubmit' class='video_cz' mode='aspectFill'></image>
+    </view>
   </view>
     <view class="content">
       <view class="menu-container">
@@ -19,7 +21,49 @@
           </view>
         </scroll-view>
       </view>
-      <swiper indicator-dots='true' class="detail-container" bindchange="change" data-index="{{index}}" current="{{indexSize}}"
+      <view class="detail-container" wx:if="{{indexSize==-1}}">
+        <view class="title flex_btw align_center">
+          <text class='size22 color6'>已为你推荐就近商家</text>
+          <view class='flex_btw align_center '>
+            <image src="../../images/icon_location@2x.png" class='icon_location'  mode='aspectFit'/>
+            <text class='size24 color6 one-hidden'>{{address}}</text>
+          </view>
+        </view>
+        <block wx:if="{{list.length>0}}">
+            <a wx:for="{{list}}" wx:key="index" wx:for-item="list">
+              <view class="inner" bindtap='detail' id='{{list.shop_id}}'>
+                <view class='zhekou' wx:if="{{list.discount_name}}">
+                  <image src="../../images/zhekou.png"   mode='aspectFit'/>
+                  <text>{{list.discount_name}}</text>
+                </view>
+                <view class="cover">
+                  <image src="{{list.thumb}}" class="cover-img" mode='aspectFill'/>
+                </view>
+                <view class='describe width100'>
+                  <view class='bold color51 size26'>{{list.title}}</view>
+                  <view class='color102'>{{list.intro}}</view>
+                  <!-- <view class="renzheng" wx:if="{{type==1}}">
+                      身份已认证
+                  </view> -->
+                  <view class='color153 flex_btw '>
+                    <view class="location">
+                      <image src="../../images/icon_location.png" class="location_icon" mode='aspectFill'/>
+                      <text class='color153 size20'>{{list.distance}}</text>
+                    </view>
+                    <view class="phone" data-contact='{{list.contact}}' catchtap='calling'>
+                      <image src="../../images/phonex.png" class="phone_icon" mode='aspectFit'/>
+                      <text class='colora3b18f size20'>拨打电话</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </a>
+            </block>
+            <view wx:else class='empty'>
+              <empty  />
+            </view>
+      </view>
+      <swiper wx:else indicator-dots='true' class="detail-container" bindchange="change" data-index="{{index}}" current="{{indexSize}}"
         indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" duration="{{duration}}">
         <swiper-item wx:for="{{shop_cate}}" wx:for-item="item" wx:key="{{item.id}}">
           <!-- <view class="header center" hidden="{{hideHeader}}">

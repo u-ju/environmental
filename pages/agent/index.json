@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "业务专员申请",
+  "navigationBarTitleText": "环保大使",
   "usingComponents": {
     "wux-popup": "../../Components/popup/index",
     "empty": "../../Components/empty/index",

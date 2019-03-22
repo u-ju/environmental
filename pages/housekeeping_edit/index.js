@@ -33,6 +33,27 @@ Page({
       
     ],
     upload_picture_list: [],
+    textareahidden: false,
+    intro: ''
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  show() {
+    this.setData({
+      textareahidden: 1
+    })
+  },
+  unshow() {
+    this.setData({
+      textareahidden: false
+    })
+  },
+  input(e) {
+    this.setData({
+      intro: e.detail.value
+    })
   },
 
   /**
@@ -121,7 +142,7 @@ Page({
     for (var a in that.data.upload_picture_list) {
       data['images[' + a + ']'] = that.data.upload_picture_list[a]['path_server']
     }
-
+    data["intro"] = this.data.intro
 
     console.log(data)
     that.setData({

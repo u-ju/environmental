@@ -2,9 +2,9 @@
 <view class='card size28 flex_btw'>
   <view class='flex_col'>
     <view>待还总金额（元）</view>
-    <view class='size60'>{{result.nper_amount}}</view>
+    <view class='size60'>{{result.remain_amount}}</view>
     <view class='xian'></view>
-    <view><view class='marginb10'>分期总金额 </view>￥{{result.remain_amount}}</view>
+    <view><view class='marginb10'>分期总金额 </view>￥{{result.nper_amount}}</view>
   </view>
   <image src='../../images/payment_i.png' class='payment_i'></image>
 </view>

@@ -26,7 +26,11 @@
      <!-- placeholder='点击输入联系方式'  -->
     <input class='size28 color9' bindinput='input' data-contact='contactt' name='contact'value='{{contact}}' maxlength='11' disabled='{{disabled1}}'  type='number'></input>
   </view>
-  
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>签约利率</text>
+     <!-- placeholder='点击输入店铺名称' -->
+    <input class='size28 color9'  bindinput='input' data-contact='signed_ratet' name='signed_rate' disabled='{{disabled1}}' value='{{signed_rate}}'></input>
+  </view>
   <view class='item  flex align_center' wx:if="{{!disabled1}}">
     <text class='size28 color6'>区域</text>
     <!-- placeholder='点击选择区域'  -->
@@ -68,7 +72,8 @@
   </view>
   <view class='item  flex align_center'>
     <text class='size28 color6'>商城描述</text>
-    <textarea  class='size28 color9' bindinput='input' data-contact='introt' value='{{intro}}' name='intro'></textarea>
+    <textarea wx:if="{{show}}" focus="{{show}}" class='size28 color9' bindinput='input' bindblur='unshow' data-contact='introt' value='{{intro}}' name='intro'></textarea>
+    <view class='textarea size28 color9' bindtap='show'  wx:else>{{intro}}</view>
   </view>
   <block  wx:for="{{image}}" wx:key="{{index}}">
   <view class='item  flex align_center image'>
@@ -108,14 +113,17 @@
     </view>
   </view>
 
-  <!-- <view class='item  flex align_center item_tj' wx:if="{{!shop_id}}">
-    <text class='size28 color6'>推荐人手机号</text>
-    <input class='size28 color9' bindinput='input' data-contact='share_mobilet' name='share_mobile' value='{{share_mobile}}' placeholder='点击输入推荐人手机号' ></input>
-  </view> -->
-  
-  <view class='item  flex align_center item_tj' wx:if="{{disabled1}}">
-    <text class='size28 color6'>签约利率</text>
-    {{result.signed_rate}}
+  <view  class=' size28 center flex  align_center gxuan' >
+    <view class='flex  align_center'  bindtap='choose'>
+      <view class='choose'>
+        <image src='../../images/choose.png' wx:if="{{choosed==0}}"></image>
+        <image src='../../images/choosed.png' wx:else></image>
+      </view>
+      <text>请勾选</text>
+    </view>
+    <navigator class='color299EF0' url='../page/index?url={{shop_protocol}}'>
+      商家入驻协议
+    </navigator>
   </view>
 
   <view wx:if="{{disabled1}}" class='size32 button' bindtap='xiugai'>点击修改</view>

@@ -21,8 +21,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-    this.init()
+    if (options.keywords) {
+      var keywords = "&keywords=" + options.keywords
+      this.setData({
+        keywords: keywords,
+        search: options.keywords
+      })
+      this.init(1, keywords)
+    } else {
+      this.init()
+    }
   },
 
   /**
@@ -30,6 +38,24 @@ Page({
    */
   onReady: function () {
 
+  },
+  search(e) {
+    if (e.detail.value == '') {
+      this.setData({
+        keywords: "&keywords="
+      })
+      this.init(1, '')
+    }
+    this.setData({
+      search: e.detail.value
+    })
+  },
+  searchSubmit(e) {
+    var keywords = "&keywords=" + this.data.search
+    this.setData({
+      keywords: keywords
+    })
+    this.init(1, keywords)
   },
   choose(e){
     wx.showLoading()
@@ -70,12 +96,15 @@ Page({
       })
     })
   },
-  init(page = 1) {
+  init(page = 1, keywords='') {
     var that = this,pjurl='';
     if (that.data.choose != '' && that.data.choose !=undefined){
       pjurl = "&cate_id="+that.data.choose
     }
-    util.getJSON({ apiUrl: apiurl.jiazheng_index + "?page=" + page + pjurl}, function (res) {
+    if (that.data.keywords != '' && that.data.keywords != undefined) {
+      keywords = that.data.keywords
+    }
+    util.getJSON({ apiUrl: apiurl.jiazheng_index + "?page=" + page + pjurl + keywords}, function (res) {
       var result = res.data.result
       var list = result.list
       if (page != 1) {

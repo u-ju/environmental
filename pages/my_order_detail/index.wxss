@@ -1,5 +1,9 @@
 /* pages/my_order_detail/index.wxss */
 @import '../reimbursement/index';
+@import '../order/index';
+view{
+  overflow: visible
+}
 page{
   font-size: 28rpx;
   color: #444;
@@ -53,5 +57,9 @@ page{
 .marginr{
   display: inline-block;
   margin: 10rpx 50rpx 0 0;
+
+}
+.shitem .fkItem_goods_ms {
+width:430rpx;
 
 }

@@ -6,7 +6,9 @@
   </view>
   <view class='iconfont icon-jiantou'></view>
 </view>
+
 <view class='fkItem  shitem' wx:for="{{result.order_arr}}" wx:key="index" wx:for-item="order_arr">
+  
   <view class='fkItem_goods flex' wx:for="{{order_arr.goods_arr}}" wx:key="index">
     <image src='{{item.thumb}}' class='goospic' mode='aspectFit'></image>
     <view class='fkItem_goods_ms '>
@@ -26,7 +28,7 @@
 
 <wux-popup position="bottom" visible="{{ visible3 }}" bind:close="close3">
     <text class='iconfont icon-cuohao'  bindtap="close3"></text>
-    <view class='center color4 size36 csgg'>分期购买</view>
+    <view class='center color4 size36 csgg'>选择支付方式</view>
     <view class='center color4 size60 csgg'>￥{{pay_amount}}</view>
     <view  >
       <view class='label' wx:for="{{items.payment_usable}}" wx:key ="index">

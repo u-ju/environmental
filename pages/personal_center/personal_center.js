@@ -31,19 +31,21 @@ Page({
     // ],
     item1:[
       { title: "手机", value: "", url: "../phone/phone", or:"../phone_new/phone_new"},
-      { title: "我的积分", value: "", url: "../my_gold/my_gold?gold=1"},
+      { title: "我的积分", value: "", url: "../my_integral/index"},
       { title: "我的环保金", value: "", url:"../my_gold/my_gold" },
+      { title: "我的货款", value: "", url: "../my_paymentGoods/index", is_shop:0 },
       { title: "实名认证", value: "", url: "../phone/phone?type=1", is_rm: 0 },
       { title: "我的发布", value: "", url: "../my_release/index" },
-      { title: "我的货款", value: "", url: "../my_paymentGoods/index" },
+      
       { title: "我的订单", value: "", url: "../order/index" },
       { title: "分期还款", value: "", url: "../installment_repayment/index" },
     ],
     item2:[
       // { title: "推广中心", value: "", url: "../promote/index" },
       { title: "回收员上门订单", value: "", url: "../home_orders/home_orders?fill=true", is_recycler:0 },
+      { title: "垃圾投放记录", value: "", url: "../cumulative_delivery/cumulative_delivery", },
       { title: "上门回收订单", value: "", url: "../home_orders/home_orders", },
-      { title: "业务专员申请", value: "", url: "../agent/index" },
+      { title: "环保大使", value: "", url: "../agent/index" },
       { title: "我的银行卡", value: "", url: "../my_bankcard/index" },
       { title: "收货地址", value: "", url: "../address/index" },
       // { title: "上门回收订单", value: "", url: "../home_orders/home_orders" },
@@ -71,6 +73,8 @@ Page({
       item1[0].value = result.mobile
       item1[1].value = result.integral
       item1[2].value = result.balance
+      item1[3].value = result.settle
+      item1[3].is_shop = result.is_shop
       item2[0].is_recycler = 1
       // result.is_recycler
       // item1[4].qrcode = result.qrcode.user
@@ -88,8 +92,8 @@ Page({
     })
     util.getJSON({ apiUrl: apiurl.realname }, function (res) {
       if (res.data.result.status!=-1){
-        item1[3].url = '../realname_suc/index?result=' + JSON.stringify(res.data.result)
-        item1[3].value = res.data.result.status_name
+        item1[4].url = '../realname_suc/index?result=' + JSON.stringify(res.data.result)
+        item1[4].value = res.data.result.status_name
       }
       that.setData({
         item1: item1

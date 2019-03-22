@@ -1,12 +1,15 @@
 {
   "pages":[
+    
     "pages/index/index",
+    "pages/qrcode/index",
+    "pages/search/index",
+    "pages/order/index",
+    "pages/my_integral/index",
     "pages/housekeeping/index",
     "pages/housekeeping_edit/index",
-    
+    "pages/payShop/index",
     "pages/repair/index",
-    
-    
     "pages/business/index",
     "pages/maintenanceworker_detail/index",
     "pages/maintenance_worker/index",
@@ -17,7 +20,6 @@
     "pages/installment_repayment/index",
     "pages/my_invitation/index",
     "pages/history/index",
-    "pages/order/index",
     "pages/installment_details/installment_details",
     "pages/my_paymentGoods/index",
     "pages/my_bankcard/index",
@@ -34,19 +36,13 @@
     "pages/neighbourhood_release/index",
     "pages/neighbourhood/neighbourhood",
     "pages/realname_authentication/realname_authentication",
-    
-
-
     "pages/ban/index",
     "pages/tenants/tenants",
     "pages/order_detail/index",
     "pages/comment/index",
-    
     "pages/place_order/place_order",
     "pages/promote/index",
-    
     "pages/convenience_service/index",
-    
     "pages/catering/index",
     "pages/payment/index",
     "pages/video_detail/index",
@@ -56,23 +52,18 @@
     "pages/success/success",
     "pages/error/error",
     "pages/page/index",
-    "pages/payShop/index",
-    
     "pages/pay/index",
     "pages/edsc_site/edsc_site",
     "pages/edcs_choose/edcs_choose",
     "pages/application_bag/application_bag",
     "pages/ecofer/ecofer",
     "pages/neighbourhood_detail/neighbourhood_detail",
-    
     "pages/edcs/edcs",
     "pages/find/find",
     "pages/dynamic/dynamic",
-    
     "pages/phone/phone",
     "pages/phone_new/phone_new",
     "pages/delivery_station/delivery_station",
-    
     "pages/delivery_station_list/delivery_station_list",
     "pages/setting/setting",
     "pages/help_center/help_center",
@@ -81,7 +72,6 @@
     "pages/code/code",
     "pages/shopping_mall/shopping_mall",
     "pages/news_detail/news_detail",
-    
     "pages/qrcode/qrcode",
     "pages/put/put",
     "pages/sorting_all/sorting_all",
@@ -89,12 +79,10 @@
     "pages/sorting_order/sorting_order",
     "pages/sorting/sorting",
     "pages/home_orders/home_orders",
-    
     "pages/withdrawal_record/withdrawal_record",
     "pages/withdrawal/withdrawal",
     "pages/my_deposit/my_deposit",
     "pages/message/message",
-    
     "pages/about/about",
     "pages/tailor/tailor",
     "pages/modify_nickname/modify_nickname",
@@ -115,5 +103,9 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "奥特利环保",
     "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 100000
   }
 }

@@ -1,8 +1,8 @@
 <!--pages/address_order/index.wxml-->
 <view class='adItem flex_btw align_center' wx:for="{{list}}" wx:key="index" >
-  <view class='flex align_center '>
+  <view class='flex align_center ' bindtap='choose' data-id="{{item.address_id}}" data-default="{{item.default}}">
     <image src='../../images/choosed.png' class='choose' wx:if="{{item.default==1}}"></image>
-    <image src='../../images/choose.png'  bindtap='choose' data-id="{{item.address_id}}" data-default="{{item.default}}" class='choose' wx:else></image>
+    <image src='../../images/choose.png'   class='choose' wx:else></image>
     <view class='width500'>
       <view class='marginb24'>{{item.name}}      <text class='marginl50'>{{item.phone}}</text></view>
       <view>{{item.area_name}}{{item.address}}</view>

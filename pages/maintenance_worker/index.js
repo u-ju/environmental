@@ -30,11 +30,28 @@ Page({
       { title: '店招上传', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
       { title: '营业执照', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
     ],
+    textareahidden:false,
+    intro:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  show(){
+    this.setData({
+      textareahidden: 1
+    })
+  },
+  unshow() {
+    this.setData({
+      textareahidden: false
+    })
+  },
+  input(e) {
+    this.setData({
+      intro: e.detail.value
+    })
+  },
   onLoad: function (options) {
     if (options.repair != '' && options.repair !=undefined){
       this.userShow(options.repair)
@@ -96,6 +113,7 @@ Page({
     that.setData({
       post: true
     })
+    data["intro"] = this.data.intro
     if (that.data.url =='repair_userUpdate'){
       data['repair_id'] = that.data.repair_id
     }

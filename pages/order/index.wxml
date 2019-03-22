@@ -4,8 +4,8 @@
         <wux-tab key="{{ item.key }}" title="{{ item.name }}"></wux-tab>
     </block>
 </wux-tabs>
-<swiper current="{{ index }}" bindchange="onSwiperChange" style='height:{{height}}rpx;'>
-        <swiper-item class='zitem' wx:for="{{ tabs }}" wx:key ="index">
+<!-- <swiper current="{{ index }}" bindchange="onSwiperChange" style='height:{{height}}rpx;'>
+        <swiper-item class='zitem' wx:for="{{ tabs }}" wx:key ="index"> -->
             <view class='fkItem' wx:for="{{list}}"  wx:key="index" wx:for-index="listindex" bindtap='detail' data-id='{{item.order_id}}'>
               
               <view class='flex_btw'>
@@ -29,9 +29,9 @@
               </view>
             </view>
         <empty wx:if="{{list.length==0}}" />
-        </swiper-item>
+        <!-- </swiper-item>
         
-</swiper>
+</swiper> -->
 <wux-popup closable visible="{{ visible1 }}"  bind:close="onClose1" >
     <view class='center shouhuo'>
       <image src='../../images/sh.png' class='shouhuopic'></image>
@@ -41,30 +41,29 @@
     <view slot="footer" class="popup__button" bindtap="close1">确认收货</view>
 </wux-popup>
 
-<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
-   <view class='weui-cell-third'>
-  <view class="page__title color4">工作动态</view>
-  <view class='center size28 color4 kdnr'><text>承运快递：申通快递 \n 运单号：8587455112334</text></view>
-  <block wx:for="{{axis}}" wx:key="index">
+<wux-popup closable position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
+  <view class="page__title color4">物流信息</view>
+  <view class='over_look_big'>
+   <view class='weui-cell-third over_look'>
+   <view wx:for="{{order_logistics}}" wx:key="index" wx:for-item='order_logistics'>
+  
+  <view class=' size28 color4 kdnr'><text>承运快递：{{order_logistics['express_key_name']}} {{order_logistics['express_num']}}</text></view>
+  <view class=''>
+  
+  <block wx:for="{{order_logistics['express_trace']}}" wx:key="index">
     <view class='weui-cell-list'>
- 
-      <view class='weui-cell-circle {{item.now == 1 ? "":"bgBFBFBF"}}'></view>
+      <view class='weui-cell-circle {{index == 0 ? "":"bgBFBFBF"}}'></view>
       <view class='weui-cell-con'>
-        <view class='weui-cell-time'>{{item.time}}</view>
-        
-        <view>
-          <view class='weui-cell-event'>{{item.event}}</view>
-          <view class='weui-cell-name'>{{item.name}}</view>
-        </view>
+          <view>{{item.description}}</view>
+          <view>{{item.time}}</view>
       </view>
-      <view class='weui-cell-line' wx:if='{{axis.length-1 != index}}'>
- 
-        
+      <view class='weui-cell-line' wx:if='{{order_logistics["express_trace"].length-1 != index}}'>
       </view>
- 
     </view>
- 
   </block>
+  </view>
+  </view>
+</view>
 </view>
 </wux-popup>
 <wux-popup closable visible="{{ visible3 }}"  bind:close="onClose3">

@@ -14,30 +14,83 @@
   <view class='sure' bindtap='open2'>确认</view>
 </view> -->
 <view class='pay_big'>
-  <view class='pay_item flex align_center'>
-    <view class='z_right'>当前金额（元）</view>
-    <view class='z_left'> <input name='amount' placeholder="请输入金额" placeholder-style='font-size: 24rpx' bindinput='onChange' ></input></view>
+  <view class='pay_item flex align_center pay_money'>
+    <text class='color4'>￥</text>
+    <input name='amount' placeholder="请输入金额"  placeholder-style='font-size: 32rpx;color:#898989' bindinput='onChange' ></input>
+    <!-- <view class='z_right'>当前金额（元）</view>
+    <view class='z_left'> 
+      <input name='amount' placeholder="请输入金额"  placeholder-style='font-size: 32rpx;color:#898989' bindinput='onChange' ></input>
+    </view> -->
   </view>
   <view wx:for="{{eco_bag_type}}" wx:key="index" data-key='{{item.key}}' bindtap='bag' class='pay_item flex align_center '>
-   <view class='z_right '> <image src='{{bagkey==item.key?chooseimage:item.image}}'></image> {{item.name}}</view>
+   <view class='z_right flex align_center'> <image src='{{bagkey==item.key?chooseimage:item.image}}'></image> {{item.name}}</view>
    <view class='z_left'>{{item.integral}}环保金</view>
   </view>
-  <view class='pay_item flex align_center bottom'>
+  <view class='pay_item flex align_center '>
+    <view class='footerbtn'  bindtap='open2'>确定</view>
+  </view>
+  <!-- <view class='pay_item flex align_center bottom'>
     <view class='center' bindtap='back'>取消</view>
     <view class='center'  bindtap='open2'>确定</view>
-  </view>
+  </view> -->
 </view>
-<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
-  <view class='size28 colorFB5A3E bold title_num'>￥{{result.pay_amount}}</view>
-  <radio-group class="radio-group" bindchange="radioChange">
-      <label wx:for="{{pay}}" wx:key="index" class="radio flex_btw align_center" >
-        <view class='flex align_center'>
-          <image src='{{item.image}}'></image>
-          <text class='color6 size26'>{{item.text}}</text>
+<wux-popup position="bottom" visible="{{ visible2 }}" closable bind:close="onClose2">
+  <view class='size50 colorFB5A3E bold title_num'>￥{{result.pay_amount}}</view>
+  <view  >
+      <view class='label' wx:for="{{items.payment_usable}}" wx:key ="index">
+        <view>
+        <view class='flex align_center radioitem'  bindtap='choose' data-index="{{index}}" data-key="{{item.key}}">
+          <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
+          <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
+          <view class='left'>
+            <text class='size28 color4'>{{item.name}} \n </text>
+          </view>
         </view>
-        <radio value="{{item.key}}" checked="{{item.checked}}"/>
-      </label>
-  </radio-group>
+        <view wx:if="{{item.options&&item.choosed==1}}">
+          <block wx:for="{{item.options}}" wx:key="index">
+          <view class='flex align_center radioitem radioinstallment'  bindtap='choosed' data-index="{{index}}" data-key="{{item.key}}">
+            <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
+            <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
+            <view class='left'>
+              <text class='size28 color4'>{{item.name}} </text>
+            </view>
+          </view>
+          </block>
+        </view>
+        </view>
+      </view>  
+    </view> 
 
-  <button bindtap="close2" class='pay'>确认支付</button>
+  <!-- <button bindtap="close2" class='pay'>确认支付</button> -->
+  <view class='goodsBuy size36 marginb60' bindtap='close2'>立即支付</view>
 </wux-popup>
+<!-- <wux-popup position="bottom" visible="{{ visible3 }}" bind:close="close3">
+    <text class='iconfont icon-cuohao'  bindtap="close3"></text>
+    <view class='center color4 size36 csgg'>选择支付方式</view>
+    <view class='center color4 size60 csgg'>￥{{pay_amount}}</view>
+    <view  >
+      <view class='label' wx:for="{{items.payment_usable}}" wx:key ="index">
+        <view>
+        <view class='flex align_center radioitem'  bindtap='choose' data-index="{{index}}" data-key="{{item.key}}">
+          <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
+          <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
+          <view class='left'>
+            <text class='size28 color4'>{{item.name}} \n </text>
+          </view>
+        </view>
+        <view wx:if="{{item.options&&item.choosed==1}}">
+          <block wx:for="{{item.options}}" wx:key="index">
+          <view class='flex align_center radioitem radioinstallment'  bindtap='choosed' data-index="{{index}}" data-key="{{item.key}}">
+            <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
+            <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
+            <view class='left'>
+              <text class='size28 color4'>{{item.name}} </text>
+            </view>
+          </view>
+          </block>
+        </view>
+        </view>
+      </view>  
+    </view> 
+    <view class='goodsBuy size36 marginb60' bindtap='goodsBuy'>立即支付</view>
+</wux-popup> -->

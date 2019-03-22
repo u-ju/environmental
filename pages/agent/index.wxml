@@ -1,14 +1,14 @@
 <!--pages/agent/index.wxml-->
 <view class='wei' wx:if="{{is_agent==0}}">
-  <view class='weizi'>你还没有成为业务专员，前往申请成为<text class='color5DC47A' bindtap='open2'>业务专员 》</text></view>
+  <view class='weizi'>你还没有成为环保大使，前往申请成为<text class='color5DC47A' bindtap='open2'>环保大使 》</text></view>
   <view class='gznr'>
     <view>
       <text class='size30'>具备条件： </text>
-      <text> \n 1.发展线下联盟商家。 \n 2.招贤纳士，推荐业务专员。</text>
+      <text> \n 1.发展线下联盟商家。 \n 2.招贤纳士，推荐环保大使。</text>
     </view>
     <view>
       <text class='size30'>工作内容：</text>
-      <text> \n 1.成为业务专员需缴纳1500元培训费用。\n 2.经过公司培训后方可发展联盟商家。</text>
+      <text> \n 1.成为环保大使需缴纳1500元培训费用。\n 2.经过公司培训后方可发展联盟商家。</text>
     </view>
     <view>
       <text class='size30'>薪资待遇：</text>
@@ -51,9 +51,9 @@
   
 </view>
 <!-- <view class='size36 btndl' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
-<view class='size36 btndl' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请业务专员</view> -->
-<view class='size36 btndl' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
-<view class='size36 btndl' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请业务专员</view>
+<view class='size36 btndl' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请环保大使</view> -->
+<view class='size36 btndl' hidden='{{!agent.invite_shop}}' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
+<view class='size36 btndl' hidden='{{!agent.invite_agent}}' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请环保大使</view>
 <navigator class='link' url='../my_invitation/index'>
   查看我的邀请<text class='color5DC47A'> 》</text>
 </navigator>

@@ -4,7 +4,7 @@
   <view class='contet-text '>
     <input  name='title' placeholder='标题......' placeholder-class='placeholder' value='{{title}}'></input>
   </view>
-  <textarea name='content' value='{{content}}'></textarea>
+  <textarea name='content' value='{{content}}' maxlength='1000'></textarea>
   <view class="picture_list">
       <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
         <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>

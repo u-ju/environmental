@@ -30,7 +30,7 @@ swiper{
   box-shadow:0px 3rpx 10rpx 0px rgba(191,189,189,1);
   border-radius:5rpx;
   padding: 18rpx;
-  margin-bottom: 45rpx;
+  margin: 0 auto 45rpx auto;
   position: relative;
 }
 .zitem{
@@ -138,12 +138,13 @@ line-height: 86rpx;
   margin: 5px 32rpx 5px 32rpx;
   position: relative;
   width: 600rpx;
+  min-height: 100rpx;
 }
 .weui-cell-line{
 /* width: 100px; */
   margin-left: 12rpx;
   border-left: 4px solid #ddd;
-  height: 90rpx; 
+  height: 100rpx; 
   background: #fff
 }
 .weui-cell-circle{
@@ -155,12 +156,14 @@ margin:-12rpx 0 0 0;
 }
 .weui-cell-con{
   position: absolute;
-  top: -24rpx;
+  top: -4rpx;
   left: 60rpx;
   width: 600rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: left;
+  font-size: 24rpx;
+  /* display: flex;
+  justify-content: space-between; */
+  /* align-items: center; */
 }
 .weui-cell-time{
   /* width: 50px; */
@@ -171,9 +174,7 @@ margin:-12rpx 0 0 0;
  
 }
 .weui-cell-event{
- 
-  /* padding-top: 15px;
-  padding-left: 15px; */
+ max-width: 270rpx;
 }
 .weui-cell-name{
 /* font-size:14px;
@@ -184,10 +185,11 @@ margin-left: 100px; */
 }
 .page__title{
   font-size: 36rpx;
-  margin: 36rpx 0 45rpx 0;
+  margin: 36rpx 0 0 0;
 }
 .kdnr{
-  margin: 0 0 76rpx 0;
+  margin: 0 0 70rpx 40rpx;
+  text-align: left;
 }
 .shbtn{
   width:180rpx;
@@ -221,4 +223,12 @@ color:rgba(46,179,84,1);
   position: absolute;
   bottom: 20rpx;
   right: 20rpx;
+}
+.over_look{
+  padding: 40rpx 0;
+  max-height: 600rpx;
+  overflow: auto;
+}
+.over_look_big{
+  padding: 20rpx 0 40rpx 0;
 }

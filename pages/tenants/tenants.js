@@ -59,13 +59,26 @@ Page({
     title:'',
     address: '',
     intro: '',
+    show:false,
+    choosed:0,
+    shop_protocol:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  show(){
+    this.setData({
+      show: true
+    })
+  },
+  unshow(){
+    this.setData({
+      show: false
+    })
+  },
   onOpen1() {
-    console.log("sssss")
+    // console.log("sssss")
     this.setData({ visible1: true })
   },
   onClose1() {
@@ -73,7 +86,8 @@ Page({
   },
   onChange1(e) {
     this.setData({ title1: e.detail.options.map((n) => n.label).join('-'), cate_id: e.detail.options[e.detail.options.length - 1].id })
-    console.log('onChange1', e.detail)
+    // console.log('onChange1', e.detail)
+    console.log(e.detail.options[e.detail.options.length - 1].id)
     wx.setStorageSync("cate_idt", e.detail.options[e.detail.options.length-1].id)
     wx.setStorageSync("title1t", e.detail.options.map((n) => n.label).join('-'))
   },
@@ -106,7 +120,9 @@ Page({
         shop_cate: shop_cate,
         tshop_cate: result.tshop_cate,
         type_val: result.shop_type,
-        type:''
+        type: '', 
+        shop_protocol: app.globalData.config.shop_protocol,
+        choosed: wx.getStorageSync('choosedt')
       })
     this.loadAddress();
     if (options.shop_id){
@@ -173,7 +189,8 @@ Page({
           type_name: result.type_name,
           image: image,
           cate_id: result.cate_id,
-          upload_picture_list: upload_picture_list
+          upload_picture_list: upload_picture_list,
+          signed_rate: result.signed_rate,
         })
         wx.hideLoading()
       })
@@ -220,7 +237,8 @@ Page({
         title1: wx.getStorageSync("title1t"),
         cate_id:wx.getStorageSync("cate_idt"),
         areaSelectedStr: wx.getStorageSync('areaSelectedStrt'),
-        area_id_val: wx.getStorageSync('area_idt')
+        area_id_val: wx.getStorageSync('area_idt'),
+        signed_rate: wx.getStorageSync('signed_ratet'),
       })
       
     }
@@ -245,6 +263,12 @@ Page({
 
   },
   input(e){
+    // console.log(e)
+    if (e.currentTarget.dataset.contact == "introt"){
+      this.setData({
+        intro: e.detail.value
+      })
+    }
     wx.setStorageSync(e.currentTarget.dataset.contact, e.detail.value)
   },
   /**
@@ -382,7 +406,7 @@ Page({
   uploadpic1: function (e) {
     var that = this //获取上下文
     var upload_picture_list = that.data.upload_picture_list
-    console.log(that.data)
+    // console.log(that.data)
     //选择图片
     wx.chooseImage({
       count: 9,
@@ -413,8 +437,8 @@ Page({
             tempFiles[i]['upload_percent'] = 0
             tempFiles[i]['path_server'] = ''
             
-            console.log(tempFiles[i])
-            console.log(upload_picture_list)
+            // console.log(tempFiles[i])
+            // console.log(upload_picture_list)
             upload_picture_list.push(tempFiles[i])
           }
           that.setData({
@@ -447,7 +471,7 @@ Page({
       upload_picture_list: upload_picture_list
     });
     wx.setStorageSync('upload_picture_list', upload_picture_list)
-    console.log(upload_picture_list)
+    // console.log(upload_picture_list)
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -668,8 +692,17 @@ Page({
       disabled1:false
     })
   },
+  choose() {
+    this.setData({
+      choosed: !this.data.choosed
+    })
+    wx.setStorageSync('choosedt', this.data.choosed)
+  },
   formSubmit(e) {
     var that =this;
+    if (that.data.choosed != 1) {
+      return util.alert('请勾选用户协议')
+    }
     // if(that.data.type==''){
     //   util.alert('请选择入驻类型')
     //   return false
@@ -695,6 +728,7 @@ Page({
     data.area_id = that.data.area_id_val
     // data.token = util.getToken()
     data.type = 2
+    data.intro = that.data.intro
     data.cate_id = that.data.cate_id
     data["longitude"] = that.data.longitude
     data["latitude"] = that.data.latitude
@@ -721,18 +755,19 @@ Page({
       
       util.alert("申请提交成功，等待审核")
       wx.setStorageSync("contactt",'')
+      wx.setStorageSync("signed_ratet", '')
       wx.setStorageSync("titlet", '')
       wx.setStorageSync("addresst", '')
       wx.setStorageSync("introt", '')
       wx.setStorageSync("area_idt", '')
       wx.setStorageSync("typet", '')
       wx.setStorageSync("cate_idt", '')
-      wx.setStorageSync("title1", '')
+      wx.setStorageSync("title1t", '')
       wx.setStorageSync("areaSelectedStrt", '')
-      wx.setStorageSync("imagse0", [])
-      wx.setStorageSync("imagse1", [])
+      wx.setStorageSync("image0", '')
+      wx.setStorageSync("image1", '')
       wx.setStorageSync("upload_picture_list", [])
-      
+      wx.setStorageSync('choosedt', '')
       wx.navigateTo({
         url: '../tenantsIndex/index',
       })

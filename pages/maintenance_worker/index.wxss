@@ -10,6 +10,7 @@ page{
   height: 60rpx;
   border-bottom: 1px solid #eee;
   padding-top: 40rpx;
+  position: relative;
 }
 .wxgitem .left{
   width: 186rpx;
@@ -17,7 +18,7 @@ page{
 .wxgitem input{
   width: 500rpx;
 }
-textarea{
+textarea,.textareav{
   width:636rpx;
   padding:20rpx 16rpx;
   background:rgba(238,238,238,1);
@@ -26,7 +27,7 @@ textarea{
   border: none;
   height: 230rpx;
 }
-.textarea{
+.textarea1{
   margin: 80rpx auto 50rpx auto;
   width: 686rpx;
   
@@ -46,3 +47,8 @@ textarea{
   color: #4AD6A3;
   line-height: 40rpx;
 }
+/* .icon-jiantou{
+  position: absolute;
+  right: 0;
+
+} */

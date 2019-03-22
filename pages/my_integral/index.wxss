@@ -1,0 +1,2 @@
+/* pages/my_integral/index.wxss */
+@import '../my_gold/my_gold';

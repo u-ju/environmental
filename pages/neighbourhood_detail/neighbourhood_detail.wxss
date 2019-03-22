@@ -3,6 +3,7 @@
 @import '../neighbourhood/neighbourhood';
 page{
   padding-bottom: 110rpx;
+  padding-top: 0;
 }
 .czbtn>view{
   margin-right: 100rpx;
