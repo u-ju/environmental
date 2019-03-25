@@ -18,7 +18,7 @@
 
 <wux-popup closable visible="{{ visible1 }}" title="请输入还款金额" bind:close="close1">
     <form bindsubmit="formSubmit">
-      <input name='amount' placeholder='请输入还款金额'></input>
+      <input name='amount' value='{{amount}}' placeholder='请输入还款金额'></input>
       <button form-type="submit" class='btn '>确认</button>
     </form>
 </wux-popup>

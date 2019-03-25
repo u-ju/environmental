@@ -46,3 +46,6 @@ background-color: white;
 .market-scroll-list{
   height: 100%;
 }
+.null{
+  height: 400rpx;
+}

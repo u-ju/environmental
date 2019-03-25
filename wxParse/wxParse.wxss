@@ -90,12 +90,16 @@ view{
 }
 
 .wxParse-video-video{
-    width:100%;
+  width: 100%;
 }
-
+.imagespic{
+  width:100% !important;
+}
 .wxParse-img{
     /*background-color: #efefef;*/
     overflow: hidden;
+    width: 100%;
+    height: auto;
 }
 
 .wxParse-blockquote {

@@ -15,7 +15,8 @@ Page({
     visible1: false,
     visible2: false,
     items:[],
-    payment:''
+    payment:'',
+    amount:''
   },
 
   /**
@@ -139,10 +140,17 @@ Page({
     util.postJSON({ apiUrl: apiurl.create, data: { pay_source: 'nper_repayment', order_id: that.data.id, amount: e.detail.value.amount} },
       function (res) {
         var result = res.data.result
+        for (let i in result.payment_usable) {
+          result.payment_usable[i].choosed = 0
+        }
+        result.payment_usable[0].choosed = 1
         that.setData({
           items: result,
+          pay_amount: result.pay_amount,
+          payment: result["payment_usable"][0]["key"],
           visible1: false,
           visible2: true,
+          amount:''
         })
       })
   },

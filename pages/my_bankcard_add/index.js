@@ -9,7 +9,7 @@ Page({
    */
   data: {
     items: [
-      { name: 1, value: '同意' },
+      { name: 1, value: '同意', checked:true },
     ],
     choose:[],
     disabled:false,
@@ -22,7 +22,6 @@ Page({
     })
   },
   formSubmit(e){
-    
     if (this.data.choose.length<1){
       return util.alert("请勾选用户协议")
 

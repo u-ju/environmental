@@ -13,7 +13,7 @@ Page({
     beforeColor: "white",//指示点颜色
     afterColor: "coral",//当前选中的指示点颜色
     beforeColor1:'#2EB354',
-    interval: 5000,
+    interval: 10000,
     interval1: 6000,
     duration: 1000,
     userInfo: {},
@@ -65,20 +65,17 @@ Page({
     this.setData({
       formData: formData
     })
-    // var str = '2012-2-2'
-    // var str2 = str.replace(/-/g, '/');
-    // console.log(str2)
-    // wx.setStorageSync('tabbarmainid', '')
+    
     util.loading()
-    if (wx.getStorageSync('token')){
+    if (wx.getStorageSync('token') && wx.getStorageSync('token')!=1){
       that.setData({
         token: util.getToken()
       })
       that.init()
     }else{
-      wx.setStorageSync("token",'')
+      wx.setStorageSync("token",1)
       that.setData({
-        token: ''
+        token: 1
       })
       util.hideLoading()
     }
@@ -203,7 +200,7 @@ Page({
     util.scan()
   },
   bindGetUserInfo(e) {
-    wx.setStorageSync("token", '')
+    wx.setStorageSync("token", 1)
     var that = this;
     if (e.detail.userInfo) {
       util.loading()
@@ -225,6 +222,7 @@ Page({
                   })
                 }
                 if (that.data.formData["qrcode"]){
+                  wx.setStorageSync('formData', '')
                   wx.navigateTo({
                     url: '../qrcode/index?q=' + that.data.formData["qrcode"],
                   })
@@ -255,6 +253,8 @@ Page({
                         })
                       }
                       if (that.data.formData["qrcode"]) {
+                        // wx.sStorageSync('formData')
+                        wx.setStorageSync('formData', '')
                         wx.navigateTo({
                           url: '../qrcode/index?q=' + that.data.formData["qrcode"],
                         })

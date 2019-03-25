@@ -1,6 +1,6 @@
 <!--index.wxml-->
 
-<block wx:if="{{token}}" >
+<block wx:if="{{token&&token!=1}}" >
 <import src="../../Components/tab-bar/tab-bar.wxml"/>
 <template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
 <view class='indextop flex_btw align_center'>
@@ -116,7 +116,7 @@
 </view>
 <view class="container ">
   <view class='flex_btw padding26'>
-    <view class='size28 color3'>每周推荐</view>
+    <view class='size28 color3'>精选商品推荐</view>
   </view>
   <view class='recommended'>
     <block wx:for="{{result.week_ad}}" wx:key ="index">
@@ -126,11 +126,13 @@
   </view>
 </view>
 </block>
-<view class='login' wx:else>
+<view class='login' wx:elif='{{token==1}}'>
   <view class='miaoshu'>登录后享受更多功能</view>
   <button class='button' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
       <image src='../../images/wx.png'></image>
       <text>授权登录</text>
   </button>
+</view>
+<view class='login' wx:else>
 </view>
 <wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="所在地区" options="{{ shop_cate }}" bind:close="onClose1" bind:change="onChange1" />

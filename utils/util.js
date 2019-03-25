@@ -1,8 +1,8 @@
 const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
-// var build = 99999999
-var build = 20190322
+var build = 99999999
+// var build = 20190322
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -98,7 +98,10 @@ module.exports = {
   utf16to8: utf16to8,
   utf8to16: utf8to16,
   distance: distance,
-  scan: scan
+  scan: scan,
+  getSync: getSync,
+  putSync: putSync,
+  navigateBack:navigateBack
 }
 
 /**
@@ -285,7 +288,7 @@ function alert(msg, time = 2000) {
  */
 function deplay_redirect(redirect_url, timer = 3000) {
   timer = setTimeout(function () {
-    wx.redirectTo({
+    wx.navigateTo({
       url: redirect_url
     })
   }, timer);
@@ -295,6 +298,16 @@ function deplay_navigateTo(redirect_url, timer = 2000) {
   timer = setTimeout(function () {
     wx.navigateTo({
       url: redirect_url
+    })
+  }, timer);
+}
+function navigateBack(deltaz, timer=2000){
+  // wx.navigateBack({
+  //   delta: deltaz
+  // })
+  timer = setTimeout(function () {
+    wx.navigateBack({
+      delta: deltaz
     })
   }, timer);
 }
@@ -327,7 +340,7 @@ function getJSON(form = {}, call_success) {
         if (form.apiUrl.indexOf("config") > -1){
           return false
         }
-        wx.setStorageSync("token", "")
+        wx.setStorageSync("token", 1)
         wx.redirectTo({
           url: '../index/index',
         })
@@ -372,14 +385,13 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
       if (res.data.status == 200) {
         call_success(res)
       } else if (res.data.status == 801) {
-        
-        wx.setStorageSync('formData', formData)
+        that.putSync('formData', formData, 600) 
+        // wx.setStorageSync('formData', formData)
         // that.getToken(801)
         // that.postJSON(form, call_success)
         // that.getToken(801, form, call_success, "post")
         // wx.setStorageSync("token", '')
-        console.log(801)
-        wx.setStorageSync("token", "")
+        wx.setStorageSync("token", 1)
         wx.redirectTo({
           url: '../index/index',
         })
@@ -651,6 +663,43 @@ function distance(la1, lo1, la2, lo2) {//计算经纬度的距离
   s = Math.round((s * 10000) / 10000);
   return s
 }
+var dtime = 600000;
+function putSync(k, v, t) {
+  wx.setStorageSync(k, v)
+  var seconds = parseInt(t);
+  if (seconds > 0) {
+    var timestamp = Date.parse(new Date());
+    timestamp = timestamp / 1000 + seconds;
+    wx.setStorageSync(k + dtime, timestamp + "")
+  } else {
+    wx.removeStorageSync(k + dtime)
+  }
+}
+
+function getSync(k, def) {
+  var deadtime = parseInt(wx.getStorageSync(k + dtime))
+  if (deadtime) {
+    if (parseInt(deadtime) < Date.parse(new Date()) / 1000) {
+      if (def) { return def; } else { return; }
+    }
+  }
+  var res = wx.getStorageSync(k);
+  if (res) {
+    return res;
+  } else {
+    return def;
+  }
+}
+
+function remove(k) {
+  wx.removeStorageSync(k);
+  wx.removeStorageSync(k + dtime);
+}
+
+function clear() {
+  wx.clearStorageSync();
+}
+
 function scan(){
   var that = this;
   var show;

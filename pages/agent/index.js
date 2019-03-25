@@ -51,19 +51,41 @@ Page({
       function (res) {
         var result = res.data.result
         console.log(res)
-        var payment_usable = that.data.payment_usable
-        for (var key in result.payment_usable) {
-          payment_usable[key]["text"] = result.payment_usable[key]["name"]
-          payment_usable[key]["key"] = result.payment_usable[key]["key"]
+       
+        for (let i in result.payment_usable) {
+          result.payment_usable[i].choosed = 0
         }
+        result.payment_usable[0].choosed = 1
         that.setData({
           result: result,
-          payment_usable: payment_usable,
+          payment_usable: result.payment_usable,
+          pay_amount: result.pay_amount,
           visible2: true,
-          payment: payment_usable[0]["key"]
+          payment: result.payment_usable[0]["key"]
         })
       })
 
+  },
+  choose(e) {
+    var result = this.data.result;
+    for (let i in result.payment_usable) {
+      result.payment_usable[i].choosed = 0
+      if (result.payment_usable[i].options && this.data.payment_ext) {
+        for (let a in result.payment_usable[i].options) {
+          result.payment_usable[i].options[a].choosed = 0
+        }
+      }
+    }
+    var payment_ext = '';
+    result["payment_usable"][e.currentTarget.dataset.index]["choosed"] = 1
+    var pay_amount = result.pay_amount
+    this.setData({
+      result: result,
+      fq: e.currentTarget.dataset.index,
+      payment_ext: payment_ext,
+      pay_amount: pay_amount,
+      payment: result["payment_usable"][e.currentTarget.dataset.index]["key"]
+    })
   },
   close2() {
     var that = this;
@@ -130,6 +152,12 @@ Page({
       visible1: false,
     })
   },
+  onClosed1() {
+    // this.onClose('visible1')
+    this.setData({
+      visible1: false,
+    })
+  },
   open3(e) {
     console.log(e.currentTarget.dataset.invite)
     // if (e.currentTarget.dataset.invite==''){
@@ -141,7 +169,11 @@ Page({
     })
     
   },
-  
+  onClose2(){
+    this.setData({
+      visible2: false,
+    })
+  },
   close3() {
     this.setData({
       visible3: false,

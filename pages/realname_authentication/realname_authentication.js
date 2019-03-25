@@ -179,7 +179,9 @@ Page({
       })
       util.postJSON({ apiUrl: apiurl.realname_verify, data: data}, function (res) {
           util.alert(res.data.message)
-           util.deplay_navigateTo('../personal_center/personal_center')
+          wx.navigateBack({
+            delta: 2
+          })
            that.setData({
              sure: false
            })

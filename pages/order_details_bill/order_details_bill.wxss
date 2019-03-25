@@ -1,5 +1,7 @@
 /* pages/order_details_bill/order_details_bill.wxss */
+@import '../order_detail/index';
 @import '../order_details/order_details';
+
 .btn{
   width:686rpx;
   height:82rpx;

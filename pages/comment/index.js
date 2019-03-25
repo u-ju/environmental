@@ -30,7 +30,7 @@ Page({
     evaluations: 
       {
         id: 0,
-        star: 1,
+        star: 5,
         // note: ""
       },
     disabled:false

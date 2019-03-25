@@ -31,6 +31,7 @@ Page({
     wx.navigateTo({
       url: '../news_detail/news_detail?id=' + e.currentTarget.dataset.help_id,
     })
+    wx.showLoading()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

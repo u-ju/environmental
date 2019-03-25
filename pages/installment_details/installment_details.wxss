@@ -132,7 +132,7 @@ swiper,swiper image{
   padding: 30rpx 0 50rpx 0;
 }
 .csgg{
-  padding: 30rpx 0 0 0;
+  padding: 50rpx 0 0 0;
 }
 .icon-cuohao {
   top: 32rpx;

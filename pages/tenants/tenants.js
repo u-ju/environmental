@@ -1,5 +1,10 @@
 // pages/tenants/tenants.js
 var QQMapWX = require('../../utils//qqmap-wx-jssdk.min.js');
+
+// 实例化API核心类
+let qqMap = new QQMapWX({
+  key: 'HPNBZ-B426V-CZQPP-UN4R6-QYOF2-MYFU3' // 必填
+});
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
@@ -60,7 +65,7 @@ Page({
     address: '',
     intro: '',
     show:false,
-    choosed:0,
+    choosed:1,
     shop_protocol:''
   },
 
@@ -122,7 +127,7 @@ Page({
         type_val: result.shop_type,
         type: '', 
         shop_protocol: app.globalData.config.shop_protocol,
-        choosed: wx.getStorageSync('choosedt')
+        choosed: wx.getStorageSync('choosedt') || that.data.choosed
       })
     this.loadAddress();
     if (options.shop_id){
@@ -242,20 +247,27 @@ Page({
       })
       
     }
-    
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success: (res) => {
-        let latitude = res.latitude;
-        let longitude = res.longitude;
-        this.setData({
-          longitude: longitude,
-          latitude: latitude,
-        })
-      }
-    });
+    that.location(that.data.areaSelectedStr + that.data.address)
+    // wx.getLocation({
+    //   type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+    //   success: (res) => {
+    //     let latitude = res.latitude;
+    //     let longitude = res.longitude;
+    //     this.setData({
+    //       longitude: longitude,
+    //       latitude: latitude,
+    //     })
+    //   }
+    // });
   },
-
+  location(address){
+    qqMap.geocoder({
+      address: address,
+      complete: res => {
+        console.log(res);   //经纬度对象
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -269,8 +281,18 @@ Page({
         intro: e.detail.value
       })
     }
+    if (e.currentTarget.dataset.contact == "addresst") {
+      this.setData({
+        address: e.detail.value
+      })
+    }
     wx.setStorageSync(e.currentTarget.dataset.contact, e.detail.value)
   },
+  czaddress(){
+    var that = this
+    that.location(that.data.areaSelectedStr + that.data.address)
+  },
+  
   /**
    * 生命周期函数--监听页面显示
    */
@@ -590,7 +612,8 @@ Page({
         wx.setStorageSync('areaSelectedStrt', areaSelectedStr)
         wx.setStorageSync('area_idt', that.data.cityObjects[index]["area_id"])
         that.cascadeDismiss();
-        return;
+        return that.location(that.data.areaSelectedStr + that.data.address);
+        
       }
       that.setData({
         regionName: '请选择',
@@ -623,6 +646,7 @@ Page({
           area_id_val: that.data.regionObjects[index]["area_id"]
         });
         that.cascadeDismiss();
+        that.location(that.data.areaSelectedStr + that.data.address)
         return;
       }
       that.setData({
@@ -653,6 +677,7 @@ Page({
     wx.setStorageSync('areaSelectedStrt', areaSelectedStr)
     wx.setStorageSync('area_idt', that.data.townObjects[index]["area_id"])
     this.cascadeDismiss();
+    that.location(that.data.areaSelectedStr + that.data.address)
   },
   currentChanged: function (e) {
     // swiper滚动使得current值被动变化，用于高亮标记
@@ -768,18 +793,14 @@ Page({
       wx.setStorageSync("image1", '')
       wx.setStorageSync("upload_picture_list", [])
       wx.setStorageSync('choosedt', '')
-      wx.navigateTo({
-        url: '../tenantsIndex/index',
-      })
+      util.navigateBack(2)
       that.setData({
         post: false
       })
     }, function (res) {
       console.log(res.data.message)
       if (res.data.message == "更新成功") {
-        wx.navigateTo({
-          url: '../tenantsIndex/index',
-        })
+        wx.navigateBack()
       }
       that.setData({
         post: false

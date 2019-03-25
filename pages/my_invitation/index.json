@@ -3,6 +3,7 @@
   "usingComponents": {
     "wux-popup": "../../Components/popup/index",
     "wux-tabs": "../../Components/tabs/index",
-    "wux-tab": "../../Components/tab/index"
+    "wux-tab": "../../Components/tab/index",
+    "empty": "../../Components/empty/index"
   }
 }

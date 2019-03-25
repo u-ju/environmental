@@ -7,7 +7,9 @@
 </wux-tabs>
 <swiper current="{{ index }}" bindchange="onSwiperChange" class='detail-container'>
   <swiper-item class='lmitem' >
+  <block wx:if="{{list.length>0}}">
     <scroll-view scroll-y="true" class=" market-scroll-list" bindscrolltoupper="refresh" bindscrolltolower="loadMore">
+    
       <view class='item flex' wx:for="{{list}}" wx:key="index">
         <image src='{{item.thumb}}'></image>
         <view class='flex_col flex_btw'>
@@ -15,18 +17,28 @@
           <view>{{item.created_at}}</view>
         </view>
       </view>
+      
     </scroll-view>
+    </block>
+    <view wx:else class='null'>
+      <empty  />
+    </view>
   </swiper-item>
   <swiper-item class='ywitem' >
-    <scroll-view scroll-y="true" class=" market-scroll-list" bindscrolltoupper="refresh1" bindscrolltolower="loadMore1">
-      <view class='item flex' wx:for="{{list1}}" wx:key="index">
-        <image src='{{item.avatar}}'></image>
-        <view class='flex_col flex_btw'>
-          <view>{{item.nickname}}</view>
-          <view>{{item.created_at}}</view>
-        </view>
-      </view>
-    </scroll-view>
+    <block wx:if="{{list1.length>0}}">
+      <scroll-view scroll-y="true" class=" market-scroll-list" bindscrolltoupper="refresh1" bindscrolltolower="loadMore1">
+          <view class='item flex' wx:for="{{list1}}" wx:key="index">
+            <image src='{{item.avatar}}'></image>
+            <view class='flex_col flex_btw'>
+              <view>{{item.nickname}}</view>
+              <view>{{item.created_at}}</view>
+            </view>
+          </view>
+      </scroll-view>
+    </block>
+    <view wx:else class='null'>
+      <empty  />
+    </view>
   </swiper-item>
 </swiper>
 </view>

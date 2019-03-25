@@ -103,17 +103,20 @@ Page({
         old_mobile_code: that.data.mobile_code_old,
       }
     }
-    data.token = util.getToken()
+    // data.token = util.getToken()
     util.postJSON({ apiUrl: apiurl.mobileUpdate
     , data: data }, function (res) {
       var result = res.data.result
       if(that.data.bangding){
         util.alert("手机号绑定成功！")
-        wx.navigateTo({
-          url: '../personal_center/personal_center',
+        wx.navigateBack({
+          delta: 1
         })
       }else{
         util.alert("手机号修改成功！")
+        wx.navigateBack({
+          delta: 2
+        })
       }
     })
   }

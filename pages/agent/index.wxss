@@ -1,5 +1,6 @@
 /* pages/agent/index.wxss */
-@import '../edcs/edcs';
+/* @import '../edcs/edcs'; */
+@import '../order_detail/index';
 page{
   background-color: white;
   font-size: 28rpx;
@@ -8,6 +9,7 @@ page{
   /* height: 400rpx; */
   font-size: 30rpx;
   text-align: center;
+  padding-bottom: 40rpx;
   /* line-height: 400rpx; */
 }
 .card{

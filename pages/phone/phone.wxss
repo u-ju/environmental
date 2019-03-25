@@ -38,7 +38,7 @@ button::after{
   border-radius: 43rpx;
   font-size: 32rpx;
   color: white;
-  margin-top: 132rpx;
+  margin-top: 60rpx;
   background: -webkit-linear-gradient(#44D5A2,#99E4AB);
 	background: -o-linear-gradient(#44D5A2,#99E4AB);
 	background: -moz-linear-gradient(#44D5A2,#99E4AB);
@@ -54,17 +54,21 @@ button[disabled]:not([type]){
   color: white;
 }
 .color299EF0{
-  margin-top: 330rpx;
+  /* margin-top: 330rpx; */
+  margin: 60rpx 32rpx 0 32rpx;
+  font-size: 28rpx;
 }
 navigator{
   display: inline-block;
 }
 .choose{
-  width: 30rpx;
+  /* width: 30rpx; */
   height: 30rpx;
   margin-right: 10rpx;
+  color: #444;
 }
 .choose image{
   width: 30rpx;
   height: 30rpx;
+  margin-right: 8rpx;
 }

@@ -35,8 +35,8 @@ checkbox-group{
 
 /*checkbox 选项框大小  */
 checkbox .wx-checkbox-input {
-  width: 40rpx;
-  height: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
   border-color: #4AD6A3;
 }
 /*checkbox选中后样式  */

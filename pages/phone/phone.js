@@ -17,7 +17,7 @@ Page({
     type:0,
     result:"",
     privacy_policy:'',
-    choosed:0
+    choosed:1
   },
   getCode: function (options) {
     var that = this;

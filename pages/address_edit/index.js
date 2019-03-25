@@ -190,7 +190,7 @@ Page({
     });
     var that = this;
     this.getArea(this.data.regionObjects[index]["area_id"], function (array, area) {
-      if (area.length == 0) {
+      // if (area.length == 0) {
         var areaSelectedStr = that.data.provinceName + that.data.cityName + that.data.regionName;
         that.setData({
           areaSelectedStr: areaSelectedStr,
@@ -198,34 +198,34 @@ Page({
         });
         that.cascadeDismiss();
         return;
-      }
-      that.setData({
-        townName: '请选择',
-        town: array,
-        townObjects: area
-      });
+      // }
+      // that.setData({
+      //   townName: '请选择',
+      //   town: array,
+      //   townObjects: area
+      // });
       // 确保生成了数组数据再移动swiper
-      that.setData({
-        current: 3
-      });
+      // that.setData({
+      //   current: 3
+      // });
     });
   },
-  townTapped: function (e) {
-    // 标识当前点击镇级，记录其名称与主键id都依赖它
-    var index = e.currentTarget.dataset.index;
-    var that = this;
-    // townIndex是镇级数据的标识
-    this.setData({
-      townIndex: index,
-      townName: this.data.town[index]
-    });
-    var areaSelectedStr = this.data.provinceName + this.data.cityName + this.data.regionName + this.data.townName;
-    this.setData({
-      areaSelectedStr: areaSelectedStr,
-      area_id_val: that.data.townObjects[index]["area_id"]
-    });
-    this.cascadeDismiss();
-  },
+  // townTapped: function (e) {
+  //   // 标识当前点击镇级，记录其名称与主键id都依赖它
+  //   var index = e.currentTarget.dataset.index;
+  //   var that = this;
+  //   // townIndex是镇级数据的标识
+  //   this.setData({
+  //     townIndex: index,
+  //     townName: this.data.town[index]
+  //   });
+  //   var areaSelectedStr = this.data.provinceName + this.data.cityName + this.data.regionName + this.data.townName;
+  //   this.setData({
+  //     areaSelectedStr: areaSelectedStr,
+  //     area_id_val: that.data.townObjects[index]["area_id"]
+  //   });
+  //   this.cascadeDismiss();
+  // },
   currentChanged: function (e) {
     // swiper滚动使得current值被动变化，用于高亮标记
     var current = e.detail.current;

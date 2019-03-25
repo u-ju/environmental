@@ -68,7 +68,7 @@ Page({
     if (!e.currentTarget.dataset.control){
       wx.showModal({
         title: '提醒',
-        content: '该功能尚未开放，敬请期待',
+        content: '该功能加班加点研发中，敬请期待',
         cancelText: '否',
         cancelColor: '#2EB354',
         confirmText: '是',

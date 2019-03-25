@@ -85,19 +85,34 @@ Page({
     function (res) {
       var result = res.data.result
       console.log(res)
-      var payment_usable = that.data.pay
-      for (var key in result.payment_usable) {
-        payment_usable[key]["text"] = result.payment_usable[key]["name"]
-        payment_usable[key]["key"] = result.payment_usable[key]["key"]
+      // var payment_usable = that.data.pay
+      // for (var key in result.payment_usable) {
+      //   payment_usable[key]["text"] = result.payment_usable[key]["name"]
+      //   payment_usable[key]["key"] = result.payment_usable[key]["key"]
+      // }
+      for (let i in result.payment_usable) {
+        result.payment_usable[i].choosed = 0
       }
+      result.payment_usable[0].choosed = 1
       that.setData({
         result: result,
-        pay: payment_usable,
         visible2: true,
-        payment: payment_usable[0]["key"]
+        pay: result.pay_amount,
+        payment: result["payment_usable"][0]["key"],
       })
     })
     
+  },
+  choose(e) {
+    var result = this.data.result;
+    for (let i in result.payment_usable) {
+      result.payment_usable[i].choosed = 0
+    }
+    result["payment_usable"][e.currentTarget.dataset.index]["choosed"] = 1
+    this.setData({
+      result: result,
+      payment: e.currentTarget.dataset.key
+    })
   },
   close2() {
     var that = this;

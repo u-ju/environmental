@@ -30,7 +30,8 @@ Page({
       // { title: "环保金兑换环保袋", value: "", url: "../ecofer/ecofer" },
     // ],
     item1:[
-      { title: "手机", value: "", url: "../phone/phone", or:"../phone_new/phone_new"},
+      { title: "帮助中心", value: "", url: "../help_center/help_center" },
+      { title: "绑定手机", value: "", url: "../phone/phone", or:"../phone_new/phone_new"},
       { title: "我的积分", value: "", url: "../my_integral/index"},
       { title: "我的环保金", value: "", url:"../my_gold/my_gold" },
       { title: "我的货款", value: "", url: "../my_paymentGoods/index", is_shop:0 },
@@ -49,7 +50,7 @@ Page({
       { title: "我的银行卡", value: "", url: "../my_bankcard/index" },
       { title: "收货地址", value: "", url: "../address/index" },
       // { title: "上门回收订单", value: "", url: "../home_orders/home_orders" },
-      { title: "帮助中心", value: "", url: "../help_center/help_center"},
+      
       { title: "设置", value: "", url: "../setting/setting" },
     ],
     user:[],
@@ -63,18 +64,18 @@ Page({
   onLoad: function (options) {
     
     // console.log(util.getToken())
-    this.init()
+    
   },
   init(){
     var that = this, item1 = that.data.item1, item2 = that.data.item2;
     util.getJSON({ apiUrl: apiurl.user }, function (res) {
       var result = res.data.result
       app.globalData.userInfo = result
-      item1[0].value = result.mobile
-      item1[1].value = result.integral
-      item1[2].value = result.balance
-      item1[3].value = result.settle
-      item1[3].is_shop = result.is_shop
+      item1[1].value = result.mobile
+      item1[2].value = result.integral
+      item1[3].value = result.balance
+      item1[4].value = result.settle
+      item1[4].is_shop = result.is_shop
       item2[0].is_recycler = 1
       // result.is_recycler
       // item1[4].qrcode = result.qrcode.user
@@ -92,8 +93,8 @@ Page({
     })
     util.getJSON({ apiUrl: apiurl.realname }, function (res) {
       if (res.data.result.status!=-1){
-        item1[4].url = '../realname_suc/index?result=' + JSON.stringify(res.data.result)
-        item1[4].value = res.data.result.status_name
+        item1[5].url = '../realname_suc/index?result=' + JSON.stringify(res.data.result)
+        item1[5].value = res.data.result.status_name
       }
       that.setData({
         item1: item1
@@ -111,7 +112,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.init()
   },
   show() {//不跳页面
     util.scan()

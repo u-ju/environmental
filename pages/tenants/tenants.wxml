@@ -27,7 +27,7 @@
     <input class='size28 color9' bindinput='input' data-contact='contactt' name='contact'value='{{contact}}' maxlength='11' disabled='{{disabled1}}'  type='number'></input>
   </view>
   <view class='item  flex align_center'>
-    <text class='size28 color6'>签约利率</text>
+    <text class='size28 color6'>商家折扣(%)</text>
      <!-- placeholder='点击输入店铺名称' -->
     <input class='size28 color9'  bindinput='input' data-contact='signed_ratet' name='signed_rate' disabled='{{disabled1}}' value='{{signed_rate}}'></input>
   </view>
@@ -46,7 +46,7 @@
   <view class='item  flex align_center'>
     <text class='size28 color6'>地址</text>
     <!-- placeholder='点击输入详细地址' -->
-    <input class='size28 color9' name='address' bindinput='input' data-contact='addresst'  disabled='{{disabled1}}' value='{{address}}'  ></input>
+    <input class='size28 color9' name='address' bindinput='input' bindblur='czaddress' data-contact='addresst'  disabled='{{disabled1}}' value='{{address}}'  ></input>
   </view>
   <!-- <view class='item  flex padding0'>
     <text class='size28 color6'>入驻类型</text>
@@ -191,4 +191,4 @@
 	    </view>
 	</view>
 </view>
-<wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="商城描述" options="{{ shop_cate }}" bind:close="onClose1" bind:change="onChange1" />
+<wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="商城类型" options="{{ shop_cate }}" bind:close="onClose1" bind:change="onChange1" />

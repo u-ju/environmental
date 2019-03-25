@@ -80,7 +80,7 @@ picker{
 .size32{
   margin-bottom: 34rpx;
   }
-  button{
+  button,.btn{
   width:686rpx;
   height:82rpx;
   background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
@@ -90,4 +90,9 @@ picker{
   color: white;
   line-height: 82rpx;
   font-size: 30rpx;
+}
+.btn{
+  background:rgba(213,211,211,1);
+  box-shadow:0rpx 0 0 0rpx rgba(82, 164, 215, 0.35);
+  text-align: center;
 }
