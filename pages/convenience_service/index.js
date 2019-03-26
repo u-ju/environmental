@@ -65,8 +65,8 @@ Page({
 
   },
   link(e){
-    if (!e.currentTarget.dataset.control){
-      wx.showModal({
+    if (e.currentTarget.dataset.link.length == 0) {
+      return wx.showModal({
         title: '提醒',
         content: '该功能加班加点研发中，敬请期待',
         cancelText: '否',
@@ -82,18 +82,25 @@ Page({
 
         }
       })
-    }else{
-      var controlContrast = getApp().globalData.controlContrast, url = '';
-      for (var i in controlContrast) {
-        if (controlContrast[i].control == e.currentTarget.dataset.control) {
-          url = controlContrast[i].contrast
-
-        }
-      }
-      wx.navigateTo({
-        url: url,
-      })
     }
+    wx.showLoading({
+      title: '加载中',
+    })
+    var url = e.currentTarget.dataset.link.control
+    if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
+      for (var i in e.currentTarget.dataset.link.params) {
+        console.log(i, e.currentTarget.dataset.link.params[i])
+        url = url + "?" + i + "=" + e.currentTarget.dataset.link.params[i]
+      }
+    }
+    if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
+      url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)
+    }
+    console.log(url)
+    wx.navigateTo({
+      url: url,
+    })
+    
     
     // if (!e.currentTarget.dataset.url){
     //   wx.showModal({

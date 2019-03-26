@@ -16,7 +16,7 @@ Page({
     mobile: '',
     type:0,
     result:"",
-    privacy_policy:'',
+    about:'',
     choosed:1
   },
   getCode: function (options) {
@@ -109,7 +109,7 @@ Page({
       // })
     }
     this.setData({
-      privacy_policy: app.globalData.config.privacy_policy
+      about: app.globalData.config.protocol.about
       })
     wx.setNavigationBarTitle({
       title: title

@@ -12,17 +12,17 @@
   </view>
 </view>
 <view class='marb20'>
-<view class='item' wx:for='{{item1}}' wx:key="index" data-url='{{item.url}}' hidden='{{item.is_shop==0}}' data-or='{{item.or}}' data-is_sorter='{{item.is_sorter}}'  data-value='{{item.value}}' bindtap='link'>
+<view class='item' wx:for='{{tag_list}}' wx:key="index" data-link='{{item.control}}' data-link='{{item.control}}' bindtap='link'>
   <view class="container flex_btw align_center" >
-    <view class='size28 color0'>{{item.title}}</view>
+    <view class='size28 color0 '>{{item.name}}</view>
     <view class='item_right'>
-      <text  class='size28 {{index==0||index==4?"color9":"color2EB354 bold"}}'>{{item.value}}</text>
+      <text  class='size28  {{!item.value_color?"color9":"color2EB354 bold"}}' style='color:{{item.value_color}}'>{{item.value}}</text>
       <image mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
     </view> 
   </view>
 </view>
 </view>
-<view class='marb20'>
+<!-- <view class='marb20'>
 <view class='item' wx:for='{{item2}}' wx:key="index" data-url='{{item.url}}'  data-or='{{item.or}}' data-value='{{item.value}}' data-renzhen='{{item.renzhen}}' bindtap='link' hidden='{{item.is_recycler==0}}'  >
   <view class="container flex_btw align_center">
     <view class='size28 color0'>{{item.title}}</view>
@@ -32,4 +32,4 @@
     </view> 
   </view>
 </view>
-</view>
+</view> -->

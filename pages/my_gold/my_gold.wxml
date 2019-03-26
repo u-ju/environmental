@@ -10,7 +10,7 @@
   <view class='flex align_center justify_center brx'>
     <!-- <view class='color4588EC size28' >提现规则</view> -->
     <!-- bindtap='showRule' -->
-    <navigator url='../page/index?name=1'>
+    <navigator url='../page/index?url={{withdraw}}'>
       <view class='color4588EC size28 br'>提现规则</view>
     </navigator>
     <navigator url='../withdrawal_record/withdrawal_record'>

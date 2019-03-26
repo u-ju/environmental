@@ -28,7 +28,7 @@
     
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}">
         <block wx:for="{{banner}}" wx:key="index">
-          <swiper-item bindtap='link' data-link='{{item.attach.control}}' data-params='{{item.attach.params}}'>
+          <swiper-item bindtap='link' data-link='{{item.control}}' >
               <image src="{{item.image}}" class="slide-image" />
           </swiper-item>
         </block>
@@ -37,12 +37,12 @@
 
   <view class='flex_btw theme'>
     <block wx:for="{{block}}" wx:key="index">
-      <view class='index_theme flex align_center' bindtap='link' data-link='{{item.attach.control}}'>
-        <image  mode='aspectFill' src='{{item.image}}'></image>
+      <view class='index_theme flex align_center' bindtap='link' data-link='{{item.control}}' >
+        <image  mode='aspectFill' src='{{item.icon}}'></image>
         <view class='flex_col' huhu="{{index}}">
-          <view class='size26 relative'>{{item.title}}
+          <view class='size26 relative'>{{item.name}}
           </view>
-          <view class='size22'>{{item.intro}}</view>
+          <!-- <view class='size22'>{{item.intro}}</view> -->
         </view>
       </view>
     </block>
@@ -50,27 +50,27 @@
 
   <view class='flex_btw'>
     <block wx:for="{{tag}}" wx:key="index">
-      <view class='index_modular center' bindtap='link' data-link='{{item.attach.control}}' data-children='{{item.children}}'>
+      <view class='index_modular center' bindtap='link' data-link='{{item.control}}' data-children="{{item.children}}">
         <view class='index_modular_cri'>
-          <image  mode='aspectFill' src='{{item.image}}'></image>
+          <image  mode='aspectFill' src='{{item.icon}}'></image>
         </view>
-        <view class='index_modular_con color6'>{{item.title}}</view>
+        <view class='index_modular_con color6'>{{item.name}}</view>
       </view>
     </block>
   </view>
 </view>
 </view>
-<view class="ard_index" bindtap='link'  data-link='{{result.nper.attach.control}}' >
+<view class="ard_index" bindtap='link'  data-link='{{nper.control}}' >
 <!--  -->
-  <image src="{{result.nper.image}}" />
+  <image src="{{nper.image}}" />
 </view>
 <view class='bg marginfff'>
   <view class="container over_hid flex_btw twobr">
       <view class='index_putin border_right left' wx:for="{{user}}" wx:key ="index">
         <view class='size28 color3 flex'>
-          <text >{{item.title}}</text>
-          <view class='wallet color3 index_putin_right' bindtap='link' data-link='{{item.button.attach.control}}' data-time='{{item.value}}'>
-            {{item.button.title}}
+          <text >{{item.name}}</text>
+          <view class='wallet color3 index_putin_right' bindtap='link' data-link='{{item.button.control}}'>
+            {{item.button.name}}
           </view>
         </view>
         
@@ -114,13 +114,13 @@
     </view>
   </view>
 </view>
-<view class="container ">
+<view class="container " wx:if="{{week_ad.length>0}}">
   <view class='flex_btw padding26'>
     <view class='size28 color3'>精选商品推荐</view>
   </view>
   <view class='recommended'>
     <block wx:for="{{result.week_ad}}" wx:key ="index">
-      <image src="{{item.image}}" class="slide-image"   bindtap='link' data-link='{{item.attach.control}}' data-params='{{item.attach.params}}' data-url='?id=' />
+      <image src="{{item.image}}" class="slide-image"   bindtap='link' data-link='{{item.control}}' />
     </block>
     
   </view>

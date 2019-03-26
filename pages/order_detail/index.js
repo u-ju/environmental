@@ -89,7 +89,7 @@ Page({
     }
     var payment_ext='';
     items["payment_usable"][e.currentTarget.dataset.index]["choosed"] = 1
-    var pay_amount = items.pay_amount
+    var pay_amount = items["payment_usable"][e.currentTarget.dataset.index]["pay_amount"] || items.pay_amount
     this.setData({
       items: items,
       fq: e.currentTarget.dataset.index,

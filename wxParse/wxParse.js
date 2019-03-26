@@ -77,6 +77,7 @@ function wxParseImgLoad(e) {
 }
 // 假循环获取计算图片视觉最佳宽高
 function calMoreImageInfo(e, idx, that, bindName) {
+  
   var temData = that.data[bindName];
   if (!temData || temData.images.length == 0) {
     return;
@@ -108,7 +109,8 @@ function wxAutoImageCal(originalWidth, originalHeight,that,bindName) {
   var autoWidth = 0, autoHeight = 0;
   var results = {};
   var padding = that.data[bindName].view.imagePadding;
-  windowWidth = realWindowWidth-2*padding;
+  // windowWidth = realWindowWidth-2*padding;
+  windowWidth = 343
   windowHeight = realWindowHeight;
   //判断按照那种方式进行缩放
   // console.log("windowWidth" + windowWidth);
@@ -123,6 +125,7 @@ function wxAutoImageCal(originalWidth, originalHeight,that,bindName) {
     results.imageWidth = originalWidth;
     results.imageheight = originalHeight;
   }
+  console.log(results)
   return results;
 }
 

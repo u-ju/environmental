@@ -32,27 +32,41 @@ Page({
     
   },
   link(e) {
-    var controlContrast = getApp().globalData.controlContrast, url = '';
-    for (var i in controlContrast) {
-      if (controlContrast[i].control == e.currentTarget.dataset.attach.control) {
-        url = controlContrast[i].contrast
-      }
+    if (e.currentTarget.dataset.link.length == 0) {
+      return false
+    }
+    var url = e.currentTarget.dataset.link.control
+    if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
+      // for (var i in e.currentTarget.dataset.link.params) {
+      //   console.log(i, e.currentTarget.dataset.link.params[i])
+      url = url + "?keywords" + "=" + e.currentTarget.dataset.link.params['keywords']
+      // }
     }
     wx.navigateTo({
-      url: url + "?keywords=" + e.currentTarget.dataset.attach.params.keywords,
+      url: url,
     })
+
+    // var controlContrast = getApp().globalData.controlContrast, url = '';
+    // for (var i in controlContrast) {
+    //   if (controlContrast[i].control == e.currentTarget.dataset.attach.control) {
+    //     url = controlContrast[i].contrast
+    //   }
+    // }
+    // wx.navigateTo({
+    //   url: url + "?keywords=" + e.currentTarget.dataset.attach.params.keywords,
+    // })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.controlContrast.length == 0) {
-      util.getJSON({ apiUrl: apiurl.controlContrast }, function (res) {
-        var result = res.data.result;
-        getApp().globalData.controlContrast = result;
+    // if (app.globalData.controlContrast.length == 0) {
+    //   util.getJSON({ apiUrl: apiurl.controlContrast }, function (res) {
+    //     var result = res.data.result;
+    //     getApp().globalData.controlContrast = result;
 
-      })
-    }
+    //   })
+    // }
     
   },
   

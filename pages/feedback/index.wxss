@@ -1,0 +1,26 @@
+/* pages/feedback/index.wxss */
+@import '../maintenance_worker/index';
+@import '../comment/index';
+
+.textarea{
+  background-color: white;
+  border-radius: 0;
+  border-bottom: 1px solid #eee;
+  padding:  0;
+  width: auto;
+  height: 260rpx;
+  margin: auto;
+}
+.text-right{
+  text-align: right;
+  color: #46D5A2;
+  font-size:30rpx;
+}
+.type {
+  border-bottom: 20rpx solid #eee;
+  width: auto;
+  padding: 32rpx;
+}
+.wxgitem{
+  padding-bottom: 10rpx;
+}

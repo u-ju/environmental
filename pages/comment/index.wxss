@@ -140,6 +140,6 @@ padding: 24rpx;
 .picture_item .camera{
   width: 76rpx;
   height: 63rpx;
-  margin-top:34rpx;
+  /* margin-top:34rpx; */
 
 }

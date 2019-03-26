@@ -14,9 +14,11 @@ page{
 }
 .wxgitem .left{
   width: 186rpx;
+  line-height: 60rpx;
 }
 .wxgitem input{
   width: 500rpx;
+  height: 60rpx;
 }
 textarea,.textareav{
   width:636rpx;
@@ -52,3 +54,6 @@ textarea,.textareav{
   right: 0;
 
 } */
+.iconfont{
+  line-height: 60rpx;
+}

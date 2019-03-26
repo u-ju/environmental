@@ -102,25 +102,18 @@ Page({
         block: result.block,
         shop_ad: result.shop_ad,
         tag: result.tag,
-        user: result.user
+        user: result.user,
+        nper: result.nper,
+        week_ad: result.week_ad
       })
       util.hideLoading()
     })
-    // that.setData({
-    //   shop_cate: getApp().globalData.config.shop_cate
-    // })
+    
     if (app.globalData.config.length==0){
       util.getJSON({ apiUrl: apiurl.config }, function (res) {
         var result = res.data.result;
         getApp().globalData.config = result;
         
-      })
-    }
-    if (app.globalData.controlContrast.length == 0) {
-      util.getJSON({ apiUrl: apiurl.controlContrast }, function (res) {
-        var result = res.data.result;
-        getApp().globalData.controlContrast = result;
-
       })
     }
   },
@@ -161,33 +154,28 @@ Page({
     
   },
   link(e){
-    var controlContrast = getApp().globalData.controlContrast,url='';
-    for (var i in controlContrast){
-      if (controlContrast[i].control == e.currentTarget.dataset.link){
-        url = controlContrast[i].contrast
-        
+    
+    
+    if (e.currentTarget.dataset.link.length==0){
+      return false
+    }
+    var url = e.currentTarget.dataset.link.control
+    if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
+      for (var i in e.currentTarget.dataset.link.params){
+        console.log(i, e.currentTarget.dataset.link.params[i])
+        url = url + "?" + i + "=" + e.currentTarget.dataset.link.params[i]
       }
-    }
-    if (e.currentTarget.dataset.url != '' && e.currentTarget.dataset.url != undefined) {
-      url = url + e.currentTarget.dataset.url
-    }
-    if (e.currentTarget.dataset.params != '' && e.currentTarget.dataset.params != undefined) {
-      url = url + e.currentTarget.dataset.params.id
-    }
-    if (e.currentTarget.dataset.time != '' && e.currentTarget.dataset.time !=undefined){
-      url = url + "?time=" + e.currentTarget.dataset.time
     }
     if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
       url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)
     }
-    // console.log(url)
-    if (url == 'undefined?time=undefined' || url =="undefined"){
-      
-      return false
-    }
+    console.log(url)
     wx.navigateTo({
       url: url,
     })
+    
+   
+    
   },
   shopdetail(e){
     // console.log(e.currentTarget.dataset.shop_id)

@@ -33,17 +33,17 @@
   
   <view class='color898989 flex_btw size28 align_center marginb30' bindtap='open2'>
     <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">参数&ensp;&ensp;&ensp;&ensp;生产信息材质图案生产信息材质图案</text>
-    <text class='iconfont icon-jiantou'></text>
+    <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <view class='color898989 flex_btw size28 align_center'  bindtap='link' data-url="{{result.nper_protocol}}" wx:if="{{result.nper_protocol}}">
     <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">分期协议</text>
-    <text class='iconfont icon-jiantou'></text>
+    <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <!-- bindtap='open3' -->
-  <!-- <view class='color898989 flex_btw size28 align_center' bindtap='open3'>
+  <view class='color898989 flex_btw size28 align_center' bindtap='fqtz'>
     <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">分期&ensp;&ensp;&ensp;&ensp;选择分期付款</text>
-    <text class='iconfont icon-jiantou'></text>
-  </view> -->
+    <text class='iconfont icon-jiantou color989898'></text>
+  </view>
 </view>
 <view class='goods_intr3'>
   <view class='size28 color4'>评价({{list.length}})</view>

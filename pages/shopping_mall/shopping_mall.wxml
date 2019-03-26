@@ -1,11 +1,13 @@
 <!--pages/shopping_mall/shopping_mall.wxml-->
 <view class="detail" wx:if="{{shop_cate.length>0}}">
+  
   <view class='sousuobig'>
     <view class='sousuo flex_btw align_center'>
       <input bindinput='search'  bindconfirm="searchSubmit" value='{{search}}' name='search'></input>
       <image src='../../images/video_cz.png' bindtap='searchSubmit' class='video_cz' mode='aspectFill'></image>
     </view>
   </view>
+  <block wx:if="{{shop_cate[0].name}}">
     <view class="content">
       <view class="menu-container">
         <scroll-view scroll-y="true" class="scroll-view" scroll-into-view="head-{{indexSize}}">
@@ -122,5 +124,6 @@
       </swiper>
 
     </view>
+    </block>
   </view>
   <empty wx:else />

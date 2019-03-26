@@ -1,0 +1,11 @@
+/* pages/agentPay/index.wxss */
+@import '../order_detail/index';
+@import '../maintenance_worker/index';
+
+.btn{
+  text-align: center;
+  margin: 100rpx auto;
+}
+.wxgitem{
+  padding: 20rpx 0;
+}

@@ -2,7 +2,7 @@ const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
 var build = 99999999
-// var build = 20190322
+// var build = 20190326
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -301,7 +301,7 @@ function deplay_navigateTo(redirect_url, timer = 2000) {
     })
   }, timer);
 }
-function navigateBack(deltaz, timer=2000){
+function navigateBack(deltaz=1, timer=2000){
   // wx.navigateBack({
   //   delta: deltaz
   // })
@@ -717,20 +717,24 @@ function scan(){
         }else{
           that.postJSON({ apiUrl: apiurl.action, data: { action: result.action[0].key, code: result.code } }, function (res2) {
             var result2 = res2.data.result;
-            
-           
-            // that.hideLoading()
             if (result2.control){
-              var controlContrast = getApp().globalData.controlContrast, url='';
-              for (var i in controlContrast) {
-                if (controlContrast[i].control == result2.control) {
-                  url = controlContrast[i].contrast
+              // var controlContrast = getApp().globalData.controlContrast, url='';
+              // for (var i in controlContrast) {
+              //   if (controlContrast[i].control == result2.control) {
+              //     url = controlContrast[i].contrast
+              //   }
+              // }
+              // if (result2.params.order_id) {
+              //   url = url + result2.params.order_id
+              // } else if (result2.params.shop_id) {
+              //   url = url + result2.params.shop_id
+              // }
+              var url = result2.control.control
+              if (JSON.stringify(result2.control.params) != "{}") {
+                for (var i in result2.control.params) {
+                  console.log(i, result2.control.params[i])
+                  url = url + "?" + i + "=" + result2.control.params[i]
                 }
-              }
-              if (result2.params.order_id) {
-                url = url + result2.params.order_id
-              } else if (result2.params.shop_id) {
-                url = url + result2.params.shop_id
               }
               wx.navigateTo({
                 url: url,

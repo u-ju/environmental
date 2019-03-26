@@ -121,6 +121,11 @@ Page({
       url: '../page/index?url=' + e.currentTarget.dataset.url,
     })
   },
+  fqtz(){
+    wx.navigateTo({
+      url: '../page/index?url=' + app.globalData.config.protocol.nper,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

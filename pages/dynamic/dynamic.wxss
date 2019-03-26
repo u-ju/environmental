@@ -29,10 +29,9 @@
     height:90rpx;
 }
 .container{
-  width: 686rpx;
-  margin: auto;
+  
   color: #444;
-  padding: 30rpx 0 50rpx 0;
+  padding: 30rpx 32rpx 50rpx 32rpx;
 }
 .xian{
   width:100%;

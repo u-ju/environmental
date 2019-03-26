@@ -66,7 +66,7 @@ Page({
     intro: '',
     show:false,
     choosed:1,
-    shop_protocol:''
+    shop_settled:''
   },
 
   /**
@@ -126,7 +126,7 @@ Page({
         tshop_cate: result.tshop_cate,
         type_val: result.shop_type,
         type: '', 
-        shop_protocol: app.globalData.config.shop_protocol,
+        shop_settled: app.globalData.config.protocol.shop_settled,
         choosed: wx.getStorageSync('choosedt') || that.data.choosed
       })
     this.loadAddress();
@@ -145,32 +145,6 @@ Page({
           upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
         }
         var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
-
-        // for (var a in type_val){
-        //   type_val[a]["tchecked"]=false
-        //   if (type_val[a].id == result.type){
-        //     type_val[a]["tchecked"] = true
-        //   }
-        // }
-        // that.setData({
-        //   type_val: type_val,
-        // })
-        // if (result.type==1){
-        //   for (var a in tshop_cate) {
-        //     tshop_cate[a]["tchecked"] = false
-        //     if (tshop_cate[a].id == result.cate_id) {
-        //       tshop_cate[a]["tchecked"] = true
-        //     }
-        //   }
-        // }
-        // if (result.type == 2) {
-        //   for (var a in shop_cate) {
-        //     shop_cate[a]["tchecked"] = false
-        //     if (shop_cate[a].id == result.cate_id) {
-        //       shop_cate[a]["tchecked"] = true
-        //     }
-        //   }
-        // }
         
         that.setData({
           tshop_cate: tshop_cate,
@@ -195,7 +169,7 @@ Page({
           image: image,
           cate_id: result.cate_id,
           upload_picture_list: upload_picture_list,
-          signed_rate: result.signed_rate,
+          discount_percent: result.discount_percent,
         })
         wx.hideLoading()
       })
@@ -207,28 +181,6 @@ Page({
       ], upload_picture_list = wx.getStorageSync("upload_picture_list")||[]
       
       var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
-      // for (var a in type_val) {
-      //   type_val[a]["tchecked"] = false
-      //   if (type_val[a].id == wx.getStorageSync("typet")) {
-      //     type_val[a]["tchecked"] = true
-      //   }
-      // }
-      // if (wx.getStorageSync("typet")  == 1) {
-      //   for (var a in tshop_cate) {
-      //     tshop_cate[a]["tchecked"] = false
-      //     if (tshop_cate[a].id == wx.getStorageSync("cate_idt")) {
-      //       tshop_cate[a]["tchecked"] = true
-      //     }
-      //   }
-      // }
-      // if (wx.getStorageSync("typet") == 2) {
-      //   for (var a in shop_cate) {
-      //     shop_cate[a]["tchecked"] = false
-      //     if (shop_cate[a].id == wx.getStorageSync("cate_idt")) {
-      //       shop_cate[a]["tchecked"] = true
-      //     }
-      //   }
-      // }
       that.setData({
         contact: wx.getStorageSync("contactt"),
         title: wx.getStorageSync("titlet"),
@@ -243,28 +195,27 @@ Page({
         cate_id:wx.getStorageSync("cate_idt"),
         areaSelectedStr: wx.getStorageSync('areaSelectedStrt'),
         area_id_val: wx.getStorageSync('area_idt'),
-        signed_rate: wx.getStorageSync('signed_ratet'),
+        discount_percent: wx.getStorageSync('discount_percentt'),
+        longitude: wx.getStorageSync('longitudet'),
+        latitude: wx.getStorageSync('latitudet'),
       })
-      
     }
-    that.location(that.data.areaSelectedStr + that.data.address)
-    // wx.getLocation({
-    //   type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-    //   success: (res) => {
-    //     let latitude = res.latitude;
-    //     let longitude = res.longitude;
-    //     this.setData({
-    //       longitude: longitude,
-    //       latitude: latitude,
-    //     })
-    //   }
-    // });
   },
   location(address){
+    var that = this
     qqMap.geocoder({
       address: address,
       complete: res => {
         console.log(res);   //经纬度对象
+        if (res.result.location){
+          that.setData({
+            longitude: res.result.location.lng,
+            latitude: res.result.location.lat,
+          })
+          wx.setStorageSync('longitudet', res.result.location.lng)
+          wx.setStorageSync('latitudet', res.result.location.lat)
+        }
+        
       }
     })
   },
@@ -780,7 +731,7 @@ Page({
       
       util.alert("申请提交成功，等待审核")
       wx.setStorageSync("contactt",'')
-      wx.setStorageSync("signed_ratet", '')
+      wx.setStorageSync("discount_percentt", '')
       wx.setStorageSync("titlet", '')
       wx.setStorageSync("addresst", '')
       wx.setStorageSync("introt", '')
@@ -793,6 +744,8 @@ Page({
       wx.setStorageSync("image1", '')
       wx.setStorageSync("upload_picture_list", [])
       wx.setStorageSync('choosedt', '')
+      wx.setStorageSync('latitudet', '')
+      wx.setStorageSync('longitudet', '')
       util.navigateBack(2)
       that.setData({
         post: false
@@ -800,7 +753,7 @@ Page({
     }, function (res) {
       console.log(res.data.message)
       if (res.data.message == "更新成功") {
-        wx.navigateBack()
+        wx.navigateBack(2)
       }
       that.setData({
         post: false

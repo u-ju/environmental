@@ -21,7 +21,7 @@
       <image src='../../images/choosed.png' wx:else></image>
       <text>请勾选</text>
     </view>
-    <navigator url='../page/index?url={{privacy_policy}}'>
+    <navigator url='../page/index?url={{about}}'>
       用户协议
     </navigator>
   </view>

@@ -2,9 +2,9 @@
 <view class='sousuo flex_btw align_center'>
   <!-- <input bindinput='search'   value='{{search}}' name='search'></input>
   <image src='../../images/video_cz.png' class='video_cz' mode='aspectFill'></image> -->
-  <input bindinput='search'  bindconfirm="searchSubmit" value='{{search}}' name='search' ></input>
+  <input bindinput='search'  bindconfirm="searchSubmit" value='{{search}}' auto-focus='true' name='search' ></input>
   <image src='../../images/video_cz.png' bindtap='searchSubmit' class='video_cz' ></image>
 </view>
-<view class='searchitem' wx:for="{{result}}" wx:key="index" bindtap='link' data-attach='{{item.attach}}'>
+<view class='searchitem' wx:for="{{result}}" wx:key="index" bindtap='link' data-link='{{item.control}}'>
   {{item.name}}
 </view>

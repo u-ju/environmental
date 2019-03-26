@@ -19,7 +19,7 @@ Page({
     duration: 0, //可以控制动画
     list: '',
     list:[],
-    shop_cate:[],
+    shop_cate:[0],
     type: "",
     url1: "",
     address:'',
@@ -50,11 +50,9 @@ Page({
       keywords: keywords,
       indexSize: -1
     })
-    // console.log(keywords)
     this.init('', 1)
   },
   change(e) {
-    console.log(e)
     if (!e.detail.source){
       return false;
     }
@@ -78,8 +76,6 @@ Page({
     this.init(Number(shop_cate[e.detail.current].id))
   },
   scrollTo(e) {
-    console.log(this.data.cate_id)
-    console.log(e)
     var shop_cate = this.data.shop_cate;
     for (var i in shop_cate) {
       if (shop_cate[i].children) {
@@ -111,7 +107,6 @@ Page({
       type = options.type
       title = '便民服务'
     }
-    
     that.setData({
       type: type
     })
@@ -122,9 +117,6 @@ Page({
       title: '加载中',
     })
     var shop_cate = app.globalData.config.shop_cate
-    // if (type==1){
-    //   shop_cate = app.globalData.config.tshop_cate
-    // }
     that.setData({
       shop_cate: shop_cate,
       erji: shop_cate[0].children,
@@ -138,25 +130,22 @@ Page({
           search: keywords,
           indexSize: -1
         })
-        console.log(keywords)
         this.init('', 1, keywords)
       }else{
         that.init();
       }
     
   }else{
-    wx.hideLoading()
-    }
+  wx.hideLoading()
+  }
     that.address()
 
   },
   init(cate_id = this.data.shop_cate[0].id, page = 1, keywords='') {
     var that = this;
-    // console.log(keywords)
     if (that.data.keywords != '' && that.data.keywords != undefined) {
       keywords = that.data.keywords
     }
-    console.log(keywords)
     util.getJSON({
       apiUrl: apiurl.shop + "?type=" + that.data.type ,
       // + "&keywords" + keywords, 

@@ -26,6 +26,7 @@ Page({
     page:{},
     list1: [],
     page1: {},
+    key:0
   },
 
   /**
@@ -52,6 +53,7 @@ Page({
       key,
       index,
     })
+    this.init()
   },
   onSwiperChange(e) {
     console.log('onSwiperChange', e)
@@ -64,7 +66,7 @@ Page({
         index
       })
     }
-    this.init()
+    
   },
   init(page = 1) {
     var that = this;

@@ -68,7 +68,7 @@
   <textarea disabled='disabled' value='{{list.assess_intro}}'></textarea>
   <view class='item  flex align_center'>
     <text class='size28 color6'>评估价格</text>
-    <view class='size28 colorFB5A3E'>￥{{list.order_amount}}</view>
+    <view class='size28 colorFB5A3E' wx:if="{{list.order_amount}}">￥{{list.order_amount}}</view>
   </view>
   <view class='item  flex align_center'>
     <text class='size28 color6'>处理类型</text>

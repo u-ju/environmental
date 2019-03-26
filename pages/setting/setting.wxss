@@ -1,4 +1,7 @@
 /* pages/setting/setting.wxss */
+page{
+  font-size: 28rpx;
+}
 image{
   width: 14rpx;
   height: 28rpx;

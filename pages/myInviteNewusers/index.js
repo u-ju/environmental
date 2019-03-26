@@ -1,36 +1,20 @@
-// pages/setting/setting.js
-const app = getApp()
+// pages/myInviteNewusers/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      items:[
-        { title:"隐私保护政策",url:''},
-        { title: "关于我们", url: '../about/about' },
-      ]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.hideLoading()
-    var items = [
-      { title: "隐私保护政策", url: '../page/index?url=' + app.globalData.config.protocol.privacy },
-      { title: "关于我们", url: '../about/about' },
-    ]
-    this.setData({
-      items: items,
-      version: app.globalData.config.version
-    })
+
   },
-  link(e){
-    wx.navigateTo({
-      url: e.currentTarget.dataset.url,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

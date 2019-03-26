@@ -13,7 +13,7 @@ Page({
     ],
     choose:[],
     disabled:false,
-    privacy_policy:''
+    bankcard:''
   },
 
   checkboxChange(e) {
@@ -57,7 +57,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      privacy_policy: app.globalData.config.privacy_policy
+      bankcard: app.globalData.config.protocol.bankcard
     })
   },
 

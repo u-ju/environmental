@@ -35,13 +35,13 @@
     <text class='size28 color6'>区域</text>
     <!-- placeholder='点击选择区域'  -->
     <input class='size28 color9' disabled='disabled' name='area_id' value='{{areaSelectedStr}}' bindtap="cascadePopup" ></input>
-    <text class='iconfont icon-jiantou color9'></text>
+    <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <view class='item  flex align_center' wx:else>
     <text class='size28 color6'>区域</text>
     <!-- placeholder='点击选择区域' -->
     <input class='size28 color9' disabled='disabled' name='area_id' value='{{areaSelectedStr}}'  ></input>
-    <text class='iconfont icon-jiantou color9'></text>
+    <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <view class='item  flex align_center'>
     <text class='size28 color6'>地址</text>
@@ -121,7 +121,7 @@
       </view>
       <text>请勾选</text>
     </view>
-    <navigator class='color299EF0' url='../page/index?url={{shop_protocol}}'>
+    <navigator class='color299EF0' url='../page/index?url={{shop_settled}}'>
       商家入驻协议
     </navigator>
   </view>

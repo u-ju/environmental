@@ -15,7 +15,8 @@ Page({
     balance: "",
     integral: "",
     page: {},
-    url: ''
+    url: '',
+    withdraw:''
   },
 
   /**
@@ -27,9 +28,10 @@ Page({
     var that = this;
     var title = '我的环保金';
     that.setData({
-      url: url
+      url: url,
+      withdraw: app.globalData.config.protocol.withdraw
     })
-    
+   
     wx.setNavigationBarTitle({
       title: title,
     })

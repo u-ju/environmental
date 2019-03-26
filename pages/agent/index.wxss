@@ -1,5 +1,6 @@
 /* pages/agent/index.wxss */
 /* @import '../edcs/edcs'; */
+@import"../../wxParse/wxParse.wxss";
 @import '../order_detail/index';
 page{
   background-color: white;
@@ -11,6 +12,9 @@ page{
   text-align: center;
   padding-bottom: 40rpx;
   /* line-height: 400rpx; */
+}
+.weizi .color5DC47A{
+  display: inline-block
 }
 .card{
   width: 650rpx;
@@ -63,7 +67,7 @@ button{
 }
 .gznr{
   width:687rpx;
-  height:520rpx;
+  /* min-height:400rpx; */
   padding: 30rpx 0;
   background:rgba(255,255,255,1);
   box-shadow:0px 4rpx 14rpx 1px rgba(191,189,189,0.52);

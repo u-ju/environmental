@@ -2,6 +2,10 @@
   "pages":[
     
     "pages/index/index",
+    "pages/feedback/index",
+    "pages/personal_center/personal_center",
+    "pages/myInviteNewusers/index",
+    "pages/agentPay/index",
     "pages/qrcode/index",
     "pages/search/index",
     "pages/order/index",
@@ -47,7 +51,7 @@
     "pages/payment/index",
     "pages/video_detail/index",
     "pages/video/index",
-    "pages/personal_center/personal_center",
+    
     "pages/realname_suc/index",
     "pages/success/success",
     "pages/error/error",

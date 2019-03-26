@@ -1,0 +1,30 @@
+<!--pages/feedback/index.wxml-->
+<form bindsubmit="formSubmit">
+<block>
+<view class='type'>
+  
+  <textarea name='comment_message' class='textarea' maxlength='{{max}}' bindinput="inputs" placeholder='请输入遇到的问题或建议.......' placeholder-class='color898989'></textarea>
+  <view class='text-right color46D5A2'><text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text></view>
+  <view class="picture_list">
+      <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+        <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+        <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+        <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
+        <view class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"><image src='../../images/delete_pic.png'></image></view>
+      </view>
+
+      <view class='picture_item'>
+        <view class="add-image click_camera flex_col align_center" bindtap='uploadpic'>
+          <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+          <!-- <view class='color153'>点击拍照</view>  -->
+        </view>
+      </view>
+    </view>
+</view>
+</block>
+<view class='wxgitem flex_btw ' bindtap="cascadePopup">
+  <view class='left color4'>联系人电话</view>
+  <input  name='phone' value='{{phone}}'   ></input>
+</view>
+<button class='btnsure size30' form-type="submit" disabled='{{disabled}}'> 发布</button>
+</form>

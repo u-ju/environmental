@@ -1,4 +1,4 @@
-// pages/maintenance_worker/index.js
+// pages/agentPay/index.js
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
@@ -8,7 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    visible3:false,
     // 地址
     current: 0,
     province: [],
@@ -20,124 +19,19 @@ Page({
     regionObjects: [],
     townObjects: [],
     areaSelectedStr: '',
-    area_id: 0,
+    area_id: '',
     maskVisual: 'hidden',
     provinceName: '请选择',
-    status_name:'',
-    url:'repair_userStore',
-    post:false,
-    image: [
-      { title: '店招上传', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
-      { title: '营业执照', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
-    ],
-    textareahidden:false,
-    intro:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  show(){
-    this.setData({
-      textareahidden: 1
-    })
-  },
-  unshow() {
-    this.setData({
-      textareahidden: false
-    })
-  },
-  input(e) {
-    this.setData({
-      intro: e.detail.value
-    })
-  },
   onLoad: function (options) {
-    if (options.repair != '' && options.repair !=undefined){
-      this.userShow(options.repair)
-      
-    } 
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success: (res) => {
-        let latitude = res.latitude;
-        let longitude = res.longitude;
-        this.setData({
-          longitude: longitude,
-          latitude: latitude,
-        })
-      }
-    });
+
     this.loadAddress();
-    this.tab()
   },
-  userShow(id){
-    var that = this;
-    util.getJSON({ apiUrl: apiurl.repair_userShow + id }, function (res) {
-      var result = res.data.result
-      that.setData({
-        cate_name: result.cate_name,
-        cate_id: result.cate_id,
-        areaSelectedStr: result.area_name,
-        area_id: result.area_id,
-        name: result.name,
-        phone: result.phone,
-        intro: result.intro,
-        status_name: result.status_name,
-        url:'repair_userUpdate',
-        repair_id: id
-      })
-      wx.hideLoading()
-    })
-  },
-  tab() {
-    var that = this;
-    util.getJSON({ apiUrl: apiurl.repair_home }, function (res) {
-      var cate_arr = res.data.result.cate_arr
-      for (var i in cate_arr) {
-        cate_arr[i]["value"] = cate_arr[i]["cate_id"]
-        cate_arr[i]["label"] = cate_arr[i]["name"]
-      }
-      that.setData({
-        cate_arr: cate_arr,
-      })
-      wx.hideLoading()
-    })
-    
-  },
-  formSubmit(e){
-    console.log(e)
-    var data = e.detail.value, that = this;
-    data.area_id = that.data.area_id
-    data.cate_id = that.data.cate_id
-    that.setData({
-      post: true
-    })
-    data["intro"] = this.data.intro
-    if (that.data.url =='repair_userUpdate'){
-      data['repair_id'] = that.data.repair_id
-    }
-    util.postJSON({ apiUrl: apiurl[that.data.url], data: data }, function (res) {
-      that.setData({
-        visible3: true,
-        post: false
-      })
-      
-    }, function (res) {
-      console.log(res.data.message)
-      // if (res.data.message == "更新成功") {
-      //   // wx.navigateBack()
-      // }
-      that.setData({
-        post: false
-      })
-      }, function (res) {
-        
-        that.setData({
-          post: false
-        })
-      })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -151,27 +45,120 @@ Page({
   onShow: function () {
 
   },
-  onOpen1() {
-    console.log("sssss")
-    this.setData({ visible1: true })
+  // 支付
+  open2() {
+    var that = this;
+    if (!that.data.area_id){
+      return util.alert("请选择区域")
+    }
+    util.postJSON({ apiUrl: apiurl.create, data: { pay_source: "agent", area_id: that.data.area_id } },
+      function (res) {
+        var result = res.data.result
+        console.log(res)
+
+        for (let i in result.payment_usable) {
+          result.payment_usable[i].choosed = 0
+        }
+        result.payment_usable[0].choosed = 1
+        that.setData({
+          result: result,
+          payment_usable: result.payment_usable,
+          pay_amount: result.pay_amount,
+          visible2: true,
+          payment: result.payment_usable[0]["key"]
+        })
+      })
+
   },
-  onClose1() {
-    this.setData({ visible1: false })
-  },
-  onChange1(e) {
-    this.setData({ cate_name: e.detail.options.map((n) => n.label).join('-'), cate_id: e.detail.options[e.detail.options.length - 1].cate_id })
-    console.log('onChange1', e.detail)
-  },
-  open3() {
+  choose(e) {
+    var result = this.data.result;
+    for (let i in result.payment_usable) {
+      result.payment_usable[i].choosed = 0
+      if (result.payment_usable[i].options && this.data.payment_ext) {
+        for (let a in result.payment_usable[i].options) {
+          result.payment_usable[i].options[a].choosed = 0
+        }
+      }
+    }
+    var payment_ext = '';
+    result["payment_usable"][e.currentTarget.dataset.index]["choosed"] = 1
+    var pay_amount = result.pay_amount
     this.setData({
-      visible3: true,
+      result: result,
+      fq: e.currentTarget.dataset.index,
+      payment_ext: payment_ext,
+      pay_amount: pay_amount,
+      payment: result["payment_usable"][e.currentTarget.dataset.index]["key"]
     })
   },
-  close3() {
-    this.setData({
-      visible3: false,
+  onClose2(){
+    var that = this;
+    that.setData({
+      visible2: false,
     })
-    wx.navigateBack()
+  },
+  close2() {
+    var that = this;
+    that.setData({
+      visible2: false,
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
+    util.postJSON({ apiUrl: apiurl.vendor, data: { pay_key: that.data.result.pay_key, payment: that.data.payment, pay_amount: that.data.result.pay_amount, pay_cash: that.data.result.pay_amount } },
+      function (res) {
+        var result = res.data.result
+        console.log(res)
+        if (result.payment == "balance") {
+          util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
+            util.alert("支付成功")
+            wx.showLoading({
+              title: '加载中',
+            })
+            util.navigateBack(1)
+          }, function () {
+            wx.navigateTo({
+              url: '../error/error',
+            })
+          }, function () {
+            wx.navigateTo({
+              url: '../error/error',
+            })
+          })
+        } else {
+          wx.requestPayment({
+            timeStamp: result.pay_info.timeStamp,
+            nonceStr: result.pay_info.nonceStr,
+            package: result.pay_info.package,
+            signType: result.pay_info.signType,
+            paySign: result.pay_info.paySign,
+            success(res1) {
+              console.log(res1)
+              wx.hideLoading()
+              util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
+                wx.showLoading({
+                  title: '加载中',
+                })
+                util.alert("支付成功")
+                util.navigateBack(1)
+              }, function () {
+                wx.navigateTo({
+                  url: '../error/error',
+                })
+              }, function () {
+                wx.navigateTo({
+                  url: '../error/error',
+                }) 
+              })
+            },
+            fail(res) {
+              util.alert("支付失败")
+            }
+          })
+        }
+
+
+      })
   },
   // 地区选择
   loadAddress: function (options) {
@@ -280,7 +267,8 @@ Page({
     });
     var that = this;
     this.getArea(this.data.regionObjects[index]["area_id"], function (array, area) {
-      if (area.length == 0) {
+      console.log(array, area)
+      if (area[0].type == "town") {
         var areaSelectedStr = that.data.provinceName + that.data.cityName + that.data.regionName;
         that.setData({
           areaSelectedStr: areaSelectedStr,
@@ -314,6 +302,8 @@ Page({
       areaSelectedStr: areaSelectedStr,
       area_id: that.data.townObjects[index]["area_id"]
     });
+    wx.setStorageSync('areaSelectedStrt', areaSelectedStr)
+    wx.setStorageSync('area_idt', that.data.townObjects[index]["area_id"])
     this.cascadeDismiss();
   },
   currentChanged: function (e) {
@@ -349,9 +339,18 @@ Page({
       }
     })
   },
-  xiugai() {
-    this.setData({
-      disabled1: false
-    })
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
   },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  }
 })

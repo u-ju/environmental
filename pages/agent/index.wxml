@@ -1,8 +1,11 @@
 <!--pages/agent/index.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+
 <view class='wei' wx:if="{{is_agent==0}}">
-  <view class='weizi'>你还没有成为环保大使，前往申请成为<text class='color5DC47A' bindtap='open2'>环保大使 》</text></view>
+  <view class='weizi'>你还没有成为环保大使，前往申请成为<navigator class='color5DC47A' url='../agentPay/index'>环保大使 》</navigator></view>
   <view class='gznr'>
-    <view>
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    <!-- <view>
       <text class='size30'>具备条件： </text>
       <text> \n 1.发展线下联盟商家。 \n 2.招贤纳士，推荐环保大使。</text>
     </view>
@@ -13,7 +16,7 @@
     <view>
       <text class='size30'>薪资待遇：</text>
       <text> \n  1.以业绩效果发放薪资。\n 2.月收入5000元以上需缴纳个人所得税 </text>
-    </view>
+    </view> -->
   </view>
 </view>
 <view  wx:elif="{{is_agent==1}}">
@@ -61,47 +64,7 @@
 <view class='wei' wx:else>
 </view>
 
-<wux-popup closable position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
-  <!-- <view class='size28 colorFB5A3E bold title_num'>￥{{result.pay_amount}}</view>
-  <radio-group class="radio-group" bindchange="radioChange">
-      <label wx:for="{{payment_usable}}" wx:key="index" class="radio flex_btw align_center" >
-        <view class='flex align_center'>
-          <image src='{{item.image}}'></image>
-          <text class='color6 size26'>{{item.text}}</text>
-        </view>
-        <radio value="{{item.key}}" checked="{{item.checked}}"/>
-      </label>
-  </radio-group> -->
-<!-- <text class='iconfont icon-cuohao'  bindtap="close3"></text> -->
-    <view class='center color4 size36 csgg'>选择支付方式</view>
-    <view class='center color4 size60 csgg'>￥{{pay_amount}}</view>
-    <view  >
-      <view class='label' wx:for="{{result.payment_usable}}" wx:key ="index">
-        <view>
-        <view class='flex align_center radioitem'  bindtap='choose' data-index="{{index}}" data-key="{{item.key}}">
-          <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
-          <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
-          <view class='left'>
-            <text class='size28 color4'>{{item.name}} \n </text>
-          </view>
-        </view>
-        <view wx:if="{{item.options&&item.choosed==1}}">
-          <block wx:for="{{item.options}}" wx:key="index">
-          <view class='flex align_center radioitem radioinstallment'  bindtap='choosed' data-index="{{index}}" data-key="{{item.key}}">
-            <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
-            <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
-            <view class='left'>
-              <text class='size28 color4'>{{item.name}} </text>
-            </view>
-          </view>
-          </block>
-        </view>
-        </view>
-      </view>  
-    </view> 
-    <!-- <view class='goodsBuy size36 marginb60' bindtap='goodsBuy'>立即支付</view> -->
-  <button bindtap="close2" class='pay goodsBuy size36 marginb60'>确认支付</button>
-</wux-popup>
+
 <wux-popup closable visible="{{ visible1 }}"  bind:close="onClose1" bind:closed="onClosed1">
     <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="section">
