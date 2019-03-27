@@ -125,7 +125,7 @@ function wxAutoImageCal(originalWidth, originalHeight,that,bindName) {
     results.imageWidth = originalWidth;
     results.imageheight = originalHeight;
   }
-  console.log(results)
+  // console.log(results)
   return results;
 }
 

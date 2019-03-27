@@ -9,7 +9,7 @@ button::after{
 .yzm_btn{
   width: 204rpx;
   height: 62rpx;
-  border-radius: 26rpx;
+  border-radius: 31rpx;
   color: #fff;
   font-size: 24rpx;
   background: -webkit-linear-gradient(#44D5A2,#99E4AB);

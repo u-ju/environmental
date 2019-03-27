@@ -55,9 +55,10 @@
 </view>
 <!-- <view class='size36 btndl' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
 <view class='size36 btndl' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请环保大使</view> -->
-<view class='size36 btndl' hidden='{{!agent.invite_shop}}' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
-<view class='size36 btndl' hidden='{{!agent.invite_agent}}' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请环保大使</view>
-<navigator class='link' url='../my_invitation/index'>
+<!-- <view class='size36 btndl' hidden='{{!agent.invite_shop}}' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
+<view class='size36 btndl' hidden='{{!agent.invite_agent}}' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请环保大使</view> -->
+<view class='size36 btndl' hidden='{{!agent.invite_qrcode}}' data-invite='{{agent.invite_qrcode}}'  bindtap='open3'>查看邀请码</view>
+<navigator class='link'  hidden='{{!agent.invite_qrcode}}' url='../my_invitation/index'>
   查看我的邀请<text class='color5DC47A'> 》</text>
 </navigator>
 </view>

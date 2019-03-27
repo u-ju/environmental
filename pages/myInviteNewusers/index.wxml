@@ -1,2 +1,25 @@
 <!--pages/myInviteNewusers/index.wxml-->
-<text>pages/myInviteNewusers/index.wxml</text>
+<view class='banner'>
+  <image src='{{result.background}}' ></image>
+  <view class='invite size36' bindtap='open3'>邀请二维码</view>
+</view>
+<view class='size30 invitesus'>邀请记录</view>
+<view wx:if="{{list.length>0}}">
+  <block wx:if="{{list[0].nickname}}">
+  <view class='item flex_btw align_center' wx:for="{{list}}" wx:key="index">
+    <view class='flex_btw align_center'>
+      <image src='{{item.avatar}}' ></image>
+      <view class='flex_btw flex_col'>
+        <view>{{item.nickname}}</view>
+        <view>{{item.effect_time}}</view>
+      </view>
+    </view>
+    <view class='color4FD7A3'>{{item.status_name}}</view>
+  </view>
+  </block>
+  
+</view>
+<empty wx:else />
+<wux-popup closable visible="{{ visible3 }}"  bind:close="onClose3" >
+  <wux-qrcode  id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+</wux-popup>

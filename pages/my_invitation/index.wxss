@@ -16,12 +16,14 @@ swiper{
 .lmitem image{
   width:175rpx;
   height:112rpx;
+  background-color: #eee;
   margin-right: 35rpx;
 }
  .item .flex_col{
   width: 476rpx;
 }
 .ywitem image{
+  background-color: #eee;
   width:130rpx;
   height:130rpx;
   border-radius:50%;
@@ -33,7 +35,8 @@ height: 100%;
 background-color: white;
 }
 .content {
-  display: flex;
+  width: 100%;
+  /* display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
@@ -41,7 +44,7 @@ background-color: white;
   bottom: 0rpx;
   left: 0;
   top: 0;
-  overflow: hidden;
+  overflow: hidden; */
 }
 .market-scroll-list{
   height: 100%;

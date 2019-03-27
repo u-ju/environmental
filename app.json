@@ -1,7 +1,8 @@
 {
   "pages":[
-    
     "pages/index/index",
+    "pages/my_invitation/index",
+    
     "pages/feedback/index",
     "pages/personal_center/personal_center",
     "pages/myInviteNewusers/index",
@@ -22,7 +23,7 @@
     "pages/bill/index",
     "pages/payment_details/index",
     "pages/installment_repayment/index",
-    "pages/my_invitation/index",
+    
     "pages/history/index",
     "pages/installment_details/installment_details",
     "pages/my_paymentGoods/index",

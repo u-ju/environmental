@@ -156,7 +156,9 @@ Page({
         visible3: true,
         post: false
       })
-      
+      wx.reLaunch({
+        url: '../index/index'
+      })
     }, function (res) {
       console.log(res.data.message)
       that.setData({

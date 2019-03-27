@@ -746,14 +746,18 @@ Page({
       wx.setStorageSync('choosedt', '')
       wx.setStorageSync('latitudet', '')
       wx.setStorageSync('longitudet', '')
-      util.navigateBack(2)
+      wx.reLaunch({
+        url: '../index/index',
+      })
       that.setData({
         post: false
       })
     }, function (res) {
       console.log(res.data.message)
-      if (res.data.message == "更新成功") {
-        wx.navigateBack(2)
+      if (res.data.status == "414") {
+        wx.reLaunch({
+          url: '../index/index',
+        })
       }
       that.setData({
         post: false

@@ -115,7 +115,7 @@ Page({
   link(){
    var  url= '../address_order/index'
     if (Object.keys(this.data.address).length ==0){
-      url = '../address/index'
+      url = '../my_bankcard_add/index'
     }
     wx.navigateTo({
       url: url

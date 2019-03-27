@@ -1,4 +1,6 @@
 {
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
   "navigationBarTitleText": "我的邀请",
   "usingComponents": {
     "wux-popup": "../../Components/popup/index",

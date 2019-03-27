@@ -58,13 +58,18 @@ Page({
     
   // },
   onLoad: function (options) {
-    console.log(options)
     var that  = this;
-    console.log(wx.getStorageSync('formData'))
     var formData = wx.getStorageSync('formData')
-    this.setData({
-      formData: formData
-    })
+    if (formData){
+      this.setData({
+        formData: formData
+      })
+      console.log(this.data.formData)
+      wx.setStorageSync('formData', '')
+      console.log('--------------')
+      console.log(this.data.formData)
+    }
+    
     
     util.loading()
     if (wx.getStorageSync('token') && wx.getStorageSync('token')!=1){
@@ -156,14 +161,16 @@ Page({
   link(e){
     
     
-    if (e.currentTarget.dataset.link.length==0){
+    if (JSON.stringify(e.currentTarget.dataset.link.length) == "{}"){
       return false
     }
     var url = e.currentTarget.dataset.link.control
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
+      url = url + "?1=1"
       for (var i in e.currentTarget.dataset.link.params){
+        
         console.log(i, e.currentTarget.dataset.link.params[i])
-        url = url + "?" + i + "=" + e.currentTarget.dataset.link.params[i]
+        url = url + "&" + i + "=" + e.currentTarget.dataset.link.params[i]
       }
     }
     if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
@@ -208,8 +215,9 @@ Page({
                   return wx.navigateTo({
                     url: that.data.pjurl,
                   })
-                }
-                if (that.data.formData["qrcode"]){
+                } 
+                // console.log(that.data.formData)
+                if (that.data.formData&&that.data.formData.hasOwnProperty("qrcode")){
                   wx.setStorageSync('formData', '')
                   wx.navigateTo({
                     url: '../qrcode/index?q=' + that.data.formData["qrcode"],
@@ -240,7 +248,8 @@ Page({
                           url: that.data.pjurl,
                         })
                       }
-                      if (that.data.formData["qrcode"]) {
+                      // console.log(that.data.formData)
+                      if (that.data.formData &&that.data.formData.hasOwnProperty("qrcode")) {
                         // wx.sStorageSync('formData')
                         wx.setStorageSync('formData', '')
                         wx.navigateTo({

@@ -23,14 +23,30 @@ Page({
         action: JSON.parse(options.action),
         code: JSON.parse(options.code)
       })
+      
     }
   },
   bag(e){
-    this.postJSON({ apiUrl: apiurl.action, data: { action: e.currentTarget.dataset.key, code: this.data.code } }, function (res2) {
+    console.log(e)
+    var data = { action: e.currentTarget.dataset.key, code: this.data.code }
+    console.log(data)
+    util.postJSON({ apiUrl: apiurl.action, data: data}, function (res2) {
       var result2 = res2.data.result;
+      console.log(result2)
       if (result2.control){
-        wx.navigateTo({
-          url: link[result2.control],
+        // JSON.stringify(result2.control) != "{}"
+        var url = result2.control.control
+        console.log(url)
+        if (JSON.stringify(result2.control.params) != "{}") {
+          url = url + "?1=1"
+          for (var i in result2.control.params) {
+            console.log(i, result2.control.params[i])
+            url = url + "&" + i + "=" + result2.control.params[i]
+          }
+        }
+        console.log(url)
+        wx.reLaunch({
+          url: url,
         })
       }
     })

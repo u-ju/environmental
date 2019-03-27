@@ -176,7 +176,7 @@ Page({
   },
   link(e){
     // console.log(e)
-    if (e.currentTarget.dataset.link.length == 0) {
+    if (JSON.stringify(e.currentTarget.dataset.link.length) == "{}") {
       return false
     }
     var url = e.currentTarget.dataset.link.control

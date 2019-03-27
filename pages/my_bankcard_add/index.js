@@ -11,12 +11,13 @@ Page({
     items: [
       { name: 1, value: '同意', checked:true },
     ],
-    choose:[],
+    choose:['1'],
     disabled:false,
     bankcard:''
   },
 
   checkboxChange(e) {
+    console.log(e.detail.value)
     this.setData({
       choose:e.detail.value
     })
@@ -41,7 +42,7 @@ Page({
         that.setData({
           disabled: false
         })
-        util.deplay_navigateTo("../my_bankcard/index")
+        util.navigateBack()
       }, function () {
         that.setData({
           disabled: false

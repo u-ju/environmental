@@ -91,7 +91,7 @@ const apiList = {
 
   agent_agentIndex: basePath + '/front/agent/agentIndex',
 
-
+  agent_userIndex: basePath + '/front/agent/userIndex',
 
   // WalletController
   // GET 钱包信息
@@ -109,10 +109,10 @@ const apiList = {
 
 
   // ShareController
-  // GET 分享信息
+  // GET 推广信息
   share: basePath + '/front/share',
 
-
+  share_index: basePath +'/front/share/index',
 
   // OnsiteRecycleController
   // GET 上门回收信息

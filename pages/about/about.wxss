@@ -24,7 +24,7 @@
   border-radius: 10rpx;
 }
 .noReach-online-top-close {
-  width: 1rpx;
+  width: 1px;
   height: 50rpx;
   background: #d7d7d7;
   margin-left: 95rpx;
@@ -45,14 +45,14 @@
 }
 
 .online-top-closing {
-  width: 1rpx;
+  width: 1px;
   height: 50rpx;
   background: #d7d7d7;
   margin-left: 95rpx;
 }
 
 .online-top-close {
-  width: 1rpx;
+  width: 1px;
   height: 50rpx;
   background: #2EB354;
   margin-left: 170rpx;
@@ -64,19 +64,20 @@
   position: absolute;
   top:50%;
   left: 50%;
-  margin:-4rpx 0 0 -4rpx; 
+  /* margin:-4rpx 0 0 -4rpx;  */
+  transform: translate(-50%,-50%);
   background: #2EB354;
 }
 
 .online-bottom {
-  width: 1rpx;
+  width: 1px;
   height: 50rpx;
   background: #2EB354;
   margin-left: 170rpx;
 }
 
 .online-bottom-start {
-  width: 1rpx;
+  width: 1px;
   height: 50rpx;
   /* background: #999; */
   margin-left: 170rpx;
@@ -144,7 +145,7 @@
   border-radius: 50%;
   width: 20rpx;
   height: 20rpx;
-  margin-left:160rpx;
+  margin-left:158rpx;
   background-color: transparent;
   position: relative;
 }
@@ -170,11 +171,11 @@
   margin-right: 5rpx;
 }
 .location{
-  margin: 88rpx 0 10rpx 0;
+  margin: 38rpx 0 10rpx 0;
 }
 map{
   width:686rpx;
-height:220rpx;
+height:420rpx;
 }
 .erwm image{
   width:126rpx;
@@ -182,5 +183,5 @@ height:220rpx;
   margin-bottom: 10rpx;
 }
 .erwm{
-  margin-top:150rpx;
+  margin-top:50rpx;
 }

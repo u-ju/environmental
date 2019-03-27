@@ -127,7 +127,10 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
       "image": upload_picture_list[j]['path_base'],
       'source': 'base64'
     },
-    header:{ "content-type": 'application/x-www-form-urlencoded' },
+    header: {
+      "content-type": 'application/x-www-form-urlencoded', 'token': that.getToken(),
+      'channel': 'let',
+      'build': build },
     //附近数据，这里为路径     
     success: function (res) {
 
@@ -341,12 +344,12 @@ function getJSON(form = {}, call_success) {
           return false
         }
         wx.setStorageSync("token", 1)
-        wx.redirectTo({
+        wx.reLaunch({
           url: '../index/index',
         })
         // that.getToken(801, form, call_success,"get")
       } else if (res.data.status == 802) {
-        wx.redirectTo({
+        wx.reLaunch({
           url: '../ban/index',
         })
       }else{
@@ -392,11 +395,11 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
         // that.getToken(801, form, call_success, "post")
         // wx.setStorageSync("token", '')
         wx.setStorageSync("token", 1)
-        wx.redirectTo({
+        wx.reLaunch({
           url: '../index/index',
         })
       } else if (res.data.status == 802) {
-        wx.redirectTo({
+        wx.reLaunch({
           url: '../ban/index',
         })
       } else {
@@ -711,6 +714,7 @@ function scan(){
         if (result.action.length>1){
           var action = JSON.stringify(result.action);
           var code = JSON.stringify(result.code);
+          wx.hideLoading()
           wx.navigateTo({
             url: '../edcs_choose/edcs_choose?action=' + action + '&code=' + code,
           })
@@ -731,11 +735,13 @@ function scan(){
               // }
               var url = result2.control.control
               if (JSON.stringify(result2.control.params) != "{}") {
+                url = url + "?1=1" 
                 for (var i in result2.control.params) {
                   console.log(i, result2.control.params[i])
-                  url = url + "?" + i + "=" + result2.control.params[i]
+                  url = url + "&" + i + "=" + result2.control.params[i]
                 }
               }
+              wx.hideLoading()
               wx.navigateTo({
                 url: url,
               })

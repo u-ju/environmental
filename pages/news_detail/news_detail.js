@@ -23,14 +23,14 @@ Page({
     // if (options.id_name =="help_id"){
     var  data = { help_id: Number(options.id) }
     // }
-    console.log(data)
+    // console.log(data)
     util.getJSON({ apiUrl: apiurl.help_show, data: data}, function (res) {
       var result = res.data.result
       // var result = {
       //   content_source:"url",
       //   content:"https://www.baidu.com/"
       // }
-      console.log(result)
+      // console.log(result)
       if (result.content_source=="text"){
         that.setData({
           content_source: result.content_source,

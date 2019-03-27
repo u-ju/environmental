@@ -21,7 +21,7 @@ Page({
 
 
       if (index == 0) {
-        wx.navigateTo({
+        wx.reLaunch({
           url: '../personal_center/personal_center',
         })
       } else if (index == 1) {

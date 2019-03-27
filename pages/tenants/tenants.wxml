@@ -6,16 +6,7 @@
 </view>
 <form bindsubmit="formSubmit" >
 <view class='from'>
-  <!-- <view class='item  flex align_center'>
-    <view class='item_input flex align_center'>
-      <text class='size28 color6'>姓名</text>
-      <input class='size28 color9' name='name' value='' disabled='{{disabled1}}'></input>
-    </view>
-    <view class='item_input flex align_center'>
-      <text class='size28 color6'>联系方式</text>
-      <input class='size28 color9' name='contact' value='{{contact}}' disabled='{{disabled1}}'  type='number'></input>
-    </view>
-  </view> -->
+  
   <view class='item  flex align_center'>
     <text class='size28 color6'>店铺名称</text>
      <!-- placeholder='点击输入店铺名称' -->
@@ -29,7 +20,7 @@
   <view class='item  flex align_center'>
     <text class='size28 color6'>商家折扣(%)</text>
      <!-- placeholder='点击输入店铺名称' -->
-    <input class='size28 color9'  bindinput='input' data-contact='signed_ratet' name='signed_rate' disabled='{{disabled1}}' value='{{signed_rate}}'></input>
+    <input class='size28 color9'  bindinput='input' data-contact='discount_percentt' name='discount_percent' disabled='{{disabled1}}' value='{{discount_percent}}'></input>
   </view>
   <view class='item  flex align_center' wx:if="{{!disabled1}}">
     <text class='size28 color6'>区域</text>
@@ -56,7 +47,7 @@
       </label>
     </radio-group>
   </view> -->
-  <view class='item  flex'>
+  <view class='item  flex align_center'>
     <text class='size28 color6'>商城类型</text>
     <input class='size28 color9' disabled='disabled' name='cate_id' value='{{title1}}' bindtap="onOpen1" ></input>
     <text class='iconfont icon-jiantou color9'></text>

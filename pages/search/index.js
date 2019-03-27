@@ -32,7 +32,7 @@ Page({
     
   },
   link(e) {
-    if (e.currentTarget.dataset.link.length == 0) {
+    if (JSON.stringify(e.currentTarget.dataset.link) == "{}") {
       return false
     }
     var url = e.currentTarget.dataset.link.control

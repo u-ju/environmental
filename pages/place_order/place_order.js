@@ -294,9 +294,10 @@ Page({
     util.postJSON({ apiUrl: apiurl.onsiteRecycle_orderStore, data: data }, function (res) {
       var result = res.data.result
       util.hideLoading()
-      wx.navigateTo({
-        url: '../index/index',
-      })
+      // wx.navigateTo({
+      //   url: '../index/index',
+      // })
+      util.navigateBack(1)
       that.setData({
         disabled: false
       })

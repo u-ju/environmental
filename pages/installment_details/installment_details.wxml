@@ -35,15 +35,15 @@
     <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">参数&ensp;&ensp;&ensp;&ensp;生产信息材质图案生产信息材质图案</text>
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
-  <view class='color898989 flex_btw size28 align_center'  bindtap='link' data-url="{{result.nper_protocol}}" wx:if="{{result.nper_protocol}}">
+  <view class='color898989 flex_btw size28 align_center'  bindtap='fqtz'>
     <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">分期协议</text>
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <!-- bindtap='open3' -->
-  <view class='color898989 flex_btw size28 align_center' bindtap='fqtz'>
+  <!-- <view class='color898989 flex_btw size28 align_center' bindtap='fqtz'>
     <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">分期&ensp;&ensp;&ensp;&ensp;选择分期付款</text>
     <text class='iconfont icon-jiantou color989898'></text>
-  </view>
+  </view> -->
 </view>
 <view class='goods_intr3'>
   <view class='size28 color4'>评价({{list.length}})</view>
@@ -101,30 +101,7 @@
       <text class='csItemL'>{{item.name}}</text>
       <text>{{item.value}}</text>
     </view>
-    <!-- <view class='csItem color4 size28'>
-      <text class='csItemL'>货号             </text>
-      <text>PZ-192</text>
-    </view>
-    <view class='csItem color4 size28'>
-      <text class='csItemL'>餐具工艺        </text>
-      <text>釉下彩</text>
-    </view>
-    <view class='csItem color4 size28'>
-      <text class='csItemL'>生产地址        </text>
-      <text>江苏景德镇</text>
-    </view>
-    <view class='csItem color4 size28'>
-      <text class='csItemL'>生产日期        </text>
-      <text>2018/8/12</text>
-    </view>
-    <view class='csItem color4 size28'>
-      <text class='csItemL'>流行元素</text>
-      <text>小清新</text>
-    </view>
-    <view class='csItem color4 size28'>
-      <text class='csItemL'>适用人群                </text>
-      <text>大众</text>
-    </view> -->
+    
 </wux-popup>
 <wux-popup position="bottom" visible="{{ visible3 }}" bind:close="onClose3">
     <text class='iconfont icon-cuohao'  bindtap="close3"></text>

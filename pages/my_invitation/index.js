@@ -12,21 +12,31 @@ Page({
        {
         "key": "0",
         "title": "联盟商家",
-        url: 'agent_shopIndex'
+        url: 'agent_shopIndex',
+        classname:'lmitem'
       },
       {
         "key": "1",
         "title": "业务专员",
-        url: 'agent_agentIndex'
+        url: 'agent_agentIndex',
+        classname: 'ywitem'
+      },
+      {
+        "key": "2",
+        "title": "用户列表",
+        url: 'agent_userIndex',
+        classname: 'ywitem'
       },
     ],
     current: '0',
     url:'',
-    list:[],
+    list:[0],
     page:{},
     list1: [],
     page1: {},
-    key:0
+    key:0,
+    url:'agent_shopIndex',
+    classname: 'lmitem'
   },
 
   /**
@@ -35,7 +45,6 @@ Page({
   onLoad: function (options) {
     
     this.init()
-    this.init1()
   },
   onChange(e) {
     // console.log('onChange', e)
@@ -52,11 +61,16 @@ Page({
     this.setData({
       key,
       index,
+      url: this.data.tabs[key].url,
+      classname: this.data.tabs[key].classname,
+    })
+    wx.showLoading({
+      title: '加载中',
     })
     this.init()
   },
   onSwiperChange(e) {
-    console.log('onSwiperChange', e)
+    // console.log('onSwiperChange', e)
     const { current: index, source } = e.detail
     const { key } = this.data.tabs[index]
     console.log(e.detail.current)
@@ -70,7 +84,7 @@ Page({
   },
   init(page = 1) {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.agent_shopIndex + "?page=" + page }, function (res) {
+    util.getJSON({ apiUrl: apiurl[that.data.url] + "?page=" + page }, function (res) {
       var result = res.data.result
       var list = result.list
       if (page != 1) {
@@ -83,7 +97,6 @@ Page({
         height: list.length * 176
       })
       util.hideLoading()
-      // console.log(list)
     })
   },
   init1(page = 1) {
@@ -152,6 +165,42 @@ Page({
         last: true
       })
       util.alert("加载完成")
+    }
+  },
+  onPullDownRefresh: function () {
+    var that = this;
+    wx.showNavigationBarLoading();
+    util.getJSON({ apiUrl: apiurl[that.data.url] + "?page=1"}, function (res) {
+      var result = res.data.result
+      var list = result.list
+      that.setData({
+        list: list,
+        page: result.page
+      })
+      // 隐藏导航栏加载框
+      wx.hideNavigationBarLoading();
+      // 停止下拉动作
+      wx.stopPullDownRefresh();
+    })
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+      that.init(Number(that.data.page.current_page) + 1)
+    } else {
+      that.setData({
+        last: true
+      })
+      wx.hideLoading()
     }
   },
 })

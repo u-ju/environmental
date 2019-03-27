@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "我的邀请",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "wux-popup": "../../Components/popup/index",
+    "empty": "../../Components/empty/index",
+    "wux-qrcode": "../../Components/qrcode/index"
+  }
 }
