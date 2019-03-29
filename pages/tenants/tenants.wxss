@@ -1,5 +1,5 @@
 /* pages/tenants/tenants.wxss */
-@import '../place_order/place_order';
+/* @import '../place_order/place_order'; */
 @import '../realname_authentication/realname_authentication';
 page{
   background-color: #F7F7F7;
@@ -26,9 +26,12 @@ page{
   width: 14rpx;
   height: 28rpx;
 }
-.item>input{
+.item>input,.input{
   width:484rpx;
   border-bottom: 1px solid #989898;
+}
+.input{
+  overflow: hidden;
 }
 /* 自定义 radio 样式 */
 radio{

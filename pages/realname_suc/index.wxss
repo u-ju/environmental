@@ -2,7 +2,9 @@
 /* page{
   background-color: #F7F7F7;
 } */
+
 .item{
+  font-size: 28rpx;
   width:646rpx;
   background:rgba(255,255,255,1);
   box-shadow:0rpx 4rpx 8rpx 0rpx rgba(151, 151, 151, 0.35);

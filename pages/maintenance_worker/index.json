@@ -2,6 +2,7 @@
   "navigationBarTitleText": "注册维修工",
   "usingComponents": {
     "wux-popup": "../../Components/popup/index",
-    "wux-cascader": "../../Components/cascader/index"
+    "wux-cascader": "../../Components/cascader/index",
+    "area": "../../Components/area/index"
   }
 }

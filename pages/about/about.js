@@ -9,16 +9,16 @@ Page({
    */
   data: {
     tab: [
-      {
-        "id": "1",
-        "name": "公司介绍"
-      },
-      {
-        "id": "2",
-        "name": "联系我们"
-      },
+      // {
+      //   "id": "1",
+      //   "name": "公司介绍"
+      // },
+      // {
+      //   "id": "2",
+      //   "name": "联系我们"
+      // },
     ],
-    currentData: 0,
+    currentData: 1,
     // 中心点纬度、经度
     latitude: "",
     longitude: "",

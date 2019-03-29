@@ -25,13 +25,15 @@
   <view class='item  flex align_center' wx:if="{{!disabled1}}">
     <text class='size28 color6'>区域</text>
     <!-- placeholder='点击选择区域'  -->
-    <input class='size28 color9' disabled='disabled' name='area_id' value='{{areaSelectedStr}}' bindtap="cascadePopup" ></input>
+    <!-- <input class='size28 color9' disabled='disabled' name='area_id' value='{{areaSelectedStr}}' bindtap="cascadePopup" ></input> -->
+    <view class='input'><area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' ban='county' bind:choosea='choosearea' /></view>
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <view class='item  flex align_center' wx:else>
     <text class='size28 color6'>区域</text>
     <!-- placeholder='点击选择区域' -->
     <input class='size28 color9' disabled='disabled' name='area_id' value='{{areaSelectedStr}}'  ></input>
+    
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <view class='item  flex align_center'>
@@ -112,8 +114,8 @@
       </view>
       <text>请勾选</text>
     </view>
-    <navigator class='color299EF0' url='../page/index?url={{shop_settled}}'>
-      商家入驻协议
+    <navigator class='color299EF0 color4FD7A3' url='../page/index?url={{shop_settled}}'>
+      《商家入驻协议》
     </navigator>
   </view>
 
@@ -121,65 +123,5 @@
   <button wx:else class='size32' formType="submit" disabled='{{post}}' >提交</button>
 </view>
 </form>
-<view class="modal">
-	<view class="modal-mask {{maskVisual}}" bindtap="cascadeDismiss"></view>
-	<view animation="{{animationData}}" class="modal-content">
-	    <view class="modal-header">
-	        <text class="modal-title">所在地区</text>
-          
-	        <image src="../../images/cuo.png" class="modal-close" bindtap="cascadeDismiss" />
-	    </view>
-	    <view class="modal-body">
 
-	    	<text class="viewpager-title {{current == 0 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="0">{{provinceName}}</text>
-	    	<text class="viewpager-title {{current == 1 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="1">{{cityName}}</text>
-	    	<text class="viewpager-title {{current == 2 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="2">{{regionName}}</text>
-	    	<text class="viewpager-title {{current == 3 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="3">{{townName}}</text>
-
-			<view class="viewpager-divider"></view>
-			<swiper class="swiper-area" current="{{current}}" bindchange="currentChanged">
-				<block wx:if="{{province.length > 0}}">
-					<swiper-item>
-						<scroll-view scroll-y="true" class="viewpager-listview">
-							<view wx:for="{{province}}" wx:key="index" data-index="{{index}}" bindtap="provinceTapped">
-								<text wx:if="{{index == provinceIndex}}" class="area-selected">{{item}}</text>
-								<text wx:else>{{item}}</text>
-							</view>
-						</scroll-view>
-					</swiper-item>
-				</block>
-				<block wx:if="{{city.length > 0}}">
-					<swiper-item>
-						<scroll-view scroll-y="true" class="viewpager-listview">
-							<view wx:for="{{city}}" wx:key="index" data-index="{{index}}" bindtap="cityTapped">
-								<text wx:if="{{index == cityIndex}}" class="area-selected">{{item}}</text>
-								<text wx:else>{{item}}</text>
-							</view>
-						</scroll-view>
-					</swiper-item>
-				</block>
-				<block wx:if="{{region.length > 0}}">
-					<swiper-item>
-						<scroll-view scroll-y="true" class="viewpager-listview">
-							<view wx:for="{{region}}" wx:key="index" data-index="{{index}}" bindtap="regionTapped">
-								<text wx:if="{{index == regionIndex}}" class="area-selected">{{item}}</text>
-								<text wx:else>{{item}}</text>
-							</view>
-						</scroll-view>
-					</swiper-item>
-				</block>
-				<block wx:if="{{town.length > 0}}">
-					<swiper-item>
-						<scroll-view scroll-y="true" class="viewpager-listview">
-							<view wx:for="{{town}}" wx:key="index" data-index="{{index}}" bindtap="townTapped">
-								<text wx:if="{{index == townIndex}}" class="area-selected">{{item}}</text>
-								<text wx:else>{{item}}</text>
-							</view>
-						</scroll-view>
-					</swiper-item>
-				</block>
-			</swiper>
-	    </view>
-	</view>
-</view>
 <wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="商城类型" options="{{ shop_cate }}" bind:close="onClose1" bind:change="onChange1" />

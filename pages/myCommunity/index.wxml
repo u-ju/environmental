@@ -1,0 +1,12 @@
+<!--pages/myCommunity/index.wxml-->
+<form  bindsubmit="formSubmit">
+<view class='flex align_center'>
+  <view class='left'>所在地区</view>
+  <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' bind:choosea='choosearea' />
+</view>
+<view class='flex align_center'>
+  <view class='left'>小区名称</view>
+  <input  name='biotope_name' value='{{biotope_name}}'></input>
+</view>
+  <button class='btnsure' disabled='{{disabled}}'  form-type="submit">保存</button>
+</form>

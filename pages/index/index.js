@@ -161,7 +161,7 @@ Page({
   link(e){
     
     
-    if (JSON.stringify(e.currentTarget.dataset.link.length) == "{}"){
+    if (!e.currentTarget.dataset.link||JSON.stringify(e.currentTarget.dataset.link) == "{}"){
       return false
     }
     var url = e.currentTarget.dataset.link.control
@@ -179,6 +179,9 @@ Page({
     console.log(url)
     wx.navigateTo({
       url: url,
+      fail: function () {
+        util.alert('该功能暂未开放，敬请期待')
+      },
     })
     
    

@@ -18,7 +18,7 @@
   </view>
   <view class='flex' wx:if='{{result.status==2}}'>
     <view class='left_item'>失败原因</view>
-    <view class='right_item color6'>{{result.status_remark}}</view>
+    <view class='right_item colorFE2C2C'>{{result.status_remark}}</view>
   </view>
   
 </view>

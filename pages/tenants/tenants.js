@@ -42,19 +42,7 @@ Page({
     upload_picture_list:[],
     cate_id: '',
     // 地址
-    current: 0,
-    province: [],
-    city: [],
-    region: [],
-    town: [],
-    provinceObjects: [],
-    cityObjects: [],
-    regionObjects: [],
-    townObjects: [],
-    areaSelectedStr: '',
-    area_id_val: 0,
-    maskVisual: 'hidden',
-    provinceName: '请选择',
+    
     result:[],
     disabled1: false,
     shop_id:'',
@@ -129,7 +117,6 @@ Page({
         shop_settled: app.globalData.config.protocol.shop_settled,
         choosed: wx.getStorageSync('choosedt') || that.data.choosed
       })
-    this.loadAddress();
     if (options.shop_id){
       
       util.getJSON({ apiUrl: apiurl.shopSettled_show + "?shop_id=" + options.shop_id}, function (res) {
@@ -334,7 +321,11 @@ Page({
         "image": upload_picture_list[j]['path_base'],
         'source': 'base64'
       },
-      header: { "content-type": 'application/x-www-form-urlencoded' },
+      header: {
+        "content-type": 'application/x-www-form-urlencoded',
+        'token': util.getToken(),
+        'channel': 'let',
+        'build': util.build },
       //附近数据，这里为路径     
       success: function (res) {
         var data = JSON.parse(res.data);
@@ -444,7 +435,6 @@ Page({
       upload_picture_list: upload_picture_list
     });
     wx.setStorageSync('upload_picture_list', upload_picture_list)
-    // console.log(upload_picture_list)
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -480,188 +470,14 @@ Page({
   onShareAppMessage: function () {
 
   },
-  // 地区选择
-  loadAddress: function (options) {
-    var that = this;
-    util.hideLoading()
-    this.getArea(0, function (array, area) {
-      that.setData({
-        province: array,
-        provinceObjects: area
-      });
-    });
-  },
-  cascadePopup: function () {
-    var animation = wx.createAnimation({
-      duration: 500,
-      timingFunction: 'ease-in-out',
-    });
-    this.animation = animation;
-    animation.translateY(-285).step();
+  choosearea(e) {
+    console.log(e)
     this.setData({
-      animationData: this.animation.export(),
-      maskVisual: 'show'
-    });
-  },
-  cascadeDismiss: function () {
-    this.animation.translateY(285).step();
-    this.setData({
-      animationData: this.animation.export(),
-      maskVisual: 'hidden'
-    });
-  },
-  provinceTapped: function (e) {
-    // 标识当前点击省份，记录其名称与主键id都依赖它
-    var index = e.currentTarget.dataset.index;
-    // current为1，使得页面向左滑动一页至市级列表
-    // provinceIndex是市区数据的标识
-    this.setData({
-      provinceName: this.data.province[index],
-      regionName: '',
-      townName: '',
-      provinceIndex: index,
-      cityIndex: -1,
-      regionIndex: -1,
-      townIndex: -1,
-      region: [],
-      town: []
-    });
-    var that = this;
-    this.getArea(this.data.provinceObjects[index]["area_id"], function (array, area) {
-      that.setData({
-        cityName: '请选择',
-        city: array,
-        cityObjects: area
-      });
-      that.setData({
-        current: 1
-      });
-    });
-  },
-  cityTapped: function (e) {
-    // 标识当前点击县级，记录其名称与主键id都依赖它
-    var index = e.currentTarget.dataset.index;
-    // current为1，使得页面向左滑动一页至市级列表
-    // cityIndex是市区数据的标识
-    this.setData({
-      cityIndex: index,
-      regionIndex: -1,
-      townIndex: -1,
-      cityName: this.data.city[index],
-      regionName: '',
-      townName: '',
-      town: []
-    });
-    var that = this;
-    this.getArea(this.data.cityObjects[index]["area_id"], function (array, area) {
-      if (area.length == 0) {
-        var areaSelectedStr = that.data.provinceName + that.data.cityName;
-        that.setData({
-          areaSelectedStr: areaSelectedStr,
-          area_id_val: that.data.cityObjects[index]["area_id"]
-        });
-        wx.setStorageSync('areaSelectedStrt', areaSelectedStr)
-        wx.setStorageSync('area_idt', that.data.cityObjects[index]["area_id"])
-        that.cascadeDismiss();
-        return that.location(that.data.areaSelectedStr + that.data.address);
-        
-      }
-      that.setData({
-        regionName: '请选择',
-        region: array,
-        regionObjects: area
-      });
-      // 确保生成了数组数据再移动swiper
-      that.setData({
-        current: 2
-      });
-    });
-  },
-  regionTapped: function (e) {
-    // 标识当前点击镇级，记录其名称与主键id都依赖它
-    var index = e.currentTarget.dataset.index;
-    // current为1，使得页面向左滑动一页至市级列表
-    // regionIndex是县级数据的标识
-    this.setData({
-      regionIndex: index,
-      townIndex: -1,
-      regionName: this.data.region[index],
-      townName: ''
-    });
-    var that = this;
-    this.getArea(this.data.regionObjects[index]["area_id"], function (array, area) {
-      if (area.length == 0) {
-        var areaSelectedStr = that.data.provinceName + that.data.cityName + that.data.regionName;
-        that.setData({
-          areaSelectedStr: areaSelectedStr,
-          area_id_val: that.data.regionObjects[index]["area_id"]
-        });
-        that.cascadeDismiss();
-        that.location(that.data.areaSelectedStr + that.data.address)
-        return;
-      }
-      that.setData({
-        townName: '请选择',
-        town: array,
-        townObjects: area
-      });
-      // 确保生成了数组数据再移动swiper
-      that.setData({
-        current: 3
-      });
-    });
-  },
-  townTapped: function (e) {
-    // 标识当前点击镇级，记录其名称与主键id都依赖它
-    var index = e.currentTarget.dataset.index;
-    var that = this;
-    // townIndex是镇级数据的标识
-    this.setData({
-      townIndex: index,
-      townName: this.data.town[index]
-    });
-    var areaSelectedStr = this.data.provinceName + this.data.cityName + this.data.regionName + this.data.townName;
-    this.setData({
-      areaSelectedStr: areaSelectedStr,
-      area_id_val: that.data.townObjects[index]["area_id"]
-    });
-    wx.setStorageSync('areaSelectedStrt', areaSelectedStr)
-    wx.setStorageSync('area_idt', that.data.townObjects[index]["area_id"])
-    this.cascadeDismiss();
-    that.location(that.data.areaSelectedStr + that.data.address)
-  },
-  currentChanged: function (e) {
-    // swiper滚动使得current值被动变化，用于高亮标记
-    var current = e.detail.current;
-    this.setData({
-      current: current
-    });
-  },
-  changeCurrent: function (e) {
-    // 记录点击的标题所在的区级级别
-    var current = e.currentTarget.dataset.current;
-    this.setData({
-      current: current
-    });
-  },
-  getArea: function (pid, cb) {
-    var that = this;
-    // console.log(pid)
-    wx.request({
-      url: apiurl.area + pid, //仅为示例，并非真实的接口地址
-
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        // console.log(res.data)
-        var area = res.data.result.list, array = []
-        for (var i = 0; i < area.length; i++) {
-          array[i] = area[i]['name'];
-        }
-        cb(array, area)
-      }
+      areaSelectedStr: e.detail.areaSelectedStr,
+      area_id_val: e.detail.area_id_val
     })
+    wx.setStorageSync('areaSelectedStrt', e.detail.areaSelectedStr)
+    wx.setStorageSync('area_idt', e.detail.area_id_val)
   },
   xiugai(){
     this.setData({
@@ -679,27 +495,6 @@ Page({
     if (that.data.choosed != 1) {
       return util.alert('请勾选用户协议')
     }
-    // if(that.data.type==''){
-    //   util.alert('请选择入驻类型')
-    //   return false
-    // }
-    // if (that.data.cate_id == '') {
-    //   util.alert('请选择商城类型')
-    //   return false
-    // }
-    // var rule = {
-    //   title: "请输入商店名称",
-    //   contact: "请输入电话",
-    //   area_id: "请选择地址",
-    //   address: "请输入详细地址",
-    //   intro: "请添加物品描述",
-    // }
-    // for (var i in rule) {
-    //   if (e.detail.value[i] == "") {
-    //     util.alert(rule[i])
-    //     return false
-    //   }
-    // }
     var data = e.detail.value;
     data.area_id = that.data.area_id_val
     // data.token = util.getToken()
@@ -754,11 +549,11 @@ Page({
       })
     }, function (res) {
       console.log(res.data.message)
-      if (res.data.status == "414") {
-        wx.reLaunch({
-          url: '../index/index',
-        })
-      }
+      // if (res.data.status == "414") {
+      //   wx.reLaunch({
+      //     url: '../index/index',
+      //   })
+      // }
       that.setData({
         post: false
       })

@@ -83,9 +83,7 @@ Page({
               })
             })
           }
-        // }
       }
-      // console.log(result.tag_list)
       that.setData({
         result: result,
         tag_list: result.tag_list,
@@ -106,6 +104,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.showLoading({
+      title: '加载中',
+      
+    })
     this.init()
   },
   show() {//不跳页面
@@ -179,29 +181,24 @@ Page({
     if (JSON.stringify(e.currentTarget.dataset.link.length) == "{}") {
       return false
     }
-    var url = e.currentTarget.dataset.link.control
+    var url = e.currentTarget.dataset.link.control +'?1=1'
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
       for (var i in e.currentTarget.dataset.link.params) {
         console.log(i, e.currentTarget.dataset.link.params[i])
-        url = url + "?" + i + "=" + e.currentTarget.dataset.link.params[i]
+        url = url + "&" + i + "=" + e.currentTarget.dataset.link.params[i]
       }
     }
-    
-    // console.log(url)
+    if (JSON.stringify(e.currentTarget.dataset.attach) != "{}") {
+      for (var a in e.currentTarget.dataset.attach) {
+        url = url + "&" + a + "=" + e.currentTarget.dataset.attach[a]
+      }
+    }
     wx.navigateTo({
       url: url,
+      fail: function () {
+        util.alert('该功能暂未开放，敬请期待')
+      },
     })
-    // util.loading()
-    // var url = e.currentTarget.dataset.url
-    // if (e.currentTarget.dataset.value == "" && e.currentTarget.dataset.or) {
-    //   url = e.currentTarget.dataset.or
-    // }
-    // if (e.currentTarget.dataset.is_sorter==0){
-    //   return util.alert("你还不是分拣员")
-    // }
-    // wx.navigateTo({
-    //   url: url,
-    // })
   },
   tabarUrl(e) {
     // console.log(e);

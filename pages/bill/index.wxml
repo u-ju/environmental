@@ -5,6 +5,7 @@
     </block>
 </wux-tabs>
 <view>
+<block wx:if="{{list[0]['nper_amount']}}">
   <view class='hkitem flex_btw' wx:for="{{list}}" wx:key="index" bindtap='detail' data-source='{{item.source}}' data-source_ext='{{item.source_ext}}'>
     <view class='flex_col_1 flex_btw'>
       <view>日期：{{item.created_at}}      </view>
@@ -19,5 +20,6 @@
       </view>
     </view>
   </view>
+  </block>
   <empty wx:if="{{list.length==0}}" />
 </view>

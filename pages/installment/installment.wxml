@@ -30,6 +30,7 @@
 </view> -->
 
 <view class='pageType flex_btw wrap' wx:if="{{list.length>0}}">
+  <block wx:if="{{list[0].spu_name}}">
   <view class='goods' wx:for="{{list}}" wx:key='index' bindtap='detail' data-sku_id='{{item.sku_id}}' data-spu_id='{{item.spu_id}}'>
     <image mode='aspectFit' src='{{item.thumb}}' class='goodspic'></image>
     <view>
@@ -38,5 +39,6 @@
       <view class='colorFE2C2C size26 margint6'>分期价：￥{{item.nper_price}}</view>
     </view>
   </view>
+  </block>
 </view>
 <empty wx:else />

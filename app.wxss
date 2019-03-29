@@ -167,9 +167,7 @@ page{
 .center{
   text-align: center;
 }
-.color4FD7A3{
-  color: #4FD7A3;
-}
+
 .color989898{
   color: #989898;
 }
@@ -263,6 +261,9 @@ page{
 .colorFE3434{
   color: #FE3434
 }
+.color4FD7A3{
+  color: #4FD7A3;
+}
 .line-through{
   text-decoration: line-through
 }
@@ -288,7 +289,7 @@ page{
 .bold600{
   font-weight: 600;
 }
-.one-hidden{
+.one-hidden,.hidden1{
   overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
 }
 .justify_btw{

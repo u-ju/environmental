@@ -27,12 +27,12 @@
 </view>
 <view class='goods_intr2'>
   <view class='color898989 flex_btw size28 align_center marginb30' bindtap='open1'>
-    <text  decode="{{true}}" space="{{true}}">规格&ensp;&ensp;&ensp;&ensp;选择颜色分类</text>
+    <text  decode="{{true}}" space="{{true}}">已选&ensp;&ensp;&ensp;&ensp;{{result.sku_name}}</text>
     <text class='iconfont icon-jiantou'></text>
   </view>
   
   <view class='color898989 flex_btw size28 align_center marginb30' bindtap='open2'>
-    <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">参数&ensp;&ensp;&ensp;&ensp;生产信息材质图案生产信息材质图案</text>
+    <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">规格参数</text>
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <view class='color898989 flex_btw size28 align_center'  bindtap='fqtz'>
@@ -97,11 +97,12 @@
 <wux-popup position="bottom" visible="{{ visible2 }}" style="{{wrapStyle2}}"  bind:close="onClose2">
     <text class='iconfont icon-cuohao'  bindtap="close2"></text>
     <view class='center color4 size36 csmt'>参数</view>
+    <view class='over_look_big'>
     <view class='csItem color4 size28'  wx:for="{{result.spec_params}}" wx:key="index">
       <text class='csItemL'>{{item.name}}</text>
       <text>{{item.value}}</text>
     </view>
-    
+    </view>
 </wux-popup>
 <wux-popup position="bottom" visible="{{ visible3 }}" bind:close="onClose3">
     <text class='iconfont icon-cuohao'  bindtap="close3"></text>

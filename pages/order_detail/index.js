@@ -115,7 +115,7 @@ Page({
   link(){
    var  url= '../address_order/index'
     if (Object.keys(this.data.address).length ==0){
-      url = '../my_bankcard_add/index'
+      url = '../address_edit/index'
     }
     wx.navigateTo({
       url: url
@@ -158,18 +158,18 @@ Page({
               signType: result.pay_info.signType,
               paySign: result.pay_info.paySign,
               success(res1) {
-                console.log(res1)
-                wx.hideLoading()
                 util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
-                  console.log("emmmmmmmmm")
+                  wx.hideLoading()
                   wx.navigateTo({
                     url: '../success/success',
                   })
                 }, function () {
+                  wx.hideLoading()
                   wx.navigateTo({
                     url: '../error/error',
                   })
                 }, function () {
+                  wx.hideLoading()
                   wx.navigateTo({
                     url: '../error/error',
                   })

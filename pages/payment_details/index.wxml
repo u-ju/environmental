@@ -9,10 +9,14 @@
   
 </view>
 <view class='list'>
+  
   <view class='listitem flex_btw ' wx:for="{{list}}" wx:key="index">
-    <view>{{item.repay_dt}}</view>
-    <view>{{item.repay_type_name}}：<text class='colorFE3434'>￥{{item.amount}}</text></view>
+    <block wx:if="{{item.amount}}">
+      <view>{{item.repay_dt}}</view>
+      <view>{{item.repay_type_name}}：<text class='colorFE3434'>￥{{item.amount}}</text></view>
+    </block>
   </view>
+  
   <empty wx:if="{{list.length==0}}" />
 </view>
 

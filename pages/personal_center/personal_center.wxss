@@ -59,3 +59,12 @@ page{
   height: 98rpx;
   border-bottom: 2rpx solid #E8E8E8;
 }
+.item_right{
+  height: 100rpx;
+}
+.item_right text{
+  display: inline-block;
+  width: 300rpx;
+  height: 100rpx;
+  text-align: right;
+}

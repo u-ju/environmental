@@ -107,7 +107,7 @@ Page({
   onPullDownRefresh: function () {
     var that = this;
     wx.showNavigationBarLoading();
-    util.getJSON({ apiUrl: that.data.url + '?page=' + page }, function (res) {
+    util.getJSON({ apiUrl: that.data.url + '?page=' + 1 }, function (res) {
       var result = res.data.result
       var list = result.list
       that.setData({

@@ -15,14 +15,14 @@
   <view class='size28 color9'>验证号</view>
   <input placeholder-class='colorc size32' maxlength='6' class='width100' placeholder='请输入验证号' value='{{code}}' bindinput='code'></input>    
 </view>
-  <view wx:if="{{type==1}}" class='color299EF0 size28 center flex align_center'>
+  <view wx:if="{{type==1}}" class='color299EF0 color4FD7A3 size28 center flex align_center'>
     <view class='choose flex align_center' bindtap='choose'>
       <image src='../../images/choose.png' wx:if="{{choosed==0}}"></image>
       <image src='../../images/choosed.png' wx:else></image>
       <text>请勾选</text>
     </view>
     <navigator url='../page/index?url={{about}}'>
-      用户协议
+      《用户协议》
     </navigator>
   </view>
   <button formType="submit" disabled='{{sure}}' bindtap='newphone' class='sure {{sure?"bgDDDDDD":""}}'>下一步</button>

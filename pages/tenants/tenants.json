@@ -3,6 +3,7 @@
   "usingComponents": {
     "wux-cell-group": "../../Components/cell-group/index",
     "wux-cell": "../../Components/cell/index",
-    "wux-cascader": "../../Components/cascader/index"
+    "wux-cascader": "../../Components/cascader/index",
+    "area": "../../Components/area/index"
   }
 }

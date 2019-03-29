@@ -56,7 +56,7 @@ Page({
           }
           
           if (e.currentTarget.dataset.image == "image") {
-            console.log(1)
+            // console.log(1)
             that.setData({
               upload_picture_list: upload_picture,
             });
@@ -80,6 +80,7 @@ Page({
   },
   //点击上传事件
   uploadimage: function (upload_picture,arr) {
+    console.log(1)
     var page = this
     //循环把图片上传到服务器 并显示进度       
     for (var j in upload_picture) {
@@ -89,7 +90,80 @@ Page({
       }
     }
   },
+  // upload_file_server(url, that, upload_picture_list, j, arr, storge) {
+  //   //上传返回值
+  //   var _this = this;
+  //   console.log(upload_picture_list[j])
+  // const upload_task = wx.uploadFile({
+  //     // 模拟https
+  //     url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  
+  //     filePath: upload_picture_list[j]['path'], //上传的文件本地地址    
+  //     name: 'file',
+  //     formData: {
+  //       "image": upload_picture_list[j]['path_base'],
+  //       'source': 'base64'
+  //     },
+  //     header: {
+  //       "content-type": 'application/x-www-form-urlencoded',
+  //       'token': util.getToken(),
+  //       'channel': 'let',
+  //       'build': 9999999
+  //     },
+  //     //附近数据，这里为路径     
+  //     success: function (res) {
+  //       console.log(res)
+  //       var data = JSON.parse(res.data);
+  //       // //字符串转化为JSON  
 
+  //       if (data.status == 200) {
+  //         var filename = data.result.image_url //存储地址 显示
+  //         upload_picture_list[j]['path_server'] = filename
+
+  //       } else {
+  //         upload_picture_list[j]['path_server'] = filename
+  //       }
+
+  //       if (arr == 'upload_picture_list1') {
+  //         that.setData({
+  //           upload_picture_list1: upload_picture_list
+  //         });
+  //       } else if (arr == 'upload_picture_list2') {
+  //         that.setData({
+  //           upload_picture_list2: upload_picture_list
+  //         });
+  //       } else {
+  //         if (storge == 1) {
+  //           wx.setStorageSync('upload_picture_list', upload_picture_list)
+  //         }
+  //         that.setData({
+  //           upload_picture_list: upload_picture_list
+  //         });
+  //       }
+
+  //       wx.setStorageSync('imgs', upload_picture_list);
+  //     }
+  //   })
+  // // 上传 进度方法
+
+  // upload_task.onProgressUpdate((res) => {
+  //     upload_picture_list[j]['upload_percent'] = res.progress
+  //     if (arr == 'upload_picture_list1') {
+  //       that.setData({
+  //         upload_picture_list1: upload_picture_list
+  //       });
+  //     } else if (arr == 'upload_picture_list2') {
+  //       that.setData({
+  //         upload_picture_list2: upload_picture_list
+  //       });
+  //     } else {
+  //       that.setData({
+  //         upload_picture_list: upload_picture_list
+  //       });
+  //     }
+
+
+  //   });
+  // },
   // 删除图片
   deleteImg: function (e) {
     // let upload_picture_list = this.data.upload_picture_list;
@@ -180,11 +254,15 @@ Page({
       util.postJSON({ apiUrl: apiurl.realname_verify, data: data}, function (res) {
           util.alert(res.data.message)
           wx.navigateBack({
-            delta: 2
+            delta: 2,
+            success(){
+              that.setData({
+                sure: false
+              })
+            }
           })
-           that.setData({
-             sure: false
-           })
+          
+           
       },function(){
         that.setData({
           sure: false

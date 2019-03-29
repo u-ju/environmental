@@ -65,7 +65,7 @@ Page({
   phone(e) {
     // var myreg = /^1[3|4|5|7|8][0-9]{9}$/;
     var phone = this.data.phone, sure = true
-    console.log(e.detail.value)
+    
     if (e.detail.value.length == 11) {
       sure = false
     }

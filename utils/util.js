@@ -2,7 +2,7 @@ const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
 var build = 99999999
-// var build = 20190326
+// var build = 20190329
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -101,7 +101,8 @@ module.exports = {
   scan: scan,
   getSync: getSync,
   putSync: putSync,
-  navigateBack:navigateBack
+  navigateBack:navigateBack,
+  build: build
 }
 
 /**
@@ -117,7 +118,7 @@ function replaceStr(str) {
 function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
   //上传返回值
   var _this = this;
-  // console.log(upload_picture_list[j]['path'])
+  console.log(upload_picture_list[j])
   const upload_task = wx.uploadFile({
     // 模拟https
     url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  
@@ -128,12 +129,14 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
       'source': 'base64'
     },
     header: {
-      "content-type": 'application/x-www-form-urlencoded', 'token': that.getToken(),
+      "content-type": 'application/x-www-form-urlencoded',
+      'token': _this.getToken(),
       'channel': 'let',
-      'build': build },
+      'build': build 
+      },
     //附近数据，这里为路径     
     success: function (res) {
-
+      console.log(res)
       var data = JSON.parse(res.data);
       // //字符串转化为JSON  
       
@@ -444,7 +447,8 @@ function loading(msg = '') {
     return;
   }
   wx.showLoading({
-    title: msg
+    title: msg,
+    mask: true
   });
 }
 

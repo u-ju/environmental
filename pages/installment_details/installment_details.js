@@ -304,7 +304,8 @@ Page({
           url: '../order_detail/index?result='+ JSON.stringify(result),
       })
       that.setData({
-        buyok: false
+        buyok: false,
+        visible1:false
       })
       // that.setData({
       //   buyok: false

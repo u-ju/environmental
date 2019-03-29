@@ -261,3 +261,8 @@ checkbox-group{
   height: 200rpx;
   margin: 0 10rpx 10rpx 10rpx;
 }
+.over_look_big{
+  padding: 40rpx 0;
+  max-height: 600rpx;
+  overflow: auto;
+}

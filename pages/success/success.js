@@ -22,7 +22,7 @@ Page({
 
       if (index == 0) {
         wx.reLaunch({
-          url: '../personal_center/personal_center',
+          url: '../index/index',
         })
       } else if (index == 1) {
         wx.navigateBack()

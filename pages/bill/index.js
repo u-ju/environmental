@@ -23,7 +23,7 @@ Page({
       },
     ],
     current: '0',
-    list:[],
+    list:[0],
     page:{},
     order_status:'',
     title: ["账单查询", "历史账单", "账单查询"]

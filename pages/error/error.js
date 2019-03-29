@@ -24,7 +24,7 @@ Page({
         const { index } = e.detail
 
       if (index === 0) {
-        wx.navigateTo({
+        wx.reLaunch({
           url: '../index/index',
         })
       } else if (index === 1){

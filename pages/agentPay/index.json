@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "订单详情",
   "usingComponents": {
-    "wux-popup": "../../Components/popup/index"
+    "wux-popup": "../../Components/popup/index",
+    "area": "../../Components/area/index"
   }
 }

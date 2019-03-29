@@ -25,7 +25,7 @@ page{
   border-radius: 10rpx;
   margin: 20rpx 0;
 }
-textarea{
+textarea,.textarea{
   padding: 20rpx 16rpx;
   height: 60rpx;
   width: 636rpx;
@@ -274,4 +274,7 @@ button[disabled]:not([type]){
 /*请选择区域*/
 .region {
 	width: 90%;
+}
+input{
+  width: 500rpx;
 }

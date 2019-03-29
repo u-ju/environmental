@@ -10,7 +10,7 @@ Page({
    */
   data: {
     result:{},
-    list:[],
+    list:[0],
     page:{},
     visible1: false,
     visible2: false,

@@ -1,10 +1,10 @@
 // const basePath = 'https://wyhb.zgwyhb.com/api';
-const basePath = 'https://wyhb.zhanghi.cn/api';
+const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
 
   // GET 控制对照
   // GET 控制对照
-
+  areaUpdate: basePath + '/front/user/areaUpdate', 
   controlContrast: basePath + '/front/controlContrast', 
   search: basePath + '/front/search?keywords=',
 

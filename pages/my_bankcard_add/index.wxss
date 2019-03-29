@@ -26,7 +26,8 @@ input{
 }
 navigator{
   display: inline-block;
-  color: #4AD6A3
+  color: #4AD6A3;
+  font-size: 28rpx;
 }
 
 checkbox-group{

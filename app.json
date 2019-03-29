@@ -1,8 +1,12 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/my_invitation/index",
     
+    "pages/index/index",
+    "pages/myCommunity/index",
+    "pages/page/index",
+    "pages/address_edit/index",
+    "pages/my_invitation/index",
+    "pages/realname_authentication/realname_authentication",
     "pages/feedback/index",
     "pages/personal_center/personal_center",
     "pages/myInviteNewusers/index",
@@ -30,7 +34,7 @@
     "pages/my_bankcard/index",
     "pages/my_bankcard_add/index",
     "pages/address/index",
-    "pages/address_edit/index",
+    
     "pages/address_order/index",
     "pages/installment/installment",
     "pages/my_order_detail/index",
@@ -40,7 +44,7 @@
     "pages/tenantsIndex/index",
     "pages/neighbourhood_release/index",
     "pages/neighbourhood/neighbourhood",
-    "pages/realname_authentication/realname_authentication",
+    
     "pages/ban/index",
     "pages/tenants/tenants",
     "pages/order_detail/index",
@@ -56,7 +60,7 @@
     "pages/realname_suc/index",
     "pages/success/success",
     "pages/error/error",
-    "pages/page/index",
+    
     "pages/pay/index",
     "pages/edsc_site/edsc_site",
     "pages/edcs_choose/edcs_choose",

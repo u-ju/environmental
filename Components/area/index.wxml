@@ -1,0 +1,32 @@
+<input  disabled='disabled' class='color9' name='area_id' placeholder-class='color163' value='{{areaSelectedStr}}'  bindtap="cascadePopup" bindtouchstart='onload'></input>
+<view class="modal">
+	<view class="modal-mask {{maskVisual}}" catchtap="cascadeDismiss"></view>
+	<view animation="{{animationData}}" class="modal-content">
+	    <view class="modal-header">
+	        <text class="modal-title">{{title}}</text>
+          
+	        <image src="../../images/cuo.png" class="modal-close" catchtap="cascadeDismiss" />
+	    </view>
+	    <view class="modal-body">
+        <block wx:for='{{cengji}}' wx:key='index'>
+	    	<text class="viewpager-title {{current == index ? 'area-selected' : ''}}" catchtap="changeCurrent" data-current="{{index}}">{{item.currentname}}</text>
+        </block>
+			<view class="viewpager-divider"></view>
+      <!-- <view class='paddingtb30'> -->
+			<swiper class="swiper-area" current="{{current}}" bindchange="currentChanged">
+				<block wx:for='{{cengji}}' wx:key='index'>
+					<swiper-item>
+						<scroll-view scroll-y="true" class="viewpager-listview">
+							<view wx:for="{{item.array}}" wx:key="index" wx:for-index="arrayindex" wx:for-item="arrayitem" data-index="{{arrayindex}}" bindtap="choosearea">
+								<text wx:if="{{arrayindex == item.currentindex}}" class="area-selected">{{arrayitem}}</text>
+								<text data-index='{{arrayindex}}' data-index1='{{item.currentindex}}'  wx:else>{{arrayitem}}</text>
+							</view>
+						</scroll-view>
+					</swiper-item>
+				</block>
+				
+			</swiper>
+      <!-- </view> -->
+	    </view>
+	</view>
+</view>

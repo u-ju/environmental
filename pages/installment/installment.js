@@ -9,7 +9,7 @@ Page({
    */
   data: {
     showmodel:false,
-    list:[],
+    list:[0],
     page:{}
   },
   model(){
