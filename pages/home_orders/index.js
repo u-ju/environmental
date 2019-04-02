@@ -1,4 +1,4 @@
-// pages/home_orders/home_orders.js
+// pages/home_orders/index.js
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
@@ -9,13 +9,27 @@ Page({
    */
   data: {
     currentData: 0,
-    tab: [
-      
-    ],
+    tab: [{
+      "id": "1",
+      "name": "待上门"
+    },
+    {
+      "id": "2",
+      "name": "待支付"
+    },
+    {
+      "id": "3",
+      "name": "已完成"
+    },
+    {
+      "id": "4",
+      "name": "已关闭"
+    }],
     list: [],
     order_status: 1,
     last: false,
-    bill:false
+    bill: false,
+    order_status:1
   },
 
   /**
@@ -26,17 +40,15 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    
     that.setData({
-      tab: app.globalData.config.onsite_recycle_order_status,
-      order_status: app.globalData.config.onsite_recycle_order_status[0].id
+      bill: true,
     })
-    
+   
   },
   init( page = 1) {
     var that = this;
     
-    util.getJSON({ apiUrl: apiurl.onsiteRecycle_orderIndex, data: { order_status: that.data.order_status, page: page } }, function (res) {
+    util.getJSON({ apiUrl: apiurl.onsiteRecycle_orderRecycleIndex, data: { order_status: that.data.order_status, page: page } }, function (res) {
       var result = res.data.result
       // console.log(result)
       var list = result.list
@@ -82,9 +94,7 @@ Page({
    */
   onShow: function () {
     var that = this;
-    if (that.data.tab.length>0){
-      that.init()
-    }
+    that.init()
   },
 
   /**
@@ -109,7 +119,7 @@ Page({
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
-    util.getJSON({ apiUrl: apiurl.onsiteRecycle_orderIndex, data: { order_status: that.data.order_status, page: 1 } }, function (res) {
+    util.getJSON({ apiUrl: apiurl.onsiteRecycle_orderRecycleIndex, data: { order_status: that.data.order_status, page: 1 } }, function (res) {
       var result = res.data.result
       // console.log(result)
       that.setData({
@@ -143,13 +153,23 @@ Page({
       })
       wx.hideLoading()
     }
+    // util.getJSON({ apiUrl: apiurl.list }, function (res) {
+    //   var result = res.data.result;
+    //   var list = that.data.list;
+    //   console.log(list)
+    //   console.log(res)
+    //   that.setData({
+    //     list: list.concat(result.list)
+    //   })
 
+    //   wx.hideLoading()
+    // })
 
 
   },
   detail(e) {
     // console.log(e.currentTarget.dataset.id)
-    var url = '../order_details_bill/order_details_bill?order_id=' + e.currentTarget.dataset.id;
+    var url= '../order_details/order_details?order_id=' + e.currentTarget.dataset.id
     
     wx.navigateTo({
       url: url,

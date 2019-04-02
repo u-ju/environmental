@@ -60,9 +60,7 @@ Page({
           })
           util.postJSON({ apiUrl: apiurl.balanceWithdraw, data: { amount: that.data.money } }, function (res) { 
             util.alert(res.data.message);
-            wx.navigateTo({
-              url: '../my_gold/my_gold',
-            })
+            util.navigateBack();
           })
         }
       }

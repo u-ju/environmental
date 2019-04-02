@@ -20,37 +20,31 @@
     <text class='size28 color6'>图片展示</text>
     <view class='images'>
       <block wx:for='{{list.images}}'>
-        <image src='{{item}}'></image>
+        <image src='{{item}}' mode='aspectFill'  bindtap="imgYu" data-list="{{list.images}}" data-src="{{item}}"></image>
       </block>
     </view>
   </view>
-  <!-- <block wx:if="{{fa}}"> -->
-    <!-- <view class='item  flex align_center'>
-      <text class='size28 color6'>发起人</text>
-      <text class='size28 color9'>{{list.contacts}} </text>
-    </view>
-    <view class='item  flex align_center'>
-      <text class='size28 color6'>发起人电话</text>
-      <text class='size28 color9'>{{list.contact}}</text>
-    </view> -->
-  <!-- </block> -->
-  <!-- <block wx:else> -->
+  
     <view class='item  flex align_center'>
       <text class='size28 color6'>接单人</text>
       <text class='size28 color9'>{{list.recycle_user_nickname}} </text>
     </view>
+    
     <view class='item  flex align_center'>
       <text class='size28 color6'>接单人电话</text>
       <text class='size28 color9'>{{list.recycle_shop_contact}}</text>
     </view>
-  <!-- </block> -->
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>订单状态</text>
+      <text class='size28 color9'>{{list.order_status_name}} </text>
+    </view>
   
 </view>
 
-<view class='container border_top' wx:if="{{list.order_amount}}">
+<view class='container border_top' wx:if="{{list.order_type==1}}">
   <view class='color4 size32'>评估</view>
   <view class='color6 size28'>备注</view>
-  <textarea disabled='disabled' value='{{list.assess_intro}}'></textarea>
+  <view class='textarea'>{{list.assess_intro}}</view>
   <view class='item  flex align_center'>
     <text class='size28 color6'>评估价格</text>
     <view class='size28 colorFB5A3E'>￥{{list.order_amount}}</view>
@@ -59,39 +53,47 @@
     <text class='size28 color6'>处理类型</text>
     <text class='size28 color6'>{{casArray[list.order_type-1].name}}</text>
   </view>
-  <block wx:if='{{list.order_type==1}}'>
-    <view  class='btn size32'>等待支付</view>
-  </block>
-  <block wx:else>
-    <button bindtap='open2'wx:if='{{list.order_status==1}}'>确认支付</button>
-    <view wx:elif='{{list.order_status==2}}' class='btn size32'>订单完成</view>
-    <view wx:elif='{{list.order_status==3}}' class='btn size32'>订单关闭</view>
-  </block>
+  <!-- <block wx:if='{{list.order_status==1}}'>
+    <view  class='btn size32'>等待评估</view>
+  </block> -->
+  <!-- <view wx:if='{{list.order_status==2}}'>等待支付</view> -->
+  <!-- <view wx:elif='{{list.order_status==3}}' class='btn size32'>订单完成</view>
+  <view wx:elif='{{list.order_status==4}}' class='btn size32'>订单关闭</view>
+  <view wx:elif='{{list.order_status==0}}' class='btn size32'>等待分配</view> -->
 </view>
-<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
-  <!-- <view class='size28 colorFB5A3E bold title_num'>￥{{result.pay_amount}}</view>
-  <radio-group class="radio-group" bindchange="radioChange">
-      <label wx:for="{{pay}}" class="radio flex_btw align_center" >
-        <view class='flex align_center'>
-          <image src='{{item.image}}'></image>
-          <text class='color6 size26'>{{item.text}}</text>
-        </view>
-        <radio value="{{item.key}}" checked="{{item.checked}}"/>
-      </label>
-  </radio-group> -->
-<!-- <view class='center color4 size36 csgg'>立即还款</view> -->
+<view class='container border_top' wx:elif="{{list.order_type==2}}">
+  <view class='color4 size32'>评估</view>
+  <view class='color6 size28'>备注</view>
+  <view class='textarea'>{{list.assess_intro}}</view>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>评估价格</text>
+    <view class='size28 colorFB5A3E'>￥{{list.order_amount}}</view>
+  </view>
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>处理类型</text>
+    <text class='size28 color6'>{{casArray[list.order_type-1].name}}</text>
+  </view>
+  <!-- <block wx:if='{{list.order_status==1}}'>
+    <view  class='btn size32'>等待评估</view>
+  </block> -->
+  <button wx:if='{{list.order_status==2}}' bindtap='open2'>确认支付</button>
+</view>
+
+<wux-popup position="bottom" visible="{{ visible2 }}" closable  bind:close="close2">
+    <view class='center color4 size36 csgg'>立即还款</view>
     <view class='center color4 size60 csgg'>￥{{items.pay_amount}}</view>
     <view  >
-      <view class='label' wx:for="{{result.payment_usable}}" wx:key ="index">
+      <view class='label' wx:for="{{items.payment_usable}}" wx:key ="index">
         <view>
         <view class='flex align_center radioitem'  bindtap='choose' data-index="{{index}}" data-key="{{item.key}}">
           <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
           <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
+          <!-- <view class='left'> -->
             <text class='size28 color4'>{{item.name}} \n </text>
+          <!-- </view> -->
         </view>
         </view>
       </view>  
     </view> 
-    <!-- <view class='goodsBuy size36 marginb60' bindtap='goodsBuy'>立即支付</view> -->
-  <button bindtap="close2" class='pay'>确认支付</button>
+    <view class='goodsBuy size36 marginb60' bindtap='goodsBuy'>立即支付</view>
 </wux-popup>

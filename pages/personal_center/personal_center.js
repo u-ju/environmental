@@ -52,7 +52,9 @@ Page({
     user:[],
     result:{},
     tabbarid:2,
-    tag_list:[]
+    tag_list:[],
+    badge:{},
+    background:''
   },
 
   /**
@@ -87,6 +89,8 @@ Page({
       that.setData({
         result: result,
         tag_list: result.tag_list,
+        badge: result.badge,
+        background: result.background
       })
 
       util.hideLoading()
@@ -203,7 +207,7 @@ Page({
   tabarUrl(e) {
     // console.log(e);
     if (this.data.tabbarid != e.currentTarget.dataset.id) {
-      wx.redirectTo({
+      wx.reLaunch({
         url: e.currentTarget.dataset.url,
       })
     }

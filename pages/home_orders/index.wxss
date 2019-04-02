@@ -1,0 +1,2 @@
+/* pages/home_orders/index.wxss */
+@import '../home_orders/home_orders';

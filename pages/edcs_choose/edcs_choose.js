@@ -10,7 +10,8 @@ Page({
    */
   data: {
     action:[],
-    code:''
+    code:'',
+    visible1:true
   },
 
   /**
@@ -25,6 +26,12 @@ Page({
       })
       
     }
+  },
+  onClose1(){
+    this.setData({
+      visible1: false
+    })
+    wx.navigateBack()
   },
   bag(e){
     console.log(e)

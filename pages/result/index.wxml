@@ -1,0 +1,9 @@
+<!--pages/result/index.wxml-->
+<view class='center'>
+  <image src='{{hint.icon}}' class='pay'></image>
+</view>
+<view class='size46 color4 center'>{{hint.title}}</view>
+<view class='color898989 center'><text>{{hint.intro}}</text></view>
+<block wx:for="{{hint.button_arr}}">
+  <view class='btn' bindtap='link' style='background:{{item.color}}' data-link='{{item.control}}' data-key='{{item.key}}'>{{item.name}}</view>
+</block>

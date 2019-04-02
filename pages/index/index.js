@@ -287,7 +287,7 @@ Page({
   },
   tabarUrl(e){
     if (this.data.tabbarid != e.currentTarget.dataset.id){
-      wx.redirectTo({
+      wx.reLaunch({
         url: e.currentTarget.dataset.url,
       })
     }

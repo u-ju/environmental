@@ -24,7 +24,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    
+    wx.showLoading({
+      title: '加载中',
+    })
     if (options.id){
       this.setData({
         id: options.id

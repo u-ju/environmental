@@ -1,8 +1,8 @@
-// pages/my_invitation/index.js
+// pages/lostFound/lostfound/index.js
 const app = getApp()
 
-var util = require('../../utils/util.js');
-var apiurl = require('../../utils/api.js');
+var util = require('../../../utils/util.js');
+var apiurl = require('../../../utils/api.js');
 Page({
 
   /**
@@ -10,33 +10,33 @@ Page({
    */
   data: {
     tabs: [
-       {
+      {
         "key": "0",
-        "title": "联盟商家",
+        "title": "失物招领",
         url: 'agent_shopIndex',
-        classname:'lmitem'
+        classname: 'lmitem'
       },
       {
         "key": "1",
-        "title": "业务专员",
+        "title": "寻物启事",
         url: 'agent_agentIndex',
         classname: 'ywitem'
       },
-      {
-        "key": "2",
-        "title": "用户列表",
-        url: 'agent_userIndex',
-        classname: 'ywitem'
-      },
+      // {
+      //   "key": "2",
+      //   "title": "用户列表",
+      //   url: 'agent_userIndex',
+      //   classname: 'ywitem'
+      // },
     ],
     current: '0',
-    url:'',
-    list:[0],
-    page:{},
+    url: '',
+    list: [0],
+    page: {},
     list1: [],
     page1: {},
-    key:0,
-    url:'agent_shopIndex',
+    key: 0,
+    url: 'agent_shopIndex',
     classname: 'lmitem'
   },
 
@@ -44,7 +44,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
     this.init()
   },
   onChange(e) {
@@ -81,7 +81,7 @@ Page({
         index
       })
     }
-    
+
   },
   init(page = 1) {
     var that = this;
@@ -118,16 +118,16 @@ Page({
       util.hideLoading()
     })
   },
-  refresh(){
+  refresh() {
     var that = this;
     var date = new Date();
     that.setData({
       refreshTime: date.toLocaleTimeString(),
     })
-    that.init( 1)
+    that.init(1)
   },
-  loadMore(){
-    
+  loadMore() {
+
     var that = this;
     // 显示加载图标
     wx.showLoading({
@@ -135,7 +135,7 @@ Page({
     })
     // 页数+1
     if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
-      that.init( Number(that.data.page.current_page) + 1)
+      that.init(Number(that.data.page.current_page) + 1)
     } else {
       that.setData({
         last: true
@@ -171,7 +171,7 @@ Page({
   onPullDownRefresh: function () {
     var that = this;
     wx.showNavigationBarLoading();
-    util.getJSON({ apiUrl: apiurl[that.data.url] + "?page=1"}, function (res) {
+    util.getJSON({ apiUrl: apiurl[that.data.url] + "?page=1" }, function (res) {
       var result = res.data.result
       var list = result.list
       that.setData({

@@ -1,4 +1,4 @@
-<!--pages/my_invitation/index.wxml-->
+<!--pages/lostFound/lostfound/index.wxml-->
 <view class='content'>
 <wux-tabs wux-class="bordered" controlled current="{{ key }}" bindchange="onTabsChange">
     <block wx:for="{{ tabs }}" wx:key="key">
@@ -33,32 +33,10 @@
           </view>
         </view>
       </block>
-      <block wx:elif="{{key==2&&list[0]['share_id']}}">
-        <view class='item flex' wx:for="{{list}}" wx:key="index">
-          <image src='{{item.avatar}}'></image>
-          <view class='flex_col flex_btw'>
-            <view>{{item.nickname}}</view>
-            <view>{{item.effect_time}}</view>
-          </view>
-        </view>
-      </block>
+      
     </block>
       
     <empty wx:else/>
   </view>
-  <!-- <view class='ywitem' wx:else>
-    <block wx:if="{{list1.length>0}}">
-      <scroll-view scroll-y="true" class=" market-scroll-list" bindscrolltoupper="refresh1" bindscrolltolower="loadMore1">
-          <view class='item flex' wx:for="{{list1}}" wx:key="index">
-            <image src='{{item.avatar}}'></image>
-            <view class='flex_col flex_btw'>
-              <view>{{item.nickname}}</view>
-              <view>{{item.created_at}}</view>
-            </view>
-          </view>
-      </scroll-view>
-    </block>
-    
-    <empty wx:else/>
-  </view> -->
+  
 </view>

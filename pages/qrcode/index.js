@@ -42,21 +42,8 @@ Page({
         } else {
           util.postJSON({ apiUrl: apiurl.action, data: { action: result.action[0].key, code: result.code } }, function (res2) {
             var result2 = res2.data.result;
+            console.log(res2)
             if (result2.control) {
-              // var controlContrast = getApp().globalData.controlContrast, url = '';
-              // for (var i in controlContrast) {
-              //   if (controlContrast[i].control == result2.control) {
-              //     url = controlContrast[i].contrast
-              //   }
-              // }
-              // if (result2.params.order_id) {
-              //   url = url + result2.params.order_id
-              // } else if (result2.params.shop_id) {
-              //   url = url + result2.params.shop_id
-              // }
-              // wx.reLaunch({
-              //   url: url,
-              // })
               var url = result2.control.control
               if (JSON.stringify(result2.control.params) != "{}") {
                 url = url + "?1=1"
@@ -71,6 +58,16 @@ Page({
               })
             } else {
               util.alert(res2.data.message)
+            }
+          }, function (res3) {
+            console.log(res3.data.status)
+            if (res3.data.status == 414) {
+              util.info_dialog(res3.data.message)
+              setTimeout(function () {
+                wx.reLaunch({
+                  url: '../index/index'
+                })
+              }, 3000);
             }
           })
         }

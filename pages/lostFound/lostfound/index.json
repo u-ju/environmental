@@ -1,0 +1,11 @@
+{
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "navigationBarTitleText": "失物招领",
+  "usingComponents": {
+    "wux-popup": "../../Components/popup/index",
+    "wux-tabs": "../../Components/tabs/index",
+    "wux-tab": "../../Components/tab/index",
+    "empty": "../../Components/empty/index"
+  }
+}

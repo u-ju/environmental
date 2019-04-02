@@ -7,7 +7,7 @@
   border-radius:50rpx;
   text-align: center;
   color: white;
-  font-size: 40rpx;
+  font-size: 36rpx;
   line-height: 100rpx;
-  margin: 100rpx auto ;
+  margin: 50rpx auto ;
 }

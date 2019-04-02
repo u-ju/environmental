@@ -6,7 +6,8 @@
         <block wx:else>
             <slot name="header"></slot>
         </block>
-    </view>
+    </view> 
+    
     <view class="{{ classes.bd }}">
         <view wx:if="{{ title }}" class="{{ classes.title }}">{{ title }}</view>
         <view wx:if="{{ label }}" class="{{ classes.desc }}">{{ label }}</view>

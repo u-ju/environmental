@@ -2,16 +2,29 @@
 <!-- <menu hidden id='menu' bind:addEvent="_addEvent" /> -->
 <import src="../../Components/tab-bar/tab-bar.wxml"/>
 <template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
-<view class='bg'>
-  <view class="container">
+<view class='bg flex_ard align_center '>
+  <image src='{{background}}' class='bgpic'></image>
+  <view class="container container1 flex align_center ">
     <view class='head' bindtap='uploadHeadPhoto'>
       <image mode='aspectFill' class='header' src='{{result.avatar}}'></image>
-      <image mode='aspectFill' class='camera' src='../../images/camera@2x.png'></image>
     </view>
-    <view class='size28 color0 center' bindtap='name' data-name='{{result.nickname}}'>{{result.nickname}}<image mode='aspectFill' class='pen' src='../../images/pen@2x.png'></image></view>
+    <view class='size28 flex_col_1 flex_btw'>
+      <view class='badgeitem flex align_center'  data-attach='{{badge.attach}}' data-link='{{badge.control}}' bindtap='link'>
+        <!-- <view class='badgepic'>
+          <image mode='aspectFill' class='badge' src='../../images/badge.png'></image>
+          <view class='dengji bold'>1</view>
+        </view> -->
+        <image mode='aspectFill' class='badgebg' src='{{badge.background}}'></image>
+        <view class='badgename'>{{badge.name}}</view>
+      </view>
+      <view  bindtap='name' data-name='{{result.nickname}}'>{{result.nickname}}
+      <image mode='aspectFill' class='pen' src='../../images/pen@2x.png'></image>
+      </view>
+    </view>
   </view>
 </view>
 <view class='marb20'>
+
 <view class='item' wx:for='{{tag_list}}' wx:key="index" data-attach='{{item.attach}}' data-link='{{item.control}}' bindtap='link'>
   <view class="container flex_btw align_center" >
     <view class='size28 color0 '>{{item.name}}</view>

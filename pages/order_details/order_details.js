@@ -12,7 +12,8 @@ Page({
     tihuoWay: '门店自提',
     casArray: [],
     casIndex: 0,
-    disabled:false
+    disabled:false,
+    visible2:false
   },
 
   /**
@@ -31,7 +32,6 @@ Page({
         casArray: result.onsite_recycle_order_type
       })
     })
-
     if (options.order_id) {
       util.getJSON({ apiUrl: apiurl.onsiteRecycle_orderRecycleShow + "?order_id=" + options.order_id }, function (res) {
         var result = res.data.result
@@ -55,7 +55,7 @@ Page({
     util.postJSON({ apiUrl: apiurl.onsiteRecycle_orderEvaluate, data: data }, function (res) {
       var result = res.data.result
       util.alert(res.data.message)
-      util.deplay_navigateTo('../place_order/place_order')
+      util.navigateBack()
     }, function(){
       that.setData({
         disabled: true
@@ -66,13 +66,122 @@ Page({
         })
       })
   },
+  close2(){
+    this.setData({
+      visible2: false,
+    })
+  },
+  open2(){
+    var that = this
+    util.postJSON({ apiUrl: apiurl.create, data: { pay_source: 'onsite_recycle', order_id: that.data.order_id, } },
+      function (res) {
+        var result = res.data.result
+        for (let i in result.payment_usable) {
+          result.payment_usable[i].choosed = 0
+        }
+        result.payment_usable[0].choosed = 1
+        that.setData({
+          items: result,
+          pay_amount: result.pay_amount,
+          payment: result["payment_usable"][0]["key"],
+          visible2: true,
+          amount: ''
+        })
+      })
+  },
+  choose(e) {
+    var items = this.data.items;
+    for (let i in items.payment_usable) {
+      items.payment_usable[i].choosed = 0
+    }
+    items["payment_usable"][e.currentTarget.dataset.index]["choosed"] = 1
+    this.setData({
+      items: items,
+      payment: e.currentTarget.dataset.key
+    })
+  },
+  goodsBuy() {
+    var that = this;
+    if (!that.data.payment) {
+      return util.alert("请选择支付方式")
+    }
+    that.setData({
+      visible2: false,
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
+    var data = { pay_key: that.data.items.pay_key, payment: that.data.payment, pay_amount: that.data.items.pay_amount, pay_cash: that.data.items.pay_amount }
+    console.log(data)
+    util.postJSON({ apiUrl: apiurl.vendor, data: data },
+      function (res) {
+        var result = res.data.result
+        console.log(res)
+        if (result.payment == "balance") {
+          util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
+            util.alert("支付成功")
+            wx.navigateTo({
+              url: '../success/success',
+            })
+          }, function () {
+            wx.navigateTo({
+              url: '../error/error',
+            })
+          }, function () {
+            wx.navigateTo({
+              url: '../error/error',
+            })
+          })
+        } else if (result.payment == "wechat") {
+          wx.requestPayment({
+            timeStamp: result.pay_info.timeStamp,
+            nonceStr: result.pay_info.nonceStr,
+            package: result.pay_info.package,
+            signType: result.pay_info.signType,
+            paySign: result.pay_info.paySign,
+            success(res1) {
+              console.log(res1)
+              wx.hideLoading()
+              util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
+
+                wx.navigateTo({
+                  url: '../success/success',
+                })
+              }, function () {
+                wx.navigateTo({
+                  url: '../error/error',
+                })
+              }, function () {
+                wx.navigateTo({
+                  url: '../error/error',
+                })
+              })
+            },
+            fail(res) {
+              util.alert("支付失败")
+            }
+          })
+        }
+      })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
-
+  //图片点击事件
+  imgYu: function (event) {
+    
+    var src = event.currentTarget.dataset.src;//获取data-src
+    var imgList = event.currentTarget.dataset.list;//获取data-list
+    console.log(src, imgList)
+    //图片预览
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: imgList // 需要预览的图片http链接列表
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

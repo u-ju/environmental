@@ -1,31 +1,23 @@
 Page({
     data: {
-        buttons: [{
-                type: 'balanced',
-                block: true,
-                text: '确定',
-            },
-            {
-              type: 'stable',
-                block: true,
-                text: '返回',
-            },
-        ],
+      hint:{} 
     },
-    onLoad(){
-      wx.hideLoading()
+    onLoad(e){
+      console.log(e)
+      var hint = JSON.parse(e.hint)
+      this.setData({
+        hint: hint
+      })
+      wx.setNavigationBarTitle({
+        title: hint.hint,
+      })
     },
-    onClick(e) {
-        console.log(e)
-        const { index } = e.detail
-
-
-      if (index == 0) {
-        wx.reLaunch({
-          url: '../index/index',
-        })
-      } else if (index == 1) {
-        wx.navigateBack()
-      }
-    },
+  back(){
+    wx.navigateBack()
+  }, 
+  sure(){
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  }
 })

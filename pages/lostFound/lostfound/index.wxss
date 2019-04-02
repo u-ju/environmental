@@ -1,0 +1,5 @@
+/* pages/lostFound/lostfound/index.wxss */
+@import '../../my_invitation/index';
+.wux-tabs__tab--balanced.wux-tabs__tab--current {
+color: #4AD6A3
+}

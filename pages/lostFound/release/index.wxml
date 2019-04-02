@@ -1,0 +1,47 @@
+<!--pages/lostFound/release/index.wxml-->
+<form bindsubmit="formSubmit">
+<view class='pageType'>
+  <view class='typeitem flex_btw align_center'>
+    <view>时间</view>
+    <input placeholder='请输入拾到物品的时间'></input>
+  </view>
+  <view class='typeitem flex_btw align_center'>
+    <view>地址</view>
+    <input placeholder='请输入拾到物品的地址'></input>
+  </view>
+  <view class='typeitem flex_btw align_center'>
+    <view>物品</view>
+    <input placeholder='请输入物品名称'></input>
+  </view>
+  <view class='typeitem flex_btw align_center'>
+    <view>联系人</view>
+    <input placeholder='请输入联系人'></input>
+  </view>
+  <view class='typeitem flex_btw align_center'>
+    <view>联系方式</view>
+    <input placeholder='请输入联系方式'></input>
+  </view>
+  <textarea placeholder='请输入内容......' wx:if="{{show}}" focus="{{show}}" bindinput='input' bindblur='unshow'></textarea>
+  <view class='textarea color898989' bindtap='show'  wx:else>请输入内容......</view>
+  <view class="picture_list">
+      <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+        <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+        <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+        <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
+        <view class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"><image src='../../../images/delete_pic.png'></image></view>
+      </view>
+
+      <view class='picture_item'>
+        <view class="add-image click_camera flex_col align_center" bindtap='uploadpic'>
+          <image mode='aspectFill' class='camera' src='../../../images/ca_pl.png'></image>
+          <!-- <view class='color153'>点击拍照</view>  -->
+        </view>
+      </view>
+    </view>
+</view>
+<button class='btnsure size30' form-type="submit" disabled='{{disabled}}'> 发布</button>
+</form>
+             
+           
+         
+     

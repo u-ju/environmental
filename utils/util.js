@@ -224,7 +224,7 @@ function getToken(valuetstu='',form,cb,mothed) {
     return token;
   }
   if (valuetstu==801){
-    wx.redirectTo({
+    wx.reLaunch({
       url: '../index/index',
     })
     return false
@@ -280,11 +280,12 @@ function getToken(valuetstu='',form,cb,mothed) {
   })
   return token;
 }
-function alert(msg, time = 2000) {
+function alert(msg, time = 3000) {
   wx.showToast({
     title: msg,
     icon: 'none',
     duration: time,
+    mask: true
   });
 }
 /**
@@ -300,14 +301,14 @@ function deplay_redirect(redirect_url, timer = 3000) {
   }, timer);
 }
 
-function deplay_navigateTo(redirect_url, timer = 2000) {
+function deplay_navigateTo(redirect_url, timer = 3000) {
   timer = setTimeout(function () {
     wx.navigateTo({
       url: redirect_url
     })
   }, timer);
 }
-function navigateBack(deltaz=1, timer=2000){
+function navigateBack(deltaz=1, timer=3000){
   // wx.navigateBack({
   //   delta: deltaz
   // })
@@ -320,7 +321,7 @@ function navigateBack(deltaz=1, timer=2000){
 /**
  * 用于网络 GET 请求, 标准格式: {url:api, method: GET, data: xxxx}
  */
-function getJSON(form = {}, call_success) {
+function getJSON(form = {}, call_success, ErrorMsg) {
   var that = this;
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
@@ -339,9 +340,19 @@ function getJSON(form = {}, call_success) {
     method: 'GET',
     header: header,
     success: function(res){
-      
+      if (res.statusCode == 500) {
+        return that.info_dialog('无效请求')
+      }
       if (res.data.status == 200) {
-        call_success(res)
+        // console.log(res.data)
+        if (res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) !="{}"){
+          wx.navigateTo({
+            url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+          })
+        }else{
+          call_success(res)
+        }
+        
       } else if (res.data.status==801){
         if (form.apiUrl.indexOf("config") > -1){
           return false
@@ -356,10 +367,21 @@ function getJSON(form = {}, call_success) {
           url: '../ban/index',
         })
       }else{
-        that.info_dialog(res.data.message)
+        if (res.data.status == 414 && res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
+          wx.navigateTo({
+            url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+          })
+        } else {
+          if (warning) {
+            warning(res)
+          }
+          that.info_dialog(res.data.message)
+        }
       }
     },
     failed: function (ErrorMsg) {
+      console.log(ErrorMsg)
+      wx.hideLoading()
       that.info_dialog(ErrorMsg.data.message)
     }
   });
@@ -388,15 +410,20 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
     method: 'POST',
     header: header,
     success: function(res) {
+      // console.log(res)
+      if (res.statusCode==500){
+        return that.info_dialog('无效请求')
+      }
       if (res.data.status == 200) {
-        call_success(res)
+        if (res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
+          wx.navigateTo({
+            url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+          })
+        } else {
+          call_success(res)
+        }
       } else if (res.data.status == 801) {
         that.putSync('formData', formData, 600) 
-        // wx.setStorageSync('formData', formData)
-        // that.getToken(801)
-        // that.postJSON(form, call_success)
-        // that.getToken(801, form, call_success, "post")
-        // wx.setStorageSync("token", '')
         wx.setStorageSync("token", 1)
         wx.reLaunch({
           url: '../index/index',
@@ -406,17 +433,26 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
           url: '../ban/index',
         })
       } else {
-        if(warning){
-          warning(res)
+        if (res.data.status == 414&&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
+          wx.navigateTo({
+            url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+          })
+        }else{
+          if (warning) {
+            warning(res)
+          }
+          that.info_dialog(res.data.message)
         }
-        that.info_dialog(res.data.message)
+        
       }
     },
     failed: function (ErrorMsg) {
+      wx.hideLoading()
+      console.log(ErrorMsg)
       if (ErrorMsg) {
         ErrorMsg(ErrorMsg)
       }
-      that.info_dialog(ErrorMsg.data.message)
+      // that.info_dialog(ErrorMsg.data.message)
     }
   });
   // wx.hideLoading();
@@ -500,11 +536,12 @@ function crtTimeFtt(fmt, value) {
  * @param msg
  * @param time
  */
-function info_dialog(msg, time = 4000) {
+function info_dialog(msg, time = 3000) {
   wx.showToast({
     title: msg,
     icon: 'none',
     duration: time,
+    mask: true
   });
 }
 
@@ -725,6 +762,7 @@ function scan(){
         }else{
           that.postJSON({ apiUrl: apiurl.action, data: { action: result.action[0].key, code: result.code } }, function (res2) {
             var result2 = res2.data.result;
+            console.log(result2)
             if (result2.control){
               // var controlContrast = getApp().globalData.controlContrast, url='';
               // for (var i in controlContrast) {

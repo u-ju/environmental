@@ -55,7 +55,7 @@ Page({
       wx.openLocation({
         latitude: Number(data.latitude),
         longitude: Number(data.longitude),
-        scale: 15,
+        scale: 28,
         name: data.area_name,
         address: data.address,
       })

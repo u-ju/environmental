@@ -1,0 +1,33 @@
+/* pages/lostFound/release/index.wxss */
+@import '../../comment/index';
+page{
+  font-size: 28rpx;
+  color: #444;
+}
+.pageType{
+  padding: 20rpx 32rpx;
+}
+.typeitem{
+  margin-bottom: 40rpx;
+}
+.typeitem input{
+  width:510rpx;
+  height:88rpx;
+  border:4rpx solid rgba(238,238,238,1);
+  border-radius:10rpx;
+  padding: 0 20rpx;
+  color: #898989;
+}
+textarea,.textarea{
+  width: 92%;
+  height:220rpx;
+  background:rgba(238,238,238,1);
+  border-radius:15rpx;
+  padding: 20rpx 4%;
+}
+.btnsure{
+  margin-top: 40rpx;
+}
+.picture_item{
+  margin: 40rpx 20rpx 0 20rpx;
+}

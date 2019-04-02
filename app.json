@@ -2,13 +2,19 @@
   "pages":[
     
     "pages/index/index",
+    "pages/success/success",
+    "pages/result/index",
+    "pages/lostFound/lostfound/index",
+    "pages/lostFound/release/index",
+    "pages/personal_center/personal_center",
+    "pages/home_orders/index",
     "pages/myCommunity/index",
     "pages/page/index",
     "pages/address_edit/index",
     "pages/my_invitation/index",
     "pages/realname_authentication/realname_authentication",
     "pages/feedback/index",
-    "pages/personal_center/personal_center",
+    
     "pages/myInviteNewusers/index",
     "pages/agentPay/index",
     "pages/qrcode/index",
@@ -58,7 +64,7 @@
     "pages/video/index",
     
     "pages/realname_suc/index",
-    "pages/success/success",
+    
     "pages/error/error",
     
     "pages/pay/index",
