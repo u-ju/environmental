@@ -25,17 +25,21 @@ page{
 .index_theme{
   width: 290rpx;
   height: 102rpx;
-  border-radius: 4rpx;
-  /* background-color: rgb(239, 224, 224); */
-  background-color: #FBECF2;
+  /* background-color: #FBECF2; */
   margin-top: 20rpx;
   text-align: center;
-  /* position: relative; */
   padding: 0 20rpx;
+  border-radius: 10rpx;
 }
-.theme>view:nth-of-type(2){
+/* .theme>view:nth-of-type(2){
   background-color: #F6F3E0;
 }
+.theme>view:nth-of-type(3){
+  background-color: #9EF1B3;
+}
+.theme>view:nth-of-type(4){
+  background-color: #9AE6F7;
+} */
 .index_theme image{
   width: 76rpx;
   height: 56rpx;
@@ -219,11 +223,15 @@ swiper {
   padding: 16rpx 0;
   height:130rpx;
   text-align: center;
-  background-color: white
+  background-color: white;
+  margin-top: 20rpx;
 }
 .recommended{
   height: 235rpx;
 }
 .twobr>view:last-of-type{
   border: none
+}
+.theme{
+  margin-bottom: 20rpx;
 }

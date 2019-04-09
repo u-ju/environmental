@@ -1,6 +1,8 @@
 /* pages/order_detail/index.wxss */
+
 @import '../order/index';
 @import '../installment_details/installment_details';
+/* @import '../my_bankcard_add/index'; */
 .marginl54{
   display: inline-block;
   margin-left: 56rpx;
@@ -86,3 +88,45 @@ height:50rpx;
 margin-left:60rpx;
 }
 
+navigator{
+  display: inline-block;
+  color: #4AD6A3;
+  font-size: 28rpx;
+}
+
+checkbox-group{
+  margin: 0 0 0 32rpx;
+}
+
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 5rpx;
+  border-color: #4AD6A3;
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #4AD6A3;
+  border-color: #4AD6A3;
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 38rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  border-color: #4AD6A3;
+}
+.checkbox{
+  display: flex;
+  align-items: center;
+}
+.margint40{
+  margin-top: 40rpx;
+}

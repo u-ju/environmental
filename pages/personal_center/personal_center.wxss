@@ -1,16 +1,17 @@
 /* pages/personal_center/personal_center.wxss */
 page{
-  background-color: rgb(247, 247, 247);
   border: none;
   padding-bottom:140rpx; 
+  font-size: 28rpx;
 }
 .bg{
   /* background-color: white; */
-  padding: 40rpx 0 26rpx 0;
-  margin-bottom: 20rpx;
+  padding: 30rpx 32rpx;
   height: 260rpx;
   position: relative;
   color: white;
+  width: 624rpx;
+  margin: auto;
 }
 .bgpic{
   width: 100%;
@@ -35,7 +36,7 @@ page{
   width: 112rpx;
   height: 112rpx;
   border-radius: 50%;
-  /* background-color: rgb(239, 224, 224); */
+  background-color: #fff;
   /* margin: 0 auto 12rpx auto; */
   position: relative;
   margin: 0 20rpx  0 0;
@@ -71,7 +72,7 @@ page{
 .pen{
   width: 19rpx;
   height: 19rpx;
-  margin-left: 13rpx;
+  margin: 0 20rpx 0 13rpx;
 }
 .item .container{
   line-height: 98rpx;
@@ -136,4 +137,80 @@ page{
 }
 .height112{
   height: 112rpx;
+}
+.assets{
+  width:165rpx;
+  height:68rpx;
+  background:linear-gradient(88deg,rgba(153,228,171,1) 0%,rgba(77,215,163,1) 100%);
+  border-radius:34rpx;
+  padding-left: 23rpx;
+  margin-right: -32rpx;
+  opacity: 1;
+  line-height: 68rpx
+}
+.assetsitem{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+.name{
+  margin: 8rpx 0;
+}
+.garbage{
+  height:120rpx;
+  padding: 40rpx 0;
+  background:rgba(255,255,255,1);
+  border-radius:10rpx;
+  margin: -60rpx auto 20rpx auto;
+  position: relative;
+  z-index: 2;
+  box-shadow:0px 4rpx 8rpx 0px rgba(151, 151, 151, 0.1);
+}
+.container1 >.flex_col_1 {
+  width: 490rpx;
+  margin-top: 10rpx;
+  height: 182rpx;
+}
+.pagetop{
+  background-color: #F8F8F8;
+  overflow: hidden
+}
+.garbage image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.function{
+  padding: 23rpx 32rpx;
+  background-color: white;
+  /* margin-top: 27rpx; */
+}
+.funitem{
+  width: calc(33.33% - 1px);
+  text-align: center;
+  height: 100rpx;
+  padding: 30rpx 0;
+  border-right: 1px solid #eee;
+}
+.function>view:nth-of-type(3n){
+  border-right: none;
+}
+.function>view:nth-of-type(n+4){
+  border-top: 1px solid #eee;
+}
+.funitem image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.settting{
+  width: 60rpx;
+  height: 60rpx;
+  color: white;
+  position: absolute;
+  right: 30rpx;
+  z-index: 2;
+  top: 20rpx;
+  opacity: 1
+}
+.settting .iconfont{
+  font-size: 60rpx;
 }

@@ -2,7 +2,7 @@ const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
 var build = 99999999
-// var build = 20190329
+// var build = 20190404
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -379,17 +379,19 @@ function getJSON(form = {}, call_success, ErrorMsg) {
         }
       }
     },
-    failed: function (ErrorMsg) {
-      console.log(ErrorMsg)
-      wx.hideLoading()
-      that.info_dialog(ErrorMsg.data.message)
+    fail: function (ErrorMsg1) {
+      if (ErrorMsg) {
+        ErrorMsg(ErrorMsg1)
+      }
+      console.log(ErrorMsg1.errMsg)
+      that.info_dialog(ErrorMsg1.errMsg)
     }
   });
   // wx.hideLoading();
 }
 
 /**
- * 用于网络 POST 请求, 标准格式: {url:api, method: GET, data: xxxx}, success, failed
+ * 用于网络 POST 请求, 标准格式: {url:api, method: GET, data: xxxx}, success, fail
  */
 function postJSON(form = {}, call_success, warning, ErrorMsg) {
   var that = this;
@@ -446,13 +448,11 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
         
       }
     },
-    failed: function (ErrorMsg) {
-      wx.hideLoading()
-      console.log(ErrorMsg)
+    fail: function (ErrorMsg1) {
       if (ErrorMsg) {
-        ErrorMsg(ErrorMsg)
+        ErrorMsg(ErrorMsg1)
       }
-      // that.info_dialog(ErrorMsg.data.message)
+      that.info_dialog(ErrorMsg1.errMsg)
     }
   });
   // wx.hideLoading();

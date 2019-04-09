@@ -9,59 +9,53 @@
   
   <view class='item  flex align_center'>
     <text class='size28 color6'>店铺名称</text>
-     <!-- placeholder='点击输入店铺名称' -->
+
     <input class='size28 color9'  bindinput='input' data-contact='titlet' name='title' disabled='{{disabled1}}' value='{{title}}'></input>
   </view>
   <view class='item  flex align_center'>
     <text class='size28 color6'>联系方式</text>
-     <!-- placeholder='点击输入联系方式'  -->
+
     <input class='size28 color9' bindinput='input' data-contact='contactt' name='contact'value='{{contact}}' maxlength='11' disabled='{{disabled1}}'  type='number'></input>
   </view>
   <view class='item  flex align_center'>
     <text class='size28 color6'>商家折扣(%)</text>
-     <!-- placeholder='点击输入店铺名称' -->
+
     <input class='size28 color9'  bindinput='input' data-contact='discount_percentt' name='discount_percent' disabled='{{disabled1}}' value='{{discount_percent}}'></input>
   </view>
   <view class='item  flex align_center' wx:if="{{!disabled1}}">
     <text class='size28 color6'>区域</text>
-    <!-- placeholder='点击选择区域'  -->
-    <!-- <input class='size28 color9' disabled='disabled' name='area_id' value='{{areaSelectedStr}}' bindtap="cascadePopup" ></input> -->
-    <view class='input'><area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' ban='county' bind:choosea='choosearea' /></view>
+    <view class='input'><area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' tokonw='city' ban='county' bind:choosea='choosearea' /></view>
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <view class='item  flex align_center' wx:else>
     <text class='size28 color6'>区域</text>
-    <!-- placeholder='点击选择区域' -->
     <input class='size28 color9' disabled='disabled' name='area_id' value='{{areaSelectedStr}}'  ></input>
     
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <view class='item  flex align_center'>
     <text class='size28 color6'>地址</text>
-    <!-- placeholder='点击输入详细地址' -->
-    <input class='size28 color9' name='address' bindinput='input' bindblur='czaddress' data-contact='addresst'  disabled='{{disabled1}}' value='{{address}}'  ></input>
+    <view class='input1'>
+      <input class='size28 color9' name='address' bindblur='czaddress' data-contact='addresst'  disabled='{{disabled1}}' value='{{address}}' bindinput="getsuggest" ></input>
+      <scroll-view
+        scroll-y
+        class='haslook'
+        wx:if='{{suggestion.length>0}}'
+      >
+        <view wx:for="{{suggestion}}" wx:key="index" class='addressss flex align_center' bindtap="backfill" id="{{index}}">
+          <!-- <view> -->
+            <image src='../../images/icon_location.png' class='icon_location'></image>
+            <view   class='hidden1'>{{item.title}}<text class='color9'>{{item.addr}}</text></view>
+          <!-- </view> -->
+        </view>
+      </scroll-view>
+    </view>
   </view>
-  <!-- <view class='item  flex padding0'>
-    <text class='size28 color6'>入驻类型</text>
-    <radio-group class="radio-group" bindchange="radioChange" data-type="type">
-      <label class="radio color9" wx:for="{{type_val}}" wx:key="index">
-          <radio disabled='{{disabled1}}' value="{{item.id}}" checked="{{item.tchecked}}"/>{{item.name}}
-      </label>
-    </radio-group>
-  </view> -->
+  <view class='zzctransp' bindtap='hiddensug' wx:if='{{suggestion.length>0}}'></view>
   <view class='item  flex align_center'>
     <text class='size28 color6'>商城类型</text>
     <input class='size28 color9' disabled='disabled' name='cate_id' value='{{title1}}' bindtap="onOpen1" ></input>
     <text class='iconfont icon-jiantou color9'></text>
-    <!-- <radio-group class="radio-group" bindchange="radioChange">
-    
-    <block >
-      <label class="radio color9" wx:for="{{shop_cate}}" wx:key="index">
-          <radio value="{{item.id}}" disabled='{{disabled1}}' checked="{{item.tchecked}}"/>{{item.name}}
-      </label>
-    </block>
-    
-    </radio-group> -->
   </view>
   <view class='item  flex align_center'>
     <text class='size28 color6'>商城描述</text>
@@ -105,7 +99,14 @@
       </view>
     </view>
   </view>
-
+  <view class='item  flex align_center'>
+    <text class='size28 color6'>审核状态</text>
+    <view class='{{status==2?"colorFE2C2C":"color4FD7A3"}}'>{{status_name}}</view>
+  </view>
+  <view class='item  flex' wx:if="{{status==2}}">
+    <text class='size28 color6'>拒绝原因</text>
+    <view class='colorFE2C2C'>{{status_remark}}</view>
+  </view>
   <view  class=' size28 center flex  align_center gxuan' >
     <view class='flex  align_center'  bindtap='choose'>
       <view class='choose'>
@@ -125,3 +126,15 @@
 </form>
 
 <wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="商城类型" options="{{ shop_cate }}" bind:close="onClose1" bind:change="onChange1" />
+<!-- <view class='relative'>
+<input style="border:1px solid black;" bindinput="getsuggest" value="{{backfill}}"></input>
+ <scroll-view
+    scroll-y
+    style="height: 200rpx;background-color: #fff;"
+  >
+    <view wx:for="{{suggestion}}" wx:key="index" class='addressss'>
+      <view  bindtap="backfill" id="{{index}}" class='hidden1'>{{item.title}}<text class='color9'>{{item.addr}}</text></view>
+    </view>
+  </scroll-view>
+
+</view> -->

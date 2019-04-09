@@ -80,7 +80,7 @@ swiper,swiper image{
   border-bottom: 20rpx solid #EEEEEE;
 }
 .goods_intr3{
-  padding: 32rpx 32rpx 150rpx 32rpx;
+  padding: 32rpx 32rpx 32rpx 32rpx;
 }
 .colorFE2C2C{
   margin: 20rpx 0;
@@ -109,13 +109,15 @@ swiper,swiper image{
   border-radius:43rpx;
   color: white;
   font-size: 28rpx;
-  margin: auto
+  margin: auto;
 }
 .fixed{
   position: fixed;
-  bottom: 6rpx;
-  left: 50%;
-  margin-left: -343rpx;
+  bottom: 0rpx;
+  width: 100%;
+  height: 90rpx;
+  padding-top: 10rpx;
+  /* background-color: white; */
 }
 .csItemL{
   display: inline-block;
@@ -265,4 +267,29 @@ checkbox-group{
   padding: 40rpx 0;
   max-height: 600rpx;
   overflow: auto;
+}
+.xxpic{
+  width:36rpx;
+  height:34rpx;
+  margin: 0 10rpx 0 0;
+}
+.detailxq{
+  padding: 28rpx 32rpx 20rpx 32rpx;
+  border-top: 1px solid #eee;
+}
+.detailitem{
+  /* padding: 0 0 150rpx 0; */
+  height: 86rpx;
+}
+.imagesbox{
+  padding: 0 32rpx;
+}
+.detailitem image{
+  width: 100%
+}
+.more{
+  margin: 20rpx auto;
+}
+.width100{
+  width: 100%;
 }

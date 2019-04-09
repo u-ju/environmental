@@ -1,8 +1,10 @@
 <!--pages/home_orders/home_orders.wxml-->
-<view class='topTabSwiper fixed'>
-  <block wx:for="{{tab}}" wx:key="index">
-    <view class='tab  {{currentData == index ? "tabBorer" : ""}}' style='width:{{100/tab.length}}%'  data-current = "{{index}}" data-order_status = "{{item.id}}" bindtap='checkCurrent'>{{item.name}}</view>
-  </block>
+<view class='fixeditem'>
+  <view class='topTabSwiper fixed'>
+    <block wx:for="{{tab}}" wx:key="index">
+      <view class='tab  {{currentData == index ? "tabBorer" : ""}}' style='width:{{100/tab.length}}%'  data-current = "{{index}}" data-order_status = "{{item.id}}" bindtap='checkCurrent'>{{item.name}}</view>
+    </block>
+  </view>
 </view>
 <!-- <view class='topTabSwiper'>
   

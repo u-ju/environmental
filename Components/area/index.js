@@ -23,6 +23,10 @@ Component({
     areaSelectedStr:{
       type: String,
       value: ''
+    },
+    tokonw:{
+      type: String,
+      value: ''
     }
   },
 
@@ -89,14 +93,21 @@ Component({
       this.setData({
         cengji: cengji
       });
-      if (cengji[this.data.current]['area'][0]["type"]==that.data.ban){
+      
+      if (cengji[this.data.current]['area'][0]["type"]==that.data.ban){//在哪一层停止
         var areaSelectedStr = ''
         for (var i in cengji) {
           areaSelectedStr = areaSelectedStr + " " + cengji[i].currentname
+          if (cengji[i]['area'][0]["type"] == that.data.tokonw) {//知道与之对应的选择的昵称
+            this.setData({
+              konwname: cengji[i].currentname
+            })
+          }
         }
         that.cascadeDismiss();
-        return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope })
+        return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, konwname: that.data.konwname })
       }
+      
       console.log(cengji[this.data.current]['area'][0]["type"])
       if (cengji[this.data.current]['area'][0]["type"] == 'biotope') {
         this.setData({
@@ -128,7 +139,7 @@ Component({
             area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"]
           });
           that.cascadeDismiss();
-          return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, biotope_name: that.data.biotope_name})
+          return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, biotope_name: that.data.biotope_name, konwname: that.data.konwname})
         }
         // var current = that.data.current
 

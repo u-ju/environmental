@@ -26,12 +26,25 @@ page{
   width: 14rpx;
   height: 28rpx;
 }
-.item>input,.input{
+.item>input,.input,.input1 input{
   width:484rpx;
   border-bottom: 1px solid #989898;
 }
 .input{
   overflow: hidden;
+}
+.input1{
+  position: relative;
+  z-index: 11;
+}
+.input1 .haslook{
+  max-height: 200rpx;
+  background-color: #fff;
+  position: absolute;
+  top: 50rpx;
+  box-shadow: 0 0 4rpx #eee;
+  z-index: 90;
+  padding: 10rpx 0;
 }
 /* 自定义 radio 样式 */
 radio{
@@ -109,7 +122,7 @@ button,.button{
   margin-top: -23rpx;
 }
 .picture_list{
-  margin-left: 50rpx;
+  margin-left: 0rpx;
 }
 .bgg{
   width: 70rpx;
@@ -148,4 +161,30 @@ navigator{
 }
 .gxuan{
   margin-top: 20rpx;
+}
+.colorFE2C2C{
+  width: 500rpx;
+}
+.relative{
+  position: relative
+}
+.addressss{
+  padding: 14rpx 0;
+}
+.icon_location{
+  width: 22rpx;
+  height: 27rpx;
+  margin-right: 6rpx;
+}
+.addressss .hidden1{
+  width: 450rpx;
+}
+.zzctransp{
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }

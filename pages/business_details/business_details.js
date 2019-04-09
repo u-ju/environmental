@@ -73,7 +73,7 @@ Page({
       area_name: result.area_name,
     }
     wx.navigateTo({
-      url: '../delivery_station/delivery_station?data=' + JSON.stringify(data),
+      url: '../delivery_station/index?data=' + JSON.stringify(data),
     })
   },
   /**

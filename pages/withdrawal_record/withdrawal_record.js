@@ -21,11 +21,15 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.wallet }, function (res) {
-      var result = res.data.result;
-      that.setData({
-        tab: result.withdraw_status
-      })
+    // util.getJSON({ apiUrl: apiurl.wallet }, function (res) {
+    //   var result = res.data.result;
+    //   that.setData({
+    //     tab: result.withdraw_status
+    //   })
+    // })
+    this.setData({
+      tab: app.globalData.config.withdraw_status,
+      url: options.url
     })
     that.init()
   },
@@ -63,10 +67,10 @@ Page({
       that.init(e.target.dataset.cate_id)
     }
   },
-  init(cate_id = 0, page = 1) {
+  init(cate_id = this.data.tab[0]["id"], page = 1) {
     var that = this;
     util.getJSON({
-      apiUrl: apiurl.balanceWithdrawIndex + "?status=" + cate_id+"&page="+page
+      apiUrl: apiurl[that.data.url] + "?status=" + cate_id+"&page="+page
     }, function (res) {
       var result = res.data.result
       var list = result.list;
@@ -102,7 +106,7 @@ Page({
     wx.showNavigationBarLoading();
     var that = this;
     util.getJSON({
-      apiUrl: apiurl.balanceWithdrawIndex + "?status=" + that.data.cate_id + "&page=" + 0
+      apiUrl: apiurl[that.data.url] + "?status=" + that.data.cate_id + "&page=" + 0
     }, function (res) {
       var result = res.data.result
       var list = result.list;

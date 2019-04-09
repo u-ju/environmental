@@ -113,6 +113,7 @@ Page({
             util.alert("支付成功")
             wx.showLoading({
               title: '加载中',
+              mask:true
             })
             util.navigateBack(1)
           }, function () {

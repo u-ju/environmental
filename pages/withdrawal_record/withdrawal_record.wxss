@@ -6,7 +6,7 @@ page{
   /* background-color: #F7F7F7; */
 }
 .swiper_con{
-  padding: 55rpx 32rpx 0 32rpx;
+  padding: 100rpx 32rpx 0 32rpx;
   width: auto;
   min-height:1000rpx;
 }
@@ -28,4 +28,7 @@ page{
 }
 .bad>.color9{
   padding: 32rpx 0 39rpx 0;
+}
+.error{
+  padding-top: 100rpx;
 }

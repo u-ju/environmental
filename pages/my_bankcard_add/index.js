@@ -37,7 +37,8 @@ Page({
         var result = res.data.result;
         wx.showToast({
           icon: 'ios-checkbox-outline',
-          title: '添加成功'
+          title: '添加成功',
+          mask:true
         })
         that.setData({
           disabled: false

@@ -318,15 +318,17 @@ Page({
     
     util.postJSON({ apiUrl: apiurl.onsiteRecycle_orderStore, data: data }, function (res) {
       var result = res.data.result
-      util.hideLoading()
-      wx.reLaunch({
-        url: '../index/index',
-        success() {
-          that.setData({
-            disabled: false
-          })
-        }
-      })
+      util.alert(res.data.message)
+      setTimeout(function(){
+        wx.reLaunch({
+          url: '../index/index',
+          success() {
+            that.setData({
+              disabled: false
+            })
+          }
+        })
+      },3000)
     }, function(){
       that.setData({
         disabled: false

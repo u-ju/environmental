@@ -10,7 +10,7 @@
   <image  src='{{banner_arr[0].image}}'></image>
 </view>
 <view class='flex wrap choose_item'>
-  <view class='item' wx:for="{{cate_arr}}" wx:key='index' data-index='{{index}}' data-cate_id='{{item.cate_id}}' data-choose='{{item.choose}}' bindtap='choose'>
+  <view class='item' wx:for="{{cate_arr}}" wx:key='index' data-index='{{index}}' data-cate_id='{{item.id}}' data-choose='{{item.choose}}' bindtap='choose'>
     <text class='item_zi {{item.choose?"choose":""}}'>{{item.name}}</text>
   </view>
 </view>

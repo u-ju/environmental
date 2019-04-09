@@ -11,24 +11,40 @@ Page({
    */
   data: {
     sure: true,
-    money:"",
-    yu:0,
+    amount:"",
+    yu:10,
     show:true,
-    is_password:""
+    is_password:"",
+    withdraw_flow:[
+      { key: "wechat", icon: "https://wyhb-res-pr.zgwyhb.com/views/wallet/flow_wechat.png", name: "微信" },
+      { key: "alipay", icon: "https://wyhb-res-pr.zgwyhb.com/views/wallet/flow_alipay.png", name: "支付宝" },
+      { key: "bankcard", icon: "https://wyhb-res-pr.zgwyhb.com/views/wallet/flow_bankcard.png", name: "银行卡" }
+    ],
+    current:"wechat"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.hasOwnProperty("balance")){
-      this.setData({
-        yu: options.balance,
-        is_password: options.is_password
-      })
-    }
+    console.log(options)
+    
+    var withdraw_flow = JSON.parse(options.withdraw_flow)
+    this.setData({
+      withdraw_flow: withdraw_flow,
+      is_password: options.is_password,
+      current: withdraw_flow[0]["key"],
+      yu: options.money,
+      url: options.url
+    })
+    
   },
-  
+  choose(e){
+    console.log(e.currentTarget.dataset.key)
+    this.setData({
+      current: e.currentTarget.dataset.key
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -45,29 +61,29 @@ Page({
   all(){
     var that =this
     this.setData({
-      money: that.data.yu,
+      amount: that.data.yu,
       sure: false,
     })
   },
-  open_no(e){
-    var that = this;
-    wx.showModal({
-      content: '是否确认提现',
-      success: function (res) {
-        if (res.confirm) {
-          that.setData({
-            sure:true
-          })
-          util.postJSON({ apiUrl: apiurl.balanceWithdraw, data: { amount: that.data.money } }, function (res) { 
-            util.alert(res.data.message);
-            util.navigateBack();
-          })
-        }
-      }
+  // open_no(e){
+  //   var that = this;
+  //   wx.showModal({
+  //     content: '是否确认提现',
+  //     success: function (res) {
+  //       if (res.confirm) {
+  //         that.setData({
+  //           sure:true
+  //         })
+  //         util.postJSON({ apiUrl: apiurl.balanceWithdraw, data: { amount: that.data.money } }, function (res) { 
+  //           util.alert(res.data.message);
+  //           util.navigateBack();
+  //         })
+  //       }
+  //     }
       
-    })
+  //   })
     
-  },
+  // },
   open() {
     console.log(1234567)
     $wuxKeyBoard().show({
@@ -84,11 +100,41 @@ Page({
         sure=false
       }
     this.setData({
-      money: e.detail.value,
+      amount: e.detail.value,
       sure: sure
     })
   },
-  
+  formSubmit(e){
+    
+    var that = this;
+    wx.showModal({
+      content: '是否确认提现',
+      success: function (res) {
+        if (res.confirm) {
+          that.setData({
+            sure:true
+          })
+          util.postJSON({ apiUrl: apiurl[that.data.url], data: { amount: that.data.amount, flow: that.data.current, flow_ext: app.globalData.appid} }, function (res) { 
+            util.alert(res.data.message);
+            util.navigateBack();
+            that.setData({
+              sure: false
+            })
+          },function(){
+            that.setData({
+              sure: false
+            })
+          },function(){
+            that.setData({
+              sure: false
+            })
+          })
+        }
+      }
+
+    })
+    console.log(e.detail.value.amount)
+  }
   
   
 })

@@ -95,7 +95,7 @@ Page({
     util.getJSON({ apiUrl: apiurl.repair_home }, function (res) {
       var cate_arr = res.data.result.cate_arr
       for (var i in cate_arr) {
-        cate_arr[i]["value"] = cate_arr[i]["cate_id"]
+        cate_arr[i]["value"] = cate_arr[i]["id"]
         cate_arr[i]["label"] = cate_arr[i]["name"]
       }
       that.setData({
@@ -118,16 +118,18 @@ Page({
       data['repair_id'] = that.data.repair_id
     }
     util.postJSON({ apiUrl: apiurl[that.data.url], data: data }, function (res) {
-      
-      wx.reLaunch({
-        url:'../index/index',
-        success(){
-          that.setData({
-            visible3: true,
-            post: false
-          })
-        }
-      })
+      util.alert(res.data.message)
+      setTimeout(function(){
+        wx.reLaunch({
+          url: '../index/index',
+          success() {
+            that.setData({
+              visible3: true,
+              post: false
+            })
+          }
+        })
+      },3000)
     }, function (res) {
       console.log(res.data.message)
       // if (res.data.message == "更新成功") {
@@ -171,7 +173,7 @@ Page({
     this.setData({ visible1: false })
   },
   onChange1(e) {
-    this.setData({ cate_name: e.detail.options.map((n) => n.label).join('-'), cate_id: e.detail.options[e.detail.options.length - 1].cate_id })
+    this.setData({ cate_name: e.detail.options.map((n) => n.label).join('-'), cate_id: e.detail.options[e.detail.options.length - 1].id })
     console.log('onChange1', e.detail)
   },
   open3() {

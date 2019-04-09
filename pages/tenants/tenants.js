@@ -8,6 +8,7 @@ let qqMap = new QQMapWX({
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
+
 Page({
 
   /**
@@ -54,7 +55,10 @@ Page({
     intro: '',
     show:false,
     choosed:1,
-    shop_settled:''
+    shop_settled:'',
+    suggestion:[],
+    konwname:'',
+    choosead:true
   },
 
   /**
@@ -91,14 +95,11 @@ Page({
     // util.getJSON({ apiUrl: apiurl.config }, function (res) {
     var result = app.globalData.config
     
-    var arr = ["shop_cate", 'tshop_cate','shop_type']
-    for(var a in arr){
-      for (var i in result[arr[a]]){
-        // console.log(result[arr[a]])
-        result[arr[a]][i]["tchecked"]=false
-      }
-    }
-    var shop_cate = result.shop_cate, tshop_cate = result.tshop_cate
+    // var arr = ["shop_cate", 'tshop_cate','shop_type']
+    // for (var i in result[arr[a]]) {
+    //   result[arr[a]][i]["tchecked"] = false
+    // }
+    var shop_cate = result.shop_cate
       for (var i in shop_cate) {
         shop_cate[i]["value"] = shop_cate[i]["id"]
         shop_cate[i]["label"] = shop_cate[i]["name"]
@@ -111,8 +112,6 @@ Page({
       }
       that.setData({
         shop_cate: shop_cate,
-        tshop_cate: result.tshop_cate,
-        type_val: result.shop_type,
         type: '', 
         shop_settled: app.globalData.config.protocol.shop_settled,
         choosed: wx.getStorageSync('choosedt') || that.data.choosed
@@ -134,7 +133,7 @@ Page({
         var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
         
         that.setData({
-          tshop_cate: tshop_cate,
+          // tshop_cate: tshop_cate,
           shop_cate: shop_cate,
           shop_id: options.shop_id,
           result: result,
@@ -152,11 +151,12 @@ Page({
           status_name: result.status_name,
           title: result.title,
           // type: result.type,
-          type_name: result.type_name,
+          // type_name: result.type_name,
           image: image,
           cate_id: result.cate_id,
           upload_picture_list: upload_picture_list,
           discount_percent: result.discount_percent,
+          status_remark: result.status_remark
         })
         wx.hideLoading()
       })
@@ -190,17 +190,31 @@ Page({
   },
   location(address){
     var that = this
+    
+    if (that.data.choosead) {
+      console.log(that.data.choosead)
+      return that.setData({
+        choosead: false
+      })
+    }
     qqMap.geocoder({
       address: address,
       complete: res => {
         console.log(res);   //经纬度对象
-        if (res.result.location){
+        if (res.result.status == 0 && res.result.location){
+          var longitude = that.data.location
+          var latitude = that.data.location
+          if (that.data.address.indexOf(res.result.title)!=-1){
+            longitude = res.result.location.lng
+            latitude = res.result.location.lat
+          }
           that.setData({
-            longitude: res.result.location.lng,
-            latitude: res.result.location.lat,
+            longitude: longitude,
+            latitude: latitude,
           })
-          wx.setStorageSync('longitudet', res.result.location.lng)
-          wx.setStorageSync('latitudet', res.result.location.lat)
+          console.log(longitude, latitude)
+          wx.setStorageSync('longitudet', longitude)
+          wx.setStorageSync('latitudet', latitude)
         }
         
       }
@@ -219,16 +233,17 @@ Page({
         intro: e.detail.value
       })
     }
-    if (e.currentTarget.dataset.contact == "addresst") {
-      this.setData({
-        address: e.detail.value
-      })
-    }
+    // if (e.currentTarget.dataset.contact == "addresst") {
+    //   this.setData({
+    //     address: e.detail.value
+    //   })
+    // }
     wx.setStorageSync(e.currentTarget.dataset.contact, e.detail.value)
   },
   czaddress(){
     var that = this
-    that.location(that.data.areaSelectedStr + that.data.address)
+    
+    that.location(that.data.areaSelectedStr +" "+that.data.address)
   },
   
   /**
@@ -474,7 +489,8 @@ Page({
     console.log(e)
     this.setData({
       areaSelectedStr: e.detail.areaSelectedStr,
-      area_id_val: e.detail.area_id_val
+      area_id_val: e.detail.area_id_val,
+      konwname: e.detail.konwname
     })
     wx.setStorageSync('areaSelectedStrt', e.detail.areaSelectedStr)
     wx.setStorageSync('area_idt', e.detail.area_id_val)
@@ -541,12 +557,17 @@ Page({
       wx.setStorageSync('choosedt', '')
       wx.setStorageSync('latitudet', '')
       wx.setStorageSync('longitudet', '')
-      wx.reLaunch({
-        url: '../index/index',
-      })
-      that.setData({
-        post: false
-      })
+      setTimeout(function () {
+        wx.reLaunch({
+          url: '../index/index',
+          success() {
+            that.setData({
+              post: false
+            })
+          }
+        })
+      }, 3000)
+      
     }, function (res) {
       console.log(res.data.message)
       // if (res.data.status == "414") {
@@ -563,5 +584,73 @@ Page({
           post: false
         })
       })
+  },
+  backfill: function (e) {
+    console.log(e)
+    var id = e.currentTarget.id;
+    for (var i = 0; i < this.data.suggestion.length; i++) {
+      if (i == id) {
+        console.log(this.data.suggestion[i])
+        wx.setStorageSync('addresst', this.data.suggestion[i].title)
+
+        wx.setStorageSync('longitudet', this.data.suggestion[i].longitude)
+        wx.setStorageSync('latitudet', this.data.suggestion[i].latitude)
+        this.setData({
+          longitude: this.data.suggestion[i].longitude,
+          latitude: this.data.suggestion[i].latitude,
+          address: this.data.suggestion[i].title,
+          choosead: true, 
+          suggestion: []
+        });
+        
+      }
+    }
+  },
+  hiddensug(){
+    this.setData({
+      suggestion: [],
+    })
+  },
+  //触发关键词输入提示事件
+  getsuggest: function (e) {
+    var _this = this;
+    var city = _this.data.konwname || (_this.data.areaSelectedStr&&_this.data.areaSelectedStr.split(" ")[1])
+    if (e.detail.value==''){
+      return this.setData({
+        suggestion:'',
+        address:''
+      })
+    }
+    //调用关键词提示接口
+    qqMap.getSuggestion({
+      //获取输入框值并设置keyword参数
+      keyword: e.detail.value, //用户输入的关键词，可设置固定值,如keyword:'KFC'
+      region: city, //设置城市名，限制关键词所示的地域范围，非必填参数
+      success: function (res) {//搜索成功后的回调
+        console.log(res);
+        var sug = [];
+        for (var i = 0; i < res.data.length; i++) {
+          sug.push({ // 获取返回结果，放到sug数组中
+            title: res.data[i].title,
+            id: res.data[i].id,
+            addr: res.data[i].address,
+            city: res.data[i].city,
+            district: res.data[i].district,
+            latitude: res.data[i].location.lat,
+            longitude: res.data[i].location.lng
+          });
+        }
+        _this.setData({ //设置suggestion属性，将关键词搜索结果以列表形式展示
+          suggestion: sug,
+          address: e.detail.value
+        });
+      },
+      fail: function (error) {
+        console.error(error);
+      },
+      complete: function (res) {
+        console.log(res);
+      }
+    });
   }
 })

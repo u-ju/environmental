@@ -15,11 +15,15 @@ Page({
       { key: '3', name: '微信支付', choose: 0 },
       
     ],
+    choosexy: [
+      { name: 1, value: '同意', checked: true },
+    ],
     visible3:false,
     result:{},
     address:{},
     payment:'',
-    payment_ext:''
+    payment_ext:'',
+    choose: ['1'],
   },
 
   /**
@@ -32,10 +36,17 @@ Page({
     console.log(JSON.parse(options.result))
     var result = JSON.parse(options.result)
     this.setData({
-      result: result
+      result: result,
+      nper: app.globalData.config.protocol.nper
     })
     
     
+  },
+  checkboxChange(e) {
+    console.log(e.detail.value)
+    this.setData({
+      choose: e.detail.value
+    })
   },
   address() {
     var that = this;
@@ -52,6 +63,10 @@ Page({
   },
   open3() {
     var that = this;
+    if (this.data.choose.length < 1) {
+      return util.alert("请勾选商品兑换协议")
+
+    }
     util.postJSON({ apiUrl: apiurl.create, data: { pay_source: 'order', order_key: that.data.result.order_key, address_id: that.data.address.address_id} },
       function (res) {
         var result = res.data.result

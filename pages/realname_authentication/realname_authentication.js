@@ -253,14 +253,15 @@ Page({
       })
       util.postJSON({ apiUrl: apiurl.realname_verify, data: data}, function (res) {
           util.alert(res.data.message)
-          wx.navigateBack({
-            delta: 2,
-            success(){
-              that.setData({
-                sure: false
-              })
-            }
-          })
+          util.navigateBack(2)
+          // wx.navigateBack({
+          //   delta: 2,
+          //   success(){
+          //     that.setData({
+          //       sure: false
+          //     })
+          //   }
+          // })
           
            
       },function(){

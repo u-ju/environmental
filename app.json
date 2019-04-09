@@ -2,11 +2,14 @@
   "pages":[
     
     "pages/index/index",
+    "pages/personal_center/personal_center",
+    "pages/assets/index",
+    "pages/delivery_station/index",
     "pages/success/success",
     "pages/result/index",
     "pages/lostFound/lostfound/index",
     "pages/lostFound/release/index",
-    "pages/personal_center/personal_center",
+    "pages/withdrawal/withdrawal",
     "pages/home_orders/index",
     "pages/myCommunity/index",
     "pages/page/index",
@@ -14,7 +17,7 @@
     "pages/my_invitation/index",
     "pages/realname_authentication/realname_authentication",
     "pages/feedback/index",
-    
+    "pages/tenants/tenants",
     "pages/myInviteNewusers/index",
     "pages/agentPay/index",
     "pages/qrcode/index",
@@ -52,7 +55,7 @@
     "pages/neighbourhood/neighbourhood",
     
     "pages/ban/index",
-    "pages/tenants/tenants",
+    
     "pages/order_detail/index",
     "pages/comment/index",
     "pages/place_order/place_order",
@@ -95,7 +98,7 @@
     "pages/sorting/sorting",
     "pages/home_orders/home_orders",
     "pages/withdrawal_record/withdrawal_record",
-    "pages/withdrawal/withdrawal",
+    
     "pages/my_deposit/my_deposit",
     "pages/message/message",
     "pages/about/about",

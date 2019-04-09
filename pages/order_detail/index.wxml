@@ -25,6 +25,15 @@
   <view class='flex_btw'><text>运费</text><text class='color898989'>{{result.freight_amount}}</text></view>
   <view class='flex_btw'><text>总金额</text><text class='colorFE3434 size30'>{{result.price_amount}}</text></view>
 </view>
+<view class='flex align_center margint40'>
+  <checkbox-group bindchange="checkboxChange">
+    <label class="checkbox" wx:for="{{choosexy}}" wx:key="index">
+      <checkbox value="{{item.name}}" checked="{{item.checked}}" />
+      {{item.value}}
+    </label>
+  </checkbox-group>
+  <navigator  url='../page/index?url={{nper}}'>《商品兑换协议》</navigator>
+</view>
 <view class='btnsure' bindtap='open3'>立即付款</view>
 
 <wux-popup position="bottom" visible="{{ visible3 }}" bind:close="close3">

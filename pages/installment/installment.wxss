@@ -71,22 +71,28 @@
   margin-bottom: 40rpx;
 } */
 page{
-  border: none;
+  /* border: none; */
 }
 .pageType{
-  width: 686rpx;
-  margin: 20rpx auto
+  width: 724rpx;
+  padding: 0 10rpx;
+  margin: 0 auto 20rpx auto;
 }
 .goodspic{
-  width: 320rpx;
+  width: 322rpx;
   height: 260rpx;
 }
 .goods{
-  width: 320rpx;
-  margin-bottom: 30rpx;
+  width:320rpx;
+  padding: 30rpx 20rpx 30rpx 20rpx;
+  border-right: 2rpx solid transparent;
+  border-bottom: 2rpx solid #eee;
 }
 .colorFE2C2C{
   color: #FE2C2C
+}
+.pageType>view:nth-of-type(odd){
+  border-right-color: #eee;
 }
 .line-through{
   text-decoration: line-through

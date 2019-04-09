@@ -35,9 +35,21 @@
     </swiper>
   </view>
 
-  <view class='flex_btw theme'>
+  <view class='flex_btw'>
+    <block wx:for="{{tag}}" wx:key="index">
+      <view class='index_modular center' bindtap='link' data-link='{{item.control}}' data-children="{{item.children}}">
+        <view class='index_modular_cri'>
+          <image  mode='aspectFill' src='{{item.icon}}'></image>
+        </view>
+        <view class='index_modular_con color6'>{{item.name}}</view>
+      </view>
+    </block>
+    
+  </view>
+
+  <view class='flex_btw theme wrap'>
     <block wx:for="{{block}}" wx:key="index">
-      <view class='index_theme flex align_center' bindtap='link' data-link='{{item.control}}' >
+      <view class='index_theme flex align_center' bindtap='link' data-link='{{item.control}}' style='background-color:{{item.color}}' >
         <image  mode='aspectFill' src='{{item.icon}}'></image>
         <view class='flex_col' huhu="{{index}}">
           <view class='size26 relative'>{{item.name}}
@@ -48,22 +60,12 @@
     </block>
   </view>
 
-  <view class='flex_btw'>
-    <block wx:for="{{tag}}" wx:key="index">
-      <view class='index_modular center' bindtap='link' data-link='{{item.control}}' data-children="{{item.children}}">
-        <view class='index_modular_cri'>
-          <image  mode='aspectFill' src='{{item.icon}}'></image>
-        </view>
-        <view class='index_modular_con color6'>{{item.name}}</view>
-      </view>
-    </block>
-  </view>
+  
 </view>
 </view>
-<view class="ard_index" bindtap='link'  data-link='{{nper.control}}' >
-<!--  -->
+<!-- <view class="ard_index" bindtap='link'  data-link='{{nper.control}}' >
   <image src="{{nper.image}}" />
-</view>
+</view> -->
 <view class='bg marginfff'>
   <view class="container over_hid flex_btw twobr">
       <view class='index_putin border_right left' wx:for="{{user}}" wx:key ="index">

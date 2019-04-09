@@ -109,14 +109,10 @@ Page({
       var result = res.data.result
       if(that.data.bangding){
         util.alert("手机号绑定成功！")
-        wx.navigateBack({
-          delta: 1
-        })
+        util.navigateBack()
       }else{
         util.alert("手机号修改成功！")
-        wx.navigateBack({
-          delta: 2
-        })
+        util.navigateBack(2)
       }
     })
   }

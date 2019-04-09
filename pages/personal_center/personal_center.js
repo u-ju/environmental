@@ -54,7 +54,9 @@ Page({
     tabbarid:2,
     tag_list:[],
     badge:{},
-    background:''
+    background:'',
+    length:2,
+              
   },
 
   /**
@@ -69,28 +71,36 @@ Page({
     var that = this, item1 = that.data.item1, item2 = that.data.item2;
     util.getJSON({ apiUrl: apiurl.user }, function (res) {
       var result = res.data.result
-      var tag_list = result.tag_list
-      for (var i in result.tag_list){
-          if (!result.tag_list[i]["value"]&&result.tag_list[i]["key"]=='mobile'){
-            result.tag_list[i]['control']['control'] ='../phone_new/phone_new'
-          }
-          if (tag_list[i]["key"] == 'realname'){
-            var jishu = i
-            util.getJSON({ apiUrl: apiurl.realname }, function (res) {
-              if (res.data.result.status != -1) {
-                tag_list[jishu]['control']['control'] = '../realname_suc/index?result=' + JSON.stringify(res.data.result)
-              }
-              that.setData({
-                tag_list: tag_list
-              })
-            })
-          }
+      // var tag_list = result.tag_list
+      // for (var i in result.tag_list){
+      //     if (!result.tag_list[i]["value"]&&result.tag_list[i]["key"]=='mobile'){
+      //       result.tag_list[i]['control']['control'] ='../phone_new/phone_new'
+      //     }
+      //     if (tag_list[i]["key"] == 'realname'){
+      //       var jishu = i
+      //       util.getJSON({ apiUrl: apiurl.realname }, function (res) {
+      //         if (res.data.result.status != -1) {
+      //           tag_list[jishu]['control']['control'] = '../realname_suc/index?result=' + JSON.stringify(res.data.result)
+      //         }
+      //         that.setData({
+      //           tag_list: tag_list
+      //         })
+      //       })
+      //     }
+      // }
+      var l_one = result.l_one
+      if (l_one.mobile.name){
+        l_one.mobile['control']['control'] = '../phone_new/phone_new'
       }
+      console.log(l_one.mobile)
       that.setData({
         result: result,
-        tag_list: result.tag_list,
-        badge: result.badge,
-        background: result.background
+        l_one: l_one,
+        l_three: result.l_three,
+        l_two: result.l_two,
+        // tag_list: result.tag_list,
+        // badge: result.badge,
+        // background: result.background
       })
 
       util.hideLoading()
@@ -185,6 +195,29 @@ Page({
     if (JSON.stringify(e.currentTarget.dataset.link.length) == "{}") {
       return false
     }
+    // return console.log(e.currentTarget.dataset.link)
+    if (e.currentTarget.dataset.link.key =='front_realname') {
+      util.loading()
+      return util.getJSON({ apiUrl: apiurl.realname }, function (res) {
+        var url = e.currentTarget.dataset.link.control +'?1=1'
+        
+        if (res.data.result.status != -1) {
+          url = '../realname_suc/index?result=' + JSON.stringify(res.data.result)
+        }
+        if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
+          for (var i in e.currentTarget.dataset.link.params) {
+            console.log(i, e.currentTarget.dataset.link.params[i])
+            url = url + "&" + i + "=" + e.currentTarget.dataset.link.params[i]
+          }
+        }
+        wx.navigateTo({
+          url: url,
+          fail: function () {
+            util.alert('该功能暂未开放，敬请期待')
+          },
+        })
+      })
+    }
     var url = e.currentTarget.dataset.link.control +'?1=1'
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
       for (var i in e.currentTarget.dataset.link.params) {
@@ -192,11 +225,8 @@ Page({
         url = url + "&" + i + "=" + e.currentTarget.dataset.link.params[i]
       }
     }
-    if (JSON.stringify(e.currentTarget.dataset.attach) != "{}") {
-      for (var a in e.currentTarget.dataset.attach) {
-        url = url + "&" + a + "=" + e.currentTarget.dataset.attach[a]
-      }
-    }
+    
+    console.log(url)
     wx.navigateTo({
       url: url,
       fail: function () {

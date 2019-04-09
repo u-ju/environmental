@@ -50,7 +50,7 @@
   color: #ef473a
 }
 .wux-input__label{
-  width:110rpx;
+  width:120rpx;
   font-size:28rpx;
   font-weight:bold;
   line-height:90rpx;

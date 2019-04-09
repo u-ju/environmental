@@ -16,7 +16,7 @@
 <view class='goods_intr1'>
   <view class='size28 color4'>{{result.spu_name}} {{result.sku_name}}</view>
   <view class='size28 colorFE2C2C'>
-    <text>分期价：{{result.nper_price}}</text>
+    <text>环保积分兑换价：{{result.nper_price}}</text>
     <text class='line-through'>市场价：{{result.market_price}}</text>
   </view>
   <view class='size22 color898989 flex_btw'>
@@ -36,7 +36,7 @@
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <view class='color898989 flex_btw size28 align_center'  bindtap='fqtz'>
-    <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">分期协议</text>
+    <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">商品兑换协议</text>
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
   <!-- bindtap='open3' -->
@@ -47,8 +47,8 @@
 </view>
 <view class='goods_intr3'>
   <view class='size28 color4'>评价({{list.length}})</view>
-  <block wx:for='{{list}}' wx:key="index">
-  <view>
+  <block wx:if='{{commentIndex==0&&list.length>0}}'>
+  <view wx:for='{{list}}' wx:key="index">
     <view class='flex message align_center'>
       <image src='{{item.avatar}}' class='head'></image>
       <view class='width594'>
@@ -56,22 +56,71 @@
           <view>
             <view class='size28 color4'>{{item.nickname}}</view>
           </view>
+          <view class='size28 color4'>{{item.created_at}}</view>
         </view>
       </view>
+    </view>
+    <view class='color898989 size26 pl_con'>
+      <block wx:for='{{item.comment_level-0}}' wx:key="index">
+        <image src='../../images/star_c.png' class='xxpic' mode='aspectFill'></image>
+      </block>
     </view>
     <view class='color898989 size26 pl_con'>
       {{item.comment_message}}
     </view>
     <view class='color898989 size26 pl_con'>
-    <block wx:for='{{item.comment_images}}' wx:for-key="index">
-      <image src='{{item}}' class='imagepic' mode='aspectFill'></image>
+      <block wx:for='{{item.comment_images}}' wx:key="index" wx:for-key="index">
+        <image src='{{item}}' class='imagepic' mode='aspectFill'></image>
       </block>
     </view>
   </view>
   </block>
+
+  <block wx:elif='{{commentIndex==1&&list1.length>0}}'>
+  <view wx:for='{{list1}}' wx:key="index">
+    <view class='flex message align_center'>
+      <image src='{{item.avatar}}' class='head'></image>
+      <view class='width594'>
+        <view class='flex_btw align_center'>
+          <view>
+            <view class='size28 color4'>{{item.nickname}}</view>
+          </view>
+          <view class='size28 color4'>{{item.created_at}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='color898989 size26 pl_con'>
+      <block wx:for='{{item.comment_level-0}}' wx:key="index">
+        <image src='../../images/star_c.png' class='xxpic' mode='aspectFill'></image>
+      </block>
+    </view>
+    <view class='color898989 size26 pl_con'>
+      {{item.comment_message}}
+    </view>
+    <view class='color898989 size26 pl_con'>
+      <block wx:for='{{item.comment_images}}' wx:key="index"  wx:for-key="index">
+        <image src='{{item}}' class='imagepic' mode='aspectFill'></image>
+      </block>
+    </view>
+  </view>
+  </block>
+  <view class='color4FD7A3 center more' wx:if="{{list.length>0}}" bindtap='more' hidden='{{page.current_page==page.last_page&&commentIndex==0}}'>
+    <view>查看更多评论</view>
+    <text class='iconfont icon-xiangxiajiantou'></text>
+  </view>
 </view>
-<view class='goodsBuy fixed' bindtap='open1'>
-  立即购买
+<view class='color4 size28 detailxq' wx:if="{{result.spu_intro}}">
+  产品详情
+</view>
+<image wx:if="{{result.spu_intro}}" src='{{result.spu_intro}}' class='width100' mode="widthFix"></image>
+<view class='detailitem'  >
+  
+  
+</view>
+<view class='fixed'>
+  <view class='goodsBuy' bindtap='open1'>
+    立即兑换
+  </view>
 </view>
 
 <wux-popup position="bottom" visible="{{ visible1 }}" bind:close="onClose1">
@@ -82,7 +131,7 @@
         <view class='gg_item'>{{item.spec_name}}</view>
         <view class='flex wrap gg_itemxz' >
           <block wx:for="{{item.spec_values}}" wx:key="index" wx:for-item="spec_values">
-          <view class='ggcc color898989 size28 center  {{choosed[specsindex]==spec_values.spec_value_id?"active":""}} {{m1.indexO(arr[specsindex],spec_values.spec_value_id)==-1?"choosef":""}}' bindtap='choosespecs' data-choosed='{{specsindex}}' data-spec_id='{{item.spec_id}}'  data-click='{{m1.indexO(arr[specsindex],spec_values.spec_value_id)}}' data-spec_value_id='{{spec_values.spec_value_id}}' data-index='{{index}}'>{{spec_values.spec_value}}</view>
+          <view class='ggcc color898989 size28 center  {{choosed[specsindex][0]==spec_values.spec_id&&choosed[specsindex][2]==spec_values.spec_value_id?"active":""}} {{m1.indexO(arr[specsindex],spec_values.spec_value_id)==-1?"choosef":""}}' bindtap='choosespecs' data-choosed='{{specsindex}}' data-spec_id='{{item.spec_id}}'  data-click='{{m1.indexO(arr[specsindex],spec_values.spec_value_id)}}' data-spec_value_id='{{spec_values.spec_value_id}}' data-index='{{index}}'>{{spec_values.spec_value}}</view>
           </block>
         </view>
       </view>
@@ -107,7 +156,7 @@
 <wux-popup position="bottom" visible="{{ visible3 }}" bind:close="onClose3">
     <text class='iconfont icon-cuohao'  bindtap="close3"></text>
     <view class='center color4 size36 csgg'>分期购买</view>
-        <view class='label' wx:for="{{items}}" wx:key = "index">
+        <view class='label' wx:for="{{items}}" wx:key="index">
           <view class='flex align_center radioitem'  bindtap='choose' data-id="{{index}}">
             <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
             <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>

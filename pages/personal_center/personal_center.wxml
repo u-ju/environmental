@@ -1,6 +1,4 @@
-<!--pages/personal_center/personal_center.wxml-->
-<!-- <menu hidden id='menu' bind:addEvent="_addEvent" /> -->
-<import src="../../Components/tab-bar/tab-bar.wxml"/>
+<!-- <import src="../../Components/tab-bar/tab-bar.wxml"/>
 <template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
 <view class='bg flex_ard align_center '>
   <image src='{{background}}' class='bgpic'></image>
@@ -10,10 +8,7 @@
     </view>
     <view class='size28 flex_col_1 flex_btw'>
       <view class='badgeitem flex align_center'  data-attach='{{badge.attach}}' data-link='{{badge.control}}' bindtap='link'>
-        <!-- <view class='badgepic'>
-          <image mode='aspectFill' class='badge' src='../../images/badge.png'></image>
-          <view class='dengji bold'>1</view>
-        </view> -->
+        
         <image mode='aspectFill' class='badgebg' src='{{badge.background}}'></image>
         <view class='badgename'>{{badge.name}}</view>
       </view>
@@ -34,15 +29,45 @@
     </view> 
   </view>
 </view>
-</view>
-<!-- <view class='marb20'>
-<view class='item' wx:for='{{item2}}' wx:key="index" data-url='{{item.url}}'  data-or='{{item.or}}' data-value='{{item.value}}' data-renzhen='{{item.renzhen}}' bindtap='link' hidden='{{item.is_recycler==0}}'  >
-  <view class="container flex_btw align_center">
-    <view class='size28 color0'>{{item.title}}</view>
-    <view class='item_right'>
-      <text  class='size28 {{index==0?"color9":"color2EB354 bold"}}'>{{item.value}}</text>
-      <image mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
-    </view> 
+</view> -->
+<view class='pagetop'>
+<import src="../../Components/tab-bar/tab-bar.wxml"/>
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+<view class='bg '>
+  <image src='{{l_one.background}}' class='bgpic'></image>
+  <navigator url='../setting/setting' class='settting'><view class='iconfont icon-shezhi'></view></navigator>
+  <view class="container container1 flex ">
+    <view class='head' bindtap='uploadHeadPhoto'>
+      <image mode='aspectFill' class='header' src='{{l_one.avatar}}'></image>
+    </view>
+    <view class='size28 flex_col_1 flex_btw'>
+      <view class='badgeitem flex ' wx:if="{{l_one.badge.icon}}"  data-link='{{l_one.badge.control}}' bindtap='link'>
+        <image mode='aspectFill' class='badgebg' src='{{l_one.badge.icon}}'></image>
+        <view class='badgename'>{{l_one.badge.name}}</view>
+      </view>
+      <view class='flex align_center'>
+        <view  bindtap='name' data-name='{{l_one.nickname}}' class='name'>{{l_one.nickname}} <image mode='aspectFill' class='pen' src='../../images/pen@2x.png'></image> </view>
+        <view  data-link='{{l_one.realname.control}}'  bindtap='link'>{{l_one.realname.name}}     </view>
+      </view>
+      <view class='assetsitem flex_btw'>
+        <view data-link='{{l_one.mobile.control}}'  bindtap='link'>{{l_one.mobile.name||"暂未手机号"}} </view>
+        <navigator class='assets' url='../assets/index'>
+          <view class=' flex_ard align_center'>资产详情 <text class='iconfont icon-jiantou'></text></view>
+        </navigator>
+      </view>
+    </view>
   </view>
 </view>
-</view> -->
+<view class='garbage flex' style='width:{{l_two.length==2?544:652}}rpx'>
+  <view wx:for="{{l_two}}" wx:key='index' style='width:{{100/l_two.length}}%' class='center'  bindtap='link' data-link='{{item.control}}'>
+    <image src='{{item.icon}}'></image>
+    <view class='color4'>{{item.name}}</view>
+  </view>
+</view>
+</view>
+<view class='function flex wrap'>
+  <view class='funitem' wx:for="{{l_three}}" wx:key='index' bindtap='link' data-link='{{item.control}}'>
+    <image src='{{item.icon}}'></image>
+    <view class='color4'>{{item.name}}</view>
+  </view>
+</view>

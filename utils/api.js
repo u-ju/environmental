@@ -106,8 +106,11 @@ const apiList = {
   balanceWithdrawIndex: basePath + '/front/wallet/balanceWithdrawIndex',
   // GET 积分记录列表
   settleIndex: basePath + '/front/wallet/settleIndex',
-
-
+  // POST 零钱提现提交
+  settleWithdraw: basePath + '/front/wallet/settleWithdraw',
+  // GET 零钱提现列表
+  settleWithdrawIndex: basePath + '/front/wallet/settleWithdrawIndex',
+  
   // ShareController
   // GET 推广信息
   share: basePath + '/front/share',

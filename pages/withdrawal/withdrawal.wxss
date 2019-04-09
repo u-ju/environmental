@@ -1,27 +1,58 @@
 /* pages/withdrawal/withdrawal.wxss */
-@import '../phone/phone';
+
 page{
   background-color: #F7F7F7;
-}
-.item{
-  line-height: 90rpx;
-  height: 90rpx;
-  background-color: white;
-  padding-left: 32rpx;
-  margin-top: 30rpx;
-}
-.color9{
-  padding: 23rpx 32rpx;
-}
-.colorC70000{
-  display: inline-block;
-  margin-right: 30rpx;
-}
-.sure{
-  width: 686rpx;
-  height: 80rpx;
-  line-height: 80rpx;
-  border-radius: 40rpx;
-  margin-top: 20rpx;
+  color: #444;
   font-size: 28rpx;
+  font-family:PingFang-SC-Regular;
+}
+.con{
+  width: 620rpx;
+  margin: 20rpx auto;
+  background:rgba(255,255,255,1);
+  border-radius:10rpx;
+  padding: 30rpx 32rpx  60rpx 34rpx;
+}
+.choose{
+  width: 44rpx;
+  height: 44rpx;
+}
+.moneypic{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 12rpx;
+}
+.chooseitem{
+  padding: 40rpx 0;
+  border-bottom: 1px solid #EEEEEE;
+}
+.size72{
+  font-size: 72rpx;
+}
+.inputmon{
+  /* padding: 10rpx 0; */
+  border-bottom: 1px solid #EEEEEE;
+}
+.inputmon input{
+  height: 90rpx;
+  font-size: 40rpx;
+  width: 520rpx;
+}
+.inputitem{
+  padding: 44rpx 0 0 0;
+}
+.color299EF0{
+  margin-left: 30rpx;
+}
+.margint70{
+  margin: 70rpx 0 54rpx 0;
+}
+button{
+  background-color: #4AD6A3;
+  color: white;
+  width:460rpx;
+}
+button[disabled]:not([type]){
+  background-color: #DDDDDD;
+  color: white;
 }

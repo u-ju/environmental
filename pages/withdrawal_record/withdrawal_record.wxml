@@ -9,7 +9,7 @@
 </view> -->
 
 <!-- <block wx:for="{{news}}" wx:for-item='news' wx:key="index"> -->
-  <view class='swiper_con' wx:if="{{currentData==0||currentData==1}}"   bindtap='detail' data-news_id='{{news.news_id}}'>
+  <view class='swiper_con' wx:if="{{currentData==0||currentData==1||currentData==3}}"   bindtap='detail' data-news_id='{{news.news_id}}'>
     <block wx:for="{{list}}" wx:key="index">
     <view class='item flex_btw align_center'>
       <view class='zuo'>
@@ -23,7 +23,8 @@
       <empty  />
     </view>
   </view>
-  <view class='bad' wx:for="{{list}}" wx:key="index" wx:if="{{currentData==2}}" >
+  <view wx:if="{{currentData==2}}" class='error'>
+  <view class='bad' wx:for="{{list}}" wx:key="index"  >
     <view class='item flex align_center'>
       <view class='zuo'>
         <view class='color6 size28 bold'><text decode="{{true}}" space="{{true}}">{{item.flow_name}}</text></view>
@@ -37,6 +38,7 @@
   </view>
   <view  wx:if="{{currentData==2&&list.length==0}}">
     <empty  />
+  </view>
   </view>
 <!-- </block> -->
 <view wx:if="{{last}}" class='center dibu'>

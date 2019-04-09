@@ -59,7 +59,9 @@ Page({
     specifications:[],
     disable:false,
     count:1,
-    buyok:false
+    buyok:false,
+    commentIndex:1,
+    list1:[]
   },
   swiper(e){
     this.setData({
@@ -133,72 +135,100 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.loading()
+    that.setData({
+      sku_id: options.id
+    })
+    that.goods(options.id)
     
-    util.getJSON({ apiUrl: apiurl.goods_show + options.id }, function (res) {
+  },
+  goods(id){
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.goods_show + id }, function (res) {
       var result = res.data.result
-      var choosed1 = [], choosed = []
-      for (var i in result.spu_id){
-        if (result.spec_values[i]["sku_id"] == result.sku_id){
-          choosed1 = result.spec_values[i]["spec_value"]
-        }
+      var choosed1 = [], choosed = [result.sku_key]
+      var choosedkey = result.sku_key, arr = [], spec_values = res.data.result.spec_values
+      if (result.sku_key.indexOf('-') > -1) {
+        choosed = result.sku_key.split('-')
       }
-      for (var n in choosed1){
-        choosed.push(choosed1[n])
+      for (var n in choosed) {
+        arr[n] = [];
+      }
+      for (var a in spec_values) {
+        for (var b in choosed) {
+          if (choosed[b][2] == spec_values[a].sku_key.split("-")[b][2]) {
+            for (var c in choosed) {
+              if (arr[c].indexOf(spec_values[a].sku_key.split("-")[c][2]) == -1 && b != c) {
+                arr[c].push(spec_values[a].sku_key.split("-")[c][2])
+              }
+            }
+          }
+        }
       }
       that.setData({
         result: result,
         choosed: choosed,
-        spu_id: result.spu_id
+        spu_id: result.spu_id,
+        arr: arr
       })
+      
       that.commentIndex(result.spu_id)
-      that._click(choosed, result.spec_values, result)
+      // that._click(choosed, result.spec_values, result,1)
       util.hideLoading()
     })
-    
   },
   commentIndex(spu_id, page=1){
     var that = this;
     util.getJSON({ apiUrl: apiurl.goods_commentIndex + spu_id+"&page="+page }, function (res) {
+      var list = res.data.result.list
       var result = res.data.result
+      var list1=[]
+      for (var i in list){
+        list[i].created_at = list[i].created_at.split(" ")[0]
+      }
+      if (list.length>0){
+        list1.push(list[0])
+      }
       that.setData({
-        list: result.list,
+        list: list,
+        list1: list1,
         page: result.page
       })
       util.hideLoading()
     })
   },
   // 选择规格时的选项情况
-  _click(choosed, spec_values = this.data.result.spec_values, result = this.data.result){
+  _click(choosed, spec_values = this.data.result.spec_values, result = this.data.result,init){
     // var disable = false
     var arr = [],that = this;
     for (var n in choosed) {
       arr[n] = [];
     }
+    var choosedkey =choosed.join('-')
     // 都选时
+    
     for (var a in spec_values) {
-      for (var b in spec_values[a].spec_value) {
-        if (choosed[b] == spec_values[a].spec_value[b]) {
-          // console.log(spec_values[a].spec_value[b])
-          for (var c in spec_values[a].spec_value) {
-            if (arr[c].indexOf(spec_values[a].spec_value[c]) == -1) {
-              arr[c].push(spec_values[a].spec_value[c])
-              // console.log(arr[c])
+      for (var b in choosed) {
+        if (choosed[b][2] == spec_values[a].sku_key.split("-")[b][2]) {
+          for (var c in choosed) {
+            if (arr[c].indexOf(spec_values[a].sku_key.split("-")[c][2]) == -1 && b != c) {
+              arr[c].push(spec_values[a].sku_key.split("-")[c][2])
             }
           }
         }
       }
     }
-    // console.log(arr)
-    //未完全勾选时
-    if (choosed.indexOf(-1) != -1) {
-      // disable = true
+    
+    
+    
+    if (choosedkey.indexOf('u')>-1){
+// 未完全勾选时
       var num=0
       // 部分未勾选时
       for (var m in choosed) {
-        if (choosed[m] != -1)  {
+        if (choosed[m][2] != 'u')  {
           for (var a in spec_values) {
-            if (arr[m].indexOf(spec_values[a].spec_value[m]) == -1) {
-              arr[m].push(spec_values[a].spec_value[m])
+            if (arr[m].indexOf(spec_values[a].sku_key.split("-")[m][2]) == -1) {
+              arr[m].push(spec_values[a].sku_key.split("-")[m][2])
             }
           }
         }else{
@@ -209,29 +239,29 @@ Page({
       if (num == choosed.length){
         for (var p in choosed) {
           for (var q in spec_values) {
-            if (arr[p].indexOf(spec_values[q].spec_value[p]) == -1) {
-              arr[p].push(spec_values[q].spec_value[p])
+            if (arr[p].indexOf(spec_values[q].sku_key.split("-")) == -1) {
+              arr[p].push(spec_values[q].sku_key.split("-")[p][2])
             }
           }
         }
       }
     }else{
-      for (var d in spec_values) {
-        if (choosed.toString() == spec_values[d].spec_value.toString() ){
-          result.market_price = spec_values[d].market_price 
-          result.nper_price = spec_values[d].nper_price 
-          result.price = spec_values[d].price 
-          result.sku_id = spec_values[d].sku_id 
-          result.sku_name = spec_values[d].sku_name 
+      console.log(choosedkey)
+      console.log(result)
+      console.log(spec_values)
+      for (var u in spec_values){
+        if (choosedkey == spec_values[u]['sku_key'] && result.sku_id != spec_values[u]['sku_id']){
+          console.log(spec_values[u]['sku_id'])
+         return that.goods(spec_values[u]['sku_id'])
         }
       }
     }
     
-    // console.log(arr)
+    
+    
     that.setData({
       arr: arr,
       result: result
-      // disable:disable
     })
   },
   /**
@@ -267,15 +297,31 @@ Page({
     
   },
   choosespecs(e){
+    // console.log(e)
     if (e.currentTarget.dataset.click==-1){
       return false
     }
     var choosed = this.data.choosed;
-    if (choosed[e.currentTarget.dataset.choosed] == e.currentTarget.dataset.spec_value_id){
-      choosed[e.currentTarget.dataset.choosed]=-1
-    }else{
-      choosed[e.currentTarget.dataset.choosed] = e.currentTarget.dataset.spec_value_id
+    for (var i in choosed){
+      if (choosed[i][0] == e.currentTarget.dataset.spec_id){
+        var a = choosed[i];
+        // console.log(a)
+        a = a.split('')   //将a字符串转换成数组
+        if (choosed[i][2] == e.currentTarget.dataset.spec_value_id){
+          a.splice(2, 1, 'u') 
+        }else{
+          a.splice(2, 1, e.currentTarget.dataset.spec_value_id)
+        }
+        
+        choosed[i] = a.join('')
+        // console.log(choosed[i])
+      }
     }
+    // if (choosed[e.currentTarget.dataset.choosed] == e.currentTarget.dataset.spec_value_id){
+    //   choosed[e.currentTarget.dataset.choosed]=-1
+    // }else{
+    //   choosed[e.currentTarget.dataset.choosed] = e.currentTarget.dataset.spec_value_id
+    // }
     this.setData({
       choosed: choosed
     })
@@ -299,7 +345,7 @@ Page({
     
     util.postJSON({ apiUrl: apiurl.order_payShow,data:data }, function (res) {
       var result = res.data.result
-      console.log(result )
+      // console.log(result )
         wx.navigateTo({
           url: '../order_detail/index?result='+ JSON.stringify(result),
       })
@@ -321,41 +367,25 @@ Page({
       })
   },
   onChange(e) {
-    console.log(e.detail.value)
+    // console.log(e.detail.value)
     this.setData({
       count: e.detail.value,
     })
   },
-  onPullDownRefresh: function () {
-    // 显示顶部刷新图标
-    wx.showNavigationBarLoading();
-
-    var that = this;
-    util.getJSON({  apiUrl: apiurl.goods_commentIndex + that.spu_id + "&page=" + page}, function (res) {
-      var result = res.data.result
-      var list = result.list
-      that.setData({
-        list: list,
-        page: result.page,
-        last: false,
-      })
-      // 隐藏导航栏加载框
-      wx.hideNavigationBarLoading();
-      // 停止下拉动作
-      wx.stopPullDownRefresh();
-      util.hideLoading()
-    })
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+  more(){
     var that = this;
     // 显示加载图标
     wx.showLoading({
       title: '玩命加载中',
+      mask:true
     })
+    if (this.data.commentIndex==1){
+      wx.hideLoading()
+      return this.setData({
+        commentIndex:0
+      })
+    }
+    
     // 页数+1
     if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
       that.commentIndex(that.spu_id,Number(that.data.page.current_page) + 1)
@@ -363,7 +393,49 @@ Page({
       that.setData({
         last: true
       })
-      wx.hideLoading()
+      setTimeout(function(){
+        wx.hideLoading()
+      },1000)
     }
-  },
+  }
+  // onPullDownRefresh: function () {
+  //   // 显示顶部刷新图标
+  //   wx.showNavigationBarLoading();
+
+  //   var that = this;
+  //   util.getJSON({  apiUrl: apiurl.goods_commentIndex + that.spu_id + "&page=" + page}, function (res) {
+  //     var result = res.data.result
+  //     var list = result.list
+  //     that.setData({
+  //       list: list,
+  //       page: result.page,
+  //       last: false,
+  //     })
+  //     // 隐藏导航栏加载框
+  //     wx.hideNavigationBarLoading();
+  //     // 停止下拉动作
+  //     wx.stopPullDownRefresh();
+  //     util.hideLoading()
+  //   })
+  // },
+
+  // /**
+  //  * 页面上拉触底事件的处理函数
+  //  */
+  // onReachBottom: function () {
+  //   var that = this;
+  //   // 显示加载图标
+  //   wx.showLoading({
+  //     title: '玩命加载中',
+  //   })
+  //   // 页数+1
+  //   if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+  //     that.commentIndex(that.spu_id,Number(that.data.page.current_page) + 1)
+  //   } else {
+  //     that.setData({
+  //       last: true
+  //     })
+  //     wx.hideLoading()
+  //   }
+  // },
 })

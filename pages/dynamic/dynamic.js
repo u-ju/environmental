@@ -39,17 +39,21 @@ Page({
       news_id: options.id
     })
     util.loading()
-    util.getJSON({ apiUrl: apiurl.news_show + "?news_id=" + options.id}, function (res) {
+    that.index()
+    that.initreplyIndex()
+  },
+  index(){
+    var that = this
+    util.getJSON({ apiUrl: apiurl.news_show + "?news_id=" + that.data.news_id }, function (res) {
       if (res.data.result.content_source == "html") {
         var article = res.data.result.content;
         WxParse.wxParse('article', 'html', article, that, 5);
       }
-      
+
       that.setData({
         result: res.data.result
       });
     })
-    that.initreplyIndex()
   },
   initreplyIndex(page=1){
     var that = this

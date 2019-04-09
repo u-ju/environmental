@@ -51,9 +51,8 @@ Page({
      function (res) {
       var result = res.data.result;
        wx.hideLoading()
-       wx.navigateBack({
-         delta: 1
-       })
+       util.alert(res.data.message)
+       util.navigateBack()
     },function (){
        that.setData({
          disabled: false

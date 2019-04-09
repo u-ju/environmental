@@ -108,7 +108,7 @@ Page({
         shop_ad: result.shop_ad,
         tag: result.tag,
         user: result.user,
-        nper: result.nper,
+        // nper: result.nper,
         week_ad: result.week_ad
       })
       util.hideLoading()
@@ -176,7 +176,7 @@ Page({
     if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
       url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)
     }
-    console.log(url)
+    // console.log(url)
     wx.navigateTo({
       url: url,
       fail: function () {

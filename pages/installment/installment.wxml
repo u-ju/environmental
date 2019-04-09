@@ -29,14 +29,14 @@
     <view class='color9'>2018年12月1日-2018年12月28日</view>
 </view> -->
 
-<view class='pageType flex_btw wrap' wx:if="{{list.length>0}}">
+<view class='pageType flex wrap' wx:if="{{list.length>0}}">
   <block wx:if="{{list[0].spu_name}}">
   <view class='goods' wx:for="{{list}}" wx:key='index' bindtap='detail' data-sku_id='{{item.sku_id}}' data-spu_id='{{item.spu_id}}'>
-    <image mode='aspectFit' src='{{item.thumb}}' class='goodspic'></image>
+    <image mode='aspectFill' src='{{item.thumb}}' class='goodspic'></image>
     <view>
       <view class='color4 size28 one-hidden margint6'>{{item.spu_name}}</view>
       <view class='colorFE2C2C line-through size26 margint6'>市场价：￥{{item.market_price}}</view>
-      <view class='colorFE2C2C size26 margint6'>分期价：￥{{item.nper_price}}</view>
+      <view class='colorFE2C2C size26 margint6'>环保积分兑换价：￥{{item.nper_price}}</view>
     </view>
   </view>
   </block>

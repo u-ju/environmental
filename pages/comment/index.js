@@ -162,8 +162,8 @@ Page({
     })
     util.postJSON({ apiUrl: apiurl.userOrder_comment, data: data }, function (res) {
       var result = res.data.result
-      util.hideLoading()
-      wx.navigateBack()
+      util.alert(res.data.message)
+      util.navigateBack()
       that.setData({
         disabled: false
       })

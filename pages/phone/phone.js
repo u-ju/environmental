@@ -114,7 +114,7 @@ Page({
     wx.setNavigationBarTitle({
       title: title
     })
-    wx.hideLoading()
+    util.hideLoading()
   },
   choose(){
     this.setData({

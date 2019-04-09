@@ -122,6 +122,7 @@ Page({
       erji: shop_cate[0].children,
       cate_id: shop_cate[0].id
     })
+    that.address()
     if (shop_cate.length>0){
       if (options.keywords){
         var keywords = options.keywords
@@ -136,10 +137,8 @@ Page({
       }
     
   }else{
-  wx.hideLoading()
-  }
-    that.address()
-
+    wx.hideLoading()
+    }
   },
   init(cate_id = this.data.shop_cate[0].id, page = 1, keywords='') {
     var that = this;
@@ -180,7 +179,6 @@ Page({
     };
     var success = function (data) {
       var wxMarkerData = data.wxMarkerData;
-      
       that.setData({
         latitude: wxMarkerData[0].latitude,
         longitude: wxMarkerData[0].longitude,

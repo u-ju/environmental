@@ -297,10 +297,14 @@ Page({
         for (var i in order_goods){
           pjurl = pjurl +"&comment["+i+"][sku_id]="+order_goods[i].sku_id
         }
-      console.log(pjurl)
-      wx.navigateTo({
-        url: '../comment/index?id=' + id+pjurl,
-      })
+        wx.navigateTo({
+          url: '../comment/index?id=' + id+pjurl,
+          success(){
+            that.setData({
+              visible3:false
+            })
+          }
+        })
         wx.hideLoading()
       })
     // var order_goods = this.data.list[e.currentTarget.dataset.listindex].order_goods
@@ -309,8 +313,13 @@ Page({
     
   },
   backindex() {
-    wx.navigateTo({
+    wx.reLaunch({
       url: '../index/index',
+      success() {
+        that.setData({
+          visible3: false
+        })
+      }
     })
   },
   detail(e){

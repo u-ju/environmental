@@ -1,0 +1,136 @@
+/* pages/assets/index.wxss */
+page{
+  color: #444;
+}
+.tab{
+  padding: 10rpx 32rpx;
+  margin-bottom: 80rpx;
+}
+.tab>view{
+  width: calc(33.33% - 2px);
+  text-align: center;
+  font-size: 36rpx;
+  border-right: 2px solid #4AD6A3;
+  height: 55rpx;
+  line-height: 55rpx;
+}
+.tab>view:last-of-type{
+  border-right:none;
+}
+.tab>view.active{
+  color: #69DBB1
+}
+.money image{
+  width: 40rpx;
+  height: 46rpx;
+  margin-right: 6rpx;
+}
+
+
+.money{
+  text-align: center;
+  margin: 40rpx 0 70rpx 0;
+}
+
+.withdrawal{
+  width:310rpx;
+  height:88rpx;
+  background:rgba(74,214,163,1);
+  border-radius:44rpx;
+  line-height: 88rpx;
+  text-align: center;
+  margin: auto;
+  color: white;
+}
+.color299EF0{
+  color: #299EF0;
+  padding: 0 32rpx;
+  text-align: center;
+}
+.brx{
+  /* border-bottom: 2rpx solid #E8E8E8; */
+  margin: 80rpx auto 0 auto;
+  padding: 20rpx 0;
+}
+.brx .br{
+  border-right: 2rpx solid #ddd;
+}
+.item{
+  padding: 30rpx 0;
+}
+.item .size28{
+  margin-bottom: 10rpx;
+}
+.detailed{
+  padding: 0 32rpx;
+  border-top: 1px solid #E8E8E8;
+  margin: auto;
+}
+.color4{
+  padding: 20rpx 0;
+}
+.color727272{
+  width: 200rpx;
+  text-align: right;
+}
+.zuo{
+  width: 480rpx;
+}
+.xian{
+  height:1px;
+  width: 100%;
+  background-color: #E8E8E8;
+}
+/* 规则提示层  */
+.isRuleShow{
+    display: block;
+}
+.isRuleHide{
+    display: none;
+}
+.ruleZhezhao{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color:rgba(0, 0, 0, .5);
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+.ruleZhezhaoContent{
+    padding: 88rpx 40rpx 44rpx 40rpx;
+    width: 80%;
+    background: #fff;
+    margin: 40% auto;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.ruleHide{
+    height: 24rpx!important;
+    width: 24rpx!important;
+    position: absolute;
+    top: 20rpx;
+    right:50rpx;
+}
+.rule{
+    display: block;
+    border: 1px solid #fff;
+    width: 100rpx;
+    text-align: center;
+    line-height: 60rpx;
+    color: #fff;
+    height: 60rpx;
+    font-size: 30rpx;
+    border-radius: 30rpx;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+}
+.ruleZhezhaoContent text{
+  line-height: 40rpx;
+}

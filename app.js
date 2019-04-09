@@ -1,6 +1,10 @@
 //app.js
 var util = require('utils/util.js');
 var apiurl = require('utils/api.js');
+// 引入SDK核心类
+var QQMapWX = require('utils/qqmap-wx-jssdk.min.js');
+var bmap = require('utils/bmap-wx.min.js')
+var qqmapsdk;
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -36,7 +40,28 @@ App({
         }
       }
     })
-    
+    that.address()
+  },
+  address() {
+    var that = this;
+    // 新建百度地图对象 
+    var BMap = new bmap.BMapWX({
+      ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
+    });
+    var fail = function (data) {
+      console.log(data)
+    };
+    var success = function (data) {
+      console.log(data)
+      var wxMarkerData = data.wxMarkerData;
+      that.globalData.longitude = wxMarkerData[0].longitude
+      that.globalData.latitude = wxMarkerData[0].latitude
+    }
+    // 发起regeocoding检索请求 
+    BMap.regeocoding({
+      fail: fail,
+      success: success,
+    });
   },
   globalData: {
     userInfo: null,
@@ -44,6 +69,7 @@ App({
     longitude: 104.05293,
     latitude: 30.69015,
     config:[],
-    controlContrast:[]
+    controlContrast:[],
+    appid:'wx312b45ec2ec4d345'
   }
 })
