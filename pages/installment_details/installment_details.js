@@ -145,7 +145,7 @@ Page({
     var that = this;
     util.getJSON({ apiUrl: apiurl.goods_show + id }, function (res) {
       var result = res.data.result
-      var choosed1 = [], choosed = [result.sku_key]
+      var choosed = [result.sku_key]
       var choosedkey = result.sku_key, arr = [], spec_values = res.data.result.spec_values
       if (result.sku_key.indexOf('-') > -1) {
         choosed = result.sku_key.split('-')
@@ -155,12 +155,14 @@ Page({
       }
       for (var a in spec_values) {
         for (var b in choosed) {
-          if (choosed[b][2] == spec_values[a].sku_key.split("-")[b][2]) {
+          if (choosed[b][2] == spec_values[a].sku_key.split("-")[b][2] && result.sku_key.indexOf('-') > -1) {
             for (var c in choosed) {
               if (arr[c].indexOf(spec_values[a].sku_key.split("-")[c][2]) == -1 && b != c) {
                 arr[c].push(spec_values[a].sku_key.split("-")[c][2])
               }
             }
+          } else if (result.sku_key.indexOf('-') == -1){
+            arr[b].push(spec_values[a].sku_key[2])
           }
         }
       }
@@ -208,12 +210,14 @@ Page({
     
     for (var a in spec_values) {
       for (var b in choosed) {
-        if (choosed[b][2] == spec_values[a].sku_key.split("-")[b][2]) {
+        if (choosed[b][2] == spec_values[a].sku_key.split("-")[b][2] && result.sku_key.indexOf('-') > -1) {
           for (var c in choosed) {
             if (arr[c].indexOf(spec_values[a].sku_key.split("-")[c][2]) == -1 && b != c) {
               arr[c].push(spec_values[a].sku_key.split("-")[c][2])
             }
           }
+        } else if (result.sku_key.indexOf('-') == -1) {
+          arr[b].push(spec_values[a].sku_key[2])
         }
       }
     }
@@ -246,17 +250,13 @@ Page({
         }
       }
     }else{
-      console.log(choosedkey)
-      console.log(result)
-      console.log(spec_values)
       for (var u in spec_values){
         if (choosedkey == spec_values[u]['sku_key'] && result.sku_id != spec_values[u]['sku_id']){
-          console.log(spec_values[u]['sku_id'])
+          
          return that.goods(spec_values[u]['sku_id'])
         }
       }
     }
-    
     
     
     that.setData({
@@ -297,7 +297,6 @@ Page({
     
   },
   choosespecs(e){
-    // console.log(e)
     if (e.currentTarget.dataset.click==-1){
       return false
     }
@@ -305,7 +304,6 @@ Page({
     for (var i in choosed){
       if (choosed[i][0] == e.currentTarget.dataset.spec_id){
         var a = choosed[i];
-        // console.log(a)
         a = a.split('')   //将a字符串转换成数组
         if (choosed[i][2] == e.currentTarget.dataset.spec_value_id){
           a.splice(2, 1, 'u') 
@@ -314,7 +312,6 @@ Page({
         }
         
         choosed[i] = a.join('')
-        // console.log(choosed[i])
       }
     }
     // if (choosed[e.currentTarget.dataset.choosed] == e.currentTarget.dataset.spec_value_id){
@@ -329,11 +326,11 @@ Page({
   },
   buy(e){
     var that = this;
-    if (that.data.choosed.indexOf(-1)!=-1){
-      return util.alert("请选择"+that.data.result.specs[that.data.choosed.indexOf(-1)]["spec_name"])
+    for (var i in that.data.choosed){
+      if (that.data.choosed[i].indexOf("u") != -1){
+        return util.alert("请选择" + that.data.result.specs[i]["spec_name"])
+      }
     }
-    // console.log(that.data.result.sku_id)
-    // console.log(that.data.count)
     var data ={
       buy_type:"now",
       'sku_arr[0][sku_id]': that.data.result.sku_id,
@@ -345,7 +342,6 @@ Page({
     
     util.postJSON({ apiUrl: apiurl.order_payShow,data:data }, function (res) {
       var result = res.data.result
-      // console.log(result )
         wx.navigateTo({
           url: '../order_detail/index?result='+ JSON.stringify(result),
       })
@@ -367,7 +363,6 @@ Page({
       })
   },
   onChange(e) {
-    // console.log(e.detail.value)
     this.setData({
       count: e.detail.value,
     })

@@ -33,7 +33,7 @@ Page({
     // if (options.spec_value){
     //   spec_value: 
     // }
-    console.log(JSON.parse(options.result))
+    // console.log(JSON.parse(options.result))
     var result = JSON.parse(options.result)
     this.setData({
       result: result,
@@ -43,7 +43,7 @@ Page({
     
   },
   checkboxChange(e) {
-    console.log(e.detail.value)
+    // console.log(e.detail.value)
     this.setData({
       choose: e.detail.value
     })
@@ -145,11 +145,11 @@ Page({
         title: '加载中',
       })
     var data = { pay_key: that.data.items.pay_key, payment: that.data.payment, pay_amount: that.data.pay_amount, pay_cash: that.data.pay_amount, payment_ext: that.data.payment_ext }
-    console.log(data)
+    // console.log(data)
     util.postJSON({ apiUrl: apiurl.vendor, data: data },
         function (res) {
           var result = res.data.result
-          console.log(res)
+          // console.log(res)
           if (result.payment == "balance" || result.payment == "installment") {
             util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
               util.alert("支付成功")

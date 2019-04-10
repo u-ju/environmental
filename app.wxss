@@ -1,7 +1,8 @@
 /**app.wxss**/
 @import "/Components/tab-bar/tab-bar.wxss";
 page .navigator-hover{
-  background-color: transparent
+  background-color: transparent;
+  opacity: 1
 }
 @font-face {font-family: "iconfont";
   src: url('iconfont.eot?t=1554788862244'); /* IE9 */

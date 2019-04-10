@@ -3,3 +3,26 @@
 .wux-tabs__tab--balanced.wux-tabs__tab--current {
 color: #4AD6A3
 }
+.item{
+  padding: 30rpx 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.lmitem image{
+  width: 200rpx;
+  height: 125rpx;
+  margin-right: 20rpx;
+}
+.item .flex_col{
+  width: 460rpx;
+}
+.editll{
+  position: fixed;
+  bottom: 97rpx;
+  right: 33rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+.editll image{
+  width: 100rpx;
+  height: 100rpx;
+}

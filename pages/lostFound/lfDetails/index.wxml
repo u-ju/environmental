@@ -1,0 +1,35 @@
+<!--pages/lostFound/lfDetails/index.wxml-->
+<view class='page'>
+  <view class='head flex_btw align_center'>
+    <view class='header flex align_center'>
+      <image src='../../../images/catering_test.png'></image>
+      <text class='color898989'>一只猪的生活</text>
+    </view>
+    <view class='color898989 size22'>2019-1-18 </view>
+  </view>
+  <view class='margintb20'>本人上周三不慎弄丢钱包，麻烦拾到者与我联系，万分感谢。</view>
+  <view class='pic'>
+    <image src='../../../images/catering_test.png'></image>
+  </view>
+  <view class='xqxx flex_btw align_center'>
+    <view>时间</view>
+    <view>2019年1月18</view>
+  </view>
+  <view class='xqxx flex_btw align_center'>
+    <view>地址</view>
+    <view>金牛区驷马桥</view>
+  </view>
+  <view class='xqxx flex_btw align_center'>
+    <view>物品</view>
+    <view>钥匙</view>
+  </view>
+  <view class='xqxx flex_btw align_center'>
+    <view>联系人</view>
+    <view>陈先生</view>
+  </view>
+  <view class='xqxx flex_btw align_center'>
+    <view>联系方式</view>
+    <view>188888888</view>
+  </view>
+  <view class='button size30'>联系失主</view>
+</view>

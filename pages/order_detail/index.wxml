@@ -22,6 +22,7 @@
 <view class='color4 size28 kdxx'>
   <!-- <view>订单号：{{result.sku_name}}</view>
   <view class='flex_btw'><text>配送方式</text><text class='color898989'>快递免邮</text></view> -->
+  <view class='flex_btw'><text>安装费</text><text class='color898989'>{{result.install_fee_amount}}</text></view>
   <view class='flex_btw'><text>运费</text><text class='color898989'>{{result.freight_amount}}</text></view>
   <view class='flex_btw'><text>总金额</text><text class='colorFE3434 size30'>{{result.price_amount}}</text></view>
 </view>
@@ -34,7 +35,7 @@
   </checkbox-group>
   <navigator  url='../page/index?url={{nper}}'>《商品兑换协议》</navigator>
 </view>
-<view class='btnsure' bindtap='open3'>立即付款</view>
+<view class='btnsure' bindtap='open3'>立即兑换</view>
 
 <wux-popup position="bottom" visible="{{ visible3 }}" bind:close="close3">
     <text class='iconfont icon-cuohao'  bindtap="close3"></text>
@@ -64,5 +65,5 @@
         </view>
       </view>  
     </view> 
-    <view class='goodsBuy size36 marginb60' bindtap='goodsBuy'>立即支付</view>
+    <view class='goodsBuy size36 marginb60' bindtap='goodsBuy'>立即兑换</view>
 </wux-popup>

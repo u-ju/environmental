@@ -221,11 +221,14 @@ Page({
     var url = e.currentTarget.dataset.link.control +'?1=1'
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
       for (var i in e.currentTarget.dataset.link.params) {
-        console.log(i, e.currentTarget.dataset.link.params[i])
         url = url + "&" + i + "=" + e.currentTarget.dataset.link.params[i]
       }
     }
-    
+    if (JSON.stringify(e.currentTarget.dataset.attach) != "{}") {
+      for (var j in e.currentTarget.dataset.attach) {
+        url = url + "&" + j + "=" + e.currentTarget.dataset.attach[j]
+      }
+    }
     console.log(url)
     wx.navigateTo({
       url: url,

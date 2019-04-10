@@ -6,37 +6,23 @@
     </block>
 </wux-tabs>
 
-  <view class='{{classname}}'>
-    <!-- <view class='item flex' wx:key="index">
-        <image src=''></image>
-        <view class='flex_col flex_btw'>
-          <view>111111</view>
-          <view>222222</view>
-        </view>
-      </view> -->
+  <view class='lmitem'>
     <block wx:if="{{list.length>0}}">
-      <block wx:if="{{key==0&&list[0]['created_at']}}">
+      <block >
         <view class='item flex' wx:for="{{list}}" wx:key="index">
           <image src='{{item.thumb}}'></image>
           <view class='flex_col flex_btw'>
-            <view>{{item.title}}</view>
-            <view>{{item.created_at}}</view>
+            <view class='hidden2'>{{item.title}}</view>
+            <view>联系人：{{item.username}} {{item.phone}}</view>
           </view>
         </view>
       </block>
-      <block wx:elif="{{key==1&&list[0]['created_at']}}">
-        <view class='item flex' wx:for="{{list}}" wx:key="index">
-          <image src='{{item.avatar}}'></image>
-          <view class='flex_col flex_btw'>
-            <view>{{item.nickname}}</view>
-            <view>{{item.created_at}}</view>
-          </view>
-        </view>
-      </block>
-      
     </block>
       
     <empty wx:else/>
   </view>
   
 </view>
+<navigator url='../release/index' class='editll'>
+  <image src='../../../images/editll.png'></image>
+</navigator>

@@ -61,6 +61,7 @@ button{
   line-height: 100rpx;
 }
 .link{
+  display: block;
   width: 220rpx;
   margin: 100rpx auto;
   text-align: center;

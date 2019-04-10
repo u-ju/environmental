@@ -31,13 +31,15 @@ Page({
     ],
     current: '0',
     url: '',
-    list: [0],
     page: {},
     list1: [],
     page1: {},
     key: 0,
     url: 'agent_shopIndex',
-    classname: 'lmitem'
+    classname: 'lmitem',
+    list:[
+      { thumb: '../../../images/catering_test.png', title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领', username: '陈先生', phone:'18888888'}
+    ]
   },
 
   /**
@@ -45,7 +47,7 @@ Page({
    */
   onLoad: function (options) {
 
-    this.init()
+    // this.init()
   },
   onChange(e) {
     // console.log('onChange', e)
@@ -68,7 +70,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    this.init()
+    // this.init()
   },
   onSwiperChange(e) {
     // console.log('onSwiperChange', e)
@@ -112,9 +114,8 @@ Page({
         list1: list,
         page1: result.page,
         last: false,
-        height1: list.length * 176
+        // height1: list.length * 176
       })
-      // console.log(list)
       util.hideLoading()
     })
   },
@@ -126,63 +127,21 @@ Page({
     })
     that.init(1)
   },
-  loadMore() {
-
-    var that = this;
-    // 显示加载图标
-    wx.showLoading({
-      title: '玩命加载中',
-    })
-    // 页数+1
-    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
-      that.init(Number(that.data.page.current_page) + 1)
-    } else {
-      that.setData({
-        last: true
-      })
-      util.alert("加载完成")
-    }
-  },
-  refresh1() {
-    var that = this;
-    var date = new Date();
-    that.setData({
-      refreshTime: date.toLocaleTimeString(),
-    })
-    that.init1(1)
-  },
-  loadMore1() {
-
-    var that = this;
-    // 显示加载图标
-    wx.showLoading({
-      title: '玩命加载中',
-    })
-    // 页数+1
-    if (Number(that.data.page1.current_page) != Number(that.data.page1.last_page)) {
-      that.init1(Number(that.data.page1.current_page) + 1)
-    } else {
-      that.setData({
-        last: true
-      })
-      util.alert("加载完成")
-    }
-  },
   onPullDownRefresh: function () {
     var that = this;
     wx.showNavigationBarLoading();
-    util.getJSON({ apiUrl: apiurl[that.data.url] + "?page=1" }, function (res) {
-      var result = res.data.result
-      var list = result.list
-      that.setData({
-        list: list,
-        page: result.page
-      })
-      // 隐藏导航栏加载框
-      wx.hideNavigationBarLoading();
-      // 停止下拉动作
-      wx.stopPullDownRefresh();
-    })
+    // util.getJSON({ apiUrl: apiurl[that.data.url] + "?page=1" }, function (res) {
+    //   var result = res.data.result
+    //   var list = result.list
+    //   that.setData({
+    //     list: list,
+    //     page: result.page
+    //   })
+    //   // 隐藏导航栏加载框
+    //   wx.hideNavigationBarLoading();
+    //   // 停止下拉动作
+    //   wx.stopPullDownRefresh();
+    // })
   },
 
   /**
@@ -191,17 +150,17 @@ Page({
   onReachBottom: function () {
     var that = this;
     // 显示加载图标
-    wx.showLoading({
-      title: '玩命加载中',
-    })
-    // 页数+1
-    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
-      that.init(Number(that.data.page.current_page) + 1)
-    } else {
-      that.setData({
-        last: true
-      })
-      wx.hideLoading()
-    }
+    // wx.showLoading({
+    //   title: '玩命加载中',
+    // })
+    // // 页数+1
+    // if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+    //   that.init(Number(that.data.page.current_page) + 1)
+    // } else {
+    //   that.setData({
+    //     last: true
+    //   })
+    //   wx.hideLoading()
+    // }
   },
 })

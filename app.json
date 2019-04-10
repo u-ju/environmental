@@ -1,13 +1,17 @@
 {
   "pages":[
-    
     "pages/index/index",
+    "pages/recruitment/index/index",
+    
+    "pages/lostFound/lfDetails/index",
+    "pages/lostFound/lostfound/index",
+    
     "pages/personal_center/personal_center",
     "pages/assets/index",
     "pages/delivery_station/index",
     "pages/success/success",
     "pages/result/index",
-    "pages/lostFound/lostfound/index",
+    
     "pages/lostFound/release/index",
     "pages/withdrawal/withdrawal",
     "pages/home_orders/index",

@@ -16,11 +16,12 @@
 <view class='goods_intr1'>
   <view class='size28 color4'>{{result.spu_name}} {{result.sku_name}}</view>
   <view class='size28 colorFE2C2C'>
-    <text>环保积分兑换价：{{result.nper_price}}</text>
+    <text>环保金：{{result.nper_price}}</text>
     <text class='line-through'>市场价：{{result.market_price}}</text>
   </view>
   <view class='size22 color898989 flex_btw'>
     <text>运费：{{result.freight}}</text>
+    <text>安装费：{{result.install_fee}}</text>
     <text>库存：{{result.stock}}</text>
     <text>销量:{{result.sales}}</text>
   </view>
@@ -140,8 +141,8 @@
       <text class='color898989 size28'>购买数量</text>
       <wux-input-number wux-sub-class="sub" bind:change="onChange" default-value="1" min="{{ 1 }}" disabled="{{ false }}" wux-input-class="input" wux-add-class="add" slot="footer" color="656565" />
     </view>
-    <view class='goodsBuy size36 marginb60' bindtap='buy' wx:if="{{!buyok}}">立即购买</view> 
-    <view class='goodsBuy size36 marginb60 1' wx:else>立即购买</view>
+    <view class='goodsBuy size36 marginb60' bindtap='buy' wx:if="{{!buyok}}">立即兑换</view> 
+    <view class='goodsBuy size36 marginb60 1' wx:else>立即兑换</view>
 </wux-popup>
 <wux-popup position="bottom" visible="{{ visible2 }}" style="{{wrapStyle2}}"  bind:close="onClose2">
     <text class='iconfont icon-cuohao'  bindtap="close2"></text>

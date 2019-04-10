@@ -66,7 +66,7 @@
 </view>
 </view>
 <view class='function flex wrap'>
-  <view class='funitem' wx:for="{{l_three}}" wx:key='index' bindtap='link' data-link='{{item.control}}'>
+  <view class='funitem' wx:for="{{l_three}}" wx:key='index' bindtap='link' data-link='{{item.control}}'  data-attach='{{item.attach}}'>
     <image src='{{item.icon}}'></image>
     <view class='color4'>{{item.name}}</view>
   </view>
