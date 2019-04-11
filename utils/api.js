@@ -1,5 +1,5 @@
-// const basePath = 'https://wyhb.zgwyhb.com/api';
-const basePath = 'https://wyhb.dev.zgwyhb.com/api';
+const basePath = 'https://wyhb.zgwyhb.com/api';
+// const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
 
   // GET 控制对照
@@ -92,6 +92,9 @@ const apiList = {
   agent_agentIndex: basePath + '/front/agent/agentIndex',
 
   agent_userIndex: basePath + '/front/agent/userIndex',
+
+
+  
 
   // WalletController
   // GET 钱包信息

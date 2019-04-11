@@ -10,6 +10,7 @@
 
 <!-- <block wx:for="{{news}}" wx:for-item='news' wx:key="index"> -->
   <view class='swiper_con' wx:if="{{currentData==0||currentData==1||currentData==3}}"   bindtap='detail' data-news_id='{{news.news_id}}'>
+     <block wx:if='{{list[0]["created_at"]}}'>
     <block wx:for="{{list}}" wx:key="index">
     <view class='item flex_btw align_center'>
       <view class='zuo'>
@@ -19,11 +20,13 @@
       <view class='size36 colorC70000 bold'>{{item.amount}}</view>
     </view>
     </block>
+    </block>
     <view  wx:if="{{list.length==0}}">
       <empty  />
     </view>
   </view>
   <view wx:if="{{currentData==2}}" class='error'>
+  <block wx:if='{{list[0]["created_at"]}}'>
   <view class='bad' wx:for="{{list}}" wx:key="index"  >
     <view class='item flex align_center'>
       <view class='zuo'>
@@ -36,6 +39,7 @@
       {{item.status_remark}}
     </view>
   </view>
+  </block>
   <view  wx:if="{{currentData==2&&list.length==0}}">
     <empty  />
   </view>

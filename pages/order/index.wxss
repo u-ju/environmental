@@ -29,7 +29,7 @@ swiper{
   background:rgba(255,255,255,1);
   box-shadow:0px 3rpx 10rpx 0px rgba(191,189,189,1);
   border-radius:5rpx;
-  padding: 18rpx;
+  padding: 18rpx 18rpx 0 18rpx;
   margin: 0 auto 45rpx auto;
   position: relative;
 }
@@ -43,7 +43,8 @@ swiper{
   margin-right: 40rpx;
 }
 .fkItem_goods{
-  margin-top: 20rpx;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eee;
   /* width: 600rpx; */
 }
 .fkItem_goods_ms .colorFE2C2C{
@@ -231,4 +232,7 @@ color:rgba(46,179,84,1);
 }
 .over_look_big{
   padding: 20rpx 0 40rpx 0;
+}
+.list1>view:last-of-type{
+  border-bottom: 1px solid transparent;
 }

@@ -62,7 +62,8 @@ Page({
     } else {
       that.setData({
         currentData: e.target.dataset.current,
-        cate_id: e.target.dataset.cate_id
+        cate_id: e.target.dataset.cate_id,
+        list:[0]
       })
       that.init(e.target.dataset.cate_id)
     }

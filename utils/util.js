@@ -1,8 +1,8 @@
 const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
-var build = 99999999
-// var build = 20190410
+// var build = 99999999
+var build = 20190411
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -149,10 +149,12 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
       }
       
       if (arr =='upload_picture_list1'){
+        _this.hideLoading()
         that.setData({
           upload_picture_list1: upload_picture_list
         });
       } else if (arr == 'upload_picture_list2'){
+        _this.hideLoading()
         that.setData({
           upload_picture_list2: upload_picture_list
         });
@@ -160,6 +162,7 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
         if (storge==1){
           wx.setStorageSync('upload_picture_list', upload_picture_list)
         }
+        _this.hideLoading()
         that.setData({
           upload_picture_list: upload_picture_list
         });

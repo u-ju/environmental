@@ -34,19 +34,32 @@ Page({
    */
   onLoad: function (options) {
     util.loading()
+    if (options.id){
+      this.setData({
+        current: options.id
+      })
+      
+    }
+    this.setData({
+      withdraw: app.globalData.config.protocol.withdraw
+    })
+    this.Initialize()
+  },
+  Initialize(){
     var that = this;
     util.getJSON({ apiUrl: apiurl.wallet }, function (res) {
       var result = res.data.result;
       // console.log(result)
       var tab = [{ id: 0, name: '环保金', url: 'balanceIndex' },
-        { id: 1, name: '环保积分', url: 'integralIndex' },]
-      if (result.is_shop==1){
+      { id: 1, name: '环保积分', url: 'integralIndex' },]
+      if (result.is_shop == 1) {
         tab = [{ id: 0, name: '环保金', url: 'balanceIndex' },
         { id: 1, name: '环保积分', url: 'integralIndex' },
         { id: 2, name: '我的货款', url: 'settleIndex' },]
       }
       that.setData({
         tab: tab,
+        width: 100 / tab.length+"%",
         balance: result.balance,
         integral: result.integral,
         settle: result.settle,
@@ -54,10 +67,10 @@ Page({
         balance_withdraw_flow: JSON.stringify(result.balance_withdraw_flow),
         settle_withdraw_flow: JSON.stringify(result.settle_withdraw_flow),
       })
+          console.log(that.data.width)
       util.hideLoading()
       that.init()
     })
-    
   },
   init(page = 1, current) {
     var that = this;
@@ -102,7 +115,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (this.data.current !== '' && this.data.current !== undefined){
+      
+      this.Initialize()
+    }
+    
   },
 
   /**

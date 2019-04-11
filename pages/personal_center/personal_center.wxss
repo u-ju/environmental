@@ -190,12 +190,13 @@ page{
   height: 100rpx;
   padding: 30rpx 0;
   border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 .function>view:nth-of-type(3n){
   border-right: none;
 }
-.function>view:nth-of-type(n+4){
-  border-top: 1px solid #eee;
+.function>view:nth-of-type(n+7){
+  border-bottom: 1px solid transparent;
 }
 .funitem image{
   width: 60rpx;

@@ -6,12 +6,14 @@
 </wux-tabs>
 <!-- <swiper current="{{ index }}" bindchange="onSwiperChange" style='height:{{height}}rpx;'>
         <swiper-item class='zitem' wx:for="{{ tabs }}" wx:key ="index"> -->
+          <view class='list' >
             <view class='fkItem' wx:for="{{list}}"  wx:key="index" wx:for-index="listindex" bindtap='detail' data-id='{{item.order_id}}'>
               
               <view class='flex_btw'>
                 <text class='color4 size28'>订单号：{{item.order_no}}</text>
                 <text class='color2EB354 size22'>{{item.order_status_name}} </text>
               </view>
+              <view class='list1' >
               <view class='fkItem_goods  flex' wx:for="{{item.order_goods}}" wx:for-item="order_goods" wx:key="index">
                 <image src='{{order_goods.thumb}}' class='goospic' mode='aspectFill'></image>
                 <view class='fkItem_goods_ms fhItem_goods_ms'>
@@ -21,13 +23,14 @@
                 </view>
                 
               </view>
-              
+              </view>
               <view class='flex_reverse size28'>
                 <block  wx:for="{{item.button_arr}}" wx:for-item="button_arr" wx:key="index">
                     <view class='color989898 btnck'  catchtap='{{button_arr.key}}' data-listindex='{{listindex}}' data-id='{{item.order_id}}' >{{button_arr.name}}</view>
                 </block>
               </view>
             </view>
+          </view>
         <empty wx:if="{{list.length==0}}" />
         <!-- </swiper-item>
         

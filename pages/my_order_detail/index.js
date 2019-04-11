@@ -46,6 +46,11 @@ Page({
         order_logistics: result.order_logistics,
       })
       wx.hideLoading()
+    },function(e){
+      console.log(e)
+    },function(e){
+      var page = getCurrentPages.pop()
+      page.onLoad()
     })
   },
   click(e){

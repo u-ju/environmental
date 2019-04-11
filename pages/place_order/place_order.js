@@ -239,14 +239,17 @@ Page({
     var that = this //获取上下文
     var upload_picture_list = that.data.upload_picture_list
     //选择图片
+    console.log(e)
     wx.chooseImage({
       count: 9,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
+        console.log(res)
         var tempFiles = res.tempFiles
         var promiseArr = []
         for (var i in tempFiles) {
+         
           let promise = new Promise((resolve, reject) => {
             wx.getFileSystemManager().readFile({
               filePath: tempFiles[i]['path'], //选择图片返回的相对路径
@@ -263,7 +266,9 @@ Page({
         }
         Promise.all(promiseArr).then((res) => {
           //对返回的result数组进行处理
+          util.loading()
           for (var i in res){
+            
             tempFiles[i]['path_base'] = 'data:image/png;base64,' + res[i].data
             tempFiles[i]['upload_percent'] = 0
             tempFiles[i]['path_server'] = ''
@@ -272,6 +277,7 @@ Page({
           that.setData({
             upload_picture_list: upload_picture_list,
           });
+          console.log(upload_picture_list)
           that.uploadimage()
         })
       }
@@ -280,6 +286,7 @@ Page({
   //点击上传事件
   uploadimage: function () {
     var page = this
+    console.log('执行')
     var upload_picture_list = page.data.upload_picture_list
     //循环把图片上传到服务器 并显示进度       
     for (var j in upload_picture_list) {

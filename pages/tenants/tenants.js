@@ -278,6 +278,7 @@ Page({
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
+        util.loading()
         var tempFiles = res.tempFiles
         var promiseArr = []
         for (var i in tempFiles) {
@@ -349,7 +350,7 @@ Page({
         if (data.status == 200) {
           var filename = data.result.image_url //存储地址 显示
           upload_picture_list[j]['path_server'] = filename
-
+          util.hideloading()
         } else {
           upload_picture_list[j]['path_server'] = filename
         }
@@ -392,6 +393,7 @@ Page({
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
+        util.loading()
         var tempFiles = res.tempFiles
         var promiseArr = []
         for (var i in tempFiles) {

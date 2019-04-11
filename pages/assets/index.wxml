@@ -1,6 +1,8 @@
 <!--pages/assets/index.wxml-->
-<view class='flex tab'>
-  <view wx:for="{{tab}}" wx:key='index' data-index='{{index}}' bindtap='tabchange' class='{{current==index?"active":""}}'>{{item.name}}</view>
+<view class='flex_ard tab'>
+  <view class='flex'>
+    <view wx:for="{{tab}}"  wx:key='index' data-index='{{index}}' bindtap='tabchange' class='{{current==index?"active":""}}'>{{item.name}}  </view>
+  </view>
   <!-- <view>环保积分</view>
   <view>我的货款</view> -->
 </view>
