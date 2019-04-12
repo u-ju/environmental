@@ -99,7 +99,7 @@
       </view>
     </view>
   </view>
-  <view class='item  flex align_center'>
+  <view class='item  flex align_center' wx:if='{{status}}'>
     <text class='size28 color6'>审核状态</text>
     <view class='{{status==2?"colorFE2C2C":"color4FD7A3"}}'>{{status_name}}</view>
   </view>

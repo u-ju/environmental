@@ -64,10 +64,7 @@ Page({
       this.setData({
         formData: formData
       })
-      console.log(this.data.formData)
       wx.setStorageSync('formData', '')
-      console.log('--------------')
-      console.log(this.data.formData)
     }
     
     

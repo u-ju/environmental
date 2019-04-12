@@ -350,7 +350,7 @@ Page({
         if (data.status == 200) {
           var filename = data.result.image_url //存储地址 显示
           upload_picture_list[j]['path_server'] = filename
-          util.hideloading()
+          util.hideLoading()
         } else {
           upload_picture_list[j]['path_server'] = filename
         }

@@ -1,6 +1,6 @@
 
 {
-  "navigationBarTitleText": "分期产品",
+  "navigationBarTitleText": "环保金兑换产品",
   "usingComponents": {
     "dialog": "../../Components/dialog/index",
     "menu": "../../Components/menu/index",

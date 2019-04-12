@@ -73,7 +73,7 @@ swiper,swiper image{
 }
 
 .line-through{
-  margin-left: 40rpx;
+  margin-top: 8rpx;
 }
 .goods_intr1,.goods_intr2{
   padding: 20rpx 32rpx;
@@ -83,7 +83,7 @@ swiper,swiper image{
   padding: 32rpx 32rpx 32rpx 32rpx;
 }
 .colorFE2C2C{
-  margin: 20rpx 0;
+  margin: 10rpx 0 20rpx 0;
 }
 .yihid{
   width: 400rpx;

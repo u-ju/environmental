@@ -56,7 +56,7 @@ Page({
     badge:{},
     background:'',
     length:2,
-              
+    
   },
 
   /**
@@ -92,12 +92,14 @@ Page({
       if (l_one.mobile.name){
         l_one.mobile['control']['control'] = '../phone_new/phone_new'
       }
-      console.log(l_one.mobile)
+      // console.log(result.l_three.length / 3,result.l_three.length%3)
       that.setData({
         result: result,
         l_one: l_one,
         l_three: result.l_three,
         l_two: result.l_two,
+        surplus: result.l_three.length % 3,
+        surplusnum: parseInt(result.l_three.length % 3),
         // tag_list: result.tag_list,
         // badge: result.badge,
         // background: result.background
@@ -229,7 +231,7 @@ Page({
         url = url + "&" + j + "=" + e.currentTarget.dataset.attach[j]
       }
     }
-    console.log(url)
+    // console.log(url)
     wx.navigateTo({
       url: url,
       fail: function () {
