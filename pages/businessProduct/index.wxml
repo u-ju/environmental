@@ -1,0 +1,35 @@
+<!--pages/businessProduct/index.wxml-->
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}">
+    <block wx:for="{{banner}}" wx:key="index">
+      <swiper-item>
+          <image src="{{item}}" class="slide-image" mode='aspectFill' />
+      </swiper-item>
+    </block>
+</swiper>
+<view class='bor20'>
+  <view class='color6 title'>[五一]泰国-曼谷-芭提雅-沙美岛机票+当地5晚6或7日 游，2个购物店，20人精致小团。 </view>
+  <view class='flex_btw align_center'>
+    <view class='colorFE3434 size36'>￥5600</view>
+    <view class='color6'>成都出发</view>
+  </view>
+</view>
+<view class='detail'>
+  <view class='shopitem'>
+    <view class='shop flex_btw align_center'>
+      <view class='flex align_center left'>
+        <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/29/2394b94632b9a7a1e9aa0b397f5ce2c3.jpg' mode='aspectFit'></image>
+        <view>
+          <view class='hidden1'>成都青年旅行社</view>
+          <view class='color6 size26 hidden1'>机票.酒店.住宿.跟团</view>
+        </view>
+      </view>
+      <view class='iconfont icon-jiantou'></view>
+    </view>
+    <view class='xqinagqing bold size30'>详情</view>
+  </view>
+  <image class='detailpic'></image>
+</view>
+<view class='fixed flex_btw'>
+  <view class='width60'>联系电话：028-21564851               </view>
+  <view class='call'>拨打电话</view>
+</view>

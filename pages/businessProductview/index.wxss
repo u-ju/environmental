@@ -1,0 +1,26 @@
+/* pages/businessProductview/index.wxss */
+page{
+  font-size: 28rpx;
+}
+.padding32{
+  padding: 0 32rpx;
+}
+.item image{
+  width:240rpx;
+  height:160rpx;
+  margin-right: 36rpx;
+  background-color: #eee
+}
+.item{
+  padding: 30rpx 0 28rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.right1{
+  width: 404rpx;
+}
+.colorFF2D2D{
+  color: #FF2D2D;
+}
+.color4AD6A3{
+  color: #4AD6A3;
+}

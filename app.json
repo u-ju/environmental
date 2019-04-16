@@ -1,6 +1,22 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/businessProductview/index",
+    "pages/tenantsIndex/index",
+    "pages/businessProductAdd/index",
+    
+    "pages/business_details/index",
+    
+    
+    
+    "pages/businessProduct/index",
+    
+    
+    
+    
+    
+    
+    
     "pages/recruitment/index/index",
     
     "pages/lostFound/lfDetails/index",
@@ -54,7 +70,7 @@
     "pages/agent/index",
     "pages/my_release/index",
     "pages/reimbursement/index",
-    "pages/tenantsIndex/index",
+    
     "pages/neighbourhood_release/index",
     "pages/neighbourhood/neighbourhood",
     
@@ -102,7 +118,7 @@
     "pages/sorting/sorting",
     "pages/home_orders/home_orders",
     "pages/withdrawal_record/withdrawal_record",
-    
+  
     "pages/my_deposit/my_deposit",
     "pages/message/message",
     "pages/about/about",

@@ -1,8 +1,8 @@
 const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
-// var build = 99999999
-var build = 20190412
+var build = 99999999
+// var build = 20190412
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -102,7 +102,8 @@ module.exports = {
   getSync: getSync,
   putSync: putSync,
   navigateBack:navigateBack,
-  build: build
+  build: build,
+  upload_pic: upload_pic
 }
 
 /**
@@ -192,7 +193,57 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
     
   });
 }
+function upload_pic(url, that, upload_picture_list, j, suc, update) {
+  //上传返回值
+  var _this = this;
+  // console.log(upload_picture_list[j])
+  const upload_task = wx.uploadFile({
+    // 模拟https
+    url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  
+    filePath: upload_picture_list[j]['path'], //上传的文件本地地址    
+    name: 'file',
+    formData: {
+      "image": upload_picture_list[j]['path_base'],
+      'source': 'base64'
+    },
+    header: {
+      "content-type": 'application/x-www-form-urlencoded',
+      'token': _this.getToken(),
+      'channel': 'let',
+      'build': build
+    },
+    //附近数据，这里为路径     
+    success: function (res) {
+      // console.log(res)
+      var data = JSON.parse(res.data);
+      // //字符串转化为JSON  
 
+      if (data.status == 200) {
+        var filename = data.result.image_url //存储地址 显示
+        upload_picture_list[j]['path_server'] = filename
+
+      } else {
+        upload_picture_list[j]['path_server'] = filename
+      }
+
+      suc(upload_picture_list)
+       
+      
+    }
+  })
+  // 上传 进度方法
+
+  upload_task.onProgressUpdate((res) => {
+    upload_picture_list[j]['upload_percent'] = res.progress
+    update(upload_picture_list)
+      // that.setData({
+      //   upload_picture_list: upload_picture_list
+      // });
+    
+
+
+  });
+}
 // 隐藏信息框
 function hideLoading(time = 1000){
   setTimeout(function () {
@@ -324,7 +375,7 @@ function navigateBack(deltaz=1, timer=3000){
 /**
  * 用于网络 GET 请求, 标准格式: {url:api, method: GET, data: xxxx}
  */
-function getJSON(form = {}, call_success, ErrorMsg) {
+function getJSON(form = {}, call_success, warning, ErrorMsg) {
   var that = this;
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
@@ -382,12 +433,12 @@ function getJSON(form = {}, call_success, ErrorMsg) {
         }
       }
     },
-    fail: function (ErrorMsg1) {
+    fail: function (e) {
       if (ErrorMsg) {
-        ErrorMsg(ErrorMsg1)
+        ErrorMsg(e)
       }
-      console.log(ErrorMsg1.errMsg)
-      that.info_dialog(ErrorMsg1.errMsg)
+      console.log(e.errMsg)
+      that.info_dialog(e.errMsg)
     }
   });
   // wx.hideLoading();

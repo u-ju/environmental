@@ -1,0 +1,58 @@
+/* pages/businessProduct/index.wxss */
+page{
+  font-size: 28rpx;
+  color:#444;
+}
+swiper-item image,swiper{
+  width: 100%;
+  height: 525rpx;
+}
+.bor20{
+  border-bottom: 20rpx solid #EEEEEE;
+  padding: 20rpx 32rpx;
+}
+.title{
+  margin-bottom: 32rpx;
+}
+.detail{
+  
+}
+.shopitem{
+  padding: 0 32rpx;
+}
+.shop{
+  border-bottom: 1px solid #EEEEEE;
+  padding: 30rpx 0;
+}
+.shop image{
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 6rpx
+}
+.shop .left{
+  width: 600rpx;
+}
+.xqinagqing{
+  padding: 30rpx 0;
+}
+.detailpic{
+  width: 100%;
+}
+.fixed{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height:98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  width: 100%;
+}
+.call{
+  width:40%;
+  height:98rpx;
+  background:rgba(95,218,165,1);
+  color: white;
+}
+.width60{
+  width:60%;
+}

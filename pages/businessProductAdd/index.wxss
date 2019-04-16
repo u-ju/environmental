@@ -1,0 +1,33 @@
+/* pages/businessProductAdd/index.wxss */
+@import '../maintenance_worker/index';
+page{
+  color: #444444;
+  padding: 0;
+}
+.picture_item {
+  margin: 30rpx 20rpx 0 0;
+}
+.wxgitem{
+  padding-bottom: 20rpx;
+}
+.xqtu{
+  width:686rpx;
+  margin:auto;
+  padding: 40rpx 0 0 0
+}
+.picture_item .camera {
+  height: 63rpx;
+  width: 76rpx;
+}
+.click_camera{
+  background-color: #eee;
+}
+.picture_list1{
+  padding: 0 32rpx;
+}
+.lbtx{
+  padding: 32rpx 0 0 32rpx;
+}
+.size22{
+  margin-left: 32rpx;
+}

@@ -172,6 +172,9 @@ page{
 .size50{
   font-size: 50rpx;
 }
+.size60{
+  font-size: 60rpx;
+}
 .relative{
   position: relative;
 }

@@ -187,6 +187,10 @@ height: 100%;
 .width100{
   width: 400rpx;
   padding-right: 10rpx;
+  height: 144rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .zhekou{
   width: 66rpx;
@@ -273,4 +277,10 @@ height: 70rpx;
 }
 .hengnav{
   margin-top: 20rpx;
+}
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }

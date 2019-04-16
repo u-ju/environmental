@@ -23,7 +23,7 @@
   <view class='inputitem'>
     <view class='bold'>提现金额</view>
     <view class='inputmon flex_btw align_center'>
-      <text class='size72'>￥</text>
+      <text class='size60'>￥</text>
       <input bindinput='onChange' name='amount' value='{{amount}}'></input>
     </view>
   </view>

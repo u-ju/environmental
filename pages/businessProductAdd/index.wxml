@@ -1,0 +1,58 @@
+<!--pages/businessProductAdd/index.wxml-->
+<form  bindsubmit="formSubmit">
+  <view class="picture_list picture_list1">
+    <view wx:for="{{upload_picture_list}}" wx:key="index" class="picture_item">
+      <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+      <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+      <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
+      <text class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
+    </view>
+
+    <view class='picture_item'>
+      <view class="add-image click_camera flex_col align_center" bindtap='uploadpic'>
+        <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+        
+      </view>
+    </view>
+    
+  </view>
+  <view class='color898989 lbtx'>上传轮播图（宽750 × 高480）</view>
+  <view class='wxgitem flex_btw '>
+    <view class='left'>标题：</view>
+    <input name='spu_name' value='{{spu_name}}'></input>
+  </view>
+  <view class='wxgitem flex_btw '>
+    <view class='left'>价格：</view>
+    <input name='price' value='{{price}}'></input>
+  </view>
+  <view class='wxgitem flex_btw '>
+    <view class='left'>出发地：</view>
+    <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}'  bind:choosea='choosearea' />
+    <text class='iconfont icon-jiantou color898989'></text>
+  </view>
+  <!-- <view class='wxgitem flex_btw '>
+    <view class='left'>联系电话：</view>
+    <input name='phone' value='{{phone}}'></input>
+  </view> -->
+  <view class='xqtu '>
+    <view class='left1'>详情图： <text class='color898989'>（宽750 × 高自定义）</text></view>
+    <view class="picture_list">
+      <view  class="picture_item" wx:if='{{xqtu.length>0}}'>
+        <image wx:if="{{xqtu[0].upload_percent < 100}}" src="{{xqtu[0].path}}" mode="aspectFill"></image>
+        <image wx:if="{{xqtu[0].upload_percent == 100}}" src="{{xqtu[0].path_server}}" mode="aspectFill"></image>
+        <view class="upload_progress" wx:if="{{xqtu[0].upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{xqtu[0].upload_percent}}%</view>
+        <text class='del' bindtap='deleteImg1' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
+      </view>
+
+      <view class='picture_item' wx:else>
+        <view class="add-image click_camera flex_col align_center" bindtap='uploadpic1'>
+          <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+          
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <button class='btn' form-type="submit" disabled='{{post}}'>提交审核</button>
+  <view class='color898989 size22'>温馨提示：提交审核之后工作人员会在24 小时内审核完毕</view>
+</form>

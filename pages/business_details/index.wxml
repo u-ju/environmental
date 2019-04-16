@@ -1,4 +1,4 @@
-<!--pages/business_details/business_details.wxml-->
+<!--pages/business_details/index.wxml-->
 <block wx:if="{{result}}">
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}">
     <block wx:for="{{result.images}}" wx:key="index">
@@ -8,14 +8,13 @@
     </block>
 </swiper>
 <view class='con'>
-  <view class='size32 color4'>{{result.title}}</view>
-  <view class='color6'>{{result.intro}}</view>
+  <view class='size32 color4 bold'>{{result.title}}</view>
+  <view class='color6 size26'>{{result.intro}}</view>
   <view class='color9'></view>
   <!-- 装修/室内设计 -->
   <view class='flex_btw align_center big'>
     <view class='flex align_center'>
-      <!-- <image src="../../images/icon_location.png" class='location'></image> -->
-      <text class='color9'>{{result.area_name}}{{result.address}}</text>
+      <text class='color4'>{{result.area_name}}{{result.address}}</text>
     </view>
     <view class='image' bindtap='location'>
       <image src="../../images/locations.png" class='dingwei' mode='aspectFit' ></image>
@@ -23,13 +22,25 @@
   </view>
   <view class='flex_btw align_center big'>
     <view class='flex align_center'>
-      <text class='color9'>商家电话</text>
-      <text class='color9 marl'>{{result.contact}}</text>
+      <text class='color4'>商家电话</text>
+      <text class='color4 marl'>{{result.contact}}</text>
     </view>
     <view class='image'  data-phone='{{result.contact}}' bindtap='calling'>
       <image src="../../images/phones.png" class='dingwei'  mode='aspectFit'></image>
     </view>
   </view>
 </view>
-
+<view class='plan'>
+  <view class='bold color4 size30'>旅行计划</view>
+  <view class='item flex_btw' wx:for="{{4}}">
+    <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/29/2394b94632b9a7a1e9aa0b397f5ce2c3.jpg'></image>
+    <view class='right'>
+      <view class='color6 hidden3'>[五一]泰国-曼谷-芭提雅-沙美岛机票+当地5晚6或7日游，20 人精致小团</view>
+      <view class='flex_btw align_center'>
+        <view class='colorFE3434'>￥5600</view>
+        <view class='color6'>成都出发</view>
+      </view>
+    </view> 
+  </view>
+</view>
 </block>

@@ -1,5 +1,5 @@
-const basePath = 'https://wyhb.zgwyhb.com/api';
-// const basePath = 'https://wyhb.dev.zgwyhb.com/api';
+// const basePath = 'https://wyhb.zgwyhb.com/api';
+const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
 
   // GET 控制对照
@@ -225,6 +225,17 @@ const apiList = {
   shopSettled_show: basePath + '/front/shopSettled/show',
   // POST 入驻更新
   shopSettled_update: basePath + '/front/shopSettled/update',
+  // POST  
+  shopSettled_goodsStore: basePath + '/front/shopSettled/goodsStore',
+  // GET 
+  shopSettled_goodsIndex: basePath + '/front/shopSettled/goodsIndex?shop_id=',
+  // GET 
+  shopSettled_goodsShow: basePath + '/front/shopSettled/goodsShow',
+  shopSettled_goodsUpdate: basePath + '/front/shopSettled/goodsUpdate',
+  
+  // POST  
+  shopSettled_goodsDestroy: basePath + '/front/shopSettled/goodsDestroy',
+
 
   // VicinageController
   // GET 邻里守望列表

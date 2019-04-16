@@ -1,29 +1,50 @@
 <!--pages/tenantsIndex/index.wxml-->
 <view  wx:if="{{list.length>0}}">
 <!-- <block wx:for="{{9}}" wx:key="index"> -->
-<a wx:for="{{list}}" wx:key="index" wx:for-item="list">
+<view class='shop' wx:for="{{list}}" wx:key="index" wx:for-item="list">
   <view class="inner" bindtap='detail' data-id='{{list.shop_id}}'>
     <view class="cover">
       <image src="{{list.thumb}}" class="cover-img" mode='aspectFill'/>
     </view>
-    <view class='describe width100'>
-      <view class='bold color51 size26'>{{list.title}}</view>
-      <view class='color153 flex_btw '>
+    <view class='describe'>
+      <view class='flex_btw'>
+        <view class='bold color51 size28'>{{list.title}}</view>
+        <view class="renzheng" >{{list.status_name}}</view>
+      </view>
+      <view class='flex_btw color4'>
+        <view class='center czbtn' data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
+          <image src='../../images/erwm.png'></image>
+          <view> 收款码</view>
+        </view>
+        <view class='center czbtn'>
+          <navigator url='../businessProductAdd/index?id={{list.shop_id}}'>
+            <image src='../../images/addspu.png'></image>
+            <view> 添加产品</view>
+          </navigator>
+        </view>
+        <view class='center czbtn'>
+          <navigator url='../businessProductview/index?id={{list.shop_id}}'>
+            <image src='../../images/look.png'></image>
+            <view> 查看产品</view>
+          </navigator>
+        </view>
+      </view>
+      <!-- <view class='color153 flex_btw '>
         <view class='flex align_center'>
           <view class="location">
             <text class='color153 size24'>{{list.type_name}}</text>
           </view>
           <view class="renzheng" >
           {{list.status_name}}
-      </view>
+          </view>
         </view>
         <view class="phone" wx:if="{{list.gather_qrcode}}" data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
           <text class='iconfont icon-erweima'></text>
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
-</a>
+</view>
 <!-- </block> -->
   <view  class='button' bindtap='link'>商家入驻</view>
   <!-- <view wx:if="{{list[list.length-1].status==2}}" class='button' bindtap='link'>重新入驻</view> -->

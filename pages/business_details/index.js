@@ -1,4 +1,4 @@
-// pages/business_details/business_details.js
+// pages/business_details/index.js
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
@@ -14,12 +14,12 @@ Page({
     afterColor: "coral",//当前选中的指示点颜色
     interval: 5000,
     duration: 1000,
-    banner:[
+    banner: [
       { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
       { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
       { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
     ],
-    result:""
+    result: ""
   },
 
   /**
@@ -27,9 +27,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    options['t_shop_id']=1
-    if (options.t_shop_id){
-      util.getJSON({ apiUrl: apiurl.shop_show, data: { shop_id: options.t_shop_id} }, function (res) {
+    options['t_shop_id'] = 1
+    if (options.t_shop_id) {
+      util.getJSON({ apiUrl: apiurl.shop_show, data: { shop_id: options.t_shop_id } }, function (res) {
         var result = res.data.result
         that.setData({
           result: result
@@ -64,7 +64,7 @@ Page({
       }
     })
   },
-  location(){
+  location() {
     var that = this;
     var result = that.data.result;
     var data = {

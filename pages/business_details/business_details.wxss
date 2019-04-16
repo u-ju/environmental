@@ -4,7 +4,8 @@ swiper-item image,swiper{
   height: 494rpx;
 }
 .con{
-  padding: 50rpx 30rpx;
+  padding: 50rpx 30rpx 10rpx 30rpx;
+  border-bottom: 20rpx solid #EEEEEE;
 }
 .location{
   width: 22rpx;
@@ -12,8 +13,8 @@ swiper-item image,swiper{
   margin-right: 18rpx;
 }
 .dingwei{
-  width: 40rpx;
-  height: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 .size32{
   margin-bottom: 20rpx;
@@ -23,9 +24,13 @@ swiper-item image,swiper{
 }
 .big{
   padding: 28rpx 0;
-  border-top: 1px solid #E8E8E8;
+  border-top: 1px solid #eee;
 }
 
 .marl{
   margin-left: 50rpx;
+}
+.image{
+  width: 60rpx;
+  height: 42rpx;
 }

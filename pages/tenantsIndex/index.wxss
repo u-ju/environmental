@@ -1,20 +1,26 @@
 /* pages/tenantsIndex/index.wxss */
 @import '../shopping_mall/shopping_mall';
+.cover {
+  width: 160rpx;
+  height: 160rpx;
+}
 .wei{
   height: 400rpx;
   font-size: 30rpx;
   text-align: center;
   line-height: 400rpx;
 }
-.width100{
-  width: 500rpx;
+
+.shop{
+   padding:  0 32rpx;
 }
 .inner{
-  padding: 0 2%;
-  width: 96%;
+ margin-bottom: 0;
+ padding: 27rpx 0;
+  border-bottom: 1px solid #eee;
 }
 .renzheng {
-  font-size: 20rpx;
+  font-size: 28rpx;
 }
 .zzc{
   position: fixed;
@@ -57,12 +63,12 @@ margin:10rpx 0rpx 0 8rpx;
   margin: 0 10rpx 0 0 ;
 }
 .describe {
-  height: 120rpx;
-  padding: 12rpx 0;
+  height: 160rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-content: space-between;
+  width: 480rpx;
 }
 .icon-erweima{
   font-size: 40rpx;
@@ -80,4 +86,11 @@ margin:10rpx 0rpx 0 8rpx;
   text-align: center;
   line-height: 82rpx;
 
+}
+.describe .bold{
+  width: 360rpx
+}
+.czbtn image{
+  width: 60rpx;
+  height: 60rpx;
 }

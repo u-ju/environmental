@@ -1,0 +1,15 @@
+<!--pages/businessProductview/index.wxml-->
+<view class='padding32'>
+  <view wx:for='{{list}}' wx:key="index" wx:for-item='list'>
+    <view class='item flex_btw' wx:for='{{list.skus}}' wx:key="index" wx:for-item='skus'  data-spu_id='{{list.spu_id}}' bindtap='edit'>
+      <image class='' src='{{skus.thumb}}'></image>
+      <view class='right1 flex_col_1 flex_btw'>
+        <view class='color6 hidden3'>{{list.spu_name}} {{skus.sku_name}}</view>
+        <view class='flex_btw'>
+          <view class='colorFF2D2D'>￥{{skus.price}}</view>
+          <view class='color4AD6A3'>{{list.status_name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

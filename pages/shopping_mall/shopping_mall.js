@@ -240,7 +240,7 @@ Page({
   },
   detail(e){
     wx.navigateTo({
-      url: '../business_details/business_details?t_shop_id=' + e.currentTarget.id,
+      url: '../business_details/index?t_shop_id=' + e.currentTarget.id,
     })
   },
   loadMore: function () {

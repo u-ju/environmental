@@ -1,0 +1,28 @@
+/* pages/business_details/index.wxss */
+@import 'business_details.wxss';
+page{
+  font-size: 28rpx;
+}
+.plan{
+  padding: 40rpx 32rpx;
+}
+.plan .bold{
+  padding-bottom: 16rpx;
+  border-bottom: 1px solid #eee;
+}
+.plan image{
+  width:240rpx;
+  height:160rpx;
+  margin-right: 36rpx;
+}
+.plan .right{
+  width: 400rpx;
+}
+.plan .item{
+  padding: 26rpx 0;
+  border-bottom: 1px solid #eee;
+
+}
+.plan .hidden3{
+  margin-bottom: 6rpx;
+}
