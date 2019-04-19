@@ -2,21 +2,19 @@
 <import src="../../wxParse/wxParse.wxml"/>
 
 <view class='wei' wx:if="{{is_agent==0}}">
-  <view class='weizi'>你还没有成为环保大使，前往申请成为<navigator class='color5DC47A' url='../agentPay/index'>环保大使 》</navigator></view>
+  <view class='weizi'>你还没有成为环保大使，前往申请成为<text class='color5DC47A' bindtap='agentPay' >环保大使 》</text></view>
   <view class='gznr'>
   <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
-    <!-- <view>
-      <text class='size30'>具备条件： </text>
-      <text> \n 1.发展线下联盟商家。 \n 2.招贤纳士，推荐环保大使。</text>
-    </view>
-    <view>
-      <text class='size30'>工作内容：</text>
-      <text> \n 1.成为环保大使需缴纳1500元培训费用。\n 2.经过公司培训后方可发展联盟商家。</text>
-    </view>
-    <view>
-      <text class='size30'>薪资待遇：</text>
-      <text> \n  1.以业绩效果发放薪资。\n 2.月收入5000元以上需缴纳个人所得税 </text>
-    </view> -->
+    
+  </view>
+  <view class='flex align_center'>
+  <checkbox-group bindchange="checkboxChange">
+    <label class="checkbox" wx:for="{{items}}" wx:key="index">
+      <checkbox value="{{item.name}}" checked="{{item.checked}}" />
+      {{item.value}}
+    </label>
+  </checkbox-group>
+  <navigator  url='../page/index?url={{agentxy}}'>《环保履约协议》</navigator>
   </view>
 </view>
 <view  wx:elif="{{is_agent==1}}">

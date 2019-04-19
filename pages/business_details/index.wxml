@@ -11,36 +11,37 @@
   <view class='size32 color4 bold'>{{result.title}}</view>
   <view class='color6 size26'>{{result.intro}}</view>
   <view class='color9'></view>
-  <!-- 装修/室内设计 -->
-  <view class='flex_btw align_center big'>
+  <view class='flex_btw align_center big' bindtap='location'>
     <view class='flex align_center'>
       <text class='color4'>{{result.area_name}}{{result.address}}</text>
     </view>
-    <view class='image' bindtap='location'>
+    <view class='image'>
       <image src="../../images/locations.png" class='dingwei' mode='aspectFit' ></image>
     </view>
   </view>
-  <view class='flex_btw align_center big'>
+  <view class='flex_btw align_center big'  data-phone='{{result.contact}}' bindtap='calling'> 
     <view class='flex align_center'>
       <text class='color4'>商家电话</text>
       <text class='color4 marl'>{{result.contact}}</text>
     </view>
-    <view class='image'  data-phone='{{result.contact}}' bindtap='calling'>
+    <view class='image' >
       <image src="../../images/phones.png" class='dingwei'  mode='aspectFit'></image>
     </view>
   </view>
 </view>
-<view class='plan'>
-  <view class='bold color4 size30'>旅行计划</view>
-  <view class='item flex_btw' wx:for="{{4}}">
-    <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/29/2394b94632b9a7a1e9aa0b397f5ce2c3.jpg'></image>
-    <view class='right'>
-      <view class='color6 hidden3'>[五一]泰国-曼谷-芭提雅-沙美岛机票+当地5晚6或7日游，20 人精致小团</view>
-      <view class='flex_btw align_center'>
-        <view class='colorFE3434'>￥5600</view>
-        <view class='color6'>成都出发</view>
-      </view>
-    </view> 
+<view class='plan' wx:if="{{list.length>0}}">
+  <view class='bold color4 size30'>产品列表</view>
+   <view wx:for='{{list}}' wx:key="index" wx:for-item='list' data-sku_id='{{list.sku_id}}' bindtap='detail' class='item flex_btw'>
+    <!-- <view class='item flex_btw' wx:for='{{list.skus}}' wx:key="index" wx:for-item='skus'  data-spu_id='{{list.spu_id}}' bindtap='detail' > -->
+      <image  src='{{list.thumb}}'></image>
+      <view class='right flex_col_1 flex_btw'>
+        <view class='color6 hidden3'>{{list.spu_name}} {{list.sku_name}}</view>
+        <view class='flex_btw align_center'>
+          <view class='colorFE3434'>￥{{list.price}}</view>
+          <view class='color6'>{{list.area_name}}</view>
+        </view>
+      </view> 
+    <!-- </view>   -->
   </view>
 </view>
 </block>

@@ -1,5 +1,5 @@
-// const basePath = 'https://wyhb.zgwyhb.com/api';
-const basePath = 'https://wyhb.dev.zgwyhb.com/api';
+const basePath = 'https://wyhb.zgwyhb.com/api';
+// const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
 
   // GET 控制对照
@@ -175,8 +175,10 @@ const apiList = {
   shop: basePath + '/front/shop/index?type=2',
   //GET 商家详情
   shop_show: basePath + '/front/shop/show',
-  //GET 商家详情
+  
   gatherPayCreate: basePath + '/front/shop/gatherPayCreate?shop_id=',
+  shop_goodsIndex: basePath + '/front/shop/goodsIndex',
+  shop_goodsShow: basePath + '/front/shop/goodsShow?sku_id=',
   
 
   //TShopController

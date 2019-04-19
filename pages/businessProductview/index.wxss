@@ -24,3 +24,8 @@ page{
 .color4AD6A3{
   color: #4AD6A3;
 }
+.nodata{
+  height: 400rpx;
+  line-height: 400rpx;
+  text-align: center;
+}

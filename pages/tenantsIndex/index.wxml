@@ -16,17 +16,17 @@
           <image src='../../images/erwm.png'></image>
           <view> 收款码</view>
         </view>
-        <view class='center czbtn'>
-          <navigator url='../businessProductAdd/index?id={{list.shop_id}}'>
+        <view class='center czbtn' catchtap='linke' data-url='../businessProductAdd/index?id={{list.shop_id}}'>
+          <!-- <navigator url='../businessProductAdd/index?id={{list.shop_id}}'> -->
             <image src='../../images/addspu.png'></image>
             <view> 添加产品</view>
-          </navigator>
+          <!-- </navigator> -->
         </view>
-        <view class='center czbtn'>
-          <navigator url='../businessProductview/index?id={{list.shop_id}}'>
+        <view class='center czbtn' catchtap='linke' data-url='../businessProductview/index?id={{list.shop_id}}'>
+          <!-- <navigator url='../businessProductview/index?id={{list.shop_id}}'> -->
             <image src='../../images/look.png'></image>
             <view> 查看产品</view>
-          </navigator>
+          <!-- </navigator> -->
         </view>
       </view>
       <!-- <view class='color153 flex_btw '>

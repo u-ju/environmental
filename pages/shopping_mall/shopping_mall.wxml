@@ -65,13 +65,15 @@
               <empty  />
             </view>
       </view>
-      <swiper wx:else indicator-dots='true' class="detail-container" bindchange="change" data-index="{{index}}" current="{{indexSize}}"
+      <!-- <swiper wx:else indicator-dots='true' class="detail-container" bindchange="change" data-index="{{index}}" current="{{indexSize}}"
         indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" duration="{{duration}}">
-        <swiper-item wx:for="{{shop_cate}}" wx:for-item="item" wx:key="{{item.id}}">
+        <swiper-item wx:for="{{shop_cate}}" wx:for-item="item" wx:key="{{item.id}}"> -->
           <!-- <view class="header center" hidden="{{hideHeader}}">
             <view>下拉刷新中……</view>
             <view>{{refreshTime}}</view>
           </view> -->
+        <view wx:else class="detail-container">
+          <view wx:for="{{shop_cate}}" wx:for-item="item" wx:key="{{item.id}}" hidden='{{index!=indexSize}}'>
           <scroll-view scroll-y="true" class=" market-scroll-list" bindscrolltoupper="refresh" bindscrolltolower="loadMore">
             <view class='hengnav' wx:if="{{erji.length>0}}">
               <scroll-view scroll-x='true' class="scroll-header">
@@ -119,9 +121,11 @@
               <empty  />
             </view>
           </scroll-view>
-        </swiper-item>
+          </view>
+        </view>
+        <!-- </swiper-item>
 
-      </swiper>
+      </swiper> -->
 
     </view>
     </block>

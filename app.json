@@ -1,22 +1,16 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/businessOrder/index",
+    
+    "pages/businessProduct/index",
+    "pages/business_details/index",
+    "pages/unopen/index",
+    
     "pages/businessProductview/index",
     "pages/tenantsIndex/index",
     "pages/businessProductAdd/index",
-    
-    "pages/business_details/index",
-    
-    
-    
-    "pages/businessProduct/index",
-    
-    
-    
-    
-    
-    
-    
+    "pages/agent/index",
     "pages/recruitment/index/index",
     
     "pages/lostFound/lfDetails/index",
@@ -67,7 +61,7 @@
     "pages/address_order/index",
     "pages/installment/installment",
     "pages/my_order_detail/index",
-    "pages/agent/index",
+    
     "pages/my_release/index",
     "pages/reimbursement/index",
     

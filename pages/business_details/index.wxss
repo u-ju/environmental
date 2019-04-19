@@ -17,6 +17,7 @@ page{
 }
 .plan .right{
   width: 400rpx;
+  height:160rpx;
 }
 .plan .item{
   padding: 26rpx 0;

@@ -3,6 +3,7 @@ page{
   background-color: #fff;
   padding-bottom: 140rpx;
   border: 0;
+  font-family:PingFang-SC-Regular;
 }
 .bg{
   background-color: white;
@@ -23,13 +24,22 @@ page{
   background-color: white
 }
 .index_theme{
-  width: 290rpx;
-  height: 102rpx;
+  width: 300rpx;
+  height: 118rpx;
   /* background-color: #FBECF2; */
   margin-top: 20rpx;
   text-align: center;
   padding: 0 20rpx;
   border-radius: 10rpx;
+  position: relative;
+  color: #f7f7f7;
+}
+.index_themepic{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0
 }
 /* .theme>view:nth-of-type(2){
   background-color: #F6F3E0;
@@ -40,11 +50,11 @@ page{
 .theme>view:nth-of-type(4){
   background-color: #9AE6F7;
 } */
-.index_theme image{
+/* .index_theme image{
   width: 76rpx;
   height: 56rpx;
   margin-right: 20rpx;
-}
+} */
 .red_cricle{
   width: 12rpx;
   height: 12rpx;
@@ -58,11 +68,11 @@ page{
   padding-bottom: 20rpx;
 }
 .index_modular_cri{
-  width: 110rpx;
-  height: 110rpx;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
   margin: 26rpx 0 14rpx 0;
-  background-color: rgb(239, 224, 224);
+  /* background-color: rgb(239, 224, 224); */
   overflow: hidden;
 }
 .index_modular_cri image,.goods_cri image{
@@ -234,4 +244,11 @@ swiper {
 }
 .theme{
   margin-bottom: 20rpx;
+}
+.logo{
+  width: 112rpx;
+  height: 103rpx;
+}
+.marginr20{
+  margin: 0 20rpx;
 }

@@ -22,16 +22,16 @@ top: 100rpx;
 overflow: hidden;
 }
 .menu-container {
-width: 146rpx;
-flex: 0 0 146rpx;
-background: #F7F7F7;
+  width: 20%;
+  flex: 0 0 146rpx;
+  background: #F7F7F7;
 }
 .detail-container {
+  width: 80%;
 flex: 1;
 height: 100%;
 background-color: white;
 display: block;
-/* width: 500rpx */
 }
 
 .scroll-view {

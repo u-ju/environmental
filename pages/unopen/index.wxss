@@ -1,0 +1,15 @@
+/* pages/unopen/index.wxss */
+.pic image{
+  width: 280rpx;
+  height: 280rpx;
+}
+.pic{
+  padding: 150rpx 0 60rpx 0;
+  text-align: center;
+}
+.unopen{
+  /* height: 400rpx;
+  line-height: 400rpx; */
+  text-align: center;
+  font-size: 28rpx;
+}

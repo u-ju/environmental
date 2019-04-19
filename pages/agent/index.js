@@ -18,7 +18,11 @@ Page({
     ],
     value: 'hhh',
     fgColor: 'black',
-    is_agent:6
+    is_agent:6,
+    items: [
+      { name: 1, value: '同意', checked: true },
+    ],
+    choose: ['1'],
   },
 
   /**
@@ -28,7 +32,9 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    
+    this.setData({
+      agentxy: app.globalData.config.protocol.agent
+    })
   },
   init() {
     var that = this;
@@ -49,7 +55,12 @@ Page({
     })
     console.log('radio发生change事件，携带value值为：', e.detail.value)
   },
-  
+  checkboxChange(e) {
+    console.log(e.detail.value)
+    this.setData({
+      choose: e.detail.value
+    })
+  },
   sharerSet() {
     this.setData({
       visible1: true,
@@ -107,6 +118,15 @@ Page({
         console.log(result)
         that.init()
       })
+  },
+  agentPay(){
+    if (this.data.choose.length < 1) {
+      return util.alert("请勾选环保履约协议")
+
+    }
+    wx.navigateTo({
+      url: '../agentPay/index',
+    })
   },
   previewImage() {
     // 在自定义组件下，当前组件实例的 this，以操作组件内 <canvas> 组件

@@ -4,21 +4,19 @@
 <import src="../../Components/tab-bar/tab-bar.wxml"/>
 <template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
 <view class='indextop flex_btw align_center'>
+  <image class='logo' src='{{config.logo}}'></image>
   <view class='weather flex align_center'>
     <image src='{{futureWeather[0].dayPictureUrl}}' class='weather_pic' mode='aspectFit'></image>
-    <view class=''>
-      <view>
-        <text class='size22 marginr10'>{{weatherData.currentCity}}</text>
-        <text class='size20'>{{weatherData.weatherDesc}}</text>
-      </view>
-      <view class='size20'>{{weatherData.temperature}}</view>
-    </view>
+    <text class='size28'>{{weatherData.currentCity}}</text>
+    <text class='size28 marginr20'>{{weatherData.weatherDesc}}</text>
+    <view class='size28'>{{weatherData.temperature}}</view>
+   
   </view>
-  <view class='search flex_btw align_center' bindtap='search'> 
+  <!-- <view class='search flex_btw align_center' bindtap='search'> 
     
     <input  disabled='disabled' value='{{search}}' name='search' ></input>
     <image src='../../images/video_cz.png'  class='search_pic' ></image>
-  </view>
+  </view> -->
 </view>
 
 
@@ -38,6 +36,7 @@
   <view class='flex_btw'>
     <block wx:for="{{tag}}" wx:key="index">
       <view class='index_modular center' bindtap='link' data-link='{{item.control}}' data-children="{{item.children}}">
+        
         <view class='index_modular_cri'>
           <image  mode='aspectFill' src='{{item.icon}}'></image>
         </view>
@@ -49,12 +48,11 @@
 
   <view class='flex_btw theme wrap'>
     <block wx:for="{{block}}" wx:key="index">
-      <view class='index_theme flex align_center' bindtap='link' data-link='{{item.control}}' style='background-color:{{item.color}}' >
-        <image  mode='aspectFill' src='{{item.icon}}'></image>
+      <view class='index_theme flex align_center' bindtap='link' data-link='{{item.control}}' data-open='1'  >
+        <image class='index_themepic' src='{{item.background}}'></image>
+        <!-- <image  mode='aspectFill' src='{{item.icon}}'></image> -->
         <view class='flex_col' huhu="{{index}}">
-          <view class='size26 relative'>{{item.name}}
-          </view>
-          <!-- <view class='size22'>{{item.intro}}</view> -->
+          <view class='size26 relative'>{{item.name}}</view>
         </view>
       </view>
     </block>
@@ -67,7 +65,7 @@
   <image src="{{nper.image}}" />
 </view> -->
 <view class='bg marginfff'>
-  <view class="container over_hid flex_btw twobr">
+  <view class="container over_hid flex_btw twobr" wx:if="{{user.length>0}}" >
       <view class='index_putin border_right left' wx:for="{{user}}" wx:key ="index">
         <view class='size28 color3 flex'>
           <text >{{item.name}}</text>

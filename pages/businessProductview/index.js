@@ -9,7 +9,8 @@ Page({
    */
   data: {
     shop_id:'',
-    page:''
+    page:'',
+    list:[0]
   },
 
   /**

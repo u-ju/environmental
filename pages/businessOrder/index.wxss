@@ -1,0 +1,66 @@
+/* pages/businessOrder/index.wxss */
+page{
+  color: #444;
+  font-size: 28rpx;
+}
+.goods{
+  padding: 18rpx 0 38rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.goods image{
+  width: 240rpx;
+  height: 160rpx;
+  margin-right: 36rpx;
+}
+.goods .right{
+  width: 400rpx;
+}
+.ordert{
+  padding: 0 32rpx ;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.ordert .area{
+  padding: 28rpx 0;
+}
+.mes{
+  padding: 0 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.mes .item,.mesper .item{
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 100%;
+  border-bottom: 1px solid #EEEEEE;
+}
+.marginr50{
+  width: 140rpx;
+  display: inline-block;
+}
+.mes>view:last-of-type{
+  border: none;
+}
+.mesper{
+  padding: 0 32rpx;
+}
+.mesper input{
+  height: 90rpx;
+  width: 520rpx;
+}
+.fixed1{
+  position: fixed;
+  width:100%;
+  height:98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+  z-index: 99;
+  bottom: 0;
+  left: 0;
+}
+.call{
+  width:40%;
+  background:rgba(95,218,165,1);
+}
+.width60{
+  width: 60%;
+}

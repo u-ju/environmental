@@ -74,7 +74,7 @@ button{
   box-shadow:0px 4rpx 14rpx 1px rgba(191,189,189,0.52);
   border-radius:15rpx;
   color: #444;
-  margin: auto;
+  margin: auto auto 40rpx auto;
   
 }
 .gznr>view{
@@ -87,4 +87,31 @@ button{
 }
 .gznr .size30{
   margin-bottom: 10rpx;
+}
+
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+  border-color: #4AD6A3;
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #4AD6A3;
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+.checkbox{
+  display: flex;
+  align-items: center;
 }

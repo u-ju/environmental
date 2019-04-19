@@ -1,35 +1,84 @@
 <!--pages/businessProduct/index.wxml-->
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}">
-    <block wx:for="{{banner}}" wx:key="index">
+    <block wx:for="{{result.images}}" wx:key="index">
       <swiper-item>
           <image src="{{item}}" class="slide-image" mode='aspectFill' />
       </swiper-item>
     </block>
 </swiper>
 <view class='bor20'>
-  <view class='color6 title'>[五一]泰国-曼谷-芭提雅-沙美岛机票+当地5晚6或7日 游，2个购物店，20人精致小团。 </view>
+  <view class='color6 title'>{{result.spu_name}} {{result.sku_name}}</view>
   <view class='flex_btw align_center'>
-    <view class='colorFE3434 size36'>￥5600</view>
-    <view class='color6'>成都出发</view>
+    <view class='colorFE3434 size36'>￥{{result.price}}</view>
+    <view class='color6'>{{result.area_name}}</view>
   </view>
 </view>
-<view class='detail'>
+<!-- <view class='calendar flex_btw align_center'>
+  <view class='flex align_center left'>
+    <image src='../../images/calendar.png' mode='aspectFit'></image>
+    <view>选择日期</view>
+  </view>
+  <view class='iconfont icon-jiantou color9'></view>
+</view> -->
+<view class='detail' bindtap='detail' data-id='{{result.shop_info.shop_id}}'> 
   <view class='shopitem'>
     <view class='shop flex_btw align_center'>
       <view class='flex align_center left'>
-        <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/29/2394b94632b9a7a1e9aa0b397f5ce2c3.jpg' mode='aspectFit'></image>
-        <view>
-          <view class='hidden1'>成都青年旅行社</view>
-          <view class='color6 size26 hidden1'>机票.酒店.住宿.跟团</view>
+        <image src='{{result.shop_info.thumb}}' mode='aspectFit'></image>
+        <view class='flex_col flex_btw shop_info'> 
+          <view class='hidden1'>{{result.shop_info.title}}</view>
+          <view class='color6 size26 hidden1'>{{result.shop_info.intro}}</view>
         </view>
       </view>
-      <view class='iconfont icon-jiantou'></view>
+      <view class='iconfont icon-jiantou color9'></view>
     </view>
     <view class='xqinagqing bold size30'>详情</view>
   </view>
-  <image class='detailpic'></image>
+  <image class='detailpic' src='{{result.spu_intro}}'></image>
 </view>
-<view class='fixed flex_btw'>
-  <view class='width60'>联系电话：028-21564851               </view>
-  <view class='call'>拨打电话</view>
+<!-- <view class='fixed  size32 center'>
+立即预定
+</view> -->
+<view class='fixed1 flex  size32 center'>
+  <view class='width60'>联系电话：{{result.shop_info.contact}}</view>
+  <view class='call' bindtap='contact' data-contact='{{result.shop_info.contact}}'>拨打电话</view>
 </view>
+<view class='heigth100'></view>
+<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
+  <view class='choosedata'>
+      <view class='title center '> 
+        <text>选择出行日期</text>
+        <image src='../../images/ch_del.png' class='ch_del'></image>
+        <image src='../../images/ch_true.png' class='ch_true'></image>
+      </view>
+    
+    <view class='ceshi_swiper flex align_center'>
+      <view class='ceshi_next' bindtap='prevImg'>
+        <text class='size40 iconfont icon-jiantou'></text>
+      </view>
+      <view class='dataItem'>
+        <scroll-view scroll-x="true" class="scroll-view " scroll-into-view="head-{{current}}">
+          <block wx:for="{{date_options}}" wx:for-item="item" wx:key="index" id="head-{{index}}">
+            <view class="date center {{current == index?'active':''}}"   bindtap="choosecurrent" data-index="{{index}}">
+              <text>{{item.name}} \n</text>
+              <text>{{item.week}}</text>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+      <view class='ceshi_prew' bindtap='nextImg'>
+        <text class='size40 iconfont icon-jiantou'></text>
+      </view>
+    </view>
+    <view class='flex_btw align_center buynum'>
+      <text class='color898989 size28'>选择人数</text>
+      <!-- <wux-input-number wux-sub-class="sub" bind:change="onChange" default-value="1" min="{{ 1 }}" disabled="{{ false }}" wux-input-class="input" wux-add-class="add" slot="footer" color="656565" /> -->
+      <view class='stepper'>
+        <text class='{{minusStatus}}' type='number'  bindtap='bindMinus'>-</text>
+        <input bindinput='bindManual' value='{{num}}'></input>
+        <text bindtap='bindPlus'>+</text>
+      </view>
+    </view>
+    <view class='submitButton'>确定</view>
+  </view>
+</wux-popup>

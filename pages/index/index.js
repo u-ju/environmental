@@ -115,7 +115,14 @@ Page({
       util.getJSON({ apiUrl: apiurl.config }, function (res) {
         var result = res.data.result;
         getApp().globalData.config = result;
-        
+        that.setData({
+          config: res.data.result
+        })
+      })
+      
+    }else{
+      this.setData({
+        config: app.globalData.config
       })
     }
   },
@@ -157,9 +164,16 @@ Page({
   },
   link(e){
     
-    
+    // console.log(e.currentTarget.dataset.link)
     if (!e.currentTarget.dataset.link||JSON.stringify(e.currentTarget.dataset.link) == "{}"){
-      return false
+      if (e.currentTarget.dataset.open){
+        return wx.navigateTo({
+          url: '../unopen/index',
+        })
+      }else{
+        return false
+      }
+      
     }
     var url = e.currentTarget.dataset.link.control
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {

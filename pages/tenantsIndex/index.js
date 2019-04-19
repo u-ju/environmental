@@ -48,6 +48,11 @@ Page({
     }
     
   },
+  linke(e){
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url,
+    })
+  },
   open3(e) {
     this.setData({
       visible3: true,

@@ -1,5 +1,5 @@
 <!--pages/businessProductview/index.wxml-->
-<view class='padding32'>
+<view class='padding32' wx:if="{{list.length>0}}">
   <view wx:for='{{list}}' wx:key="index" wx:for-item='list'>
     <view class='item flex_btw' wx:for='{{list.skus}}' wx:key="index" wx:for-item='skus'  data-spu_id='{{list.spu_id}}' bindtap='edit'>
       <image class='' src='{{skus.thumb}}'></image>
@@ -12,4 +12,6 @@
       </view>
     </view>
   </view>
+  
 </view>
+<view wx:else class='nodata'>暂无数据</view>

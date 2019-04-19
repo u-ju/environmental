@@ -27,7 +27,7 @@
   </view>
   <view class='wxgitem flex_btw '>
     <view class='left'>出发地：</view>
-    <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}'  bind:choosea='choosearea' />
+    <area title='选择区域' ban='city' areaSelectedStr='{{areaSelectedStr}}'  bind:choosea='choosearea' />
     <text class='iconfont icon-jiantou color898989'></text>
   </view>
   <!-- <view class='wxgitem flex_btw '>

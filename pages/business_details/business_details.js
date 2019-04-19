@@ -27,7 +27,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    options['t_shop_id']=1
     if (options.t_shop_id){
       util.getJSON({ apiUrl: apiurl.shop_show, data: { shop_id: options.t_shop_id} }, function (res) {
         var result = res.data.result
