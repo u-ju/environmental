@@ -1,0 +1,33 @@
+/* pages/businessinforcheck/index.wxss */
+page{
+  font-size: 28rpx;
+  color: #444;
+}
+.choose{
+  width: 46rpx;
+  height: 46rpx;
+  margin-right: 38rpx;
+}
+.edit,.add{
+  width: 44rpx;
+  height: 44rpx;
+}
+.item{
+  padding: 30rpx 0;
+  width: 686rpx;
+  margin: auto;
+  border-bottom: 1px solid #eee;
+}
+.name{
+  margin-bottom: 28rpx;
+}
+.mes{
+  border-bottom: 20rpx solid #eee;
+  margin-bottom: 30rpx;
+}
+.mes>view{
+  border: none
+}
+.add{
+  margin-right: 9rpx;
+}

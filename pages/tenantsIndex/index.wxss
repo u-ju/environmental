@@ -4,12 +4,7 @@
   width: 160rpx;
   height: 160rpx;
 }
-.wei{
-  height: 400rpx;
-  font-size: 30rpx;
-  text-align: center;
-  line-height: 400rpx;
-}
+
 
 .shop{
    padding:  0 32rpx;
@@ -85,7 +80,7 @@ margin:10rpx 0rpx 0 8rpx;
   color: white;
   text-align: center;
   line-height: 82rpx;
-
+  font-size: 30rpx;
 }
 .describe .bold{
   width: 360rpx
@@ -93,4 +88,15 @@ margin:10rpx 0rpx 0 8rpx;
 .czbtn image{
   width: 60rpx;
   height: 60rpx;
+}
+.weipic{
+  width: 530rpx;
+  height: 300rpx;
+  margin: 100rpx auto 80rpx auto;
+}
+.wei{
+  /* height: 400rpx; */
+  font-size: 30rpx;
+  text-align: center;
+  /* line-height: 400rpx; */
 }

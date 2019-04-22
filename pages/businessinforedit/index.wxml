@@ -1,0 +1,6 @@
+<!--pages/businessinforedit/index.wxml-->
+<view class='item flex'>
+  <view class='left1'>中文姓名</view>
+  <input class='right1' placeholder='与证件姓名一致' placeholder-class='colorD1D1D1'></input>
+</view>
+<view class='submitButton'>确定</view>

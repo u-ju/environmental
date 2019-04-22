@@ -10,7 +10,8 @@ Page({
   data: {
     value: '',
     fgColor: 'black',
-    visible3:false
+    visible3:false,
+    list:[0]
   },
 
   /**

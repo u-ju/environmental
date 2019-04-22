@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/businessinforcheck/index",
+    "pages/businessinforedit/index",
     "pages/businessOrder/index",
     
     "pages/businessProduct/index",
@@ -133,7 +135,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "奥特利环保",
+    "navigationBarTitleText": "啄木鸟环保",
     "navigationBarTextStyle": "black"
   },
   "networkTimeout": {

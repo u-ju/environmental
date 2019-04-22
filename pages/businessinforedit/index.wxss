@@ -1,0 +1,26 @@
+/* pages/businessinforedit/index.wxss */
+page{
+  font-size: 28rpx;
+  color: #444;
+}
+.item{
+  height: 96rpx;
+  border-bottom: 1px solid #eee;
+  width: 686rpx;
+  margin: auto;
+  line-height: 96rpx;
+}
+.right1{
+   height: 96rpx;
+   width: 500rpx;
+}
+.left1{
+  width: 186rpx;
+}
+.colorD1D1D1{
+  color: #D1D1D1
+}
+.submitButton{
+  border-radius:10rpx;
+  margin-top: 60rpx;
+}

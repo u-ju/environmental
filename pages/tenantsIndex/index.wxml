@@ -50,7 +50,8 @@
   <!-- <view wx:if="{{list[list.length-1].status==2}}" class='button' bindtap='link'>重新入驻</view> -->
 </view>
 <view wx:elif="{{list.length==0}}" class='wei'>
-  你还没有入驻，前往 <text class='color5DC47A' bindtap='link'>申请入驻>></text>
+  <image src='../../images/wei.png' class='weipic'></image>
+  <view>您还没有入驻哦！前往 <text class='color5DC47A' bindtap='link'>《申请入驻》</text></view>
 </view>
 <!-- <view></view>
 <view class='zzc_con' wx:if="{{showmodel}}">

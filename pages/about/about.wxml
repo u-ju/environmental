@@ -5,8 +5,8 @@
   </block>
 </view>
 <view class='swiper_con' wx:if ="{{currentData==0}}">
-  <view>奥特利环保科技有限公司成立于2017年8月8号，注册资金一亿元人民币，是中国的一家高科技公司。</view>
-  <view class='mar'>奥特利通过大数据、人工智能和物联网等先进科技，实现对生活垃圾前端分类回收、中端统一运输、末端集中处理的“物联网+智能回收”新模式。并打通线上线下回收行业生态圈，有效的将广大群众，废品回收商、再生资源产业、垃圾处理事业单位等有机整合，打造一套完整的废品回收生态链，极大地减少填埋焚烧垃圾量，解决垃圾回收最后一公里的难题。</view>
+  <view>啄木鸟环保科技有限公司成立于2017年8月8号，注册资金一亿元人民币，是中国的一家高科技公司。</view>
+  <view class='mar'>啄木鸟通过大数据、人工智能和物联网等先进科技，实现对生活垃圾前端分类回收、中端统一运输、末端集中处理的“物联网+智能回收”新模式。并打通线上线下回收行业生态圈，有效的将广大群众，废品回收商、再生资源产业、垃圾处理事业单位等有机整合，打造一套完整的废品回收生态链，极大地减少填埋焚烧垃圾量，解决垃圾回收最后一公里的难题。</view>
   <view class='size32 color4 bold center'>发展历程</view>
 
 <view class='g_con'>
@@ -22,7 +22,7 @@
       </view>
 
       <view class='expressRecord-text'>
-        <view class='expressRecord-status-address'>奥特利环保赞助和支持第五届环卫工人运动会</view>
+        <view class='expressRecord-status-address'>啄木鸟环保赞助和支持第五届环卫工人运动会</view>
       </view>
       <view class='expressRecord-date'>
         <view class='expressRecord-date-text'>
@@ -42,7 +42,7 @@
         <view class='online-bottom'></view>
       </view>
       <view class='expressRecord-text'>
-         <view class='expressRecord-status-address'>奥特利环保赞助和支持第五届环卫工人运动会奥特利环保入选商务部再生资源创新回收模式案例</view>
+         <view class='expressRecord-status-address'>啄木鸟环保赞助和支持第五届环卫工人运动会啄木鸟环保入选商务部再生资源创新回收模式案例</view>
       </view>
       <view class='expressRecord-date'>
         <view class='expressRecord-date-text'>
@@ -61,7 +61,7 @@
         <view class='online-bottom'></view>
       </view>
       <view class='expressRecord-text'>
-         <view class='expressRecord-status-address'>奥特利环保赞助和支持第五届环卫工人运动会</view>
+         <view class='expressRecord-status-address'>啄木鸟环保赞助和支持第五届环卫工人运动会</view>
       </view>
       <view class='expressRecord-date'>
         <view class='expressRecord-date-text'>
@@ -82,7 +82,7 @@
         <view class='online-bottom-start'></view>
       </view>
       <view class='expressRecord-text'>
-         <view class='expressRecord-status-address'>奥特利环保赞助和支持第五届环卫工人运动会</view>
+         <view class='expressRecord-status-address'>啄木鸟环保赞助和支持第五届环卫工人运动会</view>
       </view>
       <view class='expressRecord-date'>
         <view class='expressRecord-date-text'>

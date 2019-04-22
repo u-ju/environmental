@@ -1,29 +1,18 @@
-// pages/share/share.js
-const app = getApp()
-var util = require('../../utils/util.js');
-var apiurl = require('../../utils/api.js');
+// pages/businessinforedit/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    result:{}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.loading()
-    var that = this;
-    util.getJSON({ apiUrl: apiurl.share}, function (res) {
-      var result = res.data.result
-      that.setData({
-        result: result
-      })
-      util.hideLoading()
-    })
+
   },
 
   /**
@@ -73,16 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-    var that = this;
-
-    // var userId = 'puju';
-
-    return {
-      title: '啄木鸟环保',
-      path: '/pages/index/index?share_gene=' + that.result.share_gene, //这里拼接需要携带的参数
-      success: function (res) {
-        console.log("转发成功" + res);
-      }
-    }
   }
 })

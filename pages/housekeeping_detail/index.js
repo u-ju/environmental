@@ -83,7 +83,7 @@ Page({
   onShareAppMessage: function (e) {
 
     return {
-      title: '奥特利环保',
+      title: '啄木鸟环保',
       path: '/pages/housekeeping_detail/index?id=' + that.data.id + "&pjurl='../housekeeping_detail/index?id='" + that.data.id,
       success: function (res) {
         // 转发成功

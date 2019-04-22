@@ -238,7 +238,7 @@ Page({
   onShareAppMessage: function (e) {
     
     return {
-      title: '奥特利环保',
+      title: '啄木鸟环保',
       path: '/pages/video_detail/index?id=' + that.data.video_id + "&pjurl='../video_detail/index?id='" + that.data.video_id ,
       success: function (res) {
         // 转发成功

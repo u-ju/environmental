@@ -41,7 +41,7 @@
       <!-- 视频播放层 -->
       <video src="{{item.content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls></video>
       <view class='video_btm flex_btw align_center'>
-        <text class='size20 color6'>奥特利环保</text>
+        <text class='size20 color6'>啄木鸟环保</text>
         <view  class='flex align_center'>
           <view class='flex align_center dj_item' bindtap='like' data-id='{{item.video_id}}' data-praise='{{item.praise}}' data-index='{{index}}'>
             <image class="image" wx:if="{{item.praise==0}}" src="../../images/video_z1.png"  mode='aspectFit'></image>

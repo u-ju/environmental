@@ -1,0 +1,10 @@
+.null{
+  text-align: center;
+}
+.pic{
+  margin: 100rpx auto 80rpx auto;
+}
+image{
+  width: 534rpx;
+  height: 300rpx;
+}

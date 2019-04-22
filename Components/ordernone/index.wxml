@@ -1,0 +1,7 @@
+
+<view class="null center">
+  <view class='pic'>
+    <image src='../../images/orderno.png'></image>
+  </view>
+  <view class='size30 color4'>您还没有订单哦</view>
+</view>

@@ -36,7 +36,7 @@
   </view> -->
   <view class='video_btm flex align_center'>
     <image src='../../images/logo.png' class='head_video'></image>
-    <text class='size36 color4'>奥特利环保</text>
+    <text class='size36 color4'>啄木鸟环保</text>
   </view>
 </view>
 <!-- <view class='xian'></view> -->

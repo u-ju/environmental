@@ -163,7 +163,7 @@ Page({
       share_zzc: !this.data.share_zzc
     })
     return {
-      title: '奥特利环保',
+      title: '啄木鸟环保',
       path: '/pages/neighbourhood_detail/neighbourhood_detail?id=' + this.data.vicinage_id + "&pjurl='../neighbourhood_detail/neighbourhood_detail?id='" + this.data.vicinage_id,
       success: function (res) {
         // 转发成功

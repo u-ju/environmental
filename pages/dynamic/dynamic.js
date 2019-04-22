@@ -252,7 +252,7 @@ Page({
       share_zzc: !this.data.share_zzc
     })
     return {
-      title: '奥特利环保',
+      title: '啄木鸟环保',
       path: '/pages/dynamic/dynamic?id=' + this.data.news_id + "&pjurl='../dynamic/dynamic?id='" + this.data.news_id,
       // imageUrl: 'https://......./img/groupshare.png',  //用户分享出去的自定义图片大小为5:4,
       success: function (res) {

@@ -5,7 +5,7 @@
   "usingComponents": {
     "wux-popup": "../../Components/popup/index",
     "wux-tabs": "../../Components/tabs/index",
-    "empty": "../../Components/empty/index",
+    "empty": "../../Components/ordernone/index",
     "wux-tab": "../../Components/tab/index"
   }
 }

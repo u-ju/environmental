@@ -23,7 +23,7 @@
   </view>
   <view class='wxgitem flex_btw '>
     <view class='left'>价格：</view>
-    <input name='price' value='{{price}}'></input>
+    <input name='price' type='text' value='{{price}}'></input>
   </view>
   <view class='wxgitem flex_btw '>
     <view class='left'>出发地：</view>
