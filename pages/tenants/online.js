@@ -1,4 +1,4 @@
-// pages/tenants/tenants.js
+// pages/tenants/online.js
 var QQMapWX = require('../../utils//qqmap-wx-jssdk.min.js');
 
 // 实例化API核心类
@@ -15,7 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    post:false,
+    post: false,
     options2: [
       {
         value: 'beijing',
@@ -33,43 +33,43 @@ Page({
       { name: '便民服务', id: 1 },
       { name: '积分商城', id: 2 },
     ],
-    tshop_cate:[],
-    shop_cate:[],
-    type:'',
-    image:[
+    tshop_cate: [],
+    shop_cate: [],
+    type: '',
+    image: [
       { title: '营业执照', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
-      { title: '店招上传', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1},
+      { title: '店招上传', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
     ],
-    upload_picture_list:[],
+    upload_picture_list: [],
     cate_id: '',
     // 地址
-    
-    result:[],
+
+    result: [],
     disabled1: false,
-    shop_id:'',
-    latitude:'',
-    longitude:'',
-    contact:'',
-    title:'',
+    shop_id: '',
+    latitude: '',
+    longitude: '',
+    contact: '',
+    title: '',
     address: '',
     intro: '',
-    show:false,
-    choosed:1,
-    shop_settled:'',
-    suggestion:[],
-    konwname:'',
-    choosead:true
+    show: false,
+    choosed: 1,
+    shop_settled: '',
+    suggestion: [],
+    konwname: '',
+    choosead: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  show(){
+  show() {
     this.setData({
       show: true
     })
   },
-  unshow(){
+  unshow() {
     this.setData({
       show: false
     })
@@ -85,127 +85,127 @@ Page({
     this.setData({ title1: e.detail.options.map((n) => n.label).join('-'), cate_id: e.detail.options[e.detail.options.length - 1].id })
     // console.log('onChange1', e.detail)
     console.log(e.detail.options[e.detail.options.length - 1].id)
-    wx.setStorageSync("cate_idt", e.detail.options[e.detail.options.length-1].id)
-    wx.setStorageSync("title1t", e.detail.options.map((n) => n.label).join('-'))
+    wx.setStorageSync("cate_ido", e.detail.options[e.detail.options.length - 1].id)
+    wx.setStorageSync("title1o", e.detail.options.map((n) => n.label).join('-'))
   },
   onLoad: function (options) {
     var that = this;
-    var result = app.globalData.config
-    var shop_cate = result.shop_cate
-      for (var i in shop_cate) {
-        shop_cate[i]["value"] = shop_cate[i]["id"]
-        shop_cate[i]["label"] = shop_cate[i]["name"]
-        if (shop_cate[i]["children"] && shop_cate[i]["children"].length > 0) {
-          for (var a in shop_cate[i].children) {
-            shop_cate[i]["children"][a]["value"] = shop_cate[i]["children"][a]["id"]
-            shop_cate[i]["children"][a]["label"] = shop_cate[i]["children"][a]["name"]
+      var result = app.globalData.config
+      var shop_cate = result.shop_cate
+        for (var i in shop_cate) {
+          shop_cate[i]["value"] = shop_cate[i]["id"]
+          shop_cate[i]["label"] = shop_cate[i]["name"]
+          if (shop_cate[i]["children"] && shop_cate[i]["children"].length > 0) {
+            for (var a in shop_cate[i].children) {
+              shop_cate[i]["children"][a]["value"] = shop_cate[i]["children"][a]["id"]
+              shop_cate[i]["children"][a]["label"] = shop_cate[i]["children"][a]["name"]
+            }
           }
         }
-      }
-      that.setData({
-        shop_cate: shop_cate,
-        type: '', 
-        shop_settled: app.globalData.config.protocol.shop_settled,
-        choosed: wx.getStorageSync('choosedt') || that.data.choosed
-      })
-    if (options.shop_id){
-      util.getJSON({ apiUrl: apiurl.shopSettled_show + "?shop_id=" + options.shop_id}, function (res) {
-        var result = res.data.result
-        var image = [
-          { title: '营业执照', upload_picture_list: [{ upload_percent: 100, path_server:''}], text: "点击拍摄/上传图片", id: 0 },
-          { title: '店招上传', upload_picture_list: [{ upload_percent: 100, path_server: '' }], text: "点击拍摄/上传图片", id: 1},
-        ], upload_picture_list=[]
-        
-        image[0]["upload_picture_list"][0]['path_server'] = result.license;
-        image[1]["upload_picture_list"][0]['path_server'] = result.thumb
-        for (var i in result.images){
-          upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
-        }
-        var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
         that.setData({
           shop_cate: shop_cate,
-          shop_id: options.shop_id,
-          result: result,
-          title1: result.cate_name,
-          address: result.address,
-          area_id: result.area_id,
-          area_id_val: result.area_id,
-          areaSelectedStr: result.area_name,
-          contact: result.contact,
-          intro: result.intro,
-          latitude: result.latitude,
-          longitude: result.longitude,
-          shop_id: result.shop_id,
-          status: result.status,
-          status_name: result.status_name,
-          title: result.title,
-          image: image,
-          cate_id: result.cate_id,
-          upload_picture_list: upload_picture_list,
-          discount_percent: result.discount_percent,
-          status_remark: result.status_remark
+          type: '', 
+          shop_settled: app.globalData.config.protocol.shop_settled,
+          choosed: wx.getStorageSync('choosedo') || that.data.choosed
         })
-        wx.hideLoading()
-      })
-
-    }else{
-      var image = [
-        { title: '店招上传', upload_picture_list: wx.getStorageSync("image0"), text: "点击拍摄/上传图片", id: 0 },
-        { title: '营业执照', upload_picture_list: wx.getStorageSync("image1"), text: "点击拍摄/上传图片", id: 1 },
-      ], upload_picture_list = wx.getStorageSync("upload_picture_list")||[]
-      
-      var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
-      that.setData({
-        contact: wx.getStorageSync("contactt"),
-        title: wx.getStorageSync("titlet"),
-        address: wx.getStorageSync("addresst"),
-        intro: wx.getStorageSync("introt"),
-        type_val: type_val,
-        shop_cate: shop_cate,
-        tshop_cate: tshop_cate,
-        image: image,
-        upload_picture_list: upload_picture_list,
-        title1: wx.getStorageSync("title1t"),
-        cate_id:wx.getStorageSync("cate_idt"),
-        areaSelectedStr: wx.getStorageSync('areaSelectedStrt'),
-        area_id_val: wx.getStorageSync('area_idt'),
-        discount_percent: wx.getStorageSync('discount_percentt'),
-        longitude: wx.getStorageSync('longitudet'),
-        latitude: wx.getStorageSync('latitudet'),
-      })
-    }
-  },
-  location(address){
-    var that = this
-    
-    if (that.data.choosead) {
-      console.log(that.data.choosead)
-      return that.setData({
-        choosead: false
-      })
-    }
-    qqMap.geocoder({
-      address: address,
-      complete: res => {
-        console.log(res);   //经纬度对象
-        if (res.result.status == 0 && res.result.location){
-          var longitude = that.data.location
-          var latitude = that.data.location
-          if (that.data.address.indexOf(res.result.title)!=-1){
-            longitude = res.result.location.lng
-            latitude = res.result.location.lat
+      if (options.shop_id){
+        util.getJSON({ apiUrl: apiurl.shopSettled_show + "?shop_id=" + options.shop_id}, function (res) {
+          var result = res.data.result
+          var image = [
+            { title: '营业执照', upload_picture_list: [{ upload_percent: 100, path_server:''}], text: "点击拍摄/上传图片", id: 0 },
+            { title: '店招上传', upload_picture_list: [{ upload_percent: 100, path_server: '' }], text: "点击拍摄/上传图片", id: 1},
+          ], upload_picture_list=[]
+          
+          image[0]["upload_picture_list"][0]['path_server'] = result.license;
+          image[1]["upload_picture_list"][0]['path_server'] = result.thumb
+          for (var i in result.images){
+            upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
           }
+          var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
           that.setData({
-            longitude: longitude,
-            latitude: latitude,
+            shop_cate: shop_cate,
+            shop_id: options.shop_id,
+            result: result,
+            title1: result.cate_name,
+            address: result.address,
+            area_id: result.area_id,
+            area_id_val: result.area_id,
+            areaSelectedStr: result.area_name,
+            contact: result.contact,
+            intro: result.intro,
+            latitude: result.latitude,
+            longitude: result.longitude,
+            shop_id: result.shop_id,
+            status: result.status,
+            status_name: result.status_name,
+            title: result.title,
+            image: image,
+            cate_id: result.cate_id,
+            upload_picture_list: upload_picture_list,
+            discount_percent: result.discount_percent,
+            status_remark: result.status_remark
           })
-          console.log(longitude, latitude)
-          wx.setStorageSync('longitudet', longitude)
-          wx.setStorageSync('latitudet', latitude)
-        }
-        
+          wx.hideLoading()
+        })
+
+      }else{
+        var image = [
+          { title: '营业执照', upload_picture_list: wx.getStorageSync("imageo0"), text: "点击拍摄/上传图片", id: 0 },
+          { title: '店招上传', upload_picture_list: wx.getStorageSync("imageo1"), text: "点击拍摄/上传图片", id: 1 },
+        ], upload_picture_list = wx.getStorageSync("upload_picture_listo")||[]
+
+        var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
+        that.setData({
+          contact: wx.getStorageSync("contacto"),
+          title: wx.getStorageSync("titleo"),
+          address: wx.getStorageSync("addresso"),
+          intro: wx.getStorageSync("introo"),
+          type_val: type_val,
+          shop_cate: shop_cate,
+          tshop_cate: tshop_cate,
+          image: image,
+          upload_picture_list: upload_picture_list,
+          title1: wx.getStorageSync("title1o"),
+          cate_id:wx.getStorageSync("cate_ido"),
+          areaSelectedStr: wx.getStorageSync('areaSelectedStro'),
+          area_id_val: wx.getStorageSync('area_ido'),
+          discount_percent: wx.getStorageSync('discount_percento'),
+          longitude: wx.getStorageSync('longitudeo'),
+          latitude: wx.getStorageSync('latitudeo'),
+        })
       }
-    })
+    },
+    location(address){
+      var that = this
+
+      if (that.data.choosead) {
+        console.log(that.data.choosead)
+        return that.setData({
+          choosead: false
+        })
+      }
+      qqMap.geocoder({
+        address: address,
+        complete: res => {
+          console.log(res);   //经纬度对象
+          if (res.result.status == 0 && res.result.location){
+            var longitude = that.data.location
+            var latitude = that.data.location
+            if (that.data.address.indexOf(res.result.title)!=-1){
+              longitude = res.result.location.lng
+              latitude = res.result.location.lat
+            }
+            that.setData({
+              longitude: longitude,
+              latitude: latitude,
+            })
+            console.log(longitude, latitude)
+            wx.setStorageSync('longitudeo', longitude)
+            wx.setStorageSync('latitudeo', latitude)
+          }
+
+        }
+      })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -213,26 +213,21 @@ Page({
   onReady: function () {
 
   },
-  input(e){
+  input(e) {
     // console.log(e)
-    if (e.currentTarget.dataset.contact == "introt"){
+    if (e.currentTarget.dataset.contact == "introo") {
       this.setData({
         intro: e.detail.value
       })
     }
-    // if (e.currentTarget.dataset.contact == "addresst") {
-    //   this.setData({
-    //     address: e.detail.value
-    //   })
-    // }
     wx.setStorageSync(e.currentTarget.dataset.contact, e.detail.value)
   },
-  czaddress(){
+  czaddress() {
     var that = this
-    
-    that.location(that.data.areaSelectedStr +" "+that.data.address)
+
+    that.location(that.data.areaSelectedStr + " " + that.data.address)
   },
-  
+
   /**
    * 生命周期函数--监听页面显示
    */
@@ -240,21 +235,11 @@ Page({
 
   },
   radioChange: function (e) {//入驻类型选择
-  var that =this;
-    // if (e.currentTarget.dataset.type=="type"){
-    //   that.setData({
-    //     type: e.detail.value
-    //   })
-    //   wx.setStorageSync('typet', e.detail.value)
-    // }else{
-    //   that.setData({
-    //     cate_id: e.detail.value
-    //   })
-    //   wx.setStorageSync('cate_idt', e.detail.value)
-    // }
+    var that = this;
     
+
   },
- 
+
   //选择图片方法
   uploadpic: function (e) {
     var that = this //获取上下文
@@ -298,7 +283,7 @@ Page({
         })
       }
     })
-    
+
   },
   //点击上传事件
   uploadimage: function (index) {
@@ -328,7 +313,8 @@ Page({
         "content-type": 'application/x-www-form-urlencoded',
         'token': util.getToken(),
         'channel': 'let',
-        'build': util.build },
+        'build': util.build
+      },
       //附近数据，这里为路径     
       success: function (res) {
         var data = JSON.parse(res.data);
@@ -342,32 +328,32 @@ Page({
           upload_picture_list[j]['path_server'] = filename
         }
 
-          that.setData({
-            ['image[' + index + '].upload_picture_list']: upload_picture_list,
-          });
-        wx.setStorageSync('image' + index, upload_picture_list)
+        that.setData({
+          ['image[' + index + '].upload_picture_list']: upload_picture_list,
+        });
+        wx.setStorageSync('imageo' + index, upload_picture_list)
       }
     })
     // 上传 进度方法
 
     upload_task.onProgressUpdate((res) => {
       upload_picture_list[j]['upload_percent'] = res.progress
-        that.setData({
-          ['image[' + index + '].upload_picture_list']: upload_picture_list,
-        });
-      
-      
+      that.setData({
+        ['image[' + index + '].upload_picture_list']: upload_picture_list,
+      });
+
+
     });
   },
   // 删除图片
   deleteImg: function (e) {
-    
+
     var that = this;
-    
-      that.setData({
-        ['image[' + e.currentTarget.dataset.index + '].upload_picture_list']: [],
-      });
-    wx.setStorageSync('image' + e.currentTarget.dataset.index, [])
+
+    that.setData({
+      ['image[' + e.currentTarget.dataset.index + '].upload_picture_list']: [],
+    });
+    wx.setStorageSync('imageo' + e.currentTarget.dataset.index, [])
     // 
   },
   uploadpic1: function (e) {
@@ -404,7 +390,7 @@ Page({
             tempFiles[i]['path_base'] = 'data:image/png;base64,' + res[i].data
             tempFiles[i]['upload_percent'] = 0
             tempFiles[i]['path_server'] = ''
-            
+
             // console.log(tempFiles[i])
             // console.log(upload_picture_list)
             upload_picture_list.push(tempFiles[i])
@@ -425,7 +411,7 @@ Page({
     for (var j in upload_picture_list) {
       if (upload_picture_list[j]['upload_percent'] == 0) {
         //调用函数
-        util.upload_file_server(apiurl.upload_image, page, upload_picture_list, j,'',1)
+        util.upload_file_server(apiurl.upload_image, page, upload_picture_list, j, '', 2)
       }
     }
   },
@@ -438,7 +424,7 @@ Page({
     this.setData({
       upload_picture_list: upload_picture_list
     });
-    wx.setStorageSync('upload_picture_list', upload_picture_list)
+    wx.setStorageSync('upload_picture_listo', upload_picture_list)
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -481,22 +467,22 @@ Page({
       area_id_val: e.detail.area_id_val,
       konwname: e.detail.konwname
     })
-    wx.setStorageSync('areaSelectedStrt', e.detail.areaSelectedStr)
-    wx.setStorageSync('area_idt', e.detail.area_id_val)
+    wx.setStorageSync('areaSelectedStro', e.detail.areaSelectedStr)
+    wx.setStorageSync('area_ido', e.detail.area_id_val)
   },
-  xiugai(){
+  xiugai() {
     this.setData({
-      disabled1:false
+      disabled1: false
     })
   },
   choose() {
     this.setData({
       choosed: !this.data.choosed
     })
-    wx.setStorageSync('choosedt', this.data.choosed)
+    wx.setStorageSync('choosedo', this.data.choosed)
   },
   formSubmit(e) {
-    var that =this;
+    var that = this;
     if (that.data.choosed != 1) {
       return util.alert('请勾选用户协议')
     }
@@ -509,44 +495,47 @@ Page({
     data["longitude"] = that.data.longitude
     data["latitude"] = that.data.latitude
     console.log(data)
-    var images = ["license","thumb" ]
-    for(var a in that.data.image){
-      if (that.data.image[a].upload_picture_list != ''){
+    var images = ["license","thumb"]
+    for (var a in that.data.image) {
+      if (that.data.image[a].upload_picture_list != '') {
         data[images[a]] = that.data.image[a].upload_picture_list[0]['path_server']
       }
     }
     for (var a in that.data.upload_picture_list) {
-      data['images[' + a +']'] = that.data.upload_picture_list[a]['path_server']
+      data['images[' + a + ']'] = that.data.upload_picture_list[a]['path_server']
     }
-    data["source"] ='offline'
+    data["source"] = 'online'
     var url = apiurl.shop_apply;
-    if (this.data.shop_id){
+    if (this.data.shop_id) {
       url = apiurl.shop_update;
       data["shop_id"] = that.data.shop_id
     }
     that.setData({
-      post:true
+      post: true
+    })
+    that.setData({
+      post: true
     })
     util.postJSON({ apiUrl: url, data: data }, function (res) {
       var result = res.data.result
-      
+
       util.alert("申请提交成功，等待审核")
-      wx.setStorageSync("contactt",'')
-      wx.setStorageSync("discount_percentt", '')
-      wx.setStorageSync("titlet", '')
-      wx.setStorageSync("addresst", '')
-      wx.setStorageSync("introt", '')
-      wx.setStorageSync("area_idt", '')
-      wx.setStorageSync("typet", '')
-      wx.setStorageSync("cate_idt", '')
-      wx.setStorageSync("title1t", '')
-      wx.setStorageSync("areaSelectedStrt", '')
-      wx.setStorageSync("image0", '')
-      wx.setStorageSync("image1", '')
-      wx.setStorageSync("upload_picture_list", [])
-      wx.setStorageSync('choosedt', '')
-      wx.setStorageSync('latitudet', '')
-      wx.setStorageSync('longitudet', '')
+      wx.setStorageSync("contacto", '')
+      wx.setStorageSync("discount_percento", '')
+      wx.setStorageSync("titleo", '')
+      wx.setStorageSync("addresso", '')
+      wx.setStorageSync("introo", '')
+      wx.setStorageSync("area_ido", '')
+      wx.setStorageSync("typeo", '')
+      wx.setStorageSync("cate_ido", '')
+      wx.setStorageSync("title1o", '')
+      wx.setStorageSync("areaSelectedStro", '')
+      wx.setStorageSync("imageo0", '')
+      wx.setStorageSync("imageo1", '')
+      wx.setStorageSync("upload_picture_listo", [])
+      wx.setStorageSync('choosedo', '')
+      wx.setStorageSync('latitudeo', '')
+      wx.setStorageSync('longitudeo', '')
       setTimeout(function () {
         wx.reLaunch({
           url: '../index/index',
@@ -557,18 +546,18 @@ Page({
           }
         })
       }, 3000)
-      
+
     }, function (res) {
       console.log(res.data.message)
       that.setData({
         post: false
       })
-      }, function (res) {
-        
-        that.setData({
-          post: false
-        })
+    }, function (res) {
+
+      that.setData({
+        post: false
       })
+    })
   },
   backfill: function (e) {
     console.log(e)
@@ -576,22 +565,22 @@ Page({
     for (var i = 0; i < this.data.suggestion.length; i++) {
       if (i == id) {
         console.log(this.data.suggestion[i])
-        wx.setStorageSync('addresst', this.data.suggestion[i].title)
+        wx.setStorageSync('addresso', this.data.suggestion[i].title)
 
-        wx.setStorageSync('longitudet', this.data.suggestion[i].longitude)
-        wx.setStorageSync('latitudet', this.data.suggestion[i].latitude)
+        wx.setStorageSync('longitudeo', this.data.suggestion[i].longitude)
+        wx.setStorageSync('latitudeo', this.data.suggestion[i].latitude)
         this.setData({
           longitude: this.data.suggestion[i].longitude,
           latitude: this.data.suggestion[i].latitude,
           address: this.data.suggestion[i].title,
-          choosead: true, 
+          choosead: true,
           suggestion: []
         });
-        
+
       }
     }
   },
-  hiddensug(){
+  hiddensug() {
     this.setData({
       suggestion: [],
     })
@@ -599,11 +588,11 @@ Page({
   //触发关键词输入提示事件
   getsuggest: function (e) {
     var _this = this;
-    var city = _this.data.konwname || (_this.data.areaSelectedStr&&_this.data.areaSelectedStr.split(" ")[1])
-    if (e.detail.value==''){
+    var city = _this.data.konwname || (_this.data.areaSelectedStr && _this.data.areaSelectedStr.split(" ")[1])
+    if (e.detail.value == '') {
       return this.setData({
-        suggestion:'',
-        address:''
+        suggestion: '',
+        address: ''
       })
     }
     //调用关键词提示接口

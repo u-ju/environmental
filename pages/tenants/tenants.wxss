@@ -2,9 +2,8 @@
 /* @import '../place_order/place_order'; */
 @import '../realname_authentication/realname_authentication';
 page{
-  background-color: #F7F7F7;
+  background-color: white;
 }
-
 .banner image{
   width: 686rpx;
   height: 250rpx;
@@ -13,14 +12,14 @@ page{
 .from{
   padding: 32rpx;
 }
-.item .color6{
+.item .color6,.item1 .color6{
   width: 180rpx;
 }
 .item_input{
   width: 50%;
 }
 .item{
-  padding: 18rpx 0;
+  height: 94rpx;
 }
 .rightimg{
   width: 14rpx;
@@ -28,20 +27,27 @@ page{
 }
 .item>input,.input,.input1 input{
   width:484rpx;
-  border-bottom: 1px solid #989898;
+  border-bottom: 1px solid #eee;
+  height: 94rpx;
 }
 .input{
   overflow: hidden;
+  /* display: flex;
+  width: 510rpx; */
 }
 .input1{
   position: relative;
   z-index: 11;
 }
+.icon-jiantou{
+  display: inline-block;
+  width: 30rpx;
+}
 .input1 .haslook{
   max-height: 200rpx;
   background-color: #fff;
   position: absolute;
-  top: 50rpx;
+  top: 94rpx;
   box-shadow: 0 0 4rpx #eee;
   z-index: 90;
   padding: 10rpx 0;
@@ -83,16 +89,15 @@ radio .wx-radio-input.wx-radio-input-checked::before{
 .paddingb0{
   padding-bottom: 0
 }
-.item textarea,.textarea{
+.item1 textarea,.textarea{
   width: 468rpx;
   height:170rpx;
-  border: 1px solid #A6A6A6;
+  border:1px solid rgba(166,166,166,.6);
   padding:  10rpx 20rpx;
   border-radius: 10rpx;
 }
 .textarea{
   overflow: hidden;
-  margin-bottom:26rpx;
 }
 .picture_item{
   margin-bottom: 0;
@@ -187,4 +192,78 @@ navigator{
   top: 0;
   left: 0;
   z-index: 2;
+}
+.picture_item{
+  
+  padding-top: 23rpx;
+  height: 153rpx;
+}
+.textareaitem{
+  margin-top: 50rpx;
+}
+
+.picture_itemmore {
+  margin: 0rpx 30rpx 28rpx 0;
+  position: relative;
+  width: 134rpx;
+  height: 134rpx;
+}
+
+.picture_itemmore .del {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  border-radius: 50%;
+  width: 30rpx;
+  height: 30rpx;
+  z-index: 2;
+  line-height: 35rpx;
+  text-align: center;
+}
+.picture_itemmore .del image{
+  width: 100%;
+  height: 100%;
+}
+.picture_itemmore .upload_progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+  border-radius: 8rpx;
+  background-color: #000;
+  color: #fff;
+  width: 134rpx;
+  height: 134rpx;
+  text-align: center;
+  line-height: 134rpx;
+  font-size: 12px;
+}
+
+.picture_itemmore image {
+  width: 134rpx;
+  height: 134rpx;
+}
+.picture_listmore{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  /* margin: 0 -20rpx; */
+  width: 500rpx;
+}
+/* .picture_itemmore{
+  
+} */
+.picture_itemmore .camera{
+  width: 76rpx;
+  height: 63rpx;
+
+}
+.picture_itemmore .add-image,.picture_itemmore .up-pic image {
+  background-color: #EEEEEE;
+  width: 134rpx;
+  height: 134rpx;
 }

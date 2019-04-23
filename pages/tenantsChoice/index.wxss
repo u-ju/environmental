@@ -1,0 +1,26 @@
+/* pages/tenantsChoice/index.wxss */
+page{
+  text-align: center;
+}
+image{
+  width: 686rpx;
+  height: 304rpx;
+  margin: 20rpx auto 76rpx auto;
+  background-color: #f8f8f8;
+}
+.btn{
+  width:353rpx;
+  height:100rpx;
+  background:rgba(74,214,163,1);
+  border-radius:50rpx;
+  margin: auto auto 80rpx auto;
+  line-height: 100rpx;
+  font-size:36rpx;
+  color: #fff;
+}
+.instructions{
+  text-align: left;
+  width: 420rpx;
+  margin: auto;
+  line-height: 48rpx;
+}

@@ -51,7 +51,6 @@ padding: 24rpx;
   z-index: 2;
   line-height: 35rpx;
   text-align: center;
-  /* background-color: #f00; */
 }
 .picture_item .del image{
   width: 100%;

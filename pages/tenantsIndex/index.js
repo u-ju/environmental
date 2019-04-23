@@ -23,18 +23,20 @@ Page({
   },
   init() {
     var that = this;
-    util.getJSON({apiUrl: apiurl.shopSettled}, function (res) {
+    util.getJSON({ apiUrl: apiurl.shop_}, function (res) {
       var result = res.data.result
-      var list = result.list
       that.setData({
-        list: list
+        is_apply: result.is_apply,
+        apply_info: result.apply_info,
+        online_list: result.shop_info.online_list,
+        offline_list: result.shop_info.offline_list,
       })
       wx.hideLoading()
     })
   },
   link(){
     wx.navigateTo({
-      url: '../tenants/tenants',
+      url: '../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info),
     })
   },
   erwm(e){

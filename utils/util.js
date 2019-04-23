@@ -162,6 +162,8 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
       }else{
         if (storge==1){
           wx.setStorageSync('upload_picture_list', upload_picture_list)
+        }else if (storge == 2) {
+          wx.setStorageSync('upload_picture_listo', upload_picture_list)
         }
         _this.hideLoading()
         that.setData({
@@ -395,8 +397,9 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
     header: header,
     success: function(res){
       if (res.statusCode == 500) {
-        return that.info_dialog('无效请求')
+        return that.info_dialog('请求异常')
       }
+
       if (res.data.status == 200) {
         // console.log(res.data)
         if (res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) !="{}"){

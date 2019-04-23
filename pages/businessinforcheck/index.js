@@ -1,4 +1,7 @@
 // pages/businessinforcheck/index.js
+const app = getApp()
+var util = require('../../utils/util.js');
+var apiurl = require('../../utils/api.js');
 Page({
 
   /**
@@ -12,9 +15,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.travelPerson_index }, function (res) {
+      console.log(res.data.result.list)
+      that.setData({
+        list: res.data.result.list
+      })
+    })
   },
-
+  edit(e){
+    console.log(e.currentTarget.dataset.item)
+    wx.navigateTo({
+      url: '../businessinforedit/index?item=' + JSON.stringify(e.currentTarget.dataset.item),
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

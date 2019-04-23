@@ -1,6 +1,30 @@
 <!--pages/businessinforedit/index.wxml-->
+<form bindsubmit="formSubmit" >
 <view class='item flex'>
   <view class='left1'>中文姓名</view>
-  <input class='right1' placeholder='与证件姓名一致' placeholder-class='colorD1D1D1'></input>
+  <input class='right1' name='{{name}}' value='{{name}}' placeholder='与证件姓名一致' placeholder-class='colorD1D1D1'></input>
 </view>
-<view class='submitButton'>确定</view>
+<view class='item flex'>
+  <view class='left1'>姓（拼音）</view>
+  <input class='right1' name='{{first_name_pinyin}}' value='{{first_name_pinyin}}'  placeholder='如：张小明，填ZAHNG' placeholder-class='colorD1D1D1'></input>
+</view>
+<view class='item flex'>
+  <view class='left1'>名（拼音）</view>
+  <input class='right1' name='{{last_name_pinyin}}' value='{{last_name_pinyin}}' placeholder='如：张小明，填XIAOMING' placeholder-class='colorD1D1D1'></input>
+</view>
+
+<view class='item flex'>
+  <view class='left1'> 证件</view>
+  <view class='right1'>身份证</view>
+</view>
+<view class='item flex'>
+  <view class='left1'>证件号码</view>
+  <input class='right1' name='{{idcard}}' value='{{idcard}}' placeholder='所持证件号码' placeholder-class='colorD1D1D1'></input>
+</view>
+<view class='item flex'>
+  <view class='left1'>国家/地区</view>
+  <view class='right1'>中国大陆</view>
+</view>
+<!-- <view class='submitButton' >确定</view> -->
+<button form-type="submit" class='submitButton'>确定</button>
+</form>

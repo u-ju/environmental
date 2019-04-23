@@ -175,10 +175,22 @@ const apiList = {
   shop: basePath + '/front/shop/index?type=2',
   //GET 商家详情
   shop_show: basePath + '/front/shop/show',
-  
   gatherPayCreate: basePath + '/front/shop/gatherPayCreate?shop_id=',
   shop_goodsIndex: basePath + '/front/shop/goodsIndex',
   shop_goodsShow: basePath + '/front/shop/goodsShow?sku_id=',
+  
+  
+  shop_: basePath + '/front/shop',
+  shop_apply: basePath + '/front/shop/apply',
+  shop_update: basePath + '/front/shop/update',
+  shop_showOwn: basePath + '/front/shop/showOwn?shop_id=',
+  shop_gatherPayCreate: basePath + '/front/shop/gatherPayCreate?shop_id=',
+  shop_index: basePath + '/front/shop/index',
+  // shop_show: basePath + '/front/shop/show?shop_id=',
+  // shop_goodsIndex: basePath + '/front/shop/goodsIndex',
+  // shop_goodsShow: basePath + '/front/shop/goodsShow?sku_id=',
+
+
   
 
   //TShopController
@@ -368,5 +380,12 @@ const apiList = {
   jiazheng_show: basePath + '/front/jiazheng/show?jiazheng_id=',
   //GET 维修列表
   jiazheng_home: basePath + '/front/jiazheng/home',
+
+  // TravelPersonController 出行人员管理
+
+  travelPerson_store: basePath + '/front/travelPerson/store',
+  travelPerson_index: basePath + '/front/travelPerson/index',
+  travelPerson_update: basePath + '/front/travelPerson/update',
+  travelPerson_destroy: basePath + '/front/travelPerson/destroy',
 }
 module.exports = apiList;

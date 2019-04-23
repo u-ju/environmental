@@ -1,15 +1,15 @@
 <!--pages/businessinforcheck/index.wxml-->
 <view class='mes'>
 
-  <view class='flex_btw item align_center'>
+  <view class='flex_btw item align_center' wx:for='{{list}}' wx:key="index">
     <view class='flex_btw align_center'>
       <image src='../../images/choose.png' class='choose'></image>
       <view>
-        <view class='name'>张三       </view>
-        <view><text decode='true'>身份证 &nbsp;&nbsp;&nbsp;&nbsp; 513826197501054896</text></view>
+        <view class='name'>{{item.name}}       </view>
+        <view><text decode='true'>身份证 &nbsp;&nbsp;&nbsp;&nbsp; {{item.idcard}}</text></view>
       </view>
     </view>
-    <image src='../../images/edit.png' class='edit'></image>
+    <image src='../../images/edit.png' class='edit' data-item='{{item}}' bindtap='edit'></image>
   </view>
 </view>
 <view class='flex justify_center align_center'><image src='../../images/add.png' class='add'></image>新增旅客</view>

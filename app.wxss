@@ -1,5 +1,9 @@
 /**app.wxss**/
 @import "/Components/tab-bar/tab-bar.wxss";
+page{
+  font-family: PingFangSC-Regular, sans-serif;
+  /* font-family: PingFangSC-Ultralight, sans-serif; */
+}
 page .navigator-hover{
   background-color: transparent;
   opacity: 1

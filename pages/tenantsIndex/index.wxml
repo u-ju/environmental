@@ -1,63 +1,71 @@
 <!--pages/tenantsIndex/index.wxml-->
-<view  wx:if="{{list.length>0}}">
-<!-- <block wx:for="{{9}}" wx:key="index"> -->
-<view class='shop' wx:for="{{list}}" wx:key="index" wx:for-item="list">
-  <view class="inner" bindtap='detail' data-id='{{list.shop_id}}'>
-    <view class="cover">
-      <image src="{{list.thumb}}" class="cover-img" mode='aspectFill'/>
-    </view>
-    <view class='describe'>
-      <view class='flex_btw'>
-        <view class='bold color51 size28'>{{list.title}}</view>
-        <view class="renzheng" >{{list.status_name}}</view>
-      </view>
-      <view class='flex_btw color4'>
-        <view class='center czbtn' data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
-          <image src='../../images/erwm.png'></image>
-          <view> 收款码</view>
-        </view>
-        <view class='center czbtn' catchtap='linke' data-url='../businessProductAdd/index?id={{list.shop_id}}'>
-          <!-- <navigator url='../businessProductAdd/index?id={{list.shop_id}}'> -->
-            <image src='../../images/addspu.png'></image>
-            <view> 添加产品</view>
-          <!-- </navigator> -->
-        </view>
-        <view class='center czbtn' catchtap='linke' data-url='../businessProductview/index?id={{list.shop_id}}'>
-          <!-- <navigator url='../businessProductview/index?id={{list.shop_id}}'> -->
-            <image src='../../images/look.png'></image>
-            <view> 查看产品</view>
-          <!-- </navigator> -->
-        </view>
-      </view>
-      <!-- <view class='color153 flex_btw '>
-        <view class='flex align_center'>
-          <view class="location">
-            <text class='color153 size24'>{{list.type_name}}</text>
-          </view>
-          <view class="renzheng" >
-          {{list.status_name}}
-          </view>
-        </view>
-        <view class="phone" wx:if="{{list.gather_qrcode}}" data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
-          <text class='iconfont icon-erweima'></text>
-        </view>
-      </view> -->
-    </view>
-  </view>
-</view>
-<!-- </block> -->
-  <view  class='button' bindtap='link'>商家入驻</view>
-  <!-- <view wx:if="{{list[list.length-1].status==2}}" class='button' bindtap='link'>重新入驻</view> -->
-</view>
-<view wx:elif="{{list.length==0}}" class='wei'>
+<view wx:if="{{is_apply==1}}" class='wei'>
   <image src='../../images/wei.png' class='weipic'></image>
   <view>您还没有入驻哦！前往 <text class='color5DC47A' bindtap='link'>《申请入驻》</text></view>
 </view>
-<!-- <view></view>
-<view class='zzc_con' wx:if="{{showmodel}}">
-  <view class='iconfont icon-cuohao' bindtap='model' ></view>
-  
-</view> -->
+<view wx:else>
+  <view class='online' wx:if="{{online_list.length>0}}">
+    <view class='sjtitle'>线上商家</view>
+    <view class='shop' wx:for="{{online_list}}" wx:key="index" wx:for-item="list">
+      <view class="inner" bindtap='detail' data-id='{{list.shop_id}}'>
+        <view class="cover">
+          <image src="{{list.thumb}}" class="cover-img" mode='aspectFill'/>
+        </view>
+        <view class='describe'>
+          <view class='flex_btw'>
+            <view class='bold color51 size28'>{{list.title}}</view>
+            <view class="renzheng {{list.status==1?'color44D5A2':''}}" >{{list.status_name}}</view>
+          </view>
+          <view class='flex_btw color4' wx:if="{{list.gather_qrcode}}">
+            <view class='center czbtn' data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
+              <image src='../../images/erwm.png'></image>
+              <view> 收款码</view>
+            </view>
+            <view class='center czbtn' wx:if="{{list.add_spu==1}}" catchtap='linke' data-url='../businessProductAdd/index?id={{list.shop_id}}'>
+                <image src='../../images/addspu.png'></image>
+                <view> 添加产品</view>
+            </view>
+            <view class='center czbtn' wx:if="{{list.show_spu==1}}" catchtap='linke' data-url='../businessProductview/index?id={{list.shop_id}}'>
+                <image src='../../images/lookspu.png'></image>
+                <view> 查看产品</view>
+            </view>
+            <view class='center czbtn' wx:if="{{list.show_order==1}}" catchtap='linke' data-url='../businessProductview/index?id={{list.shop_id}}'>
+                <image src='../../images/look.png'></image>
+                <view> 查看订单</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='offline'  wx:if="{{offline_list.length>0}}">
+    <view class='sjtitle'>线下商家</view>
+    <view class='shop' wx:for="{{offline_list}}" wx:key="index" wx:for-item="list">
+      <view class="inner" bindtap='detail' data-id='{{list.shop_id}}'>
+        <view class="cover">
+          <image src="{{list.thumb}}" class="cover-img" mode='aspectFill'/>
+        </view>
+        <view class='describe'>
+          <view class='flex_btw'>
+            <view class='bold color51 size28'>{{list.title}}</view>
+            <view class="renzheng {{list.status==1?'color44D5A2':''}}" >{{list.status_name}}</view>
+          </view>
+          <view class='flex_btw color4' wx:if="{{list.gather_qrcode}}">
+            <view class='center czbtn' data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
+              <image src='../../images/erwm.png'></image>
+              <view> 收款码</view>
+            </view>
+            
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view   class='button' bindtap='link'>商家入驻</view>
+
+</view>
+
 
 <wux-popup closable visible="{{ visible3 }}"  bind:close="onClose3" bind:closed="onClosed3">
   <wux-qrcode  id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />

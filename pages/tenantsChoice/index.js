@@ -1,4 +1,4 @@
-// pages/businessinforedit/index.js
+// pages/tenantsChoice/index.js
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
@@ -8,30 +8,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url:'travelPerson_store'
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.item){
-      var item = JSON.parse(options.item)
-      console.log(item)
+    var apply_info = JSON.parse(options.apply_info)
+    if (apply_info){
       this.setData({
-        first_name: item.first_name,
-        first_name_pinyin: item.first_name_pinyin,
-        last_name: item.last_name,
-        last_name_pinyin: item.last_name_pinyin,
-        name: item.name,
-        idcard: item.idcard,
-        person_id: item.person_id,
-        url:'travelPerson_update'
+        apply_info: apply_info
       })
     }
   },
-  formSubmit(e){
-    console.log(e)
+  offline(){
+    wx.navigateTo({
+      url: '../tenants/tenants',
+    })
+  },
+  online(){
+    wx.navigateTo({
+      url: '../tenants/online',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
