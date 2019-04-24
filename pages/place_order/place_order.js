@@ -277,7 +277,6 @@ Page({
           that.setData({
             upload_picture_list: upload_picture_list,
           });
-          // console.log(upload_picture_list)
           that.uploadimage()
         })
       }

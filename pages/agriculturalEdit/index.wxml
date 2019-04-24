@@ -1,0 +1,103 @@
+<!--pages/agriculturalEdit/index.wxml-->
+<view class='pagetype'>
+  <view class='flex align_center maginb50'>
+    <view class='left1'>商品名称：</view>
+    <input class='right1'></input>
+  </view>
+  <view class='flex align_center maginb50'>
+    <view class='left1'>详情图：</view>
+    <view class="picture_listmore">
+      <view wx:for="{{spec_str}}" class="picture_itemmore" wx:key="{{index}}">
+        <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+        <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+        <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
+        <view class='del' bindtap='deleteImg' data-name='spec_str' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"><image src='../../images/delete_pic.png'></image></view>
+      </view>
+      <view class='picture_itemmore' hidden='{{spec_str.length>0}}' bindtap='upload' wx:if="{{!disabled1}}" data-index="{{index}}">
+        <view class="add-image click_camera flex_col align_center" >
+          <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+        </view>
+      </view>
+    </view> 
+  </view>
+  <view class='flex align_center maginb50 maginb50'>
+    <view class='left1'>商品规格：</view>
+    <textarea  class='right1'></textarea>
+  </view>
+  <view class='sku'>
+    <view class='flex align_center maginb50'>
+      <view class='left1'>选择规格：  </view>
+      <!-- <input disabled='true' placeholder='请选择' class='width460' ></input> -->
+      <view class='select_box'>
+        <view class='select' catchtap='selectTap'>
+            <!-- <text class='select_text'>{{selectData[index]}}</text> -->
+            <input disabled='true' placeholder='请选择' class='width460' value='{{selectData[index]}}' ></input>
+            <image class='select_img {{show&&"select_img_rotate"}}' src='/image/gobottom.png'></image>         
+        </view>
+        <view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*60):0}}rpx;'>
+            <text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='flex_btw'>
+      <view class='flex align_center maginb50'>
+        <view class='left1'>售价：</view>
+        <input disabled='true' placeholder='' class='width140' ></input>
+      </view>
+      <view class='flex align_center maginb50'>
+        <view class='left1'>库存：  </view>
+        <input disabled='true' placeholder='' class='width140' ></input>
+      </view>
+    </view> 
+    <view class='flex align_center maginb50'>
+      <view class='left1'>缩略图：</view>
+      <view class="picture_listmore">
+        <view wx:for="{{upload_picture_list}}" class="picture_itemmore" wx:key="{{index}}">
+          <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+          <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+          <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg1">{{item.upload_percent}}%</view>
+          <view class='del'bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"><image src='../../images/delete_pic.png'></image></view>
+        </view>
+
+        <view class='picture_itemmore ' bindtap='uploadpic1' wx:if="{{!disabled1}}" data-index="{{index}}">
+          <view class="add-image click_camera flex_col align_center" >
+            <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+          </view>
+        </view>
+      </view> 
+    </view>
+    <view class='flex align_center maginb50'>
+      <view class='left1'>轮播图：</view>
+      <view class="picture_listmore">
+        <view wx:for="{{upload_picture_list}}" class="picture_itemmore" wx:key="{{index}}">
+          <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+          <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+          <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg1">{{item.upload_percent}}%</view>
+          <view class='del'bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"><image src='../../images/delete_pic.png'></image></view>
+        </view>
+
+        <view class='picture_itemmore ' bindtap='uploadpic1' wx:if="{{!disabled1}}" data-index="{{index}}">
+          <view class="add-image click_camera flex_col align_center" >
+            <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+          </view>
+        </view>
+      </view> 
+    </view>
+    <view class='delbtn'>删除该商品</view>
+  </view>
+  
+</view>
+<view class='add'>
+  <image src='../../images/addsku.png'></image>
+  <view>添加商品</view>
+</view>
+<view class='submitButton'>提交审核</view>
+<view class='size22'>温馨提示：提交审核之后工作人员会在24 小时内审核完毕</view>
+<!-- <view class='pagetype'>
+  <view class='flex align_center maginb50'>
+    <view class='left1'>商品名称：</view>
+    <input class='right1'></input>
+  </view> 
+</view> -->
+
+

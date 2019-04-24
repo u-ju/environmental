@@ -1,0 +1,41 @@
+<!--pages/agriculturalRecommendation/index.wxml-->
+<view class='pagetype'>
+  <view class="tabTit box">
+    <view class="flex align_center flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
+      <text class='marginr6'>{{item}}</text>
+      <view  wx:if='{{index==0}}'>
+        <text class='iconfont icon-jiantou_shang size24 colorBE' wx:if='{{tab[index]==1}}'></text>
+        <text class='iconfont icon-jiantou_xia size24 color4AD6A3' wx:else></text>
+      </view>
+      <view class='flex_col' wx:else>
+        <text class='iconfont icon-jiantou_shang size16 {{tab[index]==1?"color4AD6A3":"colorBE"}}'></text>
+        <text class='iconfont icon-jiantou_xia size16  {{tab[index]==1?"colorBE":"color4AD6A3"}}'></text>
+      </view>
+    </view>
+  </view>
+</view>
+<!--筛选项-->
+<view bindtap='hiddenzzc' class='zzc' hidden="{{tab[0]}}">
+  <view class="tabLayer">
+      <view class="screening flex_btw align_center {{pinpai_id==item.id?'active':''}}" wx:for="{{pinpaiList}}" wx:key="pp" wx:for-item="item" data-id="{{item.id}}" data-index="0" data-txt="{{item.title}}" catchtap="filter">
+        <text>{{item.title}}</text>
+        <image wx:if="{{pinpai_id==item.id}}" src='../../images/ch_true.png' mode='aspectFit'></image>
+      </view>
+  </view>
+</view>
+
+ <!-- 下面列表 -->
+<view class="container">
+ 
+  <view class='xiangqing' wx:for="{{details}}" bindtap="navigateTo">
+    <view class='xiangqing_img'>
+        <image src='{{item.img}}'></image>
+    </view>
+    <view class='xiangqing_info' >
+      <text class='title'>自然之星 有机花菜约300g 绿菜花 青花菜 火锅食材 新鲜蔬菜</text>
+      <view class='colorFD2828'>价格：￥20.8</view>
+      
+    </view>
+  </view>
+ 
+</view>

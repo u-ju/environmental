@@ -1,11 +1,17 @@
-<!--pages/installment_details/installment_details.wxml-->
-
+<!--pages/agriculturalDetail/index.wxml-->
 <wxs module="m1">
   var indexO=function(arr,val){
     return arr.indexOf(val)
   }
   module.exports.indexO = indexO;
 </wxs>
+<view class='tab'>
+  <view class='flex_btw'>
+    <view wx:for="{{tab}}" class='tabitem {{active==index?"active":""}}' data-index='{{index}}' bindtap='tabswitch'>{{item}}</view>
+  </view>
+</view>
+<scroll-view scroll-y scroll-with-animation class="nav_right"   scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;"  >
+<view id='view0' class='view0'>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" current="{{index}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}" bindchange='swiper'>
     <block wx:for="{{result.images}}" wx:key="index">
       <swiper-item>
@@ -13,44 +19,32 @@
       </swiper-item>
     </block>
 </swiper>
-<!-- <view class="imageCount">{{current+1}}/{{banner.length}}</view> -->
 <view class='goods_intr1'>
   <view class='size28 color4'>{{result.spu_name}} {{result.sku_name}}</view>
   <view class='size28 colorFE2C2C'>
-    <text class='line-through'>市场价：{{result.market_price}} \n</text>
-    <text>环保金：{{result.nper_price}}</text>
+    <text>价格：{{result.nper_price}}</text>
     
   </view>
   <view class='size22 color898989 flex_btw'>
-    <text>运费：{{result.freight>0?result.install_fee:'免'}}</text>
-    <!--  -->
-    <text>安装费：{{result.install_fee>0?result.install_fee:'免'}}</text>
-    <!-- {{result.install_fee}} -->
+    <text>运费：{{result.freight>0?result.install_fee:'免运费'}}</text>
     <text>库存：{{result.stock}}</text>
     <text>销量:{{result.sales}}</text>
   </view>
 </view>
 <view class='goods_intr2'>
   <view class='color898989 flex_btw size28 align_center marginb30' bindtap='open1'>
-    <text  decode="{{true}}" space="{{true}}">已选&ensp;&ensp;&ensp;&ensp;{{result.sku_name}}</text>
+    <text  decode="{{true}}" space="{{true}}">规格&ensp;&ensp;&ensp;&ensp;选择颜色分类</text>
+    <!-- {{result.sku_name}} -->
     <text class='iconfont icon-jiantou'></text>
   </view>
   
   <view class='color898989 flex_btw size28 align_center marginb30' bindtap='open2'>
-    <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">规格型号</text>
+    <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">参数&ensp;&ensp;&ensp;&ensp;生产信息材质图案......</text>
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
-  <!-- <view class='color898989 flex_btw size28 align_center'  bindtap='fqtz'>
-    <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">商品兑换协议</text>
-    <text class='iconfont icon-jiantou color989898'></text>
-  </view> -->
-  <!-- bindtap='open3' -->
-  <!-- <view class='color898989 flex_btw size28 align_center' bindtap='fqtz'>
-    <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">分期&ensp;&ensp;&ensp;&ensp;选择分期付款</text>
-    <text class='iconfont icon-jiantou color989898'></text>
-  </view> -->
 </view>
-<view class='goods_intr3'>
+</view>
+<view class='goods_intr3 view1' id='view1' >
   <view class='size28 color4'>评价({{list.length}})</view>
   <block wx:if='{{commentIndex==0&&list.length>0}}'>
   <view wx:for='{{list}}' wx:key="index">
@@ -114,14 +108,16 @@
     <text class='iconfont icon-xiangxiajiantou'></text>
   </view>
 </view>
-<view class='color4 size28 detailxq' wx:if="{{result.spu_intro}}">
-  产品详情
+<view id='view2' class='view2'>
+  <view class='color4 size28 detailxq' wx:if="{{result.spu_intro}}">
+    产品详情
+  </view>
+  <image wx:if="{{result.spu_intro}}" src='{{result.spu_intro}}' class='width100' mode="widthFix"></image>
 </view>
-<image wx:if="{{result.spu_intro}}" src='{{result.spu_intro}}' class='width100' mode="widthFix"></image>
 <view class='detailitem'  >
   
-  
 </view>
+</scroll-view>
 <view class='fixed'>
   <view class='goodsBuy' bindtap='open1'>
     立即兑换

@@ -1,0 +1,39 @@
+/* pages/agriculturalLook/index.wxss */
+page{
+  color: #444;
+  font-size: 28rpx;
+}
+.goods{
+  padding: 0 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.spu{
+  padding: 34rpx 0;
+}
+.spupic{
+  width:240rpx;
+  height:160rpx;
+  background-color: #f8f8f8;
+  margin-right: 26rpx;
+}
+.sputs{
+  width: 400rpx;
+}
+.skupic{
+  width:160rpx;
+  height:160rpx;
+  background-color: #f8f8f8;
+  margin-right: 34rpx;
+}
+.sku{
+  padding: 28rpx 0;
+  border-top: 2rpx solid #EEEEEE;
+}
+.iconfont,.skuitem{
+  transition:transform 0.3s;
+}
+.select_img_rotate{
+
+  transform:rotate(180deg); 
+  transition:transform 0.3s;
+}

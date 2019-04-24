@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "usingComponents": {
+    "wux-popup": "../../Components/popup/index",
+    "wux-input-number": "../../Components/input-number/index"
+  }
+}

@@ -1,14 +1,15 @@
 {
   "pages":[
+    "pages/agriculturalEdit/index",
+    "pages/agriculturalLook/index",
+    
+    "pages/agriculturalDetail/index",
+    "pages/agriculturalRecommendation/index",
     "pages/index/index",
     "pages/tenantsIndex/index",
     "pages/tenantsChoice/index",
     "pages/tenants/online",
     "pages/tenants/tenants",
-    
-    
-    
-    
     "pages/businessinforcheck/index",
     "pages/businessinforedit/index",
     "pages/businessOrder/index",

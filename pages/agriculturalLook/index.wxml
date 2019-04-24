@@ -1,0 +1,23 @@
+<!--pages/agriculturalLook/index.wxml-->
+<view class='goods'>
+  <view class='flex_btw spu'>
+    <image class='spupic'></image>
+    <view class='sputs flex_col flex_btw'>
+      <view class='hidden2'>自然之星 有机花菜约300g 绿菜花青花菜 火锅食材 新鲜蔬菜</view>
+      <view class='flex_btw'>
+        <view class='colorFE2C2C'>审核中</view>
+        <!-- <image src='../../images/'></image> -->
+        <text class='iconfont icon-xiajiantou color9 {{active==1?"":"select_img_rotate"}}' bindtap='show'></text>
+      </view>
+    </view>
+  </view>
+  <view class='skuitem' hidden='{{active==1}}'>
+    <view class='flex sku'>  
+      <image class='skupic'></image>
+      <view class='sputs flex_col flex_btw'>
+        <view class='hidden2'>自然之星 有机花菜约300g 绿菜花青花菜 火锅食材 新鲜蔬菜</view>
+        <view class='colorFE2C2C'>￥5600</view>
+      </view>
+    </view>
+  </view>
+</view>
