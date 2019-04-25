@@ -1,11 +1,13 @@
 {
-  "pages":[
-    "pages/agriculturalEdit/index",
+  "pages": [
+    
+    "pages/agriculturalRecommendation/index",
     "pages/agriculturalLook/index",
+    "pages/agriculturalEdit/index",
     
     "pages/agriculturalDetail/index",
-    "pages/agriculturalRecommendation/index",
     "pages/index/index",
+    
     "pages/tenantsIndex/index",
     "pages/tenantsChoice/index",
     "pages/tenants/online",
@@ -17,7 +19,6 @@
     "pages/business_details/index",
     "pages/unopen/index",
     "pages/businessProductview/index",
-    
     "pages/businessProductAdd/index",
     "pages/agent/index",
     "pages/recruitment/index/index",
@@ -37,7 +38,6 @@
     "pages/my_invitation/index",
     "pages/realname_authentication/realname_authentication",
     "pages/feedback/index",
-    
     "pages/myInviteNewusers/index",
     "pages/agentPay/index",
     "pages/qrcode/index",
@@ -56,26 +56,20 @@
     "pages/bill/index",
     "pages/payment_details/index",
     "pages/installment_repayment/index",
-    
     "pages/history/index",
     "pages/installment_details/installment_details",
     "pages/my_paymentGoods/index",
     "pages/my_bankcard/index",
     "pages/my_bankcard_add/index",
     "pages/address/index",
-    
     "pages/address_order/index",
     "pages/installment/installment",
     "pages/my_order_detail/index",
-    
     "pages/my_release/index",
     "pages/reimbursement/index",
-    
     "pages/neighbourhood_release/index",
     "pages/neighbourhood/neighbourhood",
-    
     "pages/ban/index",
-    
     "pages/order_detail/index",
     "pages/comment/index",
     "pages/place_order/place_order",
@@ -85,11 +79,8 @@
     "pages/payment/index",
     "pages/video_detail/index",
     "pages/video/index",
-    
     "pages/realname_suc/index",
-    
     "pages/error/error",
-    
     "pages/pay/index",
     "pages/edsc_site/edsc_site",
     "pages/edcs_choose/edcs_choose",
@@ -118,7 +109,6 @@
     "pages/sorting/sorting",
     "pages/home_orders/home_orders",
     "pages/withdrawal_record/withdrawal_record",
-  
     "pages/my_deposit/my_deposit",
     "pages/message/message",
     "pages/about/about",
@@ -136,8 +126,8 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "啄木鸟环保",
     "navigationBarTextStyle": "black"
@@ -145,5 +135,6 @@
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 100000
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

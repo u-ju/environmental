@@ -27,13 +27,13 @@
  <!-- 下面列表 -->
 <view class="container">
  
-  <view class='xiangqing' wx:for="{{details}}" bindtap="navigateTo">
+  <view class='xiangqing' wx:for="{{list}}" wx:key="index" bindtap="detail" data-sku_id='{{item.sku_id}}'>
     <view class='xiangqing_img'>
-        <image src='{{item.img}}'></image>
+        <image src='{{item.thumb}}'></image>
     </view>
     <view class='xiangqing_info' >
-      <text class='title'>自然之星 有机花菜约300g 绿菜花 青花菜 火锅食材 新鲜蔬菜</text>
-      <view class='colorFD2828'>价格：￥20.8</view>
+      <text class='title'>{{item.spu_name}} {{item.sku_name}}</text>
+      <view class='colorFD2828'>价格：￥{{item.price}}</view>
       
     </view>
   </view>

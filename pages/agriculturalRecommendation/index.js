@@ -1,5 +1,8 @@
 // pages/agriculturalRecommendation/index.js
 // index/list.js
+const app = getApp()
+var util = require('../../utils/util.js');
+var apiurl = require('../../utils/api.js');
 Page({
 
   /**
@@ -15,66 +18,10 @@ Page({
     jiage_txt: '',
     xiaoliang_id: 0,//销量
     xiaoliang_txt: '',
-    details: [
-      {
-        img: '/images/house2.png',
-        prix: '73',
-        huxing: '3室2厅1卫',
-        area: '128',
-        price: '11456',
-        chanquan: '产权',
-        floor: '7/7',
-        title: '大连市西岗区锦园小区48号楼2单元707',
-        yongjin: '佣金1%，成交奖励奖励1万元',
-        world: [
-          {
-            message: 'foo',
-          },
-          {
-            message: 'bar'
-          }
-        ]
-      },
-      {
-        img: '/images/house2.png',
-        prix: '73',
-        huxing: '3室2厅1卫',
-        area: '128',
-        price: '11456',
-        chanquan: '产权',
-        floor: '7/7',
-        title: '大连市西岗区锦园小区48号楼2单元707',
-        yongjin: '佣金1%，成交奖励奖励1万元',
-        world: [
-          {
-            message: 'foo',
-          },
-          {
-            message: 'bar'
-          }
-        ]
-      },
-      {
-        img: '/images/house2.png',
-        prix: '73',
-        huxing: '3室2厅1卫',
-        area: '128',
-        price: '11456',
-        chanquan: '产权',
-        floor: '7/7',
-        title: '大连市西岗区锦园小区48号楼2单元707',
-        yongjin: '佣金1%，成交奖励奖励1万元',
-        world: [
-          {
-            message: 'foo',
-          },
-          {
-            message: 'bar'
-          }
-        ]
-      }
-
-    ],
+    arrprice: ['asc','des'],
+    arrsales: ['asc', 'des'],
+    price:'des',
+    sales:'des'
   },
 
   // 选项卡
@@ -82,7 +29,9 @@ Page({
     var data =this.data.tab, index = e.currentTarget.dataset.index;
     data[index] = !this.data.tab[index];
     this.setData({
-      tab: data
+      tab: data,
+      price: this.data.arrprice[data[2]],
+      sales: this.data.arrprice[data[1]] 
     })
     console.log(data)
   },
@@ -109,11 +58,76 @@ Page({
       tab: tab,
     })
   },
-  //加载数据
-  getDataList: function () {
-    //调用数据接口，获取数据
+  onLoad(e){
+    this.init()
+  },
+  init(page = 1) {
+    var that = this;
+    if (that.data.keywords != '' && that.data.keywords != undefined) {
+      keywords = that.data.keywords
+    }
+    util.getJSON({
+      apiUrl: apiurl.goods + "?page=" + page + "&source=online&price=" + that.data.price + "&sales=" + that.data.sales
+    }, function (res) {
+      var result = res.data.result
+      var list = result.list
+      if (page != 1) {
+        list = that.data.news.concat(list)
+      }
+      that.setData({
+        list: list,
+        page: result.page,
+        last: false,
+      })
+      util.hideLoading()
+    })
+  },
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
 
+    var that = this;
+    util.getJSON({
+      apiUrl: apiurl.goods + "?page=" + page + "&source=online&price=" + that.data.price + "&sales=" + that.data.sales
+    }, function (res) {
+      var result = res.data.result
+      var list = result.list
+      that.setData({
+        list: list,
+        page: result.page,
+        last: false,
+      })
+      // 隐藏导航栏加载框
+      wx.hideNavigationBarLoading();
+      // 停止下拉动作
+      wx.stopPullDownRefresh();
+      util.hideLoading()
+    })
+  },
+  /**
+ * 页面上拉触底事件的处理函数
+ */
+  onReachBottom: function () {
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+      that.init(Number(that.data.page.current_page) + 1)
+    } else {
+      that.setData({
+        last: true
+      })
+      wx.hideLoading()
+    }
+  },
 
-  }
-
+  detail(e) {
+    console.log(e.currentTarget.dataset.sku_id)
+    wx.navigateTo({
+      url: '../agriculturalDetail/index?id=' + e.currentTarget.dataset.sku_id
+    })
+  },
 })

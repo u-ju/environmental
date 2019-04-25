@@ -190,8 +190,14 @@ const apiList = {
   // shop_goodsIndex: basePath + '/front/shop/goodsIndex',
   // shop_goodsShow: basePath + '/front/shop/goodsShow?sku_id=',
 
-
-  
+  shop_goodsSpecFormat: basePath + '/front/shop/goodsSpecFormat?spec_str=',
+  shop_goodsStore: basePath + '/front/shop/goodsStore',
+  shop_goodsIndexOwn: basePath + '/front/shop/goodsIndexOwn?shop_id=',
+  shop_goodsShowOwn: basePath + '/front/shop/goodsShowOwn',
+  shop_goodsUpdate: basePath + '/front/shop/goodsUpdate',
+  shop_goodsDestroy: basePath + '/front/shop/goodsDestroy',
+  // shop_index: basePath + '/front/shop/index?source=',
+  // shop_goodsStore: basePath + '/front/shop/goodsStore',
 
   //TShopController
   //GET 便民列表

@@ -129,7 +129,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.loading()
-    options.id =9
+    // options.id =9
     that.setData({
       sku_id: options.id,
       s_height: wx.getSystemInfoSync().windowHeight - 42,

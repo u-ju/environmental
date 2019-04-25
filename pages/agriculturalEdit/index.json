@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": ""
-  
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "wux-cascader": "../../Components/cascader/index"
+  }
 }
