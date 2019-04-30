@@ -1,7 +1,7 @@
 <!--pages/businessinforcheck/index.wxml-->
 <view class='mes'>
 
-  <view class='flex_btw item align_center' wx:for='{{list}}' wx:key="index">
+  <view class='flex_btw item align_center' wx:for='{{list}}' wx:key="index" bindlongtap='del' data-person_id='{{item.person_id}}'>
     <view class='flex_btw align_center'>
       <image src='../../images/choose.png' class='choose'></image>
       <view>
@@ -9,7 +9,7 @@
         <view><text decode='true'>身份证 &nbsp;&nbsp;&nbsp;&nbsp; {{item.idcard}}</text></view>
       </view>
     </view>
-    <image src='../../images/edit.png' class='edit' data-item='{{item}}' bindtap='edit'></image>
+    <image src='../../images/edit.png' class='edit' data-item='{{item}}' catchtap='edit'></image>
   </view>
 </view>
-<view class='flex justify_center align_center'><image src='../../images/add.png' class='add'></image>新增旅客</view>
+<view class='flex justify_center align_center'  bindtap='edit' ><image src='../../images/add.png' class='add'></image>新增旅客</view>

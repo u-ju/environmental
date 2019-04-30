@@ -1,0 +1,98 @@
+/* pages/agriculturalMerchantsOrderDeail/index.wxss */
+@import '../agriculturalEdit/index';
+@import '../my_order_detail/index';
+.size22{
+  margin: 0;
+}
+.head{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  background-color: #f8f8f8;
+}
+.submitButton{
+  margin-top: 66rpx;
+}
+.shitem .colorFE2C2C {
+  margin: 0;
+}
+.refund{
+  padding: 38rpx 32rpx;
+  border-top: 20rpx solid #eee;
+}
+.size48{
+  margin: 0;
+}
+.width540{
+  width: 540rpx;
+}
+.goodspic{
+  width:130rpx;
+  height:130rpx;
+  margin: 20rpx 40rpx 0 0;
+  background-color: #f8f8f8;
+}
+.margin40{
+  margin: 40rpx 0;
+}
+input{
+  width:350rpx;
+  text-align: left;
+  
+}
+.option_box{
+  text-align: left;
+}
+.select{
+  width: 370rpx;
+}
+input{
+  border:1px solid #BFBFBF;
+}
+.itemL{
+  width: 160rpx;
+}
+.delete_{
+  width:38rpx;
+  height:44rpx;
+}
+.express .align_center{
+  margin-top: 36rpx;
+}
+.express{
+  padding: 0 0 27rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.surebtn{
+  width:270rpx;
+  height:98rpx;
+  background:rgba(74,214,163,1);
+  border-radius:5rpx;
+  text-align: center;
+  line-height: 98rpx;
+  margin: 47rpx auto 0 auto;
+  color: white;
+}
+.expressitem{
+  max-height: 440rpx;
+  overflow: visible;
+}
+.btndd{
+  border: 1px solid #D2D2D2;
+}
+.addwl{
+  display: flex;
+  position: absolute;
+  top: -40rpx;
+  left: 32rpx;
+}
+.addwl image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 16rpx;
+}
+.over_look_big{
+  position: relative;
+  overflow: visible;
+}

@@ -37,7 +37,8 @@ Page({
     var result = JSON.parse(options.result)
     this.setData({
       result: result,
-      nper: app.globalData.config.protocol.nper
+      order_source: result.order_source
+      // nper: app.globalData.config.protocol.nper
     })
     
     

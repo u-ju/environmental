@@ -1,0 +1,38 @@
+<!--pages/businessmerchants/index.wxml-->
+<wux-tabs wux-class="bordered" controlled current="{{ key }}" bindchange="onTabsChange">
+    <block wx:for="{{ tabs }}" wx:key="index">
+        <wux-tab key="{{ item.key }}" title="{{ item.name }}"></wux-tab>
+    </block>
+</wux-tabs>
+<view class='ordert'>
+  <view  class='goods flex_btw'>
+    <image  src='../../images/payment_i.png'></image>
+    <view class='right flex_col_1 flex_btw'>
+      <view class='color6 hidden3'>[五一]泰国-曼谷-芭提雅-沙美岛机票+当地5晚6或7日游，20 人精致小团</view>
+      <view class='flex_btw align_center'>
+        <view class='colorFE3434'>￥5600</view>
+        <view class='color6'>×2</view>
+      </view>
+    </view> 
+  </view>
+  <view class='flex_btw size30 area'>
+    <view><text>出发日期：  2019-04-19  \n 成都出发</text></view>
+    <view class='sureorder'>确认订单</view>
+  </view>
+</view>
+<view class='ordert'>
+  <view  class='goods flex_btw'>
+    <image  src='../../images/payment_i.png'></image>
+    <view class='right flex_col_1 flex_btw'>
+      <view class='color6 hidden3'>[五一]泰国-曼谷-芭提雅-沙美岛机票+当地5晚6或7日游，20 人精致小团</view>
+      <view class='flex_btw align_center'>
+        <view class='colorFE3434'>￥5600</view>
+        <view class='color6'>×2</view>
+      </view>
+    </view> 
+  </view>
+  <view class='flex_btw size30 area'>
+    <view><text>出发日期：  2019-04-19  \n 成都出发</text></view>
+    <view class='sureorder sureorderd' >已确认</view>
+  </view>
+</view>

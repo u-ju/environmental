@@ -1,0 +1,132 @@
+<!--pages/agriculturalMerchantsOrderDeail/index.wxml-->
+<view class='pad32 top flex_btw align_center' wx:if="{{result.order_intro}}">
+  <text>{{result.order_intro}}</text>
+</view>
+<view bindtap='open2' class='pad32 top flex_btw align_center' wx:if="{{result.order_logistics.length>0}}">
+  <view>
+    <view>{{result.order_logistics[0]["express_trace"][0]["description"]}}</view>
+    <view>
+      <text class='marginr'>{{result.order_logistics[0]["express_trace"][0]["time"]}}</text>
+      <text></text>
+    </view>
+  </view>
+  <icon class='iconfont icon-jiantou'></icon>
+</view>
+<view class='pad32 information'>
+  <view>
+    <text>收货人：{{result.shipping_name}}</text>
+    <text>{{result.shipping_phone}}</text>
+  </view>
+  <view>收货地址：{{result.shipping_address}}</view>
+</view>
+<block wx:if='{{result.order_status}}'>
+  <view class='shitem'>
+    <view class='flex align_center'>
+      <image class='head' src='{{result.user_info.avatar}}'></image>
+      <view>{{result.user_info.nickname}}</view>
+    </view>
+    <view class='fkItem_goods flex' wx:for="{{result.order_goods}}" wx:key="index" bindtap='tiaozhuan' data-id='{{item.sku_id}}'>
+      <image src='{{item.thumb}}' class='goospic' mode='aspectFill'></image>
+      <view class='fkItem_goods_ms fkItem_goods_ms1'>
+        <view class='hidden2'>{{item.spu_name}}</view>
+        <view class='color4 size28 flex_btw'>
+          <view class='one-hidden width'>{{item.sku_name}}</view>
+          <view class='color898989'>
+            <text class='iconfont icon-cuohao size22'></text> 
+            {{item.buy_count}}
+          </view>
+        </view>
+        <view class='colorFE2C2C size28'>￥{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='moneyinfor'>
+    <view class='flex_btw align_center reicon'>
+      <text>商品总金额</text>
+      <text>￥{{result.order_amount}}</text>
+    </view>
+    <view class='flex_btw align_center reicon'>
+      <text>运费</text>
+      <text>￥{{result.order_freight}}</text>
+    </view>
+    <view class='flex_btw align_center reicon'>
+      <text>实付</text>
+      <text class='colorEA2C2C'>￥{{result.order_amount}}</text>
+    </view>
+  </view>
+  <view class='ddxx'>
+    <view class=' reicon color898989'>订单号：{{result.order_no}}</view>
+    <view class=' reicon color898989'>订单状态：{{result.order_status_name}}</view>
+    <view class=' reicon color898989'>创建时间：{{result.created_at}}</view>
+  </view>
+</block>
+
+
+
+<block wx:for="{{result.button_arr}}"  wx:key="index">
+  <view class='submitButton'  bindtap='click' data-key='{{item.key}}' data-name='{{item.name}}'>{{item.name}}</view>
+</block> 
+<wux-popup closable visible="{{ visible1 }}" title='填写发货单号' classN='width686' bind:close="onClose1">
+  <form bindsubmit="formSubmit">
+  <view class='expressitem'>
+  <view class='flex_btw align_center express' wx:for='{{skunum}}' wx:key ="index" wx:for-index="indexnum">
+    <view>
+      <view class='flex align_center'>
+        <view class='itemL'>选择快递 </view>
+        <view class='select_box'>
+          <view class='select' catchtap='selectTap' data-index='{{indexnum}}'>
+            <input disabled='true' placeholder='请选择' name='logistics[{{indexnum}}][express_key]' value='{{express_name[indexnum]}}'></input>
+          </view>
+          <view class='option_box' style='height:{{show[indexnum]?(order_logistics_express.length>5?300:order_logistics_express.length*60):0}}rpx;'>
+            <text class='option' style='{{index==order_logistics_express.length-1&&"border:0;"}}' wx:for='{{order_logistics_express}}' wx:key='this' data-key='{{item.key}}' data-name='{{item.name}}' catchtap='optionTap' data-indexnum='{{indexnum}}' data-index='{{indexnum}}'>{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='flex align_center'>
+        <view class='itemL'>填写单号 </view>
+        <input  placeholder='' name='logistics[{{indexnum}}][express_num]' value='{{express_num[indexnum]}}'></input>
+      </view>
+    </view>
+    <image src='../../images/delete_.png' class='delete_' bindtap='delsku' data-index='{{indexnum}}'></image>
+  </view>
+  </view>
+  <view class='additem' bindtap='addexpress'>
+    <image src='../../images/addsku.png'></image>
+    <view>添加物流</view>
+  </view>
+   <button formType="submit" disabled='{{expressbtn}}' class='surebtn'>确认</button>
+  </form>
+</wux-popup>
+
+<wux-popup closable position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
+  <view class="page__title color4">物流信息</view>
+  <view class='over_look_big'>
+    <view class='addwl' bindtap='addwl' hidden='{{result.order_status!=1}}'>
+      <!-- <image src='../../images/addsku.png'></image> -->
+      <view class='color5DC47A'>添加物流</view>
+    </view>
+    <view class='weui-cell-third over_look'>
+      <view wx:for="{{order_logistics}}" wx:key="index" wx:for-item='order_logistics'  class='order_logistics'>
+
+        <view class=' size28 color4 kdnr flex_btw'>
+          <text>承运快递：{{order_logistics['express_key_name']}} {{order_logistics['express_num']}}</text>
+          <text class='colorEA2C2C' data-id='{{order_logistics.logistics_id}}' bindtap='dellog' >删除</text>
+        </view>
+        <view class=''>
+
+          <block wx:for="{{order_logistics['express_trace']}}" wx:key="index">
+            <view class='weui-cell-list'>
+              <view class='weui-cell-circle {{index == 0 ? "":"bgBFBFBF"}}'></view>
+              <view class='weui-cell-con'>
+                <view>{{item.description}}</view>
+                <view>{{item.time}}</view>
+              </view>
+              <view class='weui-cell-line' wx:if='{{order_logistics["express_trace"].length-1 != index}}'>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</wux-popup>

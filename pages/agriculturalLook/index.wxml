@@ -1,5 +1,5 @@
 <!--pages/agriculturalLook/index.wxml-->
-<view class='goods' wx:for='{{list}}' wx:key = "index" wx:for-item="list">
+<view class='goods' wx:for='{{list}}' wx:key = "index" wx:for-item="list" bindtap='detail' data-id='{{list.shop_id}}' data-spu_id='{{list.spu_id}}' bindlongtap='del' bindtouchstart="touchStart" bindtouchend="touchEnd">
   <view class='flex_btw spu'>
     <image class='spupic' src='{{list.skus[0]["thumb"]}}'></image>
     <view class='sputs flex_col flex_btw'>
@@ -7,7 +7,7 @@
       <view class='flex_btw'>
         <view class='{{list.status==1?"color4FD7A3":"colorFE2C2C"}}'>{{list.status_name}}</view>
         <!-- <image src='../../images/'></image> -->
-        <text class='iconfont icon-xiajiantou color9 {{active[index]==1?"":"select_img_rotate"}}' bindtap='show' data-index='{{index}}'></text>
+        <text class='iconfont icon-xiajiantou color9 size40 {{active[index]==1?"":"select_img_rotate"}}' catchtap='show' data-index='{{index}}'></text>
       </view>
     </view>
   </view>

@@ -60,6 +60,8 @@ page{
 .call{
   width:40%;
   background:rgba(95,218,165,1);
+  text-align: center;
+  border-radius:5rpx;
 }
 .width60{
   width: 60%;

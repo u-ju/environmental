@@ -41,6 +41,17 @@ App({
       }
     })
     that.address()
+    // that.config()
+  },
+  config(){
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.config }, function (res) {
+      var result = res.data.result;
+      getApp().globalData.config = result;
+      // that.setData({
+      //   config: res.data.result
+      // })
+    })
   },
   address() {
     var that = this;

@@ -9,33 +9,7 @@ Page({
     visible3: false,
     current: '0',
     height:1100,
-    axis: [
-      {
-        time: '2018-2-15',
-        name: '张三',
-        event: '垃圾太多',
-        now:1
-      },
-      {
-        time: '2018-2-15',
-        name: '王三',
-        event: '垃圾太多',
-        now: 0
-      },
-      {
-        time: '2018-2-15',
-        name: '张三',
-        event: '垃圾太多',
-        now: 0
-      },
-      {
-        time: '2018-2-15',
-        name: '张三',
-        event: '垃圾太多',
-        now: 0
-      },
-
-    ],
+    axis: [],
     list: [
       { choosed: 1 },
       { choosed: 0 },
@@ -43,7 +17,7 @@ Page({
     ],
     tabs: [],
     page: {},
-    list:[],
+    list:[0],
     receiveid:'',
     order_id:[],
     order_logistics:[]
@@ -104,7 +78,7 @@ Page({
     })
   },
   onTabsChange(e) {
-    console.log(e)
+    // console.log(e)
     const { key } = e.detail
     const index = this.data.tabs.map((n) => n.key).indexOf(key)
     
@@ -262,7 +236,7 @@ Page({
       }
     }
     
-    util.getJSON({ apiUrl: apiurl.userOrder_index + "?page=" + page + "&status=" + status + plurl }, function (res) {
+    util.getJSON({ apiUrl: apiurl.userOrder_index + "?page=" + page + "&search_status=" + status + plurl }, function (res) {
       var result = res.data.result
       // console.log(result)
       var list = result.list
@@ -332,7 +306,7 @@ Page({
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
-    util.getJSON({ apiUrl: apiurl.userOrder_index + "?page=" + 1 + "&status=" + that.data.status }, function (res) {
+    util.getJSON({ apiUrl: apiurl.userOrder_index + "?page=" + 1 + "&search_status=" + that.data.status }, function (res) {
       var result = res.data.result
       // console.log(result)
       var list = result.list

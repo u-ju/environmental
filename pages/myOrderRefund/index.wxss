@@ -1,0 +1,65 @@
+/* pages/myOrderRefund/index.wxss */
+@import '../comment/index';
+.goodspic{
+  width:240rpx;
+  height:160rpx;
+  background-color: #f8f8f8;
+  margin-inline-start: 52rpx;
+}
+.width390{
+  width: 390rpx;
+  height: 160rpx;
+}
+.goodsitem{
+  padding: 32rpx;
+  border-bottom: 20rpx solid #eee;
+}
+.goods{
+  padding-top: 24rpx;
+}
+.goods .hidden2{
+  margin-bottom: 16rpx;
+}
+.refund{
+  padding: 32rpx;
+}
+.money{
+  line-height: 70rpx;
+  border-bottom: 2rpx solid #eee;
+  margin-top: 20rpx;
+}
+.money input{
+  width:600rpx;
+  height: 70rpx;
+}
+.money text{
+  width: 80rpx;
+  font-size:48rpx;
+  font-family:PingFang-SC-Regular;
+  font-weight:400;
+  color:rgba(255,50,50,1);
+}
+textarea{
+  width:100%;
+  height:215rpx;
+  border:2rpx solid #eee;
+  border-radius:10rpx;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  margin-bottom: 50rpx;
+}
+.mart50{
+  margin: 50rpx 0 24rpx 0;
+}
+.btn{
+  width:100%;
+  line-height: 98rpx;
+  height:98rpx;
+  text-align: center;
+  color: white;
+  background:rgba(74,214,163,1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}

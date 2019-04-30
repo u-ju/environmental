@@ -1,0 +1,44 @@
+<!--pages/myOrderRefund/index.wxml-->
+<view class='goodsitem'>
+  <view>订单：123456789</view>
+  <view class='flex_btw align_center goods'>
+    <image class='goodspic'></image>
+    <view class='width390'>
+      <view class='hidden2'>自然之星 有机花菜约300g 绿菜 花青花菜 火锅食材 新鲜蔬菜....</view>
+      <view class='flex_btw'>
+        <view>自然之星；1kg</view>
+        <view>1</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='refund'>
+  <view>退款金额
+    <text class='colorBE size22'>（最多￥29.8，含发货邮费￥0.00）</text>
+  </view>
+  <view class='money flex_btw align_center'>
+    <text>￥</text>
+    <input></input>
+  </view>
+  <view class='mart50'>退款说明</view>
+  <textarea></textarea>
+  <view>上传凭证</view>
+  <view class="picture_list">
+    <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+      <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+      <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+      <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
+      <view class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">
+        <image src='../../images/delete_pic.png'></image>
+      </view>
+    </view>
+
+    <view class='picture_item'>
+      <view class="add-image click_camera flex_col align_center" bindtap='uploadpic'>
+        <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+        <!-- <view class='color153'>点击拍照</view>  -->
+      </view>
+    </view>
+  </view>
+</view>
+<view class='btn size30'>提交</view>

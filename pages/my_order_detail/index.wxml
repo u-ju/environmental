@@ -1,127 +1,95 @@
 <!--pages/my_order_detail/index.wxml-->
-
 <view class='pad32 top flex_btw align_center' wx:if="{{result.order_intro}}">
   <text>{{result.order_intro}}</text>
 </view>
-<view bindtap='open2' class='pad32 top flex_btw align_center' wx:if="{{result.order_logistics.length>0}}" >
-  <view >
+<view bindtap='open2' class='pad32 top flex_btw align_center' wx:if="{{result.order_logistics.length>0}}">
+  <view>
     <view>{{result.order_logistics[0]["express_trace"][0]["description"]}}</view>
-    <view><text class='marginr'>{{result.order_logistics[0]["express_trace"][0]["time"]}}</text><text></text></view>
+    <view>
+      <text class='marginr'>{{result.order_logistics[0]["express_trace"][0]["time"]}}</text>
+      <text></text>
+    </view>
   </view>
   <icon class='iconfont icon-jiantou'></icon>
 </view>
 <view class='pad32 information'>
-  <view><text>收货人：{{result.shipping_name}}</text><text>{{result.shipping_phone}}</text></view>
+  <view>
+    <text>收货人：{{result.shipping_name}}</text>
+    <text>{{result.shipping_phone}}</text>
+  </view>
   <view>收货地址：{{result.shipping_address}}</view>
 </view>
-<view class='fkItem  shitem' >
-
-  <view class='fkItem_goods flex' wx:for="{{result.order_goods}}" wx:key="index" bindtap='tiaozhuan' data-id='{{item.sku_id}}'>
-  <!-- <navigator class='fkItem_goods flex' url='../installment_details/installment_details?id={{item.sku_id}}'> -->
-    <image src='{{item.thumb}}' class='goospic' mode='aspectFill'></image>
-    <view class='fkItem_goods_ms fkItem_goods_ms1'>
-      <view class='color4 size28 flex_btw'>
-        <view class='one-hidden width'>{{item.spu_name}}</view> 
-        <view class='color898989'>
-          <text class='iconfont icon-cuohao size22'></text>
-          {{item.buy_count}}
-        </view>
-      </view>
-      <view class='color4 size28'>{{item.sku_name}}</view>
-      <view class='colorFE2C2C size28'>{{item.real_price}}</view>
+  <view class='shitem'>
+    <view class='color4'>
+      <navigator  class='color4' url='../business_details/index?id={{result.shop_info.shop_id}}'>
+        <text>{{result.shop_info.title}}</text>
+        <text class='iconfont icon-jiantou bold size24'></text>
+      </navigator>
     </view>
-    <!-- </navigator> -->
+    <view class='fkItem_goods flex' wx:for="{{result.order_goods}}" wx:key="index" bindtap='tiaozhuan' data-id='{{item.sku_id}}'>
+      <image src='{{item.thumb}}' class='goospic' mode='aspectFill'></image>
+      <view class='fkItem_goods_ms fkItem_goods_ms1'>
+        <view class='hidden2'>{{item.spu_name}}</view>
+        <view class='color4 size28 flex_btw'>
+          <view class='one-hidden width'>{{item.sku_name}}</view>
+          <view class='color898989'>
+            <text class='iconfont icon-cuohao size22'></text> {{item.buy_count}}
+          </view>
+        </view>
+        <view class='colorFE2C2C size28'>{{item.price}}</view>
+      </view>
+    </view>
   </view>
-  
+  <view class='moneyinfor bold'>
+    <view class='flex_btw align_center reicon'>
+      <text>商品总金额</text>
+      <text>￥{{result.order_amount}}</text>
+    </view>
+    <view class='flex_btw align_center reicon'>
+      <text>运费</text>
+      <text>￥{{result.order_freight}}</text>
+    </view>
+    <view class='flex_btw align_center reicon'>
+      <text>实付</text>
+      <text class='colorEA2C2C'>￥{{result.order_amount}}</text>
+    </view>
+  </view>
+  <view class='ddxx'>
+    <view class=' reicon color898989'>订单号：{{result.order_no}}</view>
+    <view class=' reicon color898989'>订单状态：{{result.order_status_name}}</view>
+    <view class=' reicon color898989'>创建时间：{{result.created_at}}</view>
+  </view>
 
-  <!-- <view class='flex_btw align_center reicon color898989'>
-    <text>配送方式</text>
-    <text>快递免邮</text>
-  </view> -->
-</view>
-<view class='moneyinfor'>
-  <view class='flex_btw align_center reicon'>
-    <text>支付方式</text>
-    <text>{{result.payment_name}}</text>
-  </view>
-  <view class='flex_btw align_center reicon'>
-    <text>商品总金额</text>
-    <text>{{result.order_amount}}</text>
-  </view>
-  <!-- <view class='flex_btw align_center reicon'>
-    <text>首付金额</text>
-    <text>{{result.shipping_message}}</text>
-  </view>
-  <view class='flex_btw align_center reicon'>
-    <text>分期金额</text>
-    <text>{{result.shipping_message}}</text>
-  </view> -->
-  
-  <!-- <view class='flex_btw align_center reicon'>
-    <text>期数</text>
-    <text>2期</text>
-  </view> -->
-  <view class='flex_btw align_center reicon'>
-    <text>运费</text>
-    <text>{{result.order_freight}}</text>
-  </view>
-  <view class='flex_btw align_center reicon'>
-    <text>实付</text>
-    <text class='colorEA2C2C'>{{result.order_amount}}</text>
-  </view>
-</view>
-<view class='ddxx'>
-  <view class=' reicon color898989'>订单号：{{result.order_no}}</view>
-  <view class=' reicon color898989'>订单状态：{{result.order_status_name}}</view>
-  <view class=' reicon color898989'>创建时间：{{result.created_at}}</view>
-</view>
 <view class='flex row-reverse'>
   <block wx:for="{{result.button_arr}}"  wx:key="index">
     <view class='btndd size32' bindtap='click' data-key='{{item.key}}' data-name='{{item.name}}'>{{item.name}}</view>
   </block>  
 </view>
+
 <wux-popup closable position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
-   <!-- <view class='weui-cell-third'>
   <view class="page__title color4">物流信息</view>
-  <view class=' size28 color4 kdnr'><text>承运快递：{{order_logistics[0]['express_key_name']}} \n 运单号：{{order_logistics[0]['express_num']}}</text></view>
-  <view class='over_look'>
-  <view wx:for="{{order_logistics}}" wx:key="index" wx:for-item='order_logistics'>
-  
-  <block wx:for="{{order_logistics['express_trace']}}" wx:key="index">
-    <view class='weui-cell-list'>
-      <view class='weui-cell-circle {{index == 0 ? "":"bgBFBFBF"}}'></view>
-      <view class='weui-cell-con'>
-          <view>{{item.description}}</view>
-          <view>{{item.time}}</view>
-      </view>
-      <view class='weui-cell-line' wx:if='{{order_logistics["express_trace"].length-1 != index}}'>
-      </view>
-    </view>
-  </block>
-  </view>
-  </view>
-</view> -->
-<view class="page__title color4">物流信息</view>
   <view class='over_look_big'>
-   <view class='weui-cell-third over_look'>
-   <view wx:for="{{order_logistics}}" wx:key="index" wx:for-item='order_logistics'>
-  
-  <view class=' size28 color4 kdnr'><text>承运快递：{{order_logistics['express_key_name']}} {{order_logistics['express_num']}}</text></view>
-  <view class=''>
-  
-  <block wx:for="{{order_logistics['express_trace']}}" wx:key="index">
-    <view class='weui-cell-list'>
-      <view class='weui-cell-circle {{index == 0 ? "":"bgBFBFBF"}}'></view>
-      <view class='weui-cell-con'>
-          <view>{{item.description}}</view>
-          <view>{{item.time}}</view>
-      </view>
-      <view class='weui-cell-line' wx:if='{{order_logistics["express_trace"].length-1 != index}}'>
+    <view class='weui-cell-third over_look'>
+      <view wx:for="{{order_logistics}}" wx:key="index" wx:for-item='order_logistics'>
+
+        <view class=' size28 color4 kdnr'>
+          <text>承运快递：{{order_logistics['express_key_name']}} {{order_logistics['express_num']}}</text>
+        </view>
+        <view class=''>
+
+          <block wx:for="{{order_logistics['express_trace']}}" wx:key="index">
+            <view class='weui-cell-list'>
+              <view class='weui-cell-circle {{index == 0 ? "":"bgBFBFBF"}}'></view>
+              <view class='weui-cell-con'>
+                <view>{{item.description}}</view>
+                <view>{{item.time}}</view>
+              </view>
+              <view class='weui-cell-line' wx:if='{{order_logistics["express_trace"].length-1 != index}}'>
+              </view>
+            </view>
+          </block>
+        </view>
       </view>
     </view>
-  </block>
   </view>
-  </view>
-  </view>
-</view>
 </wux-popup>

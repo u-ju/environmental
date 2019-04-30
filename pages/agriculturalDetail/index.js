@@ -48,14 +48,15 @@ Page({
     })
   },
   scroll(e) {
-    var top = this.data.top
+    var top = this.data.top, active=0
     for (var i = 0; i < top.length; i++) {
       if (top[i] < e.detail.scrollTop + 44) {
-        this.setData({
-          active: i,
-        })
+        active=i
       }
     }
+    this.setData({
+      active: active
+    })
   },
   swiper(e) {
     this.setData({

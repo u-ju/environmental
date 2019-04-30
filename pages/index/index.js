@@ -101,12 +101,13 @@ Page({
       that.setData({
         result: result,
         banner: result.banner,
-        block: result.block,
+        // block: result.block,
         shop_ad: result.shop_ad,
         tag: result.tag,
         user: result.user,
         // nper: result.nper,
-        week_ad: result.week_ad
+        // week_ad: result.week_ad,
+        shop_goods_ad: result.shop_goods_ad
       })
       util.hideLoading()
     })
@@ -302,5 +303,11 @@ Page({
         url: e.currentTarget.dataset.url,
       })
     }
+  },
+  agriculturalLink(e){
+    console.log(e.currentTarget.dataset)
+    wx.navigateTo({
+      url: '../agriculturalDetail/index?id=' + e.currentTarget.dataset.sku_id
+    })
   }
 })

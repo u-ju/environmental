@@ -3,8 +3,7 @@ const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
 var Promise = require('../../utils/es6-promise.js');
-// 颜色：黑色，白色，红色
-// 版本：A，B
+// 颜色：黑色，白色，红色；版本：A，B
 Page({
   data: {
     // show: false,//控制下拉列表的显示隐藏，false隐藏、true显示
@@ -90,7 +89,7 @@ Page({
     if (e.detail.value.length<1){
       return
     }
-    var value = e.detail.value
+    var value = encodeURI(e.detail.value)
     
     console.log(value)
     this.goodsSpecFormat1(value)
@@ -165,13 +164,17 @@ Page({
         }
         console.log(thumb)
       }
+      var spu_intro = []
+      if (result.spu_intro){
+        spu_intro = [{ upload_percent: 100, path_server: result.spu_intro }]
+      }
       console.log(result)
       that.setData({
         spec_str: result.spec_str,
         cate_id: result.cate_id,
         title1: result.cate_name,
         spu_name: result.spu_name,
-        spu_intro: [{ upload_percent: 100, path_server: result.spu_intro }],
+        spu_intro: spu_intro,
         key: key,
         key_name: key_name,
         price: price,
@@ -189,29 +192,8 @@ Page({
     })
   },
   onLoad: function (options) {
-    // app.globalData.config.goods_cate
-    var goods_cate = [
-      {
-        "id": "115",
-        "name": "农产品",
-        "parent_id": "0",
-        "sort": "0",
-        "children": [
-          {
-            "id": "116",
-            "name": "水果",
-            "parent_id": "115",
-            "sort": "0"
-                    },
-          {
-            "id": "117",
-            "name": "蔬菜",
-            "parent_id": "115",
-            "sort": "0"
-                    }
-        ]
-      }
-    ]
+    // 
+    var goods_cate = app.globalData.config.goods_cate
     for (var i in goods_cate){
       goods_cate[i]["value"] = goods_cate[i]["id"]
       goods_cate[i]["label"] = goods_cate[i]["name"]
@@ -222,10 +204,14 @@ Page({
     }
     this.setData({
       goods_cate: goods_cate,
-      shop_id:21,
-      spu_id:17
+      shop_id: options.id
     })
-    this.init()
+    if (options.spu_id){
+      this.setData({
+        spu_id: options.spu_id
+      })
+      this.init()
+    }
   },
   // 商品类型
   onOpen1() {
@@ -388,7 +374,8 @@ Page({
         thumb: thumb
       })
     } else if (e.currentTarget.dataset.name == "images"){
-      var imagesnum = this.data.images
+      console.log('222222222')
+      var images = this.data.images
       images[e.currentTarget.dataset.indexnum].splice(index, 1);
       
       this.setData({
@@ -404,6 +391,7 @@ Page({
     data.shop_id = that.data.shop_id;
     console.log(e.detail.value['price[0]'])
     console.log(this.data.spu_intro)
+    data.spu_intro = this.data.spu_intro[0]["path_server"]
     for (var i = 0; i < that.data.skunum;i++){
       console.log(i)
       data['sku_arr[' + i+'][key]'] = that.data.key[i]
@@ -444,9 +432,15 @@ Page({
     util.postJSON({ apiUrl: apiurl[that.data.url], data: data }, function (res) {
       var result = res.data.result
       util.alert(res.data.message)
-      that.setData({
-        post: false
-      })
+      setTimeout(function(){
+        wx.navigateBack({
+          delta: 1,
+        })
+        that.setData({
+          post: false
+        })
+      },2600)
+      
     }, function (res) {
       
       that.setData({

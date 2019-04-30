@@ -15,15 +15,39 @@
   </view>
 </view>
 <!--筛选项-->
-<view bindtap='hiddenzzc' class='zzc' hidden="{{tab[0]}}">
+<!-- <view bindtap='hiddenzzc' class='zzc' hidden="{{tab[0]}}">
   <view class="tabLayer">
       <view class="screening flex_btw align_center {{pinpai_id==item.id?'active':''}}" wx:for="{{pinpaiList}}" wx:key="pp" wx:for-item="item" data-id="{{item.id}}" data-index="0" data-txt="{{item.title}}" catchtap="filter">
         <text>{{item.title}}</text>
         <image wx:if="{{pinpai_id==item.id}}" src='../../images/ch_true.png' mode='aspectFit'></image>
       </view>
   </view>
-</view>
+</view> -->
+  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}">
 
+    <view class='chice'>
+      <view class="qy quyu-left" style='width:{{(100/goods.length)}}%' wx:for="{{goods}}" wx:key="index" wx:for-index = "indexnum">
+        <view class="{{current[indexnum]==goods.id?'current':''}}" data-index='{{indexnum}}' wx:for="{{item}}"  wx:for-item="goods" wx:key="index" bindtap="select" data-item='{{goods}}'>
+          {{goods.name}}
+        </view>
+      </view>
+    </view>
+    <!-- <view class="qy quyu-center">
+      <view class="{{select2 == index ? 'current2' : ''}}" wx:for="{{citycenter}}" bindtap="selectcenter" data-city='{{index}}'>
+        {{index}}
+      </view>
+    </view>
+    <view class="qy quyu-right">
+      <view wx:for="{{cityright}}" class="{{select3 == index?'current3':''}}" bindtap='selectright' data-city="{{index}}">
+        <label>{{item}}</label>
+        <image src='/images/selectRight.png' style="{{select3 == index?'display:block':'display:none'}}"></image>
+      </view>
+    </view> -->
+    <view class='form-btn'>
+      <button class='btn-reset' bindtap='quyuEmpty'>重置</button>
+      <button class='btn-submit' bindtap='submitFilter'>确定</button>
+    </view>
+  </view>
  <!-- 下面列表 -->
 <view class="container">
  
@@ -37,5 +61,6 @@
       
     </view>
   </view>
- 
+  <empty wx:if='{{list.length==0}}' />
 </view>
+<view class="fullbg {{isfull ?'fullopacity':''}}"  bindtap="hidebg"></view>

@@ -1,6 +1,14 @@
 /* pages/my_order_detail/index.wxss */
 @import '../reimbursement/index';
 @import '../order/index';
+view {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
 view{
   overflow: visible
 }
@@ -48,8 +56,8 @@ page{
 .btndd{
   width:202rpx;
   height:86rpx;
-  border:4rpx solid rgba(210,210,210,1);
-  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
+  border:2rpx solid rgba(210,210,210,1);
+  /* box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23); */
   border-radius:15rpx;
   text-align: center;
   line-height: 86rpx;
@@ -63,4 +71,21 @@ page{
 .shitem .fkItem_goods_ms {
 width:430rpx;
 
+}
+.shitem{
+  width: auto;
+  padding: 24rpx 32rpx 0 32rpx;
+  margin: auto;
+}
+.fkItem_goods{
+  padding: 30rpx 0;
+  /* border-top: 1px solid #eee;
+  margin-top: 24rpx; */
+}
+.color4{
+  color: #444;
+}
+.shitem>.align_center{
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #eee;
 }

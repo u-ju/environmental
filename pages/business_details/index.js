@@ -27,18 +27,18 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    if (options.t_shop_id) {
+    if (options.id) {
       this.setData({
-        shop_id: options.t_shop_id
+        shop_id: options.id
       })
-      util.getJSON({ apiUrl: apiurl.shop_show, data: { shop_id: options.t_shop_id } }, function (res) {
+      util.getJSON({ apiUrl: apiurl.shop_show, data: { shop_id: options.id } }, function (res) {
         var result = res.data.result
         that.setData({
           result: result
         })
         util.hideLoading()
       })
-      that.init()
+      // that.init()
     }
   },
   init(page = 1) {
@@ -95,21 +95,21 @@ Page({
   },
   onPullDownRefresh: function () {
     // 显示顶部刷新图标
-    wx.showNavigationBarLoading();
-    var that = this;
-    util.getJSON({ apiUrl: apiurl.shop_goodsIndex+'?shop_id=' + that.data.shop_id + "&page=1" }, function (res) {
-      var result = res.data.result
-      console.log(result)
-      that.setData({
-        list: result.list,
-        page: result.page,
-        last: false
-      })
-      // 隐藏导航栏加载框
-      wx.hideNavigationBarLoading();
-      // 停止下拉动作
-      wx.stopPullDownRefresh();
-    })
+    // wx.showNavigationBarLoading();
+    // var that = this;
+    // util.getJSON({ apiUrl: apiurl.shop_goodsIndex+'?shop_id=' + that.data.shop_id + "&page=1" }, function (res) {
+    //   var result = res.data.result
+    //   console.log(result)
+    //   that.setData({
+    //     list: result.list,
+    //     page: result.page,
+    //     last: false
+    //   })
+    //   // 隐藏导航栏加载框
+    //   wx.hideNavigationBarLoading();
+    //   // 停止下拉动作
+    //   wx.stopPullDownRefresh();
+    // })
 
   },
 
@@ -119,18 +119,18 @@ Page({
   onReachBottom: function () {
     var that = this;
     // 显示加载图标
-    wx.showLoading({
-      title: '玩命加载中',
-    })
-    // 页数+1
-    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
-      that.init(Number(that.data.page.current_page) + 1)
-    } else {
-      that.setData({
-        last: true
-      })
-      wx.hideLoading()
-    }
+    // wx.showLoading({
+    //   title: '玩命加载中',
+    // })
+    // // 页数+1
+    // if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+    //   that.init(Number(that.data.page.current_page) + 1)
+    // } else {
+    //   that.setData({
+    //     last: true
+    //   })
+    //   wx.hideLoading()
+    // }
   },
   detail(e){
     wx.navigateTo({

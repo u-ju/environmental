@@ -1,0 +1,19 @@
+/* pages/businessmerchantsDetail/index.wxss */
+@import '../businessOrder/index';
+.fixed1{
+  position: static;
+  width: auto;
+  padding: 38rpx 32rpx;
+  text-align: left;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.mes .item,.mesper .item{
+  border-bottom: none;
+}
+.mesper{
+   border-bottom: 20rpx solid #EEEEEE;
+}
+.call{
+  width: 210rpx;
+}

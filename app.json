@@ -1,20 +1,31 @@
 {
   "pages": [
     
+    "pages/index/index",
+    "pages/shopping_mall/shopping_mall",
     "pages/agriculturalRecommendation/index",
-    "pages/agriculturalLook/index",
-    "pages/agriculturalEdit/index",
+    "pages/agriculturalMerchantsOrder/index",
+    "pages/order/index",
+    
+    "pages/agriculturalMerchantsOrderDeail/index",
     
     "pages/agriculturalDetail/index",
-    "pages/index/index",
+    "pages/businessinforcheck/index",
+    "pages/businessinforedit/index",
+    "pages/businessmerchantsDetail/index",
+    "pages/businessmerchants/index",
+    "pages/businessOrder/index",
+    
+    "pages/agriculturalLook/index",
+    
+    
+    "pages/agriculturalEdit/index",
+    
     
     "pages/tenantsIndex/index",
     "pages/tenantsChoice/index",
     "pages/tenants/online",
     "pages/tenants/tenants",
-    "pages/businessinforcheck/index",
-    "pages/businessinforedit/index",
-    "pages/businessOrder/index",
     "pages/businessProduct/index",
     "pages/business_details/index",
     "pages/unopen/index",
@@ -42,7 +53,7 @@
     "pages/agentPay/index",
     "pages/qrcode/index",
     "pages/search/index",
-    "pages/order/index",
+    
     "pages/my_integral/index",
     "pages/housekeeping/index",
     "pages/housekeeping_edit/index",
@@ -99,7 +110,7 @@
     "pages/login/login",
     "pages/news/news",
     "pages/code/code",
-    "pages/shopping_mall/shopping_mall",
+    
     "pages/news_detail/news_detail",
     "pages/qrcode/qrcode",
     "pages/put/put",

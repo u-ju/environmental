@@ -29,8 +29,8 @@
   <view class='flex align_center maginb50 maginb50'>
     <view class='left1'>商品规格：</view>
     <view class='detail-view'>
-      <text class='detail-placeholder' hidden='{{isHidePlaceholder}}'>如  颜色：白色，黑色;\n版本：A,B</text>
-      <textarea  class='right1 detail-textarea' name='spec_str' value='{{spec_str}}'  bindinput='getTextareaInput' bindblur='goodsSpecFormat'></textarea>
+      <!-- <text class='detail-placeholder' hidden='{{isHidePlaceholder}}'>如  颜色：白色，黑色;版本：A,B</text> -->
+      <textarea  class='right1 detail-textarea' name='spec_str' value='{{spec_str}}' placeholder='如  颜色：白色，黑色;版本：A,B'  bindinput='getTextareaInput' bindblur='goodsSpecFormat'></textarea>
     </view>
   </view>
   <view class='sku' wx:for="{{skunum}}" wx:key="index"  wx:for-index="indexnum">
@@ -43,7 +43,7 @@
         </view>
         <view class='select' wx:else catchtap='selectTap'  data-index='{{indexnum}}'>
             <input disabled='true' placeholder='请选择' name='key_name[{{indexnum}}]' class='width460' value='{{key_name[indexnum]}}' ></input>
-            <image class='select_img {{show[indexnum]&&"select_img_rotate"}}' src='/image/gobottom.png'></image>         
+            <!-- <image class='select_img {{show[indexnum]&&"select_img_rotate"}}' src='/image/gobottom.png'></image>          -->
         </view>
         <view class='option_box' style='height:{{show[indexnum]?(spec_group_arr.length>5?300:spec_group_arr.length*60):0}}rpx;'>
             <text class='option' style='{{index==spec_group_arr.length-1&&"border:0;"}}' wx:for='{{spec_group_arr}}' wx:key='this' data-key='{{item.key}}' data-name='{{item.name}}' catchtap='optionTap' data-indexnum='{{indexnum}}'  data-index='{{indexnum}}'>{{item.name}}</text>
@@ -84,7 +84,7 @@
           <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
           <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
           <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg1">{{item.upload_percent}}%</view>
-          <view class='del' bindtap='deleteImg' data-image="images" style='display:{{isDel}}' data-indexnum='{{indexnum}}' data-index="{{index}}" wx:if="{{!disabled1}}"><image src='../../images/delete_pic.png'></image></view>
+          <view class='del' bindtap='deleteImg' data-name="images" style='display:{{isDel}}' data-indexnum='{{indexnum}}' data-index="{{index}}" wx:if="{{!disabled1}}"><image src='../../images/delete_pic.png'></image></view>
         </view>
 
         <view class='picture_itemmore ' bindtap='uploadpicimages'  wx:if="{{!disabled1}}" data-indexnum='{{indexnum}}' data-index="{{index}}">

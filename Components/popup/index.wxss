@@ -1,11 +1,10 @@
 .wux-popup {
   position: fixed;
   z-index: 1000;
-  width: 80%;
-  max-width: 640px;
-  /* border-radius: 10rpx 10rpx 0 0; */
+  /* width: 80%; */
   overflow: hidden
 }
+
 .wux-popup-position.wux-popup-position--center .wux-popup {
   top: 50%;
   left: 50%;
@@ -18,7 +17,7 @@
   padding: 1.3em 1.6em .5em
 }
 .wux-popup-position.wux-popup-position--center .wux-popup__bd {
-  padding: 0 1.6em .8em
+  padding: 0 .8em .8em
 }
 .wux-popup-position.wux-popup-position--top .wux-popup {
   position: fixed;
@@ -59,7 +58,8 @@
   background-clip: padding-box;
   height: 100%;
   text-align: center;
-  overflow: hidden;
+  overflow: visible;
+  min-width:640rpx;
 }
 .wux-popup__title {
   font-weight: 400;
@@ -116,4 +116,7 @@
 }
 .wux-popup-position.wux-popup-position--center .wux-popup {
   border-radius: 20rpx;
+}
+.width686{
+  width: 686rpx;
 }

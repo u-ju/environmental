@@ -1,5 +1,5 @@
-// const basePath = 'https://wyhb.zgwyhb.com/api';
-const basePath = 'https://wyhb.dev.zgwyhb.com/api';
+const basePath = 'https://wyhb.zgwyhb.com/api';
+// const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
 
   // GET 控制对照
@@ -336,6 +336,21 @@ const apiList = {
   userOrder_comment: basePath + '/front/userOrder/comment',
   // POST 订单删除
   userOrder_destroy: basePath + '/front/userOrder/destroy',
+
+
+
+
+  // ShopOrderController 商家商品订单管理
+
+
+  // GET  订单列表
+  shopOrder_index: basePath + '/front/shopOrder/index',
+  // GET 
+  shopOrder_show: basePath + '/front/shopOrder/show',
+  shopOrder_deliver: basePath + '/front/shopOrder/deliver',
+  shopOrder_expressStore: basePath + '/front/shopOrder/expressStore',
+  shopOrder_expressDestroy: basePath + '/front/shopOrder/expressDestroy',
+
 
   // BankCardController 银行卡管理
 

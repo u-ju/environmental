@@ -39,9 +39,7 @@ page{
   width: 350rpx;
   display: inline-block;
 }
-.shitem .fkItem_goods_ms{
-  width: 430rpx;
-}
+
 .kdxx{
   width: 686rpx;
   margin: auto;

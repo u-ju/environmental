@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "消费指南",
   "usingComponents": {
     "empty": "../../Components/empty/index"
   }

@@ -25,8 +25,38 @@ Page({
   },
   edit(e){
     console.log(e.currentTarget.dataset.item)
+    var item = JSON.stringify(e.currentTarget.dataset.item)
+    console.log(item)
+    if (item==undefined){
+      item = ''
+    }
     wx.navigateTo({
-      url: '../businessinforedit/index?item=' + JSON.stringify(e.currentTarget.dataset.item),
+      url: '../businessinforedit/index?item=' + item ,
+    })
+  },
+  del(e){
+    console.log()
+    var data = [], that = this;
+    wx.showModal({
+      title: '提醒',
+      content: '是否确定删除该联系人？',
+      cancelText: '否',
+      cancelColor: '#2EB354',
+      confirmText: '是',
+      confirmColor: '#444444',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          data["person_id[0]"] = e.currentTarget.dataset.person_id
+          util.postJSON({ apiUrl: apiurl.bankCard_destroy, data: data }, function (res) {
+            util.alert(res.data.message)
+            that.init()
+          })
+        } else {
+          console.log('用户点击取消')
+        }
+
+      }
     })
   },
   /**

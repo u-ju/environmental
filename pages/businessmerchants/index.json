@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "wux-tabs": "../../Components/tabs/index",
+    "empty": "../../Components/ordernone/index",
+    "wux-tab": "../../Components/tab/index"
+  }
+}

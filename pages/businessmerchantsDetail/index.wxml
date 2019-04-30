@@ -1,0 +1,49 @@
+<!--pages/businessmerchantsDetail/index.wxml-->
+<view class='ordert'>
+  <view  class='goods flex_btw'>
+    <image  src='../../images/payment_i.png'></image>
+    <view class='right flex_col_1 flex_btw'>
+      <view class='color6 hidden3'>[五一]泰国-曼谷-芭提雅-沙美岛机票+当地5晚6或7日游，20 人精致小团</view>
+      <view class='flex_btw align_center'>
+        <view class='colorFE3434'>￥5600</view>
+        <view class='color6'>×2</view>
+      </view>
+    </view> 
+  </view>
+  <view class='flex_btw size30 area'>
+    <view>出发日期：</view>
+    <view><text decode='true'>2019-04-19 &nbsp;&nbsp;</text>  成都出发</view>
+  </view>
+</view>
+<view class='mes'>
+  <view class='item flex_btw'>
+    <text class='bold'>出行人信息</text>
+    <!-- <text class='iconfont icon-jiantou color9'></text> -->
+  </view>
+  <view class='item'>
+    <text class='marginr50'>出行人</text>
+    <text>555555555555555555555555555</text>
+  </view>
+  <view class='item'>
+    <text class='marginr50'>出行人</text>
+    <text>555555555555555555555555555</text>
+  </view>
+</view>
+<view class='mesper'>
+  <view class='item flex_btw'>
+    <text class='bold'>联系人信息</text>
+    <!-- <text class='iconfont icon-jiantou color9'></text> -->
+  </view>
+  <view class='item flex'>
+    <text class='marginr50'>联系人</text>
+    <view > 李丹丹</view>
+  </view>
+  <view class='item flex'>
+    <text class='marginr50'>手机号码</text>
+    <view>1234567890-</view>
+  </view>
+</view>
+<view class='fixed1 flex_btw  size32 center'>
+  <view class='width60 color4'>总金额： <text class='size48 colorEA2C2C'>￥6600</text></view>
+  <view class='call' >确认支付</view>
+</view>

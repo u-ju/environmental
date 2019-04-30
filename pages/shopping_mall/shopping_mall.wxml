@@ -1,5 +1,51 @@
 <!--pages/shopping_mall/shopping_mall.wxml-->
-<view class="detail" wx:if="{{shop_cate.length>0}}">
+<view class='flex_btw fixtop'>
+  <view class='flex_btw align_center location'>
+    <image src="../../images/locations.png" class='icon_location' mode='aspectFit' />
+    <text class='size24 color6 hidden1'>{{address}}</text>
+  </view>
+  <view class='sousuobig flex_btw align_center'> 
+    <input bindinput='search' bindconfirm="searchSubmit" value='{{search}}' name='search'></input>
+    <image src='../../images/video_cz.png' bindtap='searchSubmit' class='video_cz' mode='aspectFill'></image>
+  </view>
+</view>
+<view class='tab'>
+  <swiper  class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}">
+    <block wx:for="{{tablen}}" wx:key="index" wx:for-index="indexnum">
+      <swiper-item bindtap='link' data-link='{{item.control}}'>
+        <view class='flex wrap'>
+          <view wx:for="{{10}}" wx:key="index" class='tabitem' bindtap="scrollTo" data-index="{{index}}"  data-current='{{shop_cate[indexnum*10+index]["id"]}}'  wx:if="{{shop_cate.length>indexnum*10+index}}" >
+            <block>
+              <image src='{{shop_cate[indexnum*10+index]["icon"]}}'></image>
+              <view>{{shop_cate[indexnum*10+index]["name"]}}</view>
+            </block>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='hengnav' wx:if="{{erji.length>0}}">
+  <scroll-view scroll-x="true" class="scroll-header">
+    <text class='erjiitem {{erjinum==1?"active":""}}' bindtap='chooseerji' data-index='-1' data-id='-1'>全部</text>
+    <text wx:for='{{erji}}' wx:key="index" class='erjiitem {{item.active==1?"active":""}}' data-index='{{index}}' bindtap='chooseerji'  wx:key="idnex" data-id='{{item.id}}'>{{item.name}}</text>
+  </scroll-view>
+</view>
+<view class='shopitem flex_btw wrap'>
+  <view class='shop' wx:for="{{list}}" wx:key="index" wx:for-item="list"  bindtap='detail' id='{{list.shop_id}}'>
+    <!-- <block wx:for="{{10}}" > -->
+      <image class='shoppic' src="{{list.thumb}}"  mode='aspectFill' ></image>
+      <view class='shoptext flex_col flex_btw'>
+        <view class='bold color4'>{{list.title}}</view>
+        <view class='hidden1 color898989'>{{list.intro}}</view>
+      </view>
+    <!-- </block> -->
+  </view>
+  <view wx:if="{{list.length==0}}" class='empty'>
+    <empty  />
+  </view>
+</view>
+<!-- <view class="detail" wx:if="{{shop_cate.length>0}}">
   
   <view class='sousuobig'>
     <view class='sousuo flex_btw align_center'>
@@ -26,10 +72,8 @@
       <view class="detail-container" wx:if="{{indexSize==-1}}">
         <view class="title flex_btw align_center">
           <text class='size22 color6'>已为你推荐就近商家</text>
-          <view class='flex_btw align_center '>
-            <image src="../../images/icon_location@2x.png" class='icon_location'  mode='aspectFit'/>
-            <text class='size24 color6 one-hidden'>{{address}}</text>
-          </view>
+          
+          
         </view>
         <block wx:if="{{list.length>0}}">
             <a wx:for="{{list}}" wx:key="index" wx:for-item="list">
@@ -44,9 +88,6 @@
                 <view class='describe width100'>
                   <view class='bold color51 size26'>{{list.title}}</view>
                   <view class='color102'>{{list.intro}}</view>
-                  <!-- <view class="renzheng" wx:if="{{type==1}}">
-                      身份已认证
-                  </view> -->
                   <view class='color153 flex_btw '>
                     <view class="location">
                       <image src="../../images/icon_location.png" class="location_icon" mode='aspectFill'/>
@@ -65,13 +106,6 @@
               <empty  />
             </view>
       </view>
-      <!-- <swiper wx:else indicator-dots='true' class="detail-container" bindchange="change" data-index="{{index}}" current="{{indexSize}}"
-        indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" duration="{{duration}}">
-        <swiper-item wx:for="{{shop_cate}}" wx:for-item="item" wx:key="{{item.id}}"> -->
-          <!-- <view class="header center" hidden="{{hideHeader}}">
-            <view>下拉刷新中……</view>
-            <view>{{refreshTime}}</view>
-          </view> -->
         <view wx:else class="detail-container">
           <view wx:for="{{shop_cate}}" wx:for-item="item" wx:key="{{item.id}}" hidden='{{index!=indexSize}}'>
           <scroll-view scroll-y="true" class=" market-scroll-list" bindscrolltoupper="refresh" bindscrolltolower="loadMore">
@@ -100,9 +134,6 @@
                 <view class='describe width100'>
                   <view class='bold color51 size26'>{{list.title}}</view>
                   <view class='color102'>{{list.intro}}</view>
-                  <!-- <view class="renzheng" wx:if="{{type==1}}">
-                      身份已认证
-                  </view> -->
                   <view class='color153 flex_btw '>
                     <view class="location">
                       <image src="../../images/icon_location.png" class="location_icon" mode='aspectFill'/>
@@ -123,11 +154,7 @@
           </scroll-view>
           </view>
         </view>
-        <!-- </swiper-item>
-
-      </swiper> -->
-
     </view>
     </block>
   </view>
-  <empty wx:else />
+  <empty wx:else /> -->

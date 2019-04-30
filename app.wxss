@@ -1,275 +1,356 @@
 /**app.wxss**/
 @import "/Components/tab-bar/tab-bar.wxss";
 @import "/style/iconfont.wxss";
-page{
+
+page {
   font-family: PingFangSC-Regular, sans-serif;
   /* font-family: PingFangSC-Ultralight, sans-serif; */
 }
-page .navigator-hover{
+
+page .navigator-hover {
   background-color: transparent;
-  opacity: 1
+  opacity: 1;
 }
 
-.submitButton{
-  width:686rpx;
-  height:88rpx;
-  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
-  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
-  border-radius:44rpx;
+
+
+.submitButton {
+  width: 686rpx;
+  height: 88rpx;
+  background: linear-gradient(0deg, rgba(68, 213, 162, 1) 0%, rgba(153, 228, 171, 1) 100%);
+  box-shadow: 0px 4rpx 13rpx 0px rgba(68, 213, 162, 0.23);
+  border-radius: 44rpx;
   color: white;
   text-align: center;
   line-height: 88rpx;
   font-size: 30rpx;
   margin: auto;
 }
-button::after{
+
+button::after {
   border: none;
 }
-.add-image{
-  width:100%;
-height:100%;
+
+.add-image {
+  width: 100%;
+  height: 100%;
 }
-.picture_item .camera{
+
+.picture_item .camera {
   margin-top: 0;
 }
-page{
+
+page {
   font-size: 24rpx;
-  border-top: 1px solid #E8E8E8;
-  font-family:PingFang-SC-Regular;
+  border-top: 1px solid #e8e8e8;
+  font-family: PingFang-SC-Regular;
   /* margin-top: 1px; */
 }
-.hidden2{
-  overflow:hidden; 
-  text-overflow:ellipsis;
-  display:-webkit-box; 
-  -webkit-box-orient:vertical;
-  -webkit-line-clamp:2; 
+
+.hidden2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
-.hidden3{
-  overflow:hidden; 
-  text-overflow:ellipsis;
-  display:-webkit-box; 
-  -webkit-box-orient:vertical;
-  -webkit-line-clamp:3; 
+
+.hidden3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
+
 .container {
   font-size: 24rpx;
   color: #000;
-} 
-.dibu{
+}
+
+.dibu {
   padding: 20rpx 0;
 }
-.align_center{
+
+.align_center {
   align-items: center;
 }
-.align_btw{
-  align-content:space-between;
+
+.align_btw {
+  align-content: space-between;
 }
-.justify_center{
+
+.justify_center {
   justify-content: center;
 }
-.self_end{
-  align-self:flex-start;
+
+.self_end {
+  align-self: flex-start;
 }
-.width100{
+
+.width100 {
   width: 100%;
 }
-.flex{
+
+.flex {
   display: flex;
 }
-.flex_col_1{
+
+.flex_col_1 {
   display: flex;
   flex-direction: column;
 }
-.flex_col{
+
+.flex_col {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.flex_btw{
+
+.flex_btw {
   display: flex;
   justify-content: space-between;
 }
-.flex_ard{
+
+.flex_ard {
   display: flex;
   justify-content: space-around;
 }
-.size16{
+
+.size16 {
   font-size: 16rpx;
 }
-.size20{
+
+.size20 {
   font-size: 20rpx;
 }
-.size22{
+
+.size22 {
   font-size: 22rpx;
 }
-.size24{
+
+.size24 {
   font-size: 24rpx;
 }
-.size26{
+
+.size26 {
   font-size: 26rpx;
 }
-.size28{
+
+.size28 {
   font-size: 28rpx;
 }
-.size30{
+
+.size30 {
   font-size: 30rpx;
 }
-.size32{
+
+.size32 {
   font-size: 32rpx;
 }
-.size36{
+
+.size36 {
   font-size: 36rpx;
 }
-.size40{
+
+.size40 {
   font-size: 40rpx;
 }
-.size48{
+
+.size48 {
   font-size: 48rpx;
 }
-.size50{
+
+.size50 {
   font-size: 50rpx;
 }
-.size60{
+
+.size60 {
   font-size: 60rpx;
 }
-.relative{
+
+.relative {
   position: relative;
 }
-.center{
+
+.center {
   text-align: center;
 }
 
-.color989898{
+.color989898 {
   color: #989898;
 }
-.color3{
+
+.color3 {
   color: #333;
 }
-.color4{
+
+.color4 {
   color: #444;
 }
-.color6{
+
+.color6 {
   color: #666;
 }
-.color9{
+
+.color9 {
   color: #999;
 }
-.colorc{
-  color:#CCCCCC
+
+.colorc {
+  color: #ccc;
 }
-.color102{
-  color: rgb(102, 102, 102)
+
+.color102 {
+  color: rgb(102, 102, 102);
 }
-.color153{
-  color: rgb(153, 153, 153)
+
+.color153 {
+  color: rgb(153, 153, 153);
 }
-.color989898{
-  color: #989898
+
+.color989898 {
+  color: #989898;
 }
-.color0{
-  color: rgb(0, 0, 0)
+
+.color0 {
+  color: rgb(0, 0, 0);
 }
-.color20{
-  color: rgb(20, 176, 223)
+
+.color20 {
+  color: rgb(20, 176, 223);
 }
-.color299EF0{
-  color: #299EF0
+
+.color299EF0 {
+  color: #299ef0;
 }
-.color51{
-  color: rgb(51,51, 51)
+
+.color51 {
+  color: rgb(51, 51, 51);
 }
-.color6ADB7A{
-  color: #6ADB7A
+
+.color6ADB7A {
+  color: #6adb7a;
 }
-.color898989{
-  color: #898989
+
+.color898989 {
+  color: #898989;
 }
-.color44D5A2{
-  color: #44D5A2;
+
+.color44D5A2 {
+  color: #44d5a2;
 }
-.color5DC47A{
-  color:#5DC47A;
+
+.color5DC47A {
+  color: #5dc47a;
 }
-.color2EB354{
-  color: #2EB354
+
+.color2EB354 {
+  color: #2eb354;
 }
-.color46{
-  color: rgb(46,179, 84)
+
+.color46 {
+  color: rgb(46, 179, 84);
 }
-.color4AD6A3{
-  color: #4AD6A3;
+
+.color4AD6A3 {
+  color: #4ad6a3;
 }
-.colora3b18f{
-  color: #a3b18f
+
+.colora3b18f {
+  color: #a3b18f;
 }
-.color918F8F{
-  color: #918F8F;
+
+.color918F8F {
+  color: #918f8f;
 }
-.colorC70000{
-  color: #C70000;
+
+.colorC70000 {
+  color: #c70000;
 }
-.colorEA2C2C{
-  color: #EA2C2C;
+
+.colorEA2C2C {
+  color: #ea2c2c;
 }
-.color4588EC{
-  color: #4588EC;
+
+.color4588EC {
+  color: #4588ec;
 }
-.color727272{
+
+.color727272 {
   color: #727272;
 }
-.colorFFBF1A{
-  color: #FFBF1A;
+
+.colorFFBF1A {
+  color: #ffbf1a;
 }
-.colorBE{
-  color: #BEBFBE;
+
+.colorBE {
+  color: #bebfbe;
 }
-.color5ABB96{
-  color: #5ABB96;
+
+.color5ABB96 {
+  color: #5abb96;
 }
-.colorFB5A3E{
-  color: #FB5A3E;
+
+.colorFB5A3E {
+  color: #fb5a3e;
 }
-.colorFE2C2C{
-  color: #FE2C2C
+
+.colorFE2C2C {
+  color: #fe2c2c;
 }
-.colorFE3434{
-  color: #FE3434
+
+.colorFE3434 {
+  color: #fe3434;
 }
-.color4FD7A3{
-  color: #4FD7A3;
+
+.color4FD7A3 {
+  color: #4fd7a3;
 }
-.colorFD2828{
-  color: #FD2828;
+
+.colorFD2828 {
+  color: #fd2828;
 }
-.line-through{
-  text-decoration: line-through
+
+.line-through {
+  text-decoration: line-through;
 }
-.right{
+
+.right {
   float: right;
 }
-.left{
+
+.left {
   float: left;
 }
 
-.over_hid{
-  overflow: hidden
+.over_hid {
+  overflow: hidden;
 }
-.wrap{
+
+.wrap {
   flex-wrap: wrap;
 }
-.bold{
+
+.bold {
   font-weight: bold;
 }
-.bold500{
+
+.bold500 {
   font-weight: 500;
 }
-.bold600{
+
+.bold600 {
   font-weight: 600;
 }
-.one-hidden,.hidden1{
-  overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+
+.one-hidden, .hidden1 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-.justify_btw{
-  justify-content:space-between; 
+
+.justify_btw {
+  justify-content: space-between;
 }

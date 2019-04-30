@@ -13,10 +13,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    indicatorDots: true,//显示面板指示点
+    autoplay: false,//自动播放
+    beforeColor: "white",//指示点颜色
+    afterColor: "#4AD6A3",//当前选中的指示点颜色
+    interval: 10000,
+    duration: 1000,
     indexSize: 0,
-    indicatorDots: false,
-    autoplay: false,
-    duration: 0, //可以控制动画
     list: '',
     list:[],
     shop_cate:[0],
@@ -29,7 +32,9 @@ Page({
     hideHeader: true,
     hideBottom: true,
     refreshTime: '', // 刷新的时间 
-    loadMoreData: '加载更多……'
+    loadMoreData: '加载更多……',
+    erjinum:1,
+    cate_ids:0
   },
   search(e) {
 
@@ -76,6 +81,7 @@ Page({
     this.init(Number(shop_cate[e.detail.current].id))
   },
   scrollTo(e) {
+    console.log(e)
     var shop_cate = this.data.shop_cate;
     for (var i in shop_cate) {
       if (shop_cate[i].children) {
@@ -87,8 +93,10 @@ Page({
     this.setData({
       indexSize: e.currentTarget.dataset.index,
       cate_id: e.currentTarget.dataset.current,
+      cate_ids: e.currentTarget.dataset.current,
       erji: this.data.shop_cate[e.currentTarget.dataset.index].children || [],
-      shop_cate: shop_cate
+      shop_cate: shop_cate,
+      erjinum:1
     })
     
     // wx.showLoading({
@@ -102,25 +110,20 @@ Page({
   onLoad: function (options) {
     var that =this;
     var type = 2;
-    var title = '联盟商家'
-    if (options.type){
-      type = options.type
-      title = '便民服务'
-    }
     that.setData({
       type: type
-    })
-    wx.setNavigationBarTitle({
-      title: title,
     })
     wx.showLoading({
       title: '加载中',
     })
+    
     var shop_cate = app.globalData.config.shop_cate
     that.setData({
       shop_cate: shop_cate,
       erji: shop_cate[0].children,
-      cate_id: shop_cate[0].id
+      cate_id: shop_cate[0].id,
+      cate_ids: shop_cate[0].id,
+      tablen: Math.ceil(shop_cate.length / 10)
     })
     that.address()
     if (shop_cate.length>0){
@@ -192,21 +195,28 @@ Page({
     }); 
   },
   chooseerji(e){
-    var that = this, erji = that.data.erji;
+    var that = this, erji = that.data.erji, erjinum = 0, id = e.currentTarget.dataset.id;
     wx.showLoading({
       title: '加载中',
     })
-    for(var i in erji){
-      
+    for (var i in erji) {
       erji[i]["active"] = 0
     }
-    erji[e.currentTarget.dataset.index].active = 1
+    if (e.currentTarget.dataset.index!=-1){
+      erji[e.currentTarget.dataset.index].active = 1
+    }else{
+      erjinum=1
+      id = that.data.cate_ids
+      // id=''
+    }
+    
     that.setData({
       erji: erji,
-      cate_id:e.currentTarget.dataset.id
+      cate_id: id,
+      erjinum: erjinum
     })
     
-    that.init(e.currentTarget.dataset.id)
+    that.init(id)
   },
   calling: function (e) {//拨打电话
     wx.makePhoneCall({
@@ -240,7 +250,7 @@ Page({
   },
   detail(e){
     wx.navigateTo({
-      url: '../business_details/index?t_shop_id=' + e.currentTarget.id,
+      url: '../business_details/index?id=' + e.currentTarget.id,
     })
   },
   loadMore: function () {

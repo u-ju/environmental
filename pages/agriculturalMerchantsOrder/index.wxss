@@ -1,0 +1,2 @@
+/* pages/agriculturalMerchantsOrder/index.wxss */
+@import '../order/index';

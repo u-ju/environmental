@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active:1
+    active:[],
+    startTime: 0,   //点击开始时间
+    endTime: 0　 //点击结束时间
   },
   show(e){
     var active =  this.data.active
@@ -22,7 +24,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      shop_id:21
+      shop_id: options.id
     })
     this.init()
   },
@@ -40,6 +42,54 @@ Page({
       })
       util.hideLoading()
     })
+  },
+  //手指触摸开始赋值
+　　touchStart: function (e) {
+      this.setData({
+        startTime : e.timeStamp
+      })
+　　},
+　　//手指触摸结束赋值
+　　touchEnd: function (e) {
+      this.setData({
+        endTime: e.timeStamp
+      })
+　　},
+  detail(e){
+    
+    if (this.data.endTime - this.data.startTime < 350) {
+　　　　　　//这里可以做点击事件的处理啦
+      console.log(e)
+      wx.navigateTo({
+        url: '../agriculturalEdit/index?id=' + e.currentTarget.dataset.id + "&spu_id="+e.currentTarget.dataset.spu_id,
+      })
+　　　}
+    
+  },
+  del(e){
+    console.log(e)
+    var that = this;
+    wx.showModal({
+      title: '提醒',
+      content: '是否确定删除该商品？',
+      cancelText: '否',
+      cancelColor: '#2EB354',
+      confirmText: '是',
+      confirmColor: '#444444',
+      success: function (res) {
+        if (res.confirm) {
+          util.postJSON({ apiUrl: apiurl.shop_goodsDestroy, data: { shop_id: e.currentTarget.dataset.id, 'spu_id[0]': e.currentTarget.dataset.spu_id} }, function (res) {
+            console.log(res)
+            util.alert(res.data.message)
+            return that.init()
+          })
+        } else {
+          console.log('用户点击取消')
+        }
+
+      }
+    })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

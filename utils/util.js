@@ -1,8 +1,8 @@
 const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
-var build = 99999999
-// var build = 20190419
+// var build = 99999999
+var build = 20190430
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -211,6 +211,7 @@ function upload_pic(url, that, upload_picture_list, j, suc, update) {
     header: {
       "content-type": 'application/x-www-form-urlencoded',
       'token': _this.getToken(),
+      
       'channel': 'let',
       'build': build
     },
@@ -386,6 +387,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
     header = {
       'content-type': 'application/json', // 默认值
       'token': that.getToken(),
+      // 'token': 'zwj',
       'channel':'let',
       'build': build
     }
@@ -459,6 +461,7 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
     header = {
       'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', // 默认值
       'token': that.getToken(),
+      // 'token': 'zwj',
       'channel': 'let',
       'build': build
     }

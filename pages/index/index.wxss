@@ -66,12 +66,14 @@ page{
 }
 .index_modular {
   padding-bottom: 20rpx;
+  width: 25%;
+  text-align: center;
 }
 .index_modular_cri{
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 50%;
-  margin: 26rpx 0 14rpx 0;
+  width: 65rpx;
+  height: 65rpx;
+  /* border-radius: 50%; */
+  margin: 26rpx auto 14rpx auto;
   /* background-color: rgb(239, 224, 224); */
   overflow: hidden;
 }
@@ -102,8 +104,12 @@ page{
   margin-bottom: 16rpx;
 }
 .index_putin{
-  width: 340rpx;
-  padding-left: 40rpx;
+  width:270rpx;
+  height:80rpx;
+  padding:  30rpx;
+  background:rgba(41,215,203,1);
+  border-radius:10rpx;
+  color: white;
 }
 .index_putin .color6ADB7A{
   margin-right: 14rpx;
@@ -111,19 +117,22 @@ page{
 .index_putin_right{
   margin-left: 52rpx;
 }
-.border_right{
+/* .border_right{
   border-right: 1px solid rgb(221, 221, 221);
   padding-left:20rpx;
-}
+} */
 .wallet{
-  width: 80rpx;
+  width: 84rpx;
   height: 40rpx;
   text-align: center;
   line-height: 40rpx;
   border-radius: 20rpx;
-  border:1px solid #666666;
+  border:1px solid #FFFFFF;
+  font-size: 25rpx;
 }
-
+.size34{
+  font-size: 34rpx;
+}
 .padding26{
   padding: 26rpx 0;
 }
@@ -251,4 +260,22 @@ swiper {
 }
 .marginr20{
   margin: 0 20rpx;
+}
+.agricultural{
+  padding: 14rpx 0;
+}
+.agriculturalitem{
+  padding: 32rpx;
+  font-size: 28rpx;
+}
+.agriculturalitem image{
+  width:240rpx;
+  height:160rpx;
+}
+.agriculturalD{
+  padding: 25rpx 0;
+  border-top: 1px solid #eee;
+}
+.agriculturalD .flex_col{
+  width: 420rpx;
 }

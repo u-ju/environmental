@@ -38,10 +38,10 @@
     <text class='iconfont icon-jiantou'></text>
   </view>
   
-  <view class='color898989 flex_btw size28 align_center marginb30' bindtap='open2'>
+  <!-- <view class='color898989 flex_btw size28 align_center marginb30' bindtap='open2'>
     <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">参数&ensp;&ensp;&ensp;&ensp;生产信息材质图案......</text>
     <text class='iconfont icon-jiantou color989898'></text>
-  </view>
+  </view> -->
 </view>
 </view>
 <view class='goods_intr3 view1' id='view1' >
@@ -120,7 +120,7 @@
 </scroll-view>
 <view class='fixed'>
   <view class='goodsBuy' bindtap='open1'>
-    立即兑换
+    立即购买
   </view>
 </view>
 

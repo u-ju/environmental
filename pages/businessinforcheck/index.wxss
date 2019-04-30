@@ -25,7 +25,7 @@ page{
   border-bottom: 20rpx solid #eee;
   margin-bottom: 30rpx;
 }
-.mes>view{
+.mes>view:last-of-type{
   border: none
 }
 .add{

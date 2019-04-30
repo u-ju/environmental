@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url:'travelPerson_store'
+    url:'travelPerson_store',
+    post: false
   },
 
   /**
@@ -32,6 +33,41 @@ Page({
   },
   formSubmit(e){
     console.log(e)
+    var that = this,data = e.detail.value;
+    if(that.data.person_id!==''&&that.data.person_id!==undefined){
+      data.person_id=that.data.person_id
+    }
+    that.setData({
+      post: true
+    })
+    util.postJSON({ apiUrl: apiurl[that.data.url], data: data }, function (res) {
+      var result = res.data.result
+
+      util.alert("申请提交成功，等待审核")
+      // setTimeout(function () {
+        // wx.reLaunch({
+        //   url: '../index/index',
+        //   success() {
+        //     that.setData({
+        //       post: false
+        //     })
+        //   }
+        // })
+        
+      // }, 3000)
+      util.navigateBack()
+
+    }, function (res) {
+      console.log(res.data.message)
+      that.setData({
+        post: false
+      })
+    }, function (res) {
+
+      that.setData({
+        post: false
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

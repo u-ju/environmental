@@ -18,7 +18,7 @@
   <view class='size28 color4'>{{result.spu_name}} {{result.sku_name}}</view>
   <view class='size28 colorFE2C2C'>
     <text class='line-through'>市场价：{{result.market_price}} \n</text>
-    <text>环保金：{{result.nper_price}}</text>
+    <text>环保金：{{result.price}}</text>
     
   </view>
   <view class='size22 color898989 flex_btw'>

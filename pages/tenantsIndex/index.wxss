@@ -1,5 +1,8 @@
 /* pages/tenantsIndex/index.wxss */
-@import '../shopping_mall/shopping_mall';
+.cover-img{
+  width:160rpx;
+height:160rpx;
+}
 .cover {
   width: 160rpx;
   height: 160rpx;
@@ -80,7 +83,7 @@ margin:10rpx 0rpx 0 8rpx;
   text-align: center;
   line-height: 82rpx;
   font-size: 30rpx;
-  position: absolute;
+  position: fixed;
   bottom: 10rpx;
   left: 50%;
   margin-left: -343rpx;

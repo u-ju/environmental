@@ -1,275 +1,35 @@
 /* pages/shopping_mall/shopping_mall.wxss */
 page{
   border: none;
-  font-size: 24rpx;
-}
-.overflow {
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
-width: 100%;
-}
-
-.content {
-display: flex;
-width: 100%;
-/* height: 100%; */
-height: calc(100vh-70rpx);
-position: absolute;
-bottom: 0rpx;
-left: 0;
-top: 100rpx;
-overflow: hidden;
-}
-.menu-container {
-  width: 20%;
-  flex: 0 0 146rpx;
-  background: #F7F7F7;
-}
-.detail-container {
-  width: 80%;
-flex: 1;
-height: 100%;
-background-color: white;
-display: block;
-}
-
-.scroll-view {
-width: 100%;
-height: 100%;
-}
-.scroll-view-ul {
-width: 100%;
-height: 100%;
-background-color: rgb(247, 247, 247);
-}
-.scroll-view-item {
-  width: 100%;
-  font-size: 24rpx;
-  color: rgb(153,153,153);
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 18rpx 0;
-}
-.borderleft{
-  border-left: 6rpx solid transparent;
-  height: 60rpx;
-  line-height: 60rpx;
-  width: 100%;
-  text-align: center;
-}
-/* .scroll-view-item:after {
-  content: '';
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background-color: #dfdfdf;
-  transform: scaleY(0.5);
-  position: absolute;
-} */
-.active {
-  color: rgb(46,179, 84);
-  background-color: #fff;
-}
-.active view{
-  border-left: 8rpx solid rgb(46,179, 84);
-  
-}
-
-
-.market-scroll-list {
-height: 100%;
-
-}
-.title {
-  padding: 20rpx 30rpx 20rpx 0;
-}
-.inner {
-  display: flex;
-  /* padding: 30rpx; */
-  position: relative;
-  background-color: white;
-  height: 160rpx;
-  width: 100%;
-  align-items: center;
-  margin-bottom: 20rpx;
-}
-/* .inner:after {
-  content: '';
-  left: 30rpx;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background-color: #dfdfdf;
-  transform: scaleY(0.5);
-  position: absolute;
-} */
-.cover {
-  width: 164rpx;
-  height: 144rpx;
-  background: #f6f6f6;
-  margin: 0 36rpx 0 10rpx;
-}
-  .cover-img {
-    width: 100%;
-    height: 100%;
-  }
-.info {
-  flex: 1;
-  padding: 0 30rpx;
-  font-size: 0;
-}
-  .info-title {
-    color: #333;
-    font-size: 26rpx;
-  }
-  .info-subtitle {
-    color: #999999;
-    font-size: 20rpx;
-    margin-top: -3rpx;
-  }
-  .info-desc {
-    color: #666666;
-    font-size: 22rpx;
-    margin-top: 5rpx;
-  }
-.num {
-  width: 120rpx;
-  position: relative;
-}
-    .text {
-    position: absolute;
-    bottom: 0;
-    font-size: 22rpx;
-    color: #666;
-  }
-  a{
-
-  }
-  .describe .color51,.describe .color102{
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  text-align: left;
-}
-.describe .color102{
-  /* margin: 16rpx 0 16rpx 0; */
-}
-.phone{
-  width: 120rpx;
-  height: 38rpx;
-  border:1px solid #a3b18f;
-  /* rgb(163,177,143) */
-  text-align: center;
-  border-radius: 10rpx;
-}
-.phone image{
-  width: 20rpx;
-  height: 20rpx;
-  float: left;
-  margin: 10rpx 0rpx 0 8rpx;
-}
-.location image{
-  width: 20rpx;
-  height: 26rpx;
-  margin-right: 8rpx;
-}
-.location{
-  margin-top: 10rpx;
-}
-.width100{
-  width: 400rpx;
-  padding-right: 10rpx;
-  height: 144rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.zhekou{
-  width: 66rpx;
-  height: 32rpx;
-  position: absolute;
-  left: 0;
-  top: 0;
-  text-align: center;
-  font-size: 20rpx;
-  line-height: 32rpx;
-}
-.zhekou image{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-.zhekou text{
-  position: relative;
-  z-index: 1;
-  color: white;
-}
-.icon_location{
-  width: 22rpx;
-  height: 28rpx;
-  margin-right: 6rpx;
-}
-.renzheng{
-  width: 86rpx;
-  height: 24rpx;
-  line-height: 24rpx;
-  text-align: center;
-  color: #F33939;
-  font-size: 14rpx;
-  border: 1px solid #F33939;
-  border-radius: 6rpx;
-}
-.one-hidden{
-  max-width: 200rpx;
-}
-.scroll-header{
-  display: flex;
-  white-space: nowrap;  
-}
-.scroll-header text{
-  display: inline-block;
-  width:140rpx;
-  height:60rpx;
-  background-color: #EEEEEE;
-  border:1px solid #EEEEEE;
-  text-align: center;
-  line-height: 60rpx;
-  margin-right: 20rpx;
+  font-size: 28rpx;
   color: #444;
 }
-.scroll-header text.active{
-  border:1px solid rgba(46,179,84,1);
-  background-color: white;
-}
-.sousuo{
-  width:626rpx;
-  height:62rpx;
-  background:rgba(238,238,238,1);
-  border-radius:31rpx;
-  padding: 0 30rpx;
-  margin: auto;
-}
-.sousuobig{
-width: 100%;
-height: 70rpx;
+.fixtop{
   position: fixed;
   top: 0;
   z-index: 999999;
   background-color: white;
+  padding: 0 32rpx;
+  width: 686rpx;
 }
-.sousuo input{
-  width: 580rpx;
+.location .hidden1{
+  width: 130rpx;
+}
+.icon_location{
+  width:34rpx;
+  height:40rpx;
+  margin-right: 6rpx;
+}
+.sousuobig{
+  width: 430rpx;
+  height: 70rpx;
+  background-color: #eee;
+  border-radius: 35rpx;
+  padding: 0 30rpx;
+  line-height: 70rpx;
+}
+.sousuobig input{
+  width: 390rpx;
 }
 .video_cz{
   width:44rpx;
@@ -277,10 +37,86 @@ height: 70rpx;
 }
 .hengnav{
   margin-top: 20rpx;
+  padding: 0 32rpx;
 }
 /*隐藏滚动条*/
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
   color: transparent;
+}
+.tab{
+  margin-top: 90rpx;
+  padding: 32rpx 24rpx 24rpx 24rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.tabitem{
+  /* background-color: #e4e4e4; */
+  width: 20%;
+  height: 170rpx;
+  margin-bottom: 32rpx;
+  text-align: center;
+}
+.tab image{
+  width: 115rpx;
+  height: 115rpx;
+  /* background-color: #e4e4e4; */
+}
+swiper{
+  height: 420rpx;
+}
+.swiper-box .wx-swiper-dot{
+    width:20rpx;
+    height:20rpx;
+    border-radius: 50%;
+    display: inline-flex;
+    margin-left: 10rpx;
+    justify-content:space-between;
+}
+.swiper-box .wx-swiper-dot::before{
+    content: '';
+    flex-grow: 1; 
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    border: 1px solid #4AD6A3;
+}
+.swiper-box .wx-swiper-dot-active::before{
+    background:#4AD6A3;   
+}
+.erjiitem{
+  display: inline-block;
+   border-bottom: 6rpx solid transparent;
+   padding: 10rpx;
+   margin: 0 20rpx 0 0;
+}
+.active{
+  border-bottom: 6rpx solid #4AD6A3;
+}
+.scroll-header{
+  white-space: nowrap;
+  display: flex
+}
+.shop{
+  margin-bottom: 32rpx;
+}
+.shoppic{
+  width:328rpx;
+  height:250rpx;
+  border-radius:10rpx 10rpx 0px 0px;
+}
+.shoptext{
+  width:308rpx;
+  height:80rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 8rpx 0rpx rgba(152,152,152,0.5);
+  border-radius:0px 0px 10rpx 10rpx;
+  padding: 20rpx 10rpx;
+  margin-top:-10rpx;
+
+}
+.shopitem{
+  padding: 32rpx;
+}
+.empty{
+  width: 100%;
 }

@@ -265,7 +265,7 @@ checkbox-group{
 }
 .over_look_big{
   padding: 40rpx 0;
-  max-height: 600rpx;
+  height: 600rpx;
   overflow: auto;
 }
 .xxpic{
