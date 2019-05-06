@@ -12,7 +12,7 @@
   background-color: #f8f8f8;
 }
 .submitButton{
-  margin-top: 66rpx;
+  margin: 66rpx auto 0 auto;
 }
 .shitem .colorFE2C2C {
   margin: 0;
@@ -76,7 +76,7 @@ input{
 }
 .expressitem{
   max-height: 440rpx;
-  overflow: visible;
+  overflow: scroll;
 }
 .btndd{
   border: 1px solid #D2D2D2;
@@ -95,4 +95,40 @@ input{
 .over_look_big{
   position: relative;
   overflow: visible;
+}
+.afterSale{
+  margin-top: 20rpx;
+  border-radius: 30rpx;
+  border-color: #33cd5f;
+  color: #33cd5f;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.after>view,.after>text{
+  margin: 0 0 30rpx 0;
+
+}
+.leftZ{
+  display: inline-block;
+  width: 140rpx;
+}
+.rigthR{
+  display: inline-block;
+  width: 520rpx;
+}
+.fkItem_goods{
+  margin: 0;
+}
+.after{
+  padding: 32rpx;
+  border-top: 20rpx solid #eee;
+}
+.imagesbox{
+  padding: 0;
+}
+.imagesbox image{
+  width:130rpx;
+  height:130rpx;
+  margin: 20rpx 40rpx 0 0;
+  background-color: #eee;
 }

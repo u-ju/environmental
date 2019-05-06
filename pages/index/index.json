@@ -1,7 +1,7 @@
 {
-  "navigationBarTitleText": "啄木鸟环保",
   "usingComponents": {
     "menu": "../../Components/menu/index",
-    "wux-cascader": "../../Components/cascader/index"
+    "wux-cascader": "../../Components/cascader/index",
+    "refresh-view": "../../Components/RefreshView/refresh-view"
   }
 }

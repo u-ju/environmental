@@ -16,7 +16,7 @@ page{
   width: 686rpx;
   height: 250rpx;
   border-radius: 10rpx;
-  background-color: rgb(239, 224, 224);
+  /* background-color: rgb(239, 224, 224); */
   overflow: hidden;
   position: relative;
 }
@@ -106,10 +106,12 @@ page{
 .index_putin{
   width:270rpx;
   height:80rpx;
-  padding:  30rpx;
-  background:rgba(41,215,203,1);
-  border-radius:10rpx;
-  color: white;
+  padding:  20rpx 28rpx;
+  color: #2C2C2C;
+  background-color: #fff;
+  border:1px solid rgba(238,238,238,1);
+  box-shadow:-1rpx 5rpx 13rpx 0px rgba(169,169,169,0.23);
+  border-radius:20rpx
 }
 .index_putin .color6ADB7A{
   margin-right: 14rpx;
@@ -123,12 +125,13 @@ page{
 } */
 .wallet{
   width: 84rpx;
-  height: 40rpx;
+  height: 32rpx;
   text-align: center;
-  line-height: 40rpx;
-  border-radius: 20rpx;
-  border:1px solid #FFFFFF;
-  font-size: 25rpx;
+  line-height: 32rpx;
+  font-size: 24rpx;
+  color: #898989;
+  border:1px solid #898989;
+  border-radius:17rpx;
 }
 .size34{
   font-size: 34rpx;
@@ -156,8 +159,9 @@ page{
   height: 28rpx;
   margin-right: 16rpx;
 }
-swiper {
-  height: 250rpx;
+.banner {
+  height: 150rpx;
+  border-radius:30rpx;
 }
 .login{
   display: flex;
@@ -207,17 +211,23 @@ swiper {
   /* top: 10rpx;
   left: 20rpx; */
 }
+.top{
+  padding: 6rpx 32rpx;
+  margin-bottom: 40rpx;
+}
 .search{
-  width:400rpx;
-  padding: 0 20rpx;
-  height:62rpx;
-  background:rgba(238,238,238,1);
-  border-radius:31rpx;
-  position: relative
+  width:376rpx;
+  height:56rpx;
+  padding-left: 35rpx;
+  background:rgba(255,255,255,1);
+  border-radius:28rpx;
+  position: relative;
+  box-shadow: 0rpx 0rpx 13rpx 0px rgba(169,169,169,0.23);
 }
 .search_pic{
   width:44rpx;
   height:44rpx;
+  font-size: 36rpx;
   /* position: absolute;
   right: 30rpx;
   top: 50%;
@@ -248,9 +258,9 @@ swiper {
 .recommended{
   height: 235rpx;
 }
-.twobr>view:last-of-type{
+/* .twobr>view:last-of-type{
   border: none
-}
+} */
 .theme{
   margin-bottom: 20rpx;
 }
@@ -278,4 +288,48 @@ swiper {
 }
 .agriculturalD .flex_col{
   width: 420rpx;
+}
+.swiper-box{
+  height:370rpx;
+}
+.tab{
+  /* padding: 32rpx 24rpx 24rpx 24rpx; */
+}
+.tabitem{
+  width: 20%;
+  margin-bottom: 50rpx;
+  text-align: center;
+}
+.tab image{
+  width: 70rpx;
+  height: 70rpx;
+  margin-bottom: 20rpx;
+}
+.swiper-box .wx-swiper-dot{
+    width:24rpx;
+    height:4rpx;
+    display: inline-flex;
+    margin-left: 0rpx;
+    justify-content:space-between;
+    border-radius: 0;
+}
+.swiper-box .wx-swiper-dot::before{
+    content: '';
+    flex-grow: 1; 
+    border-radius: 0;
+}
+.swiper-box .wx-swiper-dot-active::before{
+    
+}
+.locations{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 6rpx;
+}
+.width110{
+  width: 110rpx;
+}
+.sys{
+  width: 40rpx;
+  height: 40rpx;
 }

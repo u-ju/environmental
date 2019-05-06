@@ -14,15 +14,20 @@
       <text class='{{item.order_status==0?"color2EB354":""}}{{item.order_status==1?"colorBE":""}}{{item.order_status==2?"colorFE2C2C":""}}'>{{item.order_status_name}} </text>
     </view>
     <view class='list1' >
-      <view class='fkItem_goods  flex' wx:for="{{item.order_goods}}" wx:for-item="order_goods" wx:key="index">
-        <image src='{{order_goods.thumb}}' class='goospic' mode='aspectFill'></image>
-        <view class='fkItem_goods_ms fhItem_goods_ms flex_col flex_btw'>
-          <view class='color3 size28 hidden2'>{{order_goods.spu_name}}</view>
-          <view class='color4'>{{order_goods.sku_name}}</view>
-          <view  class='colorFE2C2C size28 flex_btw'>
-            <view>{{order_goods.price}}</view>
-            <view>× {{order_goods.buy_count}}</view>
+      <view class='fkItem_goods  ' wx:for="{{item.order_goods}}" wx:for-item="order_goods" wx:key="index">
+        <view class='flex'> 
+          <image src='{{order_goods.thumb}}' class='goospic' mode='aspectFill'></image>
+          <view class='fkItem_goods_ms fhItem_goods_ms flex_col flex_btw'>
+            <view class='color3 size28 hidden2'>{{order_goods.spu_name}}</view>
+            <view class='color4'>{{order_goods.sku_name}}</view>
+            <view  class='colorFE2C2C size28 flex_btw'>
+              <view>{{order_goods.price}}</view>
+              <view>× {{order_goods.buy_count}}</view>
+            </view>
           </view>
+        </view>
+        <view class='flex_reverse size28'>
+          <view class='color989898 btnck afterSale' wx:if="{{order_goods.after_sale.name}}"  catchtap='afterSale'  data-id='{{order_goods.order_id}}' >{{order_goods.after_sale.name}}</view>
         </view>
       </view>
     </view>
@@ -82,4 +87,35 @@
       <view class='shbtn' bindtap='comment'>立即评价</view>
       <view class='shbtn' bindtap='backindex'>返回首页</view>
     </view>
+</wux-popup>
+<wux-popup closable visible="{{ visible4 }}" title='填写发货单号' classN='width686' bind:close="onClose4">
+  <form bindsubmit="formSubmit">
+  <view class='expressitem'>
+  <view class='flex_btw align_center express' wx:for='{{skunum}}' wx:key ="index" wx:for-index="indexnum">
+    <view>
+      <view class='flex align_center'>
+        <view class='itemL'>选择快递 </view>
+        <view class='select_box'>
+          <view class='select' catchtap='selectTap' data-index='{{indexnum}}'>
+            <input disabled='true' placeholder='请选择' name='logistics[{{indexnum}}][express_key]' value='{{express_name[indexnum]}}'></input>
+          </view>
+          <view class='option_box' style='height:{{show[indexnum]?(order_logistics_express.length>5?300:order_logistics_express.length*60):0}}rpx;'>
+            <text class='option' style='{{index==order_logistics_express.length-1&&"border:0;"}}' wx:for='{{order_logistics_express}}' wx:key='this' data-key='{{item.key}}' data-name='{{item.name}}' catchtap='optionTap' data-indexnum='{{indexnum}}' data-index='{{indexnum}}'>{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='flex align_center'>
+        <view class='itemL'>填写单号 </view>
+        <input  placeholder='' name='logistics[{{indexnum}}][express_num]' value='{{express_num[indexnum]}}'></input>
+      </view>
+    </view>
+    <image src='../../images/delete_.png' class='delete_' bindtap='delsku' data-index='{{indexnum}}'></image>
+  </view>
+  </view>
+  <view class='additem' bindtap='addexpress'>
+    <image src='../../images/addsku.png'></image>
+    <view>添加物流</view>
+  </view>
+   <button formType="submit" disabled='{{expressbtn}}' class='surebtn'>确认</button>
+  </form>
 </wux-popup>

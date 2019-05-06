@@ -33,8 +33,8 @@
 </view>
 <view class='goods_intr2'>
   <view class='color898989 flex_btw size28 align_center marginb30' bindtap='open1'>
-    <text  decode="{{true}}" space="{{true}}">规格&ensp;&ensp;&ensp;&ensp;选择颜色分类</text>
-    <!-- {{result.sku_name}} -->
+    <!-- <text  decode="{{true}}" space="{{true}}">规格&ensp;&ensp;&ensp;&ensp;选择颜色分类</text> -->
+    <text  decode="{{true}}" space="{{true}}">已选&ensp;&ensp;&ensp;&ensp;{{result.sku_name}}</text>
     <text class='iconfont icon-jiantou'></text>
   </view>
   

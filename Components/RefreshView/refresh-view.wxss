@@ -1,0 +1,48 @@
+/* components/RefreshLayout/refresh-layout.wxss */
+
+.refresh-container {
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #999;
+  background-color: #eee;
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  align-content:flex-end;
+  /* position: relative; */
+}
+.refresh-layout {
+  /* vertical-align: center; */
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  align-content:flex-end;
+  text-align: center;
+  align-self: flex-end;
+  justify-content: center;
+}
+
+.refresh-loading {
+  margin: 0 5px;
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-animation: weuiLoading 1s steps(12, end) infinite;
+  animation: weuiLoading 1s steps(12, end) infinite;
+  
+  background-size: 100%;
+}
+
+.refresh-tips {
+  line-height: 30rpx;
+  font-size: 26rpx;
+  vertical-align: middle;
+  margin: auto;
+}
+image{
+  width: 200rpx;
+  height: 100rpx;
+  /* position: absolute;
+  bottom: 20rpx; */
+}

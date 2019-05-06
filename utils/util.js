@@ -1,8 +1,8 @@
 const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
-// var build = 99999999
-var build = 20190430
+var build = 99999999
+// var build = 20190430
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -103,9 +103,28 @@ module.exports = {
   putSync: putSync,
   navigateBack:navigateBack,
   build: build,
-  upload_pic: upload_pic
+  upload_pic: upload_pic,
+  popup: popup
 }
 
+function popup(content, confirm, cancel){
+  wx.showModal({
+    title: '提醒',
+    content: content,
+    cancelText: '否',
+    cancelColor: '#2EB354',
+    confirmText: '是',
+    confirmColor: '#444444',
+    success: function (res) {
+      if (res.confirm) {
+        confirm()
+      } else {
+        cancel()
+      }
+
+    }
+  })
+}
 /**
  * 替换字符串
  * @param str
@@ -386,8 +405,8 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
   if (!form.hasOwnProperty("token")) {
     header = {
       'content-type': 'application/json', // 默认值
-      'token': that.getToken(),
-      // 'token': 'zwj',
+      // 'token': that.getToken(),
+      'token': 'zwj',
       'channel':'let',
       'build': build
     }
@@ -460,8 +479,8 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
   if (!form.hasOwnProperty("token")) {
     header = {
       'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', // 默认值
-      'token': that.getToken(),
-      // 'token': 'zwj',
+      // 'token': that.getToken(),
+      'token': 'zwj',
       'channel': 'let',
       'build': build
     }

@@ -26,6 +26,6 @@ page{
   color: #4AD6A3;
   border-bottom: 4rpx solid #4AD6A3;
 }
-.view1{
-  padding: 
+.goods_intr2>view{
+  margin-bottom: 0;
 }

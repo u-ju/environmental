@@ -1,4 +1,4 @@
-// pages/agriculturalMerchantsOrderDeail/index.js
+// pages/agriculturalRefund/index.js
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
@@ -10,15 +10,17 @@ Page({
   data: {
     result: {},
     visible2: false,
+    visible3:false,
     order_logistics: [],
-    visible1:false,
-    skunum:1,
-    show:[false],
-    express_name:[],
-    express_key:[],
-    express_num:[],
-    expressbtn:false,
-    exurl:'shopOrder_deliver',
+    visible1: false,
+    skunum: 1,
+    show: [false],
+    express_name: [],
+    express_key: [],
+    express_num: [],
+    expressbtn: false,
+    exurl: 'shopOrder_deliver',
+    after: 1
   },
   addexpress() {
     var express_name = this.data.express_name
@@ -63,9 +65,9 @@ Page({
     let keyv = e.currentTarget.dataset.key;
     var express_name = this.data.express_name
     var express_key = this.data.express_key
-    
+
     express_key[e.currentTarget.dataset.indexnum] = keyv
-      express_name[e.currentTarget.dataset.indexnum] = name
+    express_name[e.currentTarget.dataset.indexnum] = name
     var show = this.data.show
     show[e.currentTarget.dataset.indexnum] = !show[e.currentTarget.dataset.indexnum]
     this.setData({
@@ -74,7 +76,7 @@ Page({
       show: show,
     });
   },
-  dellog(e){
+  dellog(e) {
     console.log(e.currentTarget.dataset.id)
     var that = this;
     wx.showModal({
@@ -94,20 +96,20 @@ Page({
 
       }
     })
-    
+
   },
-  expressDestroy(id){
-    var that = this,data={};
+  expressDestroy(id) {
+    var that = this, data = {};
     data.order_id = that.data.order_id
-    data['logistics_id[0]']=id
+    data['logistics_id[0]'] = id
     util.postJSON({ apiUrl: apiurl.shopOrder_expressDestroy, data: data }, function (res) {
       var result = res.data.result
       that.init(that.data.order_id)
       wx.hideLoading()
     }, function (e) {
-      
+
     }, function (e) {
-      
+
     })
   },
   /**
@@ -120,46 +122,46 @@ Page({
       title: '加载中',
     })
     this.setData({
-      // 
-      order_id: options.id
+      // options.id
+      order_id: 2
     })
     var order_logistics_express = [
       {
         "key": "SFEXPRESS",
         "name": "顺丰快递"
-            },
+      },
       {
         "key": "EMS",
         "name": "EMS"
-            },
+      },
       {
         "key": "STO",
         "name": "申通快递"
-            },
+      },
       {
         "key": "YTO",
         "name": "圆通快递"
-            },
+      },
       {
         "key": "ZTO",
         "name": "中通快递"
-            },
+      },
       {
         "key": "YUNDA",
         "name": "韵达快递"
-            },
+      },
       {
         "key": "JD",
         "name": "京东快递"
-            },
+      },
       {
         "key": "DEPPON",
         "name": "德邦物流"
-            },
+      },
       {
         "key": "HTKY",
         "name": "百世快递"
-            }
+      }
     ]
     this.setData({
       // app.globalData.config.order_logistics_express
@@ -190,8 +192,20 @@ Page({
     }, function (e) {
       console.log(e)
     }, function (e) {
-      // var page = getCurrentPages.pop()
-      // page.onLoad()
+    })
+    util.getJSON({ apiUrl: apiurl.shopOrder_afterSaleShow + "?order_id=" + order_id + "&sku_id=12" }, function (res) {
+      var result = res.data.result
+      console.log(result)
+      that.setData({
+        order_goods: result.order_goods,
+        after_sale_list: result.after_sale_list,
+        sku_id: result.order_goods.sku_id,
+        order_id: result.order_goods.order_id
+      })
+      wx.hideLoading()
+    }, function (e) {
+      console.log(e)
+    }, function (e) {
     })
   },
   click(e) {
@@ -203,7 +217,7 @@ Page({
       // comment: 'url'
     }
     console.log(e.currentTarget.dataset.key)
-    if (e.currentTarget.dataset.key =='deliver'){
+    if (e.currentTarget.dataset.key == 'deliver') {
       that.deliver()
     } else if (e.currentTarget.dataset.key == 'logistics') {
       that.open2()
@@ -221,33 +235,33 @@ Page({
       visible2: false,
     })
   },
-  deliver(){
+  deliver() {
     this.setData({
       visible1: true,
     })
   },
-  onClose1(){
+  onClose1() {
     this.setData({
       visible1: false,
     })
   },
-  addwl(){
+  addwl() {
     this.setData({
       visible1: true,
       visible2: false,
-      exurl:'shopOrder_expressStore'
+      exurl: 'shopOrder_expressStore'
     })
   },
-  formSubmit(e){
+  formSubmit(e) {
     console.log(e.detail.value)
     var that = this;
     that.setData({
-      expressbtn:true
+      expressbtn: true
     })
     var data = e.detail.value
     data.order_id = that.data.order_id
-    for (var i in that.data.express_key){
-      data['logistics[' + i+'][express_key]'] = that.data.express_key[i]
+    for (var i in that.data.express_key) {
+      data['logistics[' + i + '][express_key]'] = that.data.express_key[i]
     }
     util.postJSON({ apiUrl: apiurl[that.data.exurl], data: data }, function (res) {
       var result = res.data.result
@@ -270,6 +284,54 @@ Page({
       that.setData({
         expressbtn: false
       })
+    })
+  },
+
+  confirm(e){
+    var that =this;
+    var data = {
+      order_id: that.data.order_id,
+      after_sale_id:e.currentTarget.dataset.id,
+      sku_id: that.data.sku_id
+    }
+    console.log(e.currentTarget.dataset.id)
+    util.popup('是否确定售后？',function(){
+      
+      // util.postJSON({ apiUrl: apiurl.shopOrder_afterSaleConfirm, data: data }, function (res) {
+        
+      //   that.init(that.data.order_id)
+      // })
+    },function(){
+
+    })
+  },
+  refuse(e) {
+    var that = this;
+    var data = {
+      order_id: that.data.order_id,
+      after_sale_id: e.currentTarget.dataset.id,
+      sku_id: that.data.sku_id
+    }
+    this.setData({
+      refusedata:data,
+      visible3:true
+    })
+  },
+  onClose3(){
+    this.setData({
+      visible3: false
+    })
+  },
+  afterSaleRefuse(e){
+    var that = this;
+    var data = this.data.refusedata
+    data.intro = e.detail.value.intro
+    this.setData({
+      visible3: false
+    })
+    util.postJSON({ apiUrl: apiurl.shopOrder_afterSaleRefuse, data: data }, function (res) {
+
+      that.init(that.data.order_id)
     })
   }
 })

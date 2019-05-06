@@ -8,7 +8,7 @@ var template = require('../../Components/tab-bar/tab-bar.js');
 var bmap = require('../../utils/bmap-wx.min.js'); 
 Page({
   data: {
-    indicatorDots: true,//显示面板指示点
+    indicatorDots: false,//显示面板指示点
     autoplay: true,//自动播放
     beforeColor: "white",//指示点颜色
     afterColor: "coral",//当前选中的指示点颜色
@@ -16,6 +16,14 @@ Page({
     interval: 10000,
     interval1: 6000,
     duration: 1000,
+
+    indicatorDotstag: true,//显示面板指示点
+    autoplaytag: false,//自动播放
+    beforeColortag: "#DCDCDC",//指示点颜色
+    afterColortag: "#27aad9",//当前选中的指示点颜色
+    intervaltag: 11000,
+    durationtag: 1000,
+
     userInfo: {},
     banner: [],
     block: [],
@@ -59,6 +67,7 @@ Page({
   // },
   onLoad: function (options) {
     var that  = this;
+    
     var formData = wx.getStorageSync('formData')
     if (formData){
       this.setData({
@@ -98,16 +107,22 @@ Page({
     var that =this;
     util.getJSON({ apiUrl: apiurl.index }, function (res) {
       var result = res.data.result
+      var tag = result.tag;
+      // for (var i in result.tag) {
+      //   tag.push(result.tag[i]);
+      // }
+      // console.log(tag)
       that.setData({
         result: result,
         banner: result.banner,
         // block: result.block,
         shop_ad: result.shop_ad,
-        tag: result.tag,
+        tag: tag,
         user: result.user,
         // nper: result.nper,
         // week_ad: result.week_ad,
-        shop_goods_ad: result.shop_goods_ad
+        shop_goods_ad: result.shop_goods_ad,
+        taglen: Math.ceil(tag.length / 10)
       })
       util.hideLoading()
     })
@@ -161,7 +176,7 @@ Page({
   },
   onReady:function(){
     template.tabbar("tabBar",0, this) //0表示第一个tabbar
-    
+    this.refreshView = this.selectComponent("#refreshView")
   },
   link(e){
     
@@ -309,5 +324,28 @@ Page({
     wx.navigateTo({
       url: '../agriculturalDetail/index?id=' + e.currentTarget.dataset.sku_id
     })
+  },
+  //触摸开始
+  handletouchstart: function (event) {
+    this.refreshView.handletouchstart(event)
+  },
+  //触摸移动
+  handletouchmove: function (event) {
+    this.refreshView.handletouchmove(event)
+  },
+  //触摸结束
+  handletouchend: function (event) {
+    this.refreshView.handletouchend(event)
+  },
+  //触摸取消
+  handletouchcancel: function (event) {
+    this.refreshView.handletouchcancel(event)
+  },
+  //页面滚动
+  onPageScroll: function (event) {
+    this.refreshView.onPageScroll(event)
+  },
+  onPullDownRefresh: function () {
+    setTimeout(() => { this.refreshView.stopPullRefresh() }, 5000)
   }
 })

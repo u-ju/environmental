@@ -11,7 +11,7 @@ Page({
   data: {
     tabTxt: ['分类',  '销量' ,'价格'],//分类
     tab: [1, 0, 0],
-    pinpaiList: [{ 'id': '1', 'title': '品牌1' }, { 'id': '2', 'title': '品牌2' }],
+    pinpaiList: [],
     pinpai_id: 0,//品牌
     pinpai_txt: '',
     jiage_id: 0,//价格
@@ -23,7 +23,7 @@ Page({
     current:[],
     currentname:[],
     cate_id:'',
-    arrprice:["price","sales"],
+    arrprice: ["sales",'price'],
     sort:'',
     order:'desc',
     isfull:false
@@ -43,9 +43,13 @@ Page({
         order: data[index] == 0 ? 'desc' : 'asc',
         tabTxt: ['分类', '销量', '价格'],
       })
+      var qyshow = false
+      if (this.data.qyshow==true) {
+        qyshow = true
+      }
       this.setData({
         qyopen: false,
-        qyshow: false,
+        qyshow: qyshow,
         isfull: false,
         cate_id:''
       })

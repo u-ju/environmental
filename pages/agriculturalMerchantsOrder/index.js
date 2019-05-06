@@ -7,6 +7,7 @@ Page({
     visible1: false,
     visible2: false,
     visible3: false,
+    visible4: false,
     current: '0',
     height: 1100,
     axis: [],
@@ -20,7 +21,14 @@ Page({
     list: [],
     receiveid: '',
     order_id: [],
-    order_logistics: []
+    order_logistics: [],
+    skunum: 1,
+    show: [false],
+    express_name: [],
+    express_key: [],
+    express_num: [],
+    expressbtn: false,
+    exurl: 'shopOrder_deliver'
   },
   onLoad(e) {
     // console.log(app.globalData.config)
@@ -53,7 +61,8 @@ Page({
     }
     this.setData({
       tabs: order_info_search_status,
-      status: order_info_search_status[0]["id"]
+      status: order_info_search_status[0]["id"],
+      order_logistics_express: app.globalData.config.order_logistics_express
     })
     // this.init()
     if (e.source_ext) {
@@ -208,11 +217,11 @@ Page({
       })
     })
   },
-  deliver(e){
-    wx.navigateTo({
-      url: '../agriculturalMerchantsOrderDeail/index?id=' + e.currentTarget.dataset.id,
-    })
-  },
+  // deliver(e){
+  //   wx.navigateTo({
+  //     url: '../agriculturalMerchantsOrderDeail/index?id=' + e.currentTarget.dataset.id,
+  //   })
+  // },
   _cancel(order_id) {
     var that = this;
     util.postJSON({ apiUrl: apiurl.shopOrder_cancel, data: { order_id: order_id } }, function (res) {
@@ -348,5 +357,99 @@ Page({
   },
   onShow() {
     this.init(this.data.status)
+  },
+
+  // 点击下拉显示框
+  selectTap(e) {
+    console.log(e.currentTarget.dataset.index)
+    var show = this.data.show
+    show[e.currentTarget.dataset.index] = !show[e.currentTarget.dataset.index]
+    this.setData({
+      show: show
+    });
+  },
+
+  // 点击下拉列表
+  optionTap(e) {
+    let name = e.currentTarget.dataset.name;
+    let keyv = e.currentTarget.dataset.key;
+    var express_name = this.data.express_name
+    var express_key = this.data.express_key
+
+    express_key[e.currentTarget.dataset.indexnum] = keyv
+    express_name[e.currentTarget.dataset.indexnum] = name
+    var show = this.data.show
+    show[e.currentTarget.dataset.indexnum] = !show[e.currentTarget.dataset.indexnum]
+    this.setData({
+      express_name: express_name,
+      express_key: express_key,
+      show: show,
+    });
+  },
+  
+  addexpress() {
+    var express_name = this.data.express_name
+    var express_key = this.data.express_key
+    var express_num = this.data.express_num
+    var show = this.data.show
+    express_name.push('')
+    express_key.push('')
+    show.push(false)
+    this.setData({
+      skunum: this.data.skunum + 1,
+      express_name: express_name,
+      express_key: express_key,
+    })
+  },
+  delsku(e) {
+    var index = e.currentTarget.dataset.index;
+    this.setData({
+      skunum: this.data.skunum - 1,
+    })
+    var show = this.data.show.splice(index, 1)
+  },
+  deliver() {
+    this.setData({
+      visible4: true,
+    })
+  },
+  onClose4() {
+    this.setData({
+      visible4: false,
+    })
+  },
+  formSubmit(e) {
+    console.log(e.detail.value)
+    var that = this;
+    that.setData({
+      expressbtn: true
+    })
+    var data = e.detail.value
+    data.order_id = that.data.order_id
+    for (var i in that.data.express_key) {
+      data['logistics[' + i + '][express_key]'] = that.data.express_key[i]
+    }
+    util.postJSON({ apiUrl: apiurl[that.data.exurl], data: data }, function (res) {
+      var result = res.data.result
+      that.setData({
+        expressbtn: false,
+        visible4: false,
+        skunum: 1,
+        show: [false],
+        express_name: [],
+        express_key: [],
+        express_num: [],
+      })
+      that.init(that.data.order_id)
+      wx.hideLoading()
+    }, function (e) {
+      that.setData({
+        expressbtn: false
+      })
+    }, function (e) {
+      that.setData({
+        expressbtn: false
+      })
+    })
   }
 })

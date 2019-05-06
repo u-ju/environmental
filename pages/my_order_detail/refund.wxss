@@ -1,0 +1,2 @@
+/* pages/my_order_detail/refund.wxss */
+@import '../agriculturalRefund/index';

@@ -1,13 +1,17 @@
 {
   "pages": [
-    
     "pages/index/index",
-    "pages/shopping_mall/shopping_mall",
-    "pages/agriculturalRecommendation/index",
-    "pages/agriculturalMerchantsOrder/index",
+    "pages/my_order_detail/refund",
     "pages/order/index",
     
+    "pages/myOrderRefund/index",
     "pages/agriculturalMerchantsOrderDeail/index",
+    "pages/agriculturalRefund/index",
+    "pages/map/index",
+    "pages/agriculturalMerchantsOrder/index",
+    "pages/shopping_mall/shopping_mall",
+    "pages/agriculturalRecommendation/index",
+    
     
     "pages/agriculturalDetail/index",
     "pages/businessinforcheck/index",
@@ -15,13 +19,8 @@
     "pages/businessmerchantsDetail/index",
     "pages/businessmerchants/index",
     "pages/businessOrder/index",
-    
     "pages/agriculturalLook/index",
-    
-    
     "pages/agriculturalEdit/index",
-    
-    
     "pages/tenantsIndex/index",
     "pages/tenantsChoice/index",
     "pages/tenants/online",
@@ -144,7 +143,7 @@
     "navigationBarTextStyle": "black"
   },
   "networkTimeout": {
-    "request": 10000,
+    "request": 20000,
     "downloadFile": 100000
   },
   "sitemapLocation": "sitemap.json"

@@ -36,7 +36,7 @@
     <view>
       <view class='color4 size28 one-hidden margint6'>{{item.spu_name}}</view>
       <view class='colorFE2C2C line-through size26 margint6'>市场价：￥{{item.market_price}}</view>
-      <view class='colorFE2C2C size26 margint6'>环保金：￥{{item.nper_price}}</view>
+      <view class='colorFE2C2C size26 margint6'>环保金：￥{{item.price}}</view>
     </view>
   </view>
   </block>

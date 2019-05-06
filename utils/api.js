@@ -1,5 +1,5 @@
-const basePath = 'https://wyhb.zgwyhb.com/api';
-// const basePath = 'https://wyhb.dev.zgwyhb.com/api';
+// const basePath = 'https://wyhb.zgwyhb.com/api';
+const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
 
   // GET 控制对照
@@ -336,7 +336,12 @@ const apiList = {
   userOrder_comment: basePath + '/front/userOrder/comment',
   // POST 订单删除
   userOrder_destroy: basePath + '/front/userOrder/destroy',
-
+  // GET 售后信息
+  userOrder_afterSaleShow: basePath + '/front/userOrder/afterSaleShow',
+  // POST 售后创建
+  userOrder_afterSaleStore: basePath + '/front/userOrder/afterSaleStore',
+  // POST 售后取消
+  userOrder_afterSaleCancel: basePath + '/front/userOrder/afterSaleCancel',
 
 
 
@@ -350,7 +355,12 @@ const apiList = {
   shopOrder_deliver: basePath + '/front/shopOrder/deliver',
   shopOrder_expressStore: basePath + '/front/shopOrder/expressStore',
   shopOrder_expressDestroy: basePath + '/front/shopOrder/expressDestroy',
-
+  // GET 售后信息
+  shopOrder_afterSaleShow: basePath + '/front/shopOrder/afterSaleShow',
+  // POST 售后创建
+  shopOrder_afterSaleConfirm: basePath + '/front/shopOrder/afterSaleConfirm',
+  // POST 售后取消
+  shopOrder_afterSaleRefuse: basePath + '/front/shopOrder/afterSaleRefuse',
 
   // BankCardController 银行卡管理
 

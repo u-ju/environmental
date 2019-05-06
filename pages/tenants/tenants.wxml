@@ -49,12 +49,12 @@
   </view>
   <view class='zzctransp' bindtap='hiddensug' wx:if='{{suggestion.length>0}}'></view>
   <view class='item  flex align_center'>
-    <text class='size28 color6'>商城类型</text>
+    <text class='size28 color6'>商家类型</text>
       <input class='size28 color9' disabled='disabled' name='cate_id' value='{{title1}}' bindtap="onOpen1" ></input>
       <text class='iconfont icon-jiantou color9'></text>
   </view>
   <view class='item1 flex align_center textareaitem'>
-    <text class='size28 color6'>商城描述</text>
+    <text class='size28 color6'>商家描述</text>
     <textarea wx:if="{{show}}" focus="{{show}}" class='size28 color9' bindinput='input' bindblur='unshow' data-contact='introt' value='{{intro}}' name='intro'></textarea>
     <view class='textarea size28 color9' bindtap='show'  wx:else>{{intro}}</view>
   </view>

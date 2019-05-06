@@ -75,9 +75,14 @@ Page({
    * 标示点移动触发
    */
   regionchange(e) {
+    console.log(e)
     // console.log(e.type)
   },
-
+  tap(e){
+    let mpCtx = wx.createMapContext("map");
+    console.log(e)
+    console.log(mpCtx)
+  },
   /**
    * 点击标识点触发
    */

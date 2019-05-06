@@ -1,27 +1,28 @@
 <!--pages/myOrderRefund/index.wxml-->
+<form bindsubmit="formSubmit">
 <view class='goodsitem'>
   <view>订单：123456789</view>
   <view class='flex_btw align_center goods'>
-    <image class='goodspic'></image>
+    <image class='goodspic' src='{{order_goods.thumb}}'></image>
     <view class='width390'>
-      <view class='hidden2'>自然之星 有机花菜约300g 绿菜 花青花菜 火锅食材 新鲜蔬菜....</view>
+      <view class='hidden2'>{{order_goods.spu_name}}</view>
       <view class='flex_btw'>
-        <view>自然之星；1kg</view>
-        <view>1</view>
+        <view>{{order_goods.sku_name}}</view>
+        <view>×{{order_goods.buy_count}}</view>
       </view>
     </view>
   </view>
 </view>
 <view class='refund'>
   <view>退款金额
-    <text class='colorBE size22'>（最多￥29.8，含发货邮费￥0.00）</text>
+    <text class='colorBE size22'>（最多￥{{result.can_amount}}，含发货邮费￥0.00）</text>
   </view>
   <view class='money flex_btw align_center'>
     <text>￥</text>
-    <input></input>
+    <input name='amount' value='{{amount}}'></input>
   </view>
   <view class='mart50'>退款说明</view>
-  <textarea></textarea>
+  <textarea  name='intro' value='{{intro}}'></textarea>
   <view>上传凭证</view>
   <view class="picture_list">
     <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
@@ -41,4 +42,5 @@
     </view>
   </view>
 </view>
-<view class='btn size30'>提交</view>
+<button form-type="submit"  class='btn size30' disabled='{{post}}' >提交</button>
+</form>
