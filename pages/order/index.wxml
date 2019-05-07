@@ -13,16 +13,21 @@
       <text class='{{item.order_status==0?"color2EB354":""}}{{item.order_status==1?"colorBE":""}}{{item.order_status==2?"colorFE2C2C":""}}'>{{item.order_status_name}} </text>
     </view>
     <view class='list1'>
-      <view class='fkItem_goods  flex' wx:for="{{item.order_goods}}" wx:for-item="order_goods" wx:key="index">
-        <image src='{{order_goods.thumb}}' class='goospic' mode='aspectFill'></image>
-        <view class='fkItem_goods_ms fhItem_goods_ms flex_col flex_btw'>
-          <view class='color3 size28 hidden2'>{{order_goods.spu_name}}</view>
-          <view class='color4'>{{order_goods.sku_name}}</view>
-          <view class='colorFE2C2C size28 flex_btw'>
-            <view>{{order_goods.price}}</view>
-            <view>× {{order_goods.buy_count}}</view>
+      <view class='fkItem_goods  ' wx:for="{{item.order_goods}}" wx:for-item="order_goods" wx:key="index" data-item='{{order_goods}}' catchtap='afterSaleShow'>
+        <view class='flex'>
+          <image src='{{order_goods.thumb}}' class='goospic' mode='aspectFill'></image>
+          <view class='fkItem_goods_ms fhItem_goods_ms flex_col flex_btw'>
+            <view class='color3 size28 hidden2'>{{order_goods.spu_name}}</view>
+            <view class='color4'>{{order_goods.sku_name}}</view>
+            <view class='colorFE2C2C size28 flex_btw'>
+              <view>{{order_goods.price}}</view>
+              <view>× {{order_goods.buy_count}}</view>
+            </view>
           </view>
         </view>
+        <!-- <view class='flex_reverse size28'>
+          <view class='color989898 btnck afterSale' wx:if="{{order_goods.after_sale.name}}" catchtap='afterSale' data-id='{{order_goods.order_id}}' data-sku_id='{{order_goods.sku_id}}'>{{order_goods.after_sale.name}}</view>
+        </view> -->
       </view>
     </view>
     <view class='colorFE2C2C size28 textR'>

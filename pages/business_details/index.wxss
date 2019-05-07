@@ -1,29 +1,250 @@
 /* pages/business_details/index.wxss */
-@import 'business_details.wxss';
+@import '../agriculturalDetail/index';
 page{
   font-size: 28rpx;
+  color: #444;
+  border: none;
 }
-.plan{
-  padding: 40rpx 32rpx;
+.swiperbox{
+  width:688rpx;
+  height:326rpx;
+  margin: auto;
+  border-radius:20rpx;
+  overflow: hidden;
+  position: relative;
 }
-.plan .bold{
-  padding-bottom: 16rpx;
-  border-bottom: 1px solid #eee;
+.slide-image,video{
+  width: 100%;
+  height: 100%;
 }
-.plan image{
-  width:240rpx;
-  height:160rpx;
-  margin-right: 36rpx;
+.swiperbox .wx-swiper-dots.wx-swiper-dots-horizontal {
+  position: absolute;
+  left: unset;
+  transform: translate(0,0);
+  right: 16rpx;
+  /* left: 500rpx; */
+  /* z-index可设可不设*/
+  
 }
-.plan .right{
-  width: 400rpx;
-  height:160rpx;
+.swiperbox .wx-swiper-dot{
+    width:24rpx;
+    height:4rpx;
+    display: inline-flex;
+    margin-left: 0rpx;
+    justify-content:space-between;
+    border-radius: 0;
 }
-.plan .item{
-  padding: 26rpx 0;
-  border-bottom: 1px solid #eee;
+.swiperbox .wx-swiper-dot::before{
+    content: '';
+    flex-grow: 1; 
+    border-radius: 0;
+}
+.dotbox{
+  position: absolute;
+  left: 50%;
+  bottom: 20rpx;
+  transform: translate(-50%,0);
+  z-index: 1000;
+}
+.dotbtn{
+  width:82rpx;
+  height:30rpx;
+  background:rgba(39,170,217,1);
+  border-radius:10rpx;
+  text-align: center;
+  font-size:20rpx;
+  color: white;
+  margin: 0 10rpx;
 
 }
-.plan .hidden3{
-  margin-bottom: 6rpx;
+.dotpic{
+  background:rgba(255,255,255,1);
+  opacity:0.8;
+  color: #444444
+}
+.con{
+  padding: 0 32rpx; 
+  border-bottom: 20rpx solid #EEEEEE;
+  margin: auto;
+}
+.masonry{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 8rpx;
+}
+.score text{
+  margin-left: 18rpx;
+}
+.tag{
+  margin-left: 8rpx;
+  width:70rpx;
+  height:30rpx;
+  background:rgba(238,238,238,1);
+  border-radius:5rpx;
+  text-align: center;
+  line-height: 30rpx;
+}
+.label{
+  padding: 28rpx 0;
+  border-top: 1px solid #EEEEEE;
+  border-bottom:none;
+}
+.labelpic{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 13rpx;
+}
+.address{
+  width: 550rpx;
+  border-right: 1px solid #EEEEEE;
+  line-height: 28rpx;
+}
+.marginb20{
+  margin-bottom: 20rpx;
+}
+.labeltel{
+  width: 33rpx;
+  height: 33rpx;
+}
+.money{
+  padding: 16rpx 0;
+}
+.title{
+  padding: 12rpx 0 16rpx 0;
+}
+.details{
+  padding: 23rpx 0;
+}
+.details>view{
+  width: 686rpx;
+  margin: auto;
+}
+.reservation{
+  width:686rpx;
+  height:53rpx;
+  border:2rpx solid rgba(238,238,238,1);
+  border-radius:5rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tab{
+  position: static;
+  padding: 18rpx 0 0 0;
+}
+
+.tabitem{
+  width: auto;
+  padding:  6rpx 10rpx;
+  margin-right: 40rpx;
+}
+.active{
+  color: #27AAD9;
+  border-bottom: 4rpx solid #27AAD9;
+}
+.spug{
+  width: 212rpx;
+}
+.spug image{
+  width: 212rpx;
+  height: 212rpx;
+  border-radius: 10rpx 10rpx 0 0;
+}
+.spud{
+  width:182rpx;
+  height:64rpx;
+  padding: 12rpx 10rpx 10rpx 20rpx;
+  background:rgba(238,238,238,1);
+  border-radius:0px 0px 10rpx 10rpx;
+  overflow: hidden;
+}
+/*主容器*/
+.stepper {
+  height: 22rpx;
+  border-radius: 5px;
+  display: flex;
+}
+/*加号和减号*/
+.stepper image {
+  /* float: left; */
+  width:22rpx;
+  height:22rpx;
+  overflow: hidden;
+}
+/*数值*/
+.stepper input,.countnum {
+  display: inline-block;
+  width:30rpx;
+  height:22rpx;
+  margin: 0 auto;
+  text-align: center;
+  font-size:22rpx;
+  color: #27AAD9;
+  line-height: 22rpx;
+}
+/*普通样式*/
+.stepper .normal {
+  color:white;
+}
+/*禁用样式*/
+.stepper .disable {
+  color: #eee;
+}
+.spud .colorFE2C2C{
+  margin: 0;
+}
+.spum{
+  height: 30rpx;
+  margin-top: 4rpx;
+}
+.more{
+  width: 100rpx;
+  margin: 24rpx auto 12rpx auto;
+  color: #27AAD9;
+  
+}
+.spu,.goods_intr3{
+  padding: 0 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.morecomments{
+  color: #27AAD9;
+}
+.pl_con{
+  margin: 10rpx 0 0 78rpx;
+}
+.plpic{
+  margin: 20rpx -6rpx 0 68rpx;
+  overflow: hidden;
+}
+.imagepic{
+  width:190rpx;
+  height:190rpx;
+  margin: 0 6rpx 12rpx 6rpx;
+}
+.goods_intr3>view{
+  width: 686rpx;
+  overflow: hidden;
+}
+.allpl{
+  padding: 30rpx 0 16rpx 0;
+  /* border-bottom: 2rpx solid #EEEEEE; */
+}
+.message{
+  margin-top: 20rpx;
+}
+.spugoods{
+  border-top: 2rpx solid #EEEEEE;
+  padding-bottom: 20rpx;
+}
+.spuinfor{
+  padding: 0 32rpx;
+}
+.spuinfor>view{
+  padding: 40rpx 0;
+  border-bottom: 2rpx solid #EEEEEE; 
+}
+.spuinfor>.bold{
+  padding: 32rpx 0 16rpx 0;
 }

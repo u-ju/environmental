@@ -1,0 +1,22 @@
+<!--pages/business_details/reservation/index.wxml-->
+<view class='item'>
+  <view class='flex_btw align_center choose'>
+    <view class='bold size34 width588 hidden1'>2人，5月8日 周三，11:00，大厅</view>
+    <image src='../../../images/logoi.png' class='logo'></image>
+  </view>
+  <view class='hengnav'>
+    <scroll-view scroll-x="true" class="scroll-header">
+      <text wx:for='{{10}}' wx:key="index" class='options {{active[0]==index?"active":""}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='0'>{{item}}</text>
+    </scroll-view>
+    <scroll-view scroll-x="true" class="scroll-header">
+      <text wx:for='{{10}}' wx:key="index" class='options {{active[1]==index?"active":""}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='1'>{{item}}</text>
+    </scroll-view>
+    <scroll-view scroll-x="true" class="scroll-header">
+      <text wx:for='{{10}}' wx:key="index" class='options {{active[2]==index?"active":""}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='2'>{{item}}</text>
+    </scroll-view>
+    <scroll-view scroll-x="true" class="scroll-header">
+      <text wx:for='{{10}}' wx:key="index" class='options {{active[3]==index?"active":""}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='3'>{{item}}</text>
+    </scroll-view>
+  </view>
+</view>
+<view class='submitButton'>确 认</view>

@@ -7,7 +7,7 @@
 </wxs>
 <view class='tab'>
   <view class='flex_btw'>
-    <view wx:for="{{tab}}" class='tabitem {{active==index?"active":""}}' data-index='{{index}}' bindtap='tabswitch'>{{item}}</view>
+    <view wx:for="{{tab}}" wx:key="index" class='tabitem {{active==index?"active":""}}' data-index='{{index}}' bindtap='tabswitch'>{{item}}</view>
   </view>
 </view>
 <scroll-view scroll-y scroll-with-animation class="nav_right"   scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;"  >

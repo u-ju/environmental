@@ -1,0 +1,70 @@
+/* pages/business_details/reservation/index.wxss */
+
+page {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #444;
+}
+
+.item {
+  width: 678rpx;
+  height: 800rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: -2px 10rpx 27rpx 2rpx rgba(169, 169, 169, 0.23);
+  border-radius: 25rpx;
+  margin: 10rpx auto;
+  padding: 30rpx 16rpx;
+}
+.choose{
+  margin-bottom: 128rpx;
+}
+.logo {
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.width588 {
+  width: 588rpx;
+}
+.submitButton{
+  background: #27AAD9;
+  font-size: 34rpx;
+  position: fixed;
+  bottom: 18rpx;
+  left: 50%;
+  transform: translate(-50%,0)
+}
+
+.nav {
+  margin-top: 20rpx;
+  padding: 0 32rpx;
+}
+
+/*隐藏滚动条*/
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.scroll-header {
+  white-space: nowrap;
+  display: flex;
+  margin-top: 48rpx;
+}
+
+.options {
+  display: inline-block;
+  width: 128rpx;
+  height: 90rpx;
+  background: rgba(238, 238, 238, 1);
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 90rpx;
+  margin-right: 10rpx;
+}
+.active{
+  color: white;
+  background:rgba(39,170,217,1);
+}

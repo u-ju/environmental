@@ -1,47 +1,192 @@
 <!--pages/business_details/index.wxml-->
 <block wx:if="{{result}}">
-<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}">
-    <block wx:for="{{result.images}}" wx:key="index">
-      <swiper-item>
-          <image src="{{item}}" class="slide-image" mode='aspectFill' />
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox'>
+    <swiper-item wx:for="{{result.images}}" wx:key="index">
+      <video src="https://wyhb-res-pr.zgwyhb.com/uploads/video/2019/03/22/b3f15b7c71f503fabd76302a13c31ab2.mp4" custom-cache='{{false}}' poster="{{result.images[0]}}" objectFit="contain"></video>
+      <!-- autoplay='autoplay' -->
+    </swiper-item>
+    <block wx:for="{{4}}" wx:key="index">
+      <swiper-item wx:for="{{result.images}}" wx:key="index">
+        <image src="{{item}}" class="slide-image" mode='aspectFill' />
+
       </swiper-item>
     </block>
-</swiper>
-<view class='con'>
-  <view class='size32 color4 bold'>{{result.title}}</view>
-  <view class='color6 size26'>{{result.intro}}</view>
-  <view class='color9'></view>
-  <view class='flex_btw align_center big' bindtap='location'>
-    <view class='flex align_center'>
-      <text class='color4'>{{result.area_name}}{{result.address}}</text>
+    <view class='dotbox flex'>
+      <view class='dotbtn'>
+        <text class='iconfont icon-bofang size20'></text> 视频</view>
+      <view class='dotbtn dotpic'>图片</view>
     </view>
-    <view class='image'>
-      <image src="../../images/locations.png" class='dingwei' mode='aspectFit' ></image>
+  </swiper>
+  <view class='con'>
+    <view class='size32 color4 bold title'>{{result.title}}</view>
+    <view class='flex_btw align_center'>
+      <view class='flex align_center score'>
+        <image src='../../images/smasonry.png' class='masonry' wx:for="{{5}}" wx:key="index"></image>
+        <text>评分:4.8</text>
+      </view>
+      <view class='flex align_center'>
+        <view wx:for="{{3}}" wx:key="index" class='tag size20 color0'>
+          停车位
+        </view>
+      </view>
+    </view>
+    <view class='money'>￥59/人</view>
+    <view class='label flex align_center'>
+      <image src='../../images/stime.png' class='labelpic'></image>
+      <view>营业中 | 上午:10:00-21:00，下午:10:00-21:00</view>
+    </view>
+    <view class='label flex_btw align_center'>
+      <view class='flex'>
+        <image src='../../images/sloc.png' class='labelpic'></image>
+        <view class='address'>
+          <view class='hidden1 marginb20'>中纱帽街8号远洋太古里负一层M027</view>
+          <view class='color898989 size24 hidden1'>距离地铁3号线春熙路c口直走200米</view>
+        </view>
+      </view>
+      <image src='../../images/stel.png' class='labeltel'></image>
     </view>
   </view>
-  <view class='flex_btw align_center big'  data-phone='{{result.contact}}' bindtap='calling'> 
-    <view class='flex align_center'>
-      <text class='color4'>商家电话</text>
-      <text class='color4 marl'>{{result.contact}}</text>
+  <view class='details'>
+    <view class='reservation'>
+      <image src='../../images/seat.png' class='labelpic'></image>
+      <text>订座</text>
+      <text class='color898989 size24'>（已订5桌）</text>
     </view>
-    <view class='image' >
-      <image src="../../images/phones.png" class='dingwei'  mode='aspectFit'></image>
+    <view class='tab'>
+      <view class='flex'>
+        <view wx:for="{{tab}}" wx:key="index" class='tabitem bold {{active==index?"active":""}}' data-index='{{index}}' bindtap='tabswitch'>{{item}}</view>
+      </view>
     </view>
+    <scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;">
+      <view class='spu view0' id='view0'>
+        <view class='flex_btw'>
+          <view class='spug flex_col' wx:for="{{3}}" wx:key="index">
+            <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/4a7a6efe3b50bccd2d3f6697fcb985ca.jpg'></image>
+            <view class='spud'>
+              <view class='size26 center'>新鲜毛肚</view>
+              <view class='flex_btw align_center spum'>
+                <text class='size26 colorFE2C2C'>￥59.9</text>
+                <view class='stepper'>
+                  <image src='../../images/sredu.png' bindtap='bindMinus' hidden='{{minusStatus==0}}'></image>
+                  <text wx:if='{{minusStatus==1}}' class='countnum'> {{num}} </text>
+                  <!-- <input bindinput='bindManual' value='{{num}}' hidden='{{minusStatus==0}}'></input> -->
+                  <image src='../../images/sadd.png' bindtap='bindPlus'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='more flex align_center'>
+          <view>更多</view>
+          <text class='iconfont icon-xiangxiajiantou'></text>
+        </view>
+      </view>
+      <view class='goods_intr3 view1' id='view1'>
+        <view class='size28 color4 allpl'> <text class='bold'>用户评论</text> （{{list.length}}条）</view>
+        <!-- <block wx:if='{{commentIndex==0&&list.length>0}}'>
+          <view wx:for='{{list}}' wx:key="index">
+            <view class='flex message align_center'>
+              <image src='{{item.avatar}}' class='head'></image>
+              <view class='width594'>
+                <view class='flex_btw align_center'>
+                  <view>
+                    <view class='size28 color4'>{{item.nickname}}</view>
+                  </view>
+                  <view class='size28 color4'>{{item.created_at}}</view>
+                </view>
+              </view>
+            </view>
+            <view class='color898989 size26 pl_con'>
+              <block wx:for='{{item.comment_level-0}}' wx:key="index">
+                <image src='../../images/star_c.png' class='xxpic' mode='aspectFill'></image>
+              </block>
+            </view>
+            <view class='color898989 size26 pl_con'>
+              {{item.comment_message}}
+            </view>
+            <view class='color898989 size26 pl_con'>
+              <block wx:for='{{item.comment_images}}' wx:key="index" wx:for-key="index">
+                <image src='{{item}}' class='imagepic' mode='aspectFill'></image>
+              </block>
+            </view>
+          </view>
+        </block>
+        <block wx:elif='{{commentIndex==1&&list1.length>0}}'> -->
+          <view wx:for='{{6}}' wx:key="index" class='spugoods'>
+            <view class='flex message align_center'>
+              <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/4a7a6efe3b50bccd2d3f6697fcb985ca.jpg' class='head'></image>
+              <view class=''>
+                <view class='flex_btw align_center'>
+                  <view>
+                    <view class='size28 color4'>11</view>
+                  </view>
+                  <view class='size28 color4'>11111111</view>
+                </view>
+              </view>
+            </view>
+            <view class='color898989 size26 pl_con'>
+              <block wx:for='{{5}}' wx:key="index">
+                <image src='../../images/smasonry.png' class='xxpic' mode='aspectFill'></image>
+              </block>
+            </view>
+            <view class='color898989 size26 pl_con'>
+              fhhhhhhhhhhhhhh
+            </view>
+            <view class='color898989 size26 pl_con plpic'>
+              <block wx:for='{{4}}' wx:key="index" wx:for-key="index">
+                <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/4a7a6efe3b50bccd2d3f6697fcb985ca.jpg' class='imagepic' mode='aspectFill'></image>
+              </block>
+            </view>
+          </view>
+        <!-- </block> -->
+        <view class=' center more morecomments' >
+         <!-- wx:if="{{list.length>0}}" bindtap='more' hidden='{{page.current_page==page.last_page&&commentIndex==0}}' -->
+          <view>查看更多评论</view>
+          <text class='iconfont icon-xiangxiajiantou'></text>
+        </view>
+      </view>
+      <view class='spuinfor view2' id='view2'>
+        <view class='bold'>商户信息</view>
+        <view class='flex_btw align_center'>
+          <view>营业许可资质</view>
+          <text class='iconfont icon-jiantou1 color898989'></text>
+        </view>
+      </view>
+    </scroll-view>
   </view>
-</view>
-<view class='plan' wx:if="{{list.length>0}}">
-  <view class='bold color4 size30'>产品列表</view>
-   <view wx:for='{{list}}' wx:key="index" wx:for-item='list' data-sku_id='{{list.sku_id}}' bindtap='detail' class='item flex_btw'>
-    <!-- <view class='item flex_btw' wx:for='{{list.skus}}' wx:key="index" wx:for-item='skus'  data-spu_id='{{list.spu_id}}' bindtap='detail' > -->
-      <image  src='{{list.thumb}}'></image>
+
+
+
+  <!-- <view class='color6 size26'>{{result.intro}}</view>
+    <view class='color9'></view>
+    <view class='flex_btw align_center big' bindtap='location'>
+      <view class='flex align_center'>
+        <text class='color4'>{{result.area_name}}{{result.address}}</text>
+      </view>
+      <view class='image'>
+        <image src="../../images/locations.png" class='dingwei' mode='aspectFit'></image>
+      </view>
+    </view>
+    <view class='flex_btw align_center big' data-phone='{{result.contact}}' bindtap='calling'>
+      <view class='flex align_center'>
+        <text class='color4'>商家电话</text>
+        <text class='color4 marl'>{{result.contact}}</text>
+      </view>
+      <view class='image'>
+        <image src="../../images/phones.png" class='dingwei' mode='aspectFit'></image>
+      </view>
+    </view> -->
+  <!-- <view class='plan' wx:if="{{list.length>0}}">
+    <view class='bold color4 size30'>产品列表</view>
+    <view wx:for='{{list}}' wx:key="index" wx:for-item='list' data-sku_id='{{list.sku_id}}' bindtap='detail' class='item flex_btw'>
+      <image src='{{list.thumb}}'></image>
       <view class='right flex_col_1 flex_btw'>
         <view class='color6 hidden3'>{{list.spu_name}} {{list.sku_name}}</view>
         <view class='flex_btw align_center'>
           <view class='colorFE3434'>￥{{list.price}}</view>
           <view class='color6'>{{list.area_name}}</view>
         </view>
-      </view> 
-    <!-- </view>   -->
-  </view>
-</view>
+      </view>
+    </view>
+  </view> -->
 </block>

@@ -93,7 +93,7 @@ page{
     height: 100%;
 }
 .marginfff{
-  padding: 26rpx 0;
+  padding: 38rpx 0 26rpx 0;
   /* margin: 20rpx 0; */
 }
 .marginfff .color0,.marginfff .color46{
@@ -162,6 +162,7 @@ page{
 .banner {
   height: 150rpx;
   border-radius:30rpx;
+  margin-top: 10rpx;
 }
 .login{
   display: flex;
@@ -329,7 +330,7 @@ page{
 .width110{
   width: 110rpx;
 }
-.sys{
-  width: 40rpx;
-  height: 40rpx;
+.logoi{
+  width: 60rpx;
+  height: 60rpx;
 }

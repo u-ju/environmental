@@ -122,8 +122,9 @@ Page({
       title: '加载中',
     })
     this.setData({
-      // options.id
-      order_id: 2
+      // 
+      order_id: options.order_id,
+      sku_id: options.sku_id,
     })
     var order_logistics_express = [
       {
@@ -193,7 +194,7 @@ Page({
       console.log(e)
     }, function (e) {
     })
-    util.getJSON({ apiUrl: apiurl.shopOrder_afterSaleShow + "?order_id=" + order_id + "&sku_id=12" }, function (res) {
+    util.getJSON({ apiUrl: apiurl.shopOrder_afterSaleShow + "?order_id=" + order_id + "&sku_id=" + that.data.sku_id }, function (res) {
       var result = res.data.result
       console.log(result)
       that.setData({

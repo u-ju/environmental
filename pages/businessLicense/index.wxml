@@ -1,0 +1,17 @@
+<!--pages/businessLicense/index.wxml-->
+<view class='page'>
+  <view class='size32 bold'>食品安全监督公示</view>
+  <view>
+    <text decode='true'>
+                            单位名称：吞川汤饭（太古里店） \n
+许可证号：JY256478965123 \n
+法定代表人：张三 \n
+经营地址：成都市锦江区春熙路太古里1栋1号 \n
+经营范围：热食品类食品制售 \n
+                        </text>
+  </view>
+  <view class='size32 bold margin'>商家资质信息公示</view>
+  <view class='pic'>
+    <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/4a7a6efe3b50bccd2d3f6697fcb985ca.jpg' mode='widthFix'></image>
+  </view>
+</view>

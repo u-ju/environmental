@@ -18,7 +18,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.userOrder_afterSaleShow +"?order_id="+2+"&sku_id="+12 }, function (res) {
+    util.getJSON({ apiUrl: apiurl.userOrder_afterSaleShow + "?order_id=" + options.order_id + "&sku_id=" + options.sku_id }, function (res) {
       var result = res.data.result
       console.log(result)
       that.setData({

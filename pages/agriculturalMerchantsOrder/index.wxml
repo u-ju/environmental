@@ -27,7 +27,7 @@
           </view>
         </view>
         <view class='flex_reverse size28'>
-          <view class='color989898 btnck afterSale' wx:if="{{order_goods.after_sale.name}}"  catchtap='afterSale'  data-id='{{order_goods.order_id}}' >{{order_goods.after_sale.name}}</view>
+          <view class='color989898 btnck afterSale' wx:if="{{order_goods.after_sale.name}}"  catchtap='afterSale'  data-order_id='{{order_goods.order_id}}' data-sku_id='{{order_goods.sku_id}}' >{{order_goods.after_sale.name}}</view>
         </view>
       </view>
     </view>

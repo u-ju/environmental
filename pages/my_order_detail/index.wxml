@@ -20,8 +20,8 @@
   <view>收货地址：{{result.shipping_address}}</view>
 </view>
   <view class='shitem'>
-    <view class='color4'>
-      <navigator  class='color4' url='../business_details/index?id={{result.shop_info.shop_id}}'>
+    <view class='color4 borbtm'>
+      <navigator  class='color4' url='../business_details/index?id={{result.shop_info.shop_id}}' wx:if="{{result.shop_info.shop_id}}">
         <text>{{result.shop_info.title}}</text>
         <text class='iconfont icon-jiantou bold size24'></text>
       </navigator>

@@ -451,5 +451,10 @@ Page({
         expressbtn: false
       })
     })
+  },
+  afterSale(e){
+    wx.navigateTo({
+      url: '../agriculturalRefund/index?sku_id=' + e.currentTarget.dataset.sku_id + "&order_id=" + e.currentTarget.dataset.order_id,
+    })
   }
 })

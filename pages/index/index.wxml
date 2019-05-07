@@ -29,7 +29,7 @@
         <text class='iconfont icon-sousuo color4 search_pic' ></text>
         <input  disabled='disabled' value='{{search}}' name='search' ></input>
       </view>
-      <image class='sys' src='../../images/sys.png'></image>
+      <image class='logoi' src='../../images/logoi.png'></image>
     </view> 
     <view class='bg'>
       <view class="container">
@@ -121,7 +121,7 @@
         <view class='flex_btw padding26'>
           <view class='size28 color3'>联盟商家推荐</view>
         </view>
-        <view class='banner recommended'>
+        <view class='recommended'>
           <swiper interval="6000" autoplay="{{autoplay}}" duration="{{duration}}">
             <block wx:for="{{shop_ad.length/3}}" wx:key="index" wx:for-item="num">
               <swiper-item class='flex_btw'>

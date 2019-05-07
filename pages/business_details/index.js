@@ -9,9 +9,9 @@ Page({
    */
   data: {
     indicatorDots: true,//显示面板指示点
-    autoplay: true,//自动播放
-    beforeColor: "white",//指示点颜色
-    afterColor: "coral",//当前选中的指示点颜色
+    autoplay: false,//自动播放
+    beforeColor: "#DCDCDC",//指示点颜色
+    afterColor: "#27AAD9",//当前选中的指示点颜色
     interval: 5000,
     duration: 1000,
     banner: [
@@ -19,7 +19,11 @@ Page({
       { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
       { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
     ],
-    result: ""
+    result: "",
+    tab: ['产品', '评论', '商家信息'],
+    active:0,
+    num:0,
+    minusStatus:0
   },
 
   /**
@@ -27,11 +31,31 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    options.id=8
+    that.setData({
+      s_height: wx.getSystemInfoSync().windowHeight - 42,
+    })
+    var top = []
+    wx.createSelectorQuery().selectAll('.view0').boundingClientRect(function (rect) {
+      console.log(rect)
+      top.push(rect[0]['top'])
+    }).exec()
+    wx.createSelectorQuery().selectAll('.view1').boundingClientRect(function (rect) {
+      console.log(rect)
+      top.push(rect[0]['top'])
+    }).exec()
+    wx.createSelectorQuery().selectAll('.view2').boundingClientRect(function (rect) {
+      console.log(rect)
+      top.push(rect[0]['top'])
+      that.setData({
+        top: top
+      })
+    }).exec()
     if (options.id) {
       this.setData({
         shop_id: options.id
       })
-      util.getJSON({ apiUrl: apiurl.shop_show, data: { shop_id: options.id } }, function (res) {
+      util.getJSON({ apiUrl: apiurl.shop_show, data: { shop_id: that.data.shop_id} }, function (res) {
         var result = res.data.result
         that.setData({
           result: result
@@ -53,6 +77,24 @@ Page({
         page: result.page,
       })
       wx.hideLoading()
+    })
+  },
+  tabswitch(e) {
+    this.setData({
+      active: e.currentTarget.dataset.index,
+      toView: 'view' + e.currentTarget.dataset.index
+    })
+
+  },
+  scroll(e) {
+    var top = this.data.top, active = 0
+    for (var i = 0; i < top.length; i++) {
+      if (top[i] < e.detail.scrollTop + 44) {
+        active = i
+      }
+    }
+    this.setData({
+      active: active
     })
   },
   /**
@@ -137,5 +179,38 @@ Page({
       url: '../businessProduct/index?id=' + this.data.shop_id + "&sku_id=" + e.currentTarget.dataset.sku_id,
     })
 
+  },
+  //事件处理函数
+  /*点击减号*/
+  bindMinus: function () {
+    var num = this.data.num;
+    if (num > 0) {
+      num--;
+    }
+    var minusStatus = num > 0 ? 1 : 0;
+    this.setData({
+      num: num,
+      minusStatus: minusStatus
+    })
+  },
+  /*点击加号*/
+  bindPlus: function () {
+    var num = this.data.num;
+    num++;
+    console.log(num)
+    var minusStatus = num > 0 ? 1 : 0;
+    this.setData({
+      num: num,
+      minusStatus: minusStatus
+    })
+  },
+  /*输入框事件*/
+  bindManual: function (e) {
+    var num = e.detail.value;
+    var minusStatus = num > 0 ? 1 : 0;
+    this.setData({
+      num: num,
+      minusStatus: minusStatus
+    })
   }
 })

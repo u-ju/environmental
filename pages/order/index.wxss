@@ -289,3 +289,12 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
 .order_logistics {
   margin-bottom: 60rpx;
 }
+.afterSale{
+  width: 160rpx;
+  margin-top: 20rpx;
+  border-radius: 30rpx;
+  border-color: #33cd5f;
+  color: #33cd5f;
+  height: 60rpx;
+  line-height: 60rpx;
+}

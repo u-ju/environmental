@@ -1,9 +1,15 @@
 {
   "pages": [
+    
+    "pages/business_details/index",
+    "pages/business_details/reservation/index",
+    "pages/business_details/license/index",
+   
     "pages/index/index",
-    "pages/my_order_detail/refund",
+    
     "pages/order/index",
     
+    "pages/my_order_detail/refund",
     "pages/myOrderRefund/index",
     "pages/agriculturalMerchantsOrderDeail/index",
     "pages/agriculturalRefund/index",
@@ -11,7 +17,7 @@
     "pages/agriculturalMerchantsOrder/index",
     "pages/shopping_mall/shopping_mall",
     "pages/agriculturalRecommendation/index",
-    
+    "pages/businessProduct/index",
     
     "pages/agriculturalDetail/index",
     "pages/businessinforcheck/index",
@@ -25,8 +31,7 @@
     "pages/tenantsChoice/index",
     "pages/tenants/online",
     "pages/tenants/tenants",
-    "pages/businessProduct/index",
-    "pages/business_details/index",
+    
     "pages/unopen/index",
     "pages/businessProductview/index",
     "pages/businessProductAdd/index",

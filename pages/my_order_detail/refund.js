@@ -22,8 +22,9 @@ Page({
       title: '加载中',
     })
     this.setData({
-      order_id: 2
-      // options.id
+      order_id: options.id,
+      sku_id: options.sku_id
+      // 
     })
   },
   onShow() {
@@ -53,14 +54,15 @@ Page({
       // var page = getCurrentPages.pop()
       // page.onLoad()
     })
-    util.getJSON({ apiUrl: apiurl.userOrder_afterSaleShow + "?order_id=" + order_id + "&sku_id=12" }, function (res) {
+    util.getJSON({ apiUrl: apiurl.userOrder_afterSaleShow + "?order_id=" + order_id + "&sku_id=" + that.data.sku_id }, function (res) {
       var result = res.data.result
       console.log(result)
       that.setData({
         order_goods: result.order_goods,
         after_sale_list: result.after_sale_list,
         sku_id: result.order_goods.sku_id,
-        order_id: result.order_goods.order_id
+        order_id: result.order_goods.order_id,
+        button_arr: result.button_arr
       })
       wx.hideLoading()
     }, function (e) {
@@ -144,6 +146,11 @@ Page({
       })
     }, function () {
 
+    })
+  },
+  store(){
+    wx.navigateTo({
+      url: '../myOrderRefund/index?sku_id=' + this.data.sku_id + "&order_id="+this.data.order_id,
     })
   }
 })
