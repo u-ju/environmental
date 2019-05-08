@@ -15,6 +15,10 @@ Component({
       type: String,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
       value: '所在地区'     // 属性初始值（可选），如果未指定则会根据类型选择一个
     },
+    classN: {
+      type: String,
+      value: '',
+    },
     // 弹窗内容
     ban: {
       type: String,

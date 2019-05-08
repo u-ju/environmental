@@ -26,7 +26,7 @@ page{
   height: 28rpx;
 }
 .item>input,.input,.input1 input{
-  width:484rpx;
+  width:496rpx;
   border-bottom: 1px solid #eee;
   height: 94rpx;
 }
@@ -41,7 +41,7 @@ page{
 }
 .icon-jiantou{
   display: inline-block;
-  width: 30rpx;
+  width: 30rpx !important;
 }
 .input1 .haslook{
   max-height: 200rpx;
@@ -108,8 +108,7 @@ radio .wx-radio-input.wx-radio-input-checked::before{
 button,.button{
   width:686rpx;
   height:82rpx;
-  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
-  box-shadow:0rpx 3rpx 7rpx 0rpx rgba(82, 164, 215, 0.35);
+  background:linear-gradient(0deg,rgba(51,246,175,1),rgba(39,170,217,1));
   border-radius:41rpx;
   margin-top: 110rpx;
   color: white;
@@ -130,6 +129,7 @@ button,.button{
   margin-left: 0rpx;
 }
 .bgg{
+  background-color: #27AAD9;
   width: 70rpx;
   height: 70rpx;
 }
@@ -240,7 +240,7 @@ navigator{
   font-size: 12px;
 }
 
-.picture_itemmore image {
+.picture_itemmore image,.picture_itemmore video {
   width: 134rpx;
   height: 134rpx;
 }
@@ -262,8 +262,167 @@ navigator{
   height: 63rpx;
 
 }
+.picture_itemmore .videot{
+  width: 82rpx;
+  height: 82rpx;
+}
 .picture_itemmore .add-image,.picture_itemmore .up-pic image {
   background-color: #EEEEEE;
   width: 134rpx;
   height: 134rpx;
+}
+.time{
+  width:182rpx;
+  height:42rpx;
+  position: relative;
+  
+}
+.timeitem{
+  margin-left: 30rpx;
+}
+.timePeriod{
+  width:182rpx;
+  height:42rpx;
+  background:rgba(39,170,217,1);
+  border-radius:5rpx;
+  color: white;
+  text-align: center;
+  line-height: 42rpx;
+  margin:16rpx 0 24rpx 0;
+}
+.delt{
+  width:24rpx;
+  height:24rpx;
+  position: absolute;
+  top: -12rpx;
+  right: -12rpx;
+}
+.timec{
+  line-height: 76rpx;
+  text-align: center;
+  color: #444;
+  /* height: 76rpx !important; */
+}
+.yysj{
+  padding: 28rpx 32rpx;
+  border-bottom: 1px solid #eee;
+  color: #444;
+}
+.yysj .ch_del{
+  width: 40rpx;
+  height: 40rpx;
+}
+.yysj .ch_true{
+  width: 48rpx;
+  height: 30rpx;
+}
+.timechoice{
+  padding: 50rpx 0;
+}
+.textL{
+  text-align: left
+}
+.width460{
+  width: 460rpx;
+}
+.consumption{
+  width:216rpx;
+  height:64rpx;
+  border:1px solid rgba(166,166,166,1);
+  border-radius:8rpx;
+}
+.featuresitem{
+  width:86rpx;
+  height:50rpx;
+  position: relative;
+  margin:12rpx 20rpx 0 0;
+  display: inline-block;
+}
+.features{
+  width:86rpx;
+  height:50rpx;
+  background:rgba(39,170,217,1);
+  border-radius:5rpx;
+  text-align: center;
+  line-height: 50rpx;
+  color: white;
+  display: inline-block;
+}
+.featuresinput{
+  background-color: #EEEEEE;
+  color: #000;
+}
+.reservation{
+  width: 478rpx;
+  height:110rpx;
+  border:1px solid rgba(166,166,166,.6);
+  padding:  16rpx 10rpx 20rpx 10rpx;
+  border-radius: 10rpx;
+}
+.reservation .per{
+  width: 44rpx;
+  border-bottom: 1px solid #000000;
+  margin: 0 10rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  min-height: auto;
+}
+.reservation .roomitem{
+  margin-top: 10rpx;
+}
+.scroll-header{
+  white-space: nowrap;
+  display: flex;
+  width: 280rpx;
+  overflow-y: visible;
+}
+.featuresnav{
+  width: 496rpx;
+}
+.businessLicense{
+  width:474rpx;
+  padding: 14rpx 12rpx;
+  border:1px solid rgba(166,166,166,.6);
+  border-radius:8rpx;
+  font-size: 28rpx;
+}
+.license view{
+  width: 168rpx;
+  /* background-color: #eee; */
+}
+.license input{
+  width:306rpx;
+}
+checkbox-group{
+  /* margin-left: 32rpx; */
+}
+
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width: 40rpx;
+  height: 40rpx;
+  border-color: #27AAD9;
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #27AAD9;
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 38rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+.checkbox{
+  display: flex;
+  align-items: center;
+}
+.xieyi{
+  color: #27AAD9;
 }

@@ -1,11 +1,12 @@
 {
   "pages": [
-    
+    "pages/tenants/tenants",
+    "pages/index/index",
     "pages/business_details/index",
     "pages/business_details/reservation/index",
     "pages/business_details/license/index",
    
-    "pages/index/index",
+    
     
     "pages/order/index",
     
@@ -30,7 +31,7 @@
     "pages/tenantsIndex/index",
     "pages/tenantsChoice/index",
     "pages/tenants/online",
-    "pages/tenants/tenants",
+    
     
     "pages/unopen/index",
     "pages/businessProductview/index",

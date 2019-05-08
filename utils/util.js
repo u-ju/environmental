@@ -69,7 +69,21 @@ function formatTime(time) {
     return n[1] ? n : '0' + n
   }).join(':')
 }
+function allowUploadFormat(tempFiles = []) {
+  // 允许上传的视频格式
+  var allow_head_photo = ['.mp4'];
 
+  for (let idx in tempFiles) {
+    if (tempFiles[idx].match(/\.mp4/)) {
+      var upload_pic_ext = tempFiles[idx].match(/\.mp4/)[0].trim();
+      var allow_format = allow_head_photo.join("");
+      if (allow_format.indexOf(upload_pic_ext) >= 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+}
 /**
  * 注册JS方法
  * @type {{formatTime: formatTime, crtTimeFtt: crtTimeFtt, alert: alert, loginOpenId: loginOpenId, dialog: dialog, loading: loading, postJSON: postJSON, getJSON: getJSON, replaceStr: (function(*): string)}}
@@ -104,7 +118,9 @@ module.exports = {
   navigateBack:navigateBack,
   build: build,
   upload_pic: upload_pic,
-  popup: popup
+  popup: popup,
+  allowUploadFormat: allowUploadFormat,
+  uploadV: uploadV
 }
 
 function popup(content, confirm, cancel){
@@ -262,8 +278,41 @@ function upload_pic(url, that, upload_picture_list, j, suc, update) {
       //   upload_picture_list: upload_picture_list
       // });
     
+  });
+}
+function uploadV(url, that, res,  suc, update) {
+  //上传返回值
+  console.log(res)
+  var _this = this;
+  const upload_task = wx.uploadFile({
+    // 模拟https
+    url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  
+    filePath: res.tempFilePath, //上传的文件本地地址    
+    name: 'video',
+    formData: {
+      // "video": res,
+      'source': 'file'
+    },
+    header: {
+      "content-type": 'application/x-www-form-urlencoded',
+      'token': _this.getToken(),
+      'channel': 'let',
+      'build': build
+    },
+    //附近数据，这里为路径     
+    success: function (res) {
+      console.log(res)
+      var data = JSON.parse(res.data);
+      console.log(data)
+      // //字符串转化为JSON  
+      suc(data)
 
-
+    }
+  })
+  // 上传 进度方法
+  upload_task.onProgressUpdate((res) => {
+    console.log(res.progress)
+    update(res.progress)
   });
 }
 // 隐藏信息框

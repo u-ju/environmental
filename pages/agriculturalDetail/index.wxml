@@ -22,7 +22,7 @@
 <view class='goods_intr1'>
   <view class='size28 color4'>{{result.spu_name}} {{result.sku_name}}</view>
   <view class='size28 colorFE2C2C'>
-    <text>价格：{{result.nper_price}}</text>
+    <text>价格：{{result.price}}</text>
     
   </view>
   <view class='size22 color898989 flex_btw'>

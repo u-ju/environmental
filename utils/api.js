@@ -37,7 +37,7 @@ const apiList = {
   // UploadController
   // POST 图片上传
   upload_image: basePath + '/common/upload/image',
-
+  upload_video: basePath + '/common/upload/video',
 
   //AuthController
   //POST 登录

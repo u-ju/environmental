@@ -1,141 +1,247 @@
 <!--pages/tenants/tenants.wxml-->
+
 <wux-cascader visible="{{ visible2 }}" controlled value="{{ value2 }}" title="所在地区" options="{{ options2 }}" bind:close="onClose2" bind:change="onChange2" bind:load="onLoadOptions" />
-<form bindsubmit="formSubmit" >
-<view class='from'>
-  
-  <view class='item  flex align_center'>
-    <text class='size28 color6'>店铺名称</text>
+<form bindsubmit="formSubmit">
+  <view class='from'>
 
-    <input class='size28 color9'  bindinput='input' data-contact='titlet' name='title' disabled='{{disabled1}}' value='{{title}}'></input>
-  </view>
-  <view class='item  flex align_center'>
-    <text class='size28 color6'>联系方式</text>
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>店铺名称</text>
 
-    <input class='size28 color9' bindinput='input' data-contact='contactt' name='contact'value='{{contact}}' maxlength='11' disabled='{{disabled1}}'  type='number'></input>
-  </view>
-  <view class='item  flex align_center'>
-    <text class='size28 color6'>商家折扣(%)</text>
+      <input class='size28 color9' bindinput='input' data-contact='titlet' name='title' disabled='{{disabled1}}' value='{{title}}'></input>
+    </view>
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>联系方式</text>
 
-    <input class='size28 color9'  bindinput='input' data-contact='discount_percentt' name='discount_percent' disabled='{{disabled1}}' value='{{discount_percent}}'></input>
-  </view>
-  <view class='item  flex align_center' wx:if="{{!disabled1}}">
-    <text class='size28 color6'>区域</text>
-    <view class='input'><area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' tokonw='city' ban='county' bind:choosea='choosearea' /></view>
-    <text class='iconfont icon-jiantou color989898'></text>
-  </view>
-  <view class='item  flex align_center' wx:else>
-    <text class='size28 color6'>区域</text>
-    <input class='size28 color9' disabled='disabled' name='area_id' value='{{areaSelectedStr}}'  ></input>
-    
-    <text class='iconfont icon-jiantou color989898'></text>
-  </view>
-  <view class='item  flex align_center'>
-    <text class='size28 color6'>地址</text>
-    <view class='input1'>
-      <input class='size28 color9' name='address' bindblur='czaddress' data-contact='addresst'  disabled='{{disabled1}}' value='{{address}}' bindinput="getsuggest" ></input>
-      <scroll-view
-        scroll-y
-        class='haslook'
-        wx:if='{{suggestion.length>0}}'
-      >
-        <view wx:for="{{suggestion}}" wx:key="index" class='addressss flex align_center' bindtap="backfill" id="{{index}}">
-          <!-- <view> -->
+      <input class='size28 color9' bindinput='input' data-contact='contactt' name='contact' value='{{contact}}' maxlength='11' disabled='{{disabled1}}' type='number'></input>
+    </view>
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>商家折扣(%)</text>
+      <input class='size28 color9' bindinput='input' data-contact='discount_percentt' name='discount_percent' disabled='{{disabled1}}' value='{{discount_percent}}'></input>
+    </view>
+    <view class='item  flex align_center' wx:if="{{!disabled1}}">
+      <text class='size28 color6'>区域</text>
+      <view class='input flex_btw align_center'>
+        <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' classN='width460' tokonw='city' ban='county' bind:choosea='choosearea' />
+        <text class='iconfont icon-jiantou color989898'></text>
+      </view>
+    </view>
+
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>地址</text>
+      <view class='input1'>
+        <input class='size28 color9' name='address' bindblur='czaddress' data-contact='addresst' disabled='{{disabled1}}' value='{{address}}' bindinput="getsuggest"></input>
+        <scroll-view scroll-y class='haslook' wx:if='{{suggestion.length>0}}'>
+          <view wx:for="{{suggestion}}" wx:key="index" class='addressss flex align_center' bindtap="backfill" id="{{index}}">
             <image src='../../images/icon_location.png' class='icon_location'></image>
-            <view   class='hidden1'>{{item.title}}<text class='color9'>{{item.addr}}</text></view>
-          <!-- </view> -->
+            <view class='hidden1'>{{item.title}}
+              <text class='color9'>{{item.addr}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <view class='zzctransp' bindtap='hiddensug' wx:if='{{suggestion.length>0}}'></view>
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>商家类型</text>
+      <view class='input flex_btw align_center' bindtap="onOpen1">
+        <input class='size28 color9' disabled='disabled' name='cate_id' value='{{title1}}'></input>
+        <text class='iconfont icon-jiantou color9'></text>
+      </view>
+    </view>
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>营业时间</text>
+      <view class='input flex_btw align_center' bindtap='opent'>
+        <view class='width460'>
+          <text wx:for="{{timevalue}}" wx:key="index">{{item}} </text>
+        </view>
+        <text class='iconfont icon-jiantou color989898'></text>
+      </view>
+    </view>
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>预计人均消费</text>
+      <view class=' flex_btw consumption align_center'>
+        <text>￥</text>
+        <input name='cost'></input>
+      </view>
+    </view>
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>店铺特色</text>
+      <scroll-view class='scroll-header flex align_center featuresnav'>
+        <view class='featuresitem' wx:for="{{features}}" wx:key="index">
+          <view class='features hidden1'>{{item}}</view>
+          <image src='../../images/delt.png' class='delt' bindtap='delfeature' data-index='{{index}}'></image>
+        </view>
+        <view class='featuresitem' >
+        <input placeholder='自定义' class='features featuresinput' value='{{featuresv}}' hidden='{{features.length==4}}' bindconfirm="features"></input>
         </view>
       </scroll-view>
     </view>
-  </view>
-  <view class='zzctransp' bindtap='hiddensug' wx:if='{{suggestion.length>0}}'></view>
-  <view class='item  flex align_center'>
-    <text class='size28 color6'>商家类型</text>
-      <input class='size28 color9' disabled='disabled' name='cate_id' value='{{title1}}' bindtap="onOpen1" ></input>
-      <text class='iconfont icon-jiantou color9'></text>
-  </view>
-  <view class='item1 flex align_center textareaitem'>
-    <text class='size28 color6'>商家描述</text>
-    <textarea wx:if="{{show}}" focus="{{show}}" class='size28 color9' bindinput='input' bindblur='unshow' data-contact='introt' value='{{intro}}' name='intro'></textarea>
-    <view class='textarea size28 color9' bindtap='show'  wx:else>{{intro}}</view>
-  </view>
-  <block  wx:for="{{image}}" wx:key="{{index}}">
-  <view class='item1 flex align_center image'>
-    <text class='size28 color6'>{{item.title}}</text>
-    <view class="picture_list">
-      <view  class="picture_item {{item.id}}" wx:if="{{item.upload_picture_list.length>0}}">
-        <image wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" src="{{item.upload_picture_list[0].path}}" mode="aspectFill"></image>
-        <image wx:if="{{item.upload_picture_list[0].upload_percent == 100}}" src="{{item.upload_picture_list[0].path_server}}" mode="aspectFill"></image>
-        <view class="upload_progress" wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_picture_list[0].upload_percent}}%</view>
-        <text class='del iconfont  icon-cuohao' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></text>
-      </view>
-      <view wx:else  class='picture_item' bindtap='uploadpic'  data-index="{{index}}">
-        <view class='bgg flex_ard align_center'>
-          <image src='../../images/camera2x.png'></image>
-        </view>
-        <view class='size26 bold center'>{{item.text}}</view>
-      </view>
+    <view class='item1 flex align_center textareaitem'>
+      <text class='size28 color6'>商家描述</text>
+      <textarea wx:if="{{show}}" focus="{{show}}" class='size28 color9' bindinput='input' bindblur='unshow' data-contact='introt' value='{{intro}}' name='intro'></textarea>
+      <view class='textarea size28 color9' bindtap='show' wx:else>{{intro}}</view>
     </view>
-  </view>
-  </block>
-
-  <view class='item1 flex align_center image'>
-    <text class='size28 color6'>店内图片</text>
-    <!-- <view class="picture_list">
-      <view  class="picture_item picture_item1" wx:for="{{upload_picture_list}}" wx:key ="index" wx:for-item="upload_picture_list" >
-        <image wx:if="{{upload_picture_list.upload_percent < 100}}" src="{{upload_picture_list.path}}" mode="aspectFill"></image>
-        <image wx:if="{{upload_picture_list.upload_percent == 100}}" src="{{upload_picture_list.path_server}}" mode="aspectFill"></image>
-        <view class="upload_progress" wx:if="{{upload_picture_list.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg1">{{upload_picture_list.upload_percent}}%</view>
-        <text class='del  iconfont  icon-cuohao' bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></text>
-      </view>
-      <view class='picture_item' bindtap='uploadpic1' wx:if="{{!disabled1}}" data-index="{{index}}">
-        <view class='bgg flex_ard align_center'>
-          <image src='../../images/camera2x.png'></image>
+    <view class='item1 flex align_center textareaitem'>
+      <text class='size28 color6'>预定信息</text>
+      <view class='reservation size28 color9'>
+        <view class='flex'>
+          <text>可接纳人数：</text>
+          <input class='per' name='reservation[min_person]'></input>
+          <text>—</text>
+          <input class='per' name='reservation[max_person]'></input>
+          <text>人</text>
         </view>
-        <view class='size26 bold center'>点击拍摄/上传图片</view>
-      </view>
-    </view> -->
-    <view class="picture_listmore">
-      <view wx:for="{{upload_picture_list}}" class="picture_itemmore" wx:key="{{index}}">
-        <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
-        <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
-        <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
-        <view class='del'bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"><image src='../../images/delete_pic.png'></image></view>
-      </view>
-
-      <view class='picture_itemmore ' bindtap='uploadpic1' wx:if="{{!disabled1}}" data-index="{{index}}">
-        <view class="add-image click_camera flex_col align_center" >
-          <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+        <view class='flex align_center roomitem'>
+          <text>接受预定房型： </text>
+          <scroll-view scroll-x="true" class="scroll-header flex align_center">
+            <view class='featuresitem' wx:for="{{room}}" wx:key="index">
+              <view class='features hidden1'>{{item}}</view>
+              <image src='../../images/delt.png' class='delt' bindtap='delroom' data-index='{{index}}'></image>
+            </view>
+            <view class='featuresitem' >
+              <input placeholder='自定义' class='features featuresinput' value='{{roomv}}' hidden='{{room.length==4}}' bindconfirm="room"></input>
+            </view>
+          </scroll-view>
         </view>
       </view>
     </view>
-  </view>
-  <view class='item  flex align_center' wx:if='{{status}}'>
-    <text class='size28 color6'>审核状态</text>
-    <view class='{{status==2?"colorFE2C2C":"color4FD7A3"}}'>{{status_name}}</view>
-  </view>
-  <view class='item  flex' wx:if="{{status==2}}">
-    <text class='size28 color6'>拒绝原因</text>
-    <view class='colorFE2C2C'>{{status_remark}}</view>
-  </view>
-  <view  class=' size28 center flex  align_center gxuan' >
-    <view class='flex  align_center'  bindtap='choose'>
-      <view class='choose'>
-        <image src='../../images/choose.png' wx:if="{{choosed==0}}"></image>
-        <image src='../../images/choosed.png' wx:else></image>
+    <view class='item1 flex align_center textareaitem'>
+      <text class='size28 color6'>营业许可</text>
+      <view class='businessLicense'>
+        <view class='license flex align_center'>
+          <view>单位名称：</view>
+          <input name='license_info[company_name]'></input>
+        </view>
+        <view class='license flex align_center'>
+          <view>许可证号：</view>
+          <input name='license_info[license_no]'></input>
+        </view>
+        <view class='license flex align_center'>
+          <view> 法定代表人：</view>
+          <input name='license_info[legal_person]'></input>
+        </view>
+        <view class='license flex align_center'>
+          <view> 经营地址：</view>
+          <input name='license_info[business_address]'></input>
+        </view>
+        <view class='license flex align_center'>
+          <view>经营范围：</view>
+          <input name='license_info[business_scope]'></input>
+        </view>
       </view>
-      <text>请勾选</text>
     </view>
-    <navigator class='color299EF0 color4FD7A3' url='../page/index?url={{shop_settled}}'>
-      《商家入驻协议》
-    </navigator>
-  </view>
+    <block wx:for="{{image}}" wx:key="{{index}}">
+      <view class='item1 flex align_center image'>
+        <text class='size28 color6'>{{item.title}}</text>
+        <view class="picture_list">
+          <view class="picture_item {{item.id}}" wx:if="{{item.upload_picture_list.length>0}}">
+            <image wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" src="{{item.upload_picture_list[0].path}}" mode="aspectFill"></image>
+            <image wx:if="{{item.upload_picture_list[0].upload_percent == 100}}" src="{{item.upload_picture_list[0].path_server}}" mode="aspectFill"></image>
+            <view class="upload_progress" wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_picture_list[0].upload_percent}}%</view>
+            <text class='del iconfont  icon-cuohao' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></text>
+          </view>
+          <view wx:else class='picture_item' bindtap='uploadpic' data-index="{{index}}">
+            <view class='bgg flex_ard align_center'>
+              <image src='../../images/camera2x.png'></image>
+            </view>
+            <view class='size26 bold center'>{{item.text}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
 
-  <view wx:if="{{disabled1}}" class='size32 button' bindtap='xiugai'>点击修改</view>
-  <button wx:else class='size32' formType="submit" disabled='{{post}}' >提交</button>
-</view>
+    <view class='item1 flex align_center image'>
+      <text class='size28 color6'>店内图片</text>
+      <view class="picture_listmore">
+        <view  class="picture_itemmore" wx:if='{{video.src}}'>
+          <image wx:if="{{video.upload_percent < 100}}" src="{{video.img}}" mode="aspectFill"></image>
+          <video wx:if="{{video.upload_percent == 100}}" src='{{video.src}}'></video>
+          <view class="upload_progress" wx:if="{{video.upload_percent < 100}}" data-index="{{index}}">{{video.upload_percent}}%</view>
+          <view class='del' bindtap='deletevideo'  style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}">
+            <image src='../../images/delt.png'></image>
+          </view>
+        </view>
+        <view class='picture_itemmore ' bindtap='uploadvideo' wx:else data-index="{{index}}">
+          <view class="add-image click_camera flex_col align_center">
+            <image mode='aspectFill' class='videot' src='../../images/videot.png'></image>
+          </view>
+        </view>
+        <view wx:for="{{upload_picture_list}}" class="picture_itemmore" wx:key="{{index}}">
+          <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+          <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+          <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
+          <view class='del' bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}">
+            <image src='../../images/delt.png'></image>
+          </view>
+        </view>
+        <view class='picture_itemmore ' bindtap='uploadpic1' wx:if="{{!disabled1}}" data-index="{{index}}">
+          <view class="add-image click_camera flex_col align_center">
+            <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='item  flex align_center' wx:if='{{status}}'>
+      <text class='size28 color6'>审核状态</text>
+      <view class='{{status==2?"colorFE2C2C":"color4FD7A3"}}'>{{status_name}}</view>
+    </view>
+    <view class='item  flex' wx:if="{{status==2}}">
+      <text class='size28 color6'>拒绝原因</text>
+      <view class='colorFE2C2C'>{{status_remark}}</view>
+    </view>
+    <view class=' size28 center flex  align_center gxuan'>
+      <view class='flex  align_center' bindtap='choose'>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox" wx:for="{{items}}" wx:key="index">
+            <checkbox value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </checkbox-group>
+      </view>
+      <navigator class='xieyi' url='../page/index?url={{shop_settled}}'>
+        《商家入驻协议》
+      </navigator>
+    </view>
+
+    <view wx:if="{{disabled1}}" class='size32 button' bindtap='xiugai'>点击修改</view>
+    <button wx:else class='size32' formType="submit" disabled='{{post}}'>提交</button>
+  </view>
 </form>
 
 <wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="商城类型" options="{{ shop_cate }}" bind:close="onClose1" bind:change="onChange1" />
+
+<wux-popup visible="{{ visiblet }}" position="bottom" bind:close="colset">
+  <view class='flex_btw align_center yysj'>
+    <image src='../../images/ch_del.png' class='ch_del' bindtap='ch_del'></image>
+    <text>营业时间</text>
+    <image src='../../images/ch_true.png' class='ch_true' bindtap='ch_true'></image>
+  </view>
+  <view class='timechoice'>
+    <view class='flex' wx:if="{{visiblet}}">
+      <picker-view indicator-style="height: 76rpx;" style="width: 360rpx; height: 300rpx;" value="{{value}}" bindchange="bindChange">
+        <picker-view-column>
+          <view wx:for="{{hour1}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item}}:00</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{hour2}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item}}:00</view>
+        </picker-view-column>
+
+      </picker-view>
+      <view class='timeitem'>
+        <view class='size20 textL'>已选时间段</view>
+        <view>
+          <view class='time' wx:for="{{timevalue}}" wx:key="index">
+            <view class='timePeriod'>{{item}}</view>
+            <image src='../../images/delt.png' class='delt' bindtap='deltime' data-index='{{index}}'></image>
+          </view>
+          <view class='time' bindtap='timeadd'>
+            <view class='timePeriod size24'>添加其他时间段</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</wux-popup>
 <!-- <view class='relative'>
 <input style="border:1px solid black;" bindinput="getsuggest" value="{{backfill}}"></input>
  <scroll-view

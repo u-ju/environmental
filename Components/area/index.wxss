@@ -129,3 +129,6 @@ input{
   padding: 0 0 50rpx 0;
   height: 300rpx;
 } */
+.width460{
+  width: 460rpx;
+}
