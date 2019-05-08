@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/tenants/online",
     "pages/tenants/tenants",
     "pages/index/index",
     "pages/business_details/index",
@@ -30,7 +31,6 @@
     "pages/agriculturalEdit/index",
     "pages/tenantsIndex/index",
     "pages/tenantsChoice/index",
-    "pages/tenants/online",
     
     
     "pages/unopen/index",

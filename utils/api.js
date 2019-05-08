@@ -242,7 +242,7 @@ const apiList = {
   // POST 入驻申请
   shopSettled_apply: basePath + '/front/shopSettled/apply',
   // GET 入驻详情
-  shopSettled_show: basePath + '/front/shopSettled/show',
+  // shopSettled_show: basePath + '/front/shopSettled/show',
   // POST 入驻更新
   shopSettled_update: basePath + '/front/shopSettled/update',
   // POST  

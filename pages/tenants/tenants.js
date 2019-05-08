@@ -12,10 +12,14 @@ var apiurl = require('../../utils/api.js');
 const date = new Date()
 const hour1 = []
 const hour2 = []
-for (var i = 1; i <= 24; i++) {
+var min = [':00',":30"]
+for (var i = 0; i < 24; i++) {
   // console.log(i)
-  hour1.push(i)
-  hour2.push(i)
+  for(var a in min){
+    hour1.push(i + min[a])
+    hour2.push(i + min[a])
+  }
+  
 }
 Page({
 
@@ -73,6 +77,7 @@ Page({
     hour1: [],
     hour2: [],
     timevalue: [],
+    timevalueR:[],
     visiblet:false,
     features:[],
     featuresv: '',
@@ -93,7 +98,7 @@ Page({
   bindChange: function (e) {
     const val = e.detail.value
     var timevalue = this.data.timevalue
-    var time = this.data.hour1[val[0]] + ':00-' + this.data.hour1[val[1]] + ':00';
+    var time = this.data.hour1[val[0]] + '-' + this.data.hour1[val[1]];
     var timenum = timevalue.length-1
 
     timevalue[timenum] = time
@@ -106,12 +111,18 @@ Page({
       visiblet:true
     })
   },
+  colset(){
+    this.setData({
+      visiblet: false
+    })
+  },
   deltime(e){
     let index = e.currentTarget.dataset.index;
     let timevalue = this.data.timevalue;
     timevalue.splice(index, 1);
     this.setData({
-      timevalue: timevalue
+      timevalue: timevalue,
+
     })
   },
   ch_del(){
@@ -120,11 +131,15 @@ Page({
     })
   },
   ch_true(){
+    
     this.setData({
-      visiblet: false
+      visiblet: false,
+      timevalueR: this.data.timevalue
     })
+    wx.setStorageSync('timevaluet', this.data.timevalue)
   },
   timeadd(e){
+    console.log(e)
     let timevalue = this.data.timevalue;
     timevalue.push('')
     this.setData({
@@ -139,6 +154,7 @@ Page({
       features: features,
       featuresv:''
     })
+    wx.setStorageSync('featurest', features)
   },
   delfeature(){
     let index = e.currentTarget.dataset.index;
@@ -147,6 +163,7 @@ Page({
     this.setData({
       features: features
     })
+    wx.setStorageSync('featurest', features)
   },
   room(e) {
     console.log(e)
@@ -156,6 +173,7 @@ Page({
       room: room,
       roomv: ''
     })
+    wx.setStorageSync('roomt', room)
   },
   delroom() {
     let index = e.currentTarget.dataset.index;
@@ -164,6 +182,7 @@ Page({
     this.setData({
       room: room
     })
+    wx.setStorageSync('roomt', room)
   },
   // var fileName = util.now_time() +'.mp4';
   uploadvideo(e){
@@ -191,6 +210,7 @@ Page({
               that.setData({
                 video: tempFile 
               })
+              wx.setStorageSync('videot', tempFile)
               console.log(tempFile)
             },function(e){
               tempFile.upload_percent = e
@@ -263,8 +283,9 @@ Page({
       // shop_settled: app.globalData.config.protocol.shop_settled,
       choosed: wx.getStorageSync('choosedt') || that.data.choosed
     })
+    options.shop_id=30
     if (options.shop_id) {
-      util.getJSON({ apiUrl: apiurl.shopSettled_show + "?shop_id=" + options.shop_id }, function (res) {
+      util.getJSON({ apiUrl: apiurl.shop_showOwn + options.shop_id }, function (res) {
         var result = res.data.result
         var image = [
           { title: '营业执照', upload_picture_list: [{ upload_percent: 100, path_server: '' }], text: "点击拍摄/上传图片", id: 0 },
@@ -277,6 +298,11 @@ Page({
           upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
         }
         var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
+        var video={ upload_percent: 100, src: result.video}
+        var timevalue = []
+        for(var a=0; a< result.business_time.length;a++){
+        	timevalue.push(result.business_time[a].start+'-'+result.business_time[a].end)
+        }
         that.setData({
           shop_cate: shop_cate,
           shop_id: options.shop_id,
@@ -298,7 +324,21 @@ Page({
           cate_id: result.cate_id,
           upload_picture_list: upload_picture_list,
           discount_percent: result.discount_percent,
-          status_remark: result.status_remark
+          status_remark: result.status_remark,
+          
+          timevalue: timevalue,
+	        timevalueR: timevalue,
+	        room: result.reservation.room,
+	        video: video,
+	        features: result.feature,
+	        cost: result.cost,
+	        min_person: result.reservation.min_person,
+	        max_person: result.reservation.max_person,
+	        company_name: result.license_info.company_name,
+	        license_no: result.license_info.license_no,
+	        legal_person: result.license_info.legal_person,
+	        business_address: result.license_info.business_address,
+	        business_scope: result.license_info.business_scope,
         })
         wx.hideLoading()
       })
@@ -310,6 +350,7 @@ Page({
       ], upload_picture_list = wx.getStorageSync("upload_picture_list") || []
 
       var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
+      
       that.setData({
         contact: wx.getStorageSync("contactt"),
         title: wx.getStorageSync("titlet"),
@@ -327,6 +368,20 @@ Page({
         discount_percent: wx.getStorageSync('discount_percentt'),
         longitude: wx.getStorageSync('longitudet'),
         latitude: wx.getStorageSync('latitudet'),
+        
+        timevalue: wx.getStorageSync('timevaluet'),
+        timevalueR: wx.getStorageSync('timevaluet'),
+        room: wx.getStorageSync('roomt'),
+        video: wx.getStorageSync('videot'),
+        features: wx.getStorageSync('featurest'),
+        cost: wx.getStorageSync('costt'),
+        min_person: wx.getStorageSync('reservation[min_person]t'),
+        max_person: wx.getStorageSync('reservation[max_person]t'),
+        company_name: wx.getStorageSync('license_info[company_name]t'),
+        license_no: wx.getStorageSync('license_info[license_no]t'),
+        legal_person: wx.getStorageSync('license_info[legal_person]t'),
+        business_address: wx.getStorageSync('license_info[business_address]t'),
+        business_scope: wx.getStorageSync('license_info[business_scope]t'),
       })
     }
   },
@@ -661,9 +716,9 @@ Page({
     if(this.data.video.src.length>0){
       data.video = this.data.video.src
     }
-    for (var c in this.data.timevalue){
-      data['business_time[' + c +']["start"]'] = this.data.timevalue[c].split("-")[0]
-      data['business_time[' + c+ ']["end"]'] = this.data.timevalue[c].split("-")[1]
+    for (var c in this.data.timevalueR){
+      data['business_time[' + c + ']["start"]'] = this.data.timevalueR[c].split("-")[0]
+      data['business_time[' + c + ']["end"]'] = this.data.timevalueR[c].split("-")[1]
     }
     for (var d in this.data.features){
       data['feature['+d+']'] = this.data.features[d]
@@ -698,8 +753,9 @@ Page({
     that.setData({
       post: true
     })
-    util.postJSON({ apiUrl: url, data: data }, function (res) {
-      var result = res.data.result
+    console.log(data)
+//  util.postJSON({ apiUrl: url, data: data }, function (res) {
+//    var result = res.data.result
 
     //   util.alert("申请提交成功，等待审核")
     //   wx.setStorageSync("contactt", '')
@@ -718,28 +774,28 @@ Page({
     //   wx.setStorageSync('choosedt', '')
     //   wx.setStorageSync('latitudet', '')
     //   wx.setStorageSync('longitudet', '')
-      setTimeout(function () {
-        wx.reLaunch({
-          url: '../index/index',
-          success() {
-            that.setData({
-              post: false
-            })
-          }
-        })
-      }, 3000)
-
-    }, function (res) {
-      console.log(res.data.message)
-      that.setData({
-        post: false
-      })
-    }, function (res) {
-
-      that.setData({
-        post: false
-      })
-    })
+//    setTimeout(function () {
+//      wx.reLaunch({
+//        url: '../index/index',
+//        success() {
+//          that.setData({
+//            post: false
+//          })
+//        }
+//      })
+//    }, 3000)
+//
+//  }, function (res) {
+//    console.log(res.data.message)
+//    that.setData({
+//      post: false
+//    })
+//  }, function (res) {
+//
+//    that.setData({
+//      post: false
+//    })
+//  })
   },
   backfill: function (e) {
     console.log(e)

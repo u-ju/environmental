@@ -60,7 +60,52 @@ Page({
     konwname: '',
     choosead: true
   },
+  uploadvideo(e) {
+    var that = this;
 
+    wx.chooseVideo({
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        util.alert('视频上传中')
+        var promiseArr = []
+        var tempFile = {}
+        tempFile.img = res.thumbTempFilePath;
+        tempFile.upload_percent = 0
+        console.log(res)
+        var tempFilePath = []
+        tempFilePath.push(res.tempFilePath)
+        var tempFilesSize = res.size;
+        if (tempFilesSize <= 25 * 1024 * 1024) {
+          if (util.allowUploadFormat(tempFilePath)) {
+            // util.uploadV(res.tempFilePath)
+            util.uploadV(apiurl.upload_video, that, res, function (e) {
+              tempFile.src = e.result.video_url
+              tempFile.upload_percent = 100
+              wx.hideLoading()
+              that.setData({
+                video: tempFile
+              })
+              wx.setStorageSync('videoo', tempFile)
+              console.log(tempFile)
+            }, function (e) {
+              tempFile.upload_percent = e
+              that.setData({
+                video: tempFile
+              })
+              console.log(e)
+            })
+          } else {
+            util.alert("视频上传异常!");
+          }
+        }
+      }
+    })
+  },
+  deletevideo() {
+    this.setData({
+      video: []
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -91,25 +136,14 @@ Page({
   onLoad: function (options) {
     var that = this;
       var result = app.globalData.config
-      var shop_cate = result.shop_cate
-        for (var i in shop_cate) {
-          shop_cate[i]["value"] = shop_cate[i]["id"]
-          shop_cate[i]["label"] = shop_cate[i]["name"]
-          if (shop_cate[i]["children"] && shop_cate[i]["children"].length > 0) {
-            for (var a in shop_cate[i].children) {
-              shop_cate[i]["children"][a]["value"] = shop_cate[i]["children"][a]["id"]
-              shop_cate[i]["children"][a]["label"] = shop_cate[i]["children"][a]["name"]
-            }
-          }
-        }
+      
         that.setData({
-          shop_cate: shop_cate,
           type: '', 
-          shop_settled: app.globalData.config.protocol.shop_settled,
           choosed: wx.getStorageSync('choosedo') || that.data.choosed
         })
+    // options.shop_id=30
       if (options.shop_id){
-        util.getJSON({ apiUrl: apiurl.shopSettled_show + "?shop_id=" + options.shop_id}, function (res) {
+        util.getJSON({ apiUrl: apiurl.shop_showOwn  + options.shop_id}, function (res) {
           var result = res.data.result
           var image = [
             { title: '营业执照', upload_picture_list: [{ upload_percent: 100, path_server:''}], text: "点击拍摄/上传图片", id: 0 },
@@ -122,6 +156,8 @@ Page({
             upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
           }
           var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
+          var video = { upload_percent: 100, src: result.video }
+          
           that.setData({
             shop_cate: shop_cate,
             shop_id: options.shop_id,
@@ -143,7 +179,13 @@ Page({
             cate_id: result.cate_id,
             upload_picture_list: upload_picture_list,
             discount_percent: result.discount_percent,
-            status_remark: result.status_remark
+            status_remark: result.status_remark,
+            company_name: result.license_info.company_name,
+            license_no: result.license_info.license_no,
+            legal_person: result.license_info.legal_person,
+            business_address: result.license_info.business_address,
+            business_scope: result.license_info.business_scope,
+            video: video,
           })
           wx.hideLoading()
         })
@@ -172,6 +214,12 @@ Page({
           discount_percent: wx.getStorageSync('discount_percento'),
           longitude: wx.getStorageSync('longitudeo'),
           latitude: wx.getStorageSync('latitudeo'),
+          company_name: wx.getStorageSync('license_info[company_name]o'),
+          license_no: wx.getStorageSync('license_info[license_no]o'),
+          legal_person: wx.getStorageSync('license_info[legal_person]o'),
+          business_address: wx.getStorageSync('license_info[business_address]o'),
+          business_scope: wx.getStorageSync('license_info[business_scope]o'),
+          video: wx.getStorageSync('videoo'),
         })
       }
     },

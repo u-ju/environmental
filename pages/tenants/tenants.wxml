@@ -52,7 +52,7 @@
       <text class='size28 color6'>营业时间</text>
       <view class='input flex_btw align_center' bindtap='opent'>
         <view class='width460'>
-          <text wx:for="{{timevalue}}" wx:key="index">{{item}} </text>
+          <text wx:for="{{timevalueR}}" wx:key="index">{{item}} </text>
         </view>
         <text class='iconfont icon-jiantou color989898'></text>
       </view>
@@ -61,7 +61,7 @@
       <text class='size28 color6'>预计人均消费</text>
       <view class=' flex_btw consumption align_center'>
         <text>￥</text>
-        <input name='cost'></input>
+        <input name='cost' data-contact='costt' bindinput='input' value='{{cost}}' ></input>
       </view>
     </view>
     <view class='item  flex align_center'>
@@ -86,9 +86,9 @@
       <view class='reservation size28 color9'>
         <view class='flex'>
           <text>可接纳人数：</text>
-          <input class='per' name='reservation[min_person]'></input>
+          <input class='per' name='reservation[min_person]'  bindinput='input' data-contact='reservation[min_person]t' value="{{min_person}}" ></input>
           <text>—</text>
-          <input class='per' name='reservation[max_person]'></input>
+          <input class='per' name='reservation[max_person]'  bindinput='input' data-contact='reservation[max_person]t' value="{{max_person}}"></input>
           <text>人</text>
         </view>
         <view class='flex align_center roomitem'>
@@ -110,23 +110,23 @@
       <view class='businessLicense'>
         <view class='license flex align_center'>
           <view>单位名称：</view>
-          <input name='license_info[company_name]'></input>
+          <input name='license_info[company_name]' data-contact='license_info[company_name]t' bindinput='input' value="{{company_name}}" ></input>
         </view>
         <view class='license flex align_center'>
           <view>许可证号：</view>
-          <input name='license_info[license_no]'></input>
+          <input name='license_info[license_no]' data-contact='license_info[license_no]t' bindinput='input'  value="{{license_no}}"></input>
         </view>
         <view class='license flex align_center'>
           <view> 法定代表人：</view>
-          <input name='license_info[legal_person]'></input>
+          <input name='license_info[legal_person]' data-contact='license_info[legal_person]t' bindinput='input'  value="{{legal_person}}"></input>
         </view>
         <view class='license flex align_center'>
           <view> 经营地址：</view>
-          <input name='license_info[business_address]'></input>
+          <input name='license_info[business_address]' data-contact='license_info[business_address]t' bindinput='input'  value="{{business_address}}"></input>
         </view>
         <view class='license flex align_center'>
           <view>经营范围：</view>
-          <input name='license_info[business_scope]'></input>
+          <input name='license_info[business_scope]' data-contact='license_info[business_scope]t' bindinput='input'  value="{{business_scope}}"></input>
         </view>
       </view>
     </view>
@@ -183,7 +183,7 @@
     </view>
     <view class='item  flex align_center' wx:if='{{status}}'>
       <text class='size28 color6'>审核状态</text>
-      <view class='{{status==2?"colorFE2C2C":"color4FD7A3"}}'>{{status_name}}</view>
+      <view class='{{status==2?"colorFE2C2C":"color27AAD9"}}'>{{status_name}}</view>
     </view>
     <view class='item  flex' wx:if="{{status==2}}">
       <text class='size28 color6'>拒绝原因</text>
@@ -220,10 +220,10 @@
     <view class='flex' wx:if="{{visiblet}}">
       <picker-view indicator-style="height: 76rpx;" style="width: 360rpx; height: 300rpx;" value="{{value}}" bindchange="bindChange">
         <picker-view-column>
-          <view wx:for="{{hour1}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item}}:00</view>
+          <view wx:for="{{hour1}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item}}</view>
         </picker-view-column>
         <picker-view-column>
-          <view wx:for="{{hour2}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item}}:00</view>
+          <view wx:for="{{hour2}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item}}</view>
         </picker-view-column>
 
       </picker-view>

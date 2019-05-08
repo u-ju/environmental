@@ -211,8 +211,8 @@ navigator{
 
 .picture_itemmore .del {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -12rpx;
+  right: -12rpx;
   color: #fff;
   border-radius: 50%;
   width: 30rpx;

@@ -294,7 +294,9 @@ page {
 .color5ABB96 {
   color: #5abb96;
 }
-
+.color27AAD9 {
+  color: #27AAD9;
+}
 .colorFB5A3E {
   color: #fb5a3e;
 }
