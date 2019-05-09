@@ -26,5 +26,5 @@
         </view>
       </view>  
     </view> 
-    <view class='submitButton' bindtap='goodsBuy'>{{title}}</view>
+    <view class='submitButton' bindtap='goodsBuy'>{{title1}}</view>
 </wux-popup>

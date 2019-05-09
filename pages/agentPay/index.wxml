@@ -4,34 +4,4 @@
   <area title='选择地区' areaSelectedStr='{{areaSelectedStr}}' ban='county' bind:choosea='choosearea' />
   <text class='iconfont icon-jiantou color898989'></text>
 </view>
-<view class='btn' bindtap='open2'>前往支付</view>
-
-<wux-popup closable position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
-    <view class='center color4 size36 csgg'>选择支付方式</view>
-    <view class='center colorFE3434 size60 csgg'>￥{{pay_amount}}</view>
-    <view  >
-      <view class='label' wx:for="{{result.payment_usable}}" wx:key ="index">
-        <view>
-        <view class='flex align_center radioitem'  bindtap='choose' data-index="{{index}}" data-key="{{item.key}}">
-          <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
-          <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
-          <view class='left'>
-            <text class='size28 color4'>{{item.name}} \n </text>
-          </view>
-        </view>
-        <view wx:if="{{item.options&&item.choosed==1}}">
-          <block wx:for="{{item.options}}" wx:key="index">
-          <view class='flex align_center radioitem radioinstallment'  bindtap='choosed' data-index="{{index}}" data-key="{{item.key}}">
-            <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
-            <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
-            <view class='left'>
-              <text class='size28 color4'>{{item.name}} </text>
-            </view>
-          </view>
-          </block>
-        </view>
-        </view>
-      </view>  
-    </view>
-  <button bindtap="close2" class='pay goodsBuy size36 marginb60'>确认支付</button>
-</wux-popup>
+<pay choose="{{choose}}" data="{{data}}" styles="margin:80rpx auto;"  bind:open='openp' title='前往支付' title1="立即支付" />

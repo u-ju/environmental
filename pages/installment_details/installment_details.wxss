@@ -308,3 +308,6 @@ swiper,swiper image{
 .car{
   padding: 24rpx 32rpx;
 }
+.car .colorFE2C2C {
+  margin: 0
+}

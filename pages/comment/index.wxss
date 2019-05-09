@@ -81,17 +81,7 @@ padding: 24rpx;
 .color153>text{
   line-height: 40rpx;
 }
-.btnsure{
-  width:686rpx;
-  height:86rpx;
-  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
-  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
-  border-radius:43rpx;
-  text-align: center;
-  color: white;
-  line-height: 86rpx;
-  margin: 100rpx auto 10rpx auto;
-}
+
 /* common.wxss */
  .image-container{
   margin-right: 25rpx;

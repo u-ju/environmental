@@ -1,4 +1,4 @@
-<!--pages/comment/index.wxml-->
+<!--pages/comment/shopComment.wxml-->
 <form bindsubmit="formSubmit">
 <block>
 <view class='type'>

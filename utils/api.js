@@ -1,6 +1,10 @@
 // const basePath = 'https://wyhb.zgwyhb.com/api';
 const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
+  shopComment_comment: basePath + '/front/shopComment/comment', 
+  shopComment_indexShop: basePath + '/front/shopComment/indexShop?shop_id=', 
+  shopComment_delShop: basePath + '/front/shopComment/delShop', 
+  shopComment_index: basePath + '/front/shopComment/index?shop_id=', 
 
   // GET 控制对照
   // GET 控制对照

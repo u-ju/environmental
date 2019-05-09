@@ -21,7 +21,8 @@ Page({
     result: {},
     payment: '',
     visible2:false,
-    chooseimage:'../../images/choosed.png'
+    chooseimage:'../../images/choosed.png',
+    data: { pay_source: 'shop_gather', shop_id: '', amount: '', bag_type: '' } 
   },
 
   /**
@@ -61,9 +62,12 @@ Page({
     var that = this;
     util.getJSON({ apiUrl: apiurl.gatherPayCreate + shop_id },
       function (res) {
+        var data = that.data.data
+        data.shop_id = shop_id
         that.setData({
           shopdetail: res.data.result,
-          shop_id: shop_id
+          shop_id: shop_id,
+          data: data
         })
         wx.hideLoading()
       })
@@ -77,8 +81,11 @@ Page({
     if (this.data.bagkey == e.currentTarget.dataset.key){
       key=''
     }
+    var data = that.data.data
+    data.bag_type = key
     this.setData({
-      bagkey: key
+      bagkey: key,
+      data: data
     })
   },
   /**
@@ -102,10 +109,20 @@ Page({
   },
   onChange(e) {
     console.log(e)
+    var data = that.data.data
+    data.amount = e.detail.value
     this.setData({
       error: isTel(e.detail.value),
       value: e.detail.value,
+      data: data
     })
+  },
+  openp(e) {
+    var page = e.detail.page;
+    if (this.data.value == "") {
+      return util.alert("请输入转账金额")
+    }
+    page.open3()
   },
   open2() {
     if (this.data.value==""){

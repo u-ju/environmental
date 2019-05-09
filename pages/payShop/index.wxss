@@ -129,7 +129,7 @@ page{
     font-size: 32rpx;
     padding-left: 20rpx;
   }
-  .footerbtn{
+  /* .footerbtn{
     width:80%;
     height:82rpx;
     background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
@@ -140,4 +140,4 @@ page{
     text-align: center;
     font-size: 32rpx;
     margin: 30rpx auto;
-  }
+  } */
