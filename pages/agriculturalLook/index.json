@@ -1,5 +1,7 @@
 {
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 50,
-  "usingComponents": {}
+  "usingComponents": {
+    "empty": "../../Components/empty/index"
+  }
 }

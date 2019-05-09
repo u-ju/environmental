@@ -1,0 +1,69 @@
+/*弹窗主体*/
+.flex{
+  display: flex;
+}
+.csgg{
+  padding: 50rpx 0 0 0;
+}
+.label{
+  display: block;
+  width: 686rpx;
+  margin: auto;
+  padding:20rpx 0;
+}
+.radioitem{
+  padding: 14rpx 0;
+}
+.goodsBuy{
+  margin: 40rpx auto 60rpx auto;
+}
+.choose{
+  width: 38rpx;
+  height: 38rpx;
+  margin-right: 12rpx;
+}
+.shitem .colorFE2C2C {
+  margin:0 0;
+}
+.width600{
+  width: 600rpx;
+}
+.fkItem_goods_ms .icon-cuohao{
+  position: static;
+  font-size: 22rpx;
+}
+.size60{
+  font-size: 60rpx;
+}
+.center{
+  text-align: center
+} 
+.color4{
+  color: #444;
+} 
+.size36{
+  font-size: 36rpx;
+}
+.radioinstallment image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.radioinstallment{
+height:50rpx;
+margin-left:60rpx;
+}
+.submitButton {
+  width: 686rpx;
+  height: 88rpx;
+  background: linear-gradient(0deg, rgba(68, 213, 162, 1) 0%, rgba(153, 228, 171, 1) 100%);
+  box-shadow: 0px 4rpx 13rpx 0px rgba(68, 213, 162, 0.23);
+  border-radius: 44rpx;
+  color: white;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 30rpx;
+  margin: 20rpx auto 40rpx  auto;
+}
+.colorFE3434{
+  color: #FE3434
+}

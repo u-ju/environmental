@@ -35,8 +35,9 @@
   </checkbox-group>
   <navigator  url='../page/index?url={{nper}}'>《商品兑换协议》</navigator>
 </view>
-<view class='btnsure' bindtap='open3' hidden='{{order_source=="online"}}'>立即兑换</view>
-<view class='btnsure' bindtap='open3' hidden='{{order_source!="online"}}'>立即支付</view>
+<!-- <view class='btnsure' bindtap='open3' hidden='{{order_source=="online"}}'>立即兑换</view> -->
+<!-- <view class='btnsure' bindtap='open3' hidden='{{order_source!="online"}}'>立即支付</view> -->
+<pay choose="{{choose}}" data="{{data}}" styles="margin:80rpx auto;"  bind:open='openp' title='{{order_source=="online"?"立即支付":"立即兑换"}}' />
 <wux-popup position="bottom" visible="{{ visible3 }}" bind:close="close3">
     <text class='iconfont icon-cuohao'  bindtap="close3"></text>
     <view class='center color4 size36 csgg'>选择支付方式</view>

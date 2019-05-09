@@ -75,9 +75,20 @@ swiper,swiper image{
 .line-through{
   margin-top: 8rpx;
 }
-.goods_intr1,.goods_intr2{
+.goods_intr1{
   padding: 20rpx 32rpx;
+  /* border-bottom: 20rpx solid #EEEEEE; */
+}
+.goods_intr2{
+  padding: 0 32rpx;
   border-bottom: 20rpx solid #EEEEEE;
+}
+.goods_intr2>view{
+  border-top: 2rpx solid #EEEEEE;
+  padding: 28rpx 0
+}
+.goods_intr2>.phoe{
+  padding: 18rpx 0 26rpx 0;
 }
 .goods_intr3{
   padding: 32rpx 32rpx 32rpx 32rpx;
@@ -115,9 +126,9 @@ swiper,swiper image{
   position: fixed;
   bottom: 0rpx;
   width: 100%;
-  height: 90rpx;
+  height: 98rpx;
   padding-top: 10rpx;
-  /* background-color: white; */
+  background-color: white;
 }
 .csItemL{
   display: inline-block;
@@ -210,35 +221,7 @@ swiper,swiper image{
   margin: auto;
   border-bottom: 1px solid #EEEEEE;
 }
-/*  重写 radio 样式  */
-/* 未选中的 背景样式 */
-radio .wx-radio-input,checkbox .wx-checkbox-input{
-   border-radius: 50%;/* 圆角 */
-   width: 30rpx;
-   height: 30rpx;
-   margin-right: 20rpx;
-}
 
-/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
-radio .wx-radio-input.wx-radio-input-checked::before,checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
-   border-radius: 50%;/* 圆角 */
-   width: 30rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
-   height: 30rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
-   line-height: 30rpx;
-   text-align: center;
-   font-size:24rpx; /* 对勾大小 30rpx */
-   color:#fff; /* 对勾颜色 白色 */
-   background: transparent;
-   transform:translate(-50%, -50%) scale(1);
-   -webkit-transform:translate(-50%, -50%) scale(1);
-}
-checkbox .wx-checkbox-input.wx-checkbox-input-checked{
-   background: rgba(9, 187, 7, 1);
-   border-color: rgba(9, 187, 7, 1);
-}
-checkbox-group{
-  margin-bottom: 40rpx;
-}
 .labelnone{
   border: none;
 }
@@ -292,4 +275,36 @@ checkbox-group{
 }
 .width100{
   width: 100%;
+}
+.masonry{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 8rpx;
+}
+.stel{
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 33rpx;
+}
+.pfeng{
+  margin-left: 10rpx;
+}
+.scoreitem{
+  margin-bottom: 16rpx;
+}
+.fixbtn{
+  width:225rpx;
+  height:98rpx;
+  background:rgba(39,170,217,1);
+  border-radius:5rpx 0px 0px 5rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+  font-size: 32rpx;
+  }
+.fixbuy{
+  background: #FB1B1B;
+}
+.car{
+  padding: 24rpx 32rpx;
 }

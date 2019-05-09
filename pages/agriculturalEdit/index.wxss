@@ -224,3 +224,13 @@ input,textarea{
   width: 100%;
   font-size: 28rpx;
 }
+.btnsx{
+  width:160rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #27AAD9;
+  border-radius: 10rpx;
+  color: white;
+  font-size: 30rpx;
+}

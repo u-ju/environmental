@@ -5,20 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active:[0,1,2,3]
+    active:[0,0,0,0],
+    choose:[]
   },
   choose(e){
-    var active = this.data.active
+    var active = this.data.active,
+        choose = this.data.choose
     active[e.currentTarget.dataset.id] = e.currentTarget.dataset.index
+    choose[e.currentTarget.dataset.id] = e.currentTarget.dataset.key
     this.setData({
-      active: active
+      active: active,
+      choose: choose
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var reservation =  JSON.parse(options.reservation)
+    console.log(reservation)
+    var choose = [reservation.person[0]["key"], reservation.date[0]["key"], reservation.time[0], reservation.room[0]]
+    this.setData({
+      reservation: reservation,
+      choose: choose
+    })
   },
 
   /**

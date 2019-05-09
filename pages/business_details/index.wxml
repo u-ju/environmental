@@ -1,57 +1,58 @@
 <!--pages/business_details/index.wxml-->
 <block wx:if="{{result}}">
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox'>
-    <swiper-item wx:for="{{result.images}}" wx:key="index">
-      <video src="https://wyhb-res-pr.zgwyhb.com/uploads/video/2019/03/22/b3f15b7c71f503fabd76302a13c31ab2.mp4" custom-cache='{{false}}' poster="{{result.images[0]}}" objectFit="contain"></video>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' bindchange="swiperChange"
+current="{{cur}}">
+    <swiper-item wx:if="{{result.video}}">
+      <video src="{{result.video}}" custom-cache='{{false}}' poster="{{result.images[0]}}" objectFit="contain"></video>
       <!-- autoplay='autoplay' -->
     </swiper-item>
-    <block wx:for="{{4}}" wx:key="index">
+    <!-- <block wx:for="{{4}}" wx:key="index"> -->
       <swiper-item wx:for="{{result.images}}" wx:key="index">
         <image src="{{item}}" class="slide-image" mode='aspectFill' />
 
       </swiper-item>
-    </block>
-    <view class='dotbox flex'>
-      <view class='dotbtn'>
-        <text class='iconfont icon-bofang size20'></text> 视频</view>
-      <view class='dotbtn dotpic'>图片</view>
-    </view>
+    <!-- </block> -->
+    
   </swiper>
+  <view class='dotbox flex'>
+      <view class='dotbtn {{cur>0?"dotpic":""}}' data-index='0' bindtap='swiperC' wx:if='{{result.video}}'><text class='iconfont icon-bofang size20'></text> 视频</view>
+      <view class='dotbtn {{cur==0?"dotpic":""}}' data-index='1' bindtap='swiperC'>图片</view>
+    </view>
   <view class='con'>
     <view class='size32 color4 bold title'>{{result.title}}</view>
     <view class='flex_btw align_center'>
       <view class='flex align_center score'>
-        <image src='../../images/smasonry.png' class='masonry' wx:for="{{5}}" wx:key="index"></image>
-        <text>评分:4.8</text>
+        <image src='../../images/smasonry.png' class='masonry' wx:for="{{comment_score}}" wx:key="index"></image>
+        <text>评分:{{result.comment_score}}</text>
       </view>
       <view class='flex align_center'>
-        <view wx:for="{{3}}" wx:key="index" class='tag size20 color0'>
-          停车位
+        <view wx:for="{{result.feature}}" wx:key="index" class='tag size20 color0'>
+          {{item}}
         </view>
       </view>
     </view>
-    <view class='money'>￥59/人</view>
+    <view class='money'>￥{{result.cost}}/人</view>
     <view class='label flex align_center'>
       <image src='../../images/stime.png' class='labelpic'></image>
-      <view>营业中 | 上午:10:00-21:00，下午:10:00-21:00</view>
+      <view>{{result.business_status_name}} | {{result.business_time}}</view>
     </view>
     <view class='label flex_btw align_center'>
-      <view class='flex'>
+      <view class='flex'  data-latitude='{{result.latitude}}' data-longitude='{{result.longitude}}' bindtap='location' >
         <image src='../../images/sloc.png' class='labelpic'></image>
         <view class='address'>
-          <view class='hidden1 marginb20'>中纱帽街8号远洋太古里负一层M027</view>
-          <view class='color898989 size24 hidden1'>距离地铁3号线春熙路c口直走200米</view>
+          <view class='hidden1 '>{{result.area_name}}{{result.address}}</view>
+          <!-- <view class='color898989 size24 hidden1 margint20'>距离地铁3号线春熙路c口直走200米</view> -->
         </view>
       </view>
-      <image src='../../images/stel.png' class='labeltel'></image>
+      <image src='../../images/stel.png' data-phone='{{result.contact}}' bindtap='calling' class='labeltel'></image>
     </view>
   </view>
   <view class='details'>
-    <view class='reservation'>
+    <!-- <view class='reservation' bindtap='reservation'>
       <image src='../../images/seat.png' class='labelpic'></image>
       <text>订座</text>
       <text class='color898989 size24'>（已订5桌）</text>
-    </view>
+    </view> -->
     <view class='tab'>
       <view class='flex'>
         <view wx:for="{{tab}}" wx:key="index" class='tabitem bold {{active==index?"active":""}}' data-index='{{index}}' bindtap='tabswitch'>{{item}}</view>
@@ -66,12 +67,11 @@
               <view class='size26 center'>新鲜毛肚</view>
               <view class='flex_btw align_center spum'>
                 <text class='size26 colorFE2C2C'>￥59.9</text>
-                <view class='stepper'>
+                <!-- <view class='stepper'>
                   <image src='../../images/sredu.png' bindtap='bindMinus' hidden='{{minusStatus==0}}'></image>
                   <text wx:if='{{minusStatus==1}}' class='countnum'> {{num}} </text>
-                  <!-- <input bindinput='bindManual' value='{{num}}' hidden='{{minusStatus==0}}'></input> -->
                   <image src='../../images/sadd.png' bindtap='bindPlus'></image>
-                </view>
+                </view> -->
               </view>
             </view>
           </view>
@@ -146,10 +146,14 @@
         </view>
       </view>
       <view class='spuinfor view2' id='view2'>
-        <view class='bold'>商户信息</view>
-        <view class='flex_btw align_center'>
+        <view class='bold pad40'>商户信息</view>
+        <view class='flex_btw align_center pad40' bindtap='license'>
           <view>营业许可资质</view>
           <text class='iconfont icon-jiantou1 color898989'></text>
+        </view>
+        <view class='padtb20'>商家描述</view>
+        <view class='color898989'>
+          {{result.intro}}
         </view>
       </view>
     </scroll-view>

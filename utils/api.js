@@ -186,6 +186,7 @@ const apiList = {
   shop_showOwn: basePath + '/front/shop/showOwn?shop_id=',
   shop_gatherPayCreate: basePath + '/front/shop/gatherPayCreate?shop_id=',
   shop_index: basePath + '/front/shop/index',
+  shop_goodsUpDown: basePath + '/front/shop/goodsUpDown',
   // shop_show: basePath + '/front/shop/show?shop_id=',
   // shop_goodsIndex: basePath + '/front/shop/goodsIndex',
   // shop_goodsShow: basePath + '/front/shop/goodsShow?sku_id=',

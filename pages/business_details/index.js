@@ -23,47 +23,71 @@ Page({
     tab: ['产品', '评论', '商家信息'],
     active:0,
     num:0,
-    minusStatus:0
+    minusStatus:0,
+    cur:0
   },
-
+  swiperChange(e) {
+    let current = e.detail.current;
+    console.log(e.detail.current)
+    this.setData({
+      cur: current
+    })
+  },
+  swiperC(e){
+    console.log(e.currentTarget.dataset.index)
+    this.setData({
+      cur: e.currentTarget.dataset.index
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this
-    options.id=8
+    var obj = wx.createSelectorQuery();
+    options.id=30
     that.setData({
       s_height: wx.getSystemInfoSync().windowHeight - 42,
     })
-    var top = []
-    wx.createSelectorQuery().selectAll('.view0').boundingClientRect(function (rect) {
-      console.log(rect)
-      top.push(rect[0]['top'])
-    }).exec()
-    wx.createSelectorQuery().selectAll('.view1').boundingClientRect(function (rect) {
-      console.log(rect)
-      top.push(rect[0]['top'])
-    }).exec()
-    wx.createSelectorQuery().selectAll('.view2').boundingClientRect(function (rect) {
-      console.log(rect)
-      top.push(rect[0]['top'])
-      that.setData({
-        top: top
-      })
-    }).exec()
+    
     if (options.id) {
       this.setData({
         shop_id: options.id
       })
       util.getJSON({ apiUrl: apiurl.shop_show, data: { shop_id: that.data.shop_id} }, function (res) {
         var result = res.data.result
+        var comment_score = Math.ceil(result.comment_score)
         that.setData({
-          result: result
+          result: result,
+          comment_score: comment_score
         })
+        that.getTop()
         util.hideLoading()
       })
+      
       // that.init()
     }
+  },
+  getTop(){
+    var top = [],that= this;
+    wx.createSelectorQuery().selectAll('.view0').boundingClientRect(function (rect) {
+      console.log(rect)
+      var height = rect[0]['height']
+      top.push(height)
+    }).exec()
+    wx.createSelectorQuery().selectAll('.view1').boundingClientRect(function (rect) {
+      console.log(rect)
+      var height = rect[0]['height'] + top[top.length - 1]
+      top.push(height)
+    }).exec()
+    wx.createSelectorQuery().selectAll('.view2').boundingClientRect(function (rect) {
+      console.log(rect)
+      var height = rect[0]['height'] + top[top.length - 1]
+      top.push(height)
+      that.setData({
+        top: top
+      })
+    }).exec()
   },
   init(page = 1) {
     var that = this;
@@ -84,18 +108,22 @@ Page({
       active: e.currentTarget.dataset.index,
       toView: 'view' + e.currentTarget.dataset.index
     })
-
+    console.log(e.currentTarget.dataset.index)
   },
   scroll(e) {
-    var top = this.data.top, active = 0
+    var top = this.data.top, active = this.data.active;
+    var scrollTop = e.detail.scrollTop + 44
+    
     for (var i = 0; i < top.length; i++) {
-      if (top[i] < e.detail.scrollTop + 44) {
-        active = i
+      if (scrollTop < top[i]) {
+        console.log(i)
+        return this.setData({
+          active: i
+        })
       }
     }
-    this.setData({
-      active: active
-    })
+    console.log(active)
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -211,6 +239,16 @@ Page({
     this.setData({
       num: num,
       minusStatus: minusStatus
+    })
+  },
+  license(){
+    wx.navigateTo({
+      url: 'license/index?license_info=' + JSON.stringify(this.data.result.license_info) + "&license=" + this.data.result.license,
+    })
+  },
+  reservation(){
+    wx.navigateTo({
+      url: 'reservation/index?reservation=' + JSON.stringify(this.data.result.reservation) ,
     })
   }
 })

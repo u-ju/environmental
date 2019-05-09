@@ -102,6 +102,16 @@ Page({
       })
     })
   },
+  // 上下架
+  goodsUpDown(){
+    var that = this;
+    util.postJSON({ apiUrl: apiurl.shop_goodsUpDown, data: { shop_id: that.data.shop_id, spu_id: that.data.spu_id} }, function (res) {
+      util.alert(res.data.message)
+      that.setData({
+        status:!that.data.status
+      })
+    })
+  },
   // 点击下拉显示框
   selectTap(e) {
     console.log(e.currentTarget.dataset.index)
@@ -180,6 +190,7 @@ Page({
         price: price,
         stock: stock,
         thumb: thumb,
+        status: result.status,
         images: images,
         skunum: result.skus.length,
         isHidePlaceholder:true,
@@ -202,10 +213,13 @@ Page({
         goods_cate[i]["children"][j]["label"] = goods_cate[i]["children"][j]["name"]
       }
     }
+    // options.spu_id=12
+    // options.id=20
     this.setData({
       goods_cate: goods_cate,
       shop_id: options.id
     })
+
     if (options.spu_id){
       this.setData({
         spu_id: options.spu_id

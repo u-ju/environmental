@@ -10,7 +10,8 @@ Page({
   data: {
     active:[],
     startTime: 0,   //点击开始时间
-    endTime: 0　 //点击结束时间
+    endTime: 0,　 //点击结束时间
+    list:[0]
   },
   show(e){
     var active =  this.data.active

@@ -24,6 +24,7 @@ Page({
     payment:'',
     payment_ext:'',
     choose: ['1'],
+    data:{}
   },
 
   /**
@@ -35,12 +36,15 @@ Page({
     // }
     // console.log(JSON.parse(options.result))
     var result = JSON.parse(options.result)
+    console.log(1)
     this.setData({
       result: result,
-      order_source: result.order_source
-      // nper: app.globalData.config.protocol.nper
+      order_source: result.order_source,
+      data: { pay_source: 'order', order_key: result.order_key },
+      nper: app.globalData.config.protocol.nper
+      // , address_id: that.data.address.address_id
     })
-    
+    console.log(1)
     
   },
   checkboxChange(e) {
@@ -49,15 +53,28 @@ Page({
       choose: e.detail.value
     })
   },
+  openp(e){
+    var page = e.detail.page;
+    if (this.data.choose.length < 1) {
+      return util.alert("请勾选商品兑换协议")
+    }
+    page.open3()
+  },
   address() {
+    console.log(2)
     var that = this;
     util.getJSON({ apiUrl: apiurl.shippingAddress_index +"?default=1" }, function (res) {
-      var result = res.data.result, address={}
+      var result = res.data.result, address = {}, data = that.data.data;
       if (result.list.length>0){
+        console.log(1111111111)
         address=result.list[0]
+        
+        data.address_id = address.address_id
       }
+      
       that.setData({
         address: address,
+        data: data
       })
       util.hideLoading()
     })
@@ -66,7 +83,6 @@ Page({
     var that = this;
     if (this.data.choose.length < 1) {
       return util.alert("请勾选商品兑换协议")
-
     }
     util.postJSON({ apiUrl: apiurl.create, data: { pay_source: 'order', order_key: that.data.result.order_key, address_id: that.data.address.address_id} },
       function (res) {

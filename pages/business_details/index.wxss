@@ -1,48 +1,17 @@
 /* pages/business_details/index.wxss */
 @import '../agriculturalDetail/index';
+
 page{
   font-size: 28rpx;
   color: #444;
   border: none;
+  padding: 0;
 }
-.swiperbox{
-  width:688rpx;
-  height:326rpx;
-  margin: auto;
-  border-radius:20rpx;
-  overflow: hidden;
-  position: relative;
-}
-.slide-image,video{
-  width: 100%;
-  height: 100%;
-}
-.swiperbox .wx-swiper-dots.wx-swiper-dots-horizontal {
-  position: absolute;
-  left: unset;
-  transform: translate(0,0);
-  right: 16rpx;
-  /* left: 500rpx; */
-  /* z-index可设可不设*/
-  
-}
-.swiperbox .wx-swiper-dot{
-    width:24rpx;
-    height:4rpx;
-    display: inline-flex;
-    margin-left: 0rpx;
-    justify-content:space-between;
-    border-radius: 0;
-}
-.swiperbox .wx-swiper-dot::before{
-    content: '';
-    flex-grow: 1; 
-    border-radius: 0;
-}
+
 .dotbox{
   position: absolute;
   left: 50%;
-  bottom: 20rpx;
+  top: 274rpx;
   transform: translate(-50%,0);
   z-index: 1000;
 }
@@ -99,8 +68,8 @@ page{
   border-right: 1px solid #EEEEEE;
   line-height: 28rpx;
 }
-.marginb20{
-  margin-bottom: 20rpx;
+.margint20{
+  margin-top: 20rpx;
 }
 .labeltel{
   width: 33rpx;
@@ -131,7 +100,7 @@ page{
 }
 .tab{
   position: static;
-  padding: 18rpx 0 0 0;
+  line-height: 64rpx;
 }
 
 .tabitem{
@@ -204,9 +173,13 @@ page{
   color: #27AAD9;
   
 }
+
 .spu,.goods_intr3{
   padding: 0 32rpx;
   border-bottom: 20rpx solid #EEEEEE;
+}
+.spu{
+  padding-top: 32rpx;
 }
 .morecomments{
   color: #27AAD9;
@@ -241,10 +214,22 @@ page{
 .spuinfor{
   padding: 0 32rpx;
 }
-.spuinfor>view{
+.spuinfor .pad40{
   padding: 40rpx 0;
   border-bottom: 2rpx solid #EEEEEE; 
 }
 .spuinfor>.bold{
   padding: 32rpx 0 16rpx 0;
+}
+.flex_btw,.flex{
+  display:flex;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.padtb20{
+  padding: 20rpx 0;
 }

@@ -1,21 +1,21 @@
 <!--pages/business_details/reservation/index.wxml-->
 <view class='item'>
   <view class='flex_btw align_center choose'>
-    <view class='bold size34 width588 hidden1'>2人，5月8日 周三，11:00，大厅</view>
+    <view class='bold size34 width588 hidden1'>{{reservation.person[active[0]]['name']}}，{{reservation.date[active[1]]['name']}} {{reservation.date[active[1]]['week']}}，{{reservation.time[active[2]]}}，{{reservation.room[active[3]]}}</view>
     <image src='../../../images/logoi.png' class='logo'></image>
   </view>
   <view class='hengnav'>
     <scroll-view scroll-x="true" class="scroll-header">
-      <text wx:for='{{10}}' wx:key="index" class='options {{active[0]==index?"active":""}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='0'>{{item}}</text>
+      <view wx:for='{{reservation.person}}' wx:key="index" class='options {{active[0]==index?"active":""}}' data-key='{{item.key}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='0'><text>{{item.name}}</text></view>
     </scroll-view>
     <scroll-view scroll-x="true" class="scroll-header">
-      <text wx:for='{{10}}' wx:key="index" class='options {{active[1]==index?"active":""}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='1'>{{item}}</text>
+      <view wx:for='{{reservation.date}}' wx:key="index" class='options {{active[1]==index?"active":""}}' data-key='{{item.key}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='1'><text>{{item.name}}\n{{item.week}}</text></view>
     </scroll-view>
     <scroll-view scroll-x="true" class="scroll-header">
-      <text wx:for='{{10}}' wx:key="index" class='options {{active[2]==index?"active":""}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='2'>{{item}}</text>
+      <view wx:for='{{reservation.time}}' wx:key="index" class='options {{active[2]==index?"active":""}}' data-key='{{item}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='2'><text>{{item}}</text></view>
     </scroll-view>
     <scroll-view scroll-x="true" class="scroll-header">
-      <text wx:for='{{10}}' wx:key="index" class='options {{active[3]==index?"active":""}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='3'>{{item}}</text>
+      <view wx:for='{{reservation.room}}' wx:key="index" class='options {{active[3]==index?"active":""}}' data-key='{{item}}' data-index='{{index}}' bindtap='choose' wx:key="index" data-id='3'><text>{{item}}</text></view>
     </scroll-view>
   </view>
 </view>

@@ -55,7 +55,18 @@
               <image src='../../images/erwm.png'></image>
               <view> 收款码</view>
             </view>
-            
+            <view class='center czbtn' wx:if="{{list.add_spu==1}}" catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
+                <image src='../../images/addspu.png'></image>
+                <view> 添加产品</view>
+            </view>
+            <view class='center czbtn' wx:if="{{list.show_spu==1}}" catchtap='linke' data-url='../agriculturalLook/index?id={{list.shop_id}}'>
+                <image src='../../images/lookspu.png'></image>
+                <view> 查看产品</view>
+            </view>
+            <view class='center czbtn' wx:if="{{list.show_order==1}}" catchtap='linke' data-url='../agriculturalMerchantsOrder/index?id={{list.shop_id}}'>
+                <image src='../../images/look.png'></image>
+                <view> 查看订单</view>
+            </view>
           </view>
         </view>
       </view>

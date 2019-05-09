@@ -1,10 +1,14 @@
 {
   "pages": [
-    "pages/tenants/online",
-    "pages/tenants/tenants",
+    "pages/installment_details/installment_details",
+    
     "pages/index/index",
     "pages/business_details/index",
+    "pages/tenants/online",
+    "pages/tenants/tenants",
+    "pages/agriculturalEdit/index",
     "pages/business_details/reservation/index",
+    
     "pages/business_details/license/index",
    
     
@@ -28,7 +32,6 @@
     "pages/businessmerchants/index",
     "pages/businessOrder/index",
     "pages/agriculturalLook/index",
-    "pages/agriculturalEdit/index",
     "pages/tenantsIndex/index",
     "pages/tenantsChoice/index",
     
@@ -73,7 +76,6 @@
     "pages/payment_details/index",
     "pages/installment_repayment/index",
     "pages/history/index",
-    "pages/installment_details/installment_details",
     "pages/my_paymentGoods/index",
     "pages/my_bankcard/index",
     "pages/my_bankcard_add/index",

@@ -100,7 +100,7 @@ Page({
         pjurl: options.pjurl
       })
     }
-    that.weather()
+    // that.weather()
     
   },
   init(){

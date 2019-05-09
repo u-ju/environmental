@@ -21,3 +21,6 @@
     </view>
   </view>
 </view>
+<view wx:if="{{list.length==0}}" class='empty'>
+  <empty  />
+</view>

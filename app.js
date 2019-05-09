@@ -40,7 +40,7 @@ App({
         }
       }
     })
-    that.address()
+    // that.address()
     // that.config()
   },
   config(){

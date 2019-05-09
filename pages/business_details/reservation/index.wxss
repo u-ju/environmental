@@ -15,9 +15,11 @@ page {
   margin: 10rpx auto;
   padding: 30rpx 16rpx;
 }
-.choose{
+
+.choose {
   margin-bottom: 128rpx;
 }
+
 .logo {
   width: 96rpx;
   height: 96rpx;
@@ -26,13 +28,14 @@ page {
 .width588 {
   width: 588rpx;
 }
-.submitButton{
-  background: #27AAD9;
+
+.submitButton {
+  background: #27aad9;
   font-size: 34rpx;
   position: fixed;
   bottom: 18rpx;
   left: 50%;
-  transform: translate(-50%,0)
+  transform: translate(-50%, 0);
 }
 
 .nav {
@@ -61,10 +64,24 @@ page {
   background: rgba(238, 238, 238, 1);
   border-radius: 10rpx;
   text-align: center;
-  line-height: 90rpx;
+  /* line-height: 90rpx; */
   margin-right: 10rpx;
+  /* display: flex;
+  justify-content:center;
+  align-items:Center; */
+  position: relative;
 }
-.active{
+
+.active {
   color: white;
-  background:rgba(39,170,217,1);
+  background: rgba(39, 170, 217, 1);
+}
+
+.options text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }

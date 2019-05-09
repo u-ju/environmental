@@ -156,7 +156,7 @@ Page({
     })
     wx.setStorageSync('featurest', features)
   },
-  delfeature(){
+  delfeature(e){
     let index = e.currentTarget.dataset.index;
     let features = this.data.features;
     features.splice(index, 1);
@@ -175,7 +175,7 @@ Page({
     })
     wx.setStorageSync('roomt', room)
   },
-  delroom() {
+  delroom(e) {
     let index = e.currentTarget.dataset.index;
     let room = this.data.room;
     room.splice(index, 1);
@@ -754,48 +754,48 @@ Page({
       post: true
     })
     console.log(data)
-//  util.postJSON({ apiUrl: url, data: data }, function (res) {
-//    var result = res.data.result
+ util.postJSON({ apiUrl: url, data: data }, function (res) {
+   var result = res.data.result
 
-    //   util.alert("申请提交成功，等待审核")
-    //   wx.setStorageSync("contactt", '')
-    //   wx.setStorageSync("discount_percentt", '')
-    //   wx.setStorageSync("titlet", '')
-    //   wx.setStorageSync("addresst", '')
-    //   wx.setStorageSync("introt", '')
-    //   wx.setStorageSync("area_idt", '')
-    //   wx.setStorageSync("typet", '')
-    //   wx.setStorageSync("cate_idt", '')
-    //   wx.setStorageSync("title1t", '')
-    //   wx.setStorageSync("areaSelectedStrt", '')
-    //   wx.setStorageSync("image0", '')
-    //   wx.setStorageSync("image1", '')
-    //   wx.setStorageSync("upload_picture_list", [])
-    //   wx.setStorageSync('choosedt', '')
-    //   wx.setStorageSync('latitudet', '')
-    //   wx.setStorageSync('longitudet', '')
-//    setTimeout(function () {
-//      wx.reLaunch({
-//        url: '../index/index',
-//        success() {
-//          that.setData({
-//            post: false
-//          })
-//        }
-//      })
-//    }, 3000)
-//
-//  }, function (res) {
-//    console.log(res.data.message)
-//    that.setData({
-//      post: false
-//    })
-//  }, function (res) {
-//
-//    that.setData({
-//      post: false
-//    })
-//  })
+      util.alert("申请提交成功，等待审核")
+  //     wx.setStorageSync("contactt", '')
+  //     wx.setStorageSync("discount_percentt", '')
+  //     wx.setStorageSync("titlet", '')
+  //     wx.setStorageSync("addresst", '')
+  //     wx.setStorageSync("introt", '')
+  //     wx.setStorageSync("area_idt", '')
+  //     wx.setStorageSync("typet", '')
+  //     wx.setStorageSync("cate_idt", '')
+  //     wx.setStorageSync("title1t", '')
+  //     wx.setStorageSync("areaSelectedStrt", '')
+  //     wx.setStorageSync("image0", '')
+  //     wx.setStorageSync("image1", '')
+  //     wx.setStorageSync("upload_picture_list", [])
+  //     wx.setStorageSync('choosedt', '')
+  //     wx.setStorageSync('latitudet', '')
+  //     wx.setStorageSync('longitudet', '')
+  //  setTimeout(function () {
+  //    wx.reLaunch({
+  //      url: '../index/index',
+  //      success() {
+  //        that.setData({
+  //          post: false
+  //        })
+  //      }
+  //    })
+  //  }, 3000)
+
+ }, function (res) {
+   console.log(res.data.message)
+   that.setData({
+     post: false
+   })
+ }, function (res) {
+
+   that.setData({
+     post: false
+   })
+ })
   },
   backfill: function (e) {
     console.log(e)

@@ -12,8 +12,8 @@ Page({
   data: {
     indicatorDots: true,//显示面板指示点
     autoplay: true,//自动播放
-    beforeColor: "white",//指示点颜色
-    afterColor: "coral",//当前选中的指示点颜色
+    beforeColor: "#DCDCDC",//指示点颜色
+    afterColor: "#27AAD9",//当前选中的指示点颜色
     interval: 5000,
     duration: 1000,
     banner: [
@@ -135,6 +135,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.loading()
+    options.id=8
     that.setData({
       sku_id: options.id
     })

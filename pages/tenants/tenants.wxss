@@ -331,6 +331,9 @@ navigator{
   border:1px solid rgba(166,166,166,1);
   border-radius:8rpx;
 }
+.consumption input{
+  color: #444;
+}
 .featuresitem{
   width:86rpx;
   height:50rpx;
@@ -366,6 +369,7 @@ navigator{
   height: 36rpx;
   line-height: 36rpx;
   min-height: auto;
+  text-align: center;
 }
 .reservation .roomitem{
   margin-top: 10rpx;
