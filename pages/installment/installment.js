@@ -45,7 +45,7 @@ Page({
     if (that.data.keywords != '' && that.data.keywords != undefined) {
       keywords = that.data.keywords
     }
-    util.getJSON({ apiUrl: apiurl.goods + "?page=" + page + "&keywords="+ keywords }, function (res) {
+    util.getJSON({ apiUrl: apiurl.goods + "?page=" + page + "&keywords=" + keywords +"&source=exchange" }, function (res) {
       var result = res.data.result
       var list = result.list
       if (page != 1) {

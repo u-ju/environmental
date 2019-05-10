@@ -44,16 +44,7 @@ textarea,.textarea{
    position: relative;
 }
 button{
-  width: 672rpx;
-  background: -webkit-linear-gradient(#44D5A2,#99E4AB);
-	background: -o-linear-gradient(#44D5A2,#99E4AB);
-	background: -moz-linear-gradient(#44D5A2,#99E4AB);
-	background: -mos-linear-gradient(#44D5A2,#99E4AB);
-	background: linear-gradient(#44D5A2,#99E4AB);
-  height: 80rpx;
-  font-size: 32rpx;
-  color: white;
-  border-radius: 40rpx;
+  
   margin: 60rpx auto;
 }
 button::after{

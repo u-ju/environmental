@@ -9,4 +9,6 @@ textarea{
 .item{
   width: 686rpx;
   margin: auto;
+  height: 170rpx;
+  margin-bottom: 20rpx;
 }

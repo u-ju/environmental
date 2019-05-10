@@ -27,7 +27,7 @@
   </view>
   <view class='size22 color898989 flex_btw'>
     <text>运费：{{result.freight>0?result.install_fee:'免'}}</text>
-    <!-- <text>安装费：{{result.install_fee>0?result.install_fee:'免'}}</text> -->
+    <text hidden='{{result.source=="online"}}'>安装费：{{result.install_fee>0?result.install_fee:'免'}}</text>
     <text>库存：{{result.stock}}</text>
     <text>销量:{{result.sales}}</text>
   </view>
@@ -38,13 +38,13 @@
     <!-- 已选&ensp;&ensp;&ensp;&ensp;{{result.sku_name}} -->
     <text class='iconfont icon-jiantou'></text>
   </view>
-  <view class='color898989 flex_btw size28 align_center' bindtap='open2'>
+  <view class='color898989 flex_btw size28 align_center' bindtap='open2' hidden='{{result.spec_params.length==0}}'>
     <text class='yihid one-hidden' decode="{{true}}" space="{{true}}">规格型号</text>
     <text class='iconfont icon-jiantou color989898'></text>
   </view>
-  <view class='phone flex align_center'>
-    <image src='../../images/stel.png' class='stel'></image>
-    <text class='color898989 size22'>联系客服</text>
+  <view class='phone flex align_center'  hidden='{{!result.shop_info.contact}}' data-contact='{{result.shop_info.contact}}' bindtap='contact'>
+    <image src='../../images/stel.png' class='stel' data-contact='{{result.shop_info.contact}}'></image>
+    <text class='color898989 size22' data-contact='{{result.shop_info.contact}}'>联系客服</text>
   </view>
 </view>
 <view class='goods_intr3'>
@@ -120,18 +120,22 @@
 
 
 </view>
-<view class='fixed'>
+<view class='fixed' wx:if='{{result.source=="online"}}'>
   <view class='flex_btw align_center'>
-    <view class='car'>
+    <view class='car flex_btw'>
+      <image src='../../images/shopcar.png' class='shopcar'></image>
       <view class='colorFE2C2C bold size36'>￥253.9</view>
     </view>
     <view class='flex'>
-      <view class='fixbtn'></view>
-      <view class='fixbtn fixbuy'></view>
+      <view class='fixbtn'>加入购物车</view>
+      <view class='fixbtn fixbuy'  bindtap='open1'> 立即购买</view>
     </view>
   </view>
+  
 </view>
-
+<view class='submitButton fixedButton' bindtap='open1' wx:elif='{{result.source=="offline"}}'>
+    立即兑换
+  </view>
 <wux-popup position="bottom" visible="{{ visible1 }}" bind:close="onClose1">
   <text class='iconfont icon-cuohao' bindtap="close1"></text>
   <view class='center color4 size36 csgg'>规格</view>
@@ -150,8 +154,8 @@
     <text class='color898989 size28'>购买数量</text>
     <wux-input-number wux-sub-class="sub" bind:change="onChange" default-value="1" min="{{ 1 }}" disabled="{{ false }}" wux-input-class="input" wux-add-class="add" slot="footer" color="656565" />
   </view>
-  <view class='goodsBuy size36 marginb60' bindtap='buy' wx:if="{{!buyok}}">产品选择</view>
-  <view class='goodsBuy size36 marginb60 1' wx:else>产品选择</view>
+  <view class='submitButton size36 marginb60' bindtap='buy' wx:if="{{!buyok}}">产品选择</view>
+  <view class='submitButton size36 marginb60 1' wx:else>产品选择</view>
 </wux-popup>
 <wux-popup position="bottom" visible="{{ visible2 }}" style="{{wrapStyle2}}" bind:close="onClose2">
   <text class='iconfont icon-cuohao' bindtap="close2"></text>
@@ -183,5 +187,5 @@
       <view class='left size28 color4'>{{item.value}}</view>
     </view>
   </view>
-  <view class='goodsBuy size36 marginb60'>立即分期</view>
+  <view class='submitButton size36 marginb60'>立即分期</view>
 </wux-popup>

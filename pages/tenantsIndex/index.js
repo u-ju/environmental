@@ -36,7 +36,7 @@ Page({
   },
   link(){
     wx.navigateTo({
-      url: '../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info),
+      url: '../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info) +"&room_list="+ JSON.stringify(this.data.room_list),
     })
   },
   erwm(e){
@@ -110,8 +110,14 @@ Page({
 
   },
   detail(e){
+    var url =''
+    if (e.currentTarget.dataset.source =='offline'){
+      url = '../tenants/tenants?shop_id=' + e.currentTarget.dataset.id + "&room_list=" + JSON.stringify(this.data.room_list)
+    } else if (e.currentTarget.dataset.source == 'online'){
+      url = '../tenants/online?shop_id=' + e.currentTarget.dataset.id
+    }
     wx.navigateTo({
-      url: '../tenants/tenants?shop_id=' + e.currentTarget.dataset.id,
+      url: url,
     })
   },
   randomColor() {

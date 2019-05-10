@@ -21,8 +21,8 @@
       {{item.value}}
     </label>
   </checkbox-group>
-  <navigator  url='../page/index?url={{bankcard}}'>《银行卡绑定协议》</navigator>
+  <navigator class='color27AAD9'  url='../page/index?url={{bankcard}}'>《银行卡绑定协议》</navigator>
   </view>
 <!-- <view class='btnsure size32'>确定</view> -->
-  <button class='btnsure size32' disabled='{{disabled}}'  form-type="submit">保存</button>
+  <button class='btnsure submitButton size32' disabled='{{disabled}}'  form-type="submit">保存</button>
 </form>

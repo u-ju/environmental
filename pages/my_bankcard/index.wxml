@@ -12,7 +12,7 @@
     </view>
     <view class='size36 center'>{{item.card_no}}</view>
   </view>
-  <view class='click'>
+  <view class='click color27AAD9'>
     <navigator url='../my_bankcard_add/index' class='flex align_center'> 
       <text class='iconfont icon-jiahao'></text>
       <text class='size32'>添加银行卡</text>
@@ -21,11 +21,11 @@
   </block>
 </block> 
 <block wx:else>
-<view class='nocard'  >
+<view class='nocard color27AAD9'  >
   <image src='../../images/b_card.png' class='nocard_pic'></image>
   <view>你还没有添加银行卡</view>
 </view>
-<view class='click'>
+<view class='click color27AAD9'>
   <navigator url='../my_bankcard_add/index' class='flex align_center'> 
     <text class='iconfont icon-jiahao'></text>
     <text class='size32'>添加银行卡</text>

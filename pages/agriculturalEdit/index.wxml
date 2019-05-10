@@ -35,9 +35,8 @@
   </view>
   <view class='flex align_center maginb50 maginb50' wx:if="{{spu_id}}" >
     <view class='left1'>商品状态：</view>
-    <view class='right1 btnsx' bindtap='goodsUpDown'>
-      点击{{status==1?"下架":"上架"}}
-    </view>
+    <view>{{status==1?"出售中":"已下架"}}</view>
+    
   </view>
   <view class='sku' wx:for="{{skunum}}" wx:key="index"  wx:for-index="indexnum">
     <view class='flex align_center maginb50'>
@@ -100,7 +99,7 @@
         </view>
       </view> 
     </view>
-    <view class='delbtn'  bindtap='delsku' data-key='{{key[indexnum]}}' data-key_name='{{key_name[indexnum]}}' data-index='{{indexnum}}'>删除该商品</view>
+    <view class='delbtn'  bindtap='delsku' data-key='{{key[indexnum]}}' data-key_name='{{key_name[indexnum]}}' data-index='{{indexnum}}'>删除该规格</view>
   </view>
   
 </view>
@@ -108,9 +107,12 @@
 
 <view class='add' bindtap='addsku'>
   <image src='../../images/addsku.png'></image>
-  <view>添加商品</view>
+  <view>添加规格</view>
 </view>
 <!-- <view class='submitButton'>提交审核</view> -->
+<view class='submitButton' bindtap='goodsUpDown' wx:if="{{spu_id}}">
+  点击{{status==1?"下架":"上架"}}
+</view>
 <button form-type="submit" class='submitButton' disabled='{{post}}'>提交审核</button>
 <view class='size22'>温馨提示：提交审核之后工作人员会在24 小时内审核完毕</view>
 </form>

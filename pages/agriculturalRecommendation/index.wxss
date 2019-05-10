@@ -66,7 +66,7 @@ page{
   
 }
 .tabLayer .active{
-  color:#4AD6A3;
+  color:#27AAD9;
 }
 .tabLayer image{
   width: 30rpx;
@@ -393,7 +393,7 @@ color: #A8A8A8
 
 .current {
   /* background: #e0e0e0; */
-  color: #4AD6A3;
+  color: #27AAD9;
 }
 
 .fullbg {
@@ -482,7 +482,7 @@ button {
 }
 
 .btn-submit {
-  background-color: #4AD6A3;
+  background-color: #27AAD9;
   color: #fff;
 }
 
@@ -522,7 +522,7 @@ button {
 }
 .current4 {
   /* background: #fff; */
-  color: #4AD6A3 !important;
+  color: #27AAD9 !important;
 
 }
 .chice{

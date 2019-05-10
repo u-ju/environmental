@@ -34,16 +34,7 @@ textarea,.textareav{
   width: 686rpx;
   
 }
-.btn{
-  width:686rpx;
-  height:86rpx;
-  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
-  box-shadow:0px 4rpx 13rpx 0px rgba(68,213,162,0.23);
-  border-radius:43rpx;
-  line-height: 86rpx;
-  color: white;
-  font-size: 32rpx;
-}
+
 .ppcon{
   padding: 74rpx 0 100rpx 0;
   color: #4AD6A3;

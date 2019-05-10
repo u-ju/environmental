@@ -9,7 +9,7 @@ page{
   top: 0;
   z-index: 999999;
   background-color: white;
-  padding: 0 32rpx;
+  padding: 16rpx 32rpx;
   width: 686rpx;
 }
 .location .hidden1{
@@ -78,10 +78,10 @@ swiper{
     flex-grow: 1; 
     background: rgba(255,255,255,0.8);
     border-radius: 50%;
-    border: 1px solid #4AD6A3;
+    border: 1px solid #27AAD9;
 }
 .swiper-box .wx-swiper-dot-active::before{
-    background:#4AD6A3;   
+    background:#27AAD9;   
 }
 .erjiitem{
   display: inline-block;
@@ -90,7 +90,7 @@ swiper{
    margin: 0 20rpx 0 0;
 }
 .active{
-  border-bottom: 6rpx solid #4AD6A3;
+  border-bottom: 6rpx solid #27AAD9;
 }
 .scroll-header{
   white-space: nowrap;

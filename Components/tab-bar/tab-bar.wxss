@@ -30,7 +30,7 @@
 }
 /*当前字体颜色*/
 .tabBartext{
-  color:#2EB354;
+  color:#2ED3C2;
 }
 .tabBar_center{
   position: absolute;
@@ -96,7 +96,7 @@
   height: 28rpx;
   width: 28rpx;
   border-radius: 50%;
-  background-color: #97E3AA;
+  background-color: #2ED3C2;
   font-size: 26rpx;
   color: white;
   top: -2rpx;

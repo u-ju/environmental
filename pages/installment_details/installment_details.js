@@ -135,7 +135,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.loading()
-    options.id=8
+    // options.id=8
     that.setData({
       sku_id: options.id
     })
@@ -393,7 +393,19 @@ Page({
         wx.hideLoading()
       },1000)
     }
-  }
+  },
+  contact(e){
+    console.log(e)
+    wx.makePhoneCall({
+      phoneNumber: e.target.dataset.contact, //此号码并非真实电话号码，仅用于测试
+      success: function () {
+        console.log("拨打电话成功！")
+      },
+      fail: function () {
+        console.log("拨打电话失败！")
+      }
+    })
+  },
   // onPullDownRefresh: function () {
   //   // 显示顶部刷新图标
   //   wx.showNavigationBarLoading();

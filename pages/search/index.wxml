@@ -1,9 +1,12 @@
 <!--pages/search/index.wxml-->
-<view class='sousuo flex_btw align_center'>
-  <!-- <input bindinput='search'   value='{{search}}' name='search'></input>
-  <image src='../../images/video_cz.png' class='video_cz' mode='aspectFill'></image> -->
+<!-- <view class='sousuo flex_btw align_center'>
   <input bindinput='search'  bindconfirm="searchSubmit" value='{{search}}' auto-focus='true' name='search' ></input>
   <image src='../../images/video_cz.png' bindtap='searchSubmit' class='video_cz' ></image>
+</view> -->
+<view class='searchall flex_btw align_center' > 
+  <text class='iconfont icon-sousuo color4 searchall_pic' ></text>
+  <input bindinput='search'  bindconfirm="searchSubmit" value='{{search}}' auto-focus='true' name='search' placeholder='输入想要查找的内容' ></input>
+  <image class='logoi' src='../../images/logoi.png' bindtap='searchSubmit'></image>
 </view>
 <view class='searchitem' wx:for="{{result}}" wx:key="index" bindtap='link' data-link='{{item.control}}'>
   {{item.name}}

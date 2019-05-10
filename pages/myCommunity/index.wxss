@@ -1,2 +1,5 @@
 /* pages/myCommunity/index.wxss */
 @import '../address_edit/index';
+.submitButton{
+  margin-top: 40rpx;
+}

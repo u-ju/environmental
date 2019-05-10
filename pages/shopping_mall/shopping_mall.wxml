@@ -1,12 +1,13 @@
 <!--pages/shopping_mall/shopping_mall.wxml-->
 <view class='flex_btw fixtop'>
   <view class='flex_btw align_center location'>
-    <image src="../../images/locations.png" class='icon_location' mode='aspectFit' />
+    <image src="../../images/sloc.png" class='icon_location' mode='aspectFit' />
     <text class='size24 color6 hidden1'>{{address}}</text>
   </view>
-  <view class='sousuobig flex_btw align_center'> 
-    <input bindinput='search' bindconfirm="searchSubmit" value='{{search}}' name='search'></input>
-    <image src='../../images/video_cz.png' bindtap='searchSubmit' class='video_cz' mode='aspectFill'></image>
+  <view class='searchall flex_btw align_center' > 
+    <text class='iconfont icon-sousuo color4 searchall_pic' ></text>
+    <input  disabled='disabled' value='{{search}}' name='search' ></input>
+    <image class='logoi' src='../../images/logoi.png'></image>
   </view>
 </view>
 <view class='tab'>

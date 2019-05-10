@@ -33,7 +33,7 @@
       {{item.value}}
     </label>
   </checkbox-group>
-  <navigator  url='../page/index?url={{nper}}'>《商品兑换协议》</navigator>
+  <navigator class='color27AAD9' url='../page/index?url={{nper}}'>《商品兑换协议》</navigator>
 </view>
 <!-- <view class='btnsure' bindtap='open3' hidden='{{order_source=="online"}}'>立即兑换</view> -->
 <!-- <view class='btnsure' bindtap='open3' hidden='{{order_source!="online"}}'>立即支付</view> -->
@@ -66,5 +66,5 @@
         </view>
       </view>  
     </view> 
-    <view class='goodsBuy size36 marginb60' bindtap='goodsBuy'>立即兑换</view>
+    <view class=' size36 marginb60' bindtap='goodsBuy'>立即兑换</view>
 </wux-popup>

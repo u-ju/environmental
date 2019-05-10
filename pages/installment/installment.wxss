@@ -81,6 +81,7 @@ page{
 .goodspic{
   width: 322rpx;
   height: 260rpx;
+  border-radius: 10rpx;
 }
 .goods{
   width:320rpx;

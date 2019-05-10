@@ -12,11 +12,7 @@ button::after{
   border-radius: 31rpx;
   color: #fff;
   font-size: 24rpx;
-  background: -webkit-linear-gradient(#44D5A2,#99E4AB);
-	background: -o-linear-gradient(#44D5A2,#99E4AB);
-	background: -moz-linear-gradient(#44D5A2,#99E4AB);
-	background: -mos-linear-gradient(#44D5A2,#99E4AB);
-	background: linear-gradient(#44D5A2,#99E4AB);
+	background: linear-gradient(#4663db,#14b8d8);
 }
 .all input{
   height: 62rpx;
@@ -39,11 +35,7 @@ button::after{
   font-size: 32rpx;
   color: white;
   margin-top: 60rpx;
-  background: -webkit-linear-gradient(#44D5A2,#99E4AB);
-	background: -o-linear-gradient(#44D5A2,#99E4AB);
-	background: -moz-linear-gradient(#44D5A2,#99E4AB);
-	background: -mos-linear-gradient(#44D5A2,#99E4AB);
-	background: linear-gradient(#44D5A2,#99E4AB);
+  background: linear-gradient(#4663db,#14b8d8);
 }
 .bgDDDDDD{
   background: #DDDDDD;

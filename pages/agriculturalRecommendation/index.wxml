@@ -57,7 +57,7 @@
     </view>
     <view class='xiangqing_info' >
       <text class='title'>{{item.spu_name}} {{item.sku_name}}</text>
-      <view class='colorFD2828'>价格：￥{{item.price}}</view>
+      <view class='colorff1919'>价格：￥{{item.price}}</view>
       
     </view>
   </view>

@@ -73,7 +73,7 @@ width: 16%;
 height: 64rpx;
 line-height: 70rpx;
 text-align: center;
-color: #66CC00;
+color: #27AAD9 ;
 font-size: 24rpx;
 padding: 0;
 display: inline-block;

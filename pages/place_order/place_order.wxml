@@ -60,7 +60,7 @@
     </view>
     
   </view>
-  <button formType="submit" disabled='{{disabled}}'>提交订单</button>
+  <button class='submitButton' formType="submit" disabled='{{disabled}}'>提交订单</button>
   <!-- disabled='{{disabled}}'  class='{{disabled?"bgDDDDDD":""}}' -->
 </view>
 </form>

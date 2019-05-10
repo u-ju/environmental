@@ -4,7 +4,7 @@
     <input></input>
     <image src='../../images/video_cz.png' class=''></image>
   </view>
-  <view class='color4AD6A3' bindtap='weixiu' data-repair='{{repair}}'>我是维修师傅</view>
+  <view class='color27AAD9' bindtap='weixiu' data-repair='{{repair}}'>我是维修师傅</view>
 </view>
 <view class='banner'>
   <image  src='{{banner_arr[0].image}}'></image>

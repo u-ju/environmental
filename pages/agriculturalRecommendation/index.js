@@ -167,6 +167,7 @@ Page({
     var that = this;
     var goods = this.data.goods;
     var current = that.data.current, currentname = that.data.currentname, txt = e.currentTarget.dataset.item.name, tabTxt = this.data.tabTxt, tab = this.data.tab;
+    var id =e.target.dataset.item.id||''
     currentname[e.target.dataset.index] = e.target.dataset.item["name"]
     current[e.target.dataset.index] = e.target.dataset.item["id"]
     if (e.target.dataset.item.hasOwnProperty("children")){
@@ -177,12 +178,13 @@ Page({
       current.length = e.target.dataset.index-0+1
       currentname.length = e.target.dataset.index - 0 + 1
       goods.length = e.target.dataset.index - 0 + 1
+
       this.setData({
         qyopen: false,
         isfull: false,
         tab: tab,
         tabTxt: tabTxt,
-        cate_id: e.target.dataset.item.id,
+        cate_id: id,
         currentname: currentname
       })
       that.init()
@@ -195,7 +197,7 @@ Page({
   },
   detail(e) {
     wx.navigateTo({
-      url: '../agriculturalDetail/index?id=' + e.currentTarget.dataset.sku_id
+      url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.sku_id
     })
   },
   // 地铁区域列表下拉框是否隐藏
@@ -225,11 +227,18 @@ Page({
   },
   submitFilter(){
     var tabTxt = this.data.tabTxt
-    tabTxt[0] = this.data.currentname[this.data.current.length - 1];
+    
+    console.log(this.data.current)
+    if (this.data.current.length>0){
+      tabTxt[0] = this.data.currentname[this.data.current.length - 1];
+      this.setData({
+        cate_id: this.data.current[this.data.current.length - 1],
+        
+      })
+    }
     this.setData({
       qyopen: false,
       isfull: false,
-      cate_id: this.data.current[this.data.current.length-1],
       tab: [1,0,0],
       order: 'desc',
       tabTxt: tabTxt

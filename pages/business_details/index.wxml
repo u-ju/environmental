@@ -1,23 +1,23 @@
 <!--pages/business_details/index.wxml-->
 <block wx:if="{{result}}">
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' bindchange="swiperChange"
-current="{{cur}}">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' bindchange="swiperChange" current="{{cur}}">
     <swiper-item wx:if="{{result.video}}">
       <video src="{{result.video}}" custom-cache='{{false}}' poster="{{result.images[0]}}" objectFit="contain"></video>
       <!-- autoplay='autoplay' -->
     </swiper-item>
     <!-- <block wx:for="{{4}}" wx:key="index"> -->
-      <swiper-item wx:for="{{result.images}}" wx:key="index">
-        <image src="{{item}}" class="slide-image" mode='aspectFill' />
+    <swiper-item wx:for="{{result.images}}" wx:key="index">
+      <image src="{{item}}" class="slide-image" mode='aspectFill' />
 
-      </swiper-item>
+    </swiper-item>
     <!-- </block> -->
-    
+
   </swiper>
   <view class='dotbox flex'>
-      <view class='dotbtn {{cur>0?"dotpic":""}}' data-index='0' bindtap='swiperC' wx:if='{{result.video}}'><text class='iconfont icon-bofang size20'></text> 视频</view>
-      <view class='dotbtn {{cur==0?"dotpic":""}}' data-index='1' bindtap='swiperC'>图片</view>
-    </view>
+    <view class='dotbtn {{cur>0?"dotpic":""}}' data-index='0' bindtap='swiperC' wx:if='{{result.video}}'>
+      <text class='iconfont icon-bofang size20'></text> 视频</view>
+    <view class='dotbtn {{cur==0?"dotpic":""}}' data-index='1' bindtap='swiperC'>图片</view>
+  </view>
   <view class='con'>
     <view class='size32 color4 bold title'>{{result.title}}</view>
     <view class='flex_btw align_center'>
@@ -37,7 +37,7 @@ current="{{cur}}">
       <view>{{result.business_status_name}} | {{result.business_time}}</view>
     </view>
     <view class='label flex_btw align_center'>
-      <view class='flex'  data-latitude='{{result.latitude}}' data-longitude='{{result.longitude}}' bindtap='location' >
+      <view class='flex' data-latitude='{{result.latitude}}' data-longitude='{{result.longitude}}' bindtap='location'>
         <image src='../../images/sloc.png' class='labelpic'></image>
         <view class='address'>
           <view class='hidden1 '>{{result.area_name}}{{result.address}}</view>
@@ -60,18 +60,14 @@ current="{{cur}}">
     </view>
     <scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;">
       <view class='spu view0' id='view0'>
+      <block wx:if="{{goods.length>0}}">
         <view class='flex_btw'>
-          <view class='spug flex_col' wx:for="{{3}}" wx:key="index">
-            <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/4a7a6efe3b50bccd2d3f6697fcb985ca.jpg'></image>
+          <view class='spug flex_col' wx:for="{{goods}}" wx:key="index">
+            <image src='{{item.thumb}}'></image>
             <view class='spud'>
-              <view class='size26 center'>新鲜毛肚</view>
+              <view class='size26 center hidden1'>{{item.spu_name}}{{item.spu_name}}</view>
               <view class='flex_btw align_center spum'>
-                <text class='size26 colorFE2C2C'>￥59.9</text>
-                <!-- <view class='stepper'>
-                  <image src='../../images/sredu.png' bindtap='bindMinus' hidden='{{minusStatus==0}}'></image>
-                  <text wx:if='{{minusStatus==1}}' class='countnum'> {{num}} </text>
-                  <image src='../../images/sadd.png' bindtap='bindPlus'></image>
-                </view> -->
+                <text class='size26 colorFE2C2C'>￥{{item.price}}</text>
               </view>
             </view>
           </view>
@@ -80,67 +76,40 @@ current="{{cur}}">
           <view>更多</view>
           <text class='iconfont icon-xiangxiajiantou'></text>
         </view>
+        </block>
       </view>
       <view class='goods_intr3 view1' id='view1'>
-        <view class='size28 color4 allpl'> <text class='bold'>用户评论</text> （{{list.length}}条）</view>
-        <!-- <block wx:if='{{commentIndex==0&&list.length>0}}'>
-          <view wx:for='{{list}}' wx:key="index">
+        <view class='size28 color4 allpl'>
+          <text class='bold'>用户评论</text> （{{list.length}}条）</view>
+        <block wx:if='{{list.length>0}}'>
+          <view wx:for='{{list}}' wx:key="index" class='spugoods'>
             <view class='flex message align_center'>
-              <image src='{{item.avatar}}' class='head'></image>
+              <image src='{{item.user_avatar}}' class='head'></image>
               <view class='width594'>
                 <view class='flex_btw align_center'>
                   <view>
-                    <view class='size28 color4'>{{item.nickname}}</view>
+                    <view class='size28 color4'>{{item.user_nickname}}</view>
                   </view>
                   <view class='size28 color4'>{{item.created_at}}</view>
                 </view>
               </view>
             </view>
             <view class='color898989 size26 pl_con'>
-              <block wx:for='{{item.comment_level-0}}' wx:key="index">
-                <image src='../../images/star_c.png' class='xxpic' mode='aspectFill'></image>
+              <block wx:for='{{item.comment_level}}' wx:key="index">
+                <image src='../../images/smasonry.png' class='xxpic' mode='aspectFill'></image>
               </block>
             </view>
             <view class='color898989 size26 pl_con'>
               {{item.comment_message}}
             </view>
-            <view class='color898989 size26 pl_con'>
+            <view class='color898989 size26 pl_con plpic'>
               <block wx:for='{{item.comment_images}}' wx:key="index" wx:for-key="index">
                 <image src='{{item}}' class='imagepic' mode='aspectFill'></image>
               </block>
             </view>
           </view>
         </block>
-        <block wx:elif='{{commentIndex==1&&list1.length>0}}'> -->
-          <view wx:for='{{6}}' wx:key="index" class='spugoods'>
-            <view class='flex message align_center'>
-              <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/4a7a6efe3b50bccd2d3f6697fcb985ca.jpg' class='head'></image>
-              <view class=''>
-                <view class='flex_btw align_center'>
-                  <view>
-                    <view class='size28 color4'>11</view>
-                  </view>
-                  <view class='size28 color4'>11111111</view>
-                </view>
-              </view>
-            </view>
-            <view class='color898989 size26 pl_con'>
-              <block wx:for='{{5}}' wx:key="index">
-                <image src='../../images/smasonry.png' class='xxpic' mode='aspectFill'></image>
-              </block>
-            </view>
-            <view class='color898989 size26 pl_con'>
-              fhhhhhhhhhhhhhh
-            </view>
-            <view class='color898989 size26 pl_con plpic'>
-              <block wx:for='{{4}}' wx:key="index" wx:for-key="index">
-                <image src='https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/4a7a6efe3b50bccd2d3f6697fcb985ca.jpg' class='imagepic' mode='aspectFill'></image>
-              </block>
-            </view>
-          </view>
-        <!-- </block> -->
-        <view class=' center more morecomments' >
-         <!-- wx:if="{{list.length>0}}" bindtap='more' hidden='{{page.current_page==page.last_page&&commentIndex==0}}' -->
+        <view class=' center more morecomments' bindtap='more' hidden='{{list.length==0||page.current_page==page.last_page}}'>
           <view>查看更多评论</view>
           <text class='iconfont icon-xiangxiajiantou'></text>
         </view>

@@ -24,7 +24,9 @@ Page({
     active:0,
     num:0,
     minusStatus:0,
-    cur:0
+    cur:0,
+    commentIndex:1,
+    pageN:1
   },
   swiperChange(e) {
     let current = e.detail.current;
@@ -45,7 +47,7 @@ Page({
   onLoad: function (options) {
     var that = this
     var obj = wx.createSelectorQuery();
-    options.id=30
+    // options.id=30
     that.setData({
       s_height: wx.getSystemInfoSync().windowHeight - 42,
     })
@@ -65,7 +67,8 @@ Page({
         util.hideLoading()
       })
       
-      // that.init()
+      that.commentIndex1(that.data.shop_id)
+      that.init()
     }
   },
   getTop(){
@@ -92,13 +95,12 @@ Page({
   init(page = 1) {
     var that = this;
     console.log(apiurl.shop_goodsIndex+'?shop_id=' + that.data.shop_id + "&page=" + page)
-    util.getJSON({ apiUrl: apiurl.shop_goodsIndex+'?shop_id=' + that.data.shop_id + "&page=" + page }, function (res) {
+    util.getJSON({ apiUrl: apiurl.goods +'?shop_id=' + that.data.shop_id + "&page=" + page +"&page_limit=" + 3 }, function (res) {
 
       var result = res.data.result
       var list = result.list
       that.setData({
-        list: list,
-        page: result.page,
+        goods: list,
       })
       wx.hideLoading()
     })
@@ -124,6 +126,59 @@ Page({
     }
     console.log(active)
     
+  },
+  commentIndex1(shop_id, page = 1) {
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.shopComment_index + shop_id + "&page=" + page + "&page_limit=" + 2 }, function (res) {
+      var list = res.data.result.list
+      var result = res.data.result
+      that.setData({
+        list: list,
+        page: result.page
+      })
+      util.hideLoading()
+    })
+  },
+  commentIndex(shop_id, page = 1) {
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.shopComment_index + shop_id + "&page=" + page }, function (res) {
+      var list = res.data.result.list
+      var result = res.data.result
+      var list1 = []
+      for (var i in list) {
+        list[i].created_at = list[i].created_at.split(" ")[0]
+      }
+      that.setData({
+        list: list,
+        page: result.page
+      })
+      util.hideLoading()
+    })
+  },
+  more() {
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+      mask: true
+    })
+    if (this.data.pageN==1){
+      this.setData({
+        pageN:0
+      })
+      return that.commentIndex(that.data.shop_id,1)
+    }
+    // 页数+1
+    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+      that.commentIndex(that.data.shop_id, Number(that.data.page.current_page) + 1)
+    } else {
+      that.setData({
+        last: true
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 1000)
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

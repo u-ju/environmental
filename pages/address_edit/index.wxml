@@ -16,5 +16,5 @@
   <view class='left'>详细地址</view>
   <input  name='address' value='{{address}}'></input>
 </view>
-  <button class='btnsure' disabled='{{disabled}}'  form-type="submit">保存</button>
+  <button class='margint100 submitButton' disabled='{{disabled}}'  form-type="submit">保存</button>
 </form>

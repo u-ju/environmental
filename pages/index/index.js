@@ -6,6 +6,7 @@ var apiurl = require('../../utils/api.js');
 var link = require('../../utils/link.js');
 var template = require('../../Components/tab-bar/tab-bar.js');
 var bmap = require('../../utils/bmap-wx.min.js'); 
+
 Page({
   data: {
     indicatorDots: false,//显示面板指示点
@@ -65,6 +66,29 @@ Page({
   //   })
     
   // },
+  address() {
+    var that = this;
+    // 新建百度地图对象 
+    var BMap = new bmap.BMapWX({
+      ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
+    });
+    var fail = function (data) {
+      console.log(data)
+    };
+    var success = function (data) {
+      var wxMarkerData = data.wxMarkerData;
+      that.setData({
+        latitude: wxMarkerData[0].latitude,
+        longitude: wxMarkerData[0].longitude,
+        address: wxMarkerData[0].address
+      });
+    }
+    // 发起regeocoding检索请求 
+    BMap.regeocoding({
+      fail: fail,
+      success: success,
+    });
+  },
   onLoad: function (options) {
     var that  = this;
     
@@ -100,7 +124,7 @@ Page({
         pjurl: options.pjurl
       })
     }
-    // that.weather()
+    that.address()
     
   },
   init(){
@@ -122,7 +146,7 @@ Page({
         // nper: result.nper,
         // week_ad: result.week_ad,
         shop_goods_ad: result.shop_goods_ad,
-        taglen: Math.ceil(tag.length / 10)
+        taglen: Math.ceil(tag.length / 8)
       })
       util.hideLoading()
     })
@@ -322,7 +346,7 @@ Page({
   agriculturalLink(e){
     console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: '../agriculturalDetail/index?id=' + e.currentTarget.dataset.sku_id
+      url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.sku_id
     })
   },
   //触摸开始

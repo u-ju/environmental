@@ -8,5 +8,5 @@
   <view class='left'>小区名称</view>
   <input  name='biotope_name' value='{{biotope_name}}'></input>
 </view>
-  <button class='btnsure' disabled='{{disabled}}'  form-type="submit">保存</button>
+  <button class='submitButton' disabled='{{disabled}}'  form-type="submit">保存</button>
 </form>

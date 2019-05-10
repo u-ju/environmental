@@ -109,6 +109,3 @@ page{
 .seach_item{
   padding: 20rpx 32rpx 32rpx 32rpx;
 }
-.color4AD6A3{
-color: #4AD6A3;
-}

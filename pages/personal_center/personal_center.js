@@ -194,6 +194,9 @@ Page({
   },
   link(e){
     // console.log(e)
+    if (!e.currentTarget.dataset.link){
+      return false
+    }
     if (JSON.stringify(e.currentTarget.dataset.link.length) == "{}") {
       return false
     }

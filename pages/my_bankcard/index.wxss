@@ -6,7 +6,6 @@
 }
 .nocard{
   text-align: center;
-  color: #4AD6A3;
   font-size: 32rpx;
   height: 540rpx;
 }
@@ -16,7 +15,6 @@
   border:2rpx solid rgba(191,191,191,1);
   border-radius:10rpx;
   margin: 50rpx auto;
-  color: #4AD6A3
 }
 .click navigator{
   height:110rpx;

@@ -21,15 +21,15 @@
     <view class='flex_btw align_center top'>
       <view class='flex'>
         <image class='locations' src='../../images/locationd.png'></image>
-        <view class='width110 hidden1'>成都红星美凯龙</view>
+        <view class='width110 hidden1'>{{address}}</view>
         <text class='iconfont icon-xiajiantou'></text>
       </view>
-      <view class='search flex_btw align_center' bindtap='search'> 
-        <!-- <image src='../../images/video_cz.png'  class='search_pic' ></image> -->
-        <text class='iconfont icon-sousuo color4 search_pic' ></text>
-        <input  disabled='disabled' value='{{search}}' name='search' ></input>
+      <view class='searchall flex_btw align_center' bindtap='search' > 
+        <text class='iconfont icon-sousuo color4 searchall_pic' ></text>
+        <input  disabled='disabled' value='{{search}}' placeholder='输入想要查找的内容' name='search' ></input>
+        <image class='logoi' src='../../images/logoi.png'></image>
       </view>
-      <image class='logoi' src='../../images/logoi.png'></image>
+     
     </view> 
     <view class='bg'>
       <view class="container">
@@ -38,10 +38,10 @@
             <block wx:for="{{taglen}}" wx:key="index" wx:for-index="indexnum">
               <swiper-item>
                 <view class='flex wrap'>
-                  <view wx:for="{{10}}" wx:key="index" class='tabitem' bindtap='link' data-link='{{tag[indexnum*10+index]["control"]}}' data-children='{{tag[indexnum*10+index]["children"]}}' wx:if="{{tag.length>indexnum*10+index}}">
+                  <view wx:for="{{8}}" wx:key="index" class='tabitem' bindtap='link' data-link='{{tag[indexnum*8+index]["control"]}}' data-children='{{tag[indexnum*8+index]["children"]}}' wx:if="{{tag.length>indexnum*8+index}}">
                     <block>
-                      <image src='{{tag[indexnum*10+index]["icon"]}}'></image>
-                      <view>{{tag[indexnum*10+index]["name"]}}</view>
+                      <image src='{{tag[indexnum*8+index]["icon"]}}'></image>
+                      <view>{{tag[indexnum*8+index]["name"]}}</view>
                     </block>
                   </view>
                 </view>

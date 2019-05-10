@@ -14,7 +14,7 @@
       {{item.value}}
     </label>
   </checkbox-group>
-  <navigator  url='../page/index?url={{agentxy}}'>《环保履约协议》</navigator>
+  <navigator class='color27AAD9'  url='../page/index?url={{agentxy}}'>《环保履约协议》</navigator>
   </view>
 </view>
 <view  wx:elif="{{is_agent==1}}">

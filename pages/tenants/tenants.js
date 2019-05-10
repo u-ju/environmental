@@ -73,7 +73,7 @@ Page({
     choosead: true,
 
 
-    
+    room_list:[],
     hour1: [],
     hour2: [],
     timevalue: [],
@@ -165,25 +165,43 @@ Page({
     })
     wx.setStorageSync('featurest', features)
   },
-  room(e) {
-    console.log(e)
+  roomcz(e){
+    var item = e.currentTarget.dataset.item
     var room = this.data.room
-    room.push(e.detail.value)
+    for (var i in room){
+      if (room[i] == null || room[i] == undefined){
+        room.splice(i, 1);
+      }
+    }
+    if (room.indexOf(item)>-1){
+      room.splice(room.indexOf(item), 1);
+    }else{
+      room.push(e.currentTarget.dataset.item)
+    }
     this.setData({
       room: room,
-      roomv: ''
     })
     wx.setStorageSync('roomt', room)
   },
-  delroom(e) {
-    let index = e.currentTarget.dataset.index;
-    let room = this.data.room;
-    room.splice(index, 1);
-    this.setData({
-      room: room
-    })
-    wx.setStorageSync('roomt', room)
-  },
+  // room(e) {
+  //   console.log(e)
+  //   var room = this.data.room
+  //   room.push(e.detail.value)
+  //   this.setData({
+  //     room: room,
+  //     roomv: ''
+  //   })
+  //   wx.setStorageSync('roomt', room)
+  // },
+  // delroom(e) {
+  //   let index = e.currentTarget.dataset.index;
+  //   let room = this.data.room;
+  //   room.splice(index, 1);
+  //   this.setData({
+  //     room: room
+  //   })
+  //   wx.setStorageSync('roomt', room)
+  // },
   // var fileName = util.now_time() +'.mp4';
   uploadvideo(e){
     var that = this;
@@ -260,30 +278,31 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    console.log(hour1)
+    // console.log(hour1)
     this.setData({
       hour1: hour1,
       hour2: hour2,
+      room_list: JSON.parse(options.room_list)
     })
-    // var result = app.globalData.config
-    // var shop_cate = result.shop_cate
-    // for (var i in shop_cate) {
-    //   shop_cate[i]["value"] = shop_cate[i]["id"]
-    //   shop_cate[i]["label"] = shop_cate[i]["name"]
-    //   if (shop_cate[i]["children"] && shop_cate[i]["children"].length > 0) {
-    //     for (var a in shop_cate[i].children) {
-    //       shop_cate[i]["children"][a]["value"] = shop_cate[i]["children"][a]["id"]
-    //       shop_cate[i]["children"][a]["label"] = shop_cate[i]["children"][a]["name"]
-    //     }
-    //   }
-    // }
+    console.log(this.data.room)
+    var result = app.globalData.config
+    var shop_cate = result.shop_cate
+    for (var i in shop_cate) {
+      shop_cate[i]["value"] = shop_cate[i]["id"]
+      shop_cate[i]["label"] = shop_cate[i]["name"]
+      if (shop_cate[i]["children"] && shop_cate[i]["children"].length > 0) {
+        for (var a in shop_cate[i].children) {
+          shop_cate[i]["children"][a]["value"] = shop_cate[i]["children"][a]["id"]
+          shop_cate[i]["children"][a]["label"] = shop_cate[i]["children"][a]["name"]
+        }
+      }
+    }
     that.setData({
-      // shop_cate: shop_cate,
+      shop_cate: shop_cate,
       type: '',
-      // shop_settled: app.globalData.config.protocol.shop_settled,
+      shop_settled: app.globalData.config.protocol.shop_settled,
       choosed: wx.getStorageSync('choosedt') || that.data.choosed
     })
-    options.shop_id=30
     if (options.shop_id) {
       util.getJSON({ apiUrl: apiurl.shop_showOwn + options.shop_id }, function (res) {
         var result = res.data.result

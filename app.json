@@ -1,18 +1,18 @@
 {
   "pages": [
-    "pages/comment/shopComment",
+    
     "pages/index/index",
+    "pages/business_details/product/index",
+    "pages/search/index",
     "pages/installment_details/installment_details",
-    
-    
-    "pages/business_details/index",
-    "pages/tenants/online",
+    "pages/comment/shopComment",
     "pages/tenants/tenants",
+    "pages/tenants/online",
     "pages/agriculturalEdit/index",
     "pages/business_details/reservation/index",
     
     "pages/business_details/license/index",
-   
+    "pages/business_details/index",
     
     
     "pages/order/index",
@@ -62,7 +62,6 @@
     "pages/myInviteNewusers/index",
     "pages/agentPay/index",
     "pages/qrcode/index",
-    "pages/search/index",
     
     "pages/my_integral/index",
     "pages/housekeeping/index",

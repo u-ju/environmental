@@ -234,3 +234,6 @@ input,textarea{
   color: white;
   font-size: 30rpx;
 }
+.submitButton{
+  margin-bottom: 40rpx;
+}

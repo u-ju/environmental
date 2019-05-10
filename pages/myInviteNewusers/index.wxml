@@ -1,7 +1,7 @@
 <!--pages/myInviteNewusers/index.wxml-->
 <view class='banner'>
   <image src='{{result.background}}' ></image>
-  <view class='invite size36' bindtap='open3'>邀请二维码</view>
+  <view class='invite size36 color27AAD9' bindtap='open3'>邀请二维码</view>
 </view>
 <view class='size30 invitesus'>邀请记录</view>
 <view wx:if="{{list.length>0}}">

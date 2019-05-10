@@ -88,7 +88,6 @@ margin-left:60rpx;
 
 navigator{
   display: inline-block;
-  color: #4AD6A3;
   font-size: 28rpx;
 }
 
