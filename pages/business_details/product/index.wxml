@@ -1,2 +1,6 @@
 <!--pages/business_details/product/index.wxml-->
-<text>pages/business_details/product/index.wxml</text>
+<view class='searchall flex_btw align_center' bindtap='search'>
+  <text class='iconfont icon-sousuo color4 searchall_pic'></text>
+  <input disabled='disabled' value='{{search}}' placeholder='输入想要查找的内容' name='search'></input>
+  <image class='logoi' src='../../../images/logoi.png'></image>
+</view>

@@ -128,38 +128,7 @@ page{
   border-radius:0px 0px 10rpx 10rpx;
   overflow: hidden;
 }
-/*主容器*/
-.stepper {
-  height: 22rpx;
-  border-radius: 5px;
-  display: flex;
-}
-/*加号和减号*/
-.stepper image {
-  /* float: left; */
-  width:22rpx;
-  height:22rpx;
-  overflow: hidden;
-}
-/*数值*/
-.stepper input,.countnum {
-  display: inline-block;
-  width:30rpx;
-  height:22rpx;
-  margin: 0 auto;
-  text-align: center;
-  font-size:22rpx;
-  color: #27AAD9;
-  line-height: 22rpx;
-}
-/*普通样式*/
-.stepper .normal {
-  color:white;
-}
-/*禁用样式*/
-.stepper .disable {
-  color: #eee;
-}
+
 .spud .colorFE2C2C{
   margin: 0;
 }

@@ -92,7 +92,7 @@ swiper,swiper image{
   margin:  0 52rpx 30rpx 0;
 }
 .active{
-  border-color: #2EB354;
+  border-color: #27aad9;
   background-color: white;
 }
 .gg_item{
@@ -243,4 +243,67 @@ swiper,swiper image{
 .shopcar{
   width: 55rpx;
   height: 50rpx;
+  position: relative;
+  overflow: visible;
+  margin-right: 40rpx;
+}
+.shopcar image{
+  width: 55rpx;
+  height: 50rpx;
+}
+.shopnum{
+  width:31rpx;
+  height:31rpx;
+  background:linear-gradient(156deg,rgba(254,136,136,0.98),rgba(253,8,8,0.98));
+  border-radius:50%;
+  position: absolute;
+  top:-20rpx;
+  right:-24rpx;
+  font-size: 22rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 31rpx;
+}
+checkbox .wx-checkbox-input{
+  border-radius: 50%;
+}
+.cartop{
+  padding: 44rpx 0 20rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.carpop{
+  padding: 0 32rpx;
+  color: #27AAD9;
+}
+.icon{
+  margin:0;
+}
+.carcond>view,.cartop>view{
+  width: 33.33%;
+}
+.stepper{
+  width: 88rpx;
+}
+.carcon>view{
+  padding: 20rpx 0;
+}
+.carb{
+  padding-left: 32rpx;
+}
+.flexend{
+  display: flex;
+  justify-content: flex-end
+}
+.carcon{
+  height: 400rpx;
+  overflow: auto;
+}
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.icon-xuanze{
+  line-height:50rpx;
 }

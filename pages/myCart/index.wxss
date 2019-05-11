@@ -1,0 +1,32 @@
+/* pages/myCart/index.wxss */
+@import '../my_order_detail/index';
+.icon-xuanze{
+  margin-right: 14rpx;
+}
+.shitem .fkItem_goods_ms{
+  width: 370rpx;
+  justify-content: space-between;
+  height: 160rpx;
+}
+.icon-jiantou{
+  margin-left: 20rpx;
+}
+.buybtn{
+  width:225rpx;
+  height:98rpx;
+  background:#FB1B1B;
+  text-align: center;
+  line-height: 98rpx;
+  color: white;
+}
+.fixb{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.fixb .iconfont{
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 40rpx;
+}

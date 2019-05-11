@@ -1,22 +1,20 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/myCart/index",
+    "pages/installment_details/installment_details",
+   
     "pages/business_details/product/index",
     "pages/search/index",
-    "pages/installment_details/installment_details",
+    
     "pages/comment/shopComment",
     "pages/tenants/tenants",
     "pages/tenants/online",
     "pages/agriculturalEdit/index",
     "pages/business_details/reservation/index",
-    
     "pages/business_details/license/index",
     "pages/business_details/index",
-    
-    
     "pages/order/index",
-    
     "pages/my_order_detail/refund",
     "pages/myOrderRefund/index",
     "pages/agriculturalMerchantsOrderDeail/index",
@@ -26,7 +24,6 @@
     "pages/shopping_mall/shopping_mall",
     "pages/agriculturalRecommendation/index",
     "pages/businessProduct/index",
-    
     "pages/agriculturalDetail/index",
     "pages/businessinforcheck/index",
     "pages/businessinforedit/index",
@@ -36,8 +33,6 @@
     "pages/agriculturalLook/index",
     "pages/tenantsIndex/index",
     "pages/tenantsChoice/index",
-    
-    
     "pages/unopen/index",
     "pages/businessProductview/index",
     "pages/businessProductAdd/index",

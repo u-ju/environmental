@@ -1,1 +1,8 @@
 /* pages/business_details/product/index.wxss */
+.searchall{
+  width:631rpx;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+  top: 20rpx;
+}

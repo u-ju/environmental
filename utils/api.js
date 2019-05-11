@@ -1,6 +1,12 @@
 // const basePath = 'https://wyhb.zgwyhb.com/api';
 const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
+  goodsCart_update: basePath + '/front/goodsCart/update', 
+  goodsCart_index: basePath + '/front/goodsCart/index',
+  goodsCart_del: basePath + '/front/goodsCart/del',
+  goodsCart_clear: basePath + '/front/goodsCart/clear',
+
+
   shopComment_comment: basePath + '/front/shopComment/comment', 
   shopComment_indexShop: basePath + '/front/shopComment/indexShop?shop_id=', 
   shopComment_delShop: basePath + '/front/shopComment/delShop', 

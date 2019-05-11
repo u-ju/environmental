@@ -18,12 +18,12 @@ Page({
     choosexy: [
       { name: 1, value: '同意', checked: true },
     ],
+    choose: ['1'],
     visible3:false,
     result:{},
     address:{},
     payment:'',
     payment_ext:'',
-    choose: ['1'],
     data:{}
   },
 

@@ -323,6 +323,9 @@ page {
   color: #bebfbe;
 }
 
+.colorD2 {
+  color: #D2D2D2;
+}
 
 .colorFB5A3E,.colorFE2C2C ,.colorFD2828,.colorFE3434,.colorff1919 {
   color: #ff1919;
@@ -370,6 +373,10 @@ page {
   text-overflow: ellipsis;
 }
 
+.hiddenn {
+  overflow: hidden;
+  white-space: nowrap;
+}
 .justify_btw {
   justify-content: space-between;
 }
@@ -399,4 +406,38 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 .checkbox{
   display: flex;
   align-items: center;
+}
+
+/* 数字输入框 */
+/*主容器*/
+.stepper {
+  height: 22rpx;
+  border-radius: 5px;
+  display: flex;
+}
+/*加号和减号*/
+.stepper image {
+  /* float: left; */
+  width:22rpx;
+  height:22rpx;
+  overflow: hidden;
+}
+/*数值*/
+.stepper input,.countnum {
+  display: inline-block;
+  width:30rpx;
+  height:22rpx;
+  margin: 0 auto;
+  text-align: center;
+  font-size:22rpx;
+  color: #27AAD9;
+  line-height: 22rpx;
+}
+/*普通样式*/
+.stepper .normal {
+  color:white;
+}
+/*禁用样式*/
+.stepper .disable {
+  color: #eee;
 }
