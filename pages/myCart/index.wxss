@@ -1,5 +1,8 @@
 /* pages/myCart/index.wxss */
 @import '../my_order_detail/index';
+page{
+  padding-bottom: 100rpx;
+}
 .icon-xuanze{
   margin-right: 14rpx;
 }
@@ -23,10 +26,20 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  background-color: white;
 }
 .fixb .iconfont{
   display: inline-block;
   width: 40rpx;
   height: 40rpx;
   font-size: 40rpx;
+}
+.leftbtn{
+  padding:  0 40rpx;
+  width: 160rpx;
+}
+.allmoney{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

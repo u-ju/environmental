@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/myCart/index",
+    "pages/index/index",
+    
     "pages/installment_details/installment_details",
    
     "pages/business_details/product/index",

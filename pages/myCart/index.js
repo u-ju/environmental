@@ -19,7 +19,103 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.goodsCart()
+    // this.goodsCart()
+    var list =[
+      {
+        shop_id:"20",
+        source:"online",
+        thumb:"https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/00c0403f010e3430d94fdebe75cf9b84.jpg",
+        title:"测试店铺",
+        contact:"18583750250",
+        goods_arr:[
+          {
+            count:"2",
+            price:"12.00",
+            sku_id:"12",
+            sku_name:"黑色-A",
+            spu_id:"12",
+            spu_name:"测试商品",
+            thumb:"https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+          },
+          {
+            count: "3",
+            price: "13.00",
+            sku_id: "13",
+            sku_name: "黑色-A",
+            spu_id: "12",
+            spu_name: "测试商品",
+            thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+          },
+          {
+            count: "4",
+            price: "14.00",
+            sku_id: "14",
+            sku_name: "黑色-A",
+            spu_id: "13",
+            spu_name: "测试商品",
+            thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+          }
+        ]
+      },
+      {
+        shop_id: "20",
+        source: "online",
+        thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/00c0403f010e3430d94fdebe75cf9b84.jpg",
+        title: "测试店铺",
+        contact: "18583750250",
+        goods_arr: [
+          {
+            count: "2",
+            price: "12.00",
+            sku_id: "12",
+            sku_name: "黑色-A",
+            spu_id: "12",
+            spu_name: "测试商品",
+            thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+          },
+          {
+            count: "3",
+            price: "13.00",
+            sku_id: "13",
+            sku_name: "黑色-A",
+            spu_id: "12",
+            spu_name: "测试商品",
+            thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+          },
+          {
+            count: "4",
+            price: "14.00",
+            sku_id: "14",
+            sku_name: "黑色-A",
+            spu_id: "13",
+            spu_name: "测试商品",
+            thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+          }
+        ]
+      }
+    ]
+    var allchoosecar = { sku_id: [], price: [], count: [], }, choosecar = { sku_id: [], price: [], count: [], }
+    for (var i in list) {
+      allchoosecar.sku_id[i]=[]
+      allchoosecar.price[i] = []
+      allchoosecar.count[i] = []
+      choosecar.sku_id[i] = []
+      choosecar.price[i] = []
+      choosecar.count[i] = []
+      for (var j in list[i]["goods_arr"]) {
+        allchoosecar.sku_id[i].push(list[i]["goods_arr"][j].sku_id)
+        allchoosecar.price[i].push(list[i]["goods_arr"][j].price)
+        allchoosecar.count[i].push(list[i]["goods_arr"][j].count)
+        // allchoosecar.sku_id.push(list[i]["goods_arr"][j].sku_id)
+        // allchoosecar.price.push(list[i]["goods_arr"][j].price)
+        // allchoosecar.count.push(list[i]["goods_arr"][j].count)
+      }
+    }
+    this.setData({
+      list: list,
+      allchoosecar: allchoosecar,
+      choosecar: choosecar
+    })
   },
 
   /**
@@ -103,22 +199,51 @@ Page({
     var sku_id = e.currentTarget.dataset.sku_id
     var price = e.currentTarget.dataset.price
     var count = e.currentTarget.dataset.count
-    var all = this.data.all
+    var listnum = e.currentTarget.dataset.listnum
+    var all = 1
     console.log(choosecar)
-    if (choosecar.sku_id.indexOf(sku_id) > -1) {
-      var num = choosecar.sku_id.indexOf(sku_id)
-      choosecar.sku_id.splice(num, 1);
-      choosecar.price.splice(num, 1);
-      choosecar.count.splice(num, 1);
+    if (choosecar.sku_id[listnum].indexOf(sku_id) > -1) {
+      var num = choosecar.sku_id[listnum].indexOf(sku_id)
+      choosecar.sku_id[listnum].splice(num, 1);
+      choosecar.price[listnum].splice(num, 1);
+      choosecar.count[listnum].splice(num, 1);
     } else {
-      choosecar.sku_id.push(e.currentTarget.dataset.sku_id)
-      choosecar.price.push(e.currentTarget.dataset.price)
-      choosecar.count.push(e.currentTarget.dataset.count)
+      choosecar.sku_id[listnum].push(e.currentTarget.dataset.sku_id)
+      choosecar.price[listnum].push(e.currentTarget.dataset.price)
+      choosecar.count[listnum].push(e.currentTarget.dataset.count)
     }
-    if (choosecar.sku_id.length == allchoosecar.sku_id.length) {
-      all = 1
+    for (var i in choosecar.sku_id){
+      if (choosecar.sku_id[i].length != allchoosecar.sku_id[i].length){
+        all = 0
+      }
+    }
+    this.setData({
+      choosecar: choosecar,
+      all: all
+    })
+    this.carmoney()
+  },
+  choosecard(e){
+    var listnum = e.currentTarget.dataset.listnum
+    var choosecar = this.data.choosecar
+    var allchoosecar = this.data.allchoosecar, all = 1
+    if (choosecar.sku_id[listnum].length == allchoosecar.sku_id[listnum].length) {
+      choosecar.sku_id[listnum]=[]
+      
+      console.log(choosecar.sku_id[listnum])
     } else {
-      all = 0
+      choosecar.sku_id[listnum] = []
+      for (var i in allchoosecar.sku_id[listnum]) {
+        choosecar.sku_id[listnum][i] = allchoosecar.sku_id[listnum][i]
+        choosecar.price[listnum][i] = allchoosecar.price[listnum][i]
+        choosecar.count[listnum][i] = allchoosecar.count[listnum][i]
+      }
+      console.log(choosecar.sku_id[listnum])
+    }
+    for (var a in choosecar.sku_id) {
+      if (choosecar.sku_id[a].length != allchoosecar.sku_id[a].length) {
+        all = 0
+      }
     }
     this.setData({
       choosecar: choosecar,
@@ -130,7 +255,9 @@ Page({
     var choosecar = this.data.choosecar;
     var carmoney = 0
     for (var i in choosecar.sku_id) {
-      carmoney = carmoney + choosecar.price[i] * choosecar.count[i]
+      for (var j in choosecar.sku_id[i]){
+        carmoney = carmoney + choosecar.price[i][j] * choosecar.count[i][j]
+      }
     }
     // console.log(choosecar)
     this.setData({
@@ -141,12 +268,21 @@ Page({
     var all = this.data.all, allchoosecar = { sku_id: [], count: [], price: [] }, choosecar = { sku_id: [], count: [], price: [] }
     if (!this.data.all) {
       allchoosecar = this.data.allchoosecar
+      // for (var i in ) {
+      //   choosecar.sku_id.push(allchoosecar.sku_id[i])
+      //   choosecar.price.push(allchoosecar.price[i])
+      //   choosecar.count.push(allchoosecar.count[i])
+      // }
       for (var i in allchoosecar.sku_id) {
-        choosecar.sku_id.push(allchoosecar.sku_id[i])
-        choosecar.price.push(allchoosecar.price[i])
-        choosecar.count.push(allchoosecar.count[i])
+        choosecar.sku_id[i] = []
+        choosecar.price[i] = []
+        choosecar.count[i] = []
+        for (var j in allchoosecar.sku_id[i]) {
+          choosecar.sku_id[i].push(allchoosecar.sku_id[i][j])
+          choosecar.price[i].push(allchoosecar.price[i][j])
+          choosecar.count[i].push(allchoosecar.count[i][j])
+        }
       }
-
     }
     this.setData({
       choosecar: choosecar,
