@@ -80,7 +80,8 @@ page .navigator-hover {
 .submitButton {
   width: 686rpx;
   height: 88rpx;
-  background:linear-gradient(0deg,rgba(51,246,175,1),rgba(39,170,217,1));
+  /* background:linear-gradient(0deg,rgba(51,246,175,1),rgba(39,170,217,1)); */
+  background-color: #4fd6f0;
   border-radius: 44rpx;
   color: white;
   text-align: center;
@@ -330,8 +331,8 @@ page {
 .colorFB5A3E,.colorFE2C2C ,.colorFD2828,.colorFE3434,.colorff1919 {
   color: #ff1919;
 }
-.color20,.color299EF0,.color6ADB7A,.color44D5A2,.color5DC47A,.color2EB354,.color46,.color4AD6A3,.color5ABB96,.color4FD7A3,.color27AAD9 {
-  color: #27AAD9;
+.color20,.color299EF0,.color6ADB7A,.color44D5A2,.color5DC47A,.color2EB354,.color46,.color4AD6A3,.color5ABB96,.color4FD7A3,.color27AAD9 ,.color4fd6f0{
+  color: #4fd6f0;
 }
 
 
@@ -414,6 +415,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   height: 22rpx;
   border-radius: 5px;
   display: flex;
+  flex-direction: row-reverse;
 }
 /*加号和减号*/
 .stepper image {

@@ -145,12 +145,12 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.loading()
-    options.id=12
+    // options.id=12
     that.setData({
       sku_id: options.id
     })
     that.goods(options.id)
-    
+    that.goodsCart()
   },
   goods(id){
     var that = this;
@@ -181,7 +181,8 @@ Page({
         result: result,
         choosed: choosed,
         spu_id: result.spu_id,
-        arr: arr
+        arr: arr,
+        comment_score: Math.ceil(result.comment_score)
       })
       
       that.commentIndex(result.spu_id)
@@ -203,6 +204,7 @@ Page({
       }
       that.setData({
         goodsCart: list,
+        count: res.data.result.count,
         allchoosecar: allchoosecar
       })
       util.hideLoading()
@@ -594,7 +596,26 @@ Page({
         })
       })
     })
-  }
+  },
+  settlement(e) {
+    var that = this, choosecar = this.data.choosecar;
+    var data = {
+      buy_type: "cart",
+    }
+    for (var i in choosecar.sku_id){
+      data['sku_arr['+i+'][sku_id]'] = choosecar.sku_id[i]
+    }
+    that.setData({
+      visiblec: false
+    })
+    console.log(data)
+    util.postJSON({ apiUrl: apiurl.order_payShow, data: data }, function (res) {
+      var result = res.data.result
+      wx.navigateTo({
+        url: '../order_detail/index?result=' + JSON.stringify(result),
+      })
+    })
+  },
   // onPullDownRefresh: function () {
   //   // 显示顶部刷新图标
   //   wx.showNavigationBarLoading();

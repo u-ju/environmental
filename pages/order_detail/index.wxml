@@ -7,7 +7,7 @@
   <view class='iconfont icon-jiantou'></view>
 </view>
 
-<view class='fkItem  shitem' wx:for="{{result.order_arr}}" wx:key="index" wx:for-item="order_arr">
+<view class='  shitem' wx:for="{{result.order_arr}}" wx:key="index" wx:for-item="order_arr">
   
   <view class='fkItem_goods flex' wx:for="{{order_arr.goods_arr}}" wx:key="index">
     <image src='{{item.thumb}}' class='goospic' mode='aspectFit'></image>
@@ -22,7 +22,9 @@
 <view class='color4 size28 kdxx'>
   <!-- <view>订单号：{{result.sku_name}}</view>
   <view class='flex_btw'><text>配送方式</text><text class='color898989'>快递免邮</text></view> -->
+  <view class='flex_btw' wx:if="{{result.sku_name}}"><text>订单号：{{result.sku_name}}</text></view>
   <view class='flex_btw' hidden='{{order_source=="online"}}'><text>安装费</text><text class='color898989'>{{result.install_fee_amount>0?result.install_fee_amount:'免'}}</text></view>
+
   <view class='flex_btw'><text>运费</text><text class='color898989'>{{result.freight_amount>0?result.freight_amount:'免'}}</text></view>
   <view class='flex_btw'><text>总金额</text><text class='colorFE3434 size30'>{{result.price_amount}}</text></view>
 </view>

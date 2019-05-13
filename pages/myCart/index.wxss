@@ -1,7 +1,7 @@
 /* pages/myCart/index.wxss */
 @import '../my_order_detail/index';
 page{
-  padding-bottom: 100rpx;
+  padding-bottom: 120rpx;
 }
 .icon-xuanze{
   margin-right: 14rpx;
@@ -21,6 +21,8 @@ page{
   text-align: center;
   line-height: 98rpx;
   color: white;
+  border-radius:5px 0px 0px 0;
+  margin-top: 13rpx;
 }
 .fixb{
   position: fixed;
@@ -35,11 +37,18 @@ page{
   font-size: 40rpx;
 }
 .leftbtn{
-  padding:  0 40rpx;
+  padding:  0 40rpx 20rpx 40rpx;
   width: 160rpx;
 }
 .allmoney{
   display: flex;
   justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 20rpx;
+}
+.leftbtn>view{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }

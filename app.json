@@ -1,11 +1,16 @@
 {
   "pages": [
-    "pages/myCart/index",
     "pages/index/index",
+    "pages/shopping_mall/shopping_mall",
     
+
+    "pages/business_details/product/index",
+    
+    
+    "pages/myCart/index",
     "pages/installment_details/installment_details",
    
-    "pages/business_details/product/index",
+    
     "pages/search/index",
     
     "pages/comment/shopComment",
@@ -22,7 +27,6 @@
     "pages/agriculturalRefund/index",
     "pages/map/index",
     "pages/agriculturalMerchantsOrder/index",
-    "pages/shopping_mall/shopping_mall",
     "pages/agriculturalRecommendation/index",
     "pages/businessProduct/index",
     "pages/agriculturalDetail/index",

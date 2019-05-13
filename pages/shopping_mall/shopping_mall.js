@@ -15,8 +15,8 @@ Page({
   data: {
     indicatorDots: true,//显示面板指示点
     autoplay: false,//自动播放
-    beforeColor: "white",//指示点颜色
-    afterColor: "#4AD6A3",//当前选中的指示点颜色
+    beforeColor: "#DCDCDC",//指示点颜色
+    afterColor: "#27AAD9",//当前选中的指示点颜色
     interval: 10000,
     duration: 1000,
     indexSize: 0,
@@ -34,7 +34,9 @@ Page({
     refreshTime: '', // 刷新的时间 
     loadMoreData: '加载更多……',
     erjinum:1,
-    cate_ids:0
+    cate_ids:0,
+    tabTxt: ['附近 ', '餐饮美食', '智能排序', '筛选'],
+    tabactive:-1
   },
   search(e) {
 
@@ -110,21 +112,23 @@ Page({
   onLoad: function (options) {
     var that =this;
     var type = 2;
+    
     that.setData({
-      type: type
+      type: type,
+      s_height: wx.getSystemInfoSync().windowHeight - 42,
     })
     wx.showLoading({
       title: '加载中',
     })
-    
-    var shop_cate = app.globalData.config.shop_cate
-    that.setData({
-      shop_cate: shop_cate,
-      erji: shop_cate[0].children,
-      cate_id: shop_cate[0].id,
-      cate_ids: shop_cate[0].id,
-      tablen: Math.ceil(shop_cate.length / 10)
-    })
+    this.config()
+    var shop_cate = app.globalData.config.shop_cate||[]
+    // that.setData({
+    //   shop_cate: shop_cate,
+    //   erji: shop_cate[0].children,
+    //   cate_id: shop_cate[0].id,
+    //   cate_ids: shop_cate[0].id,
+    //   tablen: Math.ceil(shop_cate.length / 10)
+    // })
     that.address()
     if (shop_cate.length>0){
       if (options.keywords){
@@ -142,6 +146,22 @@ Page({
   }else{
     wx.hideLoading()
     }
+  },
+  config() {
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.config }, function (res) {
+      var result = res.data.result;
+      getApp().globalData.config = result;
+      var shop_cate = app.globalData.config.shop_cate
+      that.setData({
+        shop_cate: shop_cate,
+        erji: shop_cate[0].children,
+        cate_id: shop_cate[0].id,
+        cate_ids: shop_cate[0].id,
+        tablen: Math.ceil(shop_cate.length / 10)
+      })
+      that.init();
+    })
   },
   init(cate_id = this.data.shop_cate[0].id, page = 1, keywords='') {
     var that = this;

@@ -25,16 +25,19 @@ page{
   border-bottom: 20rpx solid #eee;
   margin-bottom: 0;
 }
-.fkItem_goods_ms{
+.shitem .fkItem_goods_ms{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 410rpx;
 }
 .fkItem_goods{
   margin: 0;
-  width: 686rpx;
+  padding: 36rpx 32rpx;
+  width: auto;
+  
+  border-bottom: 20rpx solid #eee;
 }
-
 .width{
   width: 350rpx;
   display: inline-block;

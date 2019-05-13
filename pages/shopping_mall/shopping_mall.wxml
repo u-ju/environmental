@@ -11,7 +11,7 @@
   </view>
 </view>
 <view class='tab'>
-  <swiper  class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}">
+  <swiper  class="swiperbox" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}">
     <block wx:for="{{tablen}}" wx:key="index" wx:for-index="indexnum">
       <swiper-item bindtap='link' data-link='{{item.control}}'>
         <view class='flex wrap'>
@@ -32,20 +32,31 @@
     <text wx:for='{{erji}}' wx:key="index" class='erjiitem {{item.active==1?"active":""}}' data-index='{{index}}' bindtap='chooseerji'  wx:key="idnex" data-id='{{item.id}}'>{{item.name}}</text>
   </scroll-view>
 </view>
+<scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;">
+<!-- <view class='pagetype'>
+  <view class="tabTit box">
+    <view class="flex align_center flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
+      <text class='marginr6'>{{item}}</text>
+      <view>
+        <text class='iconfont icon-jiantou_xia size20 {{tabactive==index?"color4AD6A3":"colorBE"}} '></text>
+        <text class='iconfont icon-jiantou_xia size20 ' wx:else></text>
+      </view>
+    </view>
+  </view>
+</view> -->
 <view class='shopitem flex_btw wrap'>
   <view class='shop' wx:for="{{list}}" wx:key="index" wx:for-item="list"  bindtap='detail' id='{{list.shop_id}}'>
-    <!-- <block wx:for="{{10}}" > -->
       <image class='shoppic' src="{{list.thumb}}"  mode='aspectFill' ></image>
       <view class='shoptext flex_col flex_btw'>
         <view class='bold color4'>{{list.title}}</view>
         <view class='hidden1 color898989'>{{list.intro}}</view>
       </view>
-    <!-- </block> -->
   </view>
   <view wx:if="{{list.length==0}}" class='empty'>
     <empty  />
   </view>
 </view>
+</scroll-view>
 <!-- <view class="detail" wx:if="{{shop_cate.length>0}}">
   
   <view class='sousuobig'>

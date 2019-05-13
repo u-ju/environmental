@@ -1,8 +1,44 @@
 /* pages/business_details/product/index.wxss */
+page{
+  font-size: 28rpx;
+}
 .searchall{
   width:631rpx;
   position: relative;
   left: 50%;
   transform: translate(-50%,0);
   top: 20rpx;
+}
+.searchall input{
+  width: 500rpx;
+}
+.searchys{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchys image{
+  position: absolute;
+  right: 20rpx;
+  top: 0rpx;
+}
+.color565656{
+  color: #565656;
+}
+.color565656 .iconfont{
+  margin-right: 8rpx;
+}
+.pagetype{
+  padding: 0 32rpx;
+  margin-top: 40rpx;
+}
+.spu image{
+  width:150rpx;
+  height:120rpx;
+  border-radius:10rpx;
+  margin-right: 20rpx;
+}
+.spu .flex_col{
+  width: 520rpx;
+  height:120rpx;
 }

@@ -1,7 +1,8 @@
 <!--index.wxml-->
 
 <block wx:if="{{token&&token!=1}}">
-  <refresh-view id='refreshView' backgroundColor="#fff" bind:onRefresh="onPullDownRefresh" bind:onPullState="_pullState" />
+ <!-- bind:onPullState="_pullState" -->
+  <refresh-view id='refreshView' backgroundColor="#fff" bind:onRefresh="onPullDownRefresh" />
   <import src="../../Components/tab-bar/tab-bar.wxml" />
   <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
   <view bindtouchstart='handletouchstart' bindtouchmove='handletouchmove' bindtouchend='handletouchend' bindtouchcancel='handletouchcancel'>
@@ -33,6 +34,15 @@
     </view> 
     <view class='bg'>
       <view class="container">
+        <view class='banner'>
+          <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{beforeColor}}">
+            <block wx:for="{{banner}}" wx:key="index">
+              <swiper-item bindtap='link' data-link='{{item.control}}'>
+                <image src="{{item.image}}" class="slide-image" />
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
         <view class='tab'>
           <swiper class="swiper-box" indicator-dots="{{indicatorDotstag}}" autoplay="{{autoplaytag}}" interval="{{intervaltag}}" duration="{{durationtag}}" indicator-active-color="{{afterColortag}}" indicator-color="{{beforeColortag}}">
             <block wx:for="{{taglen}}" wx:key="index" wx:for-index="indexnum">
@@ -49,15 +59,7 @@
             </block>
           </swiper>
         </view>
-        <view class='banner'>
-          <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{beforeColor}}">
-            <block wx:for="{{banner}}" wx:key="index">
-              <swiper-item bindtap='link' data-link='{{item.control}}'>
-                <image src="{{item.image}}" class="slide-image" />
-              </swiper-item>
-            </block>
-          </swiper>
-        </view>
+        
         <!-- <view class='flex wrap'>
           <block wx:for="{{tag}}" wx:key="index">
             <view class='index_modular center' bindtap='link' data-link='{{item.control}}' data-children="{{item.children}}">
@@ -89,7 +91,7 @@
 </view> -->
     <view class='bg marginfff'>
       <view class="container flex_btw twobr" wx:if="{{user.length>0}}">
-        <view class='index_putin border_right left' wx:for="{{user}}" wx:key="index">
+        <view class='index_putin border_right left'  wx:for="{{user}}" wx:key="index" style='background-color:{{item.color}};'>
           <view class='size28  flex_btw'>
             <text>{{item.name}}</text>
             <view class='wallet  index_putin_right' bindtap='link' data-link='{{item.button.control}}'>

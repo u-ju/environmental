@@ -17,8 +17,8 @@
   <view class='size32 color4 bold title'>{{result.spu_name}} {{result.sku_name}}</view>
   <view class='flex_btw align_center scoreitem'>
     <view class='flex align_center score'>
-      <image src='../../images/smasonry.png' class='masonry' wx:for="{{5}}" wx:key="index"></image>
-      <text class='size28 pfeng'>评分:5{{result.comment_score}}</text>
+      <image src='../../images/smasonry.png' class='masonry' wx:for="{{comment_score}}" wx:key="index"></image>
+      <text class='size28 pfeng'>评分:{{result.comment_score}}</text>
     </view>
     <view class='colorFE2C2C size28'>
       <text>价格：</text> ￥
@@ -125,14 +125,14 @@
     <view class='car flex_btw' bindtap='carview'>
       <view class='shopcar'>
         <image src='../../images/shopcar.png'></image>
-        <!-- <view class='shopnum'>1</view> -->
+        <view class='shopnum'>{{count}}</view>
       </view>
-      <view class='colorFE2C2C bold size36 hiddenn'>￥{{result.price}}</view>
+      <!-- <view class='colorFE2C2C bold size36 hiddenn'>￥{{result.price}}</view> -->
     </view>
     <view class='flex'>
       <view class='fixbtn' bindtap='addshopcar'>加入购物车</view>
       <!-- <view class='fixbtn fixbuy'  bindtap='open1'> 立即购买</view> -->
-      <view class='fixbtn fixbuy' bindtap='open1'> 结算</view>
+      <view class='fixbtn fixbuy' bindtap='open1'> 立即购买</view>
     </view>
   </view>
 
@@ -226,9 +226,9 @@
           <view class='colorff1919'>￥{{item.price}}</view>
           <view class='flexend'>
             <view class='stepper'>
-              <image src='../../images/sredu.png' data-sku_id='{{item.sku_id}}' data-num='{{item.count}}' bindtap='bindMinus' hidden='{{item.count==1}}'></image>
-              <text class='countnum'> {{item.count}} </text>
               <image src='../../images/sadd.png' data-sku_id='{{item.sku_id}}' data-num='{{item.count}}' bindtap='bindPlus'></image>
+              <text class='countnum'> {{item.count}} </text>
+              <image src='../../images/sredu.png' data-sku_id='{{item.sku_id}}' data-num='{{item.count}}' bindtap='bindMinus' hidden='{{item.count==1}}'></image>
             </view>
           </view>
 
@@ -240,9 +240,9 @@
   <view class='carb flex_btw align_center'>
     <view class='shopcar'>
       <image src='../../images/shopcar.png'></image>
-      <view class='shopnum'>1</view>
+      <view class='shopnum'>{{choosecar.sku_id.length}}</view>
     </view>
     <view class='size36 bold colorff1919'>￥{{carmoney}}</view>
-    <view class='fixbtn fixbuy' bindtap='open1'> 结算</view>
+    <view class='fixbtn fixbuy' bindtap='settlement'> 结算</view>
   </view>
 </wux-popup>

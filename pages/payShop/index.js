@@ -108,8 +108,8 @@ Page({
     console.log('radio发生change事件，携带value值为：', e.detail.value)
   },
   onChange(e) {
-    console.log(e)
-    var data = that.data.data
+    // console.log(e)
+    var data = this.data.data
     data.amount = e.detail.value
     this.setData({
       error: isTel(e.detail.value),

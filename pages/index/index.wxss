@@ -107,9 +107,9 @@ page{
   width:270rpx;
   height:80rpx;
   padding:  20rpx 28rpx;
-  color: #2C2C2C;
+  color: #fff;
   background-color: #fff;
-  border:1px solid rgba(238,238,238,1);
+  /* border:1px solid rgba(238,238,238,1); */
   box-shadow:-1rpx 5rpx 13rpx 0px rgba(169,169,169,0.23);
   border-radius:20rpx
 }
@@ -129,8 +129,8 @@ page{
   text-align: center;
   line-height: 32rpx;
   font-size: 24rpx;
-  color: #898989;
-  border:1px solid #898989;
+  color: #fff;
+  border:1px solid #fff;
   border-radius:17rpx;
 }
 .size34{
@@ -162,7 +162,7 @@ page{
 .banner {
   height: 188rpx;
   border-radius:30rpx;
-  margin-top: 10rpx;
+  margin: 10rpx 0 58rpx 0;
 }
 .login{
   display: flex;

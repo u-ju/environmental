@@ -28,7 +28,7 @@
   </view>
   <view class='pay_item flex align_center '>
     <!-- <view class='footerbtn'  bindtap='open2'>确定</view> -->
-    <pay choose="{{choose}}" data="{{data}}" styles="width：80%；"  bind:open='openp' title='确定' title1='立即支付' />
+    <pay choose="{{choose}}" data="{{data}}" styles="width:500rpx;"  bind:open='openp' title='确定' title1='立即支付' />
   </view>
 </view>
 

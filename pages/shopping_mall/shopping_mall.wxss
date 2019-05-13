@@ -4,6 +4,14 @@ page{
   font-size: 28rpx;
   color: #444;
 }
+.swiperbox {
+  height: 420rpx;
+}
+.swiperbox .wx-swiper-dots.wx-swiper-dots-horizontal {
+  right: unset;
+  left: 50%;
+  transform: translate(-50%,0);
+}
 .fixtop{
   position: fixed;
   top: 0;
@@ -62,27 +70,7 @@ page{
   height: 115rpx;
   /* background-color: #e4e4e4; */
 }
-swiper{
-  height: 420rpx;
-}
-.swiper-box .wx-swiper-dot{
-    width:20rpx;
-    height:20rpx;
-    border-radius: 50%;
-    display: inline-flex;
-    margin-left: 10rpx;
-    justify-content:space-between;
-}
-.swiper-box .wx-swiper-dot::before{
-    content: '';
-    flex-grow: 1; 
-    background: rgba(255,255,255,0.8);
-    border-radius: 50%;
-    border: 1px solid #27AAD9;
-}
-.swiper-box .wx-swiper-dot-active::before{
-    background:#27AAD9;   
-}
+
 .erjiitem{
   display: inline-block;
    border-bottom: 6rpx solid transparent;
@@ -119,4 +107,39 @@ swiper{
 }
 .empty{
   width: 100%;
+}
+.pagetype{
+  padding: 0 32rpx;
+  border-bottom: 2rpx solid  #eee;
+  
+}
+.nav_right .tabTit{
+  height:90rpx;
+  z-index: 1;
+  position: absolute;
+  background: #fff;
+  font-size:15px;
+  display: flex;
+  justify-content: space-between;
+}
+ 
+.tabTit .active{
+  /* color:#e64340; */
+  background: #fff;
+}
+ 
+.tabTit .active image{
+  transform: rotate(180deg);
+  background: none;
+}
+ 
+.tabTit image{
+  width:26rpx;
+  height:26rpx;
+  vertical-align: middle;
+  margin-left: 5px;
+ 
+}
+.tabTit .iconfont{
+  margin-left: 6rpx;
 }

@@ -307,3 +307,6 @@ checkbox .wx-checkbox-input{
 .icon-xuanze{
   line-height:50rpx;
 }
+.stepper input,.countnum{
+  margin: 0 6rpx;
+}

@@ -19,103 +19,100 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.goodsCart()
-    var list =[
-      {
-        shop_id:"20",
-        source:"online",
-        thumb:"https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/00c0403f010e3430d94fdebe75cf9b84.jpg",
-        title:"测试店铺",
-        contact:"18583750250",
-        goods_arr:[
-          {
-            count:"2",
-            price:"12.00",
-            sku_id:"12",
-            sku_name:"黑色-A",
-            spu_id:"12",
-            spu_name:"测试商品",
-            thumb:"https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
-          },
-          {
-            count: "3",
-            price: "13.00",
-            sku_id: "13",
-            sku_name: "黑色-A",
-            spu_id: "12",
-            spu_name: "测试商品",
-            thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
-          },
-          {
-            count: "4",
-            price: "14.00",
-            sku_id: "14",
-            sku_name: "黑色-A",
-            spu_id: "13",
-            spu_name: "测试商品",
-            thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
-          }
-        ]
-      },
-      {
-        shop_id: "20",
-        source: "online",
-        thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/00c0403f010e3430d94fdebe75cf9b84.jpg",
-        title: "测试店铺",
-        contact: "18583750250",
-        goods_arr: [
-          {
-            count: "2",
-            price: "12.00",
-            sku_id: "12",
-            sku_name: "黑色-A",
-            spu_id: "12",
-            spu_name: "测试商品",
-            thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
-          },
-          {
-            count: "3",
-            price: "13.00",
-            sku_id: "13",
-            sku_name: "黑色-A",
-            spu_id: "12",
-            spu_name: "测试商品",
-            thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
-          },
-          {
-            count: "4",
-            price: "14.00",
-            sku_id: "14",
-            sku_name: "黑色-A",
-            spu_id: "13",
-            spu_name: "测试商品",
-            thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
-          }
-        ]
-      }
-    ]
-    var allchoosecar = { sku_id: [], price: [], count: [], }, choosecar = { sku_id: [], price: [], count: [], }
-    for (var i in list) {
-      allchoosecar.sku_id[i]=[]
-      allchoosecar.price[i] = []
-      allchoosecar.count[i] = []
-      choosecar.sku_id[i] = []
-      choosecar.price[i] = []
-      choosecar.count[i] = []
-      for (var j in list[i]["goods_arr"]) {
-        allchoosecar.sku_id[i].push(list[i]["goods_arr"][j].sku_id)
-        allchoosecar.price[i].push(list[i]["goods_arr"][j].price)
-        allchoosecar.count[i].push(list[i]["goods_arr"][j].count)
-        // allchoosecar.sku_id.push(list[i]["goods_arr"][j].sku_id)
-        // allchoosecar.price.push(list[i]["goods_arr"][j].price)
-        // allchoosecar.count.push(list[i]["goods_arr"][j].count)
-      }
-    }
-    this.setData({
-      list: list,
-      allchoosecar: allchoosecar,
-      choosecar: choosecar
-    })
+    this.goodsCart()
+    // var list =[
+    //   {
+    //     shop_id:"20",
+    //     source:"online",
+    //     thumb:"https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/00c0403f010e3430d94fdebe75cf9b84.jpg",
+    //     title:"测试店铺",
+    //     contact:"18583750250",
+    //     goods_arr:[
+    //       {
+    //         count:"2",
+    //         price:"12.00",
+    //         sku_id:"12",
+    //         sku_name:"黑色-A",
+    //         spu_id:"12",
+    //         spu_name:"测试商品",
+    //         thumb:"https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+    //       },
+    //       {
+    //         count: "3",
+    //         price: "13.00",
+    //         sku_id: "13",
+    //         sku_name: "黑色-A",
+    //         spu_id: "12",
+    //         spu_name: "测试商品",
+    //         thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+    //       },
+    //       {
+    //         count: "4",
+    //         price: "14.00",
+    //         sku_id: "14",
+    //         sku_name: "黑色-A",
+    //         spu_id: "13",
+    //         spu_name: "测试商品",
+    //         thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+    //       }
+    //     ]
+    //   },
+    //   {
+    //     shop_id: "20",
+    //     source: "online",
+    //     thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/00c0403f010e3430d94fdebe75cf9b84.jpg",
+    //     title: "测试店铺",
+    //     contact: "18583750250",
+    //     goods_arr: [
+    //       {
+    //         count: "2",
+    //         price: "12.00",
+    //         sku_id: "12",
+    //         sku_name: "黑色-A",
+    //         spu_id: "12",
+    //         spu_name: "测试商品",
+    //         thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+    //       },
+    //       {
+    //         count: "3",
+    //         price: "13.00",
+    //         sku_id: "13",
+    //         sku_name: "黑色-A",
+    //         spu_id: "12",
+    //         spu_name: "测试商品",
+    //         thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+    //       },
+    //       {
+    //         count: "4",
+    //         price: "14.00",
+    //         sku_id: "14",
+    //         sku_name: "黑色-A",
+    //         spu_id: "13",
+    //         spu_name: "测试商品",
+    //         thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/789e2b0b3f3420575b4113ea58f98bcf.jpg"
+    //       }
+    //     ]
+    //   }
+    // ]
+    // var allchoosecar = { sku_id: [], price: [], count: [], }, choosecar = { sku_id: [], price: [], count: [], }
+    // for (var i in list) {
+    //   allchoosecar.sku_id[i]=[]
+    //   allchoosecar.price[i] = []
+    //   allchoosecar.count[i] = []
+    //   choosecar.sku_id[i] = []
+    //   choosecar.price[i] = []
+    //   choosecar.count[i] = []
+    //   for (var j in list[i]["goods_arr"]) {
+    //     allchoosecar.sku_id[i].push(list[i]["goods_arr"][j].sku_id)
+    //     allchoosecar.price[i].push(list[i]["goods_arr"][j].price)
+    //     allchoosecar.count[i].push(list[i]["goods_arr"][j].count)
+    //   }
+    // }
+    // this.setData({
+    //   list: list,
+    //   allchoosecar: allchoosecar,
+    //   choosecar: choosecar
+    // })
   },
 
   /**
@@ -136,17 +133,24 @@ Page({
     var that = this;
     util.getJSON({ apiUrl: apiurl.goodsCart_index }, function (res) {
       var list = res.data.result.list
-      var result = res.data.result, allchoosecar = { sku_id: [], price: [], count: [], }
+      var result = res.data.result, allchoosecar = { sku_id: [], price: [], count: [], }, choosecar = { sku_id: [], price: [], count: [], }
       for (var i in list) {
+        allchoosecar.sku_id[i] = []
+        allchoosecar.price[i] = []
+        allchoosecar.count[i] = []
+        choosecar.sku_id[i] = []
+        choosecar.price[i] = []
+        choosecar.count[i] = []
         for (var j in list[i]["goods_arr"]) {
-          allchoosecar.sku_id.push(list[i]["goods_arr"][j].sku_id)
-          allchoosecar.price.push(list[i]["goods_arr"][j].price)
-          allchoosecar.count.push(list[i]["goods_arr"][j].count)
+          allchoosecar.sku_id[i].push(list[i]["goods_arr"][j].sku_id)
+          allchoosecar.price[i].push(list[i]["goods_arr"][j].price)
+          allchoosecar.count[i].push(list[i]["goods_arr"][j].count)
         }
       }
       that.setData({
         list: list,
-        allchoosecar: allchoosecar
+        allchoosecar: allchoosecar,
+        choosecar: choosecar
       })
       util.hideLoading()
     })
@@ -289,5 +293,42 @@ Page({
       all: !all
     })
     this.carmoney()
+  },
+  choosecardel(){
+    var that = this;
+    var data = {}, choosecar = this.data.choosecar,num=0
+    for (var i in choosecar.sku_id){
+      for (var j in choosecar.sku_id[i]){
+        num=num+1
+        data['sku_id[' + num + ']'] = choosecar.sku_id[i][j]
+      }
+    }
+    util.postJSON({ apiUrl: apiurl.goodsCart_del,data:data }, function (res) {
+      util.alert(res.data.message)
+      that.goodsCart()
+    })
+  },
+  settlement(e) {
+    var that = this, choosecar = this.data.choosecar,num=0;
+    var data = {
+      buy_type: "cart",
+    }
+
+    for (var i in choosecar.sku_id) {
+      for(var j in choosecar.sku_id[i]){
+        num = num+1
+        data['sku_arr[' + num + '][sku_id]'] = choosecar.sku_id[i][j]
+      }
+    }
+    that.setData({
+      visiblec: false
+    })
+    console.log(data)
+    util.postJSON({ apiUrl: apiurl.order_payShow, data: data }, function (res) {
+      var result = res.data.result
+      wx.navigateTo({
+        url: '../order_detail/index?result=' + JSON.stringify(result),
+      })
+    })
   },
 })
