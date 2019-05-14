@@ -22,10 +22,10 @@
       <input name='amount' placeholder="请输入金额"  placeholder-style='font-size: 32rpx;color:#898989' bindinput='onChange' ></input>
     </view> -->
   </view>
-  <view wx:for="{{eco_bag_type}}" wx:key="index" data-key='{{item.key}}' bindtap='bag' class='pay_item flex align_center '>
+  <!-- <view wx:for="{{eco_bag_type}}" wx:key="index" data-key='{{item.key}}' bindtap='bag' class='pay_item flex align_center '>
    <view class='z_right flex align_center'> <image src='{{bagkey==item.key?chooseimage:item.image}}'></image> {{item.name}}</view>
    <view class='z_left'>{{item.integral}}环保金</view>
-  </view>
+  </view> -->
   <view class='pay_item flex align_center '>
     <!-- <view class='footerbtn'  bindtap='open2'>确定</view> -->
     <pay choose="{{choose}}" data="{{data}}" styles="width:500rpx;"  bind:open='openp' title='确定' title1='立即支付' />

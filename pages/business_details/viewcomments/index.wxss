@@ -1,0 +1,24 @@
+/* pages/business_details/viewcomments/index.wxss */
+@import '../index.wxss';
+.choosedel{
+  width:140rpx;
+  height:60rpx;
+  background:#FF1919;
+  border:2rpx solid #FF1919;
+  border-radius:5rpx;
+  color: white;
+  line-height: 60rpx;
+  margin-left: 30rpx;
+}
+.message {
+  margin-top: 0;
+}
+.spugoods{
+  padding: 20rpx 0
+}
+.spugoods .icon-xuanze{
+  margin-right: 40rpx;
+}
+.pl_con {
+  margin-left: 0
+}

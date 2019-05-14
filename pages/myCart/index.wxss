@@ -52,3 +52,8 @@ page{
   justify-content: space-between;
   align-items: center;
 }
+.gouwuche{
+  width: 536rpx;
+  height: 295rpx;
+  margin: 100rpx 0 90rpx 0;
+}

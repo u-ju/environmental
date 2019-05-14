@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "分类指南",
+  "usingComponents": {
+    "empty": "../../Components/empty/index"
+  }
+}

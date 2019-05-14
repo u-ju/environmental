@@ -1,0 +1,52 @@
+<!--pages/business_details/viewcomments/index.wxml-->
+<wxs module="m1">
+  var indexO = function(arr, val) {
+    return arr.indexOf(val)
+  }
+  module.exports.indexO = indexO;
+</wxs>
+<view class='goods_intr3 view1' id='view1'>
+  <view class='size28 color4 allpl flex_btw align_center'>
+    <view>
+      <text class='bold'>用户评论</text> （{{list.length}}条）
+    </view>
+
+    <view class='center  flex_btw align_center'>
+      <view bindtap='allchoose'>
+        <text class='iconfont icon-xuanze  {{all==1?"color27AAD9":"colorD2"}}'></text> 全选
+      </view>
+      <view class='choosedel' bindtap='choosedel'>删除</view>
+    </view>
+  </view>
+  <block wx:if='{{list.length>0}}'>
+    <view wx:for='{{list}}' wx:key="index" class='spugoods flex'>
+      <text class='iconfont icon-xuanze size36  icon {{m1.indexO(chooseid,item.id)==-1?"colorD2":"color27AAD9"}}' bindtap='chooseid' data-id='{{item.id}}'></text>
+      <view>
+        <view class='flex message align_center'>
+          <image src='{{item.user_avatar}}' class='head'></image>
+          <view class='width594'>
+            <view class='flex_btw align_center'>
+              <view>
+                <view class='size28 color4 hidden1'>{{item.user_nickname}}sdadhkdsssssssssss</view>
+              </view>
+              <view class='size28 color4 hidden1'>{{item.created_at}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='color898989 size26 pl_con'>
+          <block wx:for='{{item.comment_level-0}}' wx:key="index">
+            <image src='../../../images/smasonry.png' class='xxpic' mode='aspectFill'></image>
+          </block>
+        </view>
+        <view class='color898989 size26 pl_con'>
+          {{item.comment_message}}
+        </view>
+        <view class='color898989 size26 pl_con plpic'>
+          <block wx:for='{{item.comment_images}}' wx:key="index" wx:for-key="index">
+            <image src='{{item}}' class='imagepic' mode='aspectFill'></image>
+          </block>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

@@ -30,11 +30,18 @@ Page({
       url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)
     }
     console.log(url)
-    wx.navigateTo({
-      url: url,
-      fail: function () {
-        util.alert('该功能暂未开放，敬请期待')
-      },
-    })
+    if(url.indexOf('../index/index')>-1){
+      wx.reLaunch({
+        url: url
+      })
+    }else{
+      wx.navigateTo({
+        url: url,
+        fail: function () {
+          util.alert('该功能暂未开放，敬请期待')
+        },
+      })
+    }
+    
   },
 })

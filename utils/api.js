@@ -188,7 +188,8 @@ const apiList = {
   gatherPayCreate: basePath + '/front/shop/gatherPayCreate?shop_id=',
   shop_goodsIndex: basePath + '/front/shop/goodsIndex',
   shop_goodsShow: basePath + '/front/shop/goodsShow?sku_id=',
-  
+
+  shop_stat: basePath + '/front/shop/stat?shop_id=',
   
   shop_: basePath + '/front/shop',
   shop_apply: basePath + '/front/shop/apply',

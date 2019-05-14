@@ -1,0 +1,149 @@
+/* pages/guide/index.wxss */
+
+page {
+  border: none;
+  font-size: 24rpx;
+}
+
+.overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  height: calc(100vh-70rpx);
+  position: absolute;
+  /* bottom: 0rpx; */
+  left: 0;
+  /* top: 100rpx; */
+  overflow: hidden;
+}
+
+.menu-container {
+  width: 20%;
+  flex: 0 0 130rpx;
+  background: #f7f7f7;
+}
+
+.detail-container {
+  width: 80%;
+  flex: 1;
+  height: 100%;
+  background-color: white;
+  display: block;
+}
+
+.scroll-view {
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-view-ul {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(247, 247, 247);
+}
+
+.scroll-view-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 130rpx;
+}
+
+.borderleft {
+  /* height: 60rpx;
+  line-height: 60rpx; */
+  width: 100%;
+  text-align: center;
+}
+.scroll-view-item image{
+  width: 53rpx;
+  height: 50rpx;
+  margin-bottom: 20rpx;
+}
+/* .scroll-view-item:after {
+  content: '';
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #dfdfdf;
+  transform: scaleY(0.5);
+  position: absolute;
+} */
+
+.active {
+  color: rgb(46, 179, 84);
+  background-color: #fff;
+}
+
+.active view {
+  border-left: 8rpx solid rgb(46, 179, 84);
+}
+
+.market-scroll-list {
+  height: 100%;
+  /* padding: 0 66rpx; */
+  display: flex;
+}
+.scroll-header {
+  display: flex;
+  white-space: nowrap;
+}
+
+.scroll-header text {
+  display: inline-block;
+  width: 170rpx;
+  height: 60rpx;
+  background-color: transparent;
+  text-align: center;
+  line-height: 60rpx;
+  margin-right: 20rpx;
+  color: #444;
+  border-radius:5rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.scroll-header text.active {
+  
+  background-color: #4FD6F0;
+  color: white;
+}
+
+.hengnav {
+ padding: 32rpx 12rpx;
+ border-bottom: 20rpx solid #eee;
+}
+
+/*隐藏滚动条*/
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.coverimg{
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 10rpx;
+  border-radius:10rpx;
+}
+.listitem{
+  margin-top: 30rpx;
+  width: 33%;
+  display: inline-block;
+  text-align: center;
+}
+.scroll-view-active{
+  background-color: white;
+  color: #4FD6F0;
+}

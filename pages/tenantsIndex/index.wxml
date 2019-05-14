@@ -1,7 +1,9 @@
 <!--pages/tenantsIndex/index.wxml-->
 <view wx:if="{{is_apply==1}}" class='wei'>
   <image src='../../images/wei.png' class='weipic'></image>
-  <view>您还没有入驻哦！前往 <text class='color5DC47A' bindtap='link'>《申请入驻》</text></view>
+  <view>您还没有入驻哦！前往
+    <text class='color5DC47A' bindtap='link'>《申请入驻》</text>
+  </view>
 </view>
 <view wx:else>
   <view class='online' wx:if="{{online_list.length>0}}">
@@ -9,19 +11,21 @@
     <view class='shop' wx:for="{{online_list}}" wx:key="index" wx:for-item="list">
       <view class="inner flex_btw" bindtap='detail' data-source='online' data-id='{{list.shop_id}}'>
         <view class="cover">
-          <image src="{{list.thumb}}" class="cover-img" mode='aspectFill'/>
+          <image src="{{list.thumb}}" class="cover-img" mode='aspectFill' />
         </view>
         <view class='describe'>
-          <view class='flex_btw'>
+          <view class=''>
             <view class='bold color51 size28'>{{list.title}}</view>
-            <view class="renzheng {{list.status==1?'color27AAD9':'colorEA2C2C'}}" >{{list.status_name}}</view>
+            <view class="renzheng {{list.status==1?'color27AAD9':'colorEA2C2C'}}">{{list.status_name}}</view>
           </view>
-          <view class='flex_btw color4' wx:if="{{list.gather_qrcode}}">
-            <view class='center czbtn' data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
-              <image src='../../images/erwm.png'></image>
-              <view> 收款码</view>
-            </view>
-            <view class='center czbtn' wx:if="{{list.add_spu==1}}" catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
+        </view>
+      </view>
+      <view class='flex_btw color4'>
+        <view class='center czbtn' data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
+          <image src='../../images/erwm.png'></image>
+          <view> 收款码</view>
+        </view>
+        <!-- <view class='center czbtn' wx:if="{{list.add_spu==1}}" catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
                 <image src='../../images/addspu.png'></image>
                 <view> 添加产品</view>
             </view>
@@ -32,30 +36,60 @@
             <view class='center czbtn' wx:if="{{list.show_order==1}}" catchtap='linke' data-url='../agriculturalMerchantsOrder/index?id={{list.shop_id}}'>
                 <image src='../../images/look.png'></image>
                 <view> 查看订单</view>
-            </view>
-          </view>
+            </view> -->
+        <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
+          <image src='../../images/addspu.png'></image>
+          <view> 添加产品</view>
+        </view>
+        <view class='center czbtn' catchtap='linke' data-url='../agriculturalLook/index?id={{list.shop_id}}'>
+          <image src='../../images/lookspu.png'></image>
+          <view> 查看产品</view>
+        </view>
+        <view class='center czbtn' catchtap='linke' data-url='../agriculturalMerchantsOrder/index?id={{list.shop_id}}'>
+          <image src='../../images/look.png'></image>
+          <view> 查看订单</view>
         </view>
       </view>
     </view>
   </view>
-  <view class='offline'  wx:if="{{offline_list.length>0}}">
+  <view class='offline' wx:if="{{offline_list.length>0}}">
     <view class='sjtitle'>线下商家</view>
     <view class='shop' wx:for="{{offline_list}}" wx:key="index" wx:for-item="list">
-      <view class="inner flex_btw" bindtap='detail' data-source='offline'  data-id='{{list.shop_id}}'>
+      <view class="inner flex_btw" bindtap='detail' data-source='offline' data-id='{{list.shop_id}}'>
         <view class="cover">
-          <image src="{{list.thumb}}" class="cover-img" mode='aspectFill'/>
+          <image src="{{list.thumb}}" class="cover-img" mode='aspectFill' />
         </view>
         <view class='describe'>
-          <view class='flex_btw'>
+          <view class=''>
             <view class='bold color51 size28'>{{list.title}}</view>
-            <view class="renzheng {{list.status==1?'color27AAD9':'colorEA2C2C'}}" >{{list.status_name}}</view>
+            <view class="renzheng {{list.status==1?'color27AAD9':'colorEA2C2C'}}">{{list.status_name}}</view>
           </view>
-          <view class='flex_btw color4' wx:if="{{list.gather_qrcode}}">
-            <view class='center czbtn' data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
-              <image src='../../images/erwm.png'></image>
-              <view> 收款码</view>
-            </view>
-            <view class='center czbtn' wx:if="{{list.add_spu==1}}" catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
+
+        </view>
+        
+      </view>
+      <view class='flex_btw color4'>
+          <view class='center czbtn' data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
+            <image src='../../images/erwm.png'></image>
+            <view> 收款码</view>
+          </view>
+          <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
+            <image src='../../images/addspu.png'></image>
+            <view> 查看评论</view>
+          </view>
+          <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
+            <image src='../../images/addspu.png'></image>
+            <view> 添加产品</view>
+          </view>
+          <view class='center czbtn' catchtap='linke' data-url='../agriculturalLook/index?id={{list.shop_id}}'>
+            <image src='../../images/lookspu.png'></image>
+            <view> 查看产品</view>
+          </view>
+          <view class='center czbtn' catchtap='linke' data-url='../agriculturalMerchantsOrder/index?id={{list.shop_id}}'>
+            <image src='../../images/look.png'></image>
+            <view> 查看订单</view>
+          </view>
+          <!-- <view class='center czbtn' wx:if="{{list.add_spu==1}}" catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
                 <image src='../../images/addspu.png'></image>
                 <view> 添加产品</view>
             </view>
@@ -66,18 +100,16 @@
             <view class='center czbtn' wx:if="{{list.show_order==1}}" catchtap='linke' data-url='../agriculturalMerchantsOrder/index?id={{list.shop_id}}'>
                 <image src='../../images/look.png'></image>
                 <view> 查看订单</view>
-            </view>
-          </view>
+            </view> -->
         </view>
-      </view>
     </view>
   </view>
 
-  
+
 
 </view>
 <view hidden='{{is_apply==1}}' class='button submitButton' bindtap='link'>商家入驻</view>
 
-<wux-popup closable visible="{{ visible3 }}"  bind:close="onClose3" bind:closed="onClosed3">
-  <wux-qrcode  id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+<wux-popup closable visible="{{ visible3 }}" bind:close="onClose3" bind:closed="onClosed3">
+  <wux-qrcode id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
 </wux-popup>

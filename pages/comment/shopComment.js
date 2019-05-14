@@ -41,7 +41,8 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    var s = { "id": "29" }
+    // var s = { "id": "1" }
+    options.id=1
     this.setData({
       shop_id: options.id
     })
@@ -149,7 +150,7 @@ Page({
     var that = this, data = {};
     data["comment_message"] = e.detail.value.comment_message
     data["comment_level"] = that.data.evaluations.star
-    data["order_id"] = that.data.order_id
+    data["shop_id"] = that.data.shop_id
     var upload_picture_list = that.data.upload_picture_list;
     for (var i = 0; i < upload_picture_list.length; i++) {
       data['comment_images[' + i + ']'] = upload_picture_list[i]['path_server']

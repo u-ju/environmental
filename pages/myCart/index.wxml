@@ -5,6 +5,7 @@
   }
   module.exports.indexO = indexO;
 </wxs>
+<block  wx:if="{{list.length>0}}">
 <view class='shitem' wx:for="{{list}}" wx:key="index" wx:for-index="listnum">
   <view class='color4 borbtm bold align_center size28'>
     <text class='iconfont icon-xuanze size36  icon  {{choosecar.sku_id[listnum].length==item.goods_arr.length?"color27AAD9":"colorD2"}}' bindtap='choosecard'  data-listnum='{{listnum}}'  ></text>
@@ -48,4 +49,9 @@
     <view>合计：<text class='size36 colorff1919'>￥{{carmoney}}</text></view>
   </view>
   <view class='buybtn size36' bindtap='settlement'>去支付</view>
+</view>
+</block>
+<view wx:else class='none center'>
+  <image src='../../images/gouwuche.png' class='gouwuche'></image>
+  <view class='size30'>您的购物车还没有添加商品哦！</view>
 </view>

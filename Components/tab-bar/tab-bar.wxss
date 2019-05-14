@@ -30,7 +30,7 @@
 }
 /*当前字体颜色*/
 .tabBartext{
-  color:#2ED3C2;
+  color:#4FD6F0;
 }
 .tabBar_center{
   position: absolute;
