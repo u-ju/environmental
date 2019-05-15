@@ -4,18 +4,19 @@
     <image src="../../images/sloc.png" class='icon_location' mode='aspectFit' />
     <text class='size24 color6 hidden1'>{{address}}</text>
   </view>
-  <view class='searchall flex_btw align_center' > 
-    <text class='iconfont icon-sousuo color4 searchall_pic' ></text>
-    <input  disabled='disabled' value='{{search}}' name='search' ></input>
-    <image class='logoi' src='../../images/logoi.png'></image>
+  <view class='searchall flex_btw align_center'>
+    <text class='iconfont icon-sousuo color4 searchall_pic'></text>
+    <input value='{{search}}' name='search' bindconfirm="searchSubmit"></input>
+    <image class='logoi' src='../../images/logoi.png' bindtap='searchSubmit'></image>
   </view>
 </view>
 <view class='tab'>
-  <swiper  class="swiperbox" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}">
+  <swiper class="swiperbox" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}">
     <block wx:for="{{tablen}}" wx:key="index" wx:for-index="indexnum">
       <swiper-item bindtap='link' data-link='{{item.control}}'>
         <view class='flex wrap'>
-          <view wx:for="{{10}}" wx:key="index" class='tabitem' bindtap="scrollTo" data-index="{{index}}"  data-current='{{shop_cate[indexnum*10+index]["id"]}}'  wx:if="{{shop_cate.length>indexnum*10+index}}" >
+          <view wx:for="{{10}}" wx:key="index" class='tabitem {{cate_ids==shop_cate[indexnum*10+index]["id"]?"color27AAD9":""}}' bindtap="selctTab" data-index="{{index}}" data-name='{{shop_cate[indexnum*10+index]["name"]}}' data-current='{{shop_cate[indexnum*10+index]["id"]}}'
+            wx:if="{{shop_cate.length>indexnum*10+index}}">
             <block>
               <image src='{{shop_cate[indexnum*10+index]["icon"]}}'></image>
               <view>{{shop_cate[indexnum*10+index]["name"]}}</view>
@@ -26,37 +27,82 @@
     </block>
   </swiper>
 </view>
-<view class='hengnav' wx:if="{{erji.length>0}}">
+<!-- <view class='hengnav' wx:if="{{erji.length>0}}">
   <scroll-view scroll-x="true" class="scroll-header">
     <text class='erjiitem {{erjinum==1?"active":""}}' bindtap='chooseerji' data-index='-1' data-id='-1'>全部</text>
     <text wx:for='{{erji}}' wx:key="index" class='erjiitem {{item.active==1?"active":""}}' data-index='{{index}}' bindtap='chooseerji'  wx:key="idnex" data-id='{{item.id}}'>{{item.name}}</text>
   </scroll-view>
-</view>
-<scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;">
-<!-- <view class='pagetype'>
+</view> -->
+<view class='pagetype'>
   <view class="tabTit box">
-    <view class="flex align_center flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
+    <view class="flex align_center {{tabIndex==index?'color27AAD9':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
       <text class='marginr6'>{{item}}</text>
       <view>
-        <text class='iconfont icon-jiantou_xia size20 {{tabactive==index?"color4AD6A3":"colorBE"}} '></text>
-        <text class='iconfont icon-jiantou_xia size20 ' wx:else></text>
+        <text class='iconfont icon-jiantou_shang  size20  color4AD6A3' wx:if="{{tabIndex==index}}"></text>
+        <text class='iconfont icon-jiantou_xia size20 colorBE' wx:else></text>
       </view>
     </view>
   </view>
-</view> -->
-<view class='shopitem flex_btw wrap'>
-  <view class='shop' wx:for="{{list}}" wx:key="index" wx:for-item="list"  bindtap='detail' id='{{list.shop_id}}'>
-      <image class='shoppic' src="{{list.thumb}}"  mode='aspectFill' ></image>
-      <view class='shoptext flex_col flex_btw'>
-        <view class='bold color4'>{{list.title}}</view>
-        <view class='hidden1 color898989'>{{list.intro}}</view>
+  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}">
+    <view class='flex allse' wx:if="{{tabIndex==0}}">
+      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{eara}}" wx:key="index" wx:for-index="indexnum" wx:for-item="eara">
+
+        <view class="qy quyu-left" style='' wx:for="{{eara}}" wx:key="index">
+          <view class="itemselect " data-index='{{index}}' data-indexnum='{{indexnum}}' data-item='{{item}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose0">
+            {{item.name}}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='flex allse' wx:if="{{tabIndex==1}}">
+      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;">
+        <view class="qy quyu-left" style='' wx:for="{{erji}}" wx:key="index" wx:for-index="index">
+          <view class="itemselect {{cate_id==item.id?'current':''}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose1">
+            {{item.name}}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='' wx:if="{{tabIndex==3}}">
+      <view class='screenitem'>
+        <view>价格区间</view>
+        <scroll-view scroll-x="true" class="scroll-header">
+          <text wx:for='{{erji}}' wx:key="index" class='screen' data-index='{{index}}' bindtap='chooseerji' wx:key="index" data-id='{{item.id}}'>{{item.name}}</text>
+        </scroll-view>
       </view>
+      <view class='screenitem'>
+        <view>价格区间</view>
+        <scroll-view scroll-x="true" class="scroll-header">
+          <text wx:for='{{erji}}' wx:key="index" class='screen' data-index='{{index}}' bindtap='chooseerji' wx:key="index" data-id='{{item.id}}'>{{item.name}}</text>
+        </scroll-view>
+      </view>
+    </view>
   </view>
-  <view wx:if="{{list.length==0}}" class='empty'>
-    <empty  />
-  </view>
+  <view class='tabzc'></view>
 </view>
+<scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;">
+
+  <view class='shopitem flex_btw wrap'>
+    <block wx:for="{{4}}">
+      <view class='shop' wx:for="{{list}}" wx:key="index" wx:for-item="list" bindtap='detail' id='{{list.shop_id}}'>
+        <image class='shoppic' src="{{list.thumb}}" mode='aspectFill'></image>
+        <view class='shoptext flex_col flex_btw'>
+          <view class='bold color4'>{{list.title}}</view>
+          <view class='hidden1 color898989'>{{list.intro}}</view>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{list.length==0}}" class='empty'>
+      <empty />
+    </view>
+  </view>
 </scroll-view>
+<view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>
+
+
+
+
+
 <!-- <view class="detail" wx:if="{{shop_cate.length>0}}">
   
   <view class='sousuobig'>
@@ -106,7 +152,7 @@
                       <text class='color153 size20'>{{list.distance}}</text>
                     </view>
                     <view class="phone" data-contact='{{list.contact}}' catchtap='calling'>
-                      <image src="../../images/phonex.png" class="phone_icon" mode='aspectFit'/>
+                      <image src="../../images/stel.png" class="phone_icon" mode='aspectFit'/>
                       <text class='colora3b18f size20'>拨打电话</text>
                     </view>
                   </view>
@@ -152,7 +198,7 @@
                       <text class='color153 size20'>{{list.distance}}</text>
                     </view>
                     <view class="phone" data-contact='{{list.contact}}' catchtap='calling'>
-                      <image src="../../images/phonex.png" class="phone_icon" mode='aspectFit'/>
+                      <image src="../../images/stel.png" class="phone_icon" mode='aspectFit'/>
                       <text class='colora3b18f size20'>拨打电话</text>
                     </view>
                   </view>

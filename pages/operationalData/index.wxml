@@ -24,7 +24,8 @@
       <text>{{item.low_count}}</text>
     </view>
   </view>
-  <view wx:if="{{list.length==0}}">
+  
+</view>
+<view wx:if="{{list.length==0}}">
     <empty />
   </view>
-</view>

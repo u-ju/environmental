@@ -9,6 +9,6 @@
        
     </view>
   </view>
-  <image src='../../images/edit.png' class='edit' bindtap='detail' data-item='{{item}}'></image>
+  <image src='../../images/pinglun.png' class='edit' bindtap='detail' data-item='{{item}}'></image>
 </view>
 

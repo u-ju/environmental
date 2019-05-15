@@ -42,7 +42,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     // var s = { "id": "1" }
-    options.id=1
+    // options.id=1
     this.setData({
       shop_id: options.id
     })

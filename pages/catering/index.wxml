@@ -20,8 +20,8 @@
       </view>
     </view>
     <view class='flex_col_1 icon'>
-      <image class='catering_lca' src='../../images/catering_lca.png'></image>
-      <image class='phone' src='../../images/phone@2x.png'></image>
+      <image class='catering_lca' src='../../images/sloc.png'></image>
+      <image class='phone' src='../../images/stel.png'></image>
     </view>
   </view>
 </view>

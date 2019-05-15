@@ -10,7 +10,8 @@ Page({
   data: {
     allchooseid:[],
     chooseid:[],
-    all:0
+    all:0,
+    list:[0]
   },
 
   /**
@@ -18,9 +19,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      shop_id:1
+      shop_id: options.id
     })
-    this.commentIndex1(1)
+    this.commentIndex1(options.id)
   },
 
   /**

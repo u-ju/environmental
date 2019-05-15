@@ -42,7 +42,7 @@
     </view>
     <view class='size28 flex_col_1 flex_btw'>
       <view class='badgeitem flex ' wx:if="{{l_one.badge.icon}}"  data-link='{{l_one.badge.control}}' bindtap='link'>
-        <image mode='aspectFill' class='badgebg' src='{{l_one.badge.icon}}'></image>
+        <image  class='badgebg' src='{{l_one.badge.icon}}'></image>
         <view class='badgename'>{{l_one.badge.name}}</view>
       </view>
       <view class='flex align_center'>

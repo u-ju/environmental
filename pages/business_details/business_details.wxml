@@ -27,7 +27,7 @@
       <text class='color9 marl'>{{result.contact}}</text>
     </view>
     <view class='image'  data-phone='{{result.contact}}' bindtap='calling'>
-      <image src="../../images/phones.png" class='dingwei'  mode='aspectFit'></image>
+      <image src="../../images/stel.png" class='dingwei'  mode='aspectFit'></image>
     </view>
   </view>
 </view>

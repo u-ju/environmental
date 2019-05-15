@@ -43,7 +43,7 @@
   border-left: 34rpx solid #4FD6F0;
   position: absolute;
   top: 0rpx;
-  left: 220rpx;
+  left: 218rpx;
 }
 .data{
   padding: 24rpx 32rpx;

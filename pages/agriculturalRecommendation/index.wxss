@@ -404,12 +404,14 @@ color: #A8A8A8
   background: rgb(1, 1, 1);
   transition: all .1s;
   opacity: 0;
+  display: none;
   z-index: -1;
 }
 
 .fullopacity {
   opacity: 0.5;
   z-index: 2;
+  display: block;
 }
 
 .nav-son.active .content {

@@ -37,8 +37,8 @@
           </button>
         </view>
       </view>
-      <image wx:else  src='../../images/edit_.png' class='edit' catchtap='edit' data-vicinage_id='{{news.vicinage_id}}'></image>
-      <image src='../../images/delete_.png' class='delete' catchtap='delete' data-vicinage_id='{{news.vicinage_id}}'></image>
+      <image wx:else  src='../../images/pinglun.png' class='edit' catchtap='edit' data-vicinage_id='{{news.vicinage_id}}'></image>
+      <image src='../../images/delc.png' class='delete' catchtap='delete' data-vicinage_id='{{news.vicinage_id}}'></image>
       </view>
     </view>
   </view>

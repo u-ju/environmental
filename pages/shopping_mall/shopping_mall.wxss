@@ -1,4 +1,5 @@
 /* pages/shopping_mall/shopping_mall.wxss */
+@import '../agriculturalRecommendation/index';
 page{
   border: none;
   font-size: 28rpx;
@@ -15,7 +16,7 @@ page{
 .fixtop{
   position: fixed;
   top: 0;
-  z-index: 999999;
+  z-index: 99;
   background-color: white;
   padding: 16rpx 32rpx;
   width: 686rpx;
@@ -78,7 +79,7 @@ page{
    margin: 0 20rpx 0 0;
 }
 .active{
-  border-bottom: 6rpx solid #27AAD9;
+  /* border-bottom: 6rpx solid #27AAD9; */
 }
 .scroll-header{
   white-space: nowrap;
@@ -109,20 +110,26 @@ page{
   width: 100%;
 }
 .pagetype{
-  padding: 0 32rpx;
+  padding: 0;
   border-bottom: 2rpx solid  #eee;
-  
+  position: relative;
 }
-.nav_right .tabTit{
+.tabTit{
   height:90rpx;
-  z-index: 1;
+  padding: 0 5%;
+  width: 90%;
+  z-index: 101;
   position: absolute;
   background: #fff;
   font-size:15px;
   display: flex;
   justify-content: space-between;
+  left: 0;
+  margin: 0;
 }
- 
+.tabzc{
+  height:90rpx;
+}
 .tabTit .active{
   /* color:#e64340; */
   background: #fff;
@@ -142,4 +149,76 @@ page{
 }
 .tabTit .iconfont{
   margin-left: 6rpx;
+}
+.quyu{
+  left: 0;
+  height: 600rpx;
+  position: absolute;
+  z-index: 101;
+}
+.quyu .qy{
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: left;
+  border: none;
+  float: none;
+  background-color: transparent;
+}
+.chice{
+  padding: 0;
+  background-color: white;
+  width: 50%;
+}
+.qy view{
+  padding-left: 50rpx;
+  border: none;
+}
+.fullbg{
+  transition: none;
+  z-index:100;
+  top: 0;
+  overflow: hidden;
+}
+.slidown {
+  animation: none;
+}
+.selectxz{
+  height: 600rpx;
+  width: 50%;
+  background-color: white;
+}
+.selectxz .current{
+  background-color: #EEEEEE;
+  color: #27AAD9;
+}
+.allse>view:nth-child(even),.allse>scroll-view:nth-child(even),.allse{
+  background-color: #EEEEEE;
+}
+.slidup{
+  top: -600rpx;
+}
+.tabitemC{
+
+}
+.screen{
+  display: inline-block;
+  width:140rpx;
+  height:70rpx;
+  background:rgba(238,238,238,1);
+  border-radius:10rpx;
+  margin-right: 18rpx;
+  text-align: center;
+  line-height: 70rpx;
+}
+.scroll-header .active{
+  background:#27AAD9;
+  color: white;
+}
+.screenitem{
+  padding: 34rpx 32rpx 20rpx 32rpx;
+  background-color: #fff;
+}
+.screenitem>view{
+  margin-bottom: 24rpx;
 }

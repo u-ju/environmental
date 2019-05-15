@@ -28,7 +28,8 @@ Page({
     express_key: [],
     express_num: [],
     expressbtn: false,
-    exurl: 'shopOrder_deliver'
+    exurl: 'shopOrder_deliver',
+    list:[0]
   },
   onLoad(e) {
     // console.log(app.globalData.config)

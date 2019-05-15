@@ -106,7 +106,7 @@
 
 
 <view class='add' bindtap='addsku'>
-  <image src='../../images/addsku.png'></image>
+  <image src='../../images/sadd.png'></image>
   <view>添加规格</view>
 </view>
 <!-- <view class='submitButton'>提交审核</view> -->

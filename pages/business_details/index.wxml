@@ -79,8 +79,15 @@
         </block>
       </view>
       <view class='goods_intr3 view1' id='view1'>
-        <view class='size28 color4 allpl'>
-          <text class='bold'>用户评论</text> （{{list.length}}条）</view>
+        <view class='size28 color4 allpl flex_btw align_center'>
+          <view><text class='bold'>用户评论</text> （{{list.length}}条）</view>
+          <view class='flex align_center' >
+            <navigator class='flex align_center' url='../comment/shopComment?id={{shop_id}}'>
+              <image src='../../images/pinglun.png' class='pinglun'></image>
+              <text>立即评论</text>
+            </navigator>
+          </view>
+        </view>
         <block wx:if='{{list.length>0}}'>
           <view wx:for='{{list}}' wx:key="index" class='spugoods'>
             <view class='flex message align_center'>
@@ -146,7 +153,7 @@
         <text class='color4 marl'>{{result.contact}}</text>
       </view>
       <view class='image'>
-        <image src="../../images/phones.png" class='dingwei' mode='aspectFit'></image>
+        <image src="../../images/stel.png" class='dingwei' mode='aspectFit'></image>
       </view>
     </view> -->
   <!-- <view class='plan' wx:if="{{list.length>0}}">

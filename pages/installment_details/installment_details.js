@@ -204,7 +204,7 @@ Page({
       }
       that.setData({
         goodsCart: list,
-        count: res.data.result.count,
+        countnum: res.data.result.count,
         allchoosecar: allchoosecar
       })
       util.hideLoading()
@@ -572,10 +572,12 @@ Page({
         return util.alert("请选择" + that.data.result.specs[i]["spec_name"])
       }
     }
+    // console.log(that.data.count)
     var data = {
       sku_id: that.data.result.sku_id,
       count: that.data.count
     }
+    // console.log(data)
     that.setData({
       buyok: true
     })

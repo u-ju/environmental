@@ -109,11 +109,11 @@
         <input  placeholder='' name='logistics[{{indexnum}}][express_num]' value='{{express_num[indexnum]}}'></input>
       </view>
     </view>
-    <image src='../../images/delete_.png' class='delete_' bindtap='delsku' data-index='{{indexnum}}'></image>
+    <image src='../../images/delc.png' class='delete_' bindtap='delsku' data-index='{{indexnum}}'></image>
   </view>
   </view>
   <view class='additem' bindtap='addexpress'>
-    <image src='../../images/addsku.png'></image>
+    <image src='../../images/sadd.png'></image>
     <view>添加物流</view>
   </view>
    <button formType="submit" disabled='{{expressbtn}}' class='surebtn'>确认</button>

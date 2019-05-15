@@ -36,7 +36,10 @@ Page({
     erjinum:1,
     cate_ids:0,
     tabTxt: ['附近 ', '餐饮美食', '智能排序', '筛选'],
-    tabactive:-1
+    tabactive:-1,
+    qyopen: false,
+    qyshow: true,
+    isfull: false,
   },
   search(e) {
 
@@ -82,30 +85,7 @@ Page({
     })
     this.init(Number(shop_cate[e.detail.current].id))
   },
-  scrollTo(e) {
-    console.log(e)
-    var shop_cate = this.data.shop_cate;
-    for (var i in shop_cate) {
-      if (shop_cate[i].children) {
-        for (var a in shop_cate[i].children) {
-          shop_cate[i].children[a].active = 0
-        }
-      }
-    }
-    this.setData({
-      indexSize: e.currentTarget.dataset.index,
-      cate_id: e.currentTarget.dataset.current,
-      cate_ids: e.currentTarget.dataset.current,
-      erji: this.data.shop_cate[e.currentTarget.dataset.index].children || [],
-      shop_cate: shop_cate,
-      erjinum:1
-    })
-    
-    // wx.showLoading({
-    //   title: '加载中',
-    // })
-    this.init(Number(e.currentTarget.dataset.current))
-  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -153,12 +133,19 @@ Page({
       var result = res.data.result;
       getApp().globalData.config = result;
       var shop_cate = app.globalData.config.shop_cate
+      var tabTxt = that.data.tabTxt
+      tabTxt[1] = shop_cate[0].name;
+      var eara=[]
+      eara.push(shop_cate)
+      console.log(eara)
       that.setData({
+        eara: eara,
         shop_cate: shop_cate,
         erji: shop_cate[0].children,
         cate_id: shop_cate[0].id,
         cate_ids: shop_cate[0].id,
-        tablen: Math.ceil(shop_cate.length / 10)
+        tablen: Math.ceil(shop_cate.length / 10),
+        tabTxt: tabTxt
       })
       that.init();
     })
@@ -214,30 +201,7 @@ Page({
       success: success,
     }); 
   },
-  chooseerji(e){
-    var that = this, erji = that.data.erji, erjinum = 0, id = e.currentTarget.dataset.id;
-    wx.showLoading({
-      title: '加载中',
-    })
-    for (var i in erji) {
-      erji[i]["active"] = 0
-    }
-    if (e.currentTarget.dataset.index!=-1){
-      erji[e.currentTarget.dataset.index].active = 1
-    }else{
-      erjinum=1
-      id = that.data.cate_ids
-      // id=''
-    }
-    
-    that.setData({
-      erji: erji,
-      cate_id: id,
-      erjinum: erjinum
-    })
-    
-    that.init(id)
-  },
+  
   calling: function (e) {//拨打电话
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.contact, //此号码并非真实电话号码，仅用于测试
@@ -302,5 +266,102 @@ Page({
       })
       that.init(that.data.cate_id, 1)
     
+  },
+  filterTab(e){
+    // console.log(e.currentTarget.dataset.index)
+    // console.log(wx.pageScrollTo)
+    var index = e.currentTarget.dataset.index;
+    var qyopen = true, isfull = true
+    if (this.data.qyopen) {
+      qyopen = false
+      isfull = false
+      index = this.data.tabIndex
+    }
+    this.setData({
+      tabIndex: index,
+      qyopen: qyopen,
+      qyshow: false,
+      isfull: isfull
+    })
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 320
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
+  },
+  // 点击灰色背景隐藏所有的筛选内容
+  hidebg: function (e) {
+    // var tabTxt = this.data.tabTxt
+    // tabTxt[0] = this.data.currentname[this.data.current.length - 1];
+    this.setData({
+      qyopen: false,
+      isfull: false,
+    })
+  },
+  select: function (e) {
+    var that = this;
+    
+  },
+  selctTab(e) {
+    console.log(e)
+    var shop_cate = this.data.shop_cate;
+    for (var i in shop_cate) {
+      if (shop_cate[i].children) {
+        for (var a in shop_cate[i].children) {
+          shop_cate[i].children[a].active = 0
+        }
+      }
+    }
+    var tabTxt = this.data.tabTxt
+    tabTxt[1] = e.currentTarget.dataset.name;
+    this.setData({
+      indexSize: e.currentTarget.dataset.index,
+      cate_id: e.currentTarget.dataset.current,
+      cate_ids: e.currentTarget.dataset.current,
+      erji: this.data.shop_cate[e.currentTarget.dataset.index].children || [],
+      shop_cate: shop_cate,
+      erjinum: 1,
+      tabTxt: tabTxt
+    })
+    this.init(Number(e.currentTarget.dataset.current))
+  },
+  choose0(e) {
+    var that = this, eara = that.data.eara;
+    var tabTxt = this.data.tabTxt
+    tabTxt[0] = e.currentTarget.dataset.name;
+    console.log(e)
+    if (e.currentTarget.dataset.item.children && e.currentTarget.dataset.item.children.length>0){
+      eara[e.currentTarget.dataset.indexnum - 0 + 1] = e.currentTarget.dataset.item.children
+      this.setData({
+        eara: eara
+      })
+      console.log(eara)
+    }else{
+      that.setData({
+        tabTxt: tabTxt
+      })
+      that.hidebg()
+    }
+  },
+  choose1(e) {
+    var that = this, erji = that.data.erji, erjinum = 0, id = e.currentTarget.dataset.id;
+    var tabTxt = this.data.tabTxt
+    tabTxt[1] = e.currentTarget.dataset.name;
+    wx.showLoading({
+      title: '加载中',
+    })
+    that.setData({
+      erji: erji,
+      cate_id: id,
+      erjinum: erjinum,
+      tabTxt: tabTxt
+    })
+    that.init(id)
+    that.hidebg()
   },
 })

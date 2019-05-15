@@ -125,7 +125,7 @@
     <view class='car flex_btw' bindtap='carview'>
       <view class='shopcar'>
         <image src='../../images/shopcar.png'></image>
-        <view class='shopnum'>{{count}}</view>
+        <view class='shopnum'>{{countnum}}</view>
       </view>
       <!-- <view class='colorFE2C2C bold size36 hiddenn'>￥{{result.price}}</view> -->
     </view>

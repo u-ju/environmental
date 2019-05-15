@@ -347,12 +347,12 @@ Page({
           
           timevalue: timevalue,
 	        timevalueR: timevalue,
-	        room: result.reservation.room,
+	        // room: result.reservation.room,
 	        video: video,
 	        features: result.feature,
 	        cost: result.cost,
-	        min_person: result.reservation.min_person,
-	        max_person: result.reservation.max_person,
+	        // min_person: result.reservation.min_person,
+	        // max_person: result.reservation.max_person,
 	        company_name: result.license_info.company_name,
 	        license_no: result.license_info.license_no,
 	        legal_person: result.license_info.legal_person,
@@ -394,8 +394,8 @@ Page({
         video: wx.getStorageSync('videot'),
         features: wx.getStorageSync('featurest'),
         cost: wx.getStorageSync('costt'),
-        min_person: wx.getStorageSync('reservation[min_person]t'),
-        max_person: wx.getStorageSync('reservation[max_person]t'),
+        // min_person: wx.getStorageSync('reservation[min_person]t'),
+        // max_person: wx.getStorageSync('reservation[max_person]t'),
         company_name: wx.getStorageSync('license_info[company_name]t'),
         license_no: wx.getStorageSync('license_info[license_no]t'),
         legal_person: wx.getStorageSync('license_info[legal_person]t'),
@@ -732,7 +732,7 @@ Page({
     }
     console.log(e)
     var data = e.detail.value;
-    if(this.data.video.src.length>0){
+    if (this.data.video.src&&this.data.video.src.length>0){
       data.video = this.data.video.src
     }
     for (var c in this.data.timevalueR){
@@ -742,9 +742,9 @@ Page({
     for (var d in this.data.features){
       data['feature['+d+']'] = this.data.features[d]
     }
-    for (var e in this.data.room) {
-      data['reservation[room]['+e+']'] = this.data.room[e]
-    }
+    // for (var e in this.data.room) {
+    //   data['reservation[room]['+e+']'] = this.data.room[e]
+    // }
     
     data.area_id = that.data.area_id_val
     data.type = 2

@@ -7,7 +7,7 @@
       <view>{{result.cate_name}}</view>
     </view>
   </view>
-  <image src='../../images/phone.png' data-phone='{{result.phone}}' bindtap='calling' class='phone'></image>
+  <image src='../../images/stel.png' data-phone='{{result.phone}}' bindtap='calling' class='phone'></image>
 </view>
 <view class='grxx'>
   <view>

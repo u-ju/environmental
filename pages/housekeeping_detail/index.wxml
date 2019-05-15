@@ -31,7 +31,7 @@
     <view class='flex align_center'>
       商家电话：{{result.phone}}
     </view>
-      <image src="../../images/phone@2x.png" class='calling' data-phone='{{result.phone}}' bindtap='calling' ></image>
+      <image src="../../images/stel.png" class='calling' data-phone='{{result.phone}}' bindtap='calling' ></image>
   </view>
   <view class='flex_btw align_center big'>
     <view class='flex align_center'>

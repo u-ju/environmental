@@ -5,7 +5,7 @@
     <text class='size28 color6'>新手入门</text>
   </view>
   <view class='calling flex align_center justify_center' bindtap='call'>
-    <image src='../../images/phone_red@2x.png'></image>
+    <image src='../../images/phone.png'></image>
     <text class='size28 color6'>拨打电话客服</text>
   </view>
 </view>

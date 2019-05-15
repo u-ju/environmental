@@ -5,7 +5,7 @@ page{
 }
 .tab{float: left; width: 50%;text-align: center;color: rgb(153, 153, 153);font-size: 28rpx;font-weight: 500;background-color: white;padding: 30rpx 0;}
 .topTabSwiper:after{content: ""; clear: both;display: block;}
-.tabBorer{border-bottom: 1px solid rgb(46,179, 84); color: rgb(46,179, 84);}
+.tabBorer{border-bottom: 1px solid #4FD6F0; color: #4FD6F0;}
 .swiper{width: 100%;height: auto;}
 .swiper_con{ width: 100%;background-color: white; }
 .image{height: 156rpx;width: 222rpx;overflow: hidden;background-color: rgb(241, 241, 241);margin-right: 70rpx;border-radius: 10rpx;}

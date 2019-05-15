@@ -54,17 +54,17 @@
   font-weight: bold;
 }
 .tabBar>view:nth-of-type(2) .cricle{
-  width: 106rpx;
-  height: 106rpx;
+  width: 90rpx;
+  height: 90rpx;
   border-radius: 50%;
   position: absolute;
   /* background-color: rgb(46,179, 84); */
   text-align: center;
-  line-height: 106rpx;
+  line-height: 90rpx;
   color: white;
   top: -30rpx;
   left: 50%;
-  margin-left: -54rpx;
+  transform: translate(-50%,0)
 }
 
 .cricle image{

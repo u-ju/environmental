@@ -202,3 +202,8 @@ page{
 .padtb20{
   padding: 20rpx 0;
 }
+.pinglun{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}

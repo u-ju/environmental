@@ -57,3 +57,16 @@ page{
   height: 295rpx;
   margin: 100rpx 0 90rpx 0;
 }
+.stepper image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.stepper input,.countnum{
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 28rpx;
+  width:40rpx;
+}
+.stepper{
+  width: 120rpx;
+}

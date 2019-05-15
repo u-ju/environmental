@@ -93,11 +93,11 @@
         <input  placeholder='' name='logistics[{{indexnum}}][express_num]' value='{{express_num[indexnum]}}'></input>
       </view>
     </view>
-    <image src='../../images/delete_.png' class='delete_' bindtap='delsku' data-index='{{indexnum}}'></image>
+    <image src='../../images/delc.png' class='delete_' bindtap='delsku' data-index='{{indexnum}}'></image>
   </view>
   </view>
   <view class='additem' bindtap='addexpress'>
-    <image src='../../images/addsku.png'></image>
+    <image src='../../images/sadd.png'></image>
     <view>添加物流</view>
   </view>
    <button formType="submit" disabled='{{expressbtn}}' class='surebtn'>确认</button>
@@ -108,7 +108,7 @@
   <view class="page__title color4">物流信息</view>
   <view class='over_look_big'>
     <view class='addwl' bindtap='addwl' hidden='{{result.order_status!=1}}'>
-      <!-- <image src='../../images/addsku.png'></image> -->
+      <!-- <image src='../../images/sadd.png'></image> -->
       <view class='color5DC47A'>添加物流</view>
     </view>
     <view class='weui-cell-third over_look'>

@@ -25,6 +25,6 @@
         <text class='colorC3'>欢迎来电咨询</text>
       </view>
     </view>
-    <image class='phone' src='../../images/phone@2x.png'></image>
+    <image class='phone' src='../../images/stel.png'></image>
   </view>
 </view>

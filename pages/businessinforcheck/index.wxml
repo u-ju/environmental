@@ -9,7 +9,7 @@
         <view><text decode='true'>身份证 &nbsp;&nbsp;&nbsp;&nbsp; {{item.idcard}}</text></view>
       </view>
     </view>
-    <image src='../../images/edit.png' class='edit' data-item='{{item}}' catchtap='edit'></image>
+    <image src='../../images/pinglun.png' class='edit' data-item='{{item}}' catchtap='edit'></image>
   </view>
 </view>
-<view class='flex justify_center align_center'  bindtap='edit' ><image src='../../images/add.png' class='add'></image>新增旅客</view>
+<view class='flex justify_center align_center'  bindtap='edit' ><image src='../../images/addspu.png' class='add'></image>新增旅客</view>

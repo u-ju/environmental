@@ -140,13 +140,13 @@ page{
 }
 .assets{
   width:165rpx;
-  height:68rpx;
-  background:linear-gradient(88deg,rgba(153,228,171,1) 0%,rgba(77,215,163,1) 100%);
+  height:54rpx;
+  background:linear-gradient(to right, rgba(255,255,255,.6) , #4FD6F0);
   border-radius:34rpx;
   padding-left: 23rpx;
   margin-right: -32rpx;
   opacity: 1;
-  line-height: 68rpx
+  line-height: 54rpx
 }
 .assetsitem{
   position: relative;

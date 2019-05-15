@@ -28,7 +28,7 @@
         <text class='colorC3'>欢迎来电咨询</text>
       </view>
     </view>
-    <image class='phone' data-phone='{{item.phone}}' src='../../images/phone@2x.png' catchtap='calling'></image>
+    <image class='phone' data-phone='{{item.phone}}' src='../../images/stel.png' catchtap='calling'></image>
   </view>
   <empty wx:if="{{list.length==0}}" />
 </view>

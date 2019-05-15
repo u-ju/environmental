@@ -14,8 +14,8 @@ page{
   margin-right: 84rpx;
 }
 .adItem .edit{
-  width: 35rpx;
-  height: 35rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 .marginl50{
   margin-left: 50rpx;

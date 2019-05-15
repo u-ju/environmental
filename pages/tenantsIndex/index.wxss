@@ -11,6 +11,7 @@ height:160rpx;
 
 .shop{
    padding:  0 32rpx;
+   border-bottom: 2rpx solid #eee;
 }
 .inner{
  margin-bottom: 0;
@@ -62,15 +63,17 @@ margin:10rpx 0rpx 0 8rpx;
 }
 .describe {
   height: 160rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: space-between;
   width: 420rpx;
 }
 .icon-erweima{
   font-size: 40rpx;
   
+}
+.describe .czbtn{
+  width: 100rpx;
+}
+.describe .xq{
+  width: 320rpx;
 }
 .button{
   position: fixed;
@@ -118,7 +121,7 @@ margin:10rpx 0rpx 0 8rpx;
 } */
 .czbtn{
   margin-bottom: 30rpx;
-  width: 25%;
+  /* width: 20%; */
 }
 .describe .bold{
   margin-bottom: 40rpx;

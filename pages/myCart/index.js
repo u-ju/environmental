@@ -159,7 +159,6 @@ Page({
   /*点击减号*/
   bindMinus: function (e) {
     var num = e.currentTarget.dataset.num;
-    console.log(e.currentTarget.dataset.num)
     if (num > 0) {
       num--;
     } else {
@@ -171,7 +170,6 @@ Page({
   bindPlus: function (e) {
     var num = e.currentTarget.dataset.num;
     num++;
-    console.log(num)
     this.updatacar(e.currentTarget.dataset.sku_id, num)
 
   },
@@ -180,9 +178,7 @@ Page({
     util.postJSON({ apiUrl: apiurl.goodsCart_update, data: { sku_id: sku_id, count: count } }, function (res) {
       that.goodsCart()
       var choosecar = that.data.choosecar;
-      console.log(choosecar)
       if (choosecar.sku_id.indexOf(sku_id) > -1) {
-        console.log(choosecar)
         choosecar.count[choosecar.sku_id.indexOf(sku_id)] = count
         that.setData({
           choosecar: choosecar
@@ -196,7 +192,6 @@ Page({
     })
   },
   choosecar(e) {
-    // console.log(e)
     var choosecar = this.data.choosecar
     var allchoosecar = this.data.allchoosecar
     var carmoney = this.data.carmoney
@@ -205,7 +200,6 @@ Page({
     var count = e.currentTarget.dataset.count
     var listnum = e.currentTarget.dataset.listnum
     var all = 1
-    console.log(choosecar)
     if (choosecar.sku_id[listnum].indexOf(sku_id) > -1) {
       var num = choosecar.sku_id[listnum].indexOf(sku_id)
       choosecar.sku_id[listnum].splice(num, 1);
@@ -234,7 +228,6 @@ Page({
     if (choosecar.sku_id[listnum].length == allchoosecar.sku_id[listnum].length) {
       choosecar.sku_id[listnum]=[]
       
-      console.log(choosecar.sku_id[listnum])
     } else {
       choosecar.sku_id[listnum] = []
       for (var i in allchoosecar.sku_id[listnum]) {
@@ -242,7 +235,6 @@ Page({
         choosecar.price[listnum][i] = allchoosecar.price[listnum][i]
         choosecar.count[listnum][i] = allchoosecar.count[listnum][i]
       }
-      console.log(choosecar.sku_id[listnum])
     }
     for (var a in choosecar.sku_id) {
       if (choosecar.sku_id[a].length != allchoosecar.sku_id[a].length) {
@@ -263,7 +255,6 @@ Page({
         carmoney = carmoney + choosecar.price[i][j] * choosecar.count[i][j]
       }
     }
-    // console.log(choosecar)
     this.setData({
       carmoney: carmoney
     })
@@ -286,6 +277,14 @@ Page({
           choosecar.price[i].push(allchoosecar.price[i][j])
           choosecar.count[i].push(allchoosecar.count[i][j])
         }
+      }
+    }else{
+      allchoosecar = this.data.allchoosecar
+      for (var a in allchoosecar.sku_id) {
+        choosecar.sku_id[a] = []
+        choosecar.price[a] = []
+        choosecar.count[a] = []
+       
       }
     }
     this.setData({
@@ -323,7 +322,6 @@ Page({
     that.setData({
       visiblec: false
     })
-    console.log(data)
     util.postJSON({ apiUrl: apiurl.order_payShow, data: data }, function (res) {
       var result = res.data.result
       wx.navigateTo({

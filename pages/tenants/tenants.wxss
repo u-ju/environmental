@@ -394,13 +394,21 @@ navigator{
   width: 168rpx;
   /* background-color: #eee; */
 }
-.license input{
+.license input,.license textarea{
   width:306rpx;
+  border: none;
+  
+  border-bottom: 1px dashed  #eee;
+}
+.license textarea{
+  height: 70rpx;
 }
 checkbox-group{
   /* margin-left: 32rpx; */
 }
-
+.license{
+  margin-bottom: 20rpx;
+}
 /*checkbox 选项框大小  */
 checkbox .wx-checkbox-input {
   width: 40rpx;
