@@ -1,12 +1,11 @@
 {
   "pages": [
+    
     "pages/index/index",
-    "pages/shopping_mall/shopping_mall",
-    
-    "pages/business_details/viewcomments/index",
     "pages/myCart/index",
+    "pages/shopping_mall/shopping_mall",
+    "pages/business_details/viewcomments/index",
     "pages/guide/index",
-    
     "pages/business_details/product/index",
     "pages/operationalData/index",
     "pages/installment_details/installment_details",

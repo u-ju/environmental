@@ -43,21 +43,21 @@
       </view>
     </view>
   </view>
-  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}">
-    <view class='flex allse' wx:if="{{tabIndex==0}}">
-      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{eara}}" wx:key="index" wx:for-index="indexnum" wx:for-item="eara">
+  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}" hidden='{{tabIndex==0||tabIndex==-1}}'> 
+    <view class='flex allse' wx:if="{{tabIndex==1}}">
+      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{eara}}" wx:key="index" wx:for-index="indexnum" wx:for-item="eara1">
 
-        <view class="qy quyu-left" style='' wx:for="{{eara}}" wx:key="index">
-          <view class="itemselect " data-index='{{index}}' data-indexnum='{{indexnum}}' data-item='{{item}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose0">
+        <view class="qy quyu-left" style='' wx:for="{{eara1}}" wx:key="index">
+          <view class="itemselect {{earaid[indexnum]==item.area_id?'current':''}}" data-index='{{index}}' data-indexnum='{{indexnum}}' data-item='{{item}}' data-id='{{item.area_id}}' data-name='{{item.name}}' bindtap="choose1">
             {{item.name}}
           </view>
         </view>
       </scroll-view>
     </view>
-    <view class='flex allse' wx:if="{{tabIndex==1}}">
+    <view class='flex allse' wx:if="{{tabIndex==2}}">
       <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;">
         <view class="qy quyu-left" style='' wx:for="{{erji}}" wx:key="index" wx:for-index="index">
-          <view class="itemselect {{cate_id==item.id?'current':''}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose1">
+          <view class="itemselect {{cate_id==item.id?'current':''}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose2">
             {{item.name}}
           </view>
         </view>
@@ -67,20 +67,24 @@
       <view class='screenitem'>
         <view>价格区间</view>
         <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{erji}}' wx:key="index" class='screen' data-index='{{index}}' bindtap='chooseerji' wx:key="index" data-id='{{item.id}}'>{{item.name}}</text>
+          <text wx:for='{{searchitem.cost}}' wx:key="index" class='screen {{costindex==index?"active":""}}' data-index='{{index}}' data-name='cost' bindtap='choose3'  data-key='{{item.min}},{{item.max}}'>{{item.name}}</text>
         </scroll-view>
       </view>
       <view class='screenitem'>
-        <view>价格区间</view>
+        <view>更多特色</view>
         <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{erji}}' wx:key="index" class='screen' data-index='{{index}}' bindtap='chooseerji' wx:key="index" data-id='{{item.id}}'>{{item.name}}</text>
+          <text wx:for='{{searchitem.feature}}' wx:key="index" class='screen {{feature==item?"active":""}}' bindtap='choose3' data-name='feature' data-key='{{item}}' >{{item}}</text>
         </scroll-view>
       </view>
+    </view>
+    <view class='form-btn'>
+      <button class='btn-reset' bindtap='quyuEmpty{{tabIndex}}'>重置</button>
+      <button class='btn-submit' bindtap='submitFilter{{tabIndex}}'>确定</button>
     </view>
   </view>
   <view class='tabzc'></view>
 </view>
-<scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;">
+<scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}"  style="height:{{s_height}}px;">
 
   <view class='shopitem flex_btw wrap'>
     <block wx:for="{{4}}">
@@ -97,7 +101,7 @@
     </view>
   </view>
 </scroll-view>
-<view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>
+<view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg" style='height:{{all_height}}px;'  hidden='{{tabIndex==0||tabIndex==-1}}'></view>
 
 
 

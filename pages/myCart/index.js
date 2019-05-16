@@ -2,6 +2,7 @@
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
+var lastTime = new Date().getTime()
 Page({
 
   /**
@@ -12,7 +13,8 @@ Page({
     allchoosecar: { sku_id: [], count: [], price: [] },
     carmoney: 0,
     all: 0,
-    addshopcarnum: 0
+    addshopcarnum: 0,
+    list:[0]
   },
 
   /**
@@ -63,7 +65,7 @@ Page({
     //     thumb: "https://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/22/00c0403f010e3430d94fdebe75cf9b84.jpg",
     //     title: "测试店铺",
     //     contact: "18583750250",
-    //     goods_arr: [
+    //     goods_arr: [z
     //       {
     //         count: "2",
     //         price: "12.00",
@@ -157,33 +159,63 @@ Page({
   },
   //购物车事件处理函数
   /*点击减号*/
-  bindMinus: function (e) {
-    var num = e.currentTarget.dataset.num;
-    if (num > 0) {
-      num--;
-    } else {
-      return
+  bindcz(e){
+    var symbols = e.currentTarget.dataset.symbols, num = e.currentTarget.dataset.num, index = e.currentTarget.dataset.index, listnum = e.currentTarget.dataset.listnum, list = this.data.list, sku_id = e.currentTarget.dataset.sku_id;
+    var that = this;
+    var skuID_last = this.data.skuID_last || e.currentTarget.dataset.sku_id, num_last = that.data.num_last;
+    if (symbols=='add'){
+      num++
+    }else{
+      num--
     }
-    this.updatacar(e.currentTarget.dataset.sku_id, num)
+    list[listnum]["goods_arr"][index]["count"] = num
+    
+    if (skuID_last != sku_id) {
+      console.log(skuID_last, sku_id)
+      this.setData({
+        skuID_last: sku_id,
+        num_last: num
+      },function(){
+        that.updatacar(skuID_last, num_last, listnum);
+      })
+      
+    }
+    that.setData({
+      list: list
+    })
+    lastTime = new Date().getTime();
+    setTimeout(function () {
+      if (lastTime + 2000 > new Date().getTime()) {
+        that.setData({
+          skuID_last: sku_id,
+          num_last: num
+        })
+        return;
+      }
+      that.updatacar(sku_id, num, listnum);
+    }, 2000)
   },
-  /*点击加号*/
-  bindPlus: function (e) {
-    var num = e.currentTarget.dataset.num;
-    num++;
-    this.updatacar(e.currentTarget.dataset.sku_id, num)
-
-  },
-  updatacar(sku_id, count, suc) {
+ 
+  
+  updatacar(sku_id, count, listnum, suc) {
     var that = this;
     util.postJSON({ apiUrl: apiurl.goodsCart_update, data: { sku_id: sku_id, count: count } }, function (res) {
-      that.goodsCart()
+      // that.goodsCart()
       var choosecar = that.data.choosecar;
-      if (choosecar.sku_id.indexOf(sku_id) > -1) {
-        choosecar.count[choosecar.sku_id.indexOf(sku_id)] = count
+      console.log(choosecar.sku_id[listnum])
+      console.log(sku_id)
+      console.log(choosecar.sku_id[listnum].indexOf(sku_id))
+      if (choosecar.sku_id[listnum].indexOf(sku_id) > -1) {
+        choosecar.count[listnum][choosecar.sku_id[listnum].indexOf(sku_id)] = count
         that.setData({
           choosecar: choosecar
         })
+        console.log(choosecar)
         that.carmoney()
+        if (suc){
+          suc()
+        }
+        
       }
     }, function (res) {
 
@@ -317,6 +349,7 @@ Page({
       for(var j in choosecar.sku_id[i]){
         num = num+1
         data['sku_arr[' + num + '][sku_id]'] = choosecar.sku_id[i][j]
+        data['sku_arr[' + num + '][count]'] = choosecar.count[i][j]
       }
     }
     that.setData({

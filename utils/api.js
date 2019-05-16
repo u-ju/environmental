@@ -6,6 +6,7 @@ const apiList = {
   goodsCart_del: basePath + '/front/goodsCart/del',
   goodsCart_clear: basePath + '/front/goodsCart/clear',
 
+  shop_conf: basePath + '/front/shop/conf', 
 
   shopComment_comment: basePath + '/front/shopComment/comment', 
   shopComment_indexShop: basePath + '/front/shopComment/indexShop?shop_id=', 
@@ -14,6 +15,7 @@ const apiList = {
 
   // GET 控制对照
   // GET 控制对照
+  areaparse: basePath + '/common/area/parse?address=', 
   areaUpdate: basePath + '/front/user/areaUpdate', 
   controlContrast: basePath + '/front/controlContrast', 
   search: basePath + '/front/search?keywords=',

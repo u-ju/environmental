@@ -137,7 +137,7 @@
   </view>
 
 </view>
-<view class='submitButton fixedButton' bindtap='open1' wx:elif='{{result.source=="offline"}}'>
+<view class='submitButton fixedButton' bindtap='open1' wx:elif='{{result.source=="exchange"}}'>
   立即兑换
 </view>
 <wux-popup position="bottom" visible="{{ visible1 }}" bind:close="onClose1">

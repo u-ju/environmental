@@ -152,7 +152,7 @@ page{
 }
 .quyu{
   left: 0;
-  height: 600rpx;
+  /* height: 600rpx; */
   position: absolute;
   z-index: 101;
 }
@@ -188,7 +188,7 @@ page{
   width: 50%;
   background-color: white;
 }
-.selectxz .current{
+.allse .current{
   background-color: #EEEEEE;
   color: #27AAD9;
 }
@@ -197,9 +197,7 @@ page{
 }
 .slidup{
   top: -600rpx;
-}
-.tabitemC{
-
+  display: none;
 }
 .screen{
   display: inline-block;

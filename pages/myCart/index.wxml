@@ -25,9 +25,9 @@
       <view class='flex_btw align_center'>
         <view class='colorff1919 size28'>￥{{item.price}}</view>
         <view class='stepper'>
-          <image src='../../images/sadd.png' data-sku_id='{{item.sku_id}}' data-num='{{item.count}}' bindtap='bindPlus'></image>
+          <image src='../../images/sadd.png' data-sku_id='{{item.sku_id}}' data-symbols='add' data-listnum='{{listnum}}'  data-index='{{index}}'  data-num='{{item.count}}' bindtap='bindcz'></image>
           <text class='countnum'> {{item.count}} </text>
-          <image src='../../images/sredu.png' data-sku_id='{{item.sku_id}}' data-num='{{item.count}}' bindtap='bindMinus' hidden='{{item.count==1}}'></image>
+          <image src='../../images/sredu.png' data-sku_id='{{item.sku_id}}' data-symbols='reduce' data-listnum='{{listnum}}'  data-index='{{index}}' data-num='{{item.count}}' bindtap='bindcz' hidden='{{item.count==1}}'></image>
           
         </view>
       </view>
