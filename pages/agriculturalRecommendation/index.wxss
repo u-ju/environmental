@@ -484,12 +484,12 @@ button {
 }
 
 .btn-submit {
-  background-color: #27AAD9;
+  background-color: #4fd6f0;
   color: #fff;
 }
 
 .sliderHView {
-  margin: 0 40rpx 0 40rpx;
+  /* margin: 0 40rpx 0 40rpx; */
   height: 250rpx;
   width: 70%;
   margin: auto;

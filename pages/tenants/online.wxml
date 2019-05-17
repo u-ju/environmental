@@ -142,8 +142,8 @@
     </navigator>
   </view>
 
-  <view wx:if="{{disabled1}}" class='size32 button' bindtap='xiugai'>点击修改</view>
-  <button wx:else class='size32' formType="submit" disabled='{{post}}' >提交</button>
+  <view wx:if="{{disabled1}}" class='size32 submitButton' bindtap='xiugai'>点击修改</view>
+  <button wx:else class='size32 submitButton' formType="submit" disabled='{{post}}' >提交</button>
 </view>
 </form>
 

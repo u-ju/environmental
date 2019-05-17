@@ -185,6 +185,7 @@ Page({
       that.setData({
         result: result,
         order_logistics: result.order_logistics,
+        order_id: order_id
       })
       wx.hideLoading()
     }, function (e) {

@@ -105,16 +105,7 @@ radio .wx-radio-input.wx-radio-input-checked::before{
 .image{
   margin-top: 30rpx;
 }
-button,.button{
-  width:686rpx;
-  height:82rpx;
-  background:linear-gradient(0deg,rgba(51,246,175,1),rgba(39,170,217,1));
-  border-radius:41rpx;
-  margin-top: 110rpx;
-  color: white;
-  text-align: center;
-  line-height: 82rpx;
-}
+
 .picture_item,.upload_progress,.picture_item>image{
   width: 292rpx;
   height: 176rpx;
@@ -283,7 +274,7 @@ navigator{
 .timePeriod{
   width:182rpx;
   height:42rpx;
-  background:rgba(39,170,217,1);
+  background:#4FD7F1;
   border-radius:5rpx;
   color: white;
   text-align: center;
@@ -291,8 +282,8 @@ navigator{
   margin:16rpx 0 24rpx 0;
 }
 .delt{
-  width:24rpx;
-  height:24rpx;
+  width:30rpx;
+  height:30rpx;
   position: absolute;
   top: -12rpx;
   right: -12rpx;
@@ -335,14 +326,14 @@ navigator{
   color: #444;
 }
 .featuresitem{
-  width:86rpx;
+  width:120rpx;
   height:50rpx;
   position: relative;
-  margin:12rpx 20rpx 0 0;
+  margin:12rpx 26rpx 0 0;
   display: inline-block;
 }
 .features{
-  width:86rpx;
+  width:120rpx;
   height:50rpx;
   background:rgba(39,170,217,1);
   border-radius:5rpx;
@@ -397,7 +388,7 @@ navigator{
 .license input,.license textarea{
   width:306rpx;
   border: none;
-  
+  color: #898989;
   border-bottom: 1px dashed  #eee;
 }
 .license textarea{
@@ -437,4 +428,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 }
 .xieyi{
   color: #27AAD9;
+}
+.submitButton {
+  margin: 40rpx auto;
 }

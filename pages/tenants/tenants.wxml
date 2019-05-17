@@ -77,7 +77,7 @@
           <image src='../../images/delt.png' class='delt' bindtap='delfeature' data-index='{{index}}'></image>
         </view>
         <view class='featuresitem' >
-        <input placeholder='自定义' class='features featuresinput' value='{{featuresv}}' hidden='{{features.length==4}}' bindconfirm="features"></input>
+        <input placeholder='自定义' class='features featuresinput' value='{{featuresv}}'  bindconfirm="features"></input>
         </view>
       </scroll-view>
     </view>
@@ -214,8 +214,8 @@
       </navigator>
     </view>
 
-    <view wx:if="{{disabled1}}" class='size32 button' bindtap='xiugai'>点击修改</view>
-    <button wx:else class='size32' formType="submit" disabled='{{post}}'>提交</button>
+    <view wx:if="{{disabled1}}" class='size32 submitButton' bindtap='xiugai'>点击修改</view>
+    <button wx:else class='size32 submitButton' formType="submit" disabled='{{post}}'>提交</button>
   </view>
 </form>
 

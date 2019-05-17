@@ -87,6 +87,7 @@ page{
 }
 .shop{
   margin-bottom: 32rpx;
+  overflow: hidden;
 }
 .shoppic{
   width:328rpx;

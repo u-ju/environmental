@@ -215,7 +215,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
 
 .shbtnitem {
   width: 510rpx;
-  margin-top: 60rpx;
+  margin: 60rpx auto 0 auto;
 }
 
 .bgBFBFBF {

@@ -1,0 +1,40 @@
+<!--pages/myGreenCredit/index.wxml-->
+<view class="wrap">
+  <view class='title'>我的环保信用</view>
+  <view class="circle-box">
+    <canvas class="circle" style=" width:140px; height:140px;" canvas-id="canvasCircle">
+    </canvas>
+    <canvas class="circle" style="width:140px; height:140px;" canvas-id="canvasArcCir">
+    </canvas>
+    <view class="draw_btn color4fd6f0">{{result.score}}分</view>
+  </view>
+  <view class="size36 center color9">{{result.score_name}}</view>
+</view>
+<view class='flex align_center justify_center brx'>
+  <navigator url='../page/index?url={{credit_rule}}'>
+    <view class='color4fd6f0 size28 br'>提现规则</view>
+  </navigator>
+  <navigator url='list'>
+    <view class='color4fd6f0 size28'>提现记录</view>
+  </navigator>
+</view>
+<view class='detailed'>
+  <view class='color4fd6f0 size36 bold'>最近信用记录</view>
+  <block wx:if="{{list.length>0}}">
+    <view wx:for="{{list}}" wx:key="index">
+      <view class='item' wx:if="{{item.value}}">
+        <view class='size28 color6 bold'>{{item.intro}},{{item.value}}分</view>
+        <view class='size24 color9'>{{item.created_at}}</view>
+      </view>
+    </view>
+    <!-- <view class='color4fd6f0 center more'> -->
+    <navigator class='color4fd6f0 center more' url='list'>
+      <view class='size36 bold'>查看更多评论</view>
+      <text class='iconfont icon-xiangxiajiantou bold'></text>
+    </navigator>
+    <!-- </view> -->
+  </block>
+  <view wx:else>
+    <empty />
+  </view>
+</view>

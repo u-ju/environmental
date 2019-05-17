@@ -92,7 +92,7 @@ swiper,swiper image{
   margin:  0 52rpx 30rpx 0;
 }
 .active{
-  border-color: #27aad9;
+  border-color: #4FD7F1;
   background-color: white;
 }
 .gg_item{
@@ -224,7 +224,7 @@ swiper,swiper image{
 .fixbtn{
   width:225rpx;
   height:98rpx;
-  background:rgba(39,170,217,1);
+  background:#4FD7F1;
   border-radius:5rpx 0px 0px 5rpx;
   line-height: 98rpx;
   text-align: center;
@@ -273,7 +273,7 @@ checkbox .wx-checkbox-input{
 }
 .carpop{
   padding: 0 32rpx;
-  color: #27AAD9;
+  color: #4FD7F1;
 }
 .icon{
   margin:0;
@@ -282,7 +282,7 @@ checkbox .wx-checkbox-input{
   width: 33.33%;
 }
 .stepper{
-  width: 88rpx;
+  width: 120rpx;
 }
 .carcon>view{
   padding: 20rpx 0;

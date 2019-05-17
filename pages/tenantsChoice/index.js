@@ -25,7 +25,7 @@ Page({
   },
   offline(){
     wx.navigateTo({
-      url: '../tenants/tenants?room_list='+this.data.room_list,
+      url: '../tenants/tenants?room_list=' + this.data.room_list + "&apply_info=" + JSON.stringify(this.data.apply_info),
     })
   },
   online(){

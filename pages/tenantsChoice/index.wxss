@@ -11,7 +11,7 @@ image{
 .btn{
   width:353rpx;
   height:100rpx;
-  background:#27AAD9;
+  background:#4fd6f0;
   border-radius:50rpx;
   margin: auto auto 80rpx auto;
   line-height: 100rpx;

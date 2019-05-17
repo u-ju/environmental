@@ -70,8 +70,8 @@ Page({
   tab1(e){
     var guide_cate = this.data.guide_cate;
     var tablen = 0
-    if (guide_cate[e.currentTarget.dataset.index]["children"]&&guide_cate[e.currentTarget.dataset.index]["children"][0]["children"]) {
-      tablen = guide_cate[e.currentTarget.dataset.index]["children"][0]["children"].length / 3
+    if (guide_cate[e.currentTarget.dataset.index]["children"]) {
+      tablen = guide_cate[e.currentTarget.dataset.index]["children"].length / 3
     }
     this.setData({
       indexSize1: e.currentTarget.dataset.index,
@@ -80,15 +80,15 @@ Page({
     })
 
   },
-  chooseerji(e){
-    var guide_cate = this.data.guide_cate;
-    var tablen = 0
-    if (guide_cate[this.data.indexSize1]["children"][e.currentTarget.dataset.index]["children"]) {
-      tablen = guide_cate[this.data.indexSize1]["children"][e.currentTarget.dataset.index]["children"].length / 3
-    }
-    this.setData({
-      indexSize2: e.currentTarget.dataset.index,
-      tablen: tablen
-    })
-  }
+  // chooseerji(e){
+  //   var guide_cate = this.data.guide_cate;
+  //   var tablen = 0
+  //   if (guide_cate[this.data.indexSize1]["children"][e.currentTarget.dataset.index]["children"]) {
+  //     tablen = guide_cate[this.data.indexSize1]["children"][e.currentTarget.dataset.index]["children"].length / 3
+  //   }
+  //   this.setData({
+  //     indexSize2: e.currentTarget.dataset.index,
+  //     tablen: tablen
+  //   })
+  // }
 })

@@ -409,9 +409,11 @@ Page({
     })
     var show = this.data.show.splice(index, 1)
   },
-  deliver() {
+  deliver(e) {
+    console.log(e.currentTarget.dataset.id)
     this.setData({
       visible4: true,
+      deliverid: e.currentTarget.dataset.id
     })
   },
   onClose4() {
@@ -426,7 +428,7 @@ Page({
       expressbtn: true
     })
     var data = e.detail.value
-    data.order_id = that.data.order_id
+    data.order_id = that.data.deliverid
     for (var i in that.data.express_key) {
       data['logistics[' + i + '][express_key]'] = that.data.express_key[i]
     }

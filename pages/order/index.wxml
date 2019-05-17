@@ -79,7 +79,7 @@
 <wux-popup closable visible="{{ visible3 }}" bind:close="onClose3">
   <view class='center shouhuo'>
     <image src='../../images/shouhuo@2x.png' class='shouhuopic'></image>
-    <view class='size30 color2EB354'>商品已确认签收</view>
+    <view class='size30 '>商品已确认签收</view>
   </view>
   <view class='flex_btw shbtnitem'>
     <view class='shbtn' bindtap='comment'>立即评价</view>

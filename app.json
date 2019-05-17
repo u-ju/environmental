@@ -2,10 +2,13 @@
   "pages": [
     
     "pages/index/index",
+    "pages/myGreenCredit/index",
+    "pages/myGreenCredit/list",
+    "pages/guide/index",
     "pages/myCart/index",
     "pages/shopping_mall/shopping_mall",
     "pages/business_details/viewcomments/index",
-    "pages/guide/index",
+    "pages/personal_center/personal_center",
     "pages/business_details/product/index",
     "pages/operationalData/index",
     "pages/installment_details/installment_details",
@@ -42,7 +45,6 @@
     "pages/recruitment/index/index",
     "pages/lostFound/lfDetails/index",
     "pages/lostFound/lostfound/index",
-    "pages/personal_center/personal_center",
     "pages/assets/index",
     "pages/delivery_station/index",
     "pages/success/success",

@@ -91,7 +91,7 @@ Page({
   },
   onLoad: function (options) {
     var that  = this;
-    
+    this.refreshView = this.selectComponent("#refreshView")
     var formData = wx.getStorageSync('formData')
     if (formData){
       this.setData({
@@ -199,8 +199,9 @@ Page({
     
   },
   onReady:function(){
-    template.tabbar("tabBar",0, this) //0表示第一个tabbar
     this.refreshView = this.selectComponent("#refreshView")
+    template.tabbar("tabBar",0, this) //0表示第一个tabbar
+    
   },
   link(e){
     

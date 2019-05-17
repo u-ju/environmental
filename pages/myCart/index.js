@@ -149,6 +149,7 @@ Page({
           allchoosecar.count[i].push(list[i]["goods_arr"][j].count)
         }
       }
+      console.log(choosecar)
       that.setData({
         list: list,
         allchoosecar: allchoosecar,
@@ -163,6 +164,7 @@ Page({
     var symbols = e.currentTarget.dataset.symbols, num = e.currentTarget.dataset.num, index = e.currentTarget.dataset.index, listnum = e.currentTarget.dataset.listnum, list = this.data.list, sku_id = e.currentTarget.dataset.sku_id;
     var that = this;
     var skuID_last = this.data.skuID_last || e.currentTarget.dataset.sku_id, num_last = that.data.num_last;
+    var choosecar = that.data.choosecar, allchoosecar = that.data.allchoosecar;
     if (symbols=='add'){
       num++
     }else{
@@ -180,9 +182,22 @@ Page({
       })
       
     }
+    allchoosecar.count[listnum][allchoosecar.sku_id[listnum].indexOf(sku_id)] = num
+    
     that.setData({
-      list: list
+      list: list,
+      allchoosecar: allchoosecar
     })
+
+    
+
+    if (choosecar.sku_id[listnum].indexOf(sku_id) > -1) {
+      choosecar.count[listnum][choosecar.sku_id[listnum].indexOf(sku_id)] = num
+      that.setData({
+        choosecar: choosecar
+      })
+      that.carmoney()
+    }
     lastTime = new Date().getTime();
     setTimeout(function () {
       if (lastTime + 2000 > new Date().getTime()) {
@@ -201,21 +216,8 @@ Page({
     var that = this;
     util.postJSON({ apiUrl: apiurl.goodsCart_update, data: { sku_id: sku_id, count: count } }, function (res) {
       // that.goodsCart()
-      var choosecar = that.data.choosecar;
-      console.log(choosecar.sku_id[listnum])
-      console.log(sku_id)
-      console.log(choosecar.sku_id[listnum].indexOf(sku_id))
-      if (choosecar.sku_id[listnum].indexOf(sku_id) > -1) {
-        choosecar.count[listnum][choosecar.sku_id[listnum].indexOf(sku_id)] = count
-        that.setData({
-          choosecar: choosecar
-        })
-        console.log(choosecar)
-        that.carmoney()
-        if (suc){
-          suc()
-        }
-        
+      if(suc){
+        suc()
       }
     }, function (res) {
 
@@ -334,6 +336,10 @@ Page({
         data['sku_id[' + num + ']'] = choosecar.sku_id[i][j]
       }
     }
+    console.log(num)
+    if (num<1) {
+      return util.alert('请选择删除内容')
+    }
     util.postJSON({ apiUrl: apiurl.goodsCart_del,data:data }, function (res) {
       util.alert(res.data.message)
       that.goodsCart()
@@ -347,10 +353,14 @@ Page({
 
     for (var i in choosecar.sku_id) {
       for(var j in choosecar.sku_id[i]){
-        num = num+1
+        
         data['sku_arr[' + num + '][sku_id]'] = choosecar.sku_id[i][j]
         data['sku_arr[' + num + '][count]'] = choosecar.count[i][j]
+        num = num + 1
       }
+    }
+    if (num < 1) {
+      return util.alert("请选择下单商品")
     }
     that.setData({
       visiblec: false

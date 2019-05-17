@@ -51,23 +51,23 @@ Page({
   search(e) {
 
     this.setData({
-      search: e.detail.value
+      keywords: e.detail.value
     })
     if (e.detail.value == '') {
       this.setData({
-        keywords: ""
+        keywords: "",
       })
-      this.init(1, '')
+      this.init()
     }
   },
   searchSubmit(e) {
     
-    var keywords =  this.data.search
+    var keywords = this.data.keywords
     this.setData({
       keywords: keywords,
       indexSize: -1
     })
-    this.init(1)
+    this.init()
   },
   change(e) {
     if (!e.detail.source){
@@ -128,7 +128,7 @@ Page({
           indexSize: -1,
           cate_id:''
         })
-        this.init()
+        // this.init()
       }else{
         that.init();
       }
@@ -168,9 +168,6 @@ Page({
   },
   init( page = 1) {
     var that = this;
-    if (that.data.keywords != '' && that.data.keywords != undefined) {
-      keywords = that.data.keywords
-    }
     var data = { source:"offline",cate_id: that.data.cate_id, page: page, keywords: that.data.keywords, area_id: that.data.area_id, location: that.data.location, feature: this.data.feature, cost: this.data.cost, sort: that.data.sort }
     for(var i in data){
       if(data[i]===''){
@@ -300,7 +297,7 @@ Page({
     var index = e.currentTarget.dataset.index;
     var qyopen = true, isfull = true, sort = this.data.sort
     if (index == this.data.tabIndex){
-      sort=index==0?'':sort
+      sort=''
       index=-1
     } else if (index==0){
       sort='smart'
@@ -310,6 +307,8 @@ Page({
       location: '',
       keywords: '',
       cate_id:'',
+      cost: "",
+      feature: '',
       tabTxt: ['智能排序', '附近 ', '餐饮美食', '筛选'],
       sort: sort,
       tabIndex: index,
@@ -481,7 +480,7 @@ Page({
   },
   submitFilter3() {
     this.setData({
-      sort:'location'
+      sort:''
     })
     this.init()
     this.hidebg()

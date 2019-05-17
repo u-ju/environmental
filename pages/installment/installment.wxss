@@ -86,8 +86,8 @@ page{
 .goods{
   width:320rpx;
   padding: 30rpx 20rpx 30rpx 20rpx;
-  border-right: 2rpx solid transparent;
-  border-bottom: 2rpx solid #eee;
+  /* border-right: 2rpx solid transparent;
+  border-bottom: 2rpx solid #eee; */
 }
 .colorFE2C2C{
   color: #FE2C2C

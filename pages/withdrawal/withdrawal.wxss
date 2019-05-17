@@ -48,7 +48,7 @@ page{
   margin: 70rpx 0 54rpx 0;
 }
 button{
-  background-color: #27AAD9;
+  background-color: #4FD7F1;
   color: white;
   width:460rpx;
 }

@@ -308,5 +308,6 @@ page{
   margin-right: 6rpx;
 }
 .width110{
-  width: 110rpx;
+  /* width: 110rpx; */
+  width: 164rpx;
 }

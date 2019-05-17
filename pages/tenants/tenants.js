@@ -87,7 +87,8 @@ Page({
       { name: 1, value: '同意', checked: true },
     ],
     choose: ['1'],
-    video:{src:''}
+    video:{src:''},
+    clicktime:'0:00-0:00'
   },
   checkboxChange(e) {
     console.log(e.detail.value)
@@ -103,7 +104,8 @@ Page({
 
     timevalue[timenum] = time
     this.setData({
-      timevalue: timevalue
+      timevalue: timevalue,
+      clicktime: time
     })
   },
   opent(){
@@ -139,16 +141,20 @@ Page({
     wx.setStorageSync('timevaluet', this.data.timevalue)
   },
   timeadd(e){
-    console.log(e)
-    let timevalue = this.data.timevalue;
-    timevalue.push('')
+    console.log(this.data.timevalue)
+    var timevalue = this.data.timevalue||[];
+
+    timevalue.push(this.data.clicktime)
     this.setData({
       timevalue: timevalue
     })
   },
   features(e){
     console.log(e)
-    var features = this.data.features
+    var features = this.data.features||[];
+    if (features.indexOf(e.detail.value)>-1){
+      return
+    }
     features.push(e.detail.value)
     this.setData({
       features: features,
@@ -297,11 +303,13 @@ Page({
         }
       }
     }
+    
     that.setData({
       shop_cate: shop_cate,
       type: '',
       shop_settled: app.globalData.config.protocol.shop_settled,
-      choosed: wx.getStorageSync('choosedt') || that.data.choosed
+      choosed: wx.getStorageSync('choosedt') || that.data.choosed,
+      features: JSON.parse(options.apply_info).feature_list
     })
     if (options.shop_id) {
       util.getJSON({ apiUrl: apiurl.shop_showOwn + options.shop_id }, function (res) {
@@ -353,11 +361,11 @@ Page({
 	        cost: result.cost,
 	        // min_person: result.reservation.min_person,
 	        // max_person: result.reservation.max_person,
-	        company_name: result.license_info.company_name,
-	        license_no: result.license_info.license_no,
-	        legal_person: result.license_info.legal_person,
-	        business_address: result.license_info.business_address,
-	        business_scope: result.license_info.business_scope,
+	        company_name: result.license_info.company_name||'',
+          license_no: result.license_info.license_no || '',
+          legal_person: result.license_info.legal_person || '',
+          business_address: result.license_info.business_address || '',
+          business_scope: result.license_info.business_scope || '',
         })
         wx.hideLoading()
       })
@@ -388,7 +396,7 @@ Page({
         longitude: wx.getStorageSync('longitudet'),
         latitude: wx.getStorageSync('latitudet'),
         
-        timevalue: wx.getStorageSync('timevaluet'),
+        timevalue: wx.getStorageSync('timevaluet')||[],
         timevalueR: wx.getStorageSync('timevaluet'),
         room: wx.getStorageSync('roomt'),
         video: wx.getStorageSync('videot'),

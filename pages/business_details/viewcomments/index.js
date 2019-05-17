@@ -87,10 +87,13 @@ Page({
     for (var i in chooseid) {
       data['id[' + i + ']'] = chooseid[i]
     }
-    console.log(data)
+    if (chooseid.length<1){
+      return util.alert('请选择删除内容')
+    }
+    console.log(chooseid.length)
     util.postJSON({ apiUrl: apiurl.shopComment_delShop, data: data }, function (res) {
       util.alert(res.data.message)
-      that.goodsCart()
+      // that.goodsCart()
     })
   },
   /**

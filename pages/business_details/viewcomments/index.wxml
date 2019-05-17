@@ -27,7 +27,7 @@
           <view class='width594'>
             <view class='flex_btw align_center'>
               <view>
-                <view class='size28 color4 hidden1'>{{item.user_nickname}}sdadhkdsssssssssss</view>
+                <view class='size28 color4 hidden1'>{{item.user_nickname}}</view>
               </view>
               <view class='size28 color4 hidden1'>{{item.created_at}}</view>
             </view>

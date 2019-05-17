@@ -1,0 +1,16 @@
+<!--pages/myGreenCredit/list.wxml-->
+<view class='detailed'>
+  <view class='color4fd6f0 size36 bold center'>全部信用记录</view>
+  <block wx:if="{{list.length>0}}">
+    <view wx:for="{{list}}" wx:key="index">
+      <view class='item' wx:if="{{item.value}}">
+        <view class='size28 color6 bold'>{{item.intro}},{{item.value}}分</view>
+        <view class='size24 color9'>{{item.created_at}}</view>
+      </view>
+    </view>
+    
+  </block>
+  <view wx:else>
+    <empty />
+  </view>
+</view>

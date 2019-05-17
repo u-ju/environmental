@@ -83,7 +83,7 @@
           <view class='select' catchtap='selectTap' data-index='{{indexnum}}'>
             <input disabled='true' placeholder='请选择' name='logistics[{{indexnum}}][express_key]' value='{{express_name[indexnum]}}'></input>
           </view>
-          <view class='option_box' style='height:{{show[indexnum]?(order_logistics_express.length>5?300:order_logistics_express.length*60):0}}rpx;'>
+          <view class='option_box' style='height:{{show[indexnum]?(order_logistics_express.length>2?156:order_logistics_express.length*60):0}}rpx;'>
             <text class='option' style='{{index==order_logistics_express.length-1&&"border:0;"}}' wx:for='{{order_logistics_express}}' wx:key='this' data-key='{{item.key}}' data-name='{{item.name}}' catchtap='optionTap' data-indexnum='{{indexnum}}' data-index='{{indexnum}}'>{{item.name}}</text>
           </view>
         </view>
@@ -97,7 +97,7 @@
   </view>
   </view>
   <view class='additem' bindtap='addexpress'>
-    <image src='../../images/sadd.png'></image>
+    <image src='../../images/addspu.png'></image>
     <view>添加物流</view>
   </view>
    <button formType="submit" disabled='{{expressbtn}}' class='surebtn'>确认</button>

@@ -15,7 +15,7 @@
     </navigator>
   </view>
   <view class='fkItem_goods flex align_center' wx:for="{{item.goods_arr}}" wx:key="index" bindtap='tiaozhuan' data-id='{{item.sku_id}}'>
-    <text class='iconfont icon-xuanze size36  icon {{choosecar.sku_id[listnum]}} {{item.sku_id}} {{m1.indexO(choosecar.sku_id[listnum],item.sku_id)==-1?"colorD2":"color27AAD9"}}' bindtap='choosecar' data-sku_id='{{item.sku_id}}' data-count='{{item.count}}' data-listnum='{{listnum}}' data-price='{{item.price}}'></text>
+    <text class='iconfont icon-xuanze size36  icon {{m1.indexO(choosecar.sku_id[listnum],item.sku_id)==-1?"colorD2":"color27AAD9"}}' catchtap='choosecar' data-sku_id='{{item.sku_id}}' data-count='{{item.count}}' data-listnum='{{listnum}}' data-price='{{item.price}}'></text>
     <image src='{{item.thumb}}' class='goospic' mode='aspectFill'></image>
     <view class='fkItem_goods_ms fkItem_goods_ms1'>
       <view class='hidden2'>{{item.spu_name}}</view>
@@ -25,9 +25,9 @@
       <view class='flex_btw align_center'>
         <view class='colorff1919 size28'>￥{{item.price}}</view>
         <view class='stepper'>
-          <image src='../../images/sadd.png' data-sku_id='{{item.sku_id}}' data-symbols='add' data-listnum='{{listnum}}'  data-index='{{index}}'  data-num='{{item.count}}' bindtap='bindcz'></image>
+          <image src='../../images/sadd.png' data-sku_id='{{item.sku_id}}' data-symbols='add' data-listnum='{{listnum}}'  data-index='{{index}}'  data-num='{{item.count}}' catchtap='bindcz'></image>
           <text class='countnum'> {{item.count}} </text>
-          <image src='../../images/sredu.png' data-sku_id='{{item.sku_id}}' data-symbols='reduce' data-listnum='{{listnum}}'  data-index='{{index}}' data-num='{{item.count}}' bindtap='bindcz' hidden='{{item.count==1}}'></image>
+          <image src='../../images/sredu.png' data-sku_id='{{item.sku_id}}' data-symbols='reduce' data-listnum='{{listnum}}'  data-index='{{index}}' data-num='{{item.count}}' catchtap='bindcz' hidden='{{item.count==1}}'></image>
           
         </view>
       </view>

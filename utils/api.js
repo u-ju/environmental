@@ -1,6 +1,8 @@
 // const basePath = 'https://wyhb.zgwyhb.com/api';
 const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
+  credit: basePath + '/front/credit', 
+  credit_index: basePath + '/front/credit/index', 
   goodsCart_update: basePath + '/front/goodsCart/update', 
   goodsCart_index: basePath + '/front/goodsCart/index',
   goodsCart_del: basePath + '/front/goodsCart/del',

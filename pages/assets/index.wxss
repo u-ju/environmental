@@ -16,7 +16,7 @@ page{
   width: calc(33.33% - 2px);
   text-align: center;
   font-size: 36rpx;
-  border-right: 2px solid #27AAD9;
+  border-right: 2px solid #4FD7F1;
   height: 55rpx;
   line-height: 55rpx;
 }
@@ -24,7 +24,7 @@ page{
   border-right:none;
 }
 .tab>view> view.active{
-  color: #27AAD9
+  color: #4FD7F1
 }
 .money image{
   width: 40rpx;
@@ -41,7 +41,7 @@ page{
 .withdrawal{
   width:310rpx;
   height:88rpx;
-  background:#27AAD9;
+  background:#4FD7F1;
   border-radius:44rpx;
   line-height: 88rpx;
   text-align: center;
@@ -49,7 +49,7 @@ page{
   color: white;
 }
 .color299EF0{
-  color: #299EF0;
+  /* color: #299EF0; */
   padding: 0 32rpx;
   text-align: center;
 }

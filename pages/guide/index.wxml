@@ -7,7 +7,7 @@
   </view>
   <block wx:if="{{guide_cate[indexSize1].children.length>0}}">
     <view class="content">
-      <view class="menu-container">
+      <!-- <view class="menu-container">
         <scroll-view scroll-y="true" class='scroll-view ' style='height:{{s_height}}px' scroll-into-view="head-{{indexSize}}">
           <view class="scroll-view-ul">
             <block  wx:for='{{guide_cate[indexSize1].children}}' wx:key="index" id="head-{{index}}">
@@ -20,7 +20,7 @@
             </block>
           </view>
         </scroll-view>
-      </view>
+      </view> -->
 
       <view class="detail-container">
         <view wx:for="{{guide_cate}}" wx:for-item="item" wx:key="{{item.id}}" hidden='{{index!=indexSize}}'>
@@ -28,8 +28,8 @@
             <block wx:if="{{tablen!=0}}" >
               <block wx:for='{{tablen}}' wx:key="index" wx:for-index="indexnum">
                 <view class='listitem' wx:for="{{3}}" wx:key="index">
-                  <image src='{{guide_cate[indexSize1]["children"][indexSize2]["children"][indexnum*3+index]["icon"]}}' class="coverimg" mode='aspectFill' />
-                  <view>{{guide_cate[indexSize1]["children"][indexSize2]["children"][indexnum*3+index]["name"]}}</view>
+                  <image src='{{guide_cate[indexSize1]["children"][indexnum*3+index]["icon"]}}' class="coverimg" mode='aspectFill' />
+                  <view class='size30 bold hidden1'>{{guide_cate[indexSize1]["children"][indexnum*3+index]["name"]}}</view>
                 </view>
               </block>
             </block>

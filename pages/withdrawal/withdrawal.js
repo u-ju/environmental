@@ -16,9 +16,7 @@ Page({
     show:true,
     is_password:"",
     withdraw_flow:[
-      { key: "wechat", icon: "https://wyhb-res-pr.zgwyhb.com/views/wallet/flow_wechat.png", name: "微信" },
-      { key: "alipay", icon: "https://wyhb-res-pr.zgwyhb.com/views/wallet/flow_alipay.png", name: "支付宝" },
-      { key: "bankcard", icon: "https://wyhb-res-pr.zgwyhb.com/views/wallet/flow_bankcard.png", name: "银行卡" }
+      
     ],
     current:"wechat"
   },

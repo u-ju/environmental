@@ -412,7 +412,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 /* 数字输入框 */
 /*主容器*/
 .stepper {
-  height: 22rpx;
+  height: 34rpx;
   border-radius: 5px;
   display: flex;
   flex-direction: row-reverse;
@@ -420,20 +420,20 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 /*加号和减号*/
 .stepper image {
   /* float: left; */
-  width:22rpx;
-  height:22rpx;
+  width:30rpx;
+  height:30rpx;
   overflow: hidden;
 }
 /*数值*/
 .stepper input,.countnum {
   display: inline-block;
-  width:30rpx;
-  height:22rpx;
+  width:40rpx;
+  height:30rpx;
   margin: 0 auto;
   text-align: center;
-  font-size:22rpx;
+  font-size:28rpx;
   color: #27AAD9;
-  line-height: 22rpx;
+  line-height: 30rpx;
 }
 /*普通样式*/
 .stepper .normal {

@@ -2,7 +2,7 @@
 
 page {
   border: none;
-  font-size: 24rpx;
+  font-size: 30rpx;
 }
 
 .overflow {
@@ -132,8 +132,8 @@ page {
   color: transparent;
 }
 .coverimg{
-  width: 100rpx;
-  height: 100rpx;
+  width: 170rpx;
+  height: 170rpx;
   margin-bottom: 10rpx;
   border-radius:10rpx;
 }

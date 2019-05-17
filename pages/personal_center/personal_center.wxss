@@ -94,12 +94,11 @@ page{
   height: 50rpx;
   border-radius: 30rpx;
   position: relative;
-  margin-bottom: 10rpx;
 }
 .badgebg{
   position: absolute;
   width: 178rpx;
-  height: 60rpx;
+  height: 50rpx;
   top: 0;
   left: 0;
 }
@@ -127,7 +126,7 @@ page{
 .badgename{
   width: 172rpx;
   position: absolute;
-  top: 0;
+  top: -4rpx;
   /* left: 50%;
   transform: translate(-50%,-50%); */
   text-align: center;
@@ -144,7 +143,7 @@ page{
   background:linear-gradient(to right, rgba(255,255,255,.6) , #4FD6F0);
   border-radius:34rpx;
   padding-left: 23rpx;
-  margin-right: -32rpx;
+  /* margin-right: -32rpx; */
   opacity: 1;
   line-height: 54rpx
 }
@@ -161,7 +160,7 @@ page{
   padding: 40rpx 0;
   background:rgba(255,255,255,1);
   border-radius:10rpx;
-  margin: -60rpx auto 20rpx auto;
+  margin: -40rpx auto 20rpx auto;
   position: relative;
   z-index: 2;
   box-shadow:0px 4rpx 8rpx 0px rgba(151, 151, 151, 0.1);
@@ -169,7 +168,7 @@ page{
 .container1 >.flex_col_1 {
   width: 490rpx;
   margin-top: 10rpx;
-  height: 182rpx;
+  height: 140rpx;
 }
 .pagetop{
   background-color: #F8F8F8;
@@ -214,4 +213,11 @@ page{
 }
 .settting .iconfont{
   font-size: 60rpx;
+}
+.btnhead{
+  height: 120rpx !important;
+  position: absolute;
+  right: 0;
+  top: 130rpx;
+  z-index: 2;
 }

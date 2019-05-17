@@ -23,7 +23,7 @@
       <view class='flex'>
         <image class='locations' src='../../images/locationd.png'></image>
         <view class='width110 hidden1'>{{address}}</view>
-        <text class='iconfont icon-xiajiantou'></text>
+        <!-- <text class='iconfont icon-xiajiantou'></text> -->
       </view>
       <view class='searchall flex_btw align_center' bindtap='search' > 
         <text class='iconfont icon-sousuo color4 searchall_pic' ></text>

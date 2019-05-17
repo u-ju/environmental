@@ -6,7 +6,7 @@
   </view>
   <view class='searchall flex_btw align_center'>
     <text class='iconfont icon-sousuo color4 searchall_pic'></text>
-    <input value='{{search}}' name='search' bindconfirm="searchSubmit"></input>
+    <input value='{{keywords}}' name='keywords' bindinput='search' placeholder='输入想要查找的内容' bindconfirm="searchSubmit"></input>
     <image class='logoi' src='../../images/logoi.png' bindtap='searchSubmit'></image>
   </view>
 </view>
@@ -87,7 +87,7 @@
 <scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}"  style="height:{{s_height}}px;">
 
   <view class='shopitem flex_btw wrap'>
-    <block wx:for="{{4}}">
+    <!-- <block wx:for="{{4}}"> -->
       <view class='shop' wx:for="{{list}}" wx:key="index" wx:for-item="list" bindtap='detail' id='{{list.shop_id}}'>
         <image class='shoppic' src="{{list.thumb}}" mode='aspectFill'></image>
         <view class='shoptext flex_col flex_btw'>
@@ -95,7 +95,7 @@
           <view class='hidden1 color898989'>{{list.intro}}</view>
         </view>
       </view>
-    </block>
+    <!-- </block> -->
     <view wx:if="{{list.length==0}}" class='empty'>
       <empty />
     </view>
