@@ -4,7 +4,7 @@ var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
 // 引入SDK核心类
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
-var bmap = require('../../utils/bmap-wx.min.js'); 
+// var bmap = require('../../utils/bmap-wx.min.js'); 
 var qqmapsdk;
 
 Page({
@@ -117,7 +117,16 @@ Page({
     //   cate_ids: shop_cate[0].id,
     //   tablen: Math.ceil(shop_cate.length / 10)
     // })
-    that.address()
+    // that.address()
+    util.address(function (data){
+      console.log(data)
+      that.setData({
+        // address: data.address,
+        latitude: data.latitude,
+        longitude: data.longitude,
+      })
+      that.areaparse(data.address)
+    })
     that.shop_conf()
     if (shop_cate.length>0){
       if (options.keywords){
@@ -128,11 +137,7 @@ Page({
           indexSize: -1,
           cate_id:''
         })
-        // this.init()
-      }else{
-        that.init();
       }
-    
   }else{
     wx.hideLoading()
     }
@@ -169,13 +174,7 @@ Page({
   init( page = 1) {
     var that = this;
     var data = { source:"offline",cate_id: that.data.cate_id, page: page, keywords: that.data.keywords, area_id: that.data.area_id, location: that.data.location, feature: this.data.feature, cost: this.data.cost, sort: that.data.sort }
-    for(var i in data){
-      if(data[i]===''){
-        
-        delete data[i]
-      }
-    }
-    console.log(data)
+    
     util.getJSON({
       apiUrl: apiurl.shop + "?type=" + that.data.type , 
       data: data
@@ -198,31 +197,7 @@ Page({
       wx.hideLoading()
     })
   },
-  address(){
-    var that = this;
-    // 新建百度地图对象 
-    var BMap = new bmap.BMapWX({
-      ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
-    });
-    var fail = function (data) {
-      console.log(data)
-    };
-    var success = function (data) {
-      var wxMarkerData = data.wxMarkerData;
-      var address = wxMarkerData[0].address
-      that.setData({
-        latitude: wxMarkerData[0].latitude,
-        longitude: wxMarkerData[0].longitude,
-        
-      });
-      that.areaparse(address)
-    }
-    // 发起regeocoding检索请求 
-    BMap.regeocoding({
-      fail: fail,
-      success: success,
-    }); 
-  },
+  
   areaparse(area) {
     var that = this;
     util.getJSON({ apiUrl: apiurl.areaparse + area }, function (res) {
@@ -321,7 +296,7 @@ Page({
     }
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
-        scrollTop: 320
+        scrollTop: 322
       })
     } else {
       wx.showModal({

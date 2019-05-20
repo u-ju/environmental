@@ -12,10 +12,10 @@
 </view>
 <view class='flex align_center justify_center brx'>
   <navigator url='../page/index?url={{credit_rule}}'>
-    <view class='color4fd6f0 size28 br'>提现规则</view>
+    <view class='color4fd6f0 size28 br'>信用规则</view>
   </navigator>
   <navigator url='list'>
-    <view class='color4fd6f0 size28'>提现记录</view>
+    <view class='color4fd6f0 size28'>信用记录</view>
   </navigator>
 </view>
 <view class='detailed'>

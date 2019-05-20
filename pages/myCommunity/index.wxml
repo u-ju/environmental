@@ -2,11 +2,17 @@
 <form  bindsubmit="formSubmit">
 <view class='flex align_center'>
   <view class='left'>所在地区</view>
-  <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' bind:choosea='choosearea' />
+  <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' placeholder='请选择地区' bind:choosea='choosearea' />
 </view>
 <view class='flex align_center'>
   <view class='left'>小区名称</view>
-  <input  name='biotope_name' value='{{biotope_name}}'></input>
+  <input  name='biotope_name' placeholder='请输入小区名称' value='{{biotope_name}}'></input>
+</view>
+<view class='flex align_center textC'>
+  <input  name='dong_name' placeholder='例：1' type='Number' value='{{dong_name}}'></input>
+  <view class='left'>栋</view>
+  <input  name='unit_name' placeholder='例：1' type='Number' value='{{unit_name}}'></input>
+  <view class='left'>单元</view>
 </view>
   <button class='submitButton' disabled='{{disabled}}'  form-type="submit">保存</button>
 </form>

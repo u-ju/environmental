@@ -232,6 +232,9 @@ Page({
     if (JSON.stringify(e.currentTarget.dataset.attach) != "{}") {
       for (var j in e.currentTarget.dataset.attach) {
         url = url + "&" + j + "=" + e.currentTarget.dataset.attach[j]
+        if (j=="area_arr"){
+          url = url + "&area_arr=" + JSON.stringify(e.currentTarget.dataset.attach['area_arr'])
+        }
       }
     }
     // console.log(url)

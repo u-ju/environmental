@@ -1,8 +1,9 @@
 const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
+var bmap = require('bmap-wx.min.js'); 
 var build = 99999999
-// var build = 20190430
+// var build = 20190517
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -120,7 +121,8 @@ module.exports = {
   upload_pic: upload_pic,
   popup: popup,
   allowUploadFormat: allowUploadFormat,
-  uploadV: uploadV
+  uploadV: uploadV,
+  address: address
 }
 
 function popup(content, confirm, cancel){
@@ -443,6 +445,33 @@ function navigateBack(deltaz=1, timer=3000){
     })
   }, timer);
 }
+function address(suc){
+  var that = this;
+  // 新建百度地图对象 
+  var BMap = new bmap.BMapWX({
+    ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
+  });
+  var fail = function (data) {
+    console.log(data)
+  };
+  var success = function (data) {
+    var wxMarkerData = data.wxMarkerData;
+    var address = wxMarkerData[0].address
+    suc(wxMarkerData[0])
+    // that.setData({
+    //   latitude: wxMarkerData[0].latitude,
+    //   longitude: wxMarkerData[0].longitude,
+
+    // });
+    // that.areaparse(address)
+
+  }
+  // 发起regeocoding检索请求 
+  BMap.regeocoding({
+    fail: fail,
+    success: success,
+  });
+}
 /**
  * 用于网络 GET 请求, 标准格式: {url:api, method: GET, data: xxxx}
  */
@@ -458,6 +487,11 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
       // 'token': 'zwj',
       'channel':'let',
       'build': build
+    }
+  }
+  for (var i in formData) {
+    if (formData[i] === '') {
+      delete formData[i]
     }
   }
   wx.request({
@@ -532,6 +566,11 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
       // 'token': 'zwj',
       'channel': 'let',
       'build': build
+    }
+  }
+  for (var i in formData) {
+    if (formData[i] === '') {
+      delete formData[i]
     }
   }
   wx.request({

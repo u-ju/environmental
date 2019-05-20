@@ -66,29 +66,30 @@ Page({
   //   })
     
   // },
-  address() {
-    var that = this;
-    // 新建百度地图对象 
-    var BMap = new bmap.BMapWX({
-      ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
-    });
-    var fail = function (data) {
-      console.log(data)
-    };
-    var success = function (data) {
-      var wxMarkerData = data.wxMarkerData;
-      that.setData({
-        latitude: wxMarkerData[0].latitude,
-        longitude: wxMarkerData[0].longitude,
-        address: wxMarkerData[0].address
-      });
-    }
-    // 发起regeocoding检索请求 
-    BMap.regeocoding({
-      fail: fail,
-      success: success,
-    });
-  },
+  // address() {
+  //   var that = this;
+  //   // 新建百度地图对象 
+  //   var BMap = new bmap.BMapWX({
+  //     ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
+  //   });
+  //   var fail = function (data) {
+  //     console.log(data)
+  //   };
+  //   var success = function (data) {
+  //     var wxMarkerData = data.wxMarkerData;
+  //     that.setData({
+  //       latitude: wxMarkerData[0].latitude,
+  //       longitude: wxMarkerData[0].longitude,
+  //       address: wxMarkerData[0].address
+  //     });
+  //   }
+  //   // 发起regeocoding检索请求 
+  //   BMap.regeocoding({
+  //     fail: fail,
+  //     success: success,
+  //   });
+  // },
+  
   onLoad: function (options) {
     var that  = this;
     this.refreshView = this.selectComponent("#refreshView")
@@ -124,8 +125,14 @@ Page({
         pjurl: options.pjurl
       })
     }
-    that.address()
-    
+    util.address(function (data) {
+      util.getJSON({ apiUrl: apiurl.areaparse + data.address }, function (res) {
+        that.setData({
+          area: res.data.result.list[1],
+          address: res.data.result.list[1]["name"]
+        })
+      })
+    })
   },
   init(){
     var that =this;

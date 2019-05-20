@@ -238,7 +238,7 @@ page {
   position: relative;
 }
 
-.center {
+.center,.textC {
   text-align: center;
 }
 
@@ -442,4 +442,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 /*禁用样式*/
 .stepper .disable {
   color: #eee;
+}
+.textR{
+  text-align: right
 }

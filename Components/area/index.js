@@ -31,6 +31,10 @@ Component({
     tokonw:{
       type: String,
       value: ''
+    },
+    placeholder:{
+      type: String,
+      value: ''
     }
   },
 
@@ -46,7 +50,9 @@ Component({
     current:0,
     isbiotope:false,
     biotopecurrent:-1,
-    biotope_name:''
+    biotope_name:'',
+    dong:'',
+    unit:''
   },
 
   methods: {
@@ -82,11 +88,16 @@ Component({
       });
     },
     cascadeDismiss: function () {
+      var that = this
       this.animation.translateY(285).step();
       this.setData({
         animationData: this.animation.export(),
         maskVisual: 'hidden'
       });
+      console.log(that.data.cengji)
+      console.log(that.data.index)
+      console.log(that.data.current)
+      return that.triggerEvent("choosea", { areaSelectedStr: that.data.areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][that.data.index]["area_id"], area: that.data.cengji[that.data.current]['area'][that.data.index], isbiotope: that.data.isbiotope, konwname: that.data.konwname, biotope_name: that.data.biotope_name, dong: that.data.dong, unit: that.data.unit })
     },
     choosearea(e) {
       var that = this;
@@ -95,21 +106,22 @@ Component({
       cengji[this.data.current]['currentname'] = this.data.cengji[this.data.current]['array'][index]
       cengji[this.data.current]['currentindex'] = index
       this.setData({
-        cengji: cengji
+        cengji: cengji,
+        index:index
       });
-      
       if (cengji[this.data.current]['area'][0]["type"]==that.data.ban){//在哪一层停止
         var areaSelectedStr = ''
         for (var i in cengji) {
           areaSelectedStr = areaSelectedStr + " " + cengji[i].currentname
           if (cengji[i]['area'][0]["type"] == that.data.tokonw) {//知道与之对应的选择的昵称
             this.setData({
-              konwname: cengji[i].currentname
+              konwname: cengji[i].currentname,
+              areaSelectedStr: areaSelectedStr
             })
           }
         }
         that.cascadeDismiss();
-        return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, konwname: that.data.konwname })
+        // return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, konwname: that.data.konwname, biotope_name: that.data.biotope_name, dong: that.data.dong, unit: that.data.unit })
       }
       
       console.log(cengji[this.data.current]['area'][0]["type"])
@@ -118,6 +130,16 @@ Component({
           isbiotope: true,
           biotopecurrent: this.data.current,
           biotope_name: cengji[this.data.current]['array'][index]
+        })
+      }
+      if (cengji[this.data.current]['area'][0]["type"] == 'dong') {
+        this.setData({
+          dong: cengji[this.data.current]['array'][index]
+        })
+      }
+      if (cengji[this.data.current]['area'][0]["type"] == 'unit') {
+        this.setData({
+          unit: cengji[this.data.current]['array'][index]
         })
       }
       if (this.data.current < that.data.biotopecurrent) {
@@ -143,7 +165,7 @@ Component({
             area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"]
           });
           that.cascadeDismiss();
-          return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, biotope_name: that.data.biotope_name, konwname: that.data.konwname})
+          // return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, biotope_name: that.data.biotope_name, konwname: that.data.konwname, dong: that.data.dong, unit: that.data.unit})
         }
         // var current = that.data.current
 

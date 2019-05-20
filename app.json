@@ -1,7 +1,9 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/myCommunity/index",
+    
+    
     "pages/myGreenCredit/index",
     "pages/myGreenCredit/list",
     "pages/guide/index",
@@ -52,7 +54,6 @@
     "pages/lostFound/release/index",
     "pages/withdrawal/withdrawal",
     "pages/home_orders/index",
-    "pages/myCommunity/index",
     "pages/page/index",
     "pages/address_edit/index",
     "pages/my_invitation/index",
