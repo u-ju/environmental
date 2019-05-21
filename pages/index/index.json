@@ -3,5 +3,6 @@
     "menu": "../../Components/menu/index",
     "wux-cascader": "../../Components/cascader/index",
     "refresh-view": "../../Components/RefreshView/refresh-view"
-  }
+  },
+  "enablePullDownRefresh": true
 }

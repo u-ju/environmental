@@ -173,24 +173,17 @@ Page({
     list[listnum]["goods_arr"][index]["count"] = num
     
     if (skuID_last != sku_id) {
-      console.log(skuID_last, sku_id)
-      this.setData({
-        skuID_last: sku_id,
-        num_last: num
-      },function(){
-        that.updatacar(skuID_last, num_last, listnum);
-      })
-      
+      console.log(skuID_last, num_last)
+      that.updatacar(skuID_last, num_last, listnum);
     }
     allchoosecar.count[listnum][allchoosecar.sku_id[listnum].indexOf(sku_id)] = num
     
     that.setData({
       list: list,
-      allchoosecar: allchoosecar
+      allchoosecar: allchoosecar,
+      skuID_last: sku_id,
+      num_last: num
     })
-
-    
-
     if (choosecar.sku_id[listnum].indexOf(sku_id) > -1) {
       choosecar.count[listnum][choosecar.sku_id[listnum].indexOf(sku_id)] = num
       that.setData({
@@ -201,10 +194,6 @@ Page({
     lastTime = new Date().getTime();
     setTimeout(function () {
       if (lastTime + 2000 > new Date().getTime()) {
-        that.setData({
-          skuID_last: sku_id,
-          num_last: num
-        })
         return;
       }
       that.updatacar(sku_id, num, listnum);

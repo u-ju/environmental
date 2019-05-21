@@ -52,44 +52,15 @@ Page({
     ],
     shop_cate:[],
     visible1:false,
-    value1:[]
+    value1:[],
+    pullState:1
   },
   search(e) {
     wx.navigateTo({
       url: '../search/index',
     })
   },
-  // searchSubmit(e) {
-  //   var keywords = "&keywords=" + this.data.search
-  //   this.setData({
-  //     keywords: keywords
-  //   })
-    
-  // },
-  // address() {
-  //   var that = this;
-  //   // 新建百度地图对象 
-  //   var BMap = new bmap.BMapWX({
-  //     ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
-  //   });
-  //   var fail = function (data) {
-  //     console.log(data)
-  //   };
-  //   var success = function (data) {
-  //     var wxMarkerData = data.wxMarkerData;
-  //     that.setData({
-  //       latitude: wxMarkerData[0].latitude,
-  //       longitude: wxMarkerData[0].longitude,
-  //       address: wxMarkerData[0].address
-  //     });
-  //   }
-  //   // 发起regeocoding检索请求 
-  //   BMap.regeocoding({
-  //     fail: fail,
-  //     success: success,
-  //   });
-  // },
-  
+
   onLoad: function (options) {
     var that  = this;
     this.refreshView = this.selectComponent("#refreshView")
@@ -137,7 +108,7 @@ Page({
   init(){
     var that =this;
     util.getJSON({ apiUrl: apiurl.index }, function (res) {
-      var result = res.data.result
+      var result = res.data.result;
       var tag = result.tag;
       // for (var i in result.tag) {
       //   tag.push(result.tag[i]);
@@ -357,27 +328,57 @@ Page({
       url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.sku_id
     })
   },
-  //触摸开始
-  handletouchstart: function (event) {
-    this.refreshView.handletouchstart(event)
-  },
-  //触摸移动
-  handletouchmove: function (event) {
-    this.refreshView.handletouchmove(event)
-  },
-  //触摸结束
-  handletouchend: function (event) {
-    this.refreshView.handletouchend(event)
-  },
-  //触摸取消
-  handletouchcancel: function (event) {
-    this.refreshView.handletouchcancel(event)
-  },
-  //页面滚动
-  onPageScroll: function (event) {
-    this.refreshView.onPageScroll(event)
-  },
   onPullDownRefresh: function () {
-    setTimeout(() => { this.refreshView.stopPullRefresh() }, 5000)
-  }
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+    var that = this;
+    this.setData({
+      pullState:0
+    })
+    // util.getJSON({ apiUrl: apiurl.list + "?cate_id=" + that.data.cate_id + "&page=1" }, function (res) {
+    //   var result = res.data.result
+    //   console.log(result)
+    //   that.setData({
+    //     list: result.list,
+    //     page: result.page,
+    //     last: false
+    //   })
+      // 隐藏导航栏加载框
+      // wx.hideNavigationBarLoading();
+      // 停止下拉动作
+      // wx.stopPullDownRefresh();
+    // })
+    setTimeout(function(){
+      that.setData({
+        pullState: 1
+      })
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+    },1500)
+  },
+  //触摸开始
+  // handletouchstart: function (event) {
+  //   this.refreshView.handletouchstart(event)
+  // },
+  // //触摸移动
+  // handletouchmove: function (event) {
+  //   this.refreshView.handletouchmove(event)
+  // },
+  // //触摸结束
+  // handletouchend: function (event) {
+  //   this.refreshView.handletouchend(event)
+  // },
+  // //触摸取消
+  // handletouchcancel: function (event) {
+  //   this.refreshView.handletouchcancel(event)
+  // },
+  // //页面滚动
+  // onPageScroll: function (event) {
+  //   this.refreshView.onPageScroll(event)
+  // },
+  // onPullDownRefresh: function () {
+  //   setTimeout(() => { this.refreshView.stopPullRefresh() }, 1000)
+  // }
 })
+// ,
+//   "enablePullDownRefresh": true

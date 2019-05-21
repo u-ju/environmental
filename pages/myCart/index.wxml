@@ -5,51 +5,55 @@
   }
   module.exports.indexO = indexO;
 </wxs>
-<block  wx:if="{{list.length>0}}">
-<view class='shitem' wx:for="{{list}}" wx:key="index" wx:for-index="listnum">
-  <view class='color4 borbtm bold align_center size28'>
-    <text class='iconfont icon-xuanze size36  icon  {{choosecar.sku_id[listnum].length==item.goods_arr.length?"color27AAD9":"colorD2"}}' bindtap='choosecard'  data-listnum='{{listnum}}'  ></text>
-    <navigator class='color4 bold' url='../business_details/index?id={{item.shop_id}}' wx:if="{{item.shop_id}}">
-      <text>{{item.title}}</text>
-      <text class='iconfont icon-jiantou bold size24'></text>
-    </navigator>
-  </view>
-  <view class='fkItem_goods flex align_center' wx:for="{{item.goods_arr}}" wx:key="index" bindtap='tiaozhuan' data-id='{{item.sku_id}}'>
-    <text class='iconfont icon-xuanze size36  icon {{m1.indexO(choosecar.sku_id[listnum],item.sku_id)==-1?"colorD2":"color27AAD9"}}' catchtap='choosecar' data-sku_id='{{item.sku_id}}' data-count='{{item.count}}' data-listnum='{{listnum}}' data-price='{{item.price}}'></text>
-    <image src='{{item.thumb}}' class='goospic' mode='aspectFill'></image>
-    <view class='fkItem_goods_ms fkItem_goods_ms1'>
-      <view class='hidden2'>{{item.spu_name}}</view>
-      <view class='color4 size28'>
-        <view class='one-hidden width'>{{item.sku_name}}</view>
+<block wx:if="{{list.length>0}}">
+  <block wx:if="{{list[0]['title']}}">
+    <view class='shitem' wx:for="{{list}}" wx:key="index" wx:for-index="listnum">
+      <view class='color4 borbtm bold align_center size28'>
+        <text class='iconfont icon-xuanze size36  icon  {{choosecar.sku_id[listnum].length==item.goods_arr.length?"color27AAD9":"colorD2"}}' bindtap='choosecard' data-listnum='{{listnum}}'></text>
+        <navigator class='color4 bold' url='../business_details/index?id={{item.shop_id}}' wx:if="{{item.shop_id}}">
+          <text>{{item.title}}</text>
+          <text class='iconfont icon-jiantou bold size24'></text>
+        </navigator>
       </view>
-      <view class='flex_btw align_center'>
-        <view class='colorff1919 size28'>￥{{item.price}}</view>
-        <view class='stepper'>
-          <image src='../../images/sadd.png' data-sku_id='{{item.sku_id}}' data-symbols='add' data-listnum='{{listnum}}'  data-index='{{index}}'  data-num='{{item.count}}' catchtap='bindcz'></image>
-          <text class='countnum'> {{item.count}} </text>
-          <image src='../../images/sredu.png' data-sku_id='{{item.sku_id}}' data-symbols='reduce' data-listnum='{{listnum}}'  data-index='{{index}}' data-num='{{item.count}}' catchtap='bindcz' hidden='{{item.count==1}}'></image>
-          
+      <view class='fkItem_goods flex align_center' wx:for="{{item.goods_arr}}" wx:key="index" bindtap='tiaozhuan' data-id='{{item.sku_id}}'>
+        <text class='iconfont icon-xuanze size36  icon {{m1.indexO(choosecar.sku_id[listnum],item.sku_id)==-1?"colorD2":"color27AAD9"}}' catchtap='choosecar' data-sku_id='{{item.sku_id}}' data-count='{{item.count}}' data-listnum='{{listnum}}' data-price='{{item.price}}'></text>
+        <image src='{{item.thumb}}' class='goospic' mode='aspectFill'></image>
+        <view class='fkItem_goods_ms fkItem_goods_ms1'>
+          <view class='hidden2'>{{item.spu_name}}</view>
+          <view class='color4 size28'>
+            <view class='one-hidden width'>{{item.sku_name}}</view>
+          </view>
+          <view class='flex_btw align_center'>
+            <view class='colorff1919 size28'>￥{{item.price}}</view>
+            <view class='stepper'>
+              <image src='../../images/sadd.png' data-sku_id='{{item.sku_id}}' data-symbols='add' data-listnum='{{listnum}}' data-index='{{index}}' data-num='{{item.count}}' catchtap='bindcz'></image>
+              <text class='countnum'> {{item.count}} </text>
+              <image src='../../images/sredu.png' data-sku_id='{{item.sku_id}}' data-symbols='reduce' data-listnum='{{listnum}}' data-index='{{index}}' data-num='{{item.count}}' catchtap='bindcz' hidden='{{item.count==1}}'></image>
+
+            </view>
+          </view>
         </view>
       </view>
     </view>
-  </view>
-</view>
-<view class='flex_btw fixb'>
-  <view class='flex_btw leftbtn'>
-    <view class='center' bindtap='allchoosecar'>
-      <text class='iconfont icon-xuanze  {{all==1?"color27AAD9":"colorD2"}}'></text>
-      <view>全选</view>
+    <view class='flex_btw fixb'>
+      <view class='flex_btw leftbtn'>
+        <view class='center' bindtap='allchoosecar'>
+          <text class='iconfont icon-xuanze  {{all==1?"color27AAD9":"colorD2"}}'></text>
+          <view>全选</view>
+        </view>
+        <view class='center' bindtap='choosecardel'>
+          <text class='iconfont icon-shanchu colorD2'></text>
+          <view>删除</view>
+        </view>
+      </view>
+      <view class='allmoney'>
+        <view>合计：
+          <text class='size36 colorff1919'>￥{{carmoney}}</text>
+        </view>
+      </view>
+      <view class='buybtn size36' bindtap='settlement'>去支付</view>
     </view>
-    <view class='center' bindtap='choosecardel'>
-      <text class='iconfont icon-shanchu colorD2'></text>
-      <view>删除</view>
-    </view>
-  </view>
-  <view class='allmoney'>
-    <view>合计：<text class='size36 colorff1919'>￥{{carmoney}}</text></view>
-  </view>
-  <view class='buybtn size36' bindtap='settlement'>去支付</view>
-</view>
+  </block>
 </block>
 <view wx:else class='none center'>
   <image src='../../images/gouwuche.png' class='gouwuche'></image>

@@ -96,7 +96,7 @@
 <view class='swiper_con' wx:else>
   <view class='flex_btw'>
     <view class='lx_item'>
-      <image src='../../images/phone2x.png'></image>
+      <image src='../../images/phonea.png'></image>
       <view class='size28 color6'>联系电话</view>
       <view class='color6 margin'>400-633-2333</view>
       <view class='size20 color9'>周一至周日9:00-21:00</view>

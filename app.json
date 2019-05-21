@@ -2,8 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/myCommunity/index",
-    
-    
     "pages/myGreenCredit/index",
     "pages/myGreenCredit/list",
     "pages/guide/index",

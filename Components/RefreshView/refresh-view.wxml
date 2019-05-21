@@ -3,6 +3,7 @@
   <view class='refresh-layout' style='height:{{refreshHeight}}rpx;'>
     <!-- <view class="refresh-loading" hidden="{{0!=pullState}}"></view>
     <text class="refresh-tips">{{pullState==1?'下拉刷新...':pullState==0?'正在刷新...':'松开刷新...'}}</text> -->
-    <image src='../../images/logoi.png' mode='aspectFit'></image>
+    <!-- <image src='../../images/logoi.png' mode='aspectFit'></image> -->
+    <view class="refresh-loading" ></view>
   </view>
 </view>
