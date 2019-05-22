@@ -11,9 +11,9 @@ Component({
    */
   properties: {
     // 弹窗标题
-    title: {            // 属性名
-      type: String,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
-      value: '所在地区'     // 属性初始值（可选），如果未指定则会根据类型选择一个
+    title: { // 属性名
+      type: String, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
+      value: '所在地区' // 属性初始值（可选），如果未指定则会根据类型选择一个
     },
     classN: {
       type: String,
@@ -24,15 +24,15 @@ Component({
       type: String,
       value: ''
     },
-    areaSelectedStr:{
+    areaSelectedStr: {
       type: String,
       value: ''
     },
-    tokonw:{
+    tokonw: {
       type: String,
       value: ''
     },
-    placeholder:{
+    placeholder: {
       type: String,
       value: ''
     }
@@ -45,14 +45,19 @@ Component({
     disabled: false,
     item: '',
     url: 'shippingAddress_store',
-    cengji: [{ currentname: '请选择', array: [], area: [], currentindex: -1 }],
+    cengji: [{
+      currentname: '请选择',
+      array: [],
+      area: [],
+      currentindex: -1
+    }],
     currentindex: 0,
-    current:0,
-    isbiotope:false,
-    biotopecurrent:-1,
-    biotope_name:'',
-    dong:'',
-    unit:''
+    current: 0,
+    isbiotope: false,
+    biotopecurrent: -1,
+    biotope_name: '',
+    dong: '',
+    unit: ''
   },
 
   methods: {
@@ -60,13 +65,13 @@ Component({
      * 公有方法
      */
 
-    onload(){
+    onload() {
       this.loadAddress()
     },
     // 地区选择
-    loadAddress: function (options) {
+    loadAddress: function(options) {
       var that = this;
-      this.getArea(0, function (array, area) {
+      this.getArea(0, function(array, area) {
         var cengji = that.data.cengji
         cengji[0]['array'] = array
         cengji[0]['area'] = area
@@ -75,7 +80,7 @@ Component({
         });
       });
     },
-    cascadePopup: function () {
+    cascadePopup: function() {
       var animation = wx.createAnimation({
         duration: 500,
         timingFunction: 'ease-in-out',
@@ -87,44 +92,51 @@ Component({
         maskVisual: 'show'
       });
     },
-    cascadeDismiss: function () {
+    cascadeDismiss: function() {
       var that = this
       this.animation.translateY(285).step();
       this.setData({
         animationData: this.animation.export(),
         maskVisual: 'hidden'
       });
-      console.log(that.data.cengji)
-      console.log(that.data.index)
-      console.log(that.data.current)
-      return that.triggerEvent("choosea", { areaSelectedStr: that.data.areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][that.data.index]["area_id"], area: that.data.cengji[that.data.current]['area'][that.data.index], isbiotope: that.data.isbiotope, konwname: that.data.konwname, biotope_name: that.data.biotope_name, dong: that.data.dong, unit: that.data.unit })
+      return that.triggerEvent("choosea", {
+        areaSelectedStr: that.data.areaSelectedStr,
+        area_id_val: that.data.cengji[that.data.current]['area'][that.data.index]["area_id"],
+        area: that.data.cengji[that.data.current]['area'][that.data.index],
+        isbiotope: that.data.isbiotope,
+        konwname: that.data.konwname,
+        biotope_name: that.data.biotope_name,
+        dong: that.data.dong,
+        unit: that.data.unit
+      })
     },
     choosearea(e) {
       var that = this;
       var index = e.currentTarget.dataset.index;
-      var cengji = this.data.cengji;
+      var cengji = this.data.cengji,
+        konwname = '';
       cengji[this.data.current]['currentname'] = this.data.cengji[this.data.current]['array'][index]
       cengji[this.data.current]['currentindex'] = index
       this.setData({
         cengji: cengji,
-        index:index
+        index: index
       });
-      if (cengji[this.data.current]['area'][0]["type"]==that.data.ban){//在哪一层停止
+      if (cengji[this.data.current]['area'][0]["type"] == that.data.ban) { //在哪一层停止
         var areaSelectedStr = ''
         for (var i in cengji) {
           areaSelectedStr = areaSelectedStr + " " + cengji[i].currentname
-          if (cengji[i]['area'][0]["type"] == that.data.tokonw) {//知道与之对应的选择的昵称
-            this.setData({
-              konwname: cengji[i].currentname,
-              areaSelectedStr: areaSelectedStr
-            })
+          if (cengji[i]['area'][0]["type"] == that.data.tokonw) { //知道与之对应的选择的昵称
+            konwname = cengji[i].currentname
           }
         }
-        that.cascadeDismiss();
+        this.setData({
+          konwname: konwname,
+          areaSelectedStr: areaSelectedStr
+        })
+        return that.cascadeDismiss();
         // return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, konwname: that.data.konwname, biotope_name: that.data.biotope_name, dong: that.data.dong, unit: that.data.unit })
       }
-      
-      console.log(cengji[this.data.current]['area'][0]["type"])
+
       if (cengji[this.data.current]['area'][0]["type"] == 'biotope') {
         this.setData({
           isbiotope: true,
@@ -145,32 +157,35 @@ Component({
       if (this.data.current < that.data.biotopecurrent) {
         this.setData({
           isbiotope: false,
-          biotope_name:''
+          biotope_name: ''
         })
       }
-      this.getArea(this.data.cengji[that.data.current]['area'][index]["area_id"], function (array, area) {
+      this.getArea(this.data.cengji[that.data.current]['area'][index]["area_id"], function(array, area) {
         if (area.length == 0) {
           var areaSelectedStr = ''
           for (var i in cengji) {
             if (i > that.data.current) {
               cengji.splice(i, 1)
-             
-            }else{
+
+            } else {
               areaSelectedStr = areaSelectedStr + " " + cengji[i].currentname
             }
-            
+
           }
           that.setData({
             areaSelectedStr: areaSelectedStr,
             area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"]
           });
-          that.cascadeDismiss();
-          // return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, biotope_name: that.data.biotope_name, konwname: that.data.konwname, dong: that.data.dong, unit: that.data.unit})
+          return that.cascadeDismiss();
         }
-        // var current = that.data.current
 
         if (that.data.currentindex <= that.data.current) {
-          cengji.push({ currentname: '请选择', array: array, area: area, currentindex: -1 })
+          cengji.push({
+            currentname: '请选择',
+            array: array,
+            area: area,
+            currentindex: -1
+          })
 
         } else {
 
@@ -179,7 +194,12 @@ Component({
               cengji.splice(i, 1)
             }
           }
-          cengji[that.data.current + 1] = { currentname: '请选择', array: array, area: area, currentindex: -1 }
+          cengji[that.data.current + 1] = {
+            currentname: '请选择',
+            array: array,
+            area: area,
+            currentindex: -1
+          }
         }
         that.setData({
           cengji: cengji,
@@ -189,25 +209,28 @@ Component({
 
       });
     },
-    getArea: function (pid, cb) {
+    getArea: function(pid, cb) {
       var that = this;
-      util.getJSON({ apiUrl: apiurl.area + pid }, function (res) {
-        var area = res.data.result.list, array = []
+      util.getJSON({
+        apiUrl: apiurl.area + pid
+      }, function(res) {
+        var area = res.data.result.list,
+          array = []
         for (var i = 0; i < area.length; i++) {
           array[i] = area[i]['name'];
         }
         cb(array, area)
       })
     },
-    currentChanged: function (e) {
+    currentChanged: function(e) {
       // swiper滚动使得current值被动变化，用于高亮标记
       var current = e.detail.current;
       this.setData({
         current: current
       });
-      
+
     },
-    changeCurrent: function (e) {
+    changeCurrent: function(e) {
       // 记录点击的标题所在的区级级别
       var current = e.currentTarget.dataset.current;
       this.setData({

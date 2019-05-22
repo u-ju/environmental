@@ -96,8 +96,20 @@ Page({
         pjurl: options.pjurl
       })
     }
+    
+  },
+  onShow(){
+    var that = this;
+    if (wx.getStorageSync('locAddress')){
+      return this.setData({
+        address: wx.getStorageSync('locAddress')
+      })
+      // return console.log(wx.getStorageSync('locAddress'))
+    }
     util.address(function (data) {
       util.getJSON({ apiUrl: apiurl.areaparse + data.address }, function (res) {
+        wx.setStorageSync("locAddress", res.data.result.list[1]["name"])
+        wx.setStorageSync("locAddressID", res.data.result.list[1]["area_id"])
         that.setData({
           area: res.data.result.list[1],
           address: res.data.result.list[1]["name"]
@@ -355,6 +367,11 @@ Page({
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
     },1500)
+  },
+  goarea(){
+    wx.navigateTo({
+      url: '../area/index',
+    })
   },
   //触摸开始
   // handletouchstart: function (event) {

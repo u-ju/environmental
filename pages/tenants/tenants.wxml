@@ -131,13 +131,14 @@
         </view>
         <view class='license flex align_center'>
           <view> 经营地址：</view>
-          <!-- <input name='license_info[business_address]' data-contact='license_info[business_address]t' bindinput='input'  value="{{business_address}}"></input> -->
-          <textarea name='license_info[business_address]' data-contact='license_info[business_address]t' bindinput='input'  value="{{business_address}}"></textarea>
+          <view wx:if="{{!showa}}" class='textarea1' bindtap='showa'>{{business_address}}</view>
+          <textarea wx:else  auto-focus='{{showa}}' focus='{{showa}}' bindinput='inputa' bindblur='unshowa' name='license_info[business_address]' data-contact='license_info[business_address]t'  value="{{business_address}}" ></textarea>
+          
         </view>
         <view class='license flex align_center'>
           <view>经营范围：</view>
-          <!-- <input name='license_info[business_scope]' data-contact='license_info[business_scope]t' bindinput='input'  value="{{business_scope}}"></input> -->
-          <textarea name='license_info[business_scope]' data-contact='license_info[business_scope]t' bindinput='input'  value="{{business_scope}}"></textarea>
+           <view wx:if="{{!shows}}" class='textarea1' bindtap='showa'>{{business_scope}}</view>
+          <textarea wx:else bindinput='inputs'  auto-focus='{{shows}}' focus='{{shows}}'  bindblur='unshows' name='license_info[business_scope]' data-contact='license_info[business_scope]t'   value="{{business_scope}}"></textarea>
         </view>
       </view>
     </view>

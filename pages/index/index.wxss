@@ -368,7 +368,7 @@ page {
 
 .width110 {
   /* width: 110rpx; */
-  width: 164rpx;
+  /* width: 164rpx; */
 }
 .banner swiper{
   border-radius: 30rpx;

@@ -17,6 +17,7 @@ const apiList = {
 
   // GET 控制对照
   // GET 控制对照
+  arealayerIndex: basePath + '/common/area/layerIndex?type=', 
   areaparse: basePath + '/common/area/parse?address=', 
   areaUpdate: basePath + '/front/user/areaUpdate', 
   controlContrast: basePath + '/front/controlContrast', 

@@ -385,11 +385,16 @@ navigator{
   width: 168rpx;
   /* background-color: #eee; */
 }
-.license input,.license textarea{
-  width:306rpx;
+.license input,.license textarea,.textarea1{
+  width:306rpx ;
   border: none;
   color: #898989;
   border-bottom: 1px dashed  #eee;
+}
+.license textarea,.textarea1{
+  width:306rpx !important;
+  padding:10rpx 20rpx;
+  height: 100rpx !important;
 }
 .license textarea{
   height: 70rpx;

@@ -1,5 +1,14 @@
 var bmap = require('../../utils/bmap-wx.min.js'); 
 var wxMarkerData = [];
+var BMap = new bmap.BMapWX({
+  ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
+});
+var QQMapWX = require('../../utils//qqmap-wx-jssdk.min.js');
+
+// 实例化API核心类
+let demo  = new QQMapWX({
+  key: 'HPNBZ-B426V-CZQPP-UN4R6-QYOF2-MYFU3' // 必填
+});
 Page({
   data: {
     markers: [],
@@ -15,9 +24,10 @@ Page({
   onLoad: function () {
     var that = this;
     // 新建百度地图对象 
-    var BMap = new bmap.BMapWX({
-      ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
-    });
+    
+    this.setData({
+      adrr: '成都火车北站'
+    })
     var fail = function (data) {
       console.log(data)
     };
@@ -50,6 +60,24 @@ Page({
         address: '地址：' + data[i].address + '\n',
         desc: '描述：' + data[i].desc + '\n',
         business: '商圈：' + data[i].business
+      }
+    });
+  },
+  seeMap(){
+    demo.geocoder({
+      address: this.data.adrr,
+      success: res => {
+        wx.openLocation({
+          latitude: res.result.location.lat,
+          longitude: res.result.location.lng,
+          scale: 28
+        })
+      },
+      fail: function (res) {
+        console.log(res);
+      },
+      complete: function (res) {
+        console.log(res);
       }
     });
   }

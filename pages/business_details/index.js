@@ -214,8 +214,15 @@ Page({
       address: result.address,
       area_name: result.area_name,
     }
-    wx.navigateTo({
-      url: '../delivery_station/index?data=' + JSON.stringify(data),
+    // wx.navigateTo({
+    //   url: '../delivery_station/index?data=' + JSON.stringify(data),
+    // })
+    wx.openLocation({
+      latitude: Number(result.latitude),
+      longitude: Number(result.longitude),
+      scale: 28,
+      name: result.area_name,
+      address: result.address,
     })
   },
   onPullDownRefresh: function () {

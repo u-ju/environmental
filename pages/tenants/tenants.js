@@ -88,7 +88,9 @@ Page({
     ],
     choose: ['1'],
     video:{src:''},
-    clicktime:'0:00-0:00'
+    clicktime:'0:00-0:00',
+    showa:false,
+    shows: false,
   },
   checkboxChange(e) {
     console.log(e.detail.value)
@@ -266,6 +268,36 @@ Page({
   unshow() {
     this.setData({
       show: false
+    })
+  },
+  showa() {
+    this.setData({
+      showa: true
+    })
+  },
+  unshowa() {
+    this.setData({
+      showa: false
+    })
+  },
+  inputa(e){
+    this.setData({
+      business_address: e.detail.value
+    })
+  },
+  shows() {
+    this.setData({
+      shows: true
+    })
+  },
+  unshows() {
+    this.setData({
+      shows: false
+    })
+  },      
+  inputs(e) {
+    this.setData({
+      business_scope: e.detail.value
     })
   },
   onOpen1() {
@@ -829,7 +861,7 @@ Page({
     var id = e.currentTarget.id;
     for (var i = 0; i < this.data.suggestion.length; i++) {
       if (i == id) {
-        console.log(this.data.suggestion[i])
+        // console.log(this.data.suggestion[i])
         wx.setStorageSync('addresst', this.data.suggestion[i].title)
 
         wx.setStorageSync('longitudet', this.data.suggestion[i].longitude)
@@ -866,7 +898,7 @@ Page({
       keyword: e.detail.value, //用户输入的关键词，可设置固定值,如keyword:'KFC'
       region: city, //设置城市名，限制关键词所示的地域范围，非必填参数
       success: function (res) {//搜索成功后的回调
-        console.log(res);
+        // console.log(res);
         var sug = [];
         for (var i = 0; i < res.data.length; i++) {
           sug.push({ // 获取返回结果，放到sug数组中
@@ -885,10 +917,10 @@ Page({
         });
       },
       fail: function (error) {
-        console.error(error);
+        // console.error(error);
       },
       complete: function (res) {
-        console.log(res);
+        // console.log(res);
       }
     });
   }

@@ -29,13 +29,11 @@ Page({
       ctx.stroke()
       ctx.draw()
     }
-    console.log(name)
     var step = 1, startAngle = 0.5 * Math.PI, endAngle = 0;
     var animation_interval = 200, n = 5;
     var animation = function () {
       if (step <= steps) {
         endAngle = step * num * Math.PI / steps  ;
-        console.log(startAngle, endAngle)
         if (endAngle > startAngle){
           drawArc(startAngle, endAngle);
         }

@@ -1,0 +1,32 @@
+
+<template name="wxSortPickerView">
+    <scroll-view class="wxSortPickerViewList" scroll-y="true" style="height: {{wxSortPickerData.view.scrollHeight}}px;" bindscrolltoupper="wxSortPickerViewUpper" bindscrolltolower="wxSortPickerViewLower" bindscroll="wxSortPickerViewScroll" scroll-into-view="{{wxSortPickerData.wxSortPickerViewtoView}}" class='scoll'>
+    <!--<view animation="{{wxSortPickerData.animationData}}" class="wxSortPickerViewList">-->
+        <!--<view class="wxSortPickerViewTag wxSortPickerViewFixedTag">{{wxSortPickerData.nowTag}}</view>-->
+        <block wx:for="{{wxSortPickerData.textData}}" wx:for-item="item" wx:key="">
+            <view id="{{item.tag}}" class="wxSortPickerViewTag" hidden='{{item.textArray.length==0}}'>{{item.tag}}</view>
+            <template is="wxSortPickerViewItem" data="{{item}}"/>
+        </block>
+    <!--</view>-->
+    </scroll-view>
+
+    <template is="wxSortPickerViewTemTags"  data="{{wxSortPickerData}}"  />
+</template>
+
+<template name="wxSortPickerViewItem">
+    <block wx:for="{{item.textArray}}" wx:for-item="child" wx:key="">
+        <view class="wxSortPickerViewItem" data-text="{{child}}"  bindtap = "wxSortPickerViewItemTap">
+            <text>{{child.text}}</text>            
+        </view>
+    </block>
+</template>
+
+<template name="wxSortPickerViewTemTags">
+    <scroll-view style="width:20px;height: {{wxSortPickerData.view.scrollHeight}}px;" class="wxSortPickerViewTemTags">
+      <view class='fixed'>
+        <block wx:for="{{wxSortPickerData.textData}}" wx:for-item="item" wx:key="">
+            <view bindtap="wxSortPickerViewTemTagTap" data-tag="{{item.tag}}" class="wxSortPickerViewTemTag"  hidden='{{item.textArray.length==0}}'>{{item.tag}}</view>
+        </block>
+      </view>
+    </scroll-view>
+</template>

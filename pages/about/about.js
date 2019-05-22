@@ -39,11 +39,13 @@ Page({
     this.setData({
       official_qr: app.globalData.config.official_qr,
       longitude: app.globalData.config.company_location.longitude,
-      latitude: app.globalData.config.company_location.latitude
+      latitude: app.globalData.config.company_location.latitude,
+      address: app.globalData.config.company_location.address,
+      phone: app.globalData.config.company_location.phone
     })
   },
   regionchange(e) {
-    console.log(e.type)
+    // console.log(e.type)
   },
   markertap(e) {
     console.log(e.markerId)

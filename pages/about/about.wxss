@@ -167,8 +167,8 @@
 }
 .location image{
   width:30rpx;
-  height:38rpx;
-  margin-right: 5rpx;
+  height:30rpx;
+  margin-right: 8rpx;
 }
 .location{
   margin: 38rpx 0 10rpx 0;

@@ -1,6 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/area/index",
+    
+    
+    "pages/map/index",
     "pages/myCommunity/index",
     "pages/myGreenCredit/index",
     "pages/myGreenCredit/list",
@@ -25,7 +29,7 @@
     "pages/myOrderRefund/index",
     "pages/agriculturalMerchantsOrderDeail/index",
     "pages/agriculturalRefund/index",
-    "pages/map/index",
+    
     "pages/agriculturalMerchantsOrder/index",
     "pages/agriculturalRecommendation/index",
     "pages/businessProduct/index",

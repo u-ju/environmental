@@ -108,14 +108,14 @@
     </view>
   </view>
   <view class='location flex align_center'>
-    <image src='../../images/icon_location@2x.png' class='left'></image>
-    <text>地址：四川省成都市金牛区解放路一段192号</text>
+    <image src='../../images/dingwei.png' class='left'></image>
+    <text>地址：{{address}}</text>
   </view>
 <map
   id="map"
   longitude="{{longitude}}"
   latitude="{{latitude}}"
-  scale="14"
+  scale="15"
   controls="{{controls}}"
   bindcontroltap="controltap"
   bindmarkertap="markertap"

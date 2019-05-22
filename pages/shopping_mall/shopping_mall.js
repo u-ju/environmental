@@ -103,29 +103,22 @@ Page({
     that.setData({
       type: type,
       s_height: wx.getSystemInfoSync().windowHeight - 42,
-      all_height: wx.getSystemInfoSync().windowHeight
+      all_height: wx.getSystemInfoSync().windowHeight,
+
+      address: wx.getStorageSync('locAddress')
     })
     wx.showLoading({
       title: '加载中',
     })
     this.config()
     var shop_cate = app.globalData.config.shop_cate||[]
-    // that.setData({
-    //   shop_cate: shop_cate,
-    //   erji: shop_cate[0].children,
-    //   cate_id: shop_cate[0].id,
-    //   cate_ids: shop_cate[0].id,
-    //   tablen: Math.ceil(shop_cate.length / 10)
-    // })
-    // that.address()
+    
     util.address(function (data){
-      console.log(data)
       that.setData({
-        // address: data.address,
         latitude: data.latitude,
         longitude: data.longitude,
       })
-      that.areaparse(data.address)
+      that.areaparse()
     })
     that.shop_conf()
     if (shop_cate.length>0){
@@ -198,22 +191,15 @@ Page({
     })
   },
   
-  areaparse(area) {
+  areaparse() {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.areaparse + area }, function (res) {
+    that.addressd(wx.getStorageSync('locAddressID'), wx.getStorageSync('locAddress'), function (e) {
+      var eara = [], earaid = []
+      eara.push(e)
+      earaid.push(e[0]["area_id"])
       that.setData({
-        area: res.data.result.list[1],
-        address: res.data.result.list[1]["name"]
-      })
-      that.addressd(res.data.result.list[1]["area_id"], res.data.result.list[1]["name"],function(e){
-        var eara = [], earaid=[]
-        eara.push(e)
-        earaid.push(e[0]["area_id"])
-        that.setData({
-          eara: eara,
-          earaid: earaid
-        })
-        console.log(eara)
+        eara: eara,
+        earaid: earaid
       })
     })
   },
@@ -267,8 +253,6 @@ Page({
     
   },
   filterTab(e){
-    console.log(e.currentTarget.dataset.index)
-    // console.log(wx.pageScrollTo)
     var index = e.currentTarget.dataset.index;
     var qyopen = true, isfull = true, sort = this.data.sort
     if (index == this.data.tabIndex){
@@ -319,7 +303,6 @@ Page({
     
   },
   selctTab(e) {
-    console.log(e)
     var shop_cate = this.data.shop_cate;
     for (var i in shop_cate) {
       if (shop_cate[i].children) {
@@ -347,7 +330,6 @@ Page({
     var tabTxt = this.data.tabTxt
     tabTxt[1] = e.currentTarget.dataset.name;
     var id = e.currentTarget.dataset.id
-    console.log(e.currentTarget.dataset.indexnum)
     if (e.currentTarget.dataset.indexnum == 0 && e.currentTarget.dataset.id != this.data.eara[0][0]['area_id']){
       that.addressd(e.currentTarget.dataset.id, e.currentTarget.dataset.name,function(e){
         var eara = that.data.eara, earaid = that.data.earaid
@@ -378,7 +360,6 @@ Page({
     // wx.showLoading({
     //   title: '加载中',
     // })
-    console.log(id)
     that.setData({
       erji: erji,
       cate_id: id,

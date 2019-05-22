@@ -483,8 +483,8 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
   if (!form.hasOwnProperty("token")) {
     header = {
       'content-type': 'application/json', // 默认值
-      'token': that.getToken(),
-      // 'token': 'zwj',
+      // 'token': that.getToken(),
+      'token': 'zwj',
       'channel':'let',
       'build': build
     }
@@ -562,8 +562,8 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
   if (!form.hasOwnProperty("token")) {
     header = {
       'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', // 默认值
-      'token': that.getToken(),
-      // 'token': 'zwj',
+      // 'token': that.getToken(),
+      'token': 'zwj',
       'channel': 'let',
       'build': build
     }
