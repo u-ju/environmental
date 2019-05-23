@@ -217,7 +217,7 @@ Page({
     wx.chooseVideo({
       sourceType: ['album', 'camera'],
       success: function (res) {
-        util.alert('视频上传中')
+        util.loading()
         var promiseArr = []
         var tempFile = {}
         tempFile.img = res.thumbTempFilePath;
@@ -226,10 +226,14 @@ Page({
         var tempFilePath=[]
         tempFilePath.push(res.tempFilePath)
         var tempFilesSize = res.size;
-        if (tempFilesSize <= 25 * 1024 * 1024) {
+        // if (tempFilesSize <= 25 * 1024 * 1024) {
           if (util.allowUploadFormat(tempFilePath)){
             // util.uploadV(res.tempFilePath)
             util.uploadV(apiurl.upload_video, that, res,function(e){
+              
+              if(e.status!=200){
+                return util.alert(e.message)
+              }
               tempFile.src = e.result.video_url
               tempFile.upload_percent=100
               wx.hideLoading()
@@ -237,18 +241,17 @@ Page({
                 video: tempFile 
               })
               wx.setStorageSync('videot', tempFile)
-              console.log(tempFile)
             },function(e){
               tempFile.upload_percent = e
               that.setData({
                 video: tempFile
               })
-              console.log(e)
+              // console.log(e)
             })
           } else {
             util.alert("视频上传异常!");
           }
-        }
+        // }
       }
     })
   },
@@ -284,6 +287,7 @@ Page({
     this.setData({
       business_address: e.detail.value
     })
+    wx.setStorageSync('license_info[business_address]t', e.detail.value)
   },
   shows() {
     this.setData({
@@ -299,6 +303,7 @@ Page({
     this.setData({
       business_scope: e.detail.value
     })
+    wx.setStorageSync('license_info[business_scope]t', e.detail.value)
   },
   onOpen1() {
     // console.log("sssss")
@@ -316,11 +321,11 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    // console.log(hour1)
     this.setData({
       hour1: hour1,
       hour2: hour2,
-      room_list: JSON.parse(options.room_list)
+      // room_list: JSON.parse(options.room_list)
+      features: JSON.parse(options.apply_info).feature_list
     })
     console.log(this.data.room)
     var result = app.globalData.config
@@ -432,7 +437,7 @@ Page({
         timevalueR: wx.getStorageSync('timevaluet'),
         room: wx.getStorageSync('roomt'),
         video: wx.getStorageSync('videot'),
-        features: wx.getStorageSync('featurest'),
+        features: wx.getStorageSync('featurest') || that.data.features,
         cost: wx.getStorageSync('costt'),
         // min_person: wx.getStorageSync('reservation[min_person]t'),
         // max_person: wx.getStorageSync('reservation[max_person]t'),
@@ -817,32 +822,32 @@ Page({
    var result = res.data.result
 
       util.alert("申请提交成功，等待审核")
-  //     wx.setStorageSync("contactt", '')
-  //     wx.setStorageSync("discount_percentt", '')
-  //     wx.setStorageSync("titlet", '')
-  //     wx.setStorageSync("addresst", '')
-  //     wx.setStorageSync("introt", '')
-  //     wx.setStorageSync("area_idt", '')
-  //     wx.setStorageSync("typet", '')
-  //     wx.setStorageSync("cate_idt", '')
-  //     wx.setStorageSync("title1t", '')
-  //     wx.setStorageSync("areaSelectedStrt", '')
-  //     wx.setStorageSync("image0", '')
-  //     wx.setStorageSync("image1", '')
-  //     wx.setStorageSync("upload_picture_list", [])
-  //     wx.setStorageSync('choosedt', '')
-  //     wx.setStorageSync('latitudet', '')
-  //     wx.setStorageSync('longitudet', '')
-  //  setTimeout(function () {
-  //    wx.reLaunch({
-  //      url: '../index/index',
-  //      success() {
-  //        that.setData({
-  //          post: false
-  //        })
-  //      }
-  //    })
-  //  }, 3000)
+      wx.setStorageSync("contactt", '')
+      wx.setStorageSync("discount_percentt", '')
+      wx.setStorageSync("titlet", '')
+      wx.setStorageSync("addresst", '')
+      wx.setStorageSync("introt", '')
+      wx.setStorageSync("area_idt", '')
+      wx.setStorageSync("typet", '')
+      wx.setStorageSync("cate_idt", '')
+      wx.setStorageSync("title1t", '')
+      wx.setStorageSync("areaSelectedStrt", '')
+      wx.setStorageSync("image0", '')
+      wx.setStorageSync("image1", '')
+      wx.setStorageSync("upload_picture_list", [])
+      wx.setStorageSync('choosedt', '')
+      wx.setStorageSync('latitudet', '')
+      wx.setStorageSync('longitudet', '')
+   setTimeout(function () {
+     wx.reLaunch({
+       url: '../index/index',
+       success() {
+         that.setData({
+           post: false
+         })
+       }
+     })
+   }, 0)
 
  }, function (res) {
    console.log(res.data.message)

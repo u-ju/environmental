@@ -36,7 +36,7 @@ button::after{
   font-size: 32rpx;
   color: white;
   margin-top: 60rpx;
-  background: linear-gradient(#4663db,#14b8d8);
+  background: #4FD6F0;
 }
 .bgDDDDDD{
   background: #DDDDDD;

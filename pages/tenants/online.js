@@ -549,6 +549,9 @@ Page({
         data[images[a]] = that.data.image[a].upload_picture_list[0]['path_server']
       }
     }
+    if (this.data.video.src && this.data.video.src.length > 0) {
+      data.video = this.data.video.src
+    }
     for (var a in that.data.upload_picture_list) {
       data['images[' + a + ']'] = that.data.upload_picture_list[a]['path_server']
     }
@@ -593,7 +596,7 @@ Page({
             })
           }
         })
-      }, 3000)
+      }, 0)
 
     }, function (res) {
       console.log(res.data.message)

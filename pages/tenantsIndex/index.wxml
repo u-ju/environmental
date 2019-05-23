@@ -87,9 +87,9 @@
           <image src='../../images/lookspu.png'></image>
           <view> 查看产品</view>
         </view>
-        <view class='center czbtn' catchtap='linke' data-url='../agriculturalMerchantsOrder/index?id={{list.shop_id}}'>
+        <view class='center czbtn' catchtap='linke' data-url='../assets/index?id=2'>
           <image src='../../images/look.png'></image>
-          <view> 查看订单</view>
+          <view> 查看货款</view>
         </view>
         <view class='center czbtn' catchtap='linke' data-url='../business_details/viewcomments/index?id={{list.shop_id}}'>
           <image src='../../images/sahngpinpinglun.png'></image>

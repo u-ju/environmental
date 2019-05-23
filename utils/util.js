@@ -284,7 +284,7 @@ function upload_pic(url, that, upload_picture_list, j, suc, update) {
 }
 function uploadV(url, that, res,  suc, update) {
   //上传返回值
-  console.log(res)
+  // console.log(res)
   var _this = this;
   const upload_task = wx.uploadFile({
     // 模拟https
@@ -303,9 +303,9 @@ function uploadV(url, that, res,  suc, update) {
     },
     //附近数据，这里为路径     
     success: function (res) {
-      console.log(res)
+      // console.log(res)
       var data = JSON.parse(res.data);
-      console.log(data)
+      // console.log(data)
       // //字符串转化为JSON  
       suc(data)
 
@@ -313,7 +313,7 @@ function uploadV(url, that, res,  suc, update) {
   })
   // 上传 进度方法
   upload_task.onProgressUpdate((res) => {
-    console.log(res.progress)
+    // console.log(res.progress)
     update(res.progress)
   });
 }
@@ -483,8 +483,8 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
   if (!form.hasOwnProperty("token")) {
     header = {
       'content-type': 'application/json', // 默认值
-      // 'token': that.getToken(),
-      'token': 'zwj',
+      'token': that.getToken(),
+      // 'token': 'zwj',
       'channel':'let',
       'build': build
     }
@@ -562,8 +562,8 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
   if (!form.hasOwnProperty("token")) {
     header = {
       'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', // 默认值
-      // 'token': that.getToken(),
-      'token': 'zwj',
+      'token': that.getToken(),
+      // 'token': 'zwj',
       'channel': 'let',
       'build': build
     }

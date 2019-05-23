@@ -95,7 +95,7 @@ Page({
   init(page = 1) {
     var that = this;
     console.log(apiurl.shop_goodsIndex+'?shop_id=' + that.data.shop_id + "&page=" + page)
-    util.getJSON({ apiUrl: apiurl.goods +'?shop_id=' + that.data.shop_id + "&page=" + page +"&page_limit=" + 3 }, function (res) {
+    util.getJSON({ apiUrl: apiurl.goods + '?shop_id=' + that.data.shop_id + "&source=offline"  + "&page=" + page +"&page_limit=" + 3 }, function (res) {
 
       var result = res.data.result
       var list = result.list
@@ -311,6 +311,12 @@ Page({
   reservation(){
     wx.navigateTo({
       url: 'reservation/index?reservation=' + JSON.stringify(this.data.result.reservation) ,
+    })
+  },
+  goods(e){
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.id,
     })
   }
 })

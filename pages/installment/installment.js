@@ -45,7 +45,7 @@ Page({
     if (that.data.keywords != '' && that.data.keywords != undefined) {
       keywords = that.data.keywords
     }
-    util.getJSON({ apiUrl: apiurl.goods + "?page=" + page + "&keywords=" + keywords }, function (res) {
+    util.getJSON({ apiUrl: apiurl.goods + "?page=" + page + "&source=exchange" + "&keywords=" + keywords }, function (res) {
       // +"&source=exchange" 
       var result = res.data.result
       var list = result.list
@@ -65,7 +65,7 @@ Page({
     wx.showNavigationBarLoading();
     
     var that = this;
-    util.getJSON({ apiUrl: apiurl.goods + "?page=1" }, function (res) {
+    util.getJSON({ apiUrl: apiurl.goods + "?page=1" + "&source=exchange" + "&keywords=" + keywords }, function (res) {
       var result = res.data.result
       var list = result.list
       that.setData({

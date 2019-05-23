@@ -88,15 +88,20 @@ Page({
       //       })
       //     }
       // }
-      var l_one = result.l_one
-      if (l_one.mobile.name){
+      var l_one = result.l_one, l_three = result.l_three
+      if (!l_one.mobile.name){
         l_one.mobile['control']['control'] = '../phone_new/phone_new'
+      }
+      for (var i in l_three){
+        if (l_three[i]['control']["key"] == 'front_bind_mobile' && l_three[i]["attach"]["is_bind"] == 0){
+          l_three[i]['control']['control'] = '../phone_new/phone_new'
+        }
       }
       // console.log(result.l_three.length / 3,result.l_three.length%3)
       that.setData({
         result: result,
         l_one: l_one,
-        l_three: result.l_three,
+        l_three: l_three,
         l_two: result.l_two,
         surplus: result.l_three.length % 3,
         surplusnum: parseInt(result.l_three.length % 3),

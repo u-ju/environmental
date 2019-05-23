@@ -68,6 +68,9 @@ Page({
       function (res) {
         var result = res.data.result;
         util.alert(res.data.message)
+        that.setData({
+          disabled: false
+        })
         util.navigateBack()
       }, function () {
         that.setData({

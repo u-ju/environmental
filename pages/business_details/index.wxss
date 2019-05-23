@@ -114,6 +114,7 @@ page{
 }
 .spug{
   width: 212rpx;
+  margin-bottom: 10rpx;
 }
 .spug image{
   width: 212rpx;

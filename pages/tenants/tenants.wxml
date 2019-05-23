@@ -71,7 +71,7 @@
     </view>
     <view class='item  flex align_center'>
       <text class='size28 color6'>店铺特色</text>
-      <scroll-view class='scroll-header flex align_center featuresnav'>
+      <scroll-view scroll-x='true' class='scroll-header flex align_center featuresnav'>
         <view class='featuresitem' wx:for="{{features}}" wx:key="index">
           <view class='features hidden1'>{{item}}</view>
           <image src='../../images/delt.png' class='delt' bindtap='delfeature' data-index='{{index}}'></image>
@@ -137,7 +137,7 @@
         </view>
         <view class='license flex align_center'>
           <view>经营范围：</view>
-           <view wx:if="{{!shows}}" class='textarea1' bindtap='showa'>{{business_scope}}</view>
+           <view wx:if="{{!shows}}" class='textarea1' bindtap='shows'>{{business_scope}}</view>
           <textarea wx:else bindinput='inputs'  auto-focus='{{shows}}' focus='{{shows}}'  bindblur='unshows' name='license_info[business_scope]' data-contact='license_info[business_scope]t'   value="{{business_scope}}"></textarea>
         </view>
       </view>

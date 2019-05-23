@@ -363,10 +363,11 @@ page {
 .locations {
   width: 30rpx;
   height: 30rpx;
-  margin-right: 6rpx;
+  margin-right: 10rpx;
 }
 
 .width110 {
+  margin-right: 10rpx;
   /* width: 110rpx; */
   /* width: 164rpx; */
 }

@@ -16,7 +16,7 @@
 <view class='pay_big'>
   <view class='pay_item flex align_center pay_money'>
     <text class='color4'>￥</text>
-    <input name='amount' placeholder="请输入金额"  placeholder-style='font-size: 32rpx;color:#898989' bindinput='onChange' ></input>
+    <input name='amount' type='digit' placeholder="请输入金额"  placeholder-style='font-size: 32rpx;color:#898989' bindinput='onChange' ></input>
     <!-- <view class='z_right'>当前金额（元）</view>
     <view class='z_left'> 
       <input name='amount' placeholder="请输入金额"  placeholder-style='font-size: 32rpx;color:#898989' bindinput='onChange' ></input>

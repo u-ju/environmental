@@ -99,14 +99,21 @@ Page({
     
   },
   onShow(){
+    this.adr()
+  },
+  adr(){
     var that = this;
-    if (wx.getStorageSync('locAddress')){
+    if (!wx.getStorageSync('token') || wx.getStorageSync('token') == 1) {
+      return false
+    }
+    console.log(wx.getStorageSync('token'))
+    if (wx.getStorageSync('locAddress')) {
       return this.setData({
         address: wx.getStorageSync('locAddress')
       })
-      // return console.log(wx.getStorageSync('locAddress'))
     }
     util.address(function (data) {
+      console.log(data)
       util.getJSON({ apiUrl: apiurl.areaparse + data.address }, function (res) {
         wx.setStorageSync("locAddress", res.data.result.list[1]["name"])
         wx.setStorageSync("locAddressID", res.data.result.list[1]["area_id"])
@@ -114,6 +121,8 @@ Page({
           area: res.data.result.list[1],
           address: res.data.result.list[1]["name"]
         })
+      }, function (e) {
+        console.log(e)
       })
     })
   },
@@ -122,25 +131,18 @@ Page({
     util.getJSON({ apiUrl: apiurl.index }, function (res) {
       var result = res.data.result;
       var tag = result.tag;
-      // for (var i in result.tag) {
-      //   tag.push(result.tag[i]);
-      // }
-      // console.log(tag)
       that.setData({
         result: result,
         banner: result.banner,
-        // block: result.block,
         shop_ad: result.shop_ad,
         tag: tag,
         user: result.user,
-        // nper: result.nper,
-        // week_ad: result.week_ad,
         shop_goods_ad: result.shop_goods_ad,
         taglen: Math.ceil(tag.length / 8)
       })
       util.hideLoading()
     })
-    
+    that.adr()
     if (app.globalData.config.length==0){
       util.getJSON({ apiUrl: apiurl.config }, function (res) {
         var result = res.data.result;

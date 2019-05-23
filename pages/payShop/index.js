@@ -176,9 +176,7 @@ Page({
     that.setData({
       visible2: false,
     })
-    wx.showLoading({
-      title: '加载中',
-    })
+    util.loading()
     util.postJSON({ apiUrl: apiurl.vendor, data: { pay_key: that.data.result.pay_key, payment: that.data.payment, pay_amount: that.data.result.pay_amount, pay_cash: that.data.result.pay_amount } },
       function (res) {
         var result = res.data.result

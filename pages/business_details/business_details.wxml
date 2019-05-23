@@ -66,10 +66,10 @@
             </view>
           </view>
         </view>
-        <view class='more flex align_center'>
+        <!-- <view class='more flex align_center'>
           <view>更多</view>
           <text class='iconfont icon-xiangxiajiantou'></text>
-        </view>
+        </view> -->
         </block>
       </view>
       <view class='goods_intr3 view1' id='view1'>

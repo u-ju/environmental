@@ -116,7 +116,7 @@
   产品详情
 </view>
 <image wx:if="{{result.spu_intro}}" src='{{result.spu_intro}}' class='width100' mode="widthFix"></image>
-<view class='detailitem'>
+<view class='detailitem' hidden='{{result.source=="offline"}}'>
 
 
 </view>

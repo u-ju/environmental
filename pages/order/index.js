@@ -26,6 +26,10 @@ Page({
     // console.log(app.globalData.config)
     // app.globalData.config.order_info_search_status
     util.loading()
+    var pages = getCurrentPages();
+    console.log(pages);
+    var delta = pages.length - 2
+    console.log(delta);
     var order_info_search_status = [
       {
         "id": "5",
@@ -57,7 +61,9 @@ Page({
     }
     this.setData({
       tabs:order_info_search_status,
-      status: order_info_search_status[0]["id"]
+      status: order_info_search_status[0]["id"],
+      pages: pages,
+      delta: delta
     })
     // this.init()
     if (e.source_ext){
@@ -257,7 +263,7 @@ Page({
       url: '../installment/installment',
     })
   },
-
+  
   comment(e) {
     var id = this.data.receiveid;
     var that = this;
@@ -367,5 +373,11 @@ Page({
     wx.navigateTo({
       url: '../myOrderRefund/index?sku_id=' + e.currentTarget.dataset.sku_id + "&order_id=" + e.currentTarget.dataset.order_id,
     })
-  }
+  },
+  onUnload: function () {
+    if (this.data.delta>0){
+      return wx.navigateBack({ delta: 2 })
+    }
+    
+  },
 })
