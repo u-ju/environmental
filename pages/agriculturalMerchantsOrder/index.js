@@ -459,5 +459,17 @@ Page({
     wx.navigateTo({
       url: '../agriculturalRefund/index?sku_id=' + e.currentTarget.dataset.sku_id + "&order_id=" + e.currentTarget.dataset.order_id,
     })
+  },
+  inputs(e) {
+    var express_num = this.data.express_num,that =this;
+    util.testwl(e.detail.value, '请输入正确的物流单号', function () {
+      that.setData({
+        expressbtn: false
+      })
+    })
+    express_num[e.currentTarget.dataset.index] = e.detail.value
+    this.setData({
+      express_num: express_num
+    })
   }
 })

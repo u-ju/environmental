@@ -26,7 +26,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    
+    util.loading()
     var withdraw_flow = JSON.parse(options.withdraw_flow)
     this.setData({
       withdraw_flow: withdraw_flow,
@@ -35,7 +35,7 @@ Page({
       yu: options.money,
       url: options.url
     })
-    
+    util.hideLoading()()
   },
   choose(e){
     console.log(e.currentTarget.dataset.key)
@@ -93,17 +93,38 @@ Page({
    
   },
   onChange(e) {
-    var sure = true
-      if (e.detail.value) {
-        sure=false
-      }
+    var sure = true, value = e.detail.value
+    if (e.detail.value) {
+      sure=false
+    }
+    if (value > Number(this.data.yu)){
+      value = this.data.yu
+    }
+    
     this.setData({
-      amount: e.detail.value,
+      amount: value,
       sure: sure
     })
   },
+  onblur(){
+    // var amount = this.data.amount
+    // if (!/^\d+(\.\d{1,2})?$/.test(amount)) {
+    //   util.alert("请输入正确的金额格式")
+    // }
+    var that = this
+    util.testjq(this.data.amount, "请输入正确的金额格式",function(){
+      // console.log(that.data.sure)
+      that.setData({
+        sure:true
+      })
+      // console.log(that.data.sure)
+    })
+  },
   formSubmit(e){
-    
+    // var amount = this.data.amount
+    // if (!/^\d+(\.\d{1,2})?$/.test(amount)) {
+    //  return util.alert("请输入正确的金额格式")
+    // }
     var that = this;
     wx.showModal({
       content: '是否确认提现',

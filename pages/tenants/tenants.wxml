@@ -17,11 +17,11 @@
     <view class='item  flex align_center'>
       <text class='size28 color6'>联系方式</text>
 
-      <input class='size28 color9' bindinput='input' data-contact='contactt' name='contact' value='{{contact}}' maxlength='11' disabled='{{disabled1}}' type='number'></input>
+      <input class='size28 color9' bindinput='input' bindblur='testcall' data-contact='contactt' name='contact' value='{{contact}}' maxlength='11' disabled='{{disabled1}}' ></input>
     </view>
     <view class='item  flex align_center'>
       <text class='size28 color6'>商家折扣(%)</text>
-      <input class='size28 color9' bindinput='input' data-contact='discount_percentt' name='discount_percent' disabled='{{disabled1}}' value='{{discount_percent}}'></input>
+      <input class='size28 color9' type='digit' bindinput='input' data-contact='discount_percentt' name='discount_percent' disabled='{{disabled1}}' value='{{discount_percent}}'></input>
     </view>
     <view class='item  flex align_center' wx:if="{{!disabled1}}">
       <text class='size28 color6'>区域</text>
@@ -66,7 +66,7 @@
       <text class='size28 color6'>预计人均消费</text>
       <view class=' flex_btw consumption align_center'>
         <text>￥</text>
-        <input name='cost' data-contact='costt' bindinput='input' value='{{cost}}' ></input>
+        <input name='cost' data-contact='costt' type='digit'  bindinput='input' value='{{cost}}' ></input>
       </view>
     </view>
     <view class='item  flex align_center'>

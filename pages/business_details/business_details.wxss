@@ -1,2 +1,210 @@
 /* pages/business_details/business_details.wxss */
-@import 'index.wxss'
+@import '../agriculturalDetail/index';
+
+page{
+  font-size: 28rpx;
+  color: #444;
+  border: none;
+  padding: 0;
+}
+
+.dotbox{
+  position: absolute;
+  left: 50%;
+  top: 274rpx;
+  transform: translate(-50%,0);
+  z-index: 1000;
+}
+.dotbtn{
+  width:82rpx;
+  height:30rpx;
+  background:rgba(39,170,217,1);
+  border-radius:10rpx;
+  text-align: center;
+  font-size:20rpx;
+  color: white;
+  margin: 0 10rpx;
+
+}
+.dotpic{
+  background:rgba(255,255,255,1);
+  opacity:0.8;
+  color: #444444
+}
+.con{
+  padding: 0 32rpx; 
+  border-bottom: 20rpx solid #EEEEEE;
+  margin: auto;
+}
+.masonry{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 8rpx;
+}
+.score text{
+  margin-left: 18rpx;
+}
+.tag{
+  margin-left: 8rpx;
+  width:70rpx;
+  height:30rpx;
+  background:rgba(238,238,238,1);
+  border-radius:5rpx;
+  text-align: center;
+  line-height: 30rpx;
+}
+.label{
+  padding: 28rpx 0;
+  border-top: 1px solid #EEEEEE;
+  border-bottom:none;
+}
+.labelpic{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 13rpx;
+}
+.address{
+  width: 550rpx;
+  border-right: 1px solid #EEEEEE;
+  line-height: 28rpx;
+}
+.margint20{
+  margin-top: 20rpx;
+}
+.labeltel{
+  width: 33rpx;
+  height: 33rpx;
+}
+.money{
+  padding: 16rpx 0;
+}
+.title{
+  padding: 12rpx 0 16rpx 0;
+}
+.details{
+  padding: 23rpx 0;
+}
+.details>view{
+  width: 686rpx;
+  margin: auto;
+}
+.reservation{
+  width:686rpx;
+  height:53rpx;
+  border:2rpx solid rgba(238,238,238,1);
+  border-radius:5rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tab{
+  position: static;
+  line-height: 64rpx;
+}
+
+.tabitem{
+  width: auto;
+  padding:  6rpx 10rpx;
+  margin-right: 40rpx;
+}
+.active{
+  color: #27AAD9;
+  border-bottom: 4rpx solid #27AAD9;
+}
+.spug{
+  width: 212rpx;
+  margin-right: 30rpx;
+}
+.spug image{
+  width: 212rpx;
+  height: 212rpx;
+  border-radius: 10rpx 10rpx 0 0;
+}
+.spud{
+  width:182rpx;
+  height:64rpx;
+  padding: 12rpx 10rpx 10rpx 20rpx;
+  background:rgba(238,238,238,1);
+  border-radius:0px 0px 10rpx 10rpx;
+  overflow: hidden;
+}
+
+.spud .colorFE2C2C{
+  margin: 0;
+}
+.spum{
+  height: 30rpx;
+  margin-top: 4rpx;
+}
+.more{
+  width: 100rpx;
+  margin: 24rpx auto 12rpx auto;
+  color: #27AAD9;
+  
+}
+
+.spu,.goods_intr3{
+  padding: 0 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.spu{
+  padding-top: 32rpx;
+}
+.morecomments{
+  color: #27AAD9;
+}
+.pl_con{
+  margin: 10rpx 0 0 78rpx;
+}
+.plpic{
+  margin: 20rpx -6rpx 0 68rpx;
+  overflow: hidden;
+}
+.imagepic{
+  width:190rpx;
+  height:190rpx;
+  margin: 0 6rpx 12rpx 6rpx;
+}
+.goods_intr3>view{
+  width: 686rpx;
+  overflow: hidden;
+}
+.allpl{
+  padding: 30rpx 0 16rpx 0;
+  /* border-bottom: 2rpx solid #EEEEEE; */
+}
+.message{
+  margin-top: 20rpx;
+}
+.spugoods{
+  border-top: 2rpx solid #EEEEEE;
+  padding-bottom: 20rpx;
+}
+.spuinfor{
+  padding: 0 32rpx;
+}
+.spuinfor .pad40{
+  padding: 40rpx 0;
+  border-bottom: 2rpx solid #EEEEEE; 
+}
+.spuinfor>.bold{
+  padding: 32rpx 0 16rpx 0;
+}
+.flex_btw,.flex{
+  display:flex;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.padtb20{
+  padding: 20rpx 0;
+}
+.pinglun{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}

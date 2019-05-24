@@ -16,7 +16,7 @@
 <view class='pay_big'>
   <view class='pay_item flex align_center pay_money'>
     <text class='color4'>￥</text>
-    <input name='amount' type='digit' placeholder="请输入金额"  placeholder-style='font-size: 32rpx;color:#898989' bindinput='onChange' ></input>
+    <input name='amount' value='{{value}}' type='digit' placeholder="请输入金额"  bindblur='onblur' placeholder-style='font-size: 32rpx;color:#898989' bindinput='onChange' ></input>
     <!-- <view class='z_right'>当前金额（元）</view>
     <view class='z_left'> 
       <input name='amount' placeholder="请输入金额"  placeholder-style='font-size: 32rpx;color:#898989' bindinput='onChange' ></input>
@@ -28,7 +28,8 @@
   </view> -->
   <view class='pay_item flex align_center '>
     <!-- <view class='footerbtn'  bindtap='open2'>确定</view> -->
-    <pay choose="{{choose}}" data="{{data}}" styles="width:500rpx;"  bind:open='openp' title='确定' title1='立即支付' />
+    <view style="width:500rpx;margin:20rpx auto 40rpx auto;" class='submitButton' bindtap='onblur' wx:if="{{sure}}">确定</view>
+    <pay choose="{{choose}}" data="{{data}}" styles="width:500rpx;" wx:else bind:open='openp' title='确定' title1='立即支付' />
   </view>
 </view>
 

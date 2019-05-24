@@ -11,11 +11,11 @@
     <view class='item  flex align_center'>
       <text class='size28 color6'>联系方式</text>
 
-      <input class='size28 color9' bindinput='input' data-contact='contacto' name='contact' value='{{contact}}' maxlength='11' disabled='{{disabled1}}' type='number'></input>
+      <input class='size28 color9' bindinput='input' bindblur='testcall' data-contact='contacto' name='contact' value='{{contact}}' maxlength='11' disabled='{{disabled1}}' ></input>
     </view>
     <view class='item  flex align_center'>
       <text class='size28 color6'>商家折扣(%)</text>
-      <input class='size28 color9' bindinput='input' data-contact='discount_percentt' name='discount_percent' disabled='{{disabled1}}' value='{{discount_percent}}'></input>
+      <input class='size28 color9' type='digit' bindinput='input' data-contact='discount_percento' name='discount_percent' disabled='{{disabled1}}' value='{{discount_percent}}'></input>
     </view>
     <view class='item  flex align_center' wx:if="{{!disabled1}}">
       <text class='size28 color6'>区域</text>
@@ -66,11 +66,13 @@
         </view>
         <view class='license flex align_center'>
           <view> 经营地址：</view>
-          <input name='license_info[business_address]' data-contact='license_info[business_address]o' bindinput='input' value="{{business_address}}"></input>
+          <view wx:if="{{!showa}}" class='textarea1' bindtap='showa'>{{business_address}}</view>
+          <textarea wx:else  auto-focus='{{showa}}' focus='{{showa}}' bindinput='inputa' bindblur='unshowa' name='license_info[business_address]' data-contact='license_info[business_address]t'  value="{{business_address}}" ></textarea>
         </view>
         <view class='license flex align_center'>
           <view>经营范围：</view>
-          <input name='license_info[business_scope]' data-contact='license_info[business_scope]o' bindinput='input' value="{{business_scope}}"></input>
+          <view wx:if="{{!shows}}" class='textarea1' bindtap='shows'>{{business_scope}}</view>
+          <textarea wx:else bindinput='inputs'  auto-focus='{{shows}}' focus='{{shows}}'  bindblur='unshows' name='license_info[business_scope]' data-contact='license_info[business_scope]o'   value="{{business_scope}}"></textarea>
         </view>
       </view>
     </view>

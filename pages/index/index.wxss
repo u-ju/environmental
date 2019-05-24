@@ -339,7 +339,7 @@ page {
 .tab image {
   width: 70rpx;
   height: 70rpx;
-  margin-bottom: 20rpx;
+  /* margin-bottom: 10rpx; */
 }
 
 .swiper-box .wx-swiper-dot {

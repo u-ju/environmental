@@ -15,9 +15,6 @@ Page({
     interval: 5000,
     duration: 1000,
     banner: [
-      { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
-      { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
-      { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
     ],
     result: "",
     tab: ['产品', '评论', '商家信息'],
@@ -30,13 +27,13 @@ Page({
   },
   swiperChange(e) {
     let current = e.detail.current;
-    console.log(e.detail.current)
+    // console.log(e.detail.current)
     this.setData({
       cur: current
     })
   },
   swiperC(e) {
-    console.log(e.currentTarget.dataset.index)
+    // console.log(e.currentTarget.dataset.index)
     this.setData({
       cur: e.currentTarget.dataset.index
     })
@@ -48,14 +45,13 @@ Page({
     var that = this
     var obj = wx.createSelectorQuery();
     // options.id=30
-    console.log(options)
     that.setData({
       s_height: wx.getSystemInfoSync().windowHeight - 42,
     })
 
-    if (options.t_shop_id) {
+    if (options.id || options.t_shop_id) {
       this.setData({
-        shop_id: options.t_shop_id
+        shop_id: options.id || options.t_shop_id
       })
       util.getJSON({ apiUrl: apiurl.shop_show, data: { shop_id: that.data.shop_id } }, function (res) {
         var result = res.data.result
@@ -75,17 +71,16 @@ Page({
   getTop() {
     var top = [], that = this;
     wx.createSelectorQuery().selectAll('.view0').boundingClientRect(function (rect) {
-      console.log(rect)
+
       var height = rect[0]['height']
       top.push(height)
     }).exec()
     wx.createSelectorQuery().selectAll('.view1').boundingClientRect(function (rect) {
-      console.log(rect)
+
       var height = rect[0]['height'] + top[top.length - 1]
       top.push(height)
     }).exec()
     wx.createSelectorQuery().selectAll('.view2').boundingClientRect(function (rect) {
-      console.log(rect)
       var height = rect[0]['height'] + top[top.length - 1]
       top.push(height)
       that.setData({
@@ -95,7 +90,6 @@ Page({
   },
   init(page = 1) {
     var that = this;
-    console.log(apiurl.shop_goodsIndex + '?shop_id=' + that.data.shop_id + "&page=" + page)
     util.getJSON({ apiUrl: apiurl.goods + '?shop_id=' + that.data.shop_id + "&source=offline" + "&page=" + page + "&page_limit=" + 3 }, function (res) {
 
       var result = res.data.result
@@ -111,7 +105,6 @@ Page({
       active: e.currentTarget.dataset.index,
       toView: 'view' + e.currentTarget.dataset.index
     })
-    console.log(e.currentTarget.dataset.index)
   },
   scroll(e) {
     var top = this.data.top, active = this.data.active;
@@ -119,13 +112,12 @@ Page({
 
     for (var i = 0; i < top.length; i++) {
       if (scrollTop < top[i]) {
-        console.log(i)
+        // console.log(i)
         return this.setData({
           active: i
         })
       }
     }
-    console.log(active)
 
   },
   commentIndex1(shop_id, page = 1) {
@@ -312,6 +304,17 @@ Page({
   reservation() {
     wx.navigateTo({
       url: 'reservation/index?reservation=' + JSON.stringify(this.data.result.reservation),
+    })
+  },
+  goods(e) {
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.id,
+    })
+  },
+  moregoods(){
+    wx.navigateTo({
+      url: 'product/index?id=' + this.data.shop_id,
     })
   }
 })

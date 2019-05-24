@@ -17,7 +17,8 @@ Page({
     type:0,
     result:"",
     about:'',
-    choosed:1
+    choosed:1,
+    source: "realname"
   },
   getCode: function (options) {
     var that = this;
@@ -43,7 +44,7 @@ Page({
     that.setData({
       disabled: true
     })
-    util.postJSON({ apiUrl: apiurl.captcha, data: { mobile: that.data.phone, source: "realname" } }, function (res) {
+    util.postJSON({ apiUrl: apiurl.captcha, data: { mobile: that.data.phone, source: that.data.source } }, function (res) {
       var result = res.data.result
       util.alert(res.data.message)
       // that.setData({
@@ -72,6 +73,7 @@ Page({
       code: e.detail.value,
       sure: sure
     })
+    console.log(e.detail.value)
   },
   newphone(){
     var that = this;
@@ -87,7 +89,7 @@ Page({
       
     }else{
       wx.navigateTo({
-        url: '../phone_new/phone_new?mobile_code=' + that.data.mobile_code + "&mobile=" + that.data.mobile,
+        url: '../phone_new/phone_new?mobile_code=' + that.data.code + "&mobile=" + that.data.phone,
       })
     }
     
@@ -107,6 +109,10 @@ Page({
       //   })
       //   util.hideLoading()
       // })
+    }else{
+      this.setData({
+        source:'update'
+      })
     }
     this.setData({
       about: app.globalData.config.protocol.about

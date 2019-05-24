@@ -90,7 +90,7 @@
       </view>
       <view class='flex align_center'>
         <view class='itemL'>填写单号 </view>
-        <input  placeholder='' name='logistics[{{indexnum}}][express_num]' value='{{express_num[indexnum]}}'></input>
+        <input  placeholder=''  bindinput='inputs' data-index='{{indexnum}}'  name='logistics[{{indexnum}}][express_num]' value='{{express_num[indexnum]}}'></input>
       </view>
     </view>
     <image src='../../images/delc.png' class='delete_' bindtap='delsku' data-index='{{indexnum}}'></image>

@@ -10,7 +10,7 @@
     <view class='shitem' wx:for="{{list}}" wx:key="index" wx:for-index="listnum">
       <view class='color4 borbtm bold align_center size28'>
         <text class='iconfont icon-xuanze size36  icon  {{choosecar.sku_id[listnum].length==item.goods_arr.length?"color27AAD9":"colorD2"}}' bindtap='choosecard' data-listnum='{{listnum}}'></text>
-        <navigator class='color4 bold' url='../business_details/index?id={{item.shop_id}}' wx:if="{{item.shop_id}}">
+        <navigator class='color4 bold' url='../business_details/business_details?id={{item.shop_id}}' wx:if="{{item.shop_id}}">
           <text>{{item.title}}</text>
           <text class='iconfont icon-jiantou bold size24'></text>
         </navigator>

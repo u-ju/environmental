@@ -121,6 +121,7 @@ Component({
       })
       wx.showLoading({
         title: '加载中',
+        mask: true
       })
       var data = { pay_key: that.data.items.pay_key, payment: that.data.payment, pay_amount: that.data.pay_amount, pay_cash: that.data.pay_amount, payment_ext: that.data.payment_ext }
       util.postJSON({ apiUrl: apiurl.vendor, data: data },
@@ -144,7 +145,7 @@ Component({
               paySign: result.pay_info.paySign,
               success(res1) {
                 util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
-                  wx.hideLoading()
+                  // wx.hideLoading()
                   
                 }, function () {
                   wx.hideLoading()

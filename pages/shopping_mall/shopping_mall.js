@@ -219,7 +219,7 @@ Page({
   },
   detail(e){
     wx.navigateTo({
-      url: '../business_details/index?id=' + e.currentTarget.id,
+      url: '../business_details/business_details?id=' + e.currentTarget.id,
     })
   },
   loadMore: function () {

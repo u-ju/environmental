@@ -122,9 +122,35 @@ module.exports = {
   popup: popup,
   allowUploadFormat: allowUploadFormat,
   uploadV: uploadV,
-  address: address
+  address: address,
+  testwl: testwl,
+  testjq: testjq,
+  testcall: testcall,
+  alert1: alert1
 }
-
+function testcall(str, alert, cb) {
+  var that = this;
+  console.log(str)
+  if (str.length > 0 &&!/^1\d{10}$/.test(str) && !/^\d{3}-\d{8}$|^\d{4}-\d{7}$/.test(str)) {
+    that.alert1(alert,2000)
+    cb()
+  }
+}
+function testjq(str, alert, cb) {
+  var that = this;
+  console.log(str)
+  if (str.length > 0 &&!/^\d+(\.\d{1,2})?$/.test(str)) {
+    that.alert1(alert, 2000)
+    cb()
+  }
+}
+function testwl(str, alert,cb) {
+  var that = this;
+  if (str.length > 0 &&!/^[a-zA-Z0-9]+$/.test(str)) {
+    that.alert1(alert, 2000)
+    cb()
+  }
+}
 function popup(content, confirm, cancel){
   wx.showModal({
     title: '提醒',
@@ -415,6 +441,13 @@ function alert(msg, time = 3000) {
     mask: true
   });
 }
+function alert1(msg, time = 3000) {
+  wx.showToast({
+    title: msg,
+    icon: 'none',
+    duration: time
+  });
+}
 /**
  *  延迟跳转
  * @param redirect_url 延迟跳转url地址
@@ -428,14 +461,14 @@ function deplay_redirect(redirect_url, timer = 3000) {
   }, timer);
 }
 
-function deplay_navigateTo(redirect_url, timer = 3000) {
+function deplay_navigateTo(redirect_url, timer = 2000) {
   timer = setTimeout(function () {
     wx.navigateTo({
       url: redirect_url
     })
   }, timer);
 }
-function navigateBack(deltaz=1, timer=3000){
+function navigateBack(deltaz=1, timer=2000){
   // wx.navigateBack({
   //   delta: deltaz
   // })

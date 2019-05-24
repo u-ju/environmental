@@ -62,7 +62,7 @@ Page({
   detail(e){
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
-      url: '../business_details/index?t_shop_id=' + e.currentTarget.dataset.id,
+      url: '../business_details/business_details?t_shop_id=' + e.currentTarget.dataset.id,
     })
   },
   /**

@@ -110,6 +110,12 @@ Page({
       clicktime: time
     })
   },
+  testcall(e) {
+    console.log(e)
+    util.testjq(e.detail.value, "请输入正确的联系方式", function () {
+
+    })
+  },
   opent(){
     this.setData({
       visiblet:true
@@ -409,9 +415,9 @@ Page({
 
     } else {
       var image = [
-        { title: '店招上传', upload_picture_list: wx.getStorageSync("image0"), text: "点击拍摄/上传图片", id: 0 },
-        { title: '营业执照', upload_picture_list: wx.getStorageSync("image1"), text: "点击拍摄/上传图片", id: 1 },
-      ], upload_picture_list = wx.getStorageSync("upload_picture_list") || []
+        { title: '店招上传', upload_picture_list: wx.getStorageSync("image0t"), text: "点击拍摄/上传图片", id: 0 },
+        { title: '营业执照', upload_picture_list: wx.getStorageSync("image1t"), text: "点击拍摄/上传图片", id: 1 },
+      ], upload_picture_list = wx.getStorageSync("upload_picture_listt") || []
 
       var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
       
@@ -492,6 +498,11 @@ Page({
     if (e.currentTarget.dataset.contact == "introt") {
       this.setData({
         intro: e.detail.value
+      })
+    }
+    if (e.currentTarget.dataset.contact == "license_info[license_no]t") {
+      util.testwl(e.detail.value, '请输入正确的许可证号', function () {
+        
       })
     }
     // if (e.currentTarget.dataset.contact == "addresst") {
@@ -620,7 +631,7 @@ Page({
         that.setData({
           ['image[' + index + '].upload_picture_list']: upload_picture_list,
         });
-        wx.setStorageSync('image' + index, upload_picture_list)
+        wx.setStorageSync('image' + index+'t', upload_picture_list)
       }
     })
     // 上传 进度方法
@@ -713,7 +724,7 @@ Page({
     this.setData({
       upload_picture_list: upload_picture_list
     });
-    wx.setStorageSync('upload_picture_list', upload_picture_list)
+    wx.setStorageSync('upload_picture_listt', upload_picture_list)
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -781,8 +792,8 @@ Page({
       data.video = this.data.video.src
     }
     for (var c in this.data.timevalueR){
-      data['business_time[' + c + ']["start"]'] = this.data.timevalueR[c].split("-")[0]
-      data['business_time[' + c + ']["end"]'] = this.data.timevalueR[c].split("-")[1]
+      data['business_time[' + c + '][start]'] = this.data.timevalueR[c].split("-")[0]
+      data['business_time[' + c + '][end]'] = this.data.timevalueR[c].split("-")[1]
     }
     for (var d in this.data.features){
       data['feature['+d+']'] = this.data.features[d]
@@ -790,7 +801,8 @@ Page({
     // for (var e in this.data.room) {
     //   data['reservation[room]['+e+']'] = this.data.room[e]
     // }
-    
+    data['license_info[business_address]'] = this.data.business_address
+    data['license_info[business_scope]'] = this.data.business_scope
     data.area_id = that.data.area_id_val
     data.type = 2
     data.intro = that.data.intro
@@ -822,22 +834,35 @@ Page({
    var result = res.data.result
 
       util.alert("申请提交成功，等待审核")
-      wx.setStorageSync("contactt", '')
-      wx.setStorageSync("discount_percentt", '')
-      wx.setStorageSync("titlet", '')
-      wx.setStorageSync("addresst", '')
-      wx.setStorageSync("introt", '')
-      wx.setStorageSync("area_idt", '')
-      wx.setStorageSync("typet", '')
-      wx.setStorageSync("cate_idt", '')
-      wx.setStorageSync("title1t", '')
-      wx.setStorageSync("areaSelectedStrt", '')
-      wx.setStorageSync("image0", '')
-      wx.setStorageSync("image1", '')
-      wx.setStorageSync("upload_picture_list", [])
-      wx.setStorageSync('choosedt', '')
-      wx.setStorageSync('latitudet', '')
-      wx.setStorageSync('longitudet', '')
+//    wx.setStorageSync("contactt", '')
+//    wx.setStorageSync("discount_percentt", '')
+//    wx.setStorageSync("titlet", '')
+//    wx.setStorageSync("addresst", '')
+//    wx.setStorageSync("introt", '')
+//    wx.setStorageSync("area_idt", '')
+//    wx.setStorageSync("typet", '')
+//    wx.setStorageSync("cate_idt", '')
+//    wx.setStorageSync("title1t", '')
+//    wx.setStorageSync("areaSelectedStrt", '')
+//    wx.setStorageSync("image0", '')0
+//    wx.setStorageSync("image1", '')0
+//    wx.setStorageSync("upload_picture_list", [])0
+//    wx.setStorageSync('choosedt', '')
+//    wx.setStorageSync('latitudet', '')
+//    wx.setStorageSync('longitudet', '')
+//    wx.setStorageSync('license_info[business_address]t', '')
+//    wx.setStorageSync('license_info[business_scope]t', '')
+//    wx.setStorageSync('videot', '')
+//    wx.setStorageSync('license_info[company_name]t', '')
+//    wx.setStorageSync('license_info[license_no]t', '')
+//    wx.setStorageSync('license_info[legal_person]t', '')
+//    wx.setStorageSync('costt', '')
+//    wx.setStorageSync('featurest', '')
+//    wx.setStorageSync('roomt', '')
+   var arr = ['contact', 'discount_percent', 'title', 'address', 'intro', 'area_id', 'type', 'cate_id', 'title1', 'areaSelectedStr', 'image0', 'image1', "upload_picture_list", 'choosed', 'latitude', "longitude", 'license_info[business_address]', 'license_info[business_scope]', 'license_info[company_name]', 'license_info[license_no]', 'license_info[legal_person]', 'video', 'cost', 'features', 'room','timevalue']
+   		for(var i in arr){
+          wx.setStorageSync(arr[i]+"t", '')
+   		}
    setTimeout(function () {
      wx.reLaunch({
        url: '../index/index',

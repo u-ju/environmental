@@ -99,12 +99,17 @@ Component({
         animationData: this.animation.export(),
         maskVisual: 'hidden'
       });
+      var areaSelectedStr = [], cengji = that.data.cengji
+      for (var i in cengji) {
+        if (cengji[i].currentname!="请选择")
+        areaSelectedStr = areaSelectedStr + " " + cengji[i].currentname
+      }
       return that.triggerEvent("choosea", {
-        areaSelectedStr: that.data.areaSelectedStr,
-        area_id_val: that.data.cengji[that.data.current]['area'][that.data.index]["area_id"],
-        area: that.data.cengji[that.data.current]['area'][that.data.index],
+        areaSelectedStr: areaSelectedStr,
+        area_id_val: that.data.cengji[that.data.current]['area'][that.data.index] && that.data.cengji[that.data.current]['area'][that.data.index]["area_id"] ? that.data.cengji[that.data.current]['area'][that.data.index]["area_id"]:'',
+        area: that.data.cengji[that.data.current]['area'][that.data.index]||'',
         isbiotope: that.data.isbiotope,
-        konwname: that.data.konwname,
+        konwname: that.data.konwname||'',
         biotope_name: that.data.biotope_name,
         dong: that.data.dong,
         unit: that.data.unit

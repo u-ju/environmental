@@ -66,7 +66,7 @@ page{
   margin-top: -38rpx;
 }
 .bgg{
-  background-color: #5ABB96;
+  background-color: #4FD6F0;
   width: 104rpx;
   height: 104rpx;
   border-radius: 50%;

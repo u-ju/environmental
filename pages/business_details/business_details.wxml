@@ -2,7 +2,7 @@
 <block wx:if="{{result}}">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' bindchange="swiperChange" current="{{cur}}">
     <swiper-item wx:if="{{result.video}}">
-      <video src="{{result.video}}" custom-cache='{{false}}' poster="{{result.images[0]}}" objectFit="contain"></video>
+      <video src="{{result.video}}" custom-cache='{{false}}'  objectFit="contain"></video>
       <!-- autoplay='autoplay' -->
     </swiper-item>
     <!-- <block wx:for="{{4}}" wx:key="index"> -->
@@ -55,8 +55,8 @@
     <scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;">
       <view class='spu view0' id='view0'>
       <block wx:if="{{goods.length>0}}">
-        <view class='flex_btw'>
-          <view class='spug flex_col' wx:for="{{goods}}" wx:key="index">
+        <view class=' {{goods.length==2?"flex":"flex_btw"}}'>
+          <view class='spug flex_col' wx:for="{{goods}}" wx:key="index"  data-id='{{item.sku_id}}' bindtap='goods'>
             <image src='{{item.thumb}}'></image>
             <view class='spud'>
               <view class='size26 center hidden1'>{{item.spu_name}}{{item.spu_name}}</view>
@@ -66,10 +66,10 @@
             </view>
           </view>
         </view>
-        <!-- <view class='more flex align_center'>
+        <view class='more flex align_center' bindtap='moregoods' >
           <view>更多</view>
           <text class='iconfont icon-xiangxiajiantou'></text>
-        </view> -->
+        </view>
         </block>
       </view>
       <view class='goods_intr3 view1' id='view1'>

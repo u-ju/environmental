@@ -1,8 +1,10 @@
 {
   "pages": [
+    
+    
     "pages/index/index",
     "pages/area/index",
-    
+    "pages/address_edit/index",
     
     "pages/map/index",
     "pages/myCommunity/index",
@@ -23,7 +25,6 @@
     "pages/agriculturalEdit/index",
     "pages/business_details/reservation/index",
     "pages/business_details/license/index",
-    "pages/business_details/index",
     "pages/order/index",
     "pages/my_order_detail/refund",
     "pages/myOrderRefund/index",
@@ -57,7 +58,6 @@
     "pages/withdrawal/withdrawal",
     "pages/home_orders/index",
     "pages/page/index",
-    "pages/address_edit/index",
     "pages/my_invitation/index",
     "pages/realname_authentication/realname_authentication",
     "pages/feedback/index",
@@ -154,8 +154,9 @@
     "navigationBarTextStyle": "black"
   },
   "networkTimeout": {
-    "request": 20000,
+    "request": 30000,
     "downloadFile": 100000
+
   },
   "sitemapLocation": "sitemap.json"
 }

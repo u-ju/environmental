@@ -35,10 +35,14 @@ Page({
     var images = this.data.images
     var key_name = this.data.key_name
     var key = this.data.key
+    var price = this.data.price
     thumb.push([])
     images.push([])
+    console.log(this.data.price)
+    price.push('')
     key_name.push('')
     key.push('')
+    console.log(this.data.price)
     this.setData({
       skunum: this.data.skunum+1,
       images: images,
@@ -239,6 +243,21 @@ Page({
     this.setData({ title1: e.detail.options.map((n) => n.label).join('/'), cate_id: e.detail.value[e.detail.value.length-1] })
     
   },
+  inputt(e){
+    var price = this.data.price
+    price[e.currentTarget.dataset.index]=e.detail.value
+    this.setData({
+      price: price
+    })
+    console.log(e)
+  },
+  inputs(e){
+    var stock = this.data.stock
+    stock[e.currentTarget.dataset.index] = e.detail.value
+    this.setData({
+      stock: stock
+    })
+  },
   // 上传图片
   upload(e){
     var that = this;
@@ -403,9 +422,10 @@ Page({
     var data = e.detail.value,that = this;
     data.cate_id = this.data.cate_id;
     data.shop_id = that.data.shop_id;
-    console.log(e.detail.value['price[0]'])
-    console.log(this.data.spu_intro)
-    data.spu_intro = this.data.spu_intro[0]["path_server"]
+    if (this.data.spu_intro[0]){
+      data.spu_intro = this.data.spu_intro[0]["path_server"]
+    }
+    
     for (var i = 0; i < that.data.skunum;i++){
       console.log(i)
       data['sku_arr[' + i+'][key]'] = that.data.key[i]

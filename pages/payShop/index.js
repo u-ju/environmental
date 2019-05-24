@@ -22,7 +22,8 @@ Page({
     payment: '',
     visible2:false,
     chooseimage:'../../images/choosed.png',
-    data: { pay_source: 'shop_gather', shop_id: '', amount: '', bag_type: '' } 
+    data: { pay_source: 'shop_gather', shop_id: '', amount: '', bag_type: '' },
+    sure:false
   },
 
   /**
@@ -30,6 +31,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    util.loading()
     var pages = getCurrentPages() //获取加载的页面
     var currentPage = pages[pages.length - 1] //获取当前页面的对象
     var url = currentPage.route 
@@ -101,12 +103,13 @@ Page({
   onShow: function () {
 
   },
-  radioChange: function (e) {//入驻类型选择
-    this.setData({
-      payment: e.detail.value
-    })
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
-  },
+  // radioChange: function (e) {//入驻类型选择
+  //   this.setData({
+  //     payment: e.detail.value,
+  //     sure: false
+  //   })
+  //   console.log('radio发生change事件，携带value值为：', e.detail.value)
+  // },
   onChange(e) {
     // console.log(e)
     var data = this.data.data
@@ -114,7 +117,8 @@ Page({
     this.setData({
       error: isTel(e.detail.value),
       value: e.detail.value,
-      data: data
+      data: data,
+      sure: false
     })
   },
   openp(e) {
@@ -122,7 +126,22 @@ Page({
     if (this.data.value == "") {
       return util.alert("请输入转账金额")
     }
+    if (!/^\d+(\.\d{1,2})?$/.test(this.data.value)) {
+      return util.alert("请输入正确的金额格式")
+    }
     page.open3()
+  },
+  onblur() {
+    // var value = this.data.value
+    // if (!/^\d+(\.\d{1,2})?$/.test(value)) {
+    //   util.alert("请输入正确的金额格式")
+    // }
+    var that = this;
+    util.testjq(that.data.value, "请输入正确的金额格式", function () {
+      that.setData({
+        sure: true
+      })
+    })
   },
   open2() {
     if (this.data.value==""){
@@ -205,7 +224,6 @@ Page({
           paySign: result.pay_info.paySign,
           success(res1) {
             console.log(res1)
-            wx.hideLoading()
             util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
               wx.navigateTo({
                 url: '../success/success',

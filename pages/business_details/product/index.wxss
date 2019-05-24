@@ -42,3 +42,7 @@ page{
   width: 520rpx;
   height:120rpx;
 }
+.spu{
+  padding: 24rpx 0;
+  border-bottom: 1px solid #EEEEEE
+}

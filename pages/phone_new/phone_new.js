@@ -19,6 +19,7 @@ Page({
     bangding:true
   },
   onLoad:function(e){
+    console.log(e)
     if(e.mobile){
       this.setData({
         mobile_code_old: e.mobile_code,

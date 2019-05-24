@@ -1,5 +1,5 @@
 <!--pages/business_details/product/index.wxml-->
-<view class='searchall searchys' bindtap='searchshow' wx:if="{{show}}">
+<!-- <view class='searchall searchys' bindtap='searchshow' wx:if="{{show}}">
   <view class='color565656 flex_btw align_center'>
     <text class='iconfont icon-sousuo color4 searchall_pic'></text>
     <text>输入想要查找的内容</text>
@@ -8,9 +8,9 @@
 </view>
 <view class='searchall flex_btw align_center' bindtap='search' wx:else>
   <text class='iconfont icon-sousuo color4 searchall_pic'></text>
-  <input  value='{{search}}' placeholder='输入想要查找的内容' focus='{{show}}' auto-focus='{{show}}' name='search' bindblur='blur'></input>
+  <input value='{{search}}' placeholder='输入想要查找的内容' focus='{{show}}' auto-focus='{{show}}' name='search' bindblur='blur'></input>
   <image class='logoi' src='../../../images/logoi.png'></image>
-</view>
+</view> -->
 
 <view class='pagetype'>
   <view class='spu flex' wx:for="{{list}}" wx:key="index">

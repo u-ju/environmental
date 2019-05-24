@@ -25,9 +25,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.setData({
-    //   shop_id:
-    // })
+    this.setData({
+      shop_id: options.id
+    })
     this.init()
   },
 
@@ -47,8 +47,8 @@ Page({
 
   init(page = 1) {
     var that = this;
-    console.log(apiurl.shop_goodsIndex + '?shop_id=' + that.data.shop_id + "&page=" + page)
-    util.getJSON({ apiUrl: apiurl.goods }, function (res) {
+    // console.log(apiurl.shop_goodsIndex + '?shop_id=' + that.data.shop_id + "&page=" + page)
+    util.getJSON({ apiUrl: apiurl.goods + '?shop_id=' + that.data.shop_id + "&source=offline&page=" + page }, function (res) {
 
       var result = res.data.result
       var list = result.list
@@ -70,7 +70,7 @@ Page({
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
-    util.getJSON({ apiUrl: apiurl.shop_goodsIndex + '?shop_id=' + that.data.shop_id + "&page=" + 1 }, function (res) {
+    util.getJSON({ apiUrl: apiurl.goods + '?shop_id=' + that.data.shop_id + "&source=offline&page=" + 1 }, function (res) {
       var result = res.data.result
       console.log(result)
       that.setData({

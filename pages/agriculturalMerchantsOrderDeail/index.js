@@ -272,5 +272,18 @@ Page({
         expressbtn: false
       })
     })
+  },
+  inputs(e){
+    var that = this;
+    util.testwl(e.detail.value, '请输入正确的物流单号', function () {
+      that.setData({
+        expressbtn: false
+      })
+    })
+    var express_num = this.data.express_num
+    express_num[e.currentTarget.dataset.index] = e.detail.value
+    this.setData({
+      express_num: express_num
+    })
   }
 })

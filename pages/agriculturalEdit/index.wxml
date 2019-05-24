@@ -58,11 +58,11 @@
     <view class='flex_btw'>
       <view class='flex align_center maginb50'>
         <view class='left1'>售价：</view>
-        <input placeholder='' value='{{price[indexnum]}}' name='price[{{indexnum}}]' class='width140' ></input>
+        <input placeholder='' value='{{price[indexnum]}}' type='digit' bindinput='inputt' data-index='{{indexnum}}' name='price[{{indexnum}}]' class='width140' ></input>
       </view>
       <view class='flex align_center maginb50'>
         <view class='left1'>库存：  </view>
-        <input placeholder='' value='{{stock[indexnum]}}' name='stock[{{indexnum}}]' class='width140' ></input>
+        <input placeholder='' value='{{stock[indexnum]}}' type='number' bindinput='inputs' data-index='{{indexnum}}'  name='stock[{{indexnum}}]' class='width140' ></input>
       </view>
     </view> 
     <view class='flex align_center maginb50'>

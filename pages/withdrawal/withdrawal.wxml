@@ -24,7 +24,7 @@
     <view class='bold'>提现金额</view>
     <view class='inputmon flex_btw align_center'>
       <text class='size60'>￥</text>
-      <input bindinput='onChange' type='digit' name='amount' value='{{amount}}'></input>
+      <input bindinput='onChange' type='digit' bindblur='onblur' name='amount' value='{{amount}}'></input>
     </view>
   </view>
   <view class='color9 margint70'>余额 <text class='colorC70000'> {{yu}}元</text> <text class='color299EF0' bindtap='all'>全部提现</text></view>
