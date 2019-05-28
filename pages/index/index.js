@@ -28,17 +28,12 @@ Page({
     userInfo: {},
     banner: [],
     block: [],
-    garbage: [
-      
-      ],
-    tag: [
-      
-      ],
+    garbage: [],
+    tag: [],
     user: { put_count: 0, balance:0.00},
     token:"",
     tabbarid:0,
     share_gene:'',
-    
     ak: "DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo",
     weatherData: '',
     futureWeather: [],
@@ -106,7 +101,7 @@ Page({
     if (!wx.getStorageSync('token') || wx.getStorageSync('token') == 1) {
       return false
     }
-    console.log(wx.getStorageSync('token'))
+    // console.log(wx.getStorageSync('token'))
     if (wx.getStorageSync('locAddress')) {
       return this.setData({
         address: wx.getStorageSync('locAddress')
@@ -142,8 +137,9 @@ Page({
       })
       util.hideLoading()
     })
-    that.adr()
+    // 
     if (app.globalData.config.length==0){
+      that.adr()
       util.getJSON({ apiUrl: apiurl.config }, function (res) {
         var result = res.data.result;
         getApp().globalData.config = result;

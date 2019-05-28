@@ -29,7 +29,7 @@
           <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{beforeColor}}">
             <block wx:for="{{banner}}" wx:key="index">
               <swiper-item bindtap='link' data-link='{{item.control}}'>
-                <image src="{{item.image}}" class="slide-image" />
+                <image src="{{item.image}}" class="slide-image" mode='aspectFill' />
               </swiper-item>
             </block>
           </swiper>
@@ -83,10 +83,10 @@
       </view>
       <view class='bg marginfff'>
         <view class="container flex_btw twobr" wx:if="{{user.length>0}}">
-          <view class='index_putin border_right left' wx:for="{{user}}" wx:key="index" style='background-color:{{item.color}};'>
+          <view class='index_putin border_right left' wx:for="{{user}}" wx:key="index" style='background-color:{{item.color}};'  bindtap='link' data-link='{{item.button.control}}'>
             <view class='size28  flex_btw'>
               <text>{{item.name}}</text>
-              <view class='wallet  index_putin_right' bindtap='link' data-link='{{item.button.control}}'>
+              <view class='wallet  index_putin_right'>
                 {{item.button.name}}
               </view>
             </view>

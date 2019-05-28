@@ -71,7 +71,7 @@
       </navigator>
     </view>
   </view>
-  <view class='garbage flex' style='width:{{l_two.length==2?544:652}}rpx'>
+  <view class='garbage flex' hidden='{{l_two.length==0}}' style='width:{{l_two.length==2?544:652}}rpx'>
     <view wx:for="{{l_two}}" wx:key='index' style='width:{{100/l_two.length}}%' class='center' bindtap='link' data-link='{{item.control}}'>
       <image src='{{item.icon}}'></image>
       <view class='color4'>{{item.name}}</view>

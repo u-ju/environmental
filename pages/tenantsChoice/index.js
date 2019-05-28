@@ -23,14 +23,19 @@ Page({
       })
     }
   },
-  offline(){
+  offline(e){
     wx.navigateTo({
-      url: '../tenants/tenants?room_list=' + this.data.room_list + "&apply_info=" + JSON.stringify(this.data.apply_info),
+      url: '../tenants/tenants?room_list=' + this.data.room_list + "&apply_info=" + JSON.stringify(this.data.apply_info) + "&source=" + e.currentTarget.dataset.key,
     })
   },
-  online(){
+  online(e){
     wx.navigateTo({
-      url: '../tenants/online',
+      url: '../tenants/online?source=' + e.currentTarget.dataset.key,
+    })
+  },
+  league(e) {
+    wx.navigateTo({
+      url: '../tenants/league?source=' + e.currentTarget.dataset.key,
     })
   },
   /**

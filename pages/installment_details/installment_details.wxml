@@ -21,7 +21,7 @@
       <text class='size28 pfeng'>评分:{{result.comment_score}}</text>
     </view>
     <view class='colorFE2C2C size28'>
-      <text>价格：</text> ￥
+      <text>社区惠民价：</text> ￥
       <text class='size30'>{{result.price}}</text>
     </view>
   </view>

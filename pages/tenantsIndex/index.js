@@ -30,7 +30,8 @@ Page({
         apply_info: result.apply_info,
         online_list: result.shop_info.online_list,
         offline_list: result.shop_info.offline_list,
-        room_list: result.apply_info.buttun_list
+        room_list: result.apply_info.buttun_list,
+        league_list: result.shop_info.league_list,
       })
       wx.hideLoading()
     })

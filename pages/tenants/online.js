@@ -180,6 +180,7 @@ Page({
       
         that.setData({
           type: '', 
+          source: options.source || '',
           choosed: wx.getStorageSync('choosedo') || that.data.choosed
         })
     // options.shop_id=30
@@ -227,6 +228,7 @@ Page({
             business_address: result.license_info.business_address || '',
             business_scope: result.license_info.business_scope || '',
             video: video,
+            source: result.source
           })
           wx.hideLoading()
         })
@@ -277,7 +279,7 @@ Page({
         address: address,
         complete: res => {
           console.log(res);   //经纬度对象
-          if (res.result.status == 0 && res.result.location){
+          if (res.result &&res.result.status == 0 && res.result.location){
             var longitude = that.data.location
             var latitude = that.data.location
             if (that.data.address.indexOf(res.result.title)!=-1){
@@ -425,7 +427,7 @@ Page({
         that.setData({
           ['image[' + index + '].upload_picture_list']: upload_picture_list,
         });
-        wx.setStorageSync('imageo' + index, upload_picture_list)
+        wx.setStorageSync('image' + index + 'o', upload_picture_list)
       }
     })
     // 上传 进度方法
@@ -447,7 +449,7 @@ Page({
     that.setData({
       ['image[' + e.currentTarget.dataset.index + '].upload_picture_list']: [],
     });
-    wx.setStorageSync('imageo' + e.currentTarget.dataset.index, [])
+    wx.setStorageSync('image' + e.currentTarget.dataset.index+'o', [])
     // 
   },
   uploadpic1: function (e) {
@@ -603,7 +605,7 @@ Page({
     for (var a in that.data.upload_picture_list) {
       data['images[' + a + ']'] = that.data.upload_picture_list[a]['path_server']
     }
-    data["source"] = 'online'
+    data["source"] = that.data.source
     var url = apiurl.shop_apply;
     if (this.data.shop_id) {
       url = apiurl.shop_update;

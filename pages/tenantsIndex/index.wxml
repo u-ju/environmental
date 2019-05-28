@@ -7,7 +7,7 @@
 </view>
 <view wx:else>
   <view class='online' wx:if="{{online_list.length>0}}">
-    <view class='sjtitle'>线上商家</view>
+    <view class='sjtitle'>直营商家</view>
     <view class='shop' wx:for="{{online_list}}" wx:key="index" wx:for-item="list">
       <view class="inner flex_btw" bindtap='detail' data-source='online' data-id='{{list.shop_id}}'>
         <view class="cover">
@@ -58,7 +58,7 @@
     </view>
   </view>
   <view class='offline' wx:if="{{offline_list.length>0}}">
-    <view class='sjtitle'>线下商家</view>
+    <view class='sjtitle'>实体商家</view>
     <view class='shop' wx:for="{{offline_list}}" wx:key="index" wx:for-item="list">
       <view class="inner flex_btw" bindtap='detail' data-source='offline' data-id='{{list.shop_id}}'>
         <view class="cover">
@@ -76,9 +76,7 @@
         </view>
 
       </view>
-      <view class='flex_btw color4'>
-
-        
+      <view class='flex_btw color4'> 
         <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
           <image src='../../images/addspu.png'></image>
           <view> 添加产品</view>
@@ -114,7 +112,49 @@
       </view>
     </view>
   </view>
+<view class='offline' wx:if="{{league_list.length>0}}">
+    <view class='sjtitle'>加盟商家</view>
+    <view class='shop' wx:for="{{offline_list}}" wx:key="index" wx:for-item="list">
+      <view class="inner flex_btw" bindtap='detail' data-source='offline' data-id='{{list.shop_id}}'>
+        <view class="cover">
+          <image src="{{list.thumb}}" class="cover-img" mode='aspectFill' />
+        </view>
+        <view class='describe flex_btw'>
+          <view class='xq'>
+            <view class='bold color51 size28'>{{list.title}}</view>
+            <view class="renzheng {{list.status==1?'color27AAD9':'colorEA2C2C'}}">{{list.status_name}}</view>
+          </view>
+          <view class='center czbtn' data-gather_qrcode='{{list.gather_qrcode}}' catchtap='erwm'>
+            <image src='../../images/erwm.png'></image>
+            <view> 收款码</view>
+          </view>
+        </view>
 
+      </view>
+      <view class='flex_btw color4'> 
+        <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
+          <image src='../../images/addspu.png'></image>
+          <view> 添加产品</view>
+        </view>
+        <view class='center czbtn' catchtap='linke' data-url='../agriculturalLook/index?id={{list.shop_id}}'>
+          <image src='../../images/lookspu.png'></image>
+          <view> 查看产品</view>
+        </view>
+        <view class='center czbtn' catchtap='linke' data-url='../assets/index?id=2'>
+          <image src='../../images/look.png'></image>
+          <view> 查看货款</view>
+        </view>
+        <view class='center czbtn' catchtap='linke' data-url='../business_details/viewcomments/index?id={{list.shop_id}}'>
+          <image src='../../images/sahngpinpinglun.png'></image>
+          <view> 查看评论</view>
+        </view>
+        <view class='center czbtn' catchtap='linke' data-url='../operationalData/index?id={{list.shop_id}}'>
+          <image src='../../images/yunyingshuju.png'></image>
+          <view> 运营数据</view>
+        </view>
+      </view>
+    </view>
+  </view>
 
 
 </view>

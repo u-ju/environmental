@@ -10,7 +10,9 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || [],that =this;
 
-    
+    util.address(function(e){
+      // console.log(e)
+    })
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
@@ -53,27 +55,7 @@ App({
       // })
     })
   },
-  address() {
-    var that = this;
-    // 新建百度地图对象 
-    var BMap = new bmap.BMapWX({
-      ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
-    });
-    var fail = function (data) {
-      console.log(data)
-    };
-    var success = function (data) {
-      console.log(data)
-      var wxMarkerData = data.wxMarkerData;
-      that.globalData.longitude = wxMarkerData[0].longitude
-      that.globalData.latitude = wxMarkerData[0].latitude
-    }
-    // 发起regeocoding检索请求 
-    BMap.regeocoding({
-      fail: fail,
-      success: success,
-    });
-  },
+  
   globalData: {
     userInfo: null,
     baseUrl: "https://wyhb.zgwyhb.com/api",

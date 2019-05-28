@@ -1,6 +1,6 @@
 <!--pages/tenantsChoice/index.wxml-->
 <image src='{{apply_info.banner}}'></image>
-<view class='btn' wx:for='{{apply_info.buttun_list}}' wx:key="index" bindtap='{{item.key}}'>{{item.name}}</view>
+<view class='btn' wx:for='{{apply_info.buttun_list}}' wx:key="index" bindtap='{{item.key}}' data-key='{{item.key}}'>{{item.name}}</view>
 <view class='instructions'>
   <view class='center size22 bold'>{{apply_info.desc.title}}</view>
   <text class='size22'>{{apply_info.desc.content}}</text>

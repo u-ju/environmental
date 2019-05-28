@@ -110,7 +110,7 @@ page {
 }
 
 .marginfff {
-  padding: 38rpx 0 26rpx 0;
+  padding:  26rpx 0;
   /* margin: 20rpx 0; */
 }
 
@@ -193,7 +193,7 @@ page {
 .banner {
   height: 188rpx;
   border-radius: 30rpx;
-  margin: 10rpx 0 58rpx 0;
+  margin: 10rpx 0 38rpx 0;
   overflow: hidden;
 }
 
@@ -323,7 +323,7 @@ page {
 }
 
 .swiper-box {
-  height: 370rpx;
+  height: 320rpx;
 }
 
 .tab {

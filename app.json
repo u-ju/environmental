@@ -1,8 +1,8 @@
 {
   "pages": [
-    
-    
     "pages/index/index",
+    "pages/tenants/league",
+    
     "pages/area/index",
     "pages/address_edit/index",
     

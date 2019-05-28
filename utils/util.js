@@ -3,7 +3,7 @@ var apiurl = require('api.js');
 var link = require('link.js');
 var bmap = require('bmap-wx.min.js'); 
 var build = 99999999
-// var build = 20190517
+// var build = 20190524
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -130,7 +130,7 @@ module.exports = {
 }
 function testcall(str, alert, cb) {
   var that = this;
-  console.log(str)
+  // console.log(str)
   if (str.length > 0 &&!/^1\d{10}$/.test(str) && !/^\d{3}-\d{8}$|^\d{4}-\d{7}$/.test(str)) {
     that.alert1(alert,2000)
     cb()
@@ -138,7 +138,7 @@ function testcall(str, alert, cb) {
 }
 function testjq(str, alert, cb) {
   var that = this;
-  console.log(str)
+  // console.log(str)
   if (str.length > 0 &&!/^\d+(\.\d{1,2})?$/.test(str)) {
     that.alert1(alert, 2000)
     cb()
@@ -156,7 +156,7 @@ function popup(content, confirm, cancel){
     title: '提醒',
     content: content,
     cancelText: '否',
-    cancelColor: '#2EB354',
+    cancelColor: '#4FD6F0',
     confirmText: '是',
     confirmColor: '#444444',
     success: function (res) {
@@ -224,9 +224,11 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
         });
       }else{
         if (storge==1){
-          wx.setStorageSync('upload_picture_list', upload_picture_list)
+          wx.setStorageSync('upload_picture_listt', upload_picture_list)
         }else if (storge == 2) {
           wx.setStorageSync('upload_picture_listo', upload_picture_list)
+        } else if (storge == 3) {
+          wx.setStorageSync('upload_picture_liste', upload_picture_list)
         }
         _this.hideLoading()
         that.setData({
@@ -344,7 +346,7 @@ function uploadV(url, that, res,  suc, update) {
   });
 }
 // 隐藏信息框
-function hideLoading(time = 1000){
+function hideLoading(time = 400){
   setTimeout(function () {
     wx.hideLoading()
   }, time)
