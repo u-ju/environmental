@@ -1,0 +1,38 @@
+/* pages/family/addBuddy/index.wxss */
+page{
+  font-size: 28rpx;
+}
+.searchall{
+  width: 630rpx;
+  margin: 10rpx auto;
+}
+.searchall input{
+  width: 570rpx;
+}
+.header{
+  width:130rpx;
+  height:130rpx;
+  border-radius:50%;
+  background-color: #eee;
+  margin-right: 30rpx;
+}
+.name{
+  margin-bottom: 16rpx;
+}
+.send{
+  width:150rpx;
+  height:78rpx;
+  background:#4FD6F0;
+  border-radius:10rpx;
+  line-height: 78rpx;
+  text-align: center;
+  color: white;
+}
+.person{
+  width: 686rpx;
+  margin: auto;
+}
+.personitem{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #E8E8E8;
+}

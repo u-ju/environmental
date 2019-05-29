@@ -8,7 +8,7 @@
                     <slot name="header"></slot>
                 </block>
             </view>
-            <view class="wux-popup__bd">
+            <view class="wux-popup__bd " style='{{bdclass}}'>
                 <view wx:if="{{ content }}">{{ content }}</view>
                 <slot></slot>
             </view>
@@ -16,6 +16,10 @@
                 <view class="wux-popup__extra" wx:if="{{ extra }}">{{ extra }}</view>
                 <block wx:else>
                     <slot name="footer"></slot>
+                    <!-- <view wx:else class='flex footer'>
+                      <view>否</view>
+                      <view class='color4fd6f0'>确定</view>
+                    </view>  -->
                 </block>
             </view>
             <view class="wux-popup__close" wx:if="{{ closable }}" bindtap="close">

@@ -57,9 +57,10 @@ Page({
       var guide_cate = app.globalData.config.guide_cate;
       var tablen=0
       var tablen = 0
-      if (guide_cate[0]["children"] && guide_cate[0]["children"][0]["children"]) {
-        tablen = guide_cate[0]["children"][0]["children"].length / 3
+      if (guide_cate[0]["children"]) {
+        tablen = guide_cate[0]["children"].length / 3
       }
+      // console.log(guide_cate)
       that.setData({
         guide_cate: guide_cate,
         tablen: tablen

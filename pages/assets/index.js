@@ -19,7 +19,7 @@ Page({
     withdraw: '',
     tab: [{ id: 0, name: '环保金', url: 'balanceIndex' },
     { id: 1, name: '环保积分', url: 'integralIndex' },],
-    current:0,
+    current:1,
     withdraw_status:''
   },
   tabchange(e){
@@ -40,9 +40,9 @@ Page({
       })
       
     }
-    this.setData({
-      withdraw: app.globalData.config.protocol.withdraw
-    })
+    // this.setData({
+    //   withdraw: app.globalData.config.protocol.withdraw
+    // })
     this.Initialize()
   },
   Initialize(){

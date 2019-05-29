@@ -28,7 +28,7 @@ Page({
     //   })
     // })
     this.setData({
-      tab: app.globalData.config.withdraw_status,
+      tab: app.globalData.config.withdraw_status || tab,
       url: options.url
     })
     that.init()

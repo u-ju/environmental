@@ -1,0 +1,46 @@
+/* pages/family/associated/index.wxss */
+@import '../addBuddy/index';
+.tabpic{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 4rpx;
+}
+.xian{
+  background-color: #D2D2D2;
+  width:2rpx;
+  height:36rpx;
+}
+.tab{
+  width: 50%;
+  justify-content: center;
+}
+.tab .justify_center{
+  padding: 22rpx 0;
+  border-bottom: 4rpx solid #4FD6F0;
+}
+.tabitem{
+  
+  border-bottom: 2rpx solid #E8E8E8;
+}
+.submitButton{
+  margin-top: 56rpx;
+}
+.bge5{
+  background-color: #E5E5E5
+}
+.send{
+  margin-left: 7rpx;
+}
+.submitButton image{
+  margin-right: 20rpx;
+}
+.footer{
+  width: 100%;
+}
+.footer>view{
+  width: 50%;
+  border-top: 1px solid #EEEEEE;
+}
+.footer>view:first-of-type{
+  border-right: 1px solid #EEEEEE;
+}

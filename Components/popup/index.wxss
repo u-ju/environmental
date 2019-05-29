@@ -120,3 +120,22 @@
 .width686{
   width: 686rpx;
 }
+.flex{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  justify-items: center;
+}
+.footer{
+  width: 100%;
+}
+.footer>view{
+  width: 50%;
+  border-top: 1px solid #EEEEEE;
+}
+.footer>view:first-of-type{
+  border-right: 1px solid #EEEEEE;
+}
+.color4fd6f0{
+  color: #4FD6F0;
+}

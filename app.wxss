@@ -35,10 +35,13 @@ page .navigator-hover {
 }
 .searchall input{
   width: 360rpx;
+  font-size: 28rpx;
+  height: 56rpx;
+  line-height: 56rpx;
 }
 .searchall .logoi{
-  width:50rpx;
-  height:50rpx;
+  width:40rpx;
+  height:40rpx;
 }
 
 .swiperbox{
@@ -386,11 +389,11 @@ page {
 checkbox .wx-checkbox-input {
   width: 30rpx;
   height: 30rpx;
-  border-color: #27aad9;
+  border-color: #4FD6F0;
 }
 /*checkbox选中后样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  background: #27aad9;
+  background: #4FD6F0;
 }
 /*checkbox选中后图标样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
@@ -432,7 +435,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   margin: 0 auto;
   text-align: center;
   font-size:28rpx;
-  color: #27AAD9;
+  color: #4FD6F0;
   line-height: 30rpx;
 }
 /*普通样式*/

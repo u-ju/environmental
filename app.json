@@ -1,11 +1,13 @@
 {
   "pages": [
+    "pages/assets/index",
     "pages/index/index",
-    "pages/tenants/league",
+    "pages/family/associated/index",
+    "pages/family/addBuddy/index",
     
+    "pages/tenants/league",
     "pages/area/index",
     "pages/address_edit/index",
-    
     "pages/map/index",
     "pages/myCommunity/index",
     "pages/myGreenCredit/index",
@@ -50,7 +52,7 @@
     "pages/recruitment/index/index",
     "pages/lostFound/lfDetails/index",
     "pages/lostFound/lostfound/index",
-    "pages/assets/index",
+    
     "pages/delivery_station/index",
     "pages/success/success",
     "pages/result/index",

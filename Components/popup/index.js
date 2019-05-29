@@ -12,6 +12,14 @@ Component({
       type: String,
       value: '',
     },
+    bdclass:{
+      type: String,
+      value: '',
+    },
+    isfooter: {
+      type: String,
+      value: true,
+    },
     title: {
       type: String,
       value: '',

@@ -140,14 +140,14 @@ page{
 .assets{
   width:165rpx;
   height:54rpx;
-  background:linear-gradient(to right, rgba(255,255,255,.5), 10% , #4FD6F0);
+  /* background:linear-gradient(to right, rgba(255,255,255,.5), 10% , #4FD6F0); */
   border-radius:34rpx;
   padding-left: 23rpx;
   /* margin-right: -32rpx; */
   opacity: 1;
   line-height: 54rpx;
-  /* background-color: transparent; */
-  border: 1px solid #fff;
+  background-color: #36D1EF;
+  /* border: 1px solid #fff; */
   /* background:linear-gradient(200deg,rgba(79,214,240,1),rgba(255,255,255,1)); */
 }
 .assetsitem{

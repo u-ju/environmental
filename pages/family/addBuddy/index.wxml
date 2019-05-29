@@ -1,0 +1,17 @@
+<!--pages/family/addBuddy/index.wxml-->
+<view class='searchall flex align_center' bindtap='search'>
+  <text class='iconfont icon-sousuo color4 searchall_pic'></text>
+  <input value='{{search}}' placeholder='输入想要查找的内容' name='search'></input>
+</view>
+<view class='person'>
+  <view class='flex_btw align_center personitem'>
+    <view class='flex align_center'>
+      <image class='header'></image>
+      <view>
+        <view class='name'>一只猪的生活 </view>
+        <view>15832456957</view>
+      </view>
+    </view>
+    <view class='send size30'>发送申请</view>
+  </view>
+</view>

@@ -13,7 +13,7 @@
     <view class='flex_btw align_center top'>
       <view class='flex align_center' bindtap='goarea'>
         <image class='locations' src='../../images/dingwei.png'></image>
-        <view class='width110 hidden1'>{{address}}</view>
+        <view class='width110 hidden1 bold '>{{address}}</view>
         <text class='iconfont icon-xiajiantou'></text>
       </view>
       <view class='searchall flex_btw align_center' bindtap='search'>

@@ -53,7 +53,7 @@ button{
 .btndl{
   width:353rpx;
   height:100rpx;
-  background:#27AAD9;
+  background:#4FD6F0;
   border-radius:50rpx;
   margin: 100rpx auto 0 auto;
   color: white;
@@ -65,6 +65,7 @@ button{
   width: 220rpx;
   margin: 100rpx auto;
   text-align: center;
+  line-height: 50rpx;
 }
 .gznr{
   width:687rpx;
