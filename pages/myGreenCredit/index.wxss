@@ -68,3 +68,6 @@ page {
   display: inline-block;
   margin-top: 10rpx;
 }
+.brx navigator:first-of-type{
+  border-left: none
+}

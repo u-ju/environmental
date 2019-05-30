@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "关联家庭成员",
   "usingComponents": {
     "wux-popup": "../../../Components/popup/index",
     "empty": "../../../Components/empty/index"

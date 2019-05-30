@@ -18,7 +18,8 @@ Page({
     withdraw_flow:[
       
     ],
-    current:"wechat"
+    current:"wechat",
+    withdraw:''
   },
 
   /**
@@ -33,9 +34,10 @@ Page({
       is_password: options.is_password,
       current: withdraw_flow[0]["key"],
       yu: options.money,
-      url: options.url
+      url: options.url,
+      withdraw: app.globalData.config.protocol.withdraw
     })
-    util.hideLoading()()
+    util.hideLoading();
   },
   choose(e){
     console.log(e.currentTarget.dataset.key)

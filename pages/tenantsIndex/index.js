@@ -117,6 +117,8 @@ Page({
       url = '../tenants/tenants?shop_id=' + e.currentTarget.dataset.id + "&room_list=" + JSON.stringify(this.data.room_list) + "&apply_info=" + JSON.stringify(this.data.apply_info)
     } else if (e.currentTarget.dataset.source == 'online'){
       url = '../tenants/online?shop_id=' + e.currentTarget.dataset.id
+    } else if (e.currentTarget.dataset.source == 'league') {
+      url = '../tenants/league?shop_id=' + e.currentTarget.dataset.id
     }
     wx.navigateTo({
       url: url,

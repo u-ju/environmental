@@ -194,7 +194,7 @@ page {
   height: 188rpx;
   border-radius: 10rpx;
   margin: 10rpx 0 38rpx 0;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .login {
@@ -372,7 +372,10 @@ page {
   /* width: 164rpx; */
 }
 .banner swiper{
-  border-radius: 10rpx;
+  border-radius: 10rpx 10rpx 10rpx 10rpx;
+  overflow: hidden;
+  width:686rpx;
+  height:188rpx;
 }
 .refresh-loading{
   width: 50rpx;

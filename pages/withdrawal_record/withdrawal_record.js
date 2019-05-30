@@ -9,7 +9,24 @@ Page({
    */
   data: {
     currentData: 0,
-    tab: ["待审核", "提现成功","提现失败"],
+    tab: [
+      {
+        "id": "0",
+        "name": "待审核"
+      },
+      {
+        "id": "1",
+        "name": "提现成功"
+      },
+      {
+        "id": "2",
+        "name": "提现失败"
+      },
+      {
+        "id": "3",
+        "name": "处理中"
+      }
+    ],
     news: [],
     cate_id: 1,
     last: false,
@@ -28,7 +45,7 @@ Page({
     //   })
     // })
     this.setData({
-      tab: app.globalData.config.withdraw_status || tab,
+      tab: app.globalData.config.withdraw_status || this.data.tab,
       url: options.url
     })
     that.init()
@@ -107,7 +124,7 @@ Page({
     wx.showNavigationBarLoading();
     var that = this;
     util.getJSON({
-      apiUrl: apiurl[that.data.url] + "?status=" + that.data.cate_id + "&page=" + 0
+      apiUrl: apiurl[that.data.url] + "?status=" + that.data.cate_id + "&page=" + 1
     }, function (res) {
       var result = res.data.result
       var list = result.list;

@@ -29,7 +29,7 @@
           <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{beforeColor}}">
             <block wx:for="{{banner}}" wx:key="index">
               <swiper-item bindtap='link' data-link='{{item.control}}'>
-                <image src="{{item.image}}" class="slide-image" mode='aspectFill' />
+                <image src="{{item.image}}" class="slide-image"  />
               </swiper-item>
             </block>
           </swiper>

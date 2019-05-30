@@ -1,0 +1,5 @@
+/* pages/withdrawal_record/transfer.wxss */
+@import 'withdrawal_record.wxss';
+.swiper_con{
+  padding-top: 0;
+}

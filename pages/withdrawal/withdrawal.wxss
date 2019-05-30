@@ -35,7 +35,7 @@ page{
 }
 .inputmon input{
   height: 90rpx;
-  font-size: 40rpx;
+  font-size: 72rpx;
   width: 520rpx;
 }
 .inputitem{
@@ -55,4 +55,9 @@ button{
 button[disabled]:not([type]){
   background-color: #DDDDDD;
   color: white;
+}
+.choosech{
+  max-height: 410rpx;
+  overflow: scroll;
+  width: 100%;
 }

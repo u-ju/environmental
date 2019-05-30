@@ -137,7 +137,9 @@ Page({
     carmoney: 0,
     all: 0,
     addshopcarnum: 0,
-    goodsCart: [0]
+    goodsCart: [0],
+    npers:true,
+    nper:''
   },
   swiper(e) {
     this.setData({
@@ -213,7 +215,9 @@ Page({
     util.loading()
     // options.id=12
     that.setData({
-      sku_id: options.id
+      sku_id: options.id,
+      nper:'https://wyhb-res-pr.zgwyhb.com/views/protocol/nper.html'
+      // app.globalData.config.protocol.nper
     })
     that.goods(options.id)
     that.goodsCart()

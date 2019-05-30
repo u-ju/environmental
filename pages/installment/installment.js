@@ -10,7 +10,8 @@ Page({
   data: {
     showmodel:false,
     list:[0],
-    page:{}
+    page:{},
+    moredescnum:1
   },
   model(){
     this.setData({
@@ -28,17 +29,25 @@ Page({
    */
   onLoad: function (options) {
     util.loading()
-    
+    this.setData({
+      goods_exchange_desc: app.globalData.config.goods_exchange_desc 
+    })
     if (options.keywords) {
       var keywords = options.keywords
       this.setData({
         keywords: keywords,
-        search: options.keywords
+        search: options.keywords,
+        
       })
       this.init( 1, keywords)
     }else{
       this.init()
     }
+  },
+  moredesc(){
+    this.setData({
+      moredescnum: !this.data.moredescnum
+    })
   },
   init(page = 1, keywords='') {
     var that = this;

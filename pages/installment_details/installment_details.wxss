@@ -310,3 +310,7 @@ checkbox .wx-checkbox-input{
 .stepper input,.countnum{
   margin: 0 6rpx;
 }
+web-view{
+  width: 600rpx;
+  height: 600rpx;
+}

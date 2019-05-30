@@ -1,0 +1,19 @@
+<!--pages/withdrawal_record/transfer.wxml-->
+<view class='swiper_con'  bindtap='detail' data-news_id='{{news.news_id}}'>
+  <block wx:if='{{list[0]["created_at"]}}'>
+    <block wx:for="{{list}}" wx:key="index">
+      <view class='item flex_btw align_center'>
+        <view class='zuo'>
+          <view class='color6 size28 bold'>
+            <text decode="{{true}}" space="{{true}}">{{item.intro}}</text>
+          </view>
+          <view class='color9'>{{item.created_at}}</view>
+        </view>
+        <view class='size36 colorC70000 bold'>{{item.amount}}</view>
+      </view>
+    </block>
+  </block>
+  <view wx:if="{{list.length==0}}">
+    <empty />
+  </view>
+</view>

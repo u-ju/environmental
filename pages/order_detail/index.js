@@ -41,7 +41,7 @@ Page({
       result: result,
       order_source: result.order_source,
       data: { pay_source: 'order', order_key: result.order_key },
-      // nper: app.globalData.config.protocol.nper
+      nper: app.globalData.config.protocol.nper
       // , address_id: that.data.address.address_id
     })
     console.log(1)

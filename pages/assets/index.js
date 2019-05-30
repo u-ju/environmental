@@ -17,9 +17,8 @@ Page({
     page: {},
     url: '',
     withdraw: '',
-    tab: [{ id: 0, name: '环保金', url: 'balanceIndex' },
-    { id: 1, name: '环保积分', url: 'integralIndex' },],
-    current:1,
+    tab: [],
+    current:0,
     withdraw_status:''
   },
   tabchange(e){
@@ -38,24 +37,24 @@ Page({
       this.setData({
         current: options.id
       })
-      
     }
-    // this.setData({
-    //   withdraw: app.globalData.config.protocol.withdraw
-    // })
-    this.Initialize()
   },
   Initialize(){
     var that = this;
     util.getJSON({ apiUrl: apiurl.wallet }, function (res) {
       var result = res.data.result;
       // console.log(result)
-      var tab = [{ id: 0, name: '环保金', url: 'balanceIndex' },
-      { id: 1, name: '环保积分', url: 'integralIndex' },]
+      var tab = [
+        
+        { id: 0, name: '环保积分', url: 'integralIndex' },
+        { id: 1, name: '环保金', url: 'balanceIndex' },
+      ]
       if (result.is_shop == 1) {
-        tab = [{ id: 0, name: '环保金', url: 'balanceIndex' },
-        { id: 1, name: '环保积分', url: 'integralIndex' },
-        { id: 2, name: '我的货款', url: 'settleIndex' },]
+        tab = [
+          { id: 0, name: '环保积分', url: 'integralIndex' },
+          { id: 1, name: '环保金', url: 'balanceIndex' },
+          { id: 2, name: '我的货款', url: 'settleIndex' },
+        ]
       }
       that.setData({
         tab: tab,

@@ -16,6 +16,9 @@
 }
 .tab .justify_center{
   padding: 22rpx 0;
+  border-bottom: 4rpx solid transparent;
+}
+.tab .active{
   border-bottom: 4rpx solid #4FD6F0;
 }
 .tabitem{
@@ -24,6 +27,10 @@
 }
 .submitButton{
   margin-top: 56rpx;
+  position: fixed;
+  left: 50%;
+  bottom: 100rpx;
+  transform: translate(-50%,0);
 }
 .bge5{
   background-color: #E5E5E5

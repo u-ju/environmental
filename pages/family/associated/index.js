@@ -1,11 +1,17 @@
 // pages/family/associated/index.js
+const app = getApp()
+var util = require('../../../utils/util.js');
+var apiurl = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    visible1: true
+    visible1: false,
+    list1:[],
+    list:[0],
+    current:0
   },
   open1() {
     this.setData({
@@ -17,11 +23,80 @@ Page({
       visible1: false,
     })
   },
+  init() {
+    this.setData({
+      list: [0]
+    })
+    var that = this;
+    var url = this.data.current == 0 ? 'familyIndex' :'familyApplyIndex'
+    util.getJSON({ apiUrl: apiurl[url] }, function (res) {
+      var result = res.data.result
+      util.hideLoading()
+      that.setData({
+        list: result.list
+      })
+    })
+  },
+  // init1() {
+  //   var that = this;
+  //   util.getJSON({ apiUrl: apiurl.familyApplyIndex }, function (res) {
+  //     var result = res.data.result
+  //     util.hideLoading()
+  //     that.setData({
+  //       list1: result.list
+  //     })
+  //   })
+  // },
+  refuseApply(e){
+    var that = this;
+    util.loading()
+    util.postJSON({ apiUrl: apiurl.familyRefuseApply, data: { id: e.currentTarget.dataset.id } }, function (res) {
+      util.alert(res.data.message, 800)
+      that.init()
+    })
+  },
+  agreeApply(e) {
+    var that = this;
+    util.loading()
+    util.postJSON({ apiUrl: apiurl.familyAgreeApply, data: { id: e.currentTarget.dataset.id } }, function (res) {
+      util.alert(res.data.message, 800)
+      that.init()
+    })
+  },
+  tabcur(e){
+    var that = this;
+    if (this.data.current== e.currentTarget.dataset.cur){
+      return
+    }
+    this.setData({
+      current: e.currentTarget.dataset.cur 
+    },function(){
+      that.init()
+    })
+  },
+  unbind(e){
+    this.setData({
+      visible1:true,
+      user_id: e.currentTarget.dataset.user_id
+    })
+  },
+  unbinds(){
+    var that = this;
+    util.loading()
+    util.postJSON({ apiUrl: apiurl.familyUnbind, data: { user_id: this.data.user_id } }, function (res) {
+      util.alert(res.data.message,800)
+      that.setData({
+        visible1: false,
+      })
+      that.init()
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.init()
+    // this.init1()
   },
 
   /**

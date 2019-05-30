@@ -1,0 +1,19 @@
+/* pages/withdrawal/transfer.wxss */
+@import 'withdrawal.wxss';
+.minuet{
+  width:55rpx;
+  height:60rpx;
+}
+.choosech{
+  border-bottom: 20rpx solid #EEEEEE;
+
+}
+.moneypic{
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  margin-right: 28rpx;
+}
+.marb10{
+  margin-bottom: 10rpx;
+}

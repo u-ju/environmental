@@ -21,7 +21,7 @@
       <text class='size28 pfeng'>评分:{{result.comment_score}}</text>
     </view>
     <view class='colorFE2C2C size28'>
-      <text>社区惠民价：</text> ￥
+      <text>{{result.source=="exchange"?"社区惠民价":"价格"}}：</text> ￥
       <text class='size30'>{{result.price}}</text>
     </view>
   </view>
@@ -248,3 +248,9 @@
     <view class='fixbtn fixbuy' bindtap='settlement'> 结算</view>
   </view>
 </wux-popup>
+
+<!-- <wux-popup closable visible="{{ npers }}"  bind:close="closenpers">
+  <view>
+    <web-view src="{{nper}}" > </web-view>
+  </view>
+</wux-popup> -->
