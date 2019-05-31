@@ -11,7 +11,8 @@ Page({
     showmodel:false,
     list:[0],
     page:{},
-    moredescnum:1
+    moredescnum:1,
+    keywords:''
   },
   model(){
     this.setData({
@@ -74,7 +75,7 @@ Page({
     wx.showNavigationBarLoading();
     
     var that = this;
-    util.getJSON({ apiUrl: apiurl.goods + "?page=1" + "&source=exchange" + "&keywords=" + keywords }, function (res) {
+    util.getJSON({ apiUrl: apiurl.goods + "?page=1" + "&source=exchange" + "&keywords=" + that.data.keywords }, function (res) {
       var result = res.data.result
       var list = result.list
       that.setData({

@@ -42,6 +42,15 @@
           </view>
         </view>
       </block>
+      <block wx:elif="{{key==3&&list[0]['record_id']}}">
+        <view class='item  flex_btw' wx:for="{{list}}" wx:key="index">
+          <view class='flex_col flex_btw height64'>
+            <view class='color6 bold'>{{item.intro}}</view>
+            <view class='size24 color9'>{{item.created_at}}</view>
+          </view>
+          <view class='size36 bold'>{{item.value}}</view>
+        </view>
+      </block>
     </block>
       
     <empty wx:else/>

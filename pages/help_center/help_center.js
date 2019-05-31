@@ -21,7 +21,8 @@ Page({
       var result = res.data.result
 
       that.setData({
-        list: result.list
+        list: result.list,
+        phone: app.globalData.config.company_location.phone
       })
       util.hideLoading()
     })
@@ -82,8 +83,9 @@ Page({
 
   },
   call(){
+    var that = this
     wx.makePhoneCall({
-      phoneNumber: '17780053344', //此号码并非真实电话号码，仅用于测试
+      phoneNumber: that.data.phone,
       success: function () {
         console.log("拨打电话成功！")
       },

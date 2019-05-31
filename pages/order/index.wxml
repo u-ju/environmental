@@ -47,7 +47,7 @@
     <view class='size36 color4'>确认收货</view>
     <view class='size28 color4'>订单159878954561确认收货</view>
   </view>
-  <view slot="footer" class="popup__button" bindtap="close1">确认收货</view>
+  <view slot="footer" class="popup__button submitButton" bindtap="close1">确认收货</view>
 </wux-popup>
 
 <wux-popup closable position="bottom" visible="{{ visible2 }}" bind:close="onClose2">

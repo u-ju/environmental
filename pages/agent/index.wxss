@@ -19,10 +19,11 @@ page{
 .card{
   width: 650rpx;
   padding: 30rpx 18rpx;
-  box-shadow:0px 4px 8px 0px rgba(151, 151, 151, 0.35);
-  border-radius:10px;
   background-color: white;
-  margin: 40rpx auto;
+  margin: 40rpx auto 200rpx auto;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 16px 0px rgba(167,167,167,1);
+  border-radius:15px;
 }
 .card .left{
   width: 210rpx;
@@ -31,7 +32,7 @@ page{
   width: 400rpx;
 }
 .card>.flex{
-  padding: 20rpx 0 20rpx 40rpx;
+  padding: 30rpx 0 30rpx 40rpx;
 }
 
 .section{
@@ -50,12 +51,12 @@ button{
   height: 70rpx;
   line-height: 70rpx;
 }
-.btndl{
+.btndl,page .navigator-hover{
   width:353rpx;
   height:100rpx;
   background:#4FD6F0;
-  border-radius:50rpx;
-  margin: 100rpx auto 0 auto;
+  border-radius:15rpx;
+  margin: 0 auto 35rpx auto;
   color: white;
   text-align: center;
   line-height: 100rpx;

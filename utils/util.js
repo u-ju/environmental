@@ -2,8 +2,8 @@ const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
 var bmap = require('bmap-wx.min.js'); 
-var build = 99999999
-// var build = 20190524
+// var build = 99999999
+var build = 20190531
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -28,7 +28,7 @@ function now_time() {
 }
 function imageUtil(e) {
   var imageSize = {};
-  console.log(e)
+  //console.log(e)
   var originalWidth = e.detail.width;//图片原始宽
   var originalHeight = e.detail.height;//图片原始高
   var originalScale = originalHeight / originalWidth;//图片高宽比
@@ -126,11 +126,13 @@ module.exports = {
   testwl: testwl,
   testjq: testjq,
   testcall: testcall,
-  alert1: alert1
+  alert1: alert1,
+  popoutc: popoutc,
+  nav:nav
 }
 function testcall(str, alert, cb) {
   var that = this;
-  // console.log(str)
+  // //console.log(str)
   if (str.length > 0 &&!/^1\d{10}$/.test(str) && !/^\d{3}-\d{8}$|^\d{4}-\d{7}$/.test(str)) {
     that.alert1(alert,2000)
     cb()
@@ -138,7 +140,7 @@ function testcall(str, alert, cb) {
 }
 function testjq(str, alert, cb) {
   var that = this;
-  // console.log(str)
+  // //console.log(str)
   if (str.length > 0 &&!/^\d+(\.\d{1,2})?$/.test(str)) {
     that.alert1(alert, 2000)
     cb()
@@ -169,6 +171,24 @@ function popup(content, confirm, cancel){
     }
   })
 }
+function popoutc(title, cancelText, cancelColor, confirmText, confirmColor, cancel, confirm) {
+  wx.showModal({
+    title: title,
+    // content: content,
+    cancelText: cancelText,
+    cancelColor: cancelColor,
+    confirmText: confirmText,
+    confirmColor: confirmColor,
+    success: function (res) {
+      if (res.confirm) {
+        confirm()
+      } else {
+        cancel()
+      }
+
+    }
+  })
+}
 /**
  * 替换字符串
  * @param str
@@ -182,7 +202,7 @@ function replaceStr(str) {
 function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
   //上传返回值
   var _this = this;
-  // console.log(upload_picture_list[j])
+  // //console.log(upload_picture_list[j])
   const upload_task = wx.uploadFile({
     // 模拟https
     url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  
@@ -200,7 +220,7 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
       },
     //附近数据，这里为路径     
     success: function (res) {
-      // console.log(res)
+      // //console.log(res)
       var data = JSON.parse(res.data);
       // //字符串转化为JSON  
       
@@ -263,7 +283,7 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
 function upload_pic(url, that, upload_picture_list, j, suc, update) {
   //上传返回值
   var _this = this;
-  // console.log(upload_picture_list[j])
+  // //console.log(upload_picture_list[j])
   const upload_task = wx.uploadFile({
     // 模拟https
     url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  
@@ -282,7 +302,7 @@ function upload_pic(url, that, upload_picture_list, j, suc, update) {
     },
     //附近数据，这里为路径     
     success: function (res) {
-      // console.log(res)
+      // //console.log(res)
       var data = JSON.parse(res.data);
       // //字符串转化为JSON  
 
@@ -312,7 +332,7 @@ function upload_pic(url, that, upload_picture_list, j, suc, update) {
 }
 function uploadV(url, that, res,  suc, update) {
   //上传返回值
-  // console.log(res)
+  // //console.log(res)
   var _this = this;
   const upload_task = wx.uploadFile({
     // 模拟https
@@ -331,9 +351,9 @@ function uploadV(url, that, res,  suc, update) {
     },
     //附近数据，这里为路径     
     success: function (res) {
-      // console.log(res)
+      // //console.log(res)
       var data = JSON.parse(res.data);
-      // console.log(data)
+      // //console.log(data)
       // //字符串转化为JSON  
       suc(data)
 
@@ -341,7 +361,7 @@ function uploadV(url, that, res,  suc, update) {
   })
   // 上传 进度方法
   upload_task.onProgressUpdate((res) => {
-    // console.log(res.progress)
+    // //console.log(res.progress)
     update(res.progress)
   });
 }
@@ -487,7 +507,7 @@ function address(suc){
     ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
   });
   var fail = function (data) {
-    console.log(data)
+    //console.log(data)
   };
   var success = function (data) {
     var wxMarkerData = data.wxMarkerData;
@@ -506,6 +526,33 @@ function address(suc){
     fail: fail,
     success: success,
   });
+}
+function nav(link){
+  //console.log(link)
+  var that = this
+  if (!link.control || JSON.stringify(link.control) == "{}") {
+    return 
+  }
+  var url = link.control.control
+  if (JSON.stringify(link.control.params) != "{}") {
+    url = url + "?1=1"
+    for (var i in link.control.params) {
+      url = url + "&" + i + "=" + link.control.params[i]
+    }
+  }
+  //console.log(url)
+  if (url.indexOf('../index/index') > -1 || url.indexOf('../personal_center/personal_center') > -1) {
+    wx.reLaunch({
+      url: url
+    })
+  } else {
+    wx.navigateTo({
+      url: url,
+      fail: function () {
+        that.alert('该功能暂未开放，敬请期待')
+      },
+    })
+  }
 }
 /**
  * 用于网络 GET 请求, 标准格式: {url:api, method: GET, data: xxxx}
@@ -540,13 +587,25 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
       }
 
       if (res.data.status == 200) {
-        // console.log(res.data)
+        // //console.log(res.data)
         if (res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) !="{}"){
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
+        
         }else{
           call_success(res)
+          if (res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+            var popout = res.data.result.popout
+            var button_arr = popout.button_arr
+            //console.log(button_arr)
+            wx.hideLoading()
+            that.popoutc(popout.intro, button_arr[0].name, button_arr[0].color, button_arr[1].name, button_arr[1].color, function () {
+              that.nav(button_arr[0])
+            }, function () {
+              that.nav(button_arr[1])
+            })
+          }
         }
         
       } else if (res.data.status==801){
@@ -567,6 +626,16 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
+        }else if (res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+          var popout = res.data.result.popout
+          var button_arr = popout.button_arr
+          //console.log(button_arr)
+          wx.hideLoading()
+           that.popoutc(popout.intro, button_arr[0].name, button_arr[0].color, button_arr[1].name, button_arr[1].color, function () {
+            that.nav(button_arr[0])
+          }, function () {
+            that.nav(button_arr[1])
+          })
         } else {
           if (warning) {
             warning(res)
@@ -579,7 +648,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
       if (ErrorMsg) {
         ErrorMsg(e)
       }
-      console.log(e.errMsg)
+      //console.log(e.errMsg)
       that.info_dialog(e.errMsg)
     }
   });
@@ -614,7 +683,7 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
     method: 'POST',
     header: header,
     success: function(res) {
-      // console.log(res)
+      // //console.log(res)
       if (res.statusCode==500){
         return that.info_dialog('无效请求')
       }
@@ -623,8 +692,20 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
+        
         } else {
           call_success(res)
+          if (res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+            var popout = res.data.result.popout
+            var button_arr = popout.button_arr
+            //console.log(button_arr)
+            wx.hideLoading()
+            that.popoutc(popout.intro, button_arr[0].name, button_arr[0].color, button_arr[1].name, button_arr[1].color, function () {
+              that.nav(button_arr[0])
+            }, function () {
+              that.nav(button_arr[1])
+            })
+          }
         }
       } else if (res.data.status == 801) {
         that.putSync('formData', formData, 600) 
@@ -640,6 +721,16 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
         if (res.data.status == 414&&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+          })
+        } else if (res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+          var popout = res.data.result.popout
+          var button_arr = popout.button_arr
+          //console.log(button_arr)
+          wx.hideLoading()
+           that.popoutc(popout.intro, button_arr[0].name, button_arr[0].color, button_arr[1].name, button_arr[1].color, function () {
+            that.nav(button_arr[0])
+          }, function () {
+            that.nav(button_arr[1])
           })
         }else{
           if (warning) {
@@ -964,7 +1055,7 @@ function scan(){
         }else{
           that.postJSON({ apiUrl: apiurl.action, data: { action: result.action[0].key, code: result.code } }, function (res2) {
             var result2 = res2.data.result;
-            console.log(result2)
+            //console.log(result2)
             if (result2.control){
               // var controlContrast = getApp().globalData.controlContrast, url='';
               // for (var i in controlContrast) {
@@ -981,7 +1072,7 @@ function scan(){
               if (JSON.stringify(result2.control.params) != "{}") {
                 url = url + "?1=1" 
                 for (var i in result2.control.params) {
-                  console.log(i, result2.control.params[i])
+                  //console.log(i, result2.control.params[i])
                   url = url + "&" + i + "=" + result2.control.params[i]
                 }
               }

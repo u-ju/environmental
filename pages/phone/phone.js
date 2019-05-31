@@ -47,14 +47,9 @@ Page({
     util.postJSON({ apiUrl: apiurl.captcha, data: { mobile: that.data.phone, source: that.data.source } }, function (res) {
       var result = res.data.result
       util.alert(res.data.message)
-      // that.setData({
-      //   mobile_code: result.mobile_code,
-      //   mobile: result.mobile
-      // })
     })
   },
   phone(e){
-    // var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     var phone = this.data.phone,sure = true
     if (e.detail.value.length == 11){
       sure = false
@@ -73,8 +68,9 @@ Page({
       code: e.detail.value,
       sure: sure
     })
-    console.log(e.detail.value)
+    // console.log(e.detail.value)
   },
+  
   newphone(){
     var that = this;
     if (that.data.type==1){

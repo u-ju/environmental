@@ -107,7 +107,7 @@
       <view class='color6 margin'>wjm@163.com</view>
     </view>
   </view>
-  <view class='location flex align_center'>
+  <view class='location flex align_center' bindtap='markertap'>
     <image src='../../images/dingwei.png' class='left'></image>
     <text>地址：{{address}}</text>
   </view>
@@ -115,13 +115,12 @@
   id="map"
   longitude="{{longitude}}"
   latitude="{{latitude}}"
-  scale="15"
-  controls="{{controls}}"
-  bindcontroltap="controltap"
-  bindmarkertap="markertap"
-  bindregionchange="regionchange"
+  scale="16"
   show-location
+  markers="{{markers}}"
+  bindmarkertap='markertap'
 ></map>
+<!--  -->
   <view class='center erwm'>
     <image src='{{official_qr}}'></image>
     <view class='color6 center'>扫一扫关注微信公众号</view>

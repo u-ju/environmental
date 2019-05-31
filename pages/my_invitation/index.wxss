@@ -52,3 +52,6 @@ background-color: white;
 .null{
   height: 400rpx;
 }
+.height64{
+  height: 64rpx;
+}

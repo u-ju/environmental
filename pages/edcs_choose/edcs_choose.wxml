@@ -5,6 +5,6 @@
 </view>
 <wux-popup closable visible="{{ visible1 }}"  bind:close="onClose1" >
     <block wx:for="{{action}}" wx:key="index">
-      <view class='link' data-key='{{item.key}}' bindtap='bag'>{{item.name}}</view>
+      <view class='link submitButton' data-key='{{item.key}}' bindtap='bag'>{{item.name}}</view>
     </block>
 </wux-popup>

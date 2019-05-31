@@ -57,7 +57,6 @@ Page({
           l_three[i]['control']['control'] = '../phone_new/phone_new'
         }
       }
-      // console.log(result.l_three.length / 3,result.l_three.length%3)
       that.setData({
         result: result,
         l_one: l_one,

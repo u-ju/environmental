@@ -1,5 +1,5 @@
-// const basePath = 'https://wyhb.zgwyhb.com/api';
-const basePath = 'https://wyhb.dev.zgwyhb.com/api';
+const basePath = 'https://wyhb.zgwyhb.com/api';
+// const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
   walletBalanceTransfer: basePath + '/front/wallet/balanceTransfer',
   walletBalanceTransferIndex: basePath + '/front/wallet/balanceTransferIndex',
@@ -122,7 +122,7 @@ const apiList = {
   agent_agentIndex: basePath + '/front/agent/agentIndex',
 
   agent_userIndex: basePath + '/front/agent/userIndex',
-
+  agent_earnIndex: basePath + '/front/agent/earnIndex',
 
   
 

@@ -90,88 +90,9 @@ Page({
       }
     }
   },
-  // upload_file_server(url, that, upload_picture_list, j, arr, storge) {
-  //   //上传返回值
-  //   var _this = this;
-  //   console.log(upload_picture_list[j])
-  // const upload_task = wx.uploadFile({
-  //     // 模拟https
-  //     url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  
-  //     filePath: upload_picture_list[j]['path'], //上传的文件本地地址    
-  //     name: 'file',
-  //     formData: {
-  //       "image": upload_picture_list[j]['path_base'],
-  //       'source': 'base64'
-  //     },
-  //     header: {
-  //       "content-type": 'application/x-www-form-urlencoded',
-  //       'token': util.getToken(),
-  //       'channel': 'let',
-  //       'build': 9999999
-  //     },
-  //     //附近数据，这里为路径     
-  //     success: function (res) {
-  //       console.log(res)
-  //       var data = JSON.parse(res.data);
-  //       // //字符串转化为JSON  
-
-  //       if (data.status == 200) {
-  //         var filename = data.result.image_url //存储地址 显示
-  //         upload_picture_list[j]['path_server'] = filename
-
-  //       } else {
-  //         upload_picture_list[j]['path_server'] = filename
-  //       }
-
-  //       if (arr == 'upload_picture_list1') {
-  //         that.setData({
-  //           upload_picture_list1: upload_picture_list
-  //         });
-  //       } else if (arr == 'upload_picture_list2') {
-  //         that.setData({
-  //           upload_picture_list2: upload_picture_list
-  //         });
-  //       } else {
-  //         if (storge == 1) {
-  //           wx.setStorageSync('upload_picture_list', upload_picture_list)
-  //         }
-  //         that.setData({
-  //           upload_picture_list: upload_picture_list
-  //         });
-  //       }
-
-  //       wx.setStorageSync('imgs', upload_picture_list);
-  //     }
-  //   })
-  // // 上传 进度方法
-
-  // upload_task.onProgressUpdate((res) => {
-  //     upload_picture_list[j]['upload_percent'] = res.progress
-  //     if (arr == 'upload_picture_list1') {
-  //       that.setData({
-  //         upload_picture_list1: upload_picture_list
-  //       });
-  //     } else if (arr == 'upload_picture_list2') {
-  //       that.setData({
-  //         upload_picture_list2: upload_picture_list
-  //       });
-  //     } else {
-  //       that.setData({
-  //         upload_picture_list: upload_picture_list
-  //       });
-  //     }
-
-
-  //   });
-  // },
+  
   // 删除图片
   deleteImg: function (e) {
-    // let upload_picture_list = this.data.upload_picture_list;
-    // let index = e.currentTarget.dataset.index;
-    // upload_picture_list.splice(index, 1);
-    // this.setData({
-    //   upload_picture_list: upload_picture_list
-    // });
     var that= this;
     if (e.currentTarget.dataset.image == "image") {
       that.setData({
@@ -228,42 +149,18 @@ Page({
     }.bind(this), 200)
   },
   formSubmit(e){
-    // var arr = ['upload_picture_list', 'upload_picture_list1', 'upload_picture_list2'];
-    // var tishi = ["请上传人像面", "请上传国徽面", "请上传头像",];
-    var that =this
-    // for(var i in arr){
-    //   console.log(that.data[arr[i]])
-    //   if (that.data[arr[i]].length>0 && that.data[arr[i]][0].path_server){
-    //     console.log(1)
-    //     a=a+1;
-    //   }else{
-    //     util.alert(tishi[i])
-    //     return false
-    //   }
-    // }
-    // if(a==3){
-    var data = e.detail.value
-      data.step= 2, 
-      data.front= that.data.upload_picture_list[0].path_server||''
-      data.back = that.data.upload_picture_list1[0].path_server || ''
-      data.avatar = that.data.upload_picture_list2[0].path_server || ''
+    var data = e.detail.value, that = this;
+      data.step= 2
+    data.front = that.data.upload_picture_list[0] && that.data.upload_picture_list[0].path_server ? that.data.upload_picture_list[0].path_server:''
+    data.back = that.data.upload_picture_list1[0] && that.data.upload_picture_list1[0].path_server ? that.data.upload_picture_list1[0].path_server: '' 
+    data.avatar = that.data.upload_picture_list2[0] && that.data.upload_picture_list2[0].path_server ? that.data.upload_picture_list2[0].path_server:''  
       console.log(data)
       that.setData({
         sure:true
       })
       util.postJSON({ apiUrl: apiurl.realname_verify, data: data}, function (res) {
           util.alert(res.data.message)
-          util.navigateBack(2)
-          // wx.navigateBack({
-          //   delta: 2,
-          //   success(){
-          //     that.setData({
-          //       sure: false
-          //     })
-          //   }
-          // })
-          
-           
+          util.navigateBack(2)  
       },function(){
         that.setData({
           sure: false

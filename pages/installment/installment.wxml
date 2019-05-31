@@ -1,5 +1,5 @@
 <!--pages/installment/installment.wxml-->
-<view class='instructions'>
+<view class='instructions' hidden='{{!goods_exchange_desc}}'>
   <view class='instructionsn tranla'>
     <view class=' {{moredescnum==1?"hidden2":""}} '>{{goods_exchange_desc}}</view>
     <view class='center' bindtap='moredesc'>

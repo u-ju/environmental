@@ -37,12 +37,10 @@ Page({
       }
     }
     if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
-      url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)
+      url = url + "&children=" + JSON.stringify(e.currentTarget.dataset.children)
     }
     console.log(url)
     if (url.indexOf('../index/index') > -1 || url.indexOf('../personal_center/personal_center') > -1) {
-      
-      
       wx.reLaunch({
         url: url
       })

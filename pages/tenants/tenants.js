@@ -118,7 +118,9 @@ Page({
   },
   opent(){
     this.setData({
-      visiblet:true
+      visiblet:true,
+      timevalue:this.data.timevalueR,
+      clicktime: '0:00-0:00'
     })
   },
   colset(){

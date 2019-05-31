@@ -13,7 +13,7 @@
   <input name='nation'  placeholder='请输入民族'></input>
 </view>
 <view class='flex flex_a align_center'>
-  <view class='left'>地址</view>
+  <view class='left'>证件地址</view>
   <input name='address' placeholder='请输入地址'></input>
 </view>
 <view class='size30 mar'>拍摄/上传您的二代身份证</view>

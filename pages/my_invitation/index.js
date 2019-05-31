@@ -28,6 +28,12 @@ Page({
         url: 'agent_userIndex',
         classname: 'ywitem'
       },
+      {
+        "key": "3",
+        "title": "营收数据",
+        url: 'agent_earnIndex',
+        classname: 'ywitem'
+      },
     ],
     current: '0',
     url:'',

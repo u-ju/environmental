@@ -54,7 +54,7 @@
           <view data-link='{{l_one.realname.control}}' bindtap='link'>{{l_one.realname.name}} </view>
         </view>
         <view class='assetsitem flex_btw'>
-          <view data-link='{{l_one.mobile.control}}' bindtap='link'>{{l_one.mobile.name||"暂未手机号"}} </view>
+          <view data-link='{{l_one.mobile.control}}' bindtap='link'>{{l_one.mobile.name||"暂未绑定手机号"}} </view>
         </view>
       </view>
     </view>

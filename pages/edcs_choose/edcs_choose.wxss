@@ -1,13 +1,5 @@
 /* pages/edcs_choose/edcs_choose.wxss */
 .link{
   width:400rpx;
-  height:100rpx;
-  background:linear-gradient(0deg,rgba(68,213,162,1) 0%,rgba(153,228,171,1) 100%);
-  box-shadow:0rpx 3rpx 7rpx 0rpx rgba(82, 164, 215, 0.35);
-  border-radius:50rpx;
-  text-align: center;
-  color: white;
-  font-size: 36rpx;
-  line-height: 100rpx;
   margin: 50rpx auto ;
 }

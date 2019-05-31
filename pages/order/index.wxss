@@ -129,14 +129,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
 
 .popup__button {
   width: 569rpx;
-  height: 86rpx;
-  background: linear-gradient(0deg, rgba(68, 213, 162, 1) 0%, rgba(153, 228, 171, 1) 100%);
-  box-shadow: 0px 4rpx 13rpx 0px rgba(68, 213, 162, 0.23);
-  border-radius: 43rpx;
-  color: white;
   margin: 0 auto 42rpx auto;
-  font-size: 30rpx;
-  line-height: 86rpx;
 }
 
 .shouhuopic {

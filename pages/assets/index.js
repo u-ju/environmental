@@ -46,13 +46,13 @@ Page({
       // console.log(result)
       var tab = [
         
-        { id: 0, name: '环保积分', url: 'integralIndex' },
-        { id: 1, name: '环保金', url: 'balanceIndex' },
+        { id: 1, name: '环保积分', url: 'integralIndex' },
+        { id: 0, name: '环保金', url: 'balanceIndex' },
       ]
       if (result.is_shop == 1) {
         tab = [
-          { id: 0, name: '环保积分', url: 'integralIndex' },
-          { id: 1, name: '环保金', url: 'balanceIndex' },
+          { id: 1, name: '环保积分', url: 'integralIndex' },
+          { id: 0, name: '环保金', url: 'balanceIndex' },
           { id: 2, name: '我的货款', url: 'settleIndex' },
         ]
       }
@@ -76,7 +76,13 @@ Page({
     if (current == '' || current == undefined){
       current = that.data.current
     }
-    util.getJSON({ apiUrl: apiurl[that.data.tab[current]["url"]] + '?page=' + page }, function (res) {
+    var url=''
+    for (var i in that.data.tab){
+      if (that.data.tab[i]["id"] == current){
+        url = that.data.tab[i]["url"]
+      }
+    }
+    util.getJSON({ apiUrl: apiurl[url] + '?page=' + page }, function (res) {
       var result = res.data.result
       var list = result.list
       if (page != 1) {

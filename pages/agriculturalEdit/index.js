@@ -31,6 +31,9 @@ Page({
     post:false
   },
   addsku(){
+    // if (this.data.skunum + 1 > this.data.spec_group_arr.length){
+    //   return util.alert('')
+    // }
     var thumb = this.data.thumb
     var images = this.data.images
     var key_name = this.data.key_name
@@ -38,11 +41,9 @@ Page({
     var price = this.data.price
     thumb.push([])
     images.push([])
-    console.log(this.data.price)
     price.push('')
     key_name.push('')
     key.push('')
-    console.log(this.data.price)
     this.setData({
       skunum: this.data.skunum+1,
       images: images,
@@ -61,11 +62,9 @@ Page({
     var key_name = this.data.key_name.splice(index, 1)
     var key = this.data.key.splice(index, 1)
     var del = this.data.del
-    console.log(this.data.key)
     if (e.currentTarget.dataset.key && del.indexOf(e.currentTarget.dataset.key)){
       del = del.push(e.currentTarget.dataset.key)
     }
-    console.log(this.data.key)
     this.setData({
       // thumb: thumb,
       // images: images,
@@ -73,8 +72,6 @@ Page({
       // key: key,
       del: del
     })
-    console.log(this.data.key)
-    console.log(this.data.skunum)
   },
   // textarea 输入时触发
   getTextareaInput: function (e) {
@@ -111,15 +108,14 @@ Page({
     var that = this;
     util.postJSON({ apiUrl: apiurl.shop_goodsUpDown, data: { shop_id: that.data.shop_id, spu_id: that.data.spu_id} }, function (res) {
       util.alert(res.data.message)
+      var status = !that.data.status
       that.setData({
-        status:!that.data.status
+        status: Number(status)
       })
     })
   },
   // 点击下拉显示框
   selectTap(e) {
-    console.log(e.currentTarget.dataset.index)
-    console.log(this.data.key)
     var show = this.data.show
     show[e.currentTarget.dataset.index] = !show[e.currentTarget.dataset.index]
     this.setData({
@@ -134,15 +130,15 @@ Page({
     var key_name = this.data.key_name;
     var key = this.data.key;
     var add = this.data.add
-    for (var i in key){
-      if (key[i] == e.currentTarget.dataset.key){
-        return util.alert("已有改规格，请重新选择")
-      }else{
-        if (add.indexOf(e.currentTarget.dataset.key)){
-          add.push(e.currentTarget.dataset.key)
-        }
-        console.log(add)
-      }
+    // for (var i in key){
+    //   if (key[i] == e.currentTarget.dataset.key){
+    //     return util.alert("已有改规格，请重新选择")
+    //   }else{
+        
+    //   }
+    // }
+    if (add.indexOf(e.currentTarget.dataset.key)) {
+      add.push(e.currentTarget.dataset.key)
     }
     key_name[e.currentTarget.dataset.indexnum] = name
     key[e.currentTarget.dataset.indexnum] = keyv
@@ -168,7 +164,6 @@ Page({
         
         images[i]=[]
         for (var j in result.skus[i]['images']){
-          console.log(result.skus[i]['images'][j])
           images[i].push({ upload_percent: 100, path_server: result.skus[i]['images'][j] })
         }
         if (result.skus[i]['thumb'] ){
@@ -176,13 +171,11 @@ Page({
         }else{
           thumb[i]=[]
         }
-        console.log(thumb)
       }
       var spu_intro = []
       if (result.spu_intro){
         spu_intro = [{ upload_percent: 100, path_server: result.spu_intro }]
       }
-      console.log(result)
       that.setData({
         spec_str: result.spec_str,
         cate_id: result.cate_id,
@@ -198,7 +191,9 @@ Page({
         images: images,
         skunum: result.skus.length,
         isHidePlaceholder:true,
-        url:'shop_goodsUpdate'
+        url:'shop_goodsUpdate',
+        status_name: result.status_name,
+        source: result.source
       })
       that.goodsSpecFormat1(result.spec_str)
       // { upload_percent: 100, path_server: '' }
@@ -221,7 +216,8 @@ Page({
     // options.id=20
     this.setData({
       goods_cate: goods_cate,
-      shop_id: options.id
+      shop_id: options.id,
+      source: options.source||''
     })
 
     if (options.spu_id){
@@ -249,7 +245,6 @@ Page({
     this.setData({
       price: price
     })
-    console.log(e)
   },
   inputs(e){
     var stock = this.data.stock
@@ -399,15 +394,11 @@ Page({
       })
     } else if (e.currentTarget.dataset.name =="thumb"){
       var thumb = this.data.thumb;
-      console.log(e.currentTarget.dataset.indexnum)
-      console.log(e)
       thumb[e.currentTarget.dataset.indexnum]=[]
-      console.log(thumb)
       this.setData({
         thumb: thumb
       })
     } else if (e.currentTarget.dataset.name == "images"){
-      console.log('222222222')
       var images = this.data.images
       images[e.currentTarget.dataset.indexnum].splice(index, 1);
       
@@ -418,7 +409,6 @@ Page({
   },
 
   formSubmit(e){
-    console.log(e.detail.value)
     var data = e.detail.value,that = this;
     data.cate_id = this.data.cate_id;
     data.shop_id = that.data.shop_id;
@@ -427,7 +417,6 @@ Page({
     }
     
     for (var i = 0; i < that.data.skunum;i++){
-      console.log(i)
       data['sku_arr[' + i+'][key]'] = that.data.key[i]
       data['sku_arr[' + i + '][price]'] = e.detail.value['price['+i+']']
       data['sku_arr[' + i + '][stock]'] = e.detail.value['stock[' + i + ']']
@@ -440,8 +429,6 @@ Page({
         for (var a in that.data.add) {
           if (that.data.add[a] == that.data.key[i]) {
             data["sku_arr[" + i + "][operate]"] = 'add'
-            console.log(i);
-            console.log()
           }
         }
         for (var b in that.data.del) {

@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/realname_authentication/realname_authentication",
+    
     "pages/installment/installment",
     "pages/assets/index",
     "pages/family/associated/index",
@@ -60,7 +62,7 @@
     "pages/home_orders/index",
     "pages/page/index",
     "pages/my_invitation/index",
-    "pages/realname_authentication/realname_authentication",
+    
     "pages/feedback/index",
     "pages/myInviteNewusers/index",
     "pages/agentPay/index",

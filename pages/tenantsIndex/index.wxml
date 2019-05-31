@@ -21,7 +21,7 @@
         </view>
       </view>
       <view class='flex_btw color4'>
-        <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
+        <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}&source=league'>
           <image src='../../images/addspu.png'></image>
           <view> 添加产品</view>
         </view>
@@ -59,7 +59,7 @@
         </view>
       </view>
       <view class='flex_btw color4'>
-        <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
+        <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}&source=online'>
           <image src='../../images/addspu.png'></image>
           <view> 添加产品</view>
         </view>
@@ -98,7 +98,7 @@
 
       </view>
       <view class='flex_btw color4'> 
-        <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}'>
+        <view class='center czbtn' catchtap='linke' data-url='../agriculturalEdit/index?id={{list.shop_id}}&source=offline'>
           <image src='../../images/addspu.png'></image>
           <view> 添加产品</view>
         </view>

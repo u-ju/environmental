@@ -41,7 +41,56 @@ Page({
       longitude: app.globalData.config.company_location.longitude,
       latitude: app.globalData.config.company_location.latitude,
       address: app.globalData.config.company_location.address,
-      phone: app.globalData.config.company_location.phone
+      phone: app.globalData.config.company_location.phone,
+      markers: [
+        {
+          id: 1,
+          latitude: app.globalData.config.company_location.latitude,
+          longitude: app.globalData.config.company_location.longitude,
+          name: app.globalData.config.company_location.address,
+          iconPath: '../../images/dingwei.png',
+          width:20,
+          height:20
+        },]
+    })
+    var mapCtx = wx.createMapContext('#map')
+    var latitude = app.globalData.config.company_location.latitude, longitude = app.globalData.config.company_location.longitude;
+    mapCtx.getCenterLocation({
+      success: function (res) {
+        latitude = res.latitude;
+        longitude = res.longitude;
+      }
+    }) 
+    //获取当前地图的中心经纬度
+    mapCtx.includePoints({
+      padding: [10],
+      points: [{
+        latitude: latitude ,
+        longitude: longitude
+      }]
+    })
+    console.log(latitude, longitude)
+    mapCtx.translateMarker({
+      markerId: 0,
+      autoRotate: true,
+      duration: 1000,
+      destination: {
+        latitude: latitude,
+        longitude: longitude,
+      },
+      animationEnd() {
+        console.log('animation end')
+      }
+    })
+  },
+  markertap(){
+    var that = this
+    wx.openLocation({
+      latitude: Number(that.data.latitude),
+      longitude: Number(that.data.longitude),
+      scale: 28,
+      name: that.data.address,
+      address: that.data.address,
     })
   },
   regionchange(e) {
@@ -53,6 +102,7 @@ Page({
   controltap(e) {
     console.log(e.controlId)
   },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

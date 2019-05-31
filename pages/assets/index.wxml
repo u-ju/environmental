@@ -1,12 +1,12 @@
 <!--pages/assets/index.wxml-->
 <view class='flex_ard tab'>
   <view class='flex'>
-    <view wx:for="{{tab}}" wx:key='index' data-index='{{index}}' bindtap='tabchange' style='width: calc({{width}} - 2px)' class='{{current==index?"active":""}}'>{{item.name}} </view>
+    <view wx:for="{{tab}}" wx:key='index' data-index='{{item.id}}' bindtap='tabchange' style='width: calc({{width}} - 2px)' class='{{current==item.id?"active":""}}'>{{item.name}} </view>
   </view>
 </view>
 
 
-<block wx:if="{{current==0}}">
+<block wx:if="{{current==1}}">
   <view class='size36 color918F8F center'>当前积分</view>
   <view class='money justify_center flex align_center'>
     <image src='../../images/minuet@2x.png'></image>
@@ -22,7 +22,7 @@
     </navigator>
   </view>
 </block>
-<block wx:elif="{{current==1}}">
+<block wx:elif="{{current==0}}">
   <view class='size36 color918F8F center'>我的环保金</view>
   <view class='money justify_center flex align_center'>
     <text class='size72 colorFFBF1A bold'>￥{{balance}}</text>
@@ -47,7 +47,7 @@
 <block wx:elif="{{current==2}}">
   <view class='size36 color918F8F center'>收到的货款</view>
   <view class='money justify_center flex align_center'>
-    <text class='size50'>{{settle}}</text>
+    <text class='size72 colorFFBF1A bold'>{{settle}}</text>
   </view>
   <view class='size36  withdrawal'>
     <navigator url='../withdrawal/withdrawal?money={{settle}}&is_password={{is_password}}&withdraw_flow={{settle_withdraw_flow}}&url=settleWithdraw'>提现</navigator>
