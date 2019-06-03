@@ -49,7 +49,7 @@
       <textarea wx:if="{{show}}" focus="{{show}}" class='size28 color9' bindinput='input' bindblur='unshow' data-contact='introo' value='{{intro}}' name='intro'></textarea>
       <view class='textarea size28 color9' bindtap='show' wx:else>{{intro}}</view>
     </view>
-    <view class='item1 flex align_center textareaitem'>
+    <!-- <view class='item1 flex align_center textareaitem'>
       <text class='size28 color6'>营业许可</text>
       <view class='businessLicense'>
         <view class='license flex align_center'>
@@ -75,7 +75,7 @@
           <textarea wx:else bindinput='inputs'  auto-focus='{{shows}}' focus='{{shows}}'  bindblur='unshows' name='license_info[business_scope]' data-contact='license_info[business_scope]o'   value="{{business_scope}}"></textarea>
         </view>
       </view>
-    </view>
+    </view> -->
     <block wx:for="{{image}}" wx:key="{{index}}">
       <view class='item1 flex align_center image'>
         <text class='size28 color6'>{{item.title}}</text>

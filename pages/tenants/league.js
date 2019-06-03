@@ -257,11 +257,11 @@ Page({
         discount_percent: wx.getStorageSync('discount_percente'),
         longitude: wx.getStorageSync('longitudee'),
         latitude: wx.getStorageSync('latitudee'),
-        company_name: wx.getStorageSync('license_info[company_name]e'),
-        license_no: wx.getStorageSync('license_info[license_no]e'),
-        legal_person: wx.getStorageSync('license_info[legal_person]e'),
-        business_address: wx.getStorageSync('license_info[business_address]e'),
-        business_scope: wx.getStorageSync('license_info[business_scope]e'),
+        // company_name: wx.getStorageSync('license_info[company_name]e'),
+        // license_no: wx.getStorageSync('license_info[license_no]e'),
+        // legal_person: wx.getStorageSync('license_info[legal_person]e'),
+        // business_address: wx.getStorageSync('license_info[business_address]e'),
+        // business_scope: wx.getStorageSync('license_info[business_scope]e'),
         video: wx.getStorageSync('videoe'),
       })
     }

@@ -55,7 +55,7 @@
   <empty wx:else title="暂无申请" />
 </view>
 
-<wux-popup closable visible="{{ visible1 }}" title="提示" content="解绑之后将无法再向成员转账， 是否解绑？" bdclass="width:400rpx;margin:auto;color:#444;text-align:left" bind:close="close1" bind:closed="close1">
+<wux-popup closable visible="{{ visible1 }}" title="提示" content="解绑之后你的积分就被清零，是否解绑?" bdclass="width:400rpx;margin:auto;color:#444;text-align:left" bind:close="close1" bind:closed="close1">
   <view slot="footer" class='flex_btw align_center footer'>
     <view bindtap="close1">否</view>
     <view class='color4fd6f0' bindtap="unbinds">确定</view>

@@ -28,7 +28,8 @@ Page({
     del:[],
     add:[],
     edit:[],
-    post:false
+    post:false,
+    spec_str:'规格:默认'
   },
   addsku(){
     // if (this.data.skunum + 1 > this.data.spec_group_arr.length){
@@ -92,7 +93,7 @@ Page({
     }
     var value = encodeURI(e.detail.value)
     
-    console.log(value)
+    // console.log(value)
     this.goodsSpecFormat1(value)
   },
   goodsSpecFormat1(value) {
@@ -225,6 +226,8 @@ Page({
         spu_id: options.spu_id
       })
       this.init()
+    }else{
+      this.goodsSpecFormat1(this.data.spec_str)
     }
   },
   // 商品类型

@@ -329,7 +329,7 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    console.log(options)
+    // console.log(options)
     this.setData({
       hour1: hour1,
       hour2: hour2,
@@ -337,7 +337,7 @@ Page({
       // room_list: JSON.parse(options.room_list)
       features: JSON.parse(options.apply_info).feature_list
     })
-    console.log(this.data.room)
+    // console.log(this.data.room)
     var result = app.globalData.config
     var shop_cate = result.shop_cate
     for (var i in shop_cate) {
@@ -420,8 +420,8 @@ Page({
 
     } else {
       var image = [
-        { title: '店招上传', upload_picture_list: wx.getStorageSync("image0t"), text: "点击拍摄/上传图片", id: 0 },
-        { title: '营业执照', upload_picture_list: wx.getStorageSync("image1t"), text: "点击拍摄/上传图片", id: 1 },
+        { title: '营业执照', upload_picture_list: wx.getStorageSync("image0t"), text: "点击拍摄/上传图片", id: 0 },
+        { title: '店招上传', upload_picture_list: wx.getStorageSync("image1t"), text: "点击拍摄/上传图片", id: 1 },
       ], upload_picture_list = wx.getStorageSync("upload_picture_listt") || []
       console.log(wx.getStorageSync("upload_picture_listt"))
       var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
@@ -452,11 +452,11 @@ Page({
         cost: wx.getStorageSync('costt'),
         // min_person: wx.getStorageSync('reservation[min_person]t'),
         // max_person: wx.getStorageSync('reservation[max_person]t'),
-        company_name: wx.getStorageSync('license_info[company_name]t'),
-        license_no: wx.getStorageSync('license_info[license_no]t'),
-        legal_person: wx.getStorageSync('license_info[legal_person]t'),
-        business_address: wx.getStorageSync('license_info[business_address]t'),
-        business_scope: wx.getStorageSync('license_info[business_scope]t'),
+        company_name: wx.getStorageSync('license_info[company_name]t')||'',
+        license_no: wx.getStorageSync('license_info[license_no]t') || '',
+        legal_person: wx.getStorageSync('license_info[legal_person]t') || '',
+        business_address: wx.getStorageSync('license_info[business_address]t') || '',
+        business_scope: wx.getStorageSync('license_info[business_scope]t') || '',
       })
     }
   },

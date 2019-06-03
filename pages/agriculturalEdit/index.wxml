@@ -30,7 +30,8 @@
     <view class='left1'>商品规格：</view>
     <view class='detail-view'>
       <!-- <text class='detail-placeholder' hidden='{{isHidePlaceholder}}'>如  颜色：白色，黑色;版本：A,B</text> -->
-      <textarea  class='right1 detail-textarea' name='spec_str' value='{{spec_str}}' placeholder='如  颜色：白色，黑色;版本：A,B'  bindinput='getTextareaInput' disabled='{{spu_id}}' bindblur='goodsSpecFormat'></textarea>
+      <textarea  class='right1 detail-textarea' name='spec_str' value='{{spec_str}}' placeholder=''  bindinput='getTextareaInput' disabled='{{spu_id}}' bindblur='goodsSpecFormat'></textarea>
+      <view class='color9 size24'>如  颜色：白色，黑色;版本：A,B</view>
     </view>
   </view>
   <view class='flex align_center maginb50 maginb50' wx:if="{{spu_id}}" >

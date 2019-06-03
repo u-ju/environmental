@@ -114,7 +114,7 @@
             <view class='featuresitem' >
               <input placeholder='自定义' class='features featuresinput' value='{{roomv}}' hidden='{{room.length==4}}' bindconfirm="room"></input>
             </view> -->
-    <view class='item1 flex align_center textareaitem'>
+    <!-- <view class='item1 flex align_center textareaitem'>
       <text class='size28 color6'>营业许可</text>
       <view class='businessLicense'>
         <view class='license flex align_center'>
@@ -141,7 +141,7 @@
           <textarea wx:else bindinput='inputs'  auto-focus='{{shows}}' focus='{{shows}}'  bindblur='unshows' name='license_info[business_scope]' data-contact='license_info[business_scope]t'   value="{{business_scope}}"></textarea>
         </view>
       </view>
-    </view>
+    </view> -->
     <block wx:for="{{image}}" wx:key="{{index}}">
       <view class='item1 flex align_center image'>
         <text class='size28 color6'>{{item.title}}</text>

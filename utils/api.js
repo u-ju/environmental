@@ -1,5 +1,5 @@
-const basePath = 'https://wyhb.zgwyhb.com/api';
-// const basePath = 'https://wyhb.dev.zgwyhb.com/api';
+// const basePath = 'https://wyhb.zgwyhb.com/api';
+const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
   walletBalanceTransfer: basePath + '/front/wallet/balanceTransfer',
   walletBalanceTransferIndex: basePath + '/front/wallet/balanceTransferIndex',
