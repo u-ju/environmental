@@ -1,6 +1,7 @@
 /* pages/setting/setting.wxss */
 page{
   font-size: 28rpx;
+  
 }
 image{
   width: 14rpx;
@@ -12,4 +13,12 @@ image{
   border-bottom: 1px solid #E8E8E8;
   width: 686rpx;
   margin: auto;
+}
+.login{
+  /* background-color: red; */
+  width: 160rpx;
+  height: 160rpx;
+  position: fixed;
+  right: 0;
+  bottom: 0;
 }

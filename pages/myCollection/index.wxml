@@ -1,0 +1,51 @@
+<!--pages/myCollection/index.wxml-->
+<view class='tabitem flex align_center'>
+  <view class='tab flex'>
+    <view class='flex justify_center align_center {{current==0?"active":""}}' bindtap='tabcur' data-cur='0'>
+      <image class='tabpic' src='../../images/chengyuanliebiao.png'></image>
+      <view>成员列表</view>
+    </view>
+  </view>
+  <view class='xian'></view>
+  <view class='tab flex'>
+    <view class='flex justify_center align_center {{current==1?"active":""}}' bindtap='tabcur' data-cur='1'>
+      <image class='tabpic' src='../../images/chengyuanshenqing.png'></image>
+      <view>成员申请</view>
+    </view>
+  </view>
+</view>
+<view class='person' wx:if="{{current==0}}">
+  <block wx:if="{{list.length>0}}">
+    <view class='flex_btw align_center personitem' wx:for="{{list}}" wx:key='index' wx:if="{{item.user_id}}" >
+      <view class='flex align_center' >
+        <image class='header' src='{{item.avatar}}'></image>
+        <view>
+          <view class='name'>{{item.mobile}} </view>
+          <view>{{item.nickname}}</view>
+        </view>
+      </view>
+      <view class='send bge5 size30' data-user_id='{{item.user_id}}' bindtap='unbind'>解绑</view>
+    </view>
+  </block>
+  <empty wx:else title="暂无成员" />
+  
+</view>
+<view class='person' wx:elif="{{current==1}}">
+  <block wx:if="{{list.length>0}}">
+    <view class='flex_btw align_center personitem' wx:for="{{list}}" wx:key='index' wx:if="{{item.user_id}}">
+      <view class='flex align_center'>
+        <image class='header' src='{{item.avatar}}'></image>
+        <view>
+          <view class='name'>{{item.mobile}} </view>
+          <view>{{item.nickname}}</view>
+        </view>
+      </view>
+
+      <view class='flex_btw align_center'>
+        <view class='send bge5 size30' data-id='{{item.id}}' bindtap='refuseApply'>拒绝</view>
+        <view class='send  size30' data-id='{{item.id}}' bindtap='agreeApply'>同意</view>
+      </view>
+    </view>
+  </block>
+  <empty wx:else title="暂无申请" />
+</view>

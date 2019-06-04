@@ -53,6 +53,13 @@ Page({
     var phone = this.data.phone,sure = true
     if (e.detail.value.length == 11){
       sure = false
+      if (this.data.time != '获取验证码') {
+        clearInterval(interval)
+        this.setData({
+          time: '重新获取',
+          currentTime: 61
+        })
+      }
     }
     this.setData({
       phone: e.detail.value,

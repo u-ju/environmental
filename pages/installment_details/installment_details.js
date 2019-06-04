@@ -31,76 +31,11 @@ Page({
     visible1: false,
     visible2: false,
     visible3: false,
-    cc: [{
-        id: 1,
-        title: '6.1寸'
-      },
-      {
-        id: 2,
-        title: '6.2寸'
-      },
-      {
-        id: 3,
-        title: '6.3寸'
-      },
-      {
-        id: 4,
-        title: '6.4寸'
-      },
-      {
-        id: 5,
-        title: '6.5寸'
-      },
-      {
-        id: 6,
-        title: '6.6寸'
-      },
-      {
-        id: 7,
-        title: '6.7寸'
-      },
-      {
-        id: 8,
-        title: '6.8寸'
-      },
+    cc: [
     ],
-    ys: [{
-        id: 1,
-        title: '贝壳'
-      },
-      {
-        id: 2,
-        title: '桃心'
-      },
-      {
-        id: 3,
-        title: '横纹'
-      },
-      {
-        id: 4,
-        title: '球形'
-      },
-      {
-        id: 5,
-        title: '小鱼'
-      },
-      {
-        id: 6,
-        title: '大海'
-      },
+    ys: [
     ],
-    items: [{
-        name: '1',
-        value: '不分期，市场价购买',
-        choose: 0
-      },
-      {
-        name: '2',
-        value: '￥206.51 X 2期',
-        intr: '含服务费：每期￥6.02，费率0.80%',
-        choose: 0
-      },
-      // { name: '3', value: '￥110.25 X 4期', intr: '含服务费：每期￥6.02，费率0.80%', checked: 'true' },
+    items: [
     ],
     cartArr: [{
       name: '1',
@@ -213,11 +148,10 @@ Page({
   onLoad: function(options) {
     var that = this;
     util.loading()
-    // options.id=12
     that.setData({
       sku_id: options.id,
-      nper:'https://wyhb-res-pr.zgwyhb.com/views/protocol/nper.html'
-      // app.globalData.config.protocol.nper
+      nper: app.globalData.config.protocol.nper
+      // 
     })
     that.goods(options.id)
     that.goodsCart()

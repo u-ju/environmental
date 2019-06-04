@@ -192,7 +192,7 @@ Page({
             { title: '店招上传', upload_picture_list: [{ upload_percent: 100, path_server: '' }], text: "点击拍摄/上传图片", id: 1},
           ], upload_picture_list=[]
           
-          image[0]["upload_picture_list"][0]['path_server'] = result.license;
+          image[0]["upload_picture_list"][0]['path_server'] = result.license || '';
           image[1]["upload_picture_list"][0]['path_server'] = result.thumb
           for (var i in result.images){
             upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
@@ -235,7 +235,7 @@ Page({
 
       }else{
         var image = [
-          { title: '营业执照', upload_picture_list: wx.getStorageSync("image0o"), text: "点击拍摄/上传图片", id: 0 },
+          { title: '营业执照', upload_picture_list: wx.getStorageSync("image0o") || '', text: "点击拍摄/上传图片", id: 0 },
           { title: '店招上传', upload_picture_list: wx.getStorageSync("image1o"), text: "点击拍摄/上传图片", id: 1 },
         ], upload_picture_list = wx.getStorageSync("upload_picture_listo")||[]
 

@@ -1,8 +1,22 @@
 <!--pages/login/login.wxml-->
-<view class="container">
-  <view class='size36 color0'>登录/注册</view>
-  <form  bindsubmit="formSubmit">
-    <input type='number' maxlength='11' bindinput='phone' placeholder='请输入手机号' name='phone' placeholder-class='placeholder' value='{{phone}}'></input>
-    <button formType="submit" disabled='{{disabled}}' class='{{disabled?"bgDDDDDD":""}}'>获取短信验证码</button>
-  </form>
-</view>
+<form>
+  <view class='center'>
+    <image src='{{logo}}' class='logo'></image>
+  </view>
+  <view class='all'>
+    <view class='size28 color9'>手机号</view>
+    <view>
+      <view class='yzm flex_btw align_center'>
+        <input type='number' maxlength='11' bindinput='phone' placeholder='请输入当前手机号' name='phone' placeholder-class='colorc size32' value='{{phone}}'></input>
+        <button disabled='{{disabled}}' class='yzm_btn {{disabled?"bgDDDDDD":""}}' data-id="2" bindtap="getVerificationCode">{{time}}</button>
+      </view>
+    </view>
+  </view>
+  <view class='all'>
+    <view class='size28 color9'>验证号</view>
+    <input placeholder-class='colorc size32' maxlength='6' class='width100' placeholder='请输入验证号' value='{{code}}' bindinput='code'></input>
+  </view>
+  
+  <button formType="submit" disabled='{{sure}}' bindtap='newphone' class='sure {{sure?"bgDDDDDD":""}}'>登录</button>
+</form>
+<view class='center color4fd6f0' bindtap='index'>账号密码登录</view>

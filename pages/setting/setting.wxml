@@ -17,6 +17,7 @@
   </view>
 </view>
 </block>
+<view class='login' bindlongtap='login'></view>
 <!-- <view class='item flex_btw align_center'>
   <text class='color4 size28'>关于我们</text>
   <view class='flex_btw align_center'>

@@ -1,8 +1,13 @@
 {
   "pages": [
+    "pages/agriculturalDetail/index",
     "pages/index/index",
+    "pages/myCollection/index",
+    "pages/installment_details/installment_details",
     "pages/realname_authentication/realname_authentication",
-    
+    "pages/login/login",
+    "pages/login/index",
+    "pages/setting/setting",
     "pages/installment/installment",
     "pages/assets/index",
     "pages/family/associated/index",
@@ -23,7 +28,7 @@
     "pages/personal_center/personal_center",
     "pages/business_details/product/index",
     "pages/operationalData/index",
-    "pages/installment_details/installment_details",
+    
     "pages/search/index",
     "pages/comment/shopComment",
     "pages/tenants/tenants",
@@ -39,7 +44,7 @@
     "pages/agriculturalMerchantsOrder/index",
     "pages/agriculturalRecommendation/index",
     "pages/businessProduct/index",
-    "pages/agriculturalDetail/index",
+    
     "pages/businessinforcheck/index",
     "pages/businessinforedit/index",
     "pages/businessmerchantsDetail/index",
@@ -116,11 +121,11 @@
     "pages/phone_new/phone_new",
     "pages/delivery_station/delivery_station",
     "pages/delivery_station_list/delivery_station_list",
-    "pages/setting/setting",
+    
     "pages/help_center/help_center",
-    "pages/login/login",
+    
     "pages/news/news",
-    "pages/code/code",
+    
     "pages/news_detail/news_detail",
     "pages/qrcode/qrcode",
     "pages/put/put",

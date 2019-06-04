@@ -1,0 +1,17 @@
+<!--pages/login/index.wxml-->
+<form bindsubmit="formSubmit">
+  <view class='center'>
+    <image src='{{logo}}' class='logo'></image>
+  </view>
+  <view class='all'>
+    <view class='size28 color9'>账号</view>
+    <input type='number' maxlength='11'  placeholder='请输入账号' name='username' placeholder-class='colorc size32' value='{{username}}'></input>
+  </view>
+  <view class='all'>
+    <view class='size28 color9'>密码</view>
+    <input placeholder-class='colorc size32'  class='width100' placeholder='请输入密码' value='{{password}}'  name='password' ></input>
+  </view>
+  
+  <button formType="submit" disabled='{{sure}}'  class='sure {{sure?"bgDDDDDD":""}}'>登录</button>
+</form>
+<view class='center color4fd6f0' bindtap='index'>手机验证码登录</view>

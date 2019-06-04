@@ -1,0 +1,2 @@
+/* pages/myCollection/index.wxss */
+@import '../family/associated/index';

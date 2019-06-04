@@ -1,41 +1,13 @@
 /* pages/login/login.wxss */
-page{
-  /* background-color: rgb(247, 247, 247); */
-}
-.container{
-  padding: 56rpx 0 0 0;
-  width: 688rpx;
-  margin: auto;
-}
-input{
-  width: 100%;
-  padding: 18rpx 0;
-  color: rgb(46,179, 84);
+@import '../phone/phone';
+.color4fd6f0{
   margin: 60rpx auto;
-  border-bottom: 1px solid #000;
-  font-size: 28rpx;
 }
-button{
-  width: 100%;
-  /* background-color: rgb(46,179, 84); */
-  background: -webkit-linear-gradient(#44D5A2,#99E4AB);
-	background: -o-linear-gradient(#44D5A2,#99E4AB);
-	background: -moz-linear-gradient(#44D5A2,#99E4AB);
-	background: -mos-linear-gradient(#44D5A2,#99E4AB);
-	background: linear-gradient(#44D5A2,#99E4AB);
+.logo{
+  width: 80rpx;
   height: 80rpx;
-  font-size: 32rpx;
-  color: white;
-  border-radius: 40rpx;
-  
-}
-button::after{
-  border: none;
-}
-button[disabled]:not([type]){
-  background-color: #ddd;
-  color: white;
-}
-.bgDDDDDD{
-  background: #DDDDDD;
+  border:1px dashed #999;
+  border-radius:50%;
+  padding:10rpx;
+
 }

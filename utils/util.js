@@ -2,8 +2,8 @@ const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
 var bmap = require('bmap-wx.min.js'); 
-var build = 99999999
-// var build = 20190531
+// var build = 99999999
+var build = 20190531
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -128,7 +128,8 @@ module.exports = {
   testcall: testcall,
   alert1: alert1,
   popoutc: popoutc,
-  nav:nav
+  nav:nav,
+  getTimeLeft: getTimeLeft
 }
 function testcall(str, alert, cb) {
   var that = this;
@@ -1035,6 +1036,21 @@ function remove(k) {
 
 function clear() {
   wx.clearStorageSync();
+}
+// 倒计时
+function getTimeLeft(datetimeTo) {
+  // 计算目标与现在时间差（毫秒）
+
+  let time1 = new Date(datetimeTo).getTime();
+  let time2 = new Date().getTime();
+  let mss = time1 - time2;
+
+  // 将时间差（毫秒）格式为：天时分秒
+  let days = parseInt(mss / (1000 * 60 * 60 * 24));
+  let hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) < 10 ? "0" +  parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) : parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60)) < 10 ? "0" +  parseInt((mss % (1000 * 60 * 60)) / (1000 * 60)) : parseInt((mss % (1000 * 60 * 60)) / (1000 * 60)) ;
+  let seconds = parseInt((mss % (1000 * 60)) / 1000) < 10 ? "0" + parseInt((mss % (1000 * 60)) / 1000)  : parseInt((mss % (1000 * 60)) / 1000);
+  return   hours + ":" + minutes + ":" + seconds 
 }
 
 function scan(){

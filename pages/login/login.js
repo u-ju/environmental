@@ -1,96 +1,110 @@
 // pages/login/login.js
+var interval = null //倒计时函数
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    disabled:true,
-    phone:""
+    date: '请选择日期',
+    fun_id: 2,
+    time: '获取验证码', //倒计时 
+    currentTime: 61,
+    sure: true,
+    phone: "",
+    disabled: true,
+    mobile_code: '',
+    mobile: '',
+    type: 0,
+    result: "",
+    about: '',
+    choosed: 1,
+    source: "login"
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  getCode: function (options) {
+    var that = this;
+    var currentTime = that.data.currentTime
+    interval = setInterval(function () {
+      currentTime--;
+      // console.log(currentTime)
+      that.setData({
+        time: "重新获取(" + currentTime + ')'
+      })
+      if (currentTime <= 0) {
+        clearInterval(interval)
+        that.setData({
+          time: '重新获取',
+          currentTime: 61,
+          disabled: false
+        })
+      }
+    }, 1000)
   },
-  phone(e){//输入验证手机号格式
-    // console.log(e.detail.value)
-    var that = this, disabled = true;
-
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
-    
-    if (e.detail.value.length == 11 && myreg.test(e.detail.value)){
-      // console.log(e.detail.value.length)
-      disabled = false
-    }else{
-      disabled = true
-    }
+  getVerificationCode() {
+    this.getCode();
+    var that = this
     that.setData({
-      disabled: disabled
+      disabled: true
     })
-  },
-  formSubmit(e){//发送验证码
-    // console.log(e.detail.value.phone)
-    util.postJSON({ apiUrl: apiurl.captcha, data: { mobile: e.detail.value.phone, source:"login"}}, function (res) {
+    util.postJSON({ apiUrl: apiurl.captcha, data: { mobile: that.data.phone, source: that.data.source } }, function (res) {
       var result = res.data.result
       util.alert(res.data.message)
-      wx.navigateTo({
-        url: '../code/code?mobile=' + e.detail.value.phone + '&verification=' + result.mobile_code,
-      })
-      
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  phone(e) {
+    var phone = this.data.phone, sure = true
+    if (e.detail.value.length == 11) {
+      sure = false
+      console.log(this.data.time)
+      if (this.data.time !='获取验证码'){
+        clearInterval(interval)
+        this.setData({
+          time: '重新获取',
+          currentTime: 61
+        })
+      }
+    }
+    this.setData({
+      phone: e.detail.value,
+      disabled: sure,
+    })
+  },
+  code(e) {
+    var phone = this.data.phone, sure = true
+    if (e.detail.value.length == 6) {
+      sure = false
+    }
+    this.setData({
+      code: e.detail.value,
+      sure: sure
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  newphone() {
+    var that = this;
+    util.postJSON({ apiUrl: apiurl.mobileLogin, data: { mobile_code: that.data.code, mobile: that.data.phone } }, function (res) {
+      console.log(res)
+      wx.setStorageSync("token", res.data.result.token)
+      wx.reLaunch({
+        url: '../personal_center/personal_center',
+      })
+    })
+
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  onLoad(e) {
+    var title = '登录', that = this;
+    this.setData({
+      logo:app.globalData.config.logo
+    })
+    wx.setNavigationBarTitle({
+      title: title
+    })
+    util.hideLoading()
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  index(){
+    wx.navigateTo({
+      url: 'index',
+    })
   }
 })
+// 18583750250

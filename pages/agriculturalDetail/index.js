@@ -2,31 +2,43 @@
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
+var lastTime = new Date().getTime();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    indicatorDots: true,//显示面板指示点
-    autoplay: true,//自动播放
-    beforeColor: "white",//指示点颜色
-    afterColor: "coral",//当前选中的指示点颜色
+    indicatorDots: true, //显示面板指示点
+    autoplay: true, //自动播放
+    beforeColor: "#DCDCDC", //指示点颜色
+    afterColor: "#27AAD9", //当前选中的指示点颜色
     interval: 5000,
     duration: 1000,
-    banner: [
-      { image: '../../images/catering_test.png' },
-      { image: '../../images/catering_test.png' },
-      { image: '../../images/catering_test.png' },
+    banner: [{
+      image: '../../images/catering_test.png'
+    },
+    {
+      image: '../../images/catering_test.png'
+    },
+    {
+      image: '../../images/catering_test.png'
+    },
     ],
     result: "",
     visible1: false,
     visible2: false,
     visible3: false,
-    
-    cartArr: [
-      { name: '1', value: '已阅读分期协议' },
+    cc: [
     ],
+    ys: [
+    ],
+    items: [
+    ],
+    cartArr: [{
+      name: '1',
+      value: '已阅读分期协议'
+    },],
     current: 0,
     list: [],
     result: {},
@@ -38,25 +50,29 @@ Page({
     buyok: false,
     commentIndex: 1,
     list1: [],
-    tab: ['产品', '评论','详情'],
-    active:0
-  },
-  tabswitch(e){
-    this.setData({
-      active: e.currentTarget.dataset.index,
-      toView: 'view' + e.currentTarget.dataset.index
-    })
-  },
-  scroll(e) {
-    var top = this.data.top, active=0
-    for (var i = 0; i < top.length; i++) {
-      if (top[i] < e.detail.scrollTop + 44) {
-        active=i
-      }
-    }
-    this.setData({
-      active: active
-    })
+    chooseqx: [{
+      name: 1,
+      value: '全选',
+      checked: true
+    },],
+    choose: ['1'],
+    visiblec: false,
+    choosecar: {
+      sku_id: [],
+      count: [],
+      price: []
+    },
+    allchoosecar: {
+      sku_id: [],
+      count: [],
+      price: []
+    },
+    carmoney: 0,
+    all: 0,
+    addshopcarnum: 0,
+    goodsCart: [0],
+    npers: true,
+    nper: ''
   },
   swiper(e) {
     this.setData({
@@ -126,39 +142,29 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  
+
   onLoad: function (options) {
     var that = this;
     util.loading()
-    // options.id =9
+    options.id=12
     that.setData({
       sku_id: options.id,
-      s_height: wx.getSystemInfoSync().windowHeight - 42,
+      // nper: app.globalData.config.protocol.nper
+      // 
     })
     that.goods(options.id)
-    var top =[]
-    wx.createSelectorQuery().selectAll('.view0').boundingClientRect(function (rect) {
-      console.log(rect)
-      top.push(rect[0]['top'])
-    }).exec()
-    wx.createSelectorQuery().selectAll('.view1').boundingClientRect(function (rect) {
-      console.log(rect)
-      top.push(rect[0]['top'])
-    }).exec()
-    wx.createSelectorQuery().selectAll('.view2').boundingClientRect(function (rect) {
-      console.log(rect)
-      top.push(rect[0]['top'])
-      that.setData({
-        top: top
-      })
-    }).exec()
+    that.goodsCart()
   },
   goods(id) {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.goods_show + id }, function (res) {
+    util.getJSON({
+      apiUrl: apiurl.goods_show + id
+    }, function (res) {
       var result = res.data.result
       var choosed = [result.sku_key]
-      var choosedkey = result.sku_key, arr = [], spec_values = res.data.result.spec_values
+      var choosedkey = result.sku_key,
+        arr = [],
+        spec_values = res.data.result.spec_values
       if (result.sku_key.indexOf('-') > -1) {
         choosed = result.sku_key.split('-')
       }
@@ -182,7 +188,8 @@ Page({
         result: result,
         choosed: choosed,
         spu_id: result.spu_id,
-        arr: arr
+        arr: arr,
+        comment_score: Math.ceil(result.comment_score)
       })
 
       that.commentIndex(result.spu_id)
@@ -190,9 +197,51 @@ Page({
       util.hideLoading()
     })
   },
+  goodsCart() {
+    var that = this;
+    util.getJSON({
+      apiUrl: apiurl.goodsCart_index
+    }, function (res) {
+      var list = res.data.result.list
+      var result = res.data.result,
+        allchoosecar = {
+          sku_id: [],
+          price: [],
+          count: [],
+        },
+        choosecar = {
+          sku_id: [],
+          price: [],
+          count: [],
+        }
+      for (var i in list) {
+        allchoosecar.sku_id[i] = []
+        allchoosecar.price[i] = []
+        allchoosecar.count[i] = []
+        choosecar.sku_id[i] = []
+        choosecar.price[i] = []
+        choosecar.count[i] = []
+        for (var j in list[i]["goods_arr"]) {
+          allchoosecar.sku_id[i].push(list[i]["goods_arr"][j].sku_id)
+          allchoosecar.price[i].push(list[i]["goods_arr"][j].price)
+          allchoosecar.count[i].push(list[i]["goods_arr"][j].count)
+        }
+      }
+
+      that.setData({
+        goodsCart: list,
+        allchoosecar: allchoosecar,
+        choosecar: choosecar,
+        countnum: result.count
+      })
+      util.hideLoading()
+    })
+  },
   commentIndex(spu_id, page = 1) {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.goods_commentIndex + spu_id + "&page=" + page }, function (res) {
+    util.getJSON({
+      apiUrl: apiurl.goods_commentIndex + spu_id + "&page=" + page
+    }, function (res) {
       var list = res.data.result.list
       var result = res.data.result
       var list1 = []
@@ -213,7 +262,8 @@ Page({
   // 选择规格时的选项情况
   _click(choosed, spec_values = this.data.result.spec_values, result = this.data.result, init) {
     // var disable = false
-    var arr = [], that = this;
+    var arr = [],
+      that = this;
     for (var n in choosed) {
       arr[n] = [];
     }
@@ -276,19 +326,6 @@ Page({
       result: result
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
 
   choose(e) {
     var list = this.data.items
@@ -316,7 +353,7 @@ Page({
     for (var i in choosed) {
       if (choosed[i][0] == e.currentTarget.dataset.spec_id) {
         var a = choosed[i];
-        a = a.split('')   //将a字符串转换成数组
+        a = a.split('') //将a字符串转换成数组
         if (choosed[i][2] == e.currentTarget.dataset.spec_value_id) {
           a.splice(2, 1, 'u')
         } else {
@@ -326,11 +363,6 @@ Page({
         choosed[i] = a.join('')
       }
     }
-    // if (choosed[e.currentTarget.dataset.choosed] == e.currentTarget.dataset.spec_value_id){
-    //   choosed[e.currentTarget.dataset.choosed]=-1
-    // }else{
-    //   choosed[e.currentTarget.dataset.choosed] = e.currentTarget.dataset.spec_value_id
-    // }
     this.setData({
       choosed: choosed
     })
@@ -352,7 +384,10 @@ Page({
       buyok: true
     })
 
-    util.postJSON({ apiUrl: apiurl.order_payShow, data: data }, function (res) {
+    util.postJSON({
+      apiUrl: apiurl.order_payShow,
+      data: data
+    }, function (res) {
       var result = res.data.result
       wx.navigateTo({
         url: '../order_detail/index?result=' + JSON.stringify(result),
@@ -389,7 +424,6 @@ Page({
         commentIndex: 0
       })
     }
-
     // 页数+1
     if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
       that.commentIndex(that.spu_id, Number(that.data.page.current_page) + 1)
@@ -401,6 +435,260 @@ Page({
         wx.hideLoading()
       }, 1000)
     }
-  }
-  
+  },
+  contact(e) {
+    console.log(e)
+    wx.makePhoneCall({
+      phoneNumber: e.target.dataset.contact, //此号码并非真实电话号码，仅用于测试
+      success: function () {
+        console.log("拨打电话成功！")
+      },
+      fail: function () {
+        console.log("拨打电话失败！")
+      }
+    })
+  },
+  //购物车事件处理函数
+  /*点击减号*/
+  bindcz(e) {
+    var symbols = e.currentTarget.dataset.symbols,
+      num = e.currentTarget.dataset.num,
+      index = e.currentTarget.dataset.index,
+      listnum = e.currentTarget.dataset.listnum,
+      list = this.data.goodsCart,
+      sku_id = e.currentTarget.dataset.sku_id;
+    var that = this;
+    var skuID_last = this.data.skuID_last || e.currentTarget.dataset.sku_id,
+      num_last = that.data.num_last;
+    var allchoosecar = that.data.allchoosecar;
+    if (symbols == 'add') {
+      num++
+    } else {
+      num--
+    }
+    console.log(list, listnum)
+    list[listnum]["goods_arr"][index]["count"] = num
+
+    if (skuID_last != sku_id) {
+      that.updatacar(skuID_last, num_last, listnum);
+
+    }
+    allchoosecar.count[listnum][allchoosecar.sku_id[listnum].indexOf(sku_id)] = num
+    that.setData({
+      goodsCart: list,
+      allchoosecar: allchoosecar,
+      skuID_last: sku_id,
+      num_last: num
+    })
+    var choosecar = that.data.choosecar;
+    if (choosecar.sku_id[listnum].indexOf(sku_id) > -1) {
+      choosecar.count[listnum][choosecar.sku_id[listnum].indexOf(sku_id)] = num
+      that.setData({
+        choosecar: choosecar
+      })
+      that.carmoney()
+    }
+    lastTime = new Date().getTime();
+    setTimeout(function () {
+      if (lastTime + 2000 > new Date().getTime()) {
+        return;
+      }
+      that.updatacar(sku_id, num, listnum);
+    }, 2000)
+  },
+  goodsCartclear() {
+    var that = this;
+    util.postJSON({
+      apiUrl: apiurl.goodsCart_clear
+    }, function (res) {
+      util.alert(res.data.message)
+      that.goodsCart()
+    })
+  },
+  updatacar(sku_id, count, listnum, suc) {
+    var that = this;
+    util.postJSON({
+      apiUrl: apiurl.goodsCart_update,
+      data: {
+        sku_id: sku_id,
+        count: count
+      }
+    }, function (res) {
+      // that.goodsCart()
+      if (suc) {
+        suc()
+      }
+    }, function (res) {
+
+    }, function (res) {
+
+    })
+  },
+  choosecar(e) {
+    var choosecar = this.data.choosecar
+    var allchoosecar = this.data.allchoosecar
+    var carmoney = this.data.carmoney
+    var sku_id = e.currentTarget.dataset.sku_id
+    var price = e.currentTarget.dataset.price
+    var count = e.currentTarget.dataset.count
+    var listnum = e.currentTarget.dataset.listnum
+    var all = 1
+    if (choosecar.sku_id[listnum].indexOf(sku_id) > -1) {
+      var num = choosecar.sku_id[listnum].indexOf(sku_id)
+      choosecar.sku_id[listnum].splice(num, 1);
+      choosecar.price[listnum].splice(num, 1);
+      choosecar.count[listnum].splice(num, 1);
+    } else {
+      choosecar.sku_id[listnum].push(e.currentTarget.dataset.sku_id)
+      choosecar.price[listnum].push(e.currentTarget.dataset.price)
+      choosecar.count[listnum].push(e.currentTarget.dataset.count)
+    }
+    for (var i in choosecar.sku_id) {
+      if (choosecar.sku_id[i].length != allchoosecar.sku_id[i].length) {
+        all = 0
+      }
+    }
+    this.setData({
+      choosecar: choosecar,
+      all: all
+    })
+    this.carmoney()
+  },
+  carmoney() {
+    var choosecar = this.data.choosecar;
+    var carmoney = 0
+    for (var i in choosecar.sku_id) {
+      for (var j in choosecar.sku_id[i]) {
+        carmoney = carmoney + choosecar.price[i][j] * choosecar.count[i][j]
+      }
+    }
+    this.setData({
+      carmoney: carmoney
+    })
+  },
+  allchoosecar() {
+    var all = this.data.all,
+      allchoosecar = {
+        sku_id: [],
+        count: [],
+        price: []
+      },
+      choosecar = {
+        sku_id: [],
+        count: [],
+        price: []
+      }
+    if (!this.data.all) {
+      allchoosecar = this.data.allchoosecar
+      for (var i in allchoosecar.sku_id) {
+        choosecar.sku_id[i] = []
+        choosecar.price[i] = []
+        choosecar.count[i] = []
+        for (var j in allchoosecar.sku_id[i]) {
+          choosecar.sku_id[i].push(allchoosecar.sku_id[i][j])
+          choosecar.price[i].push(allchoosecar.price[i][j])
+          choosecar.count[i].push(allchoosecar.count[i][j])
+        }
+      }
+    } else {
+      allchoosecar = this.data.allchoosecar
+      for (var a in allchoosecar.sku_id) {
+        choosecar.sku_id[a] = []
+        choosecar.price[a] = []
+        choosecar.count[a] = []
+
+      }
+    }
+    console.log(choosecar)
+    this.setData({
+      choosecar: choosecar,
+      all: !all
+    })
+    this.carmoney()
+  },
+  carview() {
+    this.goodsCart()
+    this.setData({
+      visiblec: true
+    })
+  },
+  onClosec() {
+    this.setData({
+      visiblec: false
+    })
+  },
+  addshopcar() {
+    this.setData({
+      visible1: true,
+      addshopcarnum: 1
+    })
+  },
+  appshop(e) {
+    var that = this;
+    for (var i in that.data.choosed) {
+      if (that.data.choosed[i].indexOf("u") != -1) {
+        return util.alert("请选择" + that.data.result.specs[i]["spec_name"])
+      }
+    }
+    var data = {
+      sku_id: that.data.result.sku_id,
+      count: that.data.count
+    }
+    that.setData({
+      buyok: true
+    })
+    util.postJSON({
+      apiUrl: apiurl.goodsCart_update,
+      data: data
+    }, function (res) {
+      var result = res.data.result
+      console.log(res)
+      that.setData({
+        buyok: false,
+        visible1: false,
+        addshopcarnum: 0
+      })
+      that.goodsCart()
+    }, function (res) {
+      that.setData({
+        buyok: false
+      })
+    }, function (res) {
+      that.setData({
+        buyok: false
+      })
+    })
+  },
+  settlement(e) {
+    var that = this,
+      choosecar = this.data.choosecar,
+      num = 0;
+    var data = {
+      buy_type: "cart",
+    }
+    for (var i in choosecar.sku_id) {
+      for (var j in choosecar.sku_id[i]) {
+
+        data['sku_arr[' + num + '][sku_id]'] = choosecar.sku_id[i][j]
+        data['sku_arr[' + num + '][count]'] = choosecar.count[i][j]
+        num = num + 1
+      }
+    }
+    if (num < 1) {
+      return util.alert("请选择下单商品")
+    }
+    that.setData({
+      visiblec: false
+    })
+    console.log(data)
+    util.postJSON({
+      apiUrl: apiurl.order_payShow,
+      data: data
+    }, function (res) {
+      var result = res.data.result
+      wx.navigateTo({
+        url: '../order_detail/index?result=' + JSON.stringify(result),
+      })
+    })
+  },
 })

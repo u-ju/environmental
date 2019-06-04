@@ -77,7 +77,7 @@
       </view>
     </view> -->
     <block wx:for="{{image}}" wx:key="{{index}}">
-      <view class='item1 flex align_center image'>
+      <view class='item1 flex align_center image' >
         <text class='size28 color6'>{{item.title}}</text>
         <view class="picture_list">
           <view class="picture_item {{item.id}}" wx:if="{{item.upload_picture_list.length>0}}">

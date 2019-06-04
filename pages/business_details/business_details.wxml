@@ -19,7 +19,11 @@
     <view class='dotbtn {{cur==0?"dotpic":""}}' data-index='1' bindtap='swiperC'>图片</view>
   </view>
   <view class='con'>
-    <view class='size32 color4 bold title'>{{result.title}}</view>
+    <view class='flex_btw align_center'>
+      <view class='size32 color4 bold title'>{{result.title}}</view>
+      <!-- <view class='iconfont icon-collection color4fd6f0'></view>
+      <view class='iconfont icon-collection-b color4fd6f0'></view> -->
+    </view>
     <view class='flex_btw align_center'>
       <view class='flex align_center score'>
         <image src='../../images/smasonry.png' class='masonry' wx:for="{{comment_score}}" wx:key="index"></image>
@@ -117,10 +121,10 @@
       </view>
       <view class='spuinfor view2' id='view2'>
         <view class='bold pad40'>商户信息</view>
-        <view class='flex_btw align_center pad40' bindtap='license'>
+        <!-- <view class='flex_btw align_center pad40' bindtap='license'>
           <view>营业许可资质</view>
           <text class='iconfont icon-jiantou1 color898989'></text>
-        </view>
+        </view> -->
         <view class='padtb20'>商家描述</view>
         <view class='color898989'>
           {{result.intro}}
