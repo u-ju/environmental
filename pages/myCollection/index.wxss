@@ -1,2 +1,16 @@
 /* pages/myCollection/index.wxss */
+@import '../index/index';
 @import '../family/associated/index';
+.tabitem{
+  width: 100%;
+  margin-bottom: 0;
+}
+.agriculturalD image{
+  width:240rpx;
+  height:160rpx;
+  border-radius:8rpx;
+}
+.agriculturalD {
+  border-bottom: 1px solid #eee;
+  border-top: none;
+}

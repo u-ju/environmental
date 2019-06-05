@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "我的收藏",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
   "usingComponents": {
     "wux-popup": "../../Components/popup/index",
     "empty": "../../Components/empty/index"

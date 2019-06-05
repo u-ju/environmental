@@ -33,7 +33,8 @@ Page({
       var result = res.data.result
       util.hideLoading()
       that.setData({
-        list: result.list
+        list: result.list,
+        user_role: result.user_role||''
       })
     })
   },
@@ -89,6 +90,39 @@ Page({
         visible1: false,
       })
       that.init()
+    })
+  },
+  kicking(e){
+    var that = this;
+    util.popoutc('是否确定踢出该成员？', '否', '#444444', '是', '#4FD6F0',function(){
+      console.log("取消")
+    },function(){
+      util.postJSON({ apiUrl: apiurl.familyKicking, data: { id: e.currentTarget.dataset.id} }, function (res) {
+        util.alert1(res.data.message)
+        that.init()
+      })
+    })
+  },
+  transferOwner(e){
+    var that = this;
+    util.popoutc('是否确定转让群主？', '否', '#444444', '是', '#4FD6F0', function () {
+      console.log("取消")
+    }, function () {
+      util.postJSON({ apiUrl: apiurl.familyTransferOwner, data: { id: e.currentTarget.dataset.id } }, function (res) {
+        util.alert1(res.data.message)
+        that.init()
+      })
+    })
+  },
+  quit(){
+    var that = this;
+    util.popoutc('是否确定退出家庭', '否', '#444444', '是', '#4FD6F0', function () {
+      console.log("取消")
+    }, function () {
+      util.postJSON({ apiUrl: apiurl.familyQuit }, function (res) {
+        util.alert1(res.data.message)
+        that.init()
+      })
     })
   },
   /**

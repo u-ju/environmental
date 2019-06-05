@@ -362,8 +362,8 @@ Page({
 
 
     } else {
-      util.alert("为了您更好的体验,请先同意授权")
-
+      // util.alert("为了您更好的体验,请先同意授权")
+      console.log(e)
     }
 
   },

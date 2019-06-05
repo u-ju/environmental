@@ -25,12 +25,22 @@
   
   border-bottom: 2rpx solid #E8E8E8;
 }
-.submitButton{
+.addfamily{
   margin-top: 56rpx;
   position: fixed;
+  bottom: 160rpx;
   left: 50%;
-  bottom: 100rpx;
   transform: translate(-50%,0);
+}
+.quitfamily{
+  position: fixed;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  background-color: #ff1919;
+}
+.bgff1{
+  background-color: #ff1919;
 }
 .bge5{
   background-color: #E5E5E5

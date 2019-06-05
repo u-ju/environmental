@@ -314,3 +314,6 @@ web-view{
   width: 600rpx;
   height: 600rpx;
 }
+.title {
+  width: 650rpx;
+}

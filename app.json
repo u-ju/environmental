@@ -1,8 +1,13 @@
 {
   "pages": [
-    "pages/agriculturalDetail/index",
-    "pages/index/index",
+    
     "pages/myCollection/index",
+    "pages/index/index",
+    "pages/family/associated/index",
+    
+    "pages/agriculturalDetail/index",
+    
+    
     "pages/installment_details/installment_details",
     "pages/realname_authentication/realname_authentication",
     "pages/login/login",
@@ -10,7 +15,7 @@
     "pages/setting/setting",
     "pages/installment/installment",
     "pages/assets/index",
-    "pages/family/associated/index",
+    
     "pages/withdrawal_record/transfer",
     "pages/withdrawal/transfer",
     "pages/family/addBuddy/index",

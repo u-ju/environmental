@@ -16,24 +16,30 @@
 </view>
 <view class='person' wx:if="{{current==0}}">
   <block wx:if="{{list.length>0}}">
-    <view class='flex_btw align_center personitem' wx:for="{{list}}" wx:key='index' wx:if="{{item.user_id}}" >
-      <view class='flex align_center' >
+    <view class='flex_btw align_center personitem' wx:for="{{list}}" wx:key='index' wx:if="{{item.user_id}}">
+      <view class='flex align_center'>
         <image class='header' src='{{item.avatar}}'></image>
         <view>
           <view class='name'>{{item.mobile}} </view>
           <view>{{item.nickname}}</view>
         </view>
       </view>
-      <view class='send bge5 size30' data-user_id='{{item.user_id}}' bindtap='unbind'>解绑</view>
+      <view class='flex_btw align_center' wx:if="{{user_role=='owner'}}">
+        <view class='send bgff1 size30' data-id='{{item.id}}' bindtap='kicking'>踢出</view>
+        <view class='send  size30' data-id='{{item.id}}' bindtap='transferOwner'>转让</view>
+      </view>
     </view>
   </block>
   <empty wx:else title="暂无成员" />
   <navigator url='../addBuddy/index'>
-    <view class='submitButton flex align_center justify_center'>
+    <view class='submitButton addfamily flex align_center justify_center'>
       <image class='tabpic' src='../../../images/tianjiachengyuan.png'></image>
       <text>添加家庭成员</text>
     </view>
   </navigator>
+  <view class='submitButton quitfamily' bindtap='quit'>
+    退出家庭
+  </view>
 </view>
 <view class='person' wx:elif="{{current==1}}">
   <block wx:if="{{list.length>0}}">

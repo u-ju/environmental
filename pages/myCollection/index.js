@@ -23,36 +23,27 @@ Page({
       visible1: false,
     })
   },
-  init() {
+  init(page=1) {
     this.setData({
       list: [0]
     })
     var that = this;
-    var url = this.data.current == 0 ? 'familyIndex' : 'familyApplyIndex'
-    util.getJSON({ apiUrl: apiurl[url] }, function (res) {
+    var source = this.data.current == 0 ? 'shop' : 'goods'
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.collectIndex + source+ "&page=" + page}, function (res) {
       var result = res.data.result
-      util.hideLoading()
+      var list = result.list
+      if (page != 1) {
+        list = that.data.list.concat(list)
+      }
       that.setData({
-        list: result.list
+        list: list,
+        page: result.page,
+        last: false,
       })
     })
   },
-  refuseApply(e) {
-    var that = this;
-    util.loading()
-    util.postJSON({ apiUrl: apiurl.familyRefuseApply, data: { id: e.currentTarget.dataset.id } }, function (res) {
-      util.alert(res.data.message, 800)
-      that.init()
-    })
-  },
-  agreeApply(e) {
-    var that = this;
-    util.loading()
-    util.postJSON({ apiUrl: apiurl.familyAgreeApply, data: { id: e.currentTarget.dataset.id } }, function (res) {
-      util.alert(res.data.message, 800)
-      that.init()
-    })
-  },
+  
   tabcur(e) {
     var that = this;
     if (this.data.current == e.currentTarget.dataset.cur) {
@@ -64,21 +55,16 @@ Page({
       that.init()
     })
   },
-  unbind(e) {
-    this.setData({
-      visible1: true,
-      user_id: e.currentTarget.dataset.user_id
+  shopd(e){
+    console.log(e)
+    wx.navigateTo({
+      url: '../business_details/business_details?id='+e.currentTarget.dataset.id,
     })
   },
-  unbinds() {
-    var that = this;
-    util.loading()
-    util.postJSON({ apiUrl: apiurl.familyUnbind, data: { user_id: this.data.user_id } }, function (res) {
-      util.alert(res.data.message, 800)
-      that.setData({
-        visible1: false,
-      })
-      that.init()
+  goodsd(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.sku_id,
     })
   },
   /**
@@ -102,25 +88,25 @@ Page({
   onShow: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+    var that = this;
+    var source = this.data.current == 0 ? 'shop' : 'goods'
+    util.getJSON({ apiUrl: apiurl.collectIndex + source+ "&page=" + 1 }, function (res) {
+      var result = res.data.result
+      var list = result.list
+      that.setData({
+        list: list,
+        page: result.page,
+        last: false,
+      })
+      // 隐藏导航栏加载框
+      wx.hideNavigationBarLoading();
+      // 停止下拉动作
+      wx.stopPullDownRefresh();
+      wx.hideLoading()
+    })
 
   },
 
@@ -128,13 +114,19 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+      that.init(Number(that.data.page.current_page) + 1)
+    } else {
+      that.setData({
+        last: true
+      })
+      wx.hideLoading()
+    }
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
