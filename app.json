@@ -1,8 +1,9 @@
 {
   "pages": [
     
-    "pages/myCollection/index",
     "pages/index/index",
+    "pages/myCollection/index",
+    "pages/assets/index",
     "pages/family/associated/index",
     
     "pages/agriculturalDetail/index",
@@ -14,7 +15,7 @@
     "pages/login/index",
     "pages/setting/setting",
     "pages/installment/installment",
-    "pages/assets/index",
+    
     
     "pages/withdrawal_record/transfer",
     "pages/withdrawal/transfer",

@@ -25,9 +25,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
-    if (options.area_id){
-      var area_arr = JSON.parse(options.area_arr), areaSelectedStr = '', biotope_name = '', dong_name = '', unit_name = '', province = '', city = '', county=''
+
+    if (options.area_arr){
+      var area_arr = JSON.parse(options.area_arr), areaSelectedStr = '', biotope_name = '', dong_name = '', unit_name = '', province = '', city = '', county = '', door_num=''
+
       for (var i in area_arr){
         if (area_arr[i]['type'] == 'province') {
           province = area_arr[i]['name']
@@ -47,18 +48,22 @@ Page({
         if (area_arr[i]['type'] == 'unit') {
           unit_name = area_arr[i]['name'].replace(/[^0-9]/ig, "")
         }
+        // if (area_arr[i]['type'] == 'door_num') {
+        //   door_num = area_arr[i]['name'].replace(/[^0-9]/ig, "")
+        // }
       }
       this.setData({
-        area_id_val: options.area_id,
+        area_id_val: area_arr[area_arr.length-1]["id"]||'',
         areaSelectedStr: province + city + county,
         biotope_name: biotope_name,
         dong_name: dong_name,
-        unit_name: unit_name
+        unit_name: unit_name,
+        door_num: options.door_num || ''
       })
     }
   },
   formSubmit(e) {
-    console.log(e)
+
     var data = e.detail.value, that = this;
     data.area_id = that.data.area_id_val
     that.setData({
@@ -83,7 +88,6 @@ Page({
       })
   },
   choosearea(e) {
-    console.log(e)
     var areaSelectedStr = e.detail.areaSelectedStr
     if (e.detail.biotope_name&&areaSelectedStr.indexOf(e.detail.biotope_name)>-1){
       console.log(areaSelectedStr)

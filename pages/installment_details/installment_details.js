@@ -150,7 +150,7 @@ Page({
     util.loading()
     that.setData({
       sku_id: options.id,
-      nper: app.globalData.config.protocol.nper
+      // nper: app.globalData.config.protocol.nper
       // 
     })
     that.goods(options.id)
@@ -692,4 +692,20 @@ Page({
       })
     })
   },
+  collect(e){
+    
+    var that =  this;
+    util.postJSON({
+      apiUrl: apiurl.collectUpdate,
+      data: { source: e.currentTarget.dataset.source, source_id: e.currentTarget.dataset.id}
+    }, function (res) {
+      var result = that.data.result
+      var mes = result.is_collect == 1 ? "取消收藏成功" : '收藏成功'
+      util.alert1(mes)
+      result.is_collect = result.is_collect == 1 ? 0 : 1
+      that.setData({
+        result: result
+      })
+    })
+  }
 })

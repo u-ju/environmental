@@ -29,7 +29,8 @@ Page({
     add:[],
     edit:[],
     post:false,
-    spec_str:'规格:默认'
+    spec_str:'规格:默认',
+    cate_id:''
   },
   addsku(){
     // if (this.data.skunum + 1 > this.data.spec_group_arr.length){
@@ -413,7 +414,7 @@ Page({
 
   formSubmit(e){
     var data = e.detail.value,that = this;
-    data.cate_id = this.data.cate_id;
+    data.cate_id = this.data.cate_id||'';
     data.shop_id = that.data.shop_id;
     if (this.data.spu_intro[0]){
       data.spu_intro = this.data.spu_intro[0]["path_server"]

@@ -1,7 +1,11 @@
 /* pages/search/index.wxss */
+.searchall input {
+  font-size: 30rpx;
+}
 .searchitem{
-  padding: 10rpx 32rpx;
-  font-size: 28rpx;
+  padding:20rpx 0;
+  font-size:30rpx;
+  width: 200rpx;
 }
 .sousuo{
   margin-bottom: 20rpx;
@@ -16,4 +20,9 @@
 }
 .searchall input{
   width: 520rpx;
+}
+.border{
+  border-bottom: 1rpx solid #efefef;
+  width: 686rpx;
+  margin: auto;
 }

@@ -5,7 +5,7 @@
     <view class='left1'>商品名称：</view>
     <input class='right1' name='spu_name' value='{{spu_name}}'></input>
   </view>
-  <view class='flex align_center maginb50' hidden='{{source=="league"}}'>
+  <view class='flex align_center maginb50' wx:if='{{source=="online"}}'>
     <view class='left1'>商品分类：</view>
     <input class='right1' disabled='true' bindtap='onOpen1' name='cate_id' value='{{ title1 }}'></input>
   </view>

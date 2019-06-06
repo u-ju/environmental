@@ -3,3 +3,9 @@
 .submitButton{
   margin-top: 40rpx;
 }
+.textC input{
+  width: 130rpx;
+}
+.textC .left{
+  width: 100rpx;
+}

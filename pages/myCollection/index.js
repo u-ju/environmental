@@ -23,14 +23,16 @@ Page({
       visible1: false,
     })
   },
-  init(page=1) {
+  init(page = 1) {
     this.setData({
       list: [0]
     })
     var that = this;
     var source = this.data.current == 0 ? 'shop' : 'goods'
     var that = this;
-    util.getJSON({ apiUrl: apiurl.collectIndex + source+ "&page=" + page}, function (res) {
+    util.getJSON({
+      apiUrl: apiurl.collectIndex + source + "&page=" + page
+    }, function(res) {
       var result = res.data.result
       var list = result.list
       if (page != 1) {
@@ -43,7 +45,7 @@ Page({
       })
     })
   },
-  
+
   tabcur(e) {
     var that = this;
     if (this.data.current == e.currentTarget.dataset.cur) {
@@ -51,49 +53,89 @@ Page({
     }
     this.setData({
       current: e.currentTarget.dataset.cur
-    }, function () {
+    }, function() {
       that.init()
     })
   },
-  shopd(e){
-    console.log(e)
-    wx.navigateTo({
-      url: '../business_details/business_details?id='+e.currentTarget.dataset.id,
+  touchStart: function(e) {
+    var that = this;
+    that.setData({
+      touchStart: e.timeStamp
     })
+  },
+  touchEnd: function(e) {
+    var that = this;
+    that.setData({
+      touchEnd: e.timeStamp
+    })
+  },
+  shopd(e) {
+    console.log(e)
+    var that = this;
+    
+    var touchTime = that.data.touchEnd - that.data.touchStart;
+    if (touchTime > 800) {
+      that.collect('是否取消收藏该商家', 'shop', e.currentTarget.dataset.source_id)
+    } else {
+      wx.navigateTo({
+        url: '../business_details/business_details?id=' + e.currentTarget.dataset.id,
+      })
+    }
   },
   goodsd(e) {
     console.log(e)
-    wx.navigateTo({
-      url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.sku_id,
+    var that = this;
+    var touchTime = that.data.touchEnd - that.data.touchStart;
+    if (touchTime > 800) {
+      that.collect('是否取消收藏该商品', 'goods', e.currentTarget.dataset.source_id)
+    } else {
+      wx.navigateTo({
+        url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.sku_id,
+      })
+    }
+  },
+  collect(con, sources, id){
+    var that = this;
+    util.popoutc(con, '否', '#444444', '是', '#4FD6F0', function () {
+      console.log("取消")
+    }, function () {
+      util.postJSON({
+        apiUrl: apiurl.collectUpdate,
+        data: { source: sources, source_id: id }
+      }, function (res) {
+        that.init()
+      })
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.init()
+  onLoad: function(options) {
+    
     // this.init1()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function() {
+    this.init()
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
     var source = this.data.current == 0 ? 'shop' : 'goods'
-    util.getJSON({ apiUrl: apiurl.collectIndex + source+ "&page=" + 1 }, function (res) {
+    util.getJSON({
+      apiUrl: apiurl.collectIndex + source + "&page=" + 1
+    }, function(res) {
       var result = res.data.result
       var list = result.list
       that.setData({
@@ -113,7 +155,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     var that = this;
     // 显示加载图标
     wx.showLoading({

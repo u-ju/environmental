@@ -13,6 +13,8 @@
   <view class='left'>栋</view>
   <input  name='unit_name' placeholder='例：1' type='Number' value='{{unit_name}}'></input>
   <view class='left'>单元</view>
+  <input  name='door_num' placeholder='例：101' type='Number' value='{{door_num}}'></input>
+  <view class='left'>门号</view>
 </view>
   <button class='submitButton' disabled='{{disabled}}'  form-type="submit">保存</button>
 </form>

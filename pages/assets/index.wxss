@@ -68,9 +68,12 @@ page{
 .current1>view,.current1 navigator{
   width: 50%;
 }
-.brx navigator{
+.brx navigator {
   border-left: 2rpx solid #ddd;
   color: #898989;
+}
+.brx .navigator{
+  border-left: 2rpx solid #ddd;
 }
 .item{
   padding: 30rpx 0;

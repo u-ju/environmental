@@ -16,10 +16,11 @@
     <navigator url='../withdrawal/transfer?type=1&money={{integral}}'>转账</navigator>
   </view> -->
   <view class='flex align_center justify_center brx current1'>
-    <view class='color299EF0 size28'>环保积分明细</view>
+    <view class=' size28 {{integralurl=="integralIndex"?"color299EF0":"color989898"}}' bindtap='integral' data-url='integralIndex'>环保积分明细</view>
     <!-- <navigator url='../withdrawal_record/transfer?url=walletIntegralTransferIndex'>
-      <view class=' size28'>转账记录</view>
+      <view class=' size28'>家庭环保积分记录</view>
     </navigator> -->
+    <view class='size28 navigator {{integralurl=="walletIntegralFamilyIndex"?"color299EF0":"color989898"}}' wx:if="{{has_family==1}}" bindtap='integral' data-url='walletIntegralFamilyIndex'>家庭环保积分记录</view>
   </view>
 </block>
 <block wx:elif="{{current==0}}">

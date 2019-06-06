@@ -2,8 +2,8 @@ const app = getApp()
 var apiurl = require('api.js');
 var link = require('link.js');
 var bmap = require('bmap-wx.min.js'); 
-var build = 99999999
-// var build = 20190531
+// var build = 99999999
+var build = 20190606
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -567,8 +567,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
     header = {
       'content-type': 'application/json', // 默认值
       'token': that.getToken(),
-      'token': 'zwj',
-      // 'channel':'let',
+      // 'token': 'zwj',
       'build': build
     }
   }

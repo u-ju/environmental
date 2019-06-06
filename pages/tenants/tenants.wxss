@@ -120,7 +120,7 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   margin-left: 0rpx;
 }
 .bgg{
-  background-color: #27AAD9;
+  background-color: #4FD6F0;
   width: 70rpx;
   height: 70rpx;
 }
@@ -335,7 +335,7 @@ navigator{
 .features{
   width:120rpx;
   height:50rpx;
-  background:rgba(39,170,217,1);
+  background:#4FD6F0;
   border-radius:5rpx;
   text-align: center;
   line-height: 50rpx;
@@ -409,11 +409,11 @@ checkbox-group{
 checkbox .wx-checkbox-input {
   width: 40rpx;
   height: 40rpx;
-  border-color: #27AAD9;
+  border-color: #4FD6F0;
 }
 /*checkbox选中后样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  background: #27AAD9;
+  background: #4FD6F0;
 }
 /*checkbox选中后图标样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
@@ -432,7 +432,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   align-items: center;
 }
 .xieyi{
-  color: #27AAD9;
+  color: #4FD6F0;
 }
 .submitButton {
   margin: 40rpx auto;

@@ -87,15 +87,15 @@
 <scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}"  style="height:{{s_height}}px;">
 
   <view class='shopitem flex_btw wrap'>
-    <!-- <block wx:for="{{4}}"> -->
-      <view class='shop' wx:for="{{list}}" wx:key="index" wx:for-item="list" bindtap='detail' id='{{list.shop_id}}'>
+    <block  wx:for="{{list}}" wx:key="index" wx:for-item="list">
+      <view class='shop' bindtap='detail'  data-id='{{list.shop_id}}' wx:if='{{list.thumb}}'>
         <image class='shoppic' src="{{list.thumb}}" mode='aspectFill'></image>
         <view class='shoptext flex_col flex_btw'>
           <view class='bold color4'>{{list.title}}</view>
           <view class='hidden1 color898989'>{{list.intro}}</view>
         </view>
       </view>
-    <!-- </block> -->
+    </block>
     <view wx:if="{{list.length==0}}" class='empty'>
       <empty />
     </view>

@@ -20,8 +20,7 @@ Page({
     interval: 10000,
     duration: 1000,
     indexSize: 0,
-    list: '',
-    list:[],
+    list:[0],
     shop_cate:[0],
     type: "",
     url1: "",
@@ -218,8 +217,9 @@ Page({
     })
   },
   detail(e){
+    // console.log(e)
     wx.navigateTo({
-      url: '../business_details/business_details?id=' + e.currentTarget.id,
+      url: '../business_details/business_details?id=' + e.currentTarget.dataset.id,
     })
   },
   loadMore: function () {

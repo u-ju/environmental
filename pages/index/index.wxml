@@ -140,7 +140,7 @@
 
         </view>
       </view>
-      <view class='agriculturalitem' wx:if='{{shop_goods_ad.list.length>0}}'>
+      <!-- <view class='agriculturalitem' wx:if='{{shop_goods_ad.list.length>0}}'>
         <view class='flex_btw agricultural'>
           <view class='size30'>每日拼购</view>
           <view class='colorff1919 size24' bindtap='link'>离结束：{{timeLeft}}</view>
@@ -152,7 +152,7 @@
             <view class='colorEA2C2C'>￥{{item.price}}</view>
           </view>
         </view>
-      </view>
+      </view> -->
       <view class='agriculturalitem' wx:if='{{shop_goods_ad.list.length>0}}'>
         <view class='flex_btw agricultural'>
           <view class='size30'>大家都在发</view>
