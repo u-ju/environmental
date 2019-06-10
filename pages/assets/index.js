@@ -20,8 +20,10 @@ Page({
     tab: [],
     current:1,
     withdraw_status:'',
-    jin: ['integralIndex',"walletIntegralFamilyIndex"],
-    integralurl:'integralIndex'
+    ji: ['integralIndex',"walletIntegralFamilyIndex"],
+    jin: ['balanceIndex', "walletBalanceFamilyIndex"],
+    integralurl:'integralIndex',
+    balanceurl: 'balanceIndex',
   },
   tabchange(e){
     util.loading()
@@ -47,6 +49,15 @@ Page({
     tab[0]["url"] = e.currentTarget.dataset.url
     this.setData({
       integralurl: e.currentTarget.dataset.url,
+      tab: tab
+    })
+    this.init()
+  },
+  balance(e){
+    var tab = this.data.tab
+    tab[1]["url"] = e.currentTarget.dataset.url
+    this.setData({
+      balanceurl: e.currentTarget.dataset.url,
       tab: tab
     })
     this.init()
@@ -77,7 +88,9 @@ Page({
         is_password: result.is_password,
         balance_withdraw_flow: JSON.stringify(result.balance_withdraw_flow),
         settle_withdraw_flow: JSON.stringify(result.settle_withdraw_flow),
-        has_family: result.has_family||''
+        has_family: result.has_family||'',
+        integralurl: 'integralIndex',
+        balanceurl: 'balanceIndex',
       })
       util.hideLoading()
       that.init()

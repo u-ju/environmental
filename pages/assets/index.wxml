@@ -12,14 +12,8 @@
     <image src='../../images/minuet@2x.png'></image>
     <text class='size72 colorFFBF1A bold'>{{integral}}</text>
   </view>
-  <!-- <view class='size36  withdrawal'>
-    <navigator url='../withdrawal/transfer?type=1&money={{integral}}'>转账</navigator>
-  </view> -->
   <view class='flex align_center justify_center brx current1'>
     <view class=' size28 {{integralurl=="integralIndex"?"color299EF0":"color989898"}}' bindtap='integral' data-url='integralIndex'>环保积分明细</view>
-    <!-- <navigator url='../withdrawal_record/transfer?url=walletIntegralTransferIndex'>
-      <view class=' size28'>家庭环保积分记录</view>
-    </navigator> -->
     <view class='size28 navigator {{integralurl=="walletIntegralFamilyIndex"?"color299EF0":"color989898"}}' wx:if="{{has_family==1}}" bindtap='integral' data-url='walletIntegralFamilyIndex'>家庭环保积分记录</view>
   </view>
 </block>
@@ -34,8 +28,9 @@
   <view class='size36  withdrawal zhuan color4fd6f0'>
     <navigator url='../withdrawal/transfer?type=2&money={{balance}}'>转账</navigator>
   </view>
-  <view class='flex_btw align_center flex brx'>
-    <view class='color299EF0 size28'>环保金明细</view>
+  <view class='flex_ard align_center flex brx'>
+    <view class=' size28 {{balanceurl=="balanceIndex"?"color299EF0":"color989898"}}' bindtap='balance' data-url='balanceIndex'>环保金明细</view>
+    <view class='size28 navigator {{balanceurl=="walletBalanceFamilyIndex"?"color299EF0":"color989898"}}' wx:if="{{has_family==1}}" bindtap='balance' data-url='walletBalanceFamilyIndex'>家庭环保金记录</view>
     <navigator url='../withdrawal_record/withdrawal_record?url=balanceWithdrawIndex'>
       <view class=' size28 br'>提现记录</view>
     </navigator>

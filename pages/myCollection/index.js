@@ -45,7 +45,7 @@ Page({
       })
     })
   },
-
+  
   tabcur(e) {
     var that = this;
     if (this.data.current == e.currentTarget.dataset.cur) {
@@ -70,24 +70,31 @@ Page({
     })
   },
   shopd(e) {
-    console.log(e)
     var that = this;
     
     var touchTime = that.data.touchEnd - that.data.touchStart;
-    if (touchTime > 800) {
-      that.collect('是否取消收藏该商家', 'shop', e.currentTarget.dataset.source_id)
+    console.log(touchTime)
+    if (touchTime > 700) {
+      
     } else {
       wx.navigateTo({
         url: '../business_details/business_details?id=' + e.currentTarget.dataset.id,
       })
     }
   },
+  shopb(e) {
+    this.collect('是否取消收藏该商店', 'shop', e.currentTarget.dataset.source_id)
+  },
+  goodsb(e) {
+    this.collect('是否取消收藏该商品', 'goods', e.currentTarget.dataset.source_id)
+  },
   goodsd(e) {
     console.log(e)
     var that = this;
     var touchTime = that.data.touchEnd - that.data.touchStart;
-    if (touchTime > 800) {
-      that.collect('是否取消收藏该商品', 'goods', e.currentTarget.dataset.source_id)
+    console.log(touchTime)
+    if (touchTime > 700) {
+      // that.collect('是否取消收藏该商品', 'goods', e.currentTarget.dataset.source_id)
     } else {
       wx.navigateTo({
         url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.sku_id,

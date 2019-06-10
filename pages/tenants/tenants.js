@@ -424,7 +424,6 @@ Page({
         { title: '营业执照', upload_picture_list: wx.getStorageSync("image0t") || '', text: "点击拍摄/上传图片", id: 0 },
         { title: '店招上传', upload_picture_list: wx.getStorageSync("image1t"), text: "点击拍摄/上传图片", id: 1 },
       ], upload_picture_list = wx.getStorageSync("upload_picture_listt") || []
-      console.log(wx.getStorageSync("upload_picture_listt"))
       var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
       
       that.setData({
@@ -651,11 +650,14 @@ Page({
 
     });
   },
+  previewImg(){
+    console.log('点击')
+  },
   // 删除图片
   deleteImg: function (e) {
-
+    console.log(e)
     var that = this;
-
+    
     that.setData({
       ['image[' + e.currentTarget.dataset.index + '].upload_picture_list']: [],
     });

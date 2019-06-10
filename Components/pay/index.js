@@ -124,6 +124,9 @@ Component({
         mask: true
       })
       var data = { pay_key: that.data.items.pay_key, payment: that.data.payment, pay_amount: that.data.pay_amount, pay_cash: that.data.pay_amount, payment_ext: that.data.payment_ext }
+      if (that.data.payment =='wechat'){
+        data.payment_ext = util.wx_appid
+      }
       util.postJSON({ apiUrl: apiurl.vendor, data: data },
         function (res) {
           var result = res.data.result

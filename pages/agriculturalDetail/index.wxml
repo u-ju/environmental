@@ -17,15 +17,17 @@
     <view class='size32 color4 bold title hidden1'>{{result.spu_name}} {{result.sku_name}}</view>
     <view class='iconfont icon-collection color4fd6f0'></view>
   </view>
-  <view class='flex_btw align_center scoreitem'>
+  <view class='scoreitem'>
     <view class='flex align_center score'>
       <image src='../../images/smasonry.png' class='masonry' wx:for="{{comment_score}}" wx:key="index"></image>
       <text class='size28 pfeng'>评分:{{result.comment_score}}</text>
-    </view>
-    <view class='colorFE2C2C size28'>
-      <text>{{result.source=="exchange"?"社区惠民价":"价格"}}：</text> ￥
-      <text class='size30'>{{result.price}}</text>
-    </view>
+    
+  </view>
+  </view>
+  <view class='colorFE2C2C '>
+    <text class='size36 bold' hidden='{{!seckill_price}}'>拼团价:￥{{seckill_price}}</text> 
+    <text class='size24'>（返{{result.seckill_info.return_amount}}环保金）</text>
+    <!-- <text class='size30'>{{result.price}}</text> -->
   </view>
   <view class='size22 color898989 flex_btw'>
     <text>运费：{{result.freight>0?result.install_fee:'免'}}</text>
@@ -123,8 +125,8 @@
 
 </view>
 <view class='fixed' >
-  <view class='pgo'>立即拼购</view>
-
+  <view class='pgo' bindtap='buy' wx:if="seckill_price">立即拼购</view>
+  <view class='pgo end' wx:else>已结束</view>
 </view>
 <wux-popup position="bottom" visible="{{ visible1 }}" bind:close="onClose1">
   <text class='iconfont icon-cuohao' bindtap="close1"></text>

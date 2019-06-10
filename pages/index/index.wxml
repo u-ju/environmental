@@ -21,7 +21,6 @@
         <input disabled='disabled' value='{{search}}' placeholder='输入想要查找的内容' name='search'></input>
         <image class='logoi' src='../../images/logoi.png'></image>
       </view>
-
     </view>
     <view class='bg'>
       <view class="container">
@@ -140,22 +139,22 @@
 
         </view>
       </view>
-      <!-- <view class='agriculturalitem' wx:if='{{shop_goods_ad.list.length>0}}'>
+      <view class='agriculturalitem' wx:if='{{seckill_list.length>0}}'>
         <view class='flex_btw agricultural'>
           <view class='size30'>每日拼购</view>
-          <view class='colorff1919 size24' bindtap='link'>离结束：{{timeLeft}}</view>
+          <view class='colorff1919 size24' bindtap='link'>{{timeLeft}}</view>
         </view>
-        <view class='flex_btw agriculturalD' wx:for="{{shop_goods_ad.list}}" bindtap='agriculturalLink' wx:key="index" data-sku_id='{{item.sku_id}}' data-spu_id='{{item.spu_id}}'>
+        <view class='flex_btw agriculturalD' wx:for="{{seckill_list}}" bindtap='seckill' wx:key="index" data-sku_id='{{item.sku_id}}'>
           <image src='{{item.thumb}}'></image>
           <view class='flex_btw flex_col'>
-            <view class='hidden2'>{{item.spu_name}}{{item.sku_name}}</view>
-            <view class='colorEA2C2C'>￥{{item.price}}</view>
+            <view class='hidden2'>{{item.full_name}}</view>
+            <view class='colorEA2C2C'>￥{{item.seckill_price}}（返{{item.return_amount}}环保金）</view>
           </view>
         </view>
-      </view> -->
+      </view>
       <view class='agriculturalitem' wx:if='{{shop_goods_ad.list.length>0}}'>
         <view class='flex_btw agricultural'>
-          <view class='size30'>大家都在发</view>
+          <view class='size30'>惠民自营</view>
           <view class='color6ADB7A' bindtap='link' data-link='{{shop_goods_ad.button.control}}'>{{shop_goods_ad.button.name}}</view>
         </view>
         <view class='flex_btw agriculturalD' wx:for="{{shop_goods_ad.list}}" bindtap='agriculturalLink' wx:key="index" data-sku_id='{{item.sku_id}}' data-spu_id='{{item.spu_id}}'>

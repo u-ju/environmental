@@ -84,13 +84,20 @@ Page({
   unbinds(){
     var that = this;
     util.loading()
-    util.postJSON({ apiUrl: apiurl.familyUnbind, data: { user_id: this.data.user_id } }, function (res) {
-      util.alert(res.data.message,800)
+    util.popoutc('对方同意申请后，环保积分和环保金 将被共享。', '拒绝', '#444444', '同意', '#4FD6F0', function () {
       that.setData({
         visible1: false,
       })
-      that.init()
+    }, function () {
+      util.postJSON({ apiUrl: apiurl.familyUnbind, data: { user_id: this.data.user_id } }, function (res) {
+        util.alert(res.data.message, 800)
+        that.setData({
+          visible1: false,
+        })
+        that.init()
+      })
     })
+    
   },
   kicking(e){
     var that = this;

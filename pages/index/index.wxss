@@ -304,13 +304,14 @@ page {
 }
 
 .agriculturalitem {
-  padding: 32rpx;
+  padding: 0 32rpx;
   font-size: 28rpx;
 }
 
 .agriculturalitem image {
   width: 240rpx;
   height: 160rpx;
+  border-radius: 8rpx;
 }
 
 .agriculturalD {

@@ -148,9 +148,11 @@
         <view class="picture_list">
           <view class="picture_item {{item.id}}" wx:if="{{item.upload_picture_list.length>0}}">
             <image wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" src="{{item.upload_picture_list[0].path}}" mode="aspectFill"></image>
-            <image wx:if="{{item.upload_picture_list[0].upload_percent == 100}}" src="{{item.upload_picture_list[0].path_server}}" mode="aspectFill"></image>
-            <view class="upload_progress" wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_picture_list[0].upload_percent}}%</view>
-            <text class='del iconfont  icon-cuohao' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></text>
+            <image wx:if="{{item.upload_picture_list[0].upload_percent == 100}}" bindtap="previewImg" src="{{item.upload_picture_list[0].path_server}}" mode="aspectFill"></image>
+            <view class="upload_progress" wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" data-index="{{index}}" >{{item.upload_picture_list[0].upload_percent}}%</view>
+            <view class='del' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"> 
+              <view class=' iconfont  icon-cuohao'></view>
+            </view>
           </view>
           <view wx:else class='picture_item' bindtap='uploadpic' data-index="{{index}}">
             <view class='bgg flex_ard align_center'>

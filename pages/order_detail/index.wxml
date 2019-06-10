@@ -1,72 +1,67 @@
 <!--pages/order_detail/index.wxml-->
 <view class='flex_btw align_center orderTitle'>
   <view class='width600' bindtap='link'>
-    <view>收货人：{{address.name}}      <text class='marginl54'>{{address.phone}} </text>  </view>
+    <view>收货人：{{address.name}}
+      <text class='marginl54'>{{address.phone}} </text> </view>
     <view class='margt42'>收货地址：{{address.area_name}} {{address.address}}</view>
   </view>
   <view class='iconfont icon-jiantou'></view>
 </view>
 
 <view class='  shitem' wx:for="{{result.order_arr}}" wx:key="index" wx:for-item="order_arr">
-  
+
   <view class='fkItem_goods flex' wx:for="{{order_arr.goods_arr}}" wx:key="index">
     <image src='{{item.thumb}}' class='goospic' mode='aspectFit'></image>
     <view class='fkItem_goods_ms '>
-      <view class='color4 size28 flex_btw'><text class='one-hidden width'>{{item.spu_name}}</text> <text class='color898989'><text class='iconfont icon-cuohao'></text>{{item.buy_count}}</text></view>
+      <view class='color4 size28 flex_btw'>
+        <text class='one-hidden width'>{{item.spu_name}}</text>
+        <text class='color898989'><text class='iconfont icon-cuohao'></text>{{item.buy_count}}</text>
+      </view>
       <view class='color4 size28 one-hidden'>{{item.sku_name}}</view>
-      <view class='colorFE2C2C size28'>{{item.price}}</view>
-      
+      <view class='colorFE2C2C size28'>￥{{item.price}}</view>
+
     </view>
   </view>
 </view>
 <view class='color4 size28 kdxx'>
   <!-- <view>订单号：{{result.sku_name}}</view>
   <view class='flex_btw'><text>配送方式</text><text class='color898989'>快递免邮</text></view> -->
-  <view class='flex_btw' wx:if="{{result.sku_name}}"><text>订单号：{{result.sku_name}}</text></view>
-  <view class='flex_btw' hidden='{{order_source=="online"}}'><text>安装费</text><text class='color898989'>{{result.install_fee_amount>0?result.install_fee_amount:'免'}}</text></view>
+  <view class='flex_btw' wx:if="{{result.sku_name}}">
+    <text>订单号：{{result.sku_name}}</text>
+  </view>
+  <view class='flex_btw' wx:if='{{order_source=="exchange"}}'>
+    <text>安装费</text>
+    <text class='color898989'>{{result.install_fee_amount>0?result.install_fee_amount:'免'}}</text>
+  </view>
 
-  <view class='flex_btw'><text>运费</text><text class='color898989'>{{result.freight_amount>0?result.freight_amount:'免'}}</text></view>
-  <view class='flex_btw'><text>总金额</text><text class='colorFE3434 size30'>{{result.price_amount}}</text></view>
+  <view class='flex_btw'>
+    <text>运费</text>
+    <text class='color898989'>{{result.freight_amount>0?result.freight_amount:'免'}}</text>
+  </view>
+  <view class='flex_btw' wx:if="{{result.order_source!='seckill'}}">
+    <text>总金额</text>
+    <text class='colorFE3434 size30'>￥{{result.price_amount}}</text>
+  </view>
+  <view class='ptuan' wx:else>
+    <view class='flex_btw'>
+      <text>总金额</text>
+      <text class='colorFE3434 size36 bold'>￥{{result.price_amount}}</text>
+    </view>
+    <!-- <view class='flex_btw size24'>
+      <text class='color898989'>返还环保金</text>
+      <text class='colorFE3434 size30'>￥{{result.price_amount}}</text>
+    </view> -->
+  </view>
 </view>
-<view class='flex align_center margint40'  hidden='{{order_source=="online"}}'>
+<view class='flex align_center margint40' wx:if='{{order_source=="exchange"}}'>
   <checkbox-group bindchange="checkboxChange">
     <label class="checkbox" wx:for="{{choosexy}}" wx:key="index">
-      <checkbox value="{{item.name}}" checked="{{item.checked}}" />
-      {{item.value}}
+      <checkbox value="{{item.name}}" checked="{{item.checked}}" /> {{item.value}}
     </label>
   </checkbox-group>
   <navigator class='color27AAD9' url='../page/index?url={{nper}}'>《商品兑换协议》</navigator>
 </view>
 <!-- <view class='btnsure' bindtap='open3' hidden='{{order_source=="online"}}'>立即兑换</view> -->
 <!-- <view class='btnsure' bindtap='open3' hidden='{{order_source!="online"}}'>立即支付</view> -->
-<pay choose="{{choose}}" data="{{data}}" styles="margin:80rpx auto;"  bind:open='openp' title='{{order_source=="online"?"立即支付":"立即兑换"}}' title1='{{order_source=="online"?"立即支付":"立即兑换"}}' />
-<wux-popup position="bottom" visible="{{ visible3 }}" bind:close="close3">
-    <text class='iconfont icon-cuohao'  bindtap="close3"></text>
-    <view class='center color4 size36 csgg'>选择支付方式</view>
-    <view class='center colorFE3434 size60 csgg'>￥{{pay_amount}}</view>
-    <view  >
-      <view class='label' wx:for="{{items.payment_usable}}" wx:key ="index">
-        <view>
-        <view class='flex align_center radioitem'  bindtap='choose' data-index="{{index}}" data-key="{{item.key}}">
-          <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
-          <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
-          <view class='left'>
-            <text class='size28 color4'>{{item.name}} \n </text>
-          </view>
-        </view>
-        <view wx:if="{{item.options&&item.choosed==1}}">
-          <block wx:for="{{item.options}}" wx:key="index">
-          <view class='flex align_center radioitem radioinstallment'  bindtap='choosed' data-index="{{index}}" data-key="{{item.key}}">
-            <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
-            <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
-            <view class='left'>
-              <text class='size28 color4'>{{item.name}} </text>
-            </view>
-          </view>
-          </block>
-        </view>
-        </view>
-      </view>  
-    </view> 
-    <view class=' size36 marginb60' bindtap='goodsBuy'>立即兑换</view>
-</wux-popup>
+<pay wx:if="{{result.order_source=='seckill'}}" choose="{{choose}}" data="{{data}}" styles="margin:80rpx auto;" bind:open='openp' title='立即付款' title1='立即付款' />
+<pay wx:else choose="{{choose}}" data="{{data}}" styles="margin:80rpx auto;" bind:open='openp' title='{{order_source=="online"?"立即支付":"立即兑换"}}' title1='{{order_source=="online"?"立即支付":"立即兑换"}}' />

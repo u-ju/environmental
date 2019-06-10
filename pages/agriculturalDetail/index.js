@@ -15,16 +15,7 @@ Page({
     afterColor: "#27AAD9", //当前选中的指示点颜色
     interval: 5000,
     duration: 1000,
-    banner: [{
-      image: '../../images/catering_test.png'
-    },
-    {
-      image: '../../images/catering_test.png'
-    },
-    {
-      image: '../../images/catering_test.png'
-    },
-    ],
+    banner: [],
     result: "",
     visible1: false,
     visible2: false,
@@ -146,7 +137,6 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.loading()
-    options.id=12
     that.setData({
       sku_id: options.id,
       // nper: app.globalData.config.protocol.nper
@@ -184,11 +174,13 @@ Page({
           }
         }
       }
+      var seckill_price = result.seckill_info && result.seckill_info.seckill_price
       that.setData({
         result: result,
         choosed: choosed,
         spu_id: result.spu_id,
         arr: arr,
+        seckill_price: seckill_price||'',
         comment_score: Math.ceil(result.comment_score)
       })
 
@@ -376,7 +368,7 @@ Page({
       }
     }
     var data = {
-      buy_type: "now",
+      buy_type: "seckill",
       'sku_arr[0][sku_id]': that.data.result.sku_id,
       'sku_arr[0][count]': that.data.count
     }

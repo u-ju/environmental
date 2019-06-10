@@ -47,9 +47,12 @@ page{
   width: 686rpx;
   margin: auto;
 }
-.kdxx view{
+.kdxx>view{
   padding: 30rpx 0;
   border-bottom: 1px solid #eee;
+}
+.kdxx>.ptuan{
+  padding: 40rpx 0 20rpx 0;
 }
 .btnsure{
   margin: 100rpx auto

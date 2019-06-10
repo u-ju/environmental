@@ -52,8 +52,9 @@ Page({
         //   door_num = area_arr[i]['name'].replace(/[^0-9]/ig, "")
         // }
       }
+      var area_id_val = area_arr && area_arr[area_arr.length - 1]["id"]? area_arr[area_arr.length - 1]["id"]:''
       this.setData({
-        area_id_val: area_arr[area_arr.length-1]["id"]||'',
+        area_id_val: area_id_val,
         areaSelectedStr: province + city + county,
         biotope_name: biotope_name,
         dong_name: dong_name,

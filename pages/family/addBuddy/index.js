@@ -39,11 +39,16 @@ Page({
   },
   send(e){
     util.loading()
-    console.log(e.currentTarget.dataset.mobile)
-    util.postJSON({ apiUrl: apiurl.familySendApply, data: { mobile: e.currentTarget.dataset.mobile} }, function (res) {
-      util.alert(res.data.message)
-      util.navigateBack()
+    var that = this;
+    util.popoutc('对方同意申请后，环保积分和环保金 将被共享。', '拒绝', '#444444', '同意', '#4FD6F0', function () {
+      console.log("取消")
+    }, function () {
+      util.postJSON({ apiUrl: apiurl.familySendApply, data: { mobile: e.currentTarget.dataset.mobile } }, function (res) {
+        util.alert(res.data.message)
+        util.navigateBack()
+      })
     })
+   
   },
   /**
    * 生命周期函数--监听页面加载

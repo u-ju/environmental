@@ -63,6 +63,6 @@ App({
     latitude: 30.69015,
     config:[],
     controlContrast:[],
-    appid:'wx312b45ec2ec4d345'
+    appid: util.wx_appid
   }
 })

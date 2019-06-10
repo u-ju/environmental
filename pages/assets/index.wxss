@@ -60,8 +60,8 @@ page{
 }
 
 .brx>view,.brx navigator{
-  width: 33%;
-  padding: 12rpx 0;
+  /* width: 25%; */
+  padding: 12rpx 22rpx;
   text-align: center;
   font-weight: bold;
 }

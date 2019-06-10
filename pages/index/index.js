@@ -37,7 +37,7 @@ Page({
     token: "",
     tabbarid: 0,
     share_gene: '',
-    ak: "DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo",
+    ak: util.bmak,
     weatherData: '',
     futureWeather: [],
     imagetq: [{
@@ -77,15 +77,7 @@ Page({
   },
   onLoad: function(options) {
     var that = this;
-    this.data.timer = setInterval(() => { //注意箭头函数！！
-      that.setData({
-        timeLeft: util.getTimeLeft('2019-06-05 00:00:00')//使用了util.getTimeLeft
-      });
-      // console.log(1)
-      if (that.data.timeLeft == "00:00:00") {
-        clearInterval(that.data.timer);
-      }
-    }, 1000);
+    
     this.refreshView = this.selectComponent("#refreshView")
     var formData = wx.getStorageSync('formData')
     if (formData) {
@@ -129,7 +121,6 @@ Page({
     if (!wx.getStorageSync('token') || wx.getStorageSync('token') == 1) {
       return false
     }
-    // console.log(wx.getStorageSync('token'))
     if (wx.getStorageSync('locAddress')) {
       return this.setData({
         address: wx.getStorageSync('locAddress')
@@ -165,8 +156,24 @@ Page({
         tag: tag,
         user: result.user,
         shop_goods_ad: result.shop_goods_ad,
-        taglen: Math.ceil(tag.length / 8)
+        taglen: Math.ceil(tag.length / 8),
+        seckill_list: result.seckill_list
       })
+      if (result.seckill_list && result.seckill_list[0]&& result.seckill_list[0].end_at) {
+        that.data.timer = setInterval(() => {
+
+          that.setData({
+            timeLeft: '离结束：' + util.getTimeLeft(result.seckill_list[0].end_at, result.seckill_list[0].end_at_mts)
+          });
+          if (that.data.timeLeft == "00:00:00") {
+            clearInterval(that.data.timer);
+            that.setData({
+              timeLeft: '已结束'
+            });
+          }
+        }, 1000);
+       }
+      
       util.hideLoading()
     })
     // 
@@ -281,7 +288,7 @@ Page({
         success: function(res) {
           var data = {
             wx_code: res.code,
-            wx_appid: 'wx312b45ec2ec4d345'
+            wx_appid: util.wx_appid
           }
           if (res.code) {
             util.postJSON({
@@ -314,7 +321,7 @@ Page({
                     util.postJSON({
                       apiUrl: apiurl.wechatLetLogin,
                       data: {
-                        wx_appid: 'wx312b45ec2ec4d345',
+                        wx_appid: util.wx_appid,
                         share_gene: that.data.share_gene,
                         session_key: util.base64encode(util.utf16to8(res1.data.result.wx_user.session_key)),
                         iv: util.base64encode(util.utf16to8(res2.iv)),
@@ -375,9 +382,13 @@ Page({
     }
   },
   agriculturalLink(e) {
-    console.log(e.currentTarget.dataset)
     wx.navigateTo({
       url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.sku_id
+    })
+  },
+  seckill(e) {
+    wx.navigateTo({
+      url: '../agriculturalDetail/index?id=' + e.currentTarget.dataset.sku_id
     })
   },
   onPullDownRefresh: function() {

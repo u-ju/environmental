@@ -1,7 +1,8 @@
 var bmap = require('../../utils/bmap-wx.min.js'); 
 var wxMarkerData = [];
+var util = require('../../utils/util.js');
 var BMap = new bmap.BMapWX({
-  ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
+  ak: util.bmak
 });
 var QQMapWX = require('../../utils//qqmap-wx-jssdk.min.js');
 

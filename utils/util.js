@@ -1,9 +1,11 @@
 const app = getApp()
+var wx_appid = "wx9af47449f54c0be7"
 var apiurl = require('api.js');
 var link = require('link.js');
 var bmap = require('bmap-wx.min.js'); 
-// var build = 99999999
-var build = 20190606
+var bmak = 'iYSf7rFEOidOHauTz53IgGazpuQ9XeXB'
+var build = 99999999
+// var build = 20190606
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -129,7 +131,9 @@ module.exports = {
   alert1: alert1,
   popoutc: popoutc,
   nav:nav,
-  getTimeLeft: getTimeLeft
+  getTimeLeft: getTimeLeft,
+  wx_appid: wx_appid,
+  bmak: bmak
 }
 function testcall(str, alert, cb) {
   var that = this;
@@ -172,10 +176,10 @@ function popup(content, confirm, cancel){
     }
   })
 }
-function popoutc(title, cancelText, cancelColor, confirmText, confirmColor, cancel, confirm) {
+function popoutc(title, cancelText, cancelColor, confirmText, confirmColor, cancel, confirm, title1) {
   wx.showModal({
-    title: title,
-    // content: content,
+    title: title1||'提示',
+    content: title,
     cancelText: cancelText,
     cancelColor: cancelColor,
     confirmText: confirmText,
@@ -398,6 +402,7 @@ function getToken(valuetstu='',form,cb,mothed) {
   
   if (token && valuetstu!= 801) {
     return token;
+    // return  'zwj'
   }
   if (valuetstu==801){
     wx.reLaunch({
@@ -407,7 +412,7 @@ function getToken(valuetstu='',form,cb,mothed) {
   }
   wx.login({
     success: function (res) {
-      var data = { wx_code: res.code, wx_appid: 'wx312b45ec2ec4d345' }
+      var data = { wx_code: res.code, wx_appid: that.wx_appid }
       if (res.code) {
         that.postJSON({ apiUrl: apiurl.wechatLetAttemptLogin,data:data,token:"huhu"},function(res1){
           if (res1.data.result.token){
@@ -425,7 +430,7 @@ function getToken(valuetstu='',form,cb,mothed) {
               success(res2) {
                 that.postJSON({ apiUrl: apiurl.wechatLetLogin, 
                 data: {
-                  wx_appid: 'wx312b45ec2ec4d345', 
+                  wx_appid: that.wx_appid, 
                   session_key: that.base64encode(that.utf16to8(res1.data.result.wx_user.session_key)), 
                   iv: that.base64encode(that.utf16to8(res2.iv)), 
                   encrypt_data: that.base64encode(that.utf16to8(res2.encryptedData))
@@ -505,7 +510,7 @@ function address(suc){
   var that = this;
   // 新建百度地图对象 
   var BMap = new bmap.BMapWX({
-    ak: 'DebUHwMKH2yOlHOHlXiVlZTeCuFnRgZo'
+    ak: that.bmak
   });
   var fail = function (data) {
     //console.log(data)
@@ -567,7 +572,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
     header = {
       'content-type': 'application/json', // 默认值
       'token': that.getToken(),
-      // 'token': 'zwj',
+      
       'build': build
     }
   }
@@ -667,7 +672,6 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
     header = {
       'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', // 默认值
       'token': that.getToken(),
-      // 'token': 'zwj',
       'channel': 'let',
       'build': build
     }
@@ -1037,13 +1041,13 @@ function clear() {
   wx.clearStorageSync();
 }
 // 倒计时
-function getTimeLeft(datetimeTo) {
+function getTimeLeft(datetimeTo, end_at_mts) {
   // 计算目标与现在时间差（毫秒）
-
-  let time1 = new Date(datetimeTo).getTime();
+  // let time0 = end_at_ts
+  // let time1 = new Date(datetimeTo).getTime()
+  let time1 = end_at_mts
   let time2 = new Date().getTime();
   let mss = time1 - time2;
-
   // 将时间差（毫秒）格式为：天时分秒
   let days = parseInt(mss / (1000 * 60 * 60 * 24));
   let hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) < 10 ? "0" +  parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) : parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));

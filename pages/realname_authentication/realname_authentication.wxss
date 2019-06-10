@@ -33,13 +33,13 @@ page{
 
 .picture_item .del {
   position: absolute;
-  top: -11rpx;
-  right: -11rpx;
+  top: -10rpx;
+  right: -10rpx;
   color: #fff;
   border-radius: 50%;
   width: 40rpx;
   height: 40rpx;
-  z-index: 2;
+  z-index: 10;
   text-align: center;
   background-color: #f00;
   line-height: 40rpx;
