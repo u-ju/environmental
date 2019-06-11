@@ -8,20 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    video: [
-      {
-        id: 1,
-        title:'一个视频',
-        src: 'https://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400',
-        poster: '../../images/test.png'
-      },
-      {
-        id: 1,
-        title: '一个视频',
-        src: 'https://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400',
-        poster: '../../images/test.png'
-      }
-    ],
+    video: [],
     videoPlay: null,
     tab:[],
     winHeight: "",//窗口高度
@@ -38,11 +25,10 @@ Page({
     util.loading()
     var that =this;
     that.setData({
-      tab: app.globalData.config.video_cate
+      tab: app.globalData.config.video_cate,
+      logo: app.globalData.config.logo
     });
-    // util.getJSON({ apiUrl: apiurl.config }, function (res) {
-      
-    // })
+
     if (app.globalData.config.video_cate.length > 0) {
       that.init();
     } else {

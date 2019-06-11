@@ -4,4 +4,4 @@
   <area title='选择地区' areaSelectedStr='{{areaSelectedStr}}' ban='county' bind:choosea='choosearea' />
   <text class='iconfont icon-jiantou color898989'></text>
 </view>
-<pay choose="{{choose}}" data="{{data}}" styles="margin:80rpx auto;"  bind:open='openp' title='前往支付' title1="立即支付" />
+<pay choose="{{choose}}" data="{{data}}" styles="margin:80rpx auto;"  bind:open='openp' title='确认申请' title1="立即支付" />

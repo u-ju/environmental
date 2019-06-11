@@ -2,7 +2,7 @@
 <block wx:if="{{result}}">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' bindchange="swiperChange" current="{{cur}}">
     <swiper-item wx:if="{{result.video}}">
-      <video src="{{result.video}}" custom-cache='{{false}}'  objectFit="contain"></video>
+      <video src="{{result.video}}" custom-cache='{{false}}' objectFit="contain"></video>
       <!-- autoplay='autoplay' -->
     </swiper-item>
     <!-- <block wx:for="{{4}}" wx:key="index"> -->
@@ -21,7 +21,11 @@
   <view class='con'>
     <view class='flex_btw align_center'>
       <view class='size32 color4 bold title'>{{result.title}}</view>
-      <view class='iconfont  {{result.is_collect==1?"icon-collection-b":"icon-collection"}} color4fd6f0' bindtap='collect' data-source='shop' data-id='{{result.shop_id}}'></view>
+
+      <view class='flex_btw align_center'>
+        <view class='iconfont  {{result.is_collect==1?"icon-collection-b":"icon-collection"}} color4fd6f0' bindtap='collect' data-source='shop' data-id='{{result.shop_id}}'></view>
+        <button open-type='share' class='iconfont icon-share color4fd6f0'></button>
+      </view>
     </view>
     <view class='flex_btw align_center'>
       <view class='flex align_center score'>
@@ -57,28 +61,29 @@
     </view>
     <scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;">
       <view class='spu view0' id='view0'>
-      <block wx:if="{{goods.length>0}}">
-        <view class=' {{goods.length==2?"flex":"flex_btw"}}'>
-          <view class='spug flex_col' wx:for="{{goods}}" wx:key="index"  data-id='{{item.sku_id}}' bindtap='goods'>
-            <image src='{{item.thumb}}'></image>
-            <view class='spud'>
-              <view class='size26 center hidden1'>{{item.spu_name}}{{item.spu_name}}</view>
-              <view class='flex_btw align_center spum'>
-                <text class='size26 colorFE2C2C'>￥{{item.price}}</text>
+        <block wx:if="{{goods.length>0}}">
+          <view class=' {{goods.length==2?"flex":"flex_btw"}}'>
+            <view class='spug flex_col' wx:for="{{goods}}" wx:key="index" data-id='{{item.sku_id}}' bindtap='goods'>
+              <image src='{{item.thumb}}'></image>
+              <view class='spud'>
+                <view class='size26 center hidden1'>{{item.spu_name}}{{item.spu_name}}</view>
+                <view class='flex_btw align_center spum'>
+                  <text class='size26 colorFE2C2C'>￥{{item.price}}</text>
+                </view>
               </view>
             </view>
           </view>
-        </view>
-        <view class='more flex align_center' bindtap='moregoods' >
-          <view>更多</view>
-          <text class='iconfont icon-xiangxiajiantou'></text>
-        </view>
+          <view class='more flex align_center' bindtap='moregoods'>
+            <view>更多</view>
+            <text class='iconfont icon-xiangxiajiantou'></text>
+          </view>
         </block>
       </view>
       <view class='goods_intr3 view1' id='view1'>
         <view class='size28 color4 allpl flex_btw align_center'>
-          <view><text class='bold'>用户评论</text> （{{list.length}}条）</view>
-          <view class='flex align_center' >
+          <view>
+            <text class='bold'>用户评论</text> （{{list.length}}条）</view>
+          <view class='flex align_center'>
             <navigator class='flex align_center' url='../comment/shopComment?id={{shop_id}}'>
               <image src='../../images/pinglun.png' class='pinglun'></image>
               <text>立即评论</text>

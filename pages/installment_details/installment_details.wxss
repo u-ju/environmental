@@ -1,9 +1,12 @@
 /* pages/installment_details/installment_details.wxss */
 @import '../video_detail/index';
-
-swiper,swiper image{
+.icon-share{
+  margin: 0 0 0 50rpx;
+}
+.swiperbox ,swiper image{
   width: 100%;
-  height: 518rpx;
+  height: 600rpx;
+  border-radius: 0;
 }
 
 .line-through{
@@ -315,5 +318,5 @@ web-view{
   height: 600rpx;
 }
 .title {
-  width: 650rpx;
+  width: 560rpx;
 }

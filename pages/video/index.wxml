@@ -30,7 +30,7 @@
         <image class="video-image-play" src="../../images/video_bf.png"  mode='aspectFit'></image>
         <!-- 头像 -->
         <view class="head">
-          <image src="../../images/logo.png"   mode='aspectFit'></image>
+          <image src="{{logo}}"   mode='aspectFit'></image>
         </view>
         <view class='flex align_center look_item'>
           <image class="video-look " src="../../images/video_k.png"  mode='aspectFit'></image>

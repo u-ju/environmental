@@ -707,5 +707,8 @@ Page({
         result: result
       })
     })
+  },
+  onShareAppMessage: function () {
+    return util.share('啄木鸟环保', '/pages/installment_details/installment_details?id=' + this.data.sku_id + "&pjurl='../installment_details/installment_details?id='" + this.data.sku_id,)
   }
 })

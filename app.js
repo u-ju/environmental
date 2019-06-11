@@ -58,7 +58,7 @@ App({
   
   globalData: {
     userInfo: null,
-    baseUrl: "https://wyhb.zgwyhb.com/api",
+    baseUrl: apiurl.base,
     longitude: 104.05293,
     latitude: 30.69015,
     config:[],

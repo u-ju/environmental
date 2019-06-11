@@ -16,7 +16,10 @@
 <view class='goods_intr1'>
   <view class='flex_btw align_center'>
     <view class='size32 color4 bold title'>{{result.spu_name}} {{result.sku_name}}</view>
-    <view class='iconfont  {{result.is_collect==1?"icon-collection-b":"icon-collection"}} color4fd6f0' bindtap='collect' data-source='goods' data-id='{{result.sku_id}}'></view>
+    <view class='flex_btw align_center'>
+      <view class='iconfont  {{result.is_collect==1?"icon-collection-b":"icon-collection"}} color4fd6f0' bindtap='collect' data-source='goods' data-id='{{result.sku_id}}'></view>
+      <button open-type='share' class='iconfont icon-share color4fd6f0'></button>
+    </view>
   </view>
   <view class='flex_btw align_center scoreitem'>
     <view class='flex align_center score'>
@@ -161,7 +164,7 @@
     <text class='color898989 size28'>购买数量</text>
     <wux-input-number wux-sub-class="sub" bind:change="onChange" default-value="1" min="{{ 1 }}" disabled="{{ false }}" wux-input-class="input" wux-add-class="add" slot="footer" color="656565" />
   </view>
-  <block  wx:if="{{addshopcarnum}}">
+  <block wx:if="{{addshopcarnum}}">
     <view class='submitButton size36 marginb60' bindtap='appshop' wx:if="{{!buyok}}">确定</view>
     <view class='submitButton size36 marginb60' wx:else>确定</view>
   </block>
@@ -220,19 +223,19 @@
 
 
     <view class='carcon'>
-      <block wx:for="{{goodsCart}}" wx:key="index" wx:for-index="carindex"  wx:for-index="listnum">
+      <block wx:for="{{goodsCart}}" wx:key="index" wx:for-index="carindex" wx:for-index="listnum">
         <view class='flex_btw carcond align_center' wx:for="{{item.goods_arr}}" wx:key="index">
-          <view class='flex align_center' bindtap='choosecar'  data-sku_id='{{item.sku_id}}' data-count='{{item.count}}' data-listnum='{{listnum}}' data-price='{{item.price}}'>
+          <view class='flex align_center' bindtap='choosecar' data-sku_id='{{item.sku_id}}' data-count='{{item.count}}' data-listnum='{{listnum}}' data-price='{{item.price}}'>
             <text class='iconfont icon-xuanze size24  icon {{m1.indexO(choosecar.sku_id[listnum],item.sku_id)==-1?"colorD2":"color27AAD9"}}'></text>
             <view class='hidden1 color0'>{{item.spu_name}}{{item.sku_name}}</view>
           </view>
           <view class='colorff1919'>￥{{item.price}}</view>
           <view class='flexend align_center'>
             <view class='stepper'>
-              <image src='../../images/sadd.png' data-sku_id='{{item.sku_id}}' data-num='{{item.count}}' data-listnum='{{listnum}}'  data-symbols='add'data-index='{{index}}' bindtap='bindcz'></image>
-               <!-- bindtap='bindPlus' -->
+              <image src='../../images/sadd.png' data-sku_id='{{item.sku_id}}' data-num='{{item.count}}' data-listnum='{{listnum}}' data-symbols='add' data-index='{{index}}' bindtap='bindcz'></image>
+              <!-- bindtap='bindPlus' -->
               <text class='countnum'> {{item.count}} </text>
-               <!-- bindtap='bindMinus' -->
+              <!-- bindtap='bindMinus' -->
               <image src='../../images/sredu.png' data-sku_id='{{item.sku_id}}' data-num='{{item.count}}' data-listnum='{{listnum}}' data-symbols='reduce' data-index='{{index}}' hidden='{{item.count==1}}' bindtap='bindcz'></image>
             </view>
           </view>

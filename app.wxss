@@ -1,7 +1,14 @@
 /**app.wxss**/
 @import "/Components/tab-bar/tab-bar.wxss";
 @import "/style/iconfont.wxss";
-
+.icon-share.button-hover{
+  background-color: transparent;
+  color: #444;
+}
+.icon-share{
+  line-height:32rpx;
+  padding: 0;
+}
 page {
   font-family: PingFangSC-Regular, sans-serif;
   font-size: 28rpx;
@@ -47,8 +54,9 @@ page .navigator-hover {
 .swiperbox{
   width:688rpx;
   height:326rpx;
-  margin: auto;
   border-radius:20rpx;
+  
+  margin: auto;
   overflow: hidden;
   position: relative;
 }

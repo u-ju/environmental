@@ -69,10 +69,19 @@ Component({
     open3() {
       var that = this;
       
-      console.log(that.data.data)
+      // console.log(that.data.data)
       util.postJSON({ apiUrl: apiurl.create, data: that.data.data },
         function (res) {
           var result = res.data.result
+          if (result.pay_amount==0){
+            that.setData({
+              items: result,
+              pay_amount: result.pay_amount,
+              payment: "balance"
+            })
+            return that.goodsBuy()
+          }
+          
           for (let i in result.payment_usable) {
             result.payment_usable[i].choosed = 0
           }
@@ -123,7 +132,8 @@ Component({
         title: '加载中',
         mask: true
       })
-      var data = { pay_key: that.data.items.pay_key, payment: that.data.payment, pay_amount: that.data.pay_amount, pay_cash: that.data.pay_amount, payment_ext: that.data.payment_ext }
+      var data = { pay_key: that.data.items.pay_key, payment: that.data.payment, pay_amount: that.data.pay_amount, pay_cash: that.data.pay_amount }
+        // , payment_ext: that.data.payment_ext
       if (that.data.payment =='wechat'){
         data.payment_ext = util.wx_appid
       }

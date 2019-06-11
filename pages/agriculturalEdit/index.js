@@ -29,7 +29,7 @@ Page({
     add:[],
     edit:[],
     post:false,
-    spec_str:'规格:默认',
+    spec_str:'规格：默认',
     cate_id:''
   },
   addsku(){
@@ -103,7 +103,20 @@ Page({
       that.setData({
         spec_group_arr: res.data.result.spec_group_arr
       })
-    })
+    },function(e){
+      that.setData({
+        spec_group_arr: [],
+        skunum:0,
+        key_name: [],
+        key: [],
+        // price:[],
+        // stock:[],
+        // thumb:[],
+        // images:[]
+      })
+      }, function (e) {
+        console.log(e)
+      })
   },
   // 上下架
   goodsUpDown(){

@@ -38,7 +38,7 @@ Page({
     })
   },
   send(e){
-    util.loading()
+    // util.loading()
     var that = this;
     util.popoutc('对方同意申请后，环保积分和环保金 将被共享。', '拒绝', '#444444', '同意', '#4FD6F0', function () {
       console.log("取消")

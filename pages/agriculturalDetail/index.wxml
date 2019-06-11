@@ -15,7 +15,11 @@
 <view class='goods_intr1'>
   <view class='flex_btw align_center'>
     <view class='size32 color4 bold title hidden1'>{{result.spu_name}} {{result.sku_name}}</view>
-    <view class='iconfont icon-collection color4fd6f0'></view>
+    <button open-type='share' class='iconfont icon-share color4fd6f0'></button>
+    <!-- <view class='flex_btw align_center'>
+      <view class='iconfont  {{result.is_collect==1?"icon-collection-b":"icon-collection"}} color4fd6f0' bindtap='collect' data-source='goods' data-id='{{result.sku_id}}'></view>
+      <button open-type='share' class='iconfont icon-share color4fd6f0'></button>
+    </view> -->
   </view>
   <view class='scoreitem'>
     <view class='flex align_center score'>
@@ -125,7 +129,7 @@
 
 </view>
 <view class='fixed' >
-  <view class='pgo' bindtap='buy' wx:if="seckill_price">立即拼购</view>
+  <view class='pgo' bindtap='open1' wx:if="seckill_price">立即拼购</view>
   <view class='pgo end' wx:else>已结束</view>
 </view>
 <wux-popup position="bottom" visible="{{ visible1 }}" bind:close="onClose1">
@@ -147,12 +151,12 @@
     <wux-input-number wux-sub-class="sub" bind:change="onChange" default-value="1" min="{{ 1 }}" disabled="{{ false }}" wux-input-class="input" wux-add-class="add" slot="footer" color="656565" />
   </view>
   <block  wx:if="{{addshopcarnum}}">
-    <view class='submitButton size36 marginb60' bindtap='appshop' wx:if="{{!buyok}}">产品选择</view>
-    <view class='submitButton size36 marginb60' wx:else>产品选择</view>
+    <view class='submitButton size36 marginb60' bindtap='appshop' wx:if="{{!buyok}}">立即拼购</view>
+    <view class='submitButton size36 marginb60' wx:else>立即拼购</view>
   </block>
   <block wx:else>
-    <view class='submitButton size36 marginb60' bindtap='buy' wx:if="{{!buyok}}">产品选择</view>
-    <view class='submitButton size36 marginb60' wx:else>产品选择</view>
+    <view class='submitButton size36 marginb60' bindtap='buy' wx:if="{{!buyok}}">立即拼购</view>
+    <view class='submitButton size36 marginb60' wx:else>立即拼购</view>
   </block>
 </wux-popup>
 <wux-popup position="bottom" visible="{{ visible2 }}" style="{{wrapStyle2}}" bind:close="onClose2">

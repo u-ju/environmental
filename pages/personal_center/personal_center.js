@@ -16,7 +16,6 @@ Page({
     badge:{},
     background:'',
     length:2,
-    
   },
 
   /**

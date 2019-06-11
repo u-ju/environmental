@@ -683,4 +683,7 @@ Page({
       })
     })
   },
+  onShareAppMessage: function () {
+    return util.share('啄木鸟环保', '/pages/agriculturalDetail/index?id=' + this.data.sku_id + "&pjurl='../agriculturalDetail/index?id='" + this.data.sku_id)
+  }
 })

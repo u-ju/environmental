@@ -50,18 +50,28 @@ Page({
   // },
   refuseApply(e){
     var that = this;
-    util.loading()
-    util.postJSON({ apiUrl: apiurl.familyRefuseApply, data: { id: e.currentTarget.dataset.id } }, function (res) {
-      util.alert(res.data.message, 800)
-      that.init()
+    // util.loading()
+    util.popoutc('是否拒绝申请', '取消', '#444444', '确认', '#4FD6F0', function () {
+      console.log("取消")
+    }, function () {
+      util.postJSON({ apiUrl: apiurl.familyRefuseApply, data: { id: e.currentTarget.dataset.id } }, function (res) {
+        util.alert1(res.data.message, 800)
+        that.init()
+      })
     })
+    
   },
   agreeApply(e) {
     var that = this;
-    util.loading()
-    util.postJSON({ apiUrl: apiurl.familyAgreeApply, data: { id: e.currentTarget.dataset.id } }, function (res) {
-      util.alert(res.data.message, 800)
-      that.init()
+    // util.loading()
+    
+    util.popoutc('同意申请后，环保积分和环保金 将被共享。', '取消', '#444444', '同意', '#4FD6F0', function () {
+      console.log("取消")
+    }, function () {
+      util.postJSON({ apiUrl: apiurl.familyAgreeApply, data: { id: e.currentTarget.dataset.id } }, function (res) {
+        util.alert1(res.data.message, 800)
+        that.init()
+      })
     })
   },
   tabcur(e){
@@ -81,24 +91,17 @@ Page({
       user_id: e.currentTarget.dataset.user_id
     })
   },
-  unbinds(){
-    var that = this;
-    util.loading()
-    util.popoutc('对方同意申请后，环保积分和环保金 将被共享。', '拒绝', '#444444', '同意', '#4FD6F0', function () {
-      that.setData({
-        visible1: false,
-      })
-    }, function () {
-      util.postJSON({ apiUrl: apiurl.familyUnbind, data: { user_id: this.data.user_id } }, function (res) {
-        util.alert(res.data.message, 800)
-        that.setData({
-          visible1: false,
-        })
-        that.init()
-      })
-    })
-    
-  },
+  // unbinds(){
+  //   var that = this;
+  //   util.loading()
+  //   util.postJSON({ apiUrl: apiurl.familyUnbind, data: { user_id: this.data.user_id } }, function (res) {
+  //     util.alert1(res.data.message, 800)
+  //     that.setData({
+  //       visible1: false,
+  //     })
+  //     that.init()
+  //   })
+  // },
   kicking(e){
     var that = this;
     util.popoutc('是否确定踢出该成员？', '否', '#444444', '是', '#4FD6F0',function(){

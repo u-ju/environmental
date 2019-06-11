@@ -35,7 +35,7 @@
     </view>
   </view> -->
   <view class='video_btm flex align_center'>
-    <image src='../../images/logo.png' class='head_video'></image>
+    <image src='{{logo}}' class='head_video'></image>
     <text class='size36 color4'>啄木鸟环保</text>
   </view>
 </view>
@@ -113,6 +113,5 @@
     
     <button open-type='share' class='flex align_center dj_item' data-id='{{item.video_id}}'>
       <image class="image" src="../../images/video_fx.png" mode="scaleToFill"></image>
-      
     </button>
 </view>

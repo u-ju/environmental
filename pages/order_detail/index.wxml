@@ -18,7 +18,7 @@
         <text class='color898989'><text class='iconfont icon-cuohao'></text>{{item.buy_count}}</text>
       </view>
       <view class='color4 size28 one-hidden'>{{item.sku_name}}</view>
-      <view class='colorFE2C2C size28'>￥{{item.price}}</view>
+      <view class='colorFE2C2C size28'>￥{{item.price}}<text class='size24' wx:if="{{result.order_source!='seckill'}}">（返{{order_arr.return_amount}}环保金）</text></view>
 
     </view>
   </view>
@@ -47,10 +47,10 @@
       <text>总金额</text>
       <text class='colorFE3434 size36 bold'>￥{{result.price_amount}}</text>
     </view>
-    <!-- <view class='flex_btw size24'>
+    <view class='flex_btw size24'>
       <text class='color898989'>返还环保金</text>
-      <text class='colorFE3434 size30'>￥{{result.price_amount}}</text>
-    </view> -->
+      <text class='colorFE3434 size30'>￥{{result.return_amount}}</text>
+    </view>
   </view>
 </view>
 <view class='flex align_center margint40' wx:if='{{order_source=="exchange"}}'>

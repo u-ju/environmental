@@ -1,11 +1,11 @@
 const app = getApp()
-var wx_appid = "wx9af47449f54c0be7"
+
 var apiurl = require('api.js');
 var link = require('link.js');
 var bmap = require('bmap-wx.min.js'); 
 var bmak = 'iYSf7rFEOidOHauTz53IgGazpuQ9XeXB'
-var build = 99999999
-// var build = 20190606
+var wx_appid = apiurl.wx_appid
+var build = apiurl.build
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -87,11 +87,21 @@ function allowUploadFormat(tempFiles = []) {
     return false;
   }
 }
+// 分享
+function share(title, path, imageUrl){
+  return {
+    title: title,
+    path: path,
+    imageUrl: imageUrl,
+    success: function (a) { }
+  };
+}
 /**
  * 注册JS方法
  * @type {{formatTime: formatTime, crtTimeFtt: crtTimeFtt, alert: alert, loginOpenId: loginOpenId, dialog: dialog, loading: loading, postJSON: postJSON, getJSON: getJSON, replaceStr: (function(*): string)}}
  */
 module.exports = {
+  share: share,
   now_time: now_time,
   formatTime: formatTime,
   crtTimeFtt: crtTimeFtt,
@@ -1053,7 +1063,11 @@ function getTimeLeft(datetimeTo, end_at_mts) {
   let hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) < 10 ? "0" +  parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) : parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   let minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60)) < 10 ? "0" +  parseInt((mss % (1000 * 60 * 60)) / (1000 * 60)) : parseInt((mss % (1000 * 60 * 60)) / (1000 * 60)) ;
   let seconds = parseInt((mss % (1000 * 60)) / 1000) < 10 ? "0" + parseInt((mss % (1000 * 60)) / 1000)  : parseInt((mss % (1000 * 60)) / 1000);
-  return   hours + ":" + minutes + ":" + seconds 
+  var time = hours + ":" + minutes + ":" + seconds 
+  if (days>0){
+    time = days + "天 "+ hours + ":" + minutes + ":" + seconds 
+  }
+  return time
 }
 
 function scan(){

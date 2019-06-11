@@ -36,7 +36,8 @@ Page({
     // options["id"]=3
     var that = this
     that.setData({
-      video_id: options.id
+      video_id: options.id,
+      logo: app.globalData.config.logo
     })
     util.loading()
     util.getJSON({ apiUrl: apiurl.video_show + "?video_id=" + options.id }, function (res) {
