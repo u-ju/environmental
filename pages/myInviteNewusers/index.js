@@ -12,11 +12,22 @@ Page({
     visible3: false,
     value:'',
     fgColor: 'black',
+    // '我邀请的用户', '我邀请的商家'
+    tab: [
+      { name: '我邀请的用户', url: 'shareUserIndex' },
+      { name: '我邀请的商家', url: 'shareShopIndex' },
+    ],
+    curre: "shareUserIndex"
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  tabcur(e){
+    if (e.currentTarget.dataset.url==this.data.curre){
+      return
+    }
+    this.setData({
+      curre: e.currentTarget.dataset.url
+    })
+    this.init()
+  },
   onLoad: function (options) {
     util.loading()
     var that = this;
@@ -25,7 +36,8 @@ Page({
 
       that.setData({
         result: result,
-        value: result.share_qrcode
+        value: result.share_qrcode,
+        stat: result.stat
       })
       util.hideLoading()
     })
@@ -33,12 +45,16 @@ Page({
   },
   init(page = 1) {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.share_index + "?page=" + page }, function (res) {
+
+    util.getJSON({ apiUrl: apiurl[that.data.curre] + "?page=" + page }, function (res) {
       var result = res.data.result
       var list = result.list
-      if (page != 1) {
-        list = that.data.list.concat(list)
-      }
+      // if (page != 1) {
+      //   list = that.data.list.concat(list)
+      // }
+      // list=[
+      //   { nickname: 'dsadsa', effect_time: '201909090', status_name: 'cdai', avatar:'../../images/logoi.png'}
+      // ]
       that.setData({
         list: list,
         page: result.page,
@@ -62,6 +78,11 @@ Page({
       visible3: false,
     })
   },
+  shop_info(e){
+    wx.navigateTo({
+      url: '../business_details/business_details?id=' + e.currentTarget.dataset.id,
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -72,7 +93,7 @@ Page({
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
-    util.getJSON({ apiUrl: apiurl.share_index + "?page=1"  }, function (res) {
+    util.getJSON({ apiUrl: apiurl[that.data.curre] + "?page=1"  }, function (res) {
       var result = res.data.result
       console.log(result)
       that.setData({

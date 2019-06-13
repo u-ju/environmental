@@ -59,3 +59,29 @@ page{
 .tranla{
   transition: all .3s linear;
 }
+.head{
+  /* width: 686rpx; */
+  margin: auto;
+  padding: 0 32rpx 20rpx 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.banner{
+  width: 100%;
+  height: 188rpx;
+  background-color: #eee;
+  border-radius: 10rpx;
+}
+.topic{
+  width: 686rpx;
+  margin: 20rpx auto;
+  padding: 12rpx 0;
+  border-bottom: 1px solid #EEEEEE;
+  font-weight: bold;
+   font-size: 28rpx;
+}
+.moredesc{
+  margin-top: 20rpx;
+}
+.moredescnum{
+  line-height: 40rpx;
+}

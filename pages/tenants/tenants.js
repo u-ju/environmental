@@ -14,7 +14,7 @@ const hour1 = []
 const hour2 = []
 var min = [':00',":30"]
 for (var i = 0; i < 24; i++) {
-  // console.log(i)
+
   for(var a in min){
     hour1.push(i + min[a])
     hour2.push(i + min[a])
@@ -93,7 +93,6 @@ Page({
     shows: false,
   },
   checkboxChange(e) {
-    console.log(e.detail.value)
     this.setData({
       choose: e.detail.value
     })
@@ -111,7 +110,6 @@ Page({
     })
   },
   testcall(e) {
-    // console.log(e)
     util.testjq(e.detail.value, "请输入正确的联系方式", function () {
 
     })
@@ -151,7 +149,6 @@ Page({
     wx.setStorageSync('timevaluet', this.data.timevalue)
   },
   timeadd(e){
-    console.log(this.data.timevalue)
     var timevalue = this.data.timevalue||[];
 
     timevalue.push(this.data.clicktime)
@@ -160,7 +157,6 @@ Page({
     })
   },
   features(e){
-    console.log(e)
     var features = this.data.features||[];
     if (features.indexOf(e.detail.value)>-1){
       return
@@ -200,7 +196,6 @@ Page({
     wx.setStorageSync('roomt', room)
   },
   // room(e) {
-  //   console.log(e)
   //   var room = this.data.room
   //   room.push(e.detail.value)
   //   this.setData({
@@ -230,7 +225,7 @@ Page({
         var tempFile = {}
         tempFile.img = res.thumbTempFilePath;
         tempFile.upload_percent = 0
-        console.log(res)
+
         var tempFilePath=[]
         tempFilePath.push(res.tempFilePath)
         var tempFilesSize = res.size;
@@ -254,7 +249,6 @@ Page({
               that.setData({
                 video: tempFile
               })
-              // console.log(e)
             })
           } else {
             util.alert("视频上传异常!");
@@ -314,7 +308,6 @@ Page({
     wx.setStorageSync('license_info[business_scope]t', e.detail.value)
   },
   onOpen1() {
-    // console.log("sssss")
     this.setData({ visible1: true })
   },
   onClose1() {
@@ -322,22 +315,23 @@ Page({
   },
   onChange1(e) {
     this.setData({ title1: e.detail.options.map((n) => n.label).join('-'), cate_id: e.detail.options[e.detail.options.length - 1].id })
-    // console.log('onChange1', e.detail)
-    console.log(e.detail.options[e.detail.options.length - 1].id)
+ 
     wx.setStorageSync("cate_idt", e.detail.options[e.detail.options.length - 1].id)
     wx.setStorageSync("title1t", e.detail.options.map((n) => n.label).join('-'))
   },
   onLoad: function (options) {
+
     var that = this;
-    // console.log(options)
+
+    var share_mobile = options.apply_info ? JSON.parse(options.apply_info).share_mobile : ''
     this.setData({
       hour1: hour1,
       hour2: hour2,
       source: options.source || '',
       // room_list: JSON.parse(options.room_list)
-      features: JSON.parse(options.apply_info).feature_list
+      features: JSON.parse(options.apply_info).feature_list,
+      share_mobile: share_mobile
     })
-    // console.log(this.data.room)
     var result = app.globalData.config
     var shop_cate = result.shop_cate
     for (var i in shop_cate) {
@@ -409,12 +403,13 @@ Page({
 	        cost: result.cost,
 	        // min_person: result.reservation.min_person,
 	        // max_person: result.reservation.max_person,
-	        company_name: result.license_info.company_name||'',
-          license_no: result.license_info.license_no || '',
-          legal_person: result.license_info.legal_person || '',
-          business_address: result.license_info.business_address || '',
-          business_scope: result.license_info.business_scope || '',
-          source: result.source
+	        // company_name: result.license_info.company_name||'',
+          // license_no: result.license_info.license_no || '',
+          // legal_person: result.license_info.legal_person || '',
+          // business_address: result.license_info.business_address || '',
+          // business_scope: result.license_info.business_scope || '',
+          source: result.source,
+          share_mobile: result.share_mobile || '',
         })
         wx.hideLoading()
       })
@@ -452,11 +447,12 @@ Page({
         cost: wx.getStorageSync('costt'),
         // min_person: wx.getStorageSync('reservation[min_person]t'),
         // max_person: wx.getStorageSync('reservation[max_person]t'),
-        company_name: wx.getStorageSync('license_info[company_name]t')||'',
-        license_no: wx.getStorageSync('license_info[license_no]t') || '',
-        legal_person: wx.getStorageSync('license_info[legal_person]t') || '',
-        business_address: wx.getStorageSync('license_info[business_address]t') || '',
-        business_scope: wx.getStorageSync('license_info[business_scope]t') || '',
+        // company_name: wx.getStorageSync('license_info[company_name]t')||'',
+        // license_no: wx.getStorageSync('license_info[license_no]t') || '',
+        // legal_person: wx.getStorageSync('license_info[legal_person]t') || '',
+        // business_address: wx.getStorageSync('license_info[business_address]t') || '',
+        // business_scope: wx.getStorageSync('license_info[business_scope]t') || '',
+        share_mobile: wx.getStorageSync('share_mobilet') || that.data.share_mobile,
       })
     }
   },
@@ -464,7 +460,6 @@ Page({
     var that = this
 
     if (that.data.choosead) {
-      console.log(that.data.choosead)
       return that.setData({
         choosead: false
       })
@@ -472,7 +467,7 @@ Page({
     qqMap.geocoder({
       address: address,
       complete: res => {
-        console.log(res);   //经纬度对象
+  //经纬度对象
         if (res.result&&res.result.status == 0 && res.result.location) {
           var longitude = that.data.location
           var latitude = that.data.location
@@ -484,7 +479,6 @@ Page({
             longitude: longitude,
             latitude: latitude,
           })
-          console.log(longitude, latitude)
           wx.setStorageSync('longitudet', longitude)
           wx.setStorageSync('latitudet', latitude)
         }
@@ -499,7 +493,6 @@ Page({
 
   },
   input(e) {
-    // console.log(e)
     if (e.currentTarget.dataset.contact == "introt") {
       this.setData({
         intro: e.detail.value
@@ -650,12 +643,13 @@ Page({
 
     });
   },
-  previewImg(){
-    console.log('点击')
+  // 查看图片
+  previewImg(e){
+    util.previewImage(e.currentTarget.dataset.src)
   },
   // 删除图片
   deleteImg: function (e) {
-    console.log(e)
+
     var that = this;
     
     that.setData({
@@ -667,7 +661,7 @@ Page({
   uploadpic1: function (e) {
     var that = this //获取上下文
     var upload_picture_list = that.data.upload_picture_list
-    console.log(e)
+ 
     //选择图片
     wx.chooseImage({
       count: 9,
@@ -699,8 +693,6 @@ Page({
             tempFiles[i]['upload_percent'] = 0
             tempFiles[i]['path_server'] = ''
 
-            // console.log(tempFiles[i])
-            // console.log(upload_picture_list)
             upload_picture_list.push(tempFiles[i])
           }
           that.setData({
@@ -770,7 +762,6 @@ Page({
 
   },
   choosearea(e) {
-    console.log(e)
     this.setData({
       areaSelectedStr: e.detail.areaSelectedStr,
       area_id_val: e.detail.area_id_val,
@@ -795,7 +786,6 @@ Page({
     if (that.data.choosed != 1) {
       return util.alert('请勾选用户协议')
     }
-    console.log(e)
     var data = e.detail.value;
     if (this.data.video.src&&this.data.video.src.length>0){
       data.video = this.data.video.src
@@ -819,7 +809,7 @@ Page({
     // that.data.cate_id
     data["longitude"] = that.data.longitude
     data["latitude"] = that.data.latitude
-    console.log(data)
+
     var images = ["license", "thumb"]
     for (var a in that.data.image) {
       if (that.data.image[a].upload_picture_list != '') {
@@ -838,12 +828,11 @@ Page({
     that.setData({
       post: true
     })
-    console.log(data)
  util.postJSON({ apiUrl: url, data: data }, function (res) {
    var result = res.data.result
 
       util.alert("申请提交成功，等待审核")
-   var arr = ['contact', 'discount_percent', 'title', 'address', 'intro', 'area_id', 'type', 'cate_id', 'title1', 'areaSelectedStr', 'image0', 'image1', "upload_picture_list", 'choosed', 'latitude', "longitude", 'license_info[business_address]', 'license_info[business_scope]', 'license_info[company_name]', 'license_info[license_no]', 'license_info[legal_person]', 'video', 'cost', 'features', 'room','timevalue']
+   var arr = ['contact', 'discount_percent', 'title', 'address', 'intro', 'area_id', 'type', 'cate_id', 'title1', 'areaSelectedStr', 'image0', 'image1', "upload_picture_list", 'choosed', 'latitude', "longitude", 'license_info[business_address]', 'license_info[business_scope]', 'license_info[company_name]', 'license_info[license_no]', 'license_info[legal_person]', 'video', 'cost', 'features', 'room', 'timevalue','share_mobile']
    		for(var i in arr){
           wx.setStorageSync(arr[i]+"t", '')
    		}
@@ -859,7 +848,7 @@ Page({
    }, 0)
 
  }, function (res) {
-   console.log(res.data.message)
+
    that.setData({
      post: false
    })
@@ -871,11 +860,10 @@ Page({
  })
   },
   backfill: function (e) {
-    console.log(e)
+
     var id = e.currentTarget.id;
     for (var i = 0; i < this.data.suggestion.length; i++) {
       if (i == id) {
-        // console.log(this.data.suggestion[i])
         wx.setStorageSync('addresst', this.data.suggestion[i].title)
 
         wx.setStorageSync('longitudet', this.data.suggestion[i].longitude)
@@ -912,7 +900,7 @@ Page({
       keyword: e.detail.value, //用户输入的关键词，可设置固定值,如keyword:'KFC'
       region: city, //设置城市名，限制关键词所示的地域范围，非必填参数
       success: function (res) {//搜索成功后的回调
-        // console.log(res);
+
         var sug = [];
         for (var i = 0; i < res.data.length; i++) {
           sug.push({ // 获取返回结果，放到sug数组中
@@ -931,10 +919,10 @@ Page({
         });
       },
       fail: function (error) {
-        // console.error(error);
+     
       },
       complete: function (res) {
-        // console.log(res);
+      
       }
     });
   }

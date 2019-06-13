@@ -31,7 +31,8 @@ Page({
   onLoad: function (options) {
     util.loading()
     this.setData({
-      goods_exchange_desc: app.globalData.config.goods_exchange_desc 
+      desc: app.globalData.config.goods_exchange_conf.desc,
+      banner: app.globalData.config.goods_exchange_conf.banner
     })
     if (options.keywords) {
       var keywords = options.keywords

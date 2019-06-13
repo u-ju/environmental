@@ -120,6 +120,10 @@ Page({
   checkboxChange: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
   },
+  // 查看图片
+  previewImg(e) {
+    util.previewImage(e.currentTarget.dataset.src, this.data.result.images)
+  },
   link(e) {
     wx.navigateTo({
       url: '../page/index?url=' + e.currentTarget.dataset.url,

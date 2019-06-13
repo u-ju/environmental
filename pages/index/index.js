@@ -45,6 +45,7 @@ Page({
         images: '../../images/sun@2x.png'
       },
       {
+        
         title: '多云',
         images: '../../images/cloudy@2x.png'
       },
@@ -157,7 +158,7 @@ Page({
         user: result.user,
         shop_goods_ad: result.shop_goods_ad,
         taglen: Math.ceil(tag.length / 8),
-        seckill_list: result.seckill_list
+        seckill_list: result.seckill_list||''
       })
       if (result.seckill_list && result.seckill_list[0]&& result.seckill_list[0].end_at) {
         that.data.timer = setInterval(() => {

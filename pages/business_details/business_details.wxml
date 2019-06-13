@@ -3,20 +3,16 @@
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' bindchange="swiperChange" current="{{cur}}">
     <swiper-item wx:if="{{result.video}}">
       <video src="{{result.video}}" custom-cache='{{false}}' objectFit="contain"></video>
-      <!-- autoplay='autoplay' -->
     </swiper-item>
-    <!-- <block wx:for="{{4}}" wx:key="index"> -->
     <swiper-item wx:for="{{result.images}}" wx:key="index">
-      <image src="{{item}}" class="slide-image" mode='aspectFill' />
-
+      <image src="{{item}}" class="slide-image" mode='aspectFill' bindtap='previewImg' data-src='{{item}}' />
     </swiper-item>
-    <!-- </block> -->
 
   </swiper>
   <view class='dotbox flex'>
-    <view class='dotbtn {{cur>0?"dotpic":""}}' data-index='0' bindtap='swiperC' wx:if='{{result.video}}'>
+    <view class='dotbtn {{cur==0&&result.video?"":"dotpic"}}' data-index='0' bindtap='swiperC' wx:if='{{result.video}}'>
       <text class='iconfont icon-bofang size20'></text> 视频</view>
-    <view class='dotbtn {{cur==0?"dotpic":""}}' data-index='1' bindtap='swiperC'>图片</view>
+    <view class='dotbtn {{cur>0||!result.video?"":"dotpic"}}' data-index='1' bindtap='swiperC'>图片</view>
   </view>
   <view class='con'>
     <view class='flex_btw align_center'>

@@ -141,6 +141,10 @@ Page({
       url: '../page/index?url=' + app.globalData.config.protocol.nper,
     })
   },
+  // 查看图片
+  previewImg(e) {
+    util.previewImage(e.currentTarget.dataset.src, this.data.result.images)
+  },
   /**
    * 生命周期函数--监听页面加载
    */

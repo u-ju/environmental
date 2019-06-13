@@ -59,7 +59,8 @@ Page({
         biotope_name: biotope_name,
         dong_name: dong_name,
         unit_name: unit_name,
-        door_num: options.door_num || ''
+        door_num: options.door_num || '',
+        desc: options.desc||''
       })
     }
   },

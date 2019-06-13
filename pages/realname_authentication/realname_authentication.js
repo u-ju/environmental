@@ -17,9 +17,13 @@ Page({
     showModalStatus:false,
     sure:false
   },
+  // 查看图片
+  previewImg(e) {
+    util.previewImage(e.currentTarget.dataset.src)
+  },
   //选择图片方法
   uploadpic: function (e) {
-    // console.log(e)
+
     var that = this //获取上下文
     var upload_picture = []
     //选择图片
@@ -47,7 +51,7 @@ Page({
         }
         
         Promise.all(promiseArr).then((res) => {
-          // console.log(res)
+
           for (var i in res) {
             tempFiles[i]['path_base'] = 'data:image/png;base64,' + res[i].data
             tempFiles[i]['upload_percent'] = 0
@@ -56,19 +60,19 @@ Page({
           }
           
           if (e.currentTarget.dataset.image == "image") {
-            // console.log(1)
+
             that.setData({
               upload_picture_list: upload_picture,
             });
             that.uploadimage(upload_picture, 'upload_picture_list')
           } else if (e.currentTarget.dataset.image == "image1") {
-            console.log(2)
+
             that.setData({
               upload_picture_list1: upload_picture,
             });
             that.uploadimage(upload_picture, 'upload_picture_list1')
           } else {
-            console.log(3)
+
             that.setData({
               upload_picture_list2: upload_picture,
             });
@@ -80,7 +84,7 @@ Page({
   },
   //点击上传事件
   uploadimage: function (upload_picture,arr) {
-    console.log(1)
+
     var page = this
     //循环把图片上传到服务器 并显示进度       
     for (var j in upload_picture) {
@@ -154,7 +158,7 @@ Page({
     data.front = that.data.upload_picture_list[0] && that.data.upload_picture_list[0].path_server ? that.data.upload_picture_list[0].path_server:''
     data.back = that.data.upload_picture_list1[0] && that.data.upload_picture_list1[0].path_server ? that.data.upload_picture_list1[0].path_server: '' 
     data.avatar = that.data.upload_picture_list2[0] && that.data.upload_picture_list2[0].path_server ? that.data.upload_picture_list2[0].path_server:''  
-      console.log(data)
+
       that.setData({
         sure:true
       })
@@ -176,7 +180,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+
     wx.hideLoading()
   },
 

@@ -9,7 +9,7 @@
   </view>
   <view class='all'>
     <view class='size28 color9'>密码</view>
-    <input placeholder-class='colorc size32'  class='width100' placeholder='请输入密码' value='{{password}}'  name='password' ></input>
+    <input placeholder-class='colorc size32' password='password' class='width100' placeholder='请输入密码' value='{{password}}'  name='password' ></input>
   </view>
   
   <button formType="submit" disabled='{{sure}}'  class='sure {{sure?"bgDDDDDD":""}}'>登录</button>

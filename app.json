@@ -5,16 +5,16 @@
     "pages/myCollection/index",
     "pages/assets/index",
     "pages/family/associated/index",
-    
+    "pages/installment/installment",
     "pages/agriculturalDetail/index",
-    
-    
-    "pages/installment_details/installment_details",
+    "pages/myInviteNewusers/index",
     "pages/realname_authentication/realname_authentication",
+    "pages/installment_details/installment_details",
+    
     "pages/login/login",
     "pages/login/index",
     "pages/setting/setting",
-    "pages/installment/installment",
+    
     
     
     "pages/withdrawal_record/transfer",
@@ -75,7 +75,7 @@
     "pages/my_invitation/index",
     
     "pages/feedback/index",
-    "pages/myInviteNewusers/index",
+    
     "pages/agentPay/index",
     "pages/qrcode/index",
     "pages/my_integral/index",

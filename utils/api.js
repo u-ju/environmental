@@ -4,7 +4,7 @@ const apiList = {
   base: basePath,
   wx_appid : "wx9af47449f54c0be7",
   build : 99999999,
-  // build : 20190606,
+  // build : 20190612,
   collectUpdate: basePath + '/front/collect/update',
   collectIndex: basePath + '/front/collect/index?source=',
 
@@ -127,12 +127,12 @@ const apiList = {
   // GET  代理信息
   agent: basePath + '/front/agent',
   // POST 设置推荐人
+
   agent_sharerSet: basePath + '/front/agent/sharerSet',
-  
   agent_shopIndex: basePath + '/front/agent/shopIndex',
 
-  agent_agentIndex: basePath + '/front/agent/agentIndex',
 
+  agent_agentIndex: basePath + '/front/agent/agentIndex',
   agent_userIndex: basePath + '/front/agent/userIndex',
   agent_earnIndex: basePath + '/front/agent/earnIndex',
 
@@ -159,8 +159,9 @@ const apiList = {
   // ShareController
   // GET 推广信息
   share: basePath + '/front/share',
-
-  share_index: basePath +'/front/share/index',
+  shareShopIndex: basePath + '/front/share/shopIndex',//GET 推荐商家列表
+  shareUserIndex: basePath + '/front/share/userIndex',//GET 推荐用户列表
+  
 
   // OnsiteRecycleController
   // GET 上门回收信息

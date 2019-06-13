@@ -256,7 +256,9 @@ page {
 .color989898 {
   color: #989898;
 }
-
+.colorfff{
+  color: #fff;
+}
 .color3 {
   color: #333;
 }

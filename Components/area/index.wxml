@@ -1,4 +1,4 @@
-<input  disabled='disabled' class='color9 {{classN}}' name='area_id' placeholder='{{placeholder}}' placeholder-class='color163' value='{{areaSelectedStr}}'  bindtap="cascadePopup" bindtouchstart='onload'></input>
+<input  disabled='disabled' class='color9 {{classN}}' name='area_id' placeholder='{{placeholder}}' placeholder-class='color6' value='{{areaSelectedStr}}'  bindtap="cascadePopup" bindtouchstart='onload'></input>
 <view class="modal">
 	<view class="modal-mask {{maskVisual}}" catchtap="cascadeDismiss"></view>
 	<view animation="{{animationData}}" class="modal-content">

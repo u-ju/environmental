@@ -10,7 +10,12 @@
 	background: #fff;
 	z-index: 999;
 }
-
+.color4{
+  color: #444;
+}
+.color6{
+  color: #666;
+}
 /*遮罩层*/
 .modal-mask {
     position: fixed;

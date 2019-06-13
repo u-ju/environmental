@@ -35,6 +35,6 @@
     <!-- </view> -->
   </block>
   <view wx:else>
-    <empty />
+    <empty title='暂无信用记录' />
   </view>
 </view>

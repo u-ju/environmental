@@ -19,29 +19,11 @@
   </view>
 </view>
 <view wx:elif="{{is_agent==1}}">
-  <view class='card'>
-    <!-- <view class='flex align_center'>
-    <view class='left'>代理id</view>
-    <view class='right'>{{agent.agent_id}}</view>
-  </view> -->
-    <!-- <view class='flex align_center'>
-    <view class='left'>金额</view>
-    <view class='right'>{{agent.amount}}</view>
-  </view>
-  
-  <view class='flex align_center'>
-    <view class='left'>收入</view>
-    <view class='right'>{{agent.earn}}</view>
-  </view> -->
+  <view class='card' wx:for="{{list}}" wx:key="index" wx:for-item="agent">
     <view class='flex align_center'>
       <view class='left'>等级</view>
       <view class='right'>{{agent.level_name}}</view>
     </view>
-    <!-- <view class='flex align_center'>
-    <view class='left'>推荐人</view>
-    <view wx:if='{{agent.share_nickname}}' class='right'>{{agent.share_nickname}}</view>
-    <text wx:else class='color5DC47A' bindtap='sharerSet'>设置推荐人</text>
-  </view> -->
     <view class='flex align_center'>
       <view class='left'>区域</view>
       <view class='right'>{{agent.area_name||'无'}}</view>
@@ -50,12 +32,7 @@
       <view class='left'>注册时间</view>
       <view class='right'>{{agent.created_at}}</view>
     </view>
-
   </view>
-  <!-- <view class='size36 btndl' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
-<view class='size36 btndl' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请环保大使</view> -->
-  <!-- <view class='size36 btndl' hidden='{{!agent.invite_shop}}' data-invite='{{agent.invite_shop}}'  bindtap='open3'>邀请联盟商家</view>
-<view class='size36 btndl' hidden='{{!agent.invite_agent}}' data-invite='{{agent.invite_agent}}'  bindtap='open3'>邀请环保大使</view> -->
   <view class='size36 btndl' hidden='{{!agent.invite_qrcode}}' data-invite='{{agent.invite_qrcode}}' bindtap='open3'>查看邀请码</view>
   <view class='center'>
     <navigator class=' size36 btndl' hidden='{{!agent.invite_qrcode}}' url='../my_invitation/index'>

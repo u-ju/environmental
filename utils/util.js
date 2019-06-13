@@ -17,85 +17,8 @@ var base64DecodeChars = new Array(
   -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
   41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1);
 //util.js
-function now_time() {
-  var date = new Date();
-  var year = date.getFullYear();
-  var month = date.getMonth() + 1;
-  var day = date.getDate();
-  var hour = date.getHours();
-  var minute = date.getMinutes();
-  var second = date.getSeconds();
-  var getMilliseconds = date.getMilliseconds();
-  return '' + year + "-" + month + "-" + day + "-" + hour + "-" + minute
-}
-function imageUtil(e) {
-  var imageSize = {};
-  //console.log(e)
-  var originalWidth = e.detail.width;//图片原始宽
-  var originalHeight = e.detail.height;//图片原始高
-  var originalScale = originalHeight / originalWidth;//图片高宽比
-  //获取屏幕宽高
-  wx.getSystemInfo({
-    success: function (res) {
-      var windowWidth = res.windowWidth;
-      var windowHeight = res.windowHeight;
-      var windowscale = windowHeight / windowWidth;//屏幕高宽比
-      if (originalScale < windowscale) {//图片高宽比小于屏幕高宽比
-        //图片缩放后的宽为屏幕宽
-        imageSize.imageWidth = windowWidth;
-        imageSize.imageHeight = (windowWidth * originalHeight) / originalWidth;
-      } else {//图片高宽比大于屏幕高宽比
-        //图片缩放后的高为屏幕高
-        imageSize.imageHeight = windowHeight;
-        imageSize.imageWidth = (windowHeight * originalWidth) / originalHeight;
-      }
 
-    }
-  })
-  return imageSize;
-}
 
-function formatTime(time) {
-  if (typeof time !== 'number' || time < 0) {
-    return time
-  }
-
-  var hour = parseInt(time / 3600)
-  time = time % 3600
-  var minute = parseInt(time / 60)
-  time = time % 60
-  // 这里秒钟也取整
-  var second = parseInt(time)
-
-  return ([hour, minute, second]).map(function (n) {
-    n = n.toString()
-    return n[1] ? n : '0' + n
-  }).join(':')
-}
-function allowUploadFormat(tempFiles = []) {
-  // 允许上传的视频格式
-  var allow_head_photo = ['.mp4'];
-
-  for (let idx in tempFiles) {
-    if (tempFiles[idx].match(/\.mp4/)) {
-      var upload_pic_ext = tempFiles[idx].match(/\.mp4/)[0].trim();
-      var allow_format = allow_head_photo.join("");
-      if (allow_format.indexOf(upload_pic_ext) >= 0) {
-        return true;
-      }
-    }
-    return false;
-  }
-}
-// 分享
-function share(title, path, imageUrl){
-  return {
-    title: title,
-    path: path,
-    imageUrl: imageUrl,
-    success: function (a) { }
-  };
-}
 /**
  * 注册JS方法
  * @type {{formatTime: formatTime, crtTimeFtt: crtTimeFtt, alert: alert, loginOpenId: loginOpenId, dialog: dialog, loading: loading, postJSON: postJSON, getJSON: getJSON, replaceStr: (function(*): string)}}
@@ -143,8 +66,20 @@ module.exports = {
   nav:nav,
   getTimeLeft: getTimeLeft,
   wx_appid: wx_appid,
-  bmak: bmak
+  bmak: bmak,
+  previewImage: previewImage
 }
+//图片图片预览
+function previewImage(src, imgList) {
+  if (!imgList){
+    imgList = [src]
+  }
+  wx.previewImage({
+    current: src, // 当前显示图片的http链接
+    urls: imgList // 需要预览的图片http链接列表
+  })
+}
+// 验证手机号
 function testcall(str, alert, cb) {
   var that = this;
   // //console.log(str)
@@ -153,6 +88,7 @@ function testcall(str, alert, cb) {
     cb()
   }
 }
+// 验证金钱
 function testjq(str, alert, cb) {
   var that = this;
   // //console.log(str)
@@ -161,6 +97,7 @@ function testjq(str, alert, cb) {
     cb()
   }
 }
+// 验证物流
 function testwl(str, alert,cb) {
   var that = this;
   if (str.length > 0 &&!/^[a-zA-Z0-9]+$/.test(str)) {
@@ -168,6 +105,19 @@ function testwl(str, alert,cb) {
     cb()
   }
 }
+// 获取当前时间
+function now_time() {
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  var getMilliseconds = date.getMilliseconds();
+  return '' + year + "-" + month + "-" + day + "-" + hour + "-" + minute
+}
+// 弹窗
 function popup(content, confirm, cancel){
   wx.showModal({
     title: '提醒',
@@ -186,6 +136,7 @@ function popup(content, confirm, cancel){
     }
   })
 }
+// 弹窗
 function popoutc(title, cancelText, cancelColor, confirmText, confirmColor, cancel, confirm, title1) {
   wx.showModal({
     title: title1||'提示',
@@ -603,14 +554,14 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
 
       if (res.data.status == 200) {
         // //console.log(res.data)
-        if (res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) !="{}"){
+        if (res.data.result &&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) !="{}"){
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
         
         }else{
           call_success(res)
-          if (res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+          if (res.data.result &&res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
             var popout = res.data.result.popout
             var button_arr = popout.button_arr
             //console.log(button_arr)
@@ -637,11 +588,11 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
           url: '../ban/index',
         })
       }else{
-        if (res.data.status == 414 && res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
+        if (res.data.status == 414 && res.data.result&& res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
-        }else if (res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+        } else if (res.data.result && res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
           var popout = res.data.result.popout
           var button_arr = popout.button_arr
           //console.log(button_arr)
@@ -702,14 +653,14 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
         return that.info_dialog('无效请求')
       }
       if (res.data.status == 200) {
-        if (res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
+        if (res.data.result &&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
         
         } else {
           call_success(res)
-          if (res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+          if (res.data.result &&res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
             var popout = res.data.result.popout
             var button_arr = popout.button_arr
             //console.log(button_arr)
@@ -732,11 +683,11 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
           url: '../ban/index',
         })
       } else {
-        if (res.data.status == 414&&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
+        if (res.data.result &&res.data.status == 414&&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
-        } else if (res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+        } else if (res.data.result &&res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
           var popout = res.data.result.popout
           var button_arr = popout.button_arr
           //console.log(button_arr)
@@ -1128,4 +1079,72 @@ function scan(){
     complete: (res) => {
     }
   })
+}
+function imageUtil(e) {
+  var imageSize = {};
+  //console.log(e)
+  var originalWidth = e.detail.width;//图片原始宽
+  var originalHeight = e.detail.height;//图片原始高
+  var originalScale = originalHeight / originalWidth;//图片高宽比
+  //获取屏幕宽高
+  wx.getSystemInfo({
+    success: function (res) {
+      var windowWidth = res.windowWidth;
+      var windowHeight = res.windowHeight;
+      var windowscale = windowHeight / windowWidth;//屏幕高宽比
+      if (originalScale < windowscale) {//图片高宽比小于屏幕高宽比
+        //图片缩放后的宽为屏幕宽
+        imageSize.imageWidth = windowWidth;
+        imageSize.imageHeight = (windowWidth * originalHeight) / originalWidth;
+      } else {//图片高宽比大于屏幕高宽比
+        //图片缩放后的高为屏幕高
+        imageSize.imageHeight = windowHeight;
+        imageSize.imageWidth = (windowHeight * originalWidth) / originalHeight;
+      }
+
+    }
+  })
+  return imageSize;
+}
+
+function formatTime(time) {
+  if (typeof time !== 'number' || time < 0) {
+    return time
+  }
+
+  var hour = parseInt(time / 3600)
+  time = time % 3600
+  var minute = parseInt(time / 60)
+  time = time % 60
+  // 这里秒钟也取整
+  var second = parseInt(time)
+
+  return ([hour, minute, second]).map(function (n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+  }).join(':')
+}
+function allowUploadFormat(tempFiles = []) {
+  // 允许上传的视频格式
+  var allow_head_photo = ['.mp4'];
+
+  for (let idx in tempFiles) {
+    if (tempFiles[idx].match(/\.mp4/)) {
+      var upload_pic_ext = tempFiles[idx].match(/\.mp4/)[0].trim();
+      var allow_format = allow_head_photo.join("");
+      if (allow_format.indexOf(upload_pic_ext) >= 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+}
+// 分享
+function share(title, path, imageUrl) {
+  return {
+    title: title,
+    path: path,
+    imageUrl: imageUrl,
+    success: function (a) { }
+  };
 }

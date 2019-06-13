@@ -177,11 +177,13 @@ Page({
   onLoad: function (options) {
     var that = this;
     var result = app.globalData.config
-    // console.log(options)
+    var share_mobile = options.apply_info ? JSON.parse(options.apply_info).share_mobile : ''
     that.setData({
       type: '',
       source: options.source||'',
-      choosed: wx.getStorageSync('choosede') || that.data.choosed
+      shop_settled: app.globalData.config.protocol.shop_settled,
+      choosed: wx.getStorageSync('choosede') || that.data.choosed,
+      share_mobile: share_mobile
     })
     // options.shop_id=30
     if (options.shop_id) {
@@ -222,13 +224,14 @@ Page({
           upload_picture_list: upload_picture_list || '',
           discount_percent: result.discount_percent || '',
           status_remark: result.status_remark || '',
-          company_name: result.license_info.company_name || '',
-          license_no: result.license_info.license_no || '',
-          legal_person: result.license_info.legal_person || '',
-          business_address: result.license_info.business_address || '',
-          business_scope: result.license_info.business_scope || '',
+          // company_name: result.license_info.company_name || '',
+          // license_no: result.license_info.license_no || '',
+          // legal_person: result.license_info.legal_person || '',
+          // business_address: result.license_info.business_address || '',
+          // business_scope: result.license_info.business_scope || '',
           video: video,
-          source: result.source
+          source: result.source,
+          share_mobile: result.share_mobile||'',
         })
         wx.hideLoading()
       })
@@ -251,7 +254,7 @@ Page({
         image: image,
         upload_picture_list: upload_picture_list,
         title1: wx.getStorageSync("title1e"),
-        cate_id: wx.getStorageSync("cate_ido"),
+        cate_id: wx.getStorageSync("cate_ide"),
         areaSelectedStr: wx.getStorageSync('areaSelectedStre'),
         area_id_val: wx.getStorageSync('area_ide'),
         discount_percent: wx.getStorageSync('discount_percente'),
@@ -263,6 +266,7 @@ Page({
         // business_address: wx.getStorageSync('license_info[business_address]e'),
         // business_scope: wx.getStorageSync('license_info[business_scope]e'),
         video: wx.getStorageSync('videoe'),
+        share_mobile: wx.getStorageSync('share_mobilee') || that.data.share_mobile,
       })
     }
   },
@@ -452,6 +456,10 @@ Page({
     wx.setStorageSync('image' + e.currentTarget.dataset.index+'e', [])
     // 
   },
+  // 查看图片
+  previewImg(e) {
+    util.previewImage(e.currentTarget.dataset.src)
+  },
   uploadpic1: function (e) {
     var that = this //获取上下文
     var upload_picture_list = that.data.upload_picture_list
@@ -621,7 +629,7 @@ Page({
       var result = res.data.result
 
       util.alert("申请提交成功，等待审核")
-      var arr = ['contact', 'discount_percent', 'title', 'address', 'intro', 'area_id', 'type', 'cate_id', 'title1', 'areaSelectedStr', 'image0', 'image1', "upload_picture_list", 'choosed', 'latitude', "longitude", 'license_info[business_address]', 'license_info[business_scope]', 'license_info[company_name]', 'license_info[license_no]', 'license_info[legal_person]', 'video']
+      var arr = ['contact', 'discount_percent', 'title', 'address', 'intro', 'area_id', 'type', 'cate_id', 'title1', 'areaSelectedStr', 'image0', 'image1', "upload_picture_list", 'choosed', 'latitude', "longitude", 'license_info[business_address]', 'license_info[business_scope]', 'license_info[company_name]', 'license_info[license_no]', 'license_info[legal_person]', 'video', 'share_mobile']
       for (var i in arr) {
         wx.setStorageSync(arr[i] + "e", '')
       }

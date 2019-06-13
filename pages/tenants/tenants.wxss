@@ -4,6 +4,11 @@
 page{
   background-color: white;
 }
+.picture_item .del {
+  top:4rpx;
+  right:-20rpx;
+  background-color: transparent
+}
 .banner image{
   width: 686rpx;
   height: 250rpx;

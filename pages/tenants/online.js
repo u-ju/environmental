@@ -176,12 +176,14 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-      var result = app.globalData.config
-      
+    var result = app.globalData.config
+    var share_mobile = options.apply_info?JSON.parse(options.apply_info).share_mobile : ''
         that.setData({
           type: '', 
           source: options.source || '',
-          choosed: wx.getStorageSync('choosedo') || that.data.choosed
+          choosed: wx.getStorageSync('choosedo') || that.data.choosed,
+          shop_settled: app.globalData.config.protocol.shop_settled,
+          share_mobile: share_mobile
         })
     // options.shop_id=30
       if (options.shop_id){
@@ -222,13 +224,14 @@ Page({
             upload_picture_list: upload_picture_list || '',
             discount_percent: result.discount_percent || '',
             status_remark: result.status_remark || '',
-            company_name: result.license_info.company_name||'',
-            license_no: result.license_info.license_no || '',
-            legal_person: result.license_info.legal_person || '',
-            business_address: result.license_info.business_address || '',
-            business_scope: result.license_info.business_scope || '',
+            // company_name: result.license_info.company_name||'',
+            // license_no: result.license_info.license_no || '',
+            // legal_person: result.license_info.legal_person || '',
+            // business_address: result.license_info.business_address || '',
+            // business_scope: result.license_info.business_scope || '',
             video: video,
-            source: result.source
+            source: result.source,
+            share_mobile: result.share_mobile || '',
           })
           wx.hideLoading()
         })
@@ -263,6 +266,7 @@ Page({
           // business_address: wx.getStorageSync('license_info[business_address]o'),
           // business_scope: wx.getStorageSync('license_info[business_scope]o'),
           video: wx.getStorageSync('videoo'),
+          share_mobile: wx.getStorageSync('share_mobileo') || that.data.share_mobile,
         })
       }
     },
@@ -640,7 +644,7 @@ Page({
       // wx.setStorageSync('license_info[business_address]o', '')
       // wx.setStorageSync('license_info[business_scope]o', '')
       // wx.setStorageSync('videoo', '')
-      var arr = ['contact', 'discount_percent', 'title', 'address', 'intro', 'area_id', 'type', 'cate_id', 'title1', 'areaSelectedStr', 'image0', 'image1', "upload_picture_list", 'choosed', 'latitude', "longitude", 'license_info[business_address]', 'license_info[business_scope]', 'license_info[company_name]', 'license_info[license_no]', 'license_info[legal_person]', 'video']
+      var arr = ['contact', 'discount_percent', 'title', 'address', 'intro', 'area_id', 'type', 'cate_id', 'title1', 'areaSelectedStr', 'image0', 'image1', "upload_picture_list", 'choosed', 'latitude', "longitude", 'license_info[business_address]', 'license_info[business_scope]', 'license_info[company_name]', 'license_info[license_no]', 'license_info[legal_person]', 'video', 'share_mobile']
       for (var i in arr) {
         wx.setStorageSync(arr[i] + "o", '')
       }
@@ -666,6 +670,10 @@ Page({
         post: false
       })
     })
+  },
+  // 查看图片
+  previewImg(e) {
+    util.previewImage(e.currentTarget.dataset.src)
   },
   backfill: function (e) {
     console.log(e)

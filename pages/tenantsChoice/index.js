@@ -30,12 +30,12 @@ Page({
   },
   online(e){
     wx.navigateTo({
-      url: '../tenants/online?source=' + e.currentTarget.dataset.key,
+      url: '../tenants/online?source=' + e.currentTarget.dataset.key + "&apply_info=" + JSON.stringify(this.data.apply_info),
     })
   },
   league(e) {
     wx.navigateTo({
-      url: '../tenants/league?source=' + e.currentTarget.dataset.key,
+      url: '../tenants/league?source=' + e.currentTarget.dataset.key + "&apply_info=" + JSON.stringify(this.data.apply_info),
     })
   },
   /**

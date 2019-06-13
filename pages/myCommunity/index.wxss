@@ -1,11 +1,22 @@
 /* pages/myCommunity/index.wxss */
 @import '../address_edit/index';
 .submitButton{
-  margin-top: 40rpx;
+  margin-top: 80rpx;
+}
+input{
+  color: #444;
 }
 .textC input{
-  width: 130rpx;
+  width: 124rpx;
+  color: #444;
 }
 .textC .left{
   width: 100rpx;
+}
+.desc{
+  position: fixed;
+  bottom: 80rpx;
+  width: 686rpx;
+  left: 32rpx;
+  color: #666;
 }

@@ -58,7 +58,8 @@ Page({
         var comment_score = Math.ceil(result.comment_score)
         that.setData({
           result: result,
-          comment_score: comment_score
+          comment_score: comment_score,
+          // cur: result.video?0:1
         })
         that.getTop()
         util.hideLoading()
@@ -119,6 +120,10 @@ Page({
       }
     }
 
+  },
+  // 查看图片
+  previewImg(e) {
+    util.previewImage(e.currentTarget.dataset.src, this.data.result.images)
   },
   commentIndex1(shop_id, page = 1) {
     var that = this;

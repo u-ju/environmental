@@ -148,11 +148,13 @@
         <view class="picture_list">
           <view class="picture_item {{item.id}}" wx:if="{{item.upload_picture_list.length>0}}">
             <image wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" src="{{item.upload_picture_list[0].path}}" mode="aspectFill"></image>
-            <image wx:if="{{item.upload_picture_list[0].upload_percent == 100}}" bindtap="previewImg" src="{{item.upload_picture_list[0].path_server}}" mode="aspectFill"></image>
+            <image wx:if="{{item.upload_picture_list[0].upload_percent == 100}}" bindtap="previewImg" data-src="{{item.upload_picture_list[0].path_server}}" src="{{item.upload_picture_list[0].path_server}}" mode="aspectFill"></image>
             <view class="upload_progress" wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" data-index="{{index}}" >{{item.upload_picture_list[0].upload_percent}}%</view>
-            <view class='del' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"> 
+            <!-- <view class='del' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"> 
               <view class=' iconfont  icon-cuohao'></view>
-            </view>
+            </view> -->
+            <image src='../../images/delt.png' class='del' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></image>
+
           </view>
           <view wx:else class='picture_item' bindtap='uploadpic' data-index="{{index}}">
             <view class='bgg flex_ard align_center'>
@@ -182,8 +184,8 @@
         </view>
         <view wx:for="{{upload_picture_list}}" class="picture_itemmore" wx:key="{{index}}">
           <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
-          <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
-          <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
+          <image wx:if="{{item.upload_percent == 100}}" bindtap="previewImg" data-src="{{item.path_server}}" src="{{item.path_server}}" mode="aspectFill"></image>
+          <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}">{{item.upload_percent}}%</view>
           <view class='del' bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}">
             <image src='../../images/delt.png'></image>
           </view>
@@ -195,6 +197,12 @@
         </view>
       </view>
     </view>
+
+    <view class='item  flex align_center' wx:if='{{!status}}'>
+      <text class='size28 color6'>推荐人手机号</text>
+      <input class='size28 color9' bindinput='input' data-contact='share_mobilet' name='share_mobile' disabled='{{status}}' value='{{share_mobile}}'></input>
+    </view>
+
     <view class='item  flex align_center' wx:if='{{status}}'>
       <text class='size28 color6'>审核状态</text>
       <view class='{{status==2?"colorFE2C2C":"color27AAD9"}}'>{{status_name}}</view>

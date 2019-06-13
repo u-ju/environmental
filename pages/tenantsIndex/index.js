@@ -32,13 +32,14 @@ Page({
         offline_list: result.shop_info.offline_list,
         room_list: result.apply_info.buttun_list,
         league_list: result.shop_info.league_list,
+        // share_mobile: result.share_mobile
       })
       wx.hideLoading()
     })
   },
   link(){
     wx.navigateTo({
-      url: '../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info) +"&room_list="+ JSON.stringify(this.data.room_list),
+      url: '../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info) + "&room_list=" + JSON.stringify(this.data.room_list),
     })
   },
   erwm(e){

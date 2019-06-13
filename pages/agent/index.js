@@ -41,8 +41,8 @@ Page({
     util.getJSON({ apiUrl: apiurl.agent }, function (res) {
       var result= res.data.result
       that.setData({
-        is_agent: result.is_agent,
-        agent: result.agent
+        is_agent: 1,
+        list: result.list
       })
       var article = res.data.result.explain;
       WxParse.wxParse('article', 'html', article, that, 5);
