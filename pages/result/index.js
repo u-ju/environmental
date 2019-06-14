@@ -10,8 +10,7 @@ Page({
     util.loading()
     var pages = getCurrentPages();
     console.log(pages);
-    var delta = pages.length - 2
-    console.log(delta);
+    var delta = pages.length>2?pages.length - 2:1
     var hint = JSON.parse(e.hint)
     wx.hideLoading()
     this.setData({
@@ -41,9 +40,14 @@ Page({
     }
     console.log(url)
     if (url.indexOf('../index/index') > -1 || url.indexOf('../personal_center/personal_center') > -1) {
-      wx.reLaunch({
-        url: url
-      })
+      if (this.data.pages < 3) {
+        return wx.navigateBack()
+      } else {
+        return wx.reLaunch({
+          url: url
+        })
+      }
+      
     } else {
       wx.navigateTo({
         url: url,
@@ -67,9 +71,15 @@ Page({
     if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
       url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)
     }
-    console.log(url)
+
     if (url.indexOf('../index/index') > -1 || url.indexOf('../personal_center/personal_center') > -1) {
-      return wx.navigateBack({delta: this.data.delta})
+      if (this.data.pages < 3) {
+        return wx.navigateBack()
+      } else {
+        return wx.reLaunch({
+          url: url
+        })
+      }
     } else {
       return wx.navigateTo({
         url: url,

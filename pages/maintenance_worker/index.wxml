@@ -10,7 +10,7 @@
   </view>
   <view class='wxgitem flex_btw '>
     <view class='left'>服务区域</view>
-    <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}'  bind:choosea='choosearea' />
+    <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' ban='biotope'  bind:choosea='choosearea' />
     <!-- <input  name='area_id' value='{{areaSelectedStr}}' disabled='disabled' bindtap="cascadePopup" ></input> -->
     <text class='iconfont icon-jiantou color898989'></text>
   </view>

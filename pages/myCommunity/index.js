@@ -27,8 +27,8 @@ Page({
   onLoad: function (options) {
 
     if (options.area_arr){
-      var area_arr = JSON.parse(options.area_arr), areaSelectedStr = '', biotope_name = '', dong_name = '', unit_name = '', province = '', city = '', county = '', door_num=''
-
+      var area_arr = JSON.parse(options.area_arr), areaSelectedStr = '', biotope_name = '', dong_name = '', unit_name = '', province = '', city = '', county = ''
+      // console.log(area_arr)
       for (var i in area_arr){
         if (area_arr[i]['type'] == 'province') {
           province = area_arr[i]['name']
@@ -52,17 +52,26 @@ Page({
         //   door_num = area_arr[i]['name'].replace(/[^0-9]/ig, "")
         // }
       }
-      var area_id_val = area_arr && area_arr[area_arr.length - 1]["id"]? area_arr[area_arr.length - 1]["id"]:''
+      var area_id_val = area_arr[area_arr.length - 1] && area_arr[area_arr.length - 1]["id"]? area_arr[area_arr.length - 1]["id"]:''
       this.setData({
         area_id_val: area_id_val,
         areaSelectedStr: province + city + county,
         biotope_name: biotope_name,
         dong_name: dong_name,
         unit_name: unit_name,
-        door_num: options.door_num || '',
-        desc: options.desc||''
+        
+        
       })
     }
+    var door_num = options.door_num
+    if (door_num == 'null'){
+      door_num=''
+    }
+    
+    this.setData({
+      door_num: door_num,
+      desc: options.desc || ''
+    })
   },
   formSubmit(e) {
 

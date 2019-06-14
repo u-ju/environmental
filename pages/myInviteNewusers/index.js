@@ -31,15 +31,22 @@ Page({
   onLoad: function (options) {
     util.loading()
     var that = this;
-    util.getJSON({ apiUrl: apiurl.share }, function (res) {
-      var result = res.data.result
+    // util.getJSON({ apiUrl: apiurl.share }, function (res) {
+    //   var result = res.data.result
 
-      that.setData({
-        result: result,
-        value: result.share_qrcode,
-        stat: result.stat
-      })
-      util.hideLoading()
+    //   that.setData({
+    //     result: result,
+    //     value: result.share_qrcode,
+    //     stat: result.stat
+    //   })
+    //   util.hideLoading()
+    // })
+    var result = JSON.parse(options.result)
+    this.setData({
+      result: result,
+      value: result.share_qrcode,
+      stat: result.stat,
+      share_qrcode_desc: result.share_qrcode_desc
     })
     that.init()
   },
@@ -63,6 +70,9 @@ Page({
     })
   },
   open3(e) {
+    if (!this.data.value){
+      return util.alert1(this.data.share_qrcode_desc)
+    }
     this.setData({
       visible3: true
     })

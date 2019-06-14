@@ -186,7 +186,9 @@ Page({
         })
       })
     }
+
     var url = e.currentTarget.dataset.link.control +'?1=1'
+    
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
       for (var i in e.currentTarget.dataset.link.params) {
         url = url + "&" + i + "=" + e.currentTarget.dataset.link.params[i]
@@ -200,7 +202,21 @@ Page({
         }
       }
     }
-    // console.log(url)
+    if (e.currentTarget.dataset.link.key == 'front_share_home') {
+      return util.getJSON({ apiUrl: apiurl.share }, function (res) {
+        var result = res.data.result
+        url = url + "&result=" + JSON.stringify(result)
+        util.hideLoading()
+        wx.navigateTo({
+          url: url,
+          fail: function () {
+            util.alert('该功能暂未开放，敬请期待')
+          },
+        })
+      }, function (e) {
+        return
+      })
+    }
     wx.navigateTo({
       url: url,
       fail: function () {

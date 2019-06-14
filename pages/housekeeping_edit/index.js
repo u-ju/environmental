@@ -29,8 +29,7 @@ Page({
     post:false,
     image: [
       { title: '营业执照', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
-      { title: '缩略图', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
-      
+      { title: '缩略图', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
     ],
     upload_picture_list: [],
     textareahidden: false,

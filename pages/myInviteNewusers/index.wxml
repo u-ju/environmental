@@ -1,7 +1,7 @@
 <!--pages/myInviteNewusers/index.wxml-->
 <view class='banner'>
   <image src='{{result.background}}'></image>
-  <view class='center colorfff zong'> <text class='size24'>总收益 </text> <text class='size36'> {{stat.total_amount}}</text></view>
+  <view class='center colorfff zong'> <text class='size36'>总收益 </text> <text class='size36'> {{stat.total_amount}}</text></view>
   <view class='invite size30 color27AAD9' bindtap='open3'>邀请二维码</view>
   <view class='num size24 flex_ard center align_center wrap'>
     <view>
@@ -49,5 +49,9 @@
 </view>
 <empty wx:else />
 <wux-popup closable visible="{{ visible3 }}" bind:close="onClose3">
-  <wux-qrcode id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+  <!-- <view class='center' wx:if="{{!share_qrcode}}" style='width:400rpx; height:400rpx;margin: auto;line-height: 400rpx;'>{{share_qrcode_desc}}</view>
+  <block wx:else> -->
+    <wux-qrcode id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+
+  <!-- </block> -->
 </wux-popup>

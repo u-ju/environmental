@@ -10,7 +10,7 @@
   </view>
   <view class='wxgitem flex_btw '>
     <view class='left'>服务区域</view>
-    <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}'  bind:choosea='choosearea' />
+    <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' ban='biotope'  bind:choosea='choosearea' />
     <text class='iconfont icon-jiantou color898989'></text>
   </view>
   <view class='wxgitem flex_btw '>
@@ -19,15 +19,14 @@
     <text class='iconfont icon-jiantou color898989'></text>
   </view>
   
-  <view class='textarea1'>
+  <view class='textarea2'>
     <view >服务详情：</view>
     <textarea   focus="{{textareahidden}}" class='size28 color9' bindinput='input' bindblur='unshow' wx:if="{{textareahidden}}" name='intro' value='{{intro}}' maxlength='1000'>
-    
     </textarea>
     <view class='textareav' bindtap='show' wx:else>{{intro}}</view>
   </view>
 <block  wx:for="{{image}}" wx:key="{{index}}">
-  <view class='item  flex align_center image'>
+  <view class='item  flex align_center image' hidden='{{item.title=="营业执照"}}'>
     <text class='size28 color6'>{{item.title}}</text>
     <view class="picture_list">
       <view  class="picture_item {{item.id}}" wx:if="{{item.upload_picture_list.length>0}}">
@@ -54,6 +53,7 @@
         <image wx:if="{{upload_picture_list.upload_percent == 100}}" src="{{upload_picture_list.path_server}}" mode="aspectFill"></image>
         <view class="upload_progress" wx:if="{{upload_picture_list.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg1">{{upload_picture_list.upload_percent}}%</view>
         <text class='del  iconfont  icon-cuohao' bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></text>
+        
       </view>
       <view class='picture_item' bindtap='uploadpic1' wx:if="{{!disabled1}}" data-index="{{index}}">
         <view class='bgg flex_ard align_center'>
@@ -68,7 +68,7 @@
      <view class='color46'>{{status_name}}</view>
   </view>
  
-  <button class='btn' form-type="submit" disabled='{{post}}'>提交</button>
+  <button class='submitButton' form-type="submit" disabled='{{post}}'>提交</button>
 </form>
 
 <wux-popup closable visible="{{ visible3 }}"  bind:close="close3">

@@ -2,7 +2,7 @@
 <view class='address'  wx:for="{{list}}" wx:key="index" >
   <view class='address_top'>
     <view class='add_pname'>{{item.name}}  <text class='marginl50'>{{item.phone}}</text></view>
-    <view>{{item.area_name}}{{item.address}}</view>
+    <view>{{item.area_name}} {{item.address}}</view>
   </view>
   <view class='flex_btw czuo'>
     <view class='flex align_center' bindtap='choose' data-id="{{item.address_id}}" data-default="{{item.default}}">

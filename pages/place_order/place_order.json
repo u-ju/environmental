@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "大件上门",
+  "navigationBarTitleText": "上门回收",
   "usingComponents": {
     "wux-popup": "../../Components/popup/index",
     "area": "../../Components/area/index"

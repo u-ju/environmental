@@ -10,7 +10,7 @@
 </view>
 <view class='flex align_center'>
   <view class='left'>所在地区</view>
-  <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' bind:choosea='choosearea' />
+  <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' ban='biotope' bind:choosea='choosearea' />
 </view>
 <view class='flex align_center'>
   <view class='left'>详细地址</view>

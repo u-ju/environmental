@@ -41,7 +41,7 @@
     </view>
     <view class='flex align_center message'>
       <view class='size28 color4 width160'>选择区域</view>
-      <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}'  bind:choosea='choosearea' />
+      <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' ban='biotope' bind:choosea='choosearea' />
       <!-- <input class="size28 color9"  disabled='disabled' name='area_id' placeholder-class='color163' value='{{areaSelectedStr}}' placeholder='选择区域' bindtap="cascadePopup" ></input> -->
       
       <image class='right' mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>

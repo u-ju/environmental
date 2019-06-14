@@ -9,6 +9,20 @@ textarea{
 .item{
   width: 686rpx;
   margin: auto;
-  height: 170rpx;
+  height:auto;
+  min-height: 170rpx;
   margin-bottom: 20rpx;
+}
+.textarea2 {
+  margin:80rpx auto 50rpx auto;
+  width:686rpx ;
+  height: 334rpx;
+}
+.submitButton{
+  /* position: static */
+}
+.picture_item .del {
+  top: -10rpx;
+  right: -10rpx;
+  background-color: #f00;
 }
