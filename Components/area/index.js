@@ -92,7 +92,7 @@ Component({
         maskVisual: 'show'
       });
     },
-    cascadeDismiss: function() {
+    cascadeDismiss(numl=0) {
       var that = this
       this.animation.translateY(285).step();
       this.setData({
@@ -103,6 +103,11 @@ Component({
       for (var i in cengji) {
         if (cengji[i].currentname!="请选择")
         areaSelectedStr = areaSelectedStr + " " + cengji[i].currentname
+      }
+      if(numl!=1){
+        this.setData({
+          current: that.data.current-1
+        })
       }
       return that.triggerEvent("choosea", {
         areaSelectedStr: areaSelectedStr,
@@ -118,8 +123,7 @@ Component({
     choosearea(e) {
       var that = this;
       var index = e.currentTarget.dataset.index;
-      var cengji = this.data.cengji,
-        konwname = '';
+      var cengji = this.data.cengji,konwname = '';
       cengji[this.data.current]['currentname'] = this.data.cengji[this.data.current]['array'][index]
       cengji[this.data.current]['currentindex'] = index
       this.setData({
@@ -138,10 +142,8 @@ Component({
           konwname: konwname,
           areaSelectedStr: areaSelectedStr
         })
-        return that.cascadeDismiss();
-        // return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, konwname: that.data.konwname, biotope_name: that.data.biotope_name, dong: that.data.dong, unit: that.data.unit })
+        return that.cascadeDismiss(1);
       }
-
       if (cengji[this.data.current]['area'][0]["type"] == 'biotope') {
         this.setData({
           isbiotope: true,
@@ -181,7 +183,7 @@ Component({
             areaSelectedStr: areaSelectedStr,
             area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"]
           });
-          return that.cascadeDismiss();
+          return that.cascadeDismiss(1);
         }
 
         if (that.data.currentindex <= that.data.current) {

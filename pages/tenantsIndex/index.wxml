@@ -7,7 +7,7 @@
 </view>
 <view wx:else>
   <view class='online' wx:if="{{league_list.length>0}}">
-    <view class='sjtitle'>加盟商家</view>
+    <view class='sjtitle'>平台自营商家</view>
     <view class='shop' wx:for="{{league_list}}" wx:key="index" wx:for-item="list">
       <view class="inner flex_btw" bindtap='detail' data-source='league' data-id='{{list.shop_id}}'>
         <view class="cover">
@@ -41,7 +41,7 @@
     </view>
   </view>
   <view class='online' wx:if="{{online_list.length>0}}">
-    <view class='sjtitle'>直营商家</view>
+    <view class='sjtitle'>线上加盟商家</view>
     <view class='shop' wx:for="{{online_list}}" wx:key="index" wx:for-item="list">
       <view class="inner flex_btw" bindtap='detail' data-source='online' data-id='{{list.shop_id}}'>
         <view class="cover">
@@ -79,7 +79,7 @@
     </view>
   </view>
   <view class='offline' wx:if="{{offline_list.length>0}}">
-    <view class='sjtitle'>实体商家</view>
+    <view class='sjtitle'>线下实体商家</view>
     <view class='shop' wx:for="{{offline_list}}" wx:key="index" wx:for-item="list">
       <view class="inner flex_btw" bindtap='detail' data-source='offline' data-id='{{list.shop_id}}'>
         <view class="cover">

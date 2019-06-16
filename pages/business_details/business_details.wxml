@@ -5,7 +5,7 @@
       <video src="{{result.video}}" custom-cache='{{false}}' objectFit="contain"></video>
     </swiper-item>
     <swiper-item wx:for="{{result.images}}" wx:key="index">
-      <image src="{{item}}" class="slide-image" mode='aspectFill' bindtap='previewImg' data-src='{{item}}' />
+      <image src="{{item}}" class="slide-image" mode='aspectFit' bindtap='previewImg' data-src='{{item}}' />
     </swiper-item>
 
   </swiper>
