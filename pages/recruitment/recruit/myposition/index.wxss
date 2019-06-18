@@ -1,0 +1,16 @@
+/* pages/recruitment/recruit/myposition/index.wxss */
+@import '../resume/index';
+.click{
+  width:612rpx;
+  height:110rpx;
+  border:2rpx solid #BFBFBF;
+  border-radius:10rpx;
+  margin: 50rpx auto;
+}
+.click navigator{
+  height:110rpx;
+}
+.icon-jiahao{
+  font-size: 40rpx;
+  margin: 0 20rpx 0 34rpx;
+}

@@ -442,3 +442,9 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 .submitButton {
   margin: 40rpx auto;
 }
+.addresszzc{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 88;
+}

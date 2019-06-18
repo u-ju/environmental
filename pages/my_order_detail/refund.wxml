@@ -22,10 +22,10 @@
 <block wx:if='{{result.order_status}}'>
   <view class='shitem'>
     <view class='color4 borbtm'>
-      <navigator  class='color4' url='../business_details/business_details?id={{result.shop_info.shop_id}}' wx:if="{{result.shop_info.shop_id}}">
+      <!-- <navigator  class='color4' url='../business_details/business_details?id={{result.shop_info.shop_id}}' wx:if="{{result.shop_info.shop_id}}"> -->
         <text>{{result.shop_info.title}}</text>
         <text class='iconfont icon-jiantou bold size24'></text>
-      </navigator>
+      <!-- </navigator> -->
     </view>
     <view class='fkItem_goods ' bindtap='tiaozhuan' data-id='{{order_goods.sku_id}}'>
       <view class='flex'>
@@ -71,9 +71,9 @@
     </block>
   </view>
 </block>
-  <block wx:for="{{button_arr}}"  wx:key="index">
+  <!-- <block wx:for="{{button_arr}}"  wx:key="index">
     <view class='submitButton {{item.key}}'  bindtap='{{item.key}}' >{{item.name}}</view>
-  </block>
+  </block> -->
 <wux-popup closable position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
   <view class="page__title color4">物流信息</view>
   <view class='over_look_big'>

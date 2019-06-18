@@ -67,7 +67,8 @@ module.exports = {
   getTimeLeft: getTimeLeft,
   wx_appid: wx_appid,
   bmak: bmak,
-  previewImage: previewImage
+  previewImage: previewImage,
+  pjnav: pjnav,//首页获取分享后的地址在跳转
 }
 //图片图片预览
 function previewImage(src, imgList) {
@@ -1141,10 +1142,21 @@ function allowUploadFormat(tempFiles = []) {
 }
 // 分享
 function share(title, path, imageUrl) {
+  title = title || '啄木鸟环保'
   return {
     title: title,
-    path: path,
+    path: '/pages/index/index?pjurl='+path,
     imageUrl: imageUrl,
     success: function (a) { }
   };
+}
+function pjnav(pjurl, pjdata){
+  var pjurl = pjurl + "?1=1"
+  var pjdata = JSON.parse(pjdata)||{}
+  for (var a in pjdata) {
+    pjurl = pjurl + "&" + a + "=" + pjdata[a]
+  }
+  wx.navigateTo({
+    url: pjurl,
+  })
 }

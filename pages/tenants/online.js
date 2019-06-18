@@ -696,6 +696,11 @@ Page({
       }
     }
   },
+  addresszzc() {
+    this.setData({
+      suggestion: []
+    })
+  },
   hiddensug() {
     this.setData({
       suggestion: [],

@@ -251,22 +251,26 @@ Page({
     this.setData({
       share_zzc: !this.data.share_zzc
     })
-    return {
-      title: '啄木鸟环保',
-      path: '/pages/dynamic/dynamic?id=' + this.data.news_id + "&pjurl='../dynamic/dynamic?id='" + this.data.news_id,
-      // imageUrl: 'https://......./img/groupshare.png',  //用户分享出去的自定义图片大小为5:4,
-      success: function (res) {
-        // 转发成功
-        wx.showToast({
-          title: "分享成功",
-          icon: 'success',
-          duration: 2000
-        })
-      },
-      fail: function (res) {
-        // 分享失败
-      },
+    var pjdata = {
+      id: this.data.news_id
     }
+    return util.share('啄木鸟环保', '../dynamic/dynamic&pjdata=' + JSON.stringify(pjdata))
+    // return {
+    //   title: '啄木鸟环保',
+    //   path: '/pages/dynamic/dynamic?id=' + this.data.news_id + "&pjurl='../dynamic/dynamic?id='" + this.data.news_id,
+
+    //   success: function (res) {
+    //     // 转发成功
+    //     wx.showToast({
+    //       title: "分享成功",
+    //       icon: 'success',
+    //       duration: 2000
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     // 分享失败
+    //   },
+    // }
   },
   savepic(){
     var that = this

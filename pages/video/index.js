@@ -168,12 +168,16 @@ Page({
   onShareAppMessage: function (e) {
     console.log(e)
     var that = this;
-    return {
-      title: '啄木鸟环保',
-      path: '/pages/video_detail/index?id=' + e.target.dataset.id + "&pjurl='../video_detail/index?id='" + e.target.dataset.id, //这里拼接需要携带的参数
-      success: function (res) {
-        console.log("转发成功" + res);
-      }
+    var pjdata = {
+      id: e.target.dataset.id
     }
+    return util.share('啄木鸟环保', '../video_detail/index&pjdata=' + JSON.stringify(pjdata))
+    // return {
+    //   title: '啄木鸟环保',
+    //   path: '/pages/video_detail/index?id=' + e.target.dataset.id + "&pjurl='../video_detail/index?id='" + e.target.dataset.id, //这里拼接需要携带的参数
+    //   success: function (res) {
+    //     console.log("转发成功" + res);
+    //   }
+    // }
   }
 })

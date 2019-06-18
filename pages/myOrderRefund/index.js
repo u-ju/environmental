@@ -128,7 +128,7 @@ Page({
     console.log(data)
     util.postJSON({ apiUrl: apiurl.userOrder_afterSaleStore, data: data }, function (res) {
       util.alert(res.data.message)
-      
+      wx.navigateBack()
     }, function (res) {
       console.log(res.data.message)
       that.setData({

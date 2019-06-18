@@ -338,6 +338,9 @@ Page({
     })
   },
   onShareAppMessage: function () {
-    return util.share('啄木鸟环保', '/pages/business_details/business_details?id=' + this.data.shop_id + "&pjurl='../business_details/business_details?id='" + this.data.shop_id)
+    var pjdata ={
+      id: this.data.shop_id
+    }
+    return util.share('啄木鸟环保', '../business_details/business_details&pjdata=' + JSON.stringify(pjdata) )
   }
 })

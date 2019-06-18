@@ -1,7 +1,13 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/recruitment/recruit/myposition/index",
+    "pages/recruitment/recruit/my/index",
+    "pages/recruitment/recruit/interview/index",
+    "pages/recruitment/recruit/resume/index",
+    "pages/recruitment/index/index",
+    
+    
     "pages/myCollection/index",
     "pages/assets/index",
     "pages/family/associated/index",
@@ -10,12 +16,12 @@
     "pages/myInviteNewusers/index",
     "pages/realname_authentication/realname_authentication",
     "pages/installment_details/installment_details",
-    
+    "pages/order/index",
     "pages/login/login",
     "pages/login/index",
     "pages/setting/setting",
-    
-    
+    "pages/tenants/tenants",
+    "pages/renting/index/index",
     
     "pages/withdrawal_record/transfer",
     "pages/withdrawal/transfer",
@@ -37,12 +43,12 @@
     
     "pages/search/index",
     "pages/comment/shopComment",
-    "pages/tenants/tenants",
+    
     "pages/tenants/online",
     "pages/agriculturalEdit/index",
     "pages/business_details/reservation/index",
     "pages/business_details/license/index",
-    "pages/order/index",
+    
     "pages/my_order_detail/refund",
     "pages/myOrderRefund/index",
     "pages/agriculturalMerchantsOrderDeail/index",
@@ -63,7 +69,7 @@
     "pages/businessProductview/index",
     "pages/businessProductAdd/index",
     "pages/agent/index",
-    "pages/recruitment/index/index",
+    
     "pages/lostFound/lfDetails/index",
     "pages/lostFound/lostfound/index",
     "pages/delivery_station/index",

@@ -688,6 +688,10 @@ Page({
     })
   },
   onShareAppMessage: function () {
-    return util.share('啄木鸟环保', '/pages/agriculturalDetail/index?id=' + this.data.sku_id + "&pjurl='../agriculturalDetail/index?id='" + this.data.sku_id)
+    var pjdata = {
+      id: this.data.sku_id
+    }
+    return util.share('啄木鸟环保', '../agriculturalDetail/index&pjdata=' + JSON.stringify(pjdata))
+    // return util.share('啄木鸟环保', '/pages/agriculturalDetail/index?id=' + this.data.sku_id + "&pjurl='../agriculturalDetail/index?id='" + this.data.sku_id)
   }
 })

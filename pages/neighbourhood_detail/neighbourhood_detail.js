@@ -268,21 +268,25 @@ Page({
     this.setData({
       share_zzc: !this.data.share_zzc
     })
-    return {
-      title: '啄木鸟环保',
-      path: '/pages/neighbourhood_detail/neighbourhood_detail?id=' + this.data.vicinage_id + "&pjurl='../neighbourhood_detail/neighbourhood_detail?id='" + this.data.vicinage_id ,
-      success: function (res) {
-        // 转发成功
-        wx.showToast({
-          title: "分享成功",
-          icon: 'success',
-          duration: 2000
-        })
-      },
-      fail: function (res) {
-        // 分享失败
-      },
+    var pjdata = {
+      id: this.data.vicinage_id
     }
+    return util.share('啄木鸟环保', '../neighbourhood_detail/neighbourhood_detail&pjdata=' + JSON.stringify(pjdata))
+    // return {
+    //   title: '啄木鸟环保',
+    //   path: '/pages/neighbourhood_detail/neighbourhood_detail?id=' + this.data.vicinage_id + "&pjurl='../neighbourhood_detail/neighbourhood_detail?id='" + this.data.vicinage_id ,
+    //   success: function (res) {
+    //     // 转发成功
+    //     wx.showToast({
+    //       title: "分享成功",
+    //       icon: 'success',
+    //       duration: 2000
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     // 分享失败
+    //   },
+    // }
   },
   savepic() {
     var that = this

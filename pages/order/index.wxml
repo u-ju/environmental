@@ -20,14 +20,14 @@
             <view class='color3 size28 hidden2'>{{order_goods.spu_name}}</view>
             <view class='color4'>{{order_goods.sku_name}}</view>
             <view class='colorFE2C2C size28 flex_btw'>
-              <view>{{order_goods.price}}</view>
+              <view>￥{{order_goods.price}}</view>
               <view>× {{order_goods.buy_count}}</view>
             </view>
           </view>
         </view>
-        <!-- <view class='flex_reverse size28'>
-          <view class='color989898 btnck afterSale' wx:if="{{order_goods.after_sale.name}}" catchtap='afterSale' data-id='{{order_goods.order_id}}' data-sku_id='{{order_goods.sku_id}}'>{{order_goods.after_sale.name}}</view>
-        </view> -->
+        <view class='flex_reverse size28'>
+          <view class='color989898 btnck afterSale' wx:if="{{order_goods.after_sale.name}}" catchtap='afterSale' data-id='{{order_goods.order_id}}' data-sku_id='{{order_goods.sku_id}}' data-name='{{order_goods.after_sale.name}}'>{{order_goods.after_sale.name}}</view>
+        </view>
       </view>
     </view>
     <view class='colorFE2C2C size28 textR'>

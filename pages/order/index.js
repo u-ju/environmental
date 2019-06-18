@@ -358,15 +358,15 @@ Page({
     
     var item = e.currentTarget.dataset.item
     console.log(item)
-    if (JSON.stringify(item.after_sale) == "{}"){
+    // if (JSON.stringify(item.after_sale) == "{}"){
       wx.navigateTo({
         url: '../my_order_detail/index?id=' + item.order_id,
       })
-    }else{
-      wx.navigateTo({
-        url: '../my_order_detail/refund?id=' + item.order_id + "&sku_id=" + item.sku_id,
-      })
-    }
+    // }else{
+    //   wx.navigateTo({
+    //     url: '../my_order_detail/refund?id=' + item.order_id + "&sku_id=" + item.sku_id,
+    //   })
+    // }
 
   },
   store() {
@@ -380,4 +380,15 @@ Page({
     }
     
   },
+  afterSale(e) {
+    if (e.currentTarget.dataset.name == "申请售后") {
+      wx.navigateTo({
+        url: '../myOrderRefund/index?sku_id=' + e.currentTarget.dataset.sku_id + "&order_id=" + e.currentTarget.dataset.id,
+      })
+    } else if (e.currentTarget.dataset.name == "售后中") {
+      wx.navigateTo({
+        url: '../my_order_detail/refund?id=' + e.currentTarget.dataset.id + "&sku_id=" + e.currentTarget.dataset.sku_id,
+      })
+    }
+  }
 })

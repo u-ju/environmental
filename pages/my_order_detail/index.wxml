@@ -21,22 +21,27 @@
 </view>
 <view class='shitem'>
   <view class='color4 borbtm'>
-    <navigator class='color4' url='../business_details/business_details?id={{result.shop_info.shop_id}}' wx:if="{{result.shop_info.shop_id}}">
+    <!-- <navigator class='color4' url='../business_details/business_details?id={{result.shop_info.shop_id}}' wx:if="{{result.shop_info.shop_id}}"> -->
       <text>{{result.shop_info.title}}</text>
       <text class='iconfont icon-jiantou bold size24'></text>
-    </navigator>
+    <!-- </navigator> -->
   </view>
-  <view class='fkItem_goods flex' wx:for="{{result.order_goods}}" wx:key="index" bindtap='tiaozhuan' data-id='{{item.sku_id}}'>
-    <image src='{{item.thumb}}' class='goospic' mode='aspectFill'></image>
-    <view class='fkItem_goods_ms fkItem_goods_ms1'>
-      <view class='hidden2'>{{item.spu_name}}</view>
-      <view class='color4 size28 flex_btw'>
-        <view class='one-hidden width'>{{item.sku_name}}</view>
-        <view class='color898989'>
-          <text class='iconfont icon-cuohao size22'></text> {{item.buy_count}}
+  <view class='fkItem_goods' wx:for="{{result.order_goods}}" wx:key="index" bindtap='tiaozhuan' data-id='{{item.sku_id}}'>
+    <view class=' flex'>
+      <image src='{{item.thumb}}' class='goospic' mode='aspectFill'></image>
+      <view class='fkItem_goods_ms fkItem_goods_ms1'>
+        <view class='hidden2'>{{item.spu_name}}</view>
+        <view class='color4 size28 flex_btw'>
+          <view class='one-hidden width'>{{item.sku_name}}</view>
+          <view class='color898989'>
+            <text class='iconfont icon-cuohao size22'></text> {{item.buy_count}}
+          </view>
         </view>
+        <view class='colorFE2C2C size28'>￥{{item.price}}</view>
       </view>
-      <view class='colorFE2C2C size28'>{{item.price}}</view>
+    </view>
+    <view class='flex_reverse size28'>
+      <view class='color989898 btnck afterSale' wx:if="{{item.after_sale.name}}" catchtap='shouhou' data-id='{{item.order_id}}' data-name='{{item.after_sale.name}}' data-sku_id='{{item.sku_id}}'>{{item.after_sale.name}}</view>
     </view>
   </view>
 </view>

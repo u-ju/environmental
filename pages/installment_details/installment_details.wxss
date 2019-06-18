@@ -2,6 +2,7 @@
 @import '../video_detail/index';
 .icon-share{
   margin: 0 0 0 50rpx;
+  background-color: transparent;
 }
 .swiperbox ,swiper image{
   width: 100%;

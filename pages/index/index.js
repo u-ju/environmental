@@ -81,20 +81,28 @@ Page({
     
     this.refreshView = this.selectComponent("#refreshView")
     var formData = wx.getStorageSync('formData')
+    if (options.pjurl){
+      this.setData({
+        pjurl: options.pjurl,
+        pjdata: options.pjdata,
+      })
+    }
     if (formData) {
       this.setData({
         formData: formData
       })
       wx.setStorageSync('formData', '')
     }
-
-
     util.loading()
     if (wx.getStorageSync('token') && wx.getStorageSync('token') != 1) {
       that.setData({
         token: util.getToken()
       })
+      if (options.pjurl) {
+        util.pjnav(options.pjurl, options.pjdata)
+      }
       that.init()
+      
     } else {
       wx.setStorageSync("token", 1)
       that.setData({
@@ -107,11 +115,7 @@ Page({
         share_gene: options.share_gene
       })
     }
-    if (options.pjurl) { //是否携带参数
-      that.setData({
-        pjurl: options.pjurl
-      })
-    }
+    
 
   },
   onShow() {
@@ -304,9 +308,7 @@ Page({
                   token: token
                 })
                 if (that.data.pjurl) {
-                  return wx.navigateTo({
-                    url: that.data.pjurl,
-                  })
+                 return util.pjnav(that.data.pjur, that.data.pjdata)
                 }
                 // console.log(that.data.formData)
                 if (that.data.formData && that.data.formData.hasOwnProperty("qrcode")) {
@@ -337,9 +339,7 @@ Page({
                         token: token
                       })
                       if (that.data.pjurl) {
-                        return wx.navigateTo({
-                          url: that.data.pjurl,
-                        })
+                        return util.pjnav(that.data.pjur, that.data.pjdata)
                       }
                       // console.log(that.data.formData)
                       if (that.data.formData && that.data.formData.hasOwnProperty("qrcode")) {

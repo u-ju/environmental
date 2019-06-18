@@ -31,7 +31,7 @@ Page({
     }
   },
   tiaozhuan(e){
-    console.log(e.currentTarget.dataset.id)
+
     wx.navigateTo({
       url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.id,
     })
@@ -54,7 +54,7 @@ Page({
     })
   },
   click(e){
-    console.log(e)
+
     var that = this;
     var btn = {
       cancel:'userOrder_cancel',
@@ -62,7 +62,7 @@ Page({
       comment:'url'
     }
     for(var i in btn){
-      // console.log(i, btn[i], apiurl[btn[i]])
+    
       if (e.currentTarget.dataset.key==i){
         if (btn[i]=="url"){
           var order_goods = that.data.result.order_goods, pjurl=''
@@ -87,7 +87,7 @@ Page({
               util.postJSON({ apiUrl: apiurlnow, data: { order_id: that.data.order_id } }, function (res) {
                 var result = res.data.result
                 util.alert(res.data.message)
-                wx.navigateBack()
+                // wx.navigateBack()
                 wx.showLoading({
                   title: '加载中',
                 })
@@ -112,5 +112,26 @@ Page({
     this.setData({
       visible2: false,
     })
+  },
+  afterSale(e) {
+    wx.navigateTo({
+      url: '../myOrderRefund/index?sku_id=' + e.currentTarget.dataset.sku_id + "&order_id=" + e.currentTarget.dataset.id,
+    })
+  },
+  refund(e){
+    wx.navigateTo({
+      url: 'refund?id=' + e.currentTarget.dataset.id + "&sku_id=" + e.currentTarget.dataset.sku_id,
+    })
+  },
+  shouhou(e){
+    if (e.currentTarget.dataset.name =="申请售后"){
+      wx.navigateTo({
+        url: '../myOrderRefund/index?sku_id=' + e.currentTarget.dataset.sku_id + "&order_id=" + e.currentTarget.dataset.id,
+      })
+    } else if (e.currentTarget.dataset.name == "售后中") {
+      wx.navigateTo({
+        url: 'refund?id=' + e.currentTarget.dataset.id + "&sku_id=" + e.currentTarget.dataset.sku_id,
+      })
+    }
   }
 })

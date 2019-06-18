@@ -160,3 +160,4 @@
 </form>
 
 <wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="商城类型" options="{{ shop_cate }}" bind:close="onClose1" bind:change="onChange1" />
+<view class='addresszzc' bindtap='addresszzc'  wx:if='{{suggestion.length>0}}' ></view>

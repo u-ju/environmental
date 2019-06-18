@@ -81,22 +81,25 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (e) {
-
-    return {
-      title: '啄木鸟环保',
-      path: '/pages/housekeeping_detail/index?id=' + that.data.id + "&pjurl='../housekeeping_detail/index?id='" + that.data.id,
-      success: function (res) {
-        // 转发成功
-        wx.showToast({
-          title: "分享成功",
-          icon: 'success',
-          duration: 2000
-        })
-      },
-      fail: function (res) {
-        // 分享失败
-      },
+    var pjdata = {
+      id: this.data.id
     }
+    return util.share('啄木鸟环保', '../dynamic/dynamic&pjdata=' + JSON.stringify(pjdata))
+    // return {
+    //   title: '啄木鸟环保',
+    //   path: '/pages/housekeeping_detail/index?id=' + that.data.id + "&pjurl='../housekeeping_detail/index?id='" + that.data.id,
+    //   success: function (res) {
+    //     // 转发成功
+    //     wx.showToast({
+    //       title: "分享成功",
+    //       icon: 'success',
+    //       duration: 2000
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     // 分享失败
+    //   },
+    // }
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -126,10 +129,5 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
 })

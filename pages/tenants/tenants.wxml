@@ -44,6 +44,7 @@
           </view>
         </scroll-view>
       </view>
+      
     </view>
     <view class='zzctransp' bindtap='hiddensug' wx:if='{{suggestion.length>0}}'></view>
     <view class='item  flex align_center'>
@@ -264,6 +265,7 @@
     </view>
   </view>
 </wux-popup>
+<view class='addresszzc' bindtap='addresszzc'  wx:if='{{suggestion.length>0}}' ></view>
 <!-- <view class='relative'>
 <input style="border:1px solid black;" bindinput="getsuggest" value="{{backfill}}"></input>
  <scroll-view

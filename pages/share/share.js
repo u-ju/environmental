@@ -74,15 +74,18 @@ Page({
   onShareAppMessage: function () {
 
     var that = this;
-
+    var pjdata = {
+      share_gene:that.result.share_gene
+    }
+    return util.share('啄木鸟环保', '../index/index&pjdata=' + JSON.stringify(pjdata))
     // var userId = 'puju';
 
-    return {
-      title: '啄木鸟环保',
-      path: '/pages/index/index?share_gene=' + that.result.share_gene, //这里拼接需要携带的参数
-      success: function (res) {
-        console.log("转发成功" + res);
-      }
-    }
+    // return {
+    //   title: '啄木鸟环保',
+    //   path: '/pages/index/index?share_gene=' + that.result.share_gene, //这里拼接需要携带的参数
+    //   success: function (res) {
+    //     console.log("转发成功" + res);
+    //   }
+    // }
   }
 })

@@ -237,21 +237,25 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (e) {
-    
-    return {
-      title: '啄木鸟环保',
-      path: '/pages/video_detail/index?id=' + that.data.video_id + "&pjurl='../video_detail/index?id='" + that.data.video_id ,
-      success: function (res) {
-        // 转发成功
-        wx.showToast({
-          title: "分享成功",
-          icon: 'success',
-          duration: 2000
-        })
-      },
-      fail: function (res) {
-        // 分享失败
-      },
+
+    var pjdata = {
+      id: that.data.video_id
     }
+    return util.share('啄木鸟环保', '../video_detail/index&pjdata=' + JSON.stringify(pjdata))
+    // return {
+    //   title: '啄木鸟环保',
+    //   path: '/pages/video_detail/index?id=' + that.data.video_id + "&pjurl='../video_detail/index?id='" + that.data.video_id ,
+    //   success: function (res) {
+    //     // 转发成功
+    //     wx.showToast({
+    //       title: "分享成功",
+    //       icon: 'success',
+    //       duration: 2000
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     // 分享失败
+    //   },
+    // }
   }
 })

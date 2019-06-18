@@ -80,15 +80,15 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 }
 
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  background: rgba(9, 187, 7, 1);
-  border-color: rgba(9, 187, 7, 1);
+  background: #4FD6F0;
+  border-color: #4FD6F0;
 }
 
 .btnsure {
   width: 686rpx;
   height: 86rpx;
-  background: linear-gradient(0deg, rgba(68, 213, 162, 1) 0%, rgba(153, 228, 171, 1) 100%);
-  box-shadow: 0px 4rpx 13rpx 0px rgba(68, 213, 162, 0.23);
+  /* background: linear-gradient(0deg, rgba(68, 213, 162, 1) 0%, rgba(153, 228, 171, 1) 100%);
+  box-shadow: 0px 4rpx 13rpx 0px rgba(68, 213, 162, 0.23); */
   border-radius: 43rpx;
   text-align: center;
   color: white;
@@ -165,7 +165,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
 .weui-cell-circle {
   width: 32rpx;
   height: 32rpx;
-  background-color: rgba(46, 179, 84, 1);
+  background-color: #4FD6F0;
   border-radius: 50%;
   margin: -12rpx 0 0 0;
 }
@@ -198,12 +198,12 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   height: 88rpx;
   text-align: center;
   line-height: 88rpx;
-  border: 4rpx solid rgba(46, 179, 84, 1);
+  border: 4rpx solid #4FD6F0;
   border-radius: 15rpx;
   font-size: 30rpx;
   font-family: PingFang-SC-Regular;
   font-weight: bold;
-  color: rgba(46, 179, 84, 1);
+  color: #4FD6F0;
 }
 
 .shbtnitem {
@@ -286,8 +286,8 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   width: 160rpx;
   margin-top: 20rpx;
   border-radius: 30rpx;
-  border-color: #33cd5f;
-  color: #33cd5f;
+ 
+  /* color: #4FD6F0; */
   height: 60rpx;
   line-height: 60rpx;
 }

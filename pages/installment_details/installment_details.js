@@ -713,6 +713,10 @@ Page({
     })
   },
   onShareAppMessage: function () {
-    return util.share('啄木鸟环保', '/pages/installment_details/installment_details?id=' + this.data.sku_id + "&pjurl='../installment_details/installment_details?id='" + this.data.sku_id,)
+    var pjdata = {
+      id: this.data.sku_id
+    }
+    return util.share('啄木鸟环保', '../installment_details/installment_details&pjdata=' + JSON.stringify(pjdata))
+    // return util.share('啄木鸟环保', '/pages/installment_details/installment_details?id=' + this.data.sku_id + "&pjurl='../installment_details/installment_details?id='" + this.data.sku_id,)
   }
 })

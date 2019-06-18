@@ -4,7 +4,7 @@ var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
 Page({
   data: {
-
+    flag:true
   },
   onLoad(e) {
     util.loading()
@@ -22,42 +22,6 @@ Page({
       title: hint.header,
     })
   },
-  link(e) {
-    if (!e.currentTarget.dataset.link || JSON.stringify(e.currentTarget.dataset.link) == "{}") {
-      return wx.navigateBack({ delta: this.data.delta })
-    }
-    var url = e.currentTarget.dataset.link.control
-    if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
-      url = url + "?1=1"
-      for (var i in e.currentTarget.dataset.link.params) {
-
-        console.log(i, e.currentTarget.dataset.link.params[i])
-        url = url + "&" + i + "=" + e.currentTarget.dataset.link.params[i]
-      }
-    }
-    if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
-      url = url + "&children=" + JSON.stringify(e.currentTarget.dataset.children)
-    }
-    console.log(url)
-    if (url.indexOf('../index/index') > -1 || url.indexOf('../personal_center/personal_center') > -1) {
-      if (this.data.pages < 3) {
-        return wx.navigateBack()
-      } else {
-        return wx.reLaunch({
-          url: url
-        })
-      }
-      
-    } else {
-      wx.navigateTo({
-        url: url,
-        fail: function() {
-          util.alert('该功能暂未开放，敬请期待')
-        },
-      })
-    }
-
-  },
   ok(e){
     var url = e.currentTarget.dataset.link.control
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
@@ -73,11 +37,19 @@ Page({
     }
 
     if (url.indexOf('../index/index') > -1 || url.indexOf('../personal_center/personal_center') > -1) {
+      console.log(url)
       if (this.data.pages < 3) {
         return wx.navigateBack()
       } else {
-        return wx.reLaunch({
-          url: url
+        console.log(url)
+        this.setData({
+          flag: false
+        })
+        wx.reLaunch({
+          url: url,
+          success(){
+            flag: true
+          }
         })
       }
     } else {
@@ -93,9 +65,11 @@ Page({
     wx.navigateBack({ delta: this.data.delta })
   },
   onUnload: function() {
-   return wx.navigateBack({
-      delta: this.data.delta
-    })
+    if (this.data.flag){
+      wx.navigateBack({
+        delta: this.data.delta
+      })
+    }
 
   },
 })

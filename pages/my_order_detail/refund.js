@@ -33,7 +33,6 @@ Page({
     }
   },
   tiaozhuan(e) {
-    console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.id,
     })
@@ -56,7 +55,6 @@ Page({
     })
     util.getJSON({ apiUrl: apiurl.userOrder_afterSaleShow + "?order_id=" + order_id + "&sku_id=" + that.data.sku_id }, function (res) {
       var result = res.data.result
-      console.log(result)
       that.setData({
         order_goods: result.order_goods,
         after_sale_list: result.after_sale_list,
@@ -71,7 +69,6 @@ Page({
     })
   },
   click(e) {
-    console.log(e)
     var that = this;
     var btn = {
       cancel: 'userOrder_cancel',
@@ -79,7 +76,6 @@ Page({
       comment: 'url'
     }
     for (var i in btn) {
-      // console.log(i, btn[i], apiurl[btn[i]])
       if (e.currentTarget.dataset.key == i) {
         if (btn[i] == "url") {
           var order_goods = that.data.result.order_goods, pjurl = ''
