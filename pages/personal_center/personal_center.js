@@ -60,7 +60,7 @@ Page({
         result: result,
         l_one: l_one,
         l_three: l_three,
-        l_two: result.l_two,
+        l_two: result.l_two||"",
         surplus: result.l_three.length % 3,
         surplusnum: parseInt(result.l_three.length % 3),
         // tag_list: result.tag_list,
@@ -85,7 +85,6 @@ Page({
   onShow: function () {
     wx.showLoading({
       title: '加载中',
-      
     })
     this.init()
   },

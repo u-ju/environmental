@@ -1,1 +1,40 @@
 /* pages/renting/index/index.wxss */
+@import '../../shopping_mall/shopping_mall';
+.search{
+  width:376rpx;
+  height:62rpx;
+  background:rgba(238,238,238,1);
+  border-radius:31rpx;
+  padding: 0 20rpx;
+}
+.searchall_pic {
+  font-size: 44rpx;
+}
+.location .hidden1{
+  width: auto;
+}
+.tabTit {
+  top: 100rpx;
+}
+.rentpic{
+  width:244rpx;
+  height:150rpx;
+  border-radius:5rpx;
+  background-color: #eee;
+}
+.renting .flex_col{
+  width: 420rpx;
+}
+.rentitem{
+  margin-top: 100rpx;
+}
+.renting{
+  padding: 30rpx 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.marr40{
+  margin-right: 40rpx;
+}
+.tag text{
+  margin-right: 20rpx;
+}

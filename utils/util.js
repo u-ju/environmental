@@ -69,6 +69,7 @@ module.exports = {
   bmak: bmak,
   previewImage: previewImage,
   pjnav: pjnav,//首页获取分享后的地址在跳转
+  copyarr: copyarr
 }
 //图片图片预览
 function previewImage(src, imgList) {
@@ -1159,4 +1160,11 @@ function pjnav(pjurl, pjdata){
   wx.navigateTo({
     url: pjurl,
   })
+}
+function copyarr(arr) {
+  var arr1=[]
+  for(var i in arr){
+    arr1.push(arr[i])
+  }
+  return arr1
 }

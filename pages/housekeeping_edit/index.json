@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "注册商家",
+  "navigationBarTitleText": "家政入驻",
   "usingComponents": {
     "wux-popup": "../../Components/popup/index",
     "wux-cascader": "../../Components/cascader/index",

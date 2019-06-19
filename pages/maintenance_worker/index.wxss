@@ -37,7 +37,7 @@ textarea,.textareav{
 
 .ppcon{
   padding: 74rpx 0 100rpx 0;
-  color: #4AD6A3;
+  color: #4FD6F0;
   line-height: 40rpx;
 }
 /* .icon-jiantou{

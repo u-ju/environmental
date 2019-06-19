@@ -26,3 +26,24 @@ textarea{
   right: -10rpx;
   background-color: #f00;
 }
+.cate{
+  width:150rpx;
+  height:62rpx;
+  background:#E5E5E5;
+  border-radius:5rpx;
+  text-align: center;
+  line-height: 62rpx;
+  margin: 20rpx 0;
+}
+.active{
+  background:#4FD6F0;
+  color: white;
+}
+.cateitem{
+  padding: 60rpx 30rpx;
+}
+.wxgitem .textR {
+  width:500rpx;
+  height:60rpx;
+  line-height: 60rpx;
+}

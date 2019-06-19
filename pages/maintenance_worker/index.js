@@ -31,7 +31,11 @@ Page({
       { title: '营业执照', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
     ],
     textareahidden:false,
-    intro:''
+    intro:'',
+    choose: [],
+    choosename: [],
+    chooset: [],
+    choosenamet: [],
   },
 
   /**
@@ -109,7 +113,9 @@ Page({
     console.log(e)
     var data = e.detail.value, that = this;
     data.area_id = that.data.area_id
-    data.cate_id = that.data.cate_id
+    for (var i in that.data.chooset) {
+      data['cate_id[' + i + ']'] = that.data.chooset[i]
+    }
     that.setData({
       post: true
     })
@@ -165,17 +171,7 @@ Page({
   onShow: function () {
 
   },
-  onOpen1() {
-    console.log("sssss")
-    this.setData({ visible1: true })
-  },
-  onClose1() {
-    this.setData({ visible1: false })
-  },
-  onChange1(e) {
-    this.setData({ cate_name: e.detail.options.map((n) => n.label).join('-'), cate_id: e.detail.options[e.detail.options.length - 1].id })
-    console.log('onChange1', e.detail)
-  },
+
   open3() {
     this.setData({
       visible3: true,
@@ -191,6 +187,41 @@ Page({
   xiugai() {
     this.setData({
       disabled1: false
+    })
+  },
+  onOpen1() {
+    this.setData({ visible1: true })
+  },
+  close1() {
+    this.setData({ visible1: false })
+  },
+  choose(e) {
+
+    var choose = this.data.choose, choosename = this.data.choosename
+    if (choose.indexOf(e.currentTarget.dataset.id) == -1) {
+      choose.push(e.currentTarget.dataset.id)
+      choosename.push(e.currentTarget.dataset.name)
+    } else {
+      choose.splice(choose.indexOf(e.currentTarget.dataset.id), 1)
+      choosename.splice(choosename.indexOf(e.currentTarget.dataset.id), 1)
+    }
+    this.setData({
+      choose: choose,
+      choosename: choosename
+    })
+  },
+  ch_del() {
+    this.setData({
+      visible1: false,
+      choose: util.copyarr(this.data.chooset),
+      choosename: util.copyarr(this.data.choosenamet)
+    })
+  },
+  ch_true() {
+    this.setData({
+      visible1: false,
+      chooset: util.copyarr(this.data.choose),
+      choosenamet: util.copyarr(this.data.choosename)
     })
   },
 })

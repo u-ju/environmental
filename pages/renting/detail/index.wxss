@@ -1,0 +1,56 @@
+/* pages/renting/detail/index.wxss */
+page{
+  font-size: 28rpx;
+}
+.swiperbox ,swiper image{
+  width: 100%;
+  height: 480rpx;
+  border-radius: 0;
+}
+.dettil{
+  padding: 26rpx 32rpx 0 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.marb8{
+  margin-bottom: 8rpx;
+
+}
+.infor{
+  padding: 38rpx 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.infortag>view{
+  width: 50%;
+  margin-bottom: 20rpx;
+}
+.infortag .color898989{
+  margin-right: 20rpx;
+}
+.icon-dingwei{
+  color: #FEB871;
+}
+.mart60{
+  margin-top: 60rpx;
+}
+.title{
+  padding: 12rpx 0 24rpx 0;
+  border-bottom: 1px solid #EEEEEE;
+  width: 686rpx;
+  margin: 38rpx auto 12rpx auto;
+}
+.config>view{
+  width: 20%;
+  margin-bottom: 40rpx;
+}
+.config .icon{
+  width: 50rpx;
+  height: 50rpx;
+  background-color: #eee;
+}
+.config{
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.describe{
+  padding: 0 32rpx 80rpx 32rpx;
+  line-height: 48rpx;
+}

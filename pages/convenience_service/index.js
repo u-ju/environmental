@@ -83,9 +83,9 @@ Page({
         }
       })
     }
-    wx.showLoading({
-      title: '加载中',
-    })
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
     var url = e.currentTarget.dataset.link.control
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
       for (var i in e.currentTarget.dataset.link.params) {

@@ -1,13 +1,17 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/housekeeping_edit/index",
+    "pages/renting/release/index",
+    "pages/renting/detail/index",
+    "pages/renting/index/index",
+    
     "pages/recruitment/recruit/myposition/index",
     "pages/recruitment/recruit/my/index",
     "pages/recruitment/recruit/interview/index",
     "pages/recruitment/recruit/resume/index",
     "pages/recruitment/index/index",
-    
-    
     "pages/myCollection/index",
     "pages/assets/index",
     "pages/family/associated/index",
@@ -21,7 +25,6 @@
     "pages/login/index",
     "pages/setting/setting",
     "pages/tenants/tenants",
-    "pages/renting/index/index",
     
     "pages/withdrawal_record/transfer",
     "pages/withdrawal/transfer",
@@ -40,15 +43,12 @@
     "pages/personal_center/personal_center",
     "pages/business_details/product/index",
     "pages/operationalData/index",
-    
     "pages/search/index",
     "pages/comment/shopComment",
-    
     "pages/tenants/online",
     "pages/agriculturalEdit/index",
     "pages/business_details/reservation/index",
     "pages/business_details/license/index",
-    
     "pages/my_order_detail/refund",
     "pages/myOrderRefund/index",
     "pages/agriculturalMerchantsOrderDeail/index",
@@ -56,7 +56,6 @@
     "pages/agriculturalMerchantsOrder/index",
     "pages/agriculturalRecommendation/index",
     "pages/businessProduct/index",
-    
     "pages/businessinforcheck/index",
     "pages/businessinforedit/index",
     "pages/businessmerchantsDetail/index",
@@ -69,7 +68,6 @@
     "pages/businessProductview/index",
     "pages/businessProductAdd/index",
     "pages/agent/index",
-    
     "pages/lostFound/lfDetails/index",
     "pages/lostFound/lostfound/index",
     "pages/delivery_station/index",
@@ -79,14 +77,12 @@
     "pages/home_orders/index",
     "pages/page/index",
     "pages/my_invitation/index",
-    
     "pages/feedback/index",
-    
     "pages/agentPay/index",
     "pages/qrcode/index",
     "pages/my_integral/index",
     "pages/housekeeping/index",
-    "pages/housekeeping_edit/index",
+    
     "pages/payShop/index",
     "pages/repair/index",
     "pages/business/index",
@@ -133,11 +129,8 @@
     "pages/phone_new/phone_new",
     "pages/delivery_station/delivery_station",
     "pages/delivery_station_list/delivery_station_list",
-    
     "pages/help_center/help_center",
-    
     "pages/news/news",
-    
     "pages/news_detail/news_detail",
     "pages/qrcode/qrcode",
     "pages/put/put",
