@@ -1,9 +1,19 @@
 /* pages/housekeeping_detail/index.wxss */
 @import '../business_details/business_details';
-.share{
-  width: 30rpx;
-  height: 30rpx;
+.banner{
+  width: 686rpx;
+  height: 480rpx;
+  margin: auto;
 }
+.icon-share{
+  margin: 0;
+}
+.button-hover {
+
+background-color:transparent;
+
+}
+
 .colorFE3939{
   color: #FE3939
 }
@@ -48,3 +58,9 @@ button{
 .flex-end{
 align-items: flex-end 
 }
+.titlexx .titlec{
+  width: 600rpx;
+}
+/* .titlexx .titlec{
+  width: 600rpx;
+} */

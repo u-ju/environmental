@@ -26,16 +26,15 @@ Page({
     status_name:'',
     url:'repair_userStore',
     post:false,
-    image: [
-      { title: '店招上传', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
-      { title: '营业执照', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
-    ],
+    
     textareahidden:false,
     intro:'',
     choose: [],
     choosename: [],
     chooset: [],
     choosenamet: [],
+    upload_picture_list:[],
+    repair_id:''
   },
 
   /**
@@ -56,9 +55,14 @@ Page({
       intro: e.detail.value
     })
   },
+  detail(e) {
+    wx.navigateTo({
+      url: '../maintenanceworker_detail/index?id=' + e.currentTarget.dataset.id + "&url=repair_show",
+    })
+  },
   onLoad: function (options) {
-    if (options.repair != '' && options.repair !=undefined){
-      this.userShow(options.repair)
+    if (options.repair != '' && options.repair != undefined && options.repair != 0){
+      this.userShow()
       
     } 
     wx.getLocation({
@@ -77,19 +81,28 @@ Page({
   },
   userShow(id){
     var that = this;
-    util.getJSON({ apiUrl: apiurl.repair_userShow + id }, function (res) {
-      var result = res.data.result
+    util.getJSON({ apiUrl: apiurl.repair_userShow  }, function (res) {
+      var result = res.data.result, upload_picture_list=[]
+      if (result.thumb){
+        upload_picture_list.push({ upload_percent: 100, 'path_server': result.thumb })
+      }
+      
       that.setData({
-        cate_name: result.cate_name,
-        cate_id: result.cate_id,
-        areaSelectedStr: result.area_name,
-        area_id: result.area_id,
-        name: result.name,
-        phone: result.phone,
-        intro: result.intro,
-        status_name: result.status_name,
+        choose: result.cate_tag||[],
+        choosename: result.cate_tag_name || [],
+        chooset: result.cate_tag || [],
+        choosenamet: result.cate_tag_name || [],
+        title: result.title || '',
+        contact: result.contact || '',
+        address: result.address || '',
+        upload_picture_list: upload_picture_list,
+        areaSelectedStr: result.area_name || '',
+        area_id: result.area_id || '',
+        
+        intro: result.intro || '',
+        status_name: result.status_name || '',
         url:'repair_userUpdate',
-        repair_id: id
+        repair_id: result.id
       })
       wx.hideLoading()
     })
@@ -114,15 +127,16 @@ Page({
     var data = e.detail.value, that = this;
     data.area_id = that.data.area_id
     for (var i in that.data.chooset) {
-      data['cate_id[' + i + ']'] = that.data.chooset[i]
+      data['cate_tag[' + i + ']'] = that.data.chooset[i]
     }
     that.setData({
       post: true
     })
     data["intro"] = this.data.intro
     if (that.data.url =='repair_userUpdate'){
-      data['repair_id'] = that.data.repair_id
+      data['id'] = that.data.repair_id
     }
+    data['thumb'] = that.data.upload_picture_list[0]['path_server']
     util.postJSON({ apiUrl: apiurl[that.data.url], data: data }, function (res) {
       util.alert(res.data.message)
       setTimeout(function(){
@@ -157,6 +171,39 @@ Page({
       areaSelectedStr: e.detail.areaSelectedStr,
       area_id: e.detail.area_id_val
     })
+  },
+  uploadpic1(e) {
+    var that = this;
+    var index = e.currentTarget.dataset.indexnum;
+
+    util.uploadpic(that, 1, 'upload_picture_list', '', function (images) {
+      console.log(images)
+      that.setData({
+        upload_picture_list: images,
+      });
+      for (var j in images) {
+        if (images[j]['upload_percent'] == 0) {
+          //调用函数
+          util.upload_pic(apiurl.upload_image, that, images, j, function (e) {
+            that.setData({
+              upload_picture_list: e,
+            });
+            util.hideLoading()
+          }, function (e) {
+            that.setData({
+              upload_picture_list: e,
+            });
+          })
+        }
+      }
+    })
+  },
+  // 删除图片
+  deleteImg1: function (e) {
+    let upload_picture_list = this.data.upload_picture_list;
+    this.setData({
+      upload_picture_list: []
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

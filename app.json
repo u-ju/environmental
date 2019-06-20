@@ -2,6 +2,9 @@
   "pages": [
     
     "pages/index/index",
+    "pages/recycleEdit/index",
+    "pages/place_order/place_order",
+    "pages/maintenance_worker/index",
     "pages/housekeeping_edit/index",
     "pages/renting/release/index",
     "pages/renting/detail/index",
@@ -87,7 +90,7 @@
     "pages/repair/index",
     "pages/business/index",
     "pages/maintenanceworker_detail/index",
-    "pages/maintenance_worker/index",
+    
     "pages/housekeeping_detail/index",
     "pages/maintenance/index",
     "pages/bill/index",
@@ -107,7 +110,7 @@
     "pages/ban/index",
     "pages/order_detail/index",
     "pages/comment/index",
-    "pages/place_order/place_order",
+    
     "pages/promote/index",
     "pages/convenience_service/index",
     "pages/catering/index",

@@ -137,3 +137,6 @@ input{
 .width460{
   width: 460rpx;
 }
+.wxgitem .width480{
+width: 478rpx;
+}

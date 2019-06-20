@@ -1,5 +1,6 @@
 /* pages/maintenance_worker/index.wxss */
-@import '../place_order/place_order';
+@import '../tenants/tenants';
+
 page{
   color: #898989;
   font-size: 28rpx;
@@ -40,11 +41,52 @@ textarea,.textareav{
   color: #4FD6F0;
   line-height: 40rpx;
 }
-/* .icon-jiantou{
-  position: absolute;
-  right: 0;
 
-} */
 .iconfont{
   line-height: 60rpx;
+}
+textarea{
+  border: none;
+  height: 230rpx;
+}
+.item{
+  width: 686rpx;
+  margin: auto;
+  height:auto;
+  min-height: 170rpx;
+  margin-bottom: 20rpx;
+}
+.textarea2 {
+  margin:80rpx auto 50rpx auto;
+  width:686rpx ;
+  height: 334rpx;
+}
+.picture_item .del {
+  top: -10rpx;
+  right: -10rpx;
+  background-color: #f00;
+}
+.cate{
+  width:150rpx;
+  height:62rpx;
+  background:#E5E5E5;
+  border-radius:5rpx;
+  text-align: center;
+  line-height: 62rpx;
+  margin: 20rpx 0;
+}
+.active{
+  background:#4FD6F0;
+  color: white;
+}
+.cateitem{
+  padding: 60rpx 30rpx;
+}
+.wxgitem .textL {
+  width:500rpx;
+  height:60rpx;
+  line-height: 60rpx;
+}
+.upload_progress{
+  line-height: 176rpx;
 }

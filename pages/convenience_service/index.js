@@ -5,38 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // items:[
-    //   { images: '../../images/bm_00.png', title: '大件\n垃圾回收', url: '../place_order/place_order' },
-    //   { images: '../../images/bm_3.png', title: '求职招聘', url: '' },
-    //   { images: '../../images/bm_8.png', title: '租房服务', url: '' },
-    //   { images: '../../images/bm_15.png', title: '维修服务', url: '' },
-    //   { images: '../../images/bm_14.png', title: '家政服务', url: '../business/index?type=housekeeping' },
-    //   { images: '../../images/bm_17.png', title: '居家养老', url: '' },
-    //   { images: '../../images/bm_17.png', title: '失物招领', url: '' },
-    //   { images: '../../images/bmb_7.png', title: '法律援助', url: '' },
-    //   { images: '../../images/bm_2.png', title: '社保服务', url: '' },
-
-    //   { images: '../../images/bm_1.png', title: '水电气缴纳', url: '../payment/index' },
-      
-    //   // { images: '../../images/bm_0.png', title: '商务服务', url:'../business/index?type=business'},
-    //   // { images: '../../images/bm_1.png', title: '水电气缴纳', url: '../payment/index' },
-    //   // { images: '../../images/bm_2.png', title: '社保服务', url: '' },
-    //   // { images: '../../images/bm_3.png', title: '求职招聘', url: '' },
-    //   // { images: '../../images/bm_4.png', title: '餐饮服务', url: '../catering/index' },
-    //   // { images: '../../images/bm_5.png', title: '休闲娱乐', url: '' },
-    //   // { images: '../../images/bm_6.png', title: '汽车服务', url: '' },
-    //   // { images: '../../images/bm_7.png', title: '装修建材', url: '' },
-    //   // { images: '../../images/bm_8.png', title: '租房服务', url: '' },
-    //   // { images: '../../images/bm_9.png', title: '农林牧副渔', url: '' },
-    //   // { images: '../../images/bm_10.png', title: '招商加盟', url: '' },
-    //   // { images: '../../images/bm_11.png', title: '旅游服务', url: '' },
-    //   // { images: '../../images/bm_12.png', title: '教育培训', url: '' },
-    //   // { images: '../../images/bm_13.png', title: '批发采购', url: '' },
-    //   // { images: '../../images/bm_14.png', title: '家政服务', url: '../business/index?type=housekeeping' },
-    //   // { images: '../../images/bm_15.png', title: '维修服务', url: '' },
-    //   // { images: '../../images/bm_16.png', title: '婚庆摄影', url: '' },
-    //   // { images: '../../images/bm_17.png', title: '失物招领', url: '' },
-    // ]
+    
   },
 
   /**
@@ -83,9 +52,9 @@ Page({
         }
       })
     }
-    // wx.showLoading({
-    //   title: '加载中',
-    // })
+    wx.showLoading({
+      title: '加载中',
+    })
     var url = e.currentTarget.dataset.link.control
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
       for (var i in e.currentTarget.dataset.link.params) {

@@ -25,11 +25,11 @@
     <view class='left'>详细地址</view>
     <input name='address' value='{{address}}'></input>
   </view>
-  <view class='wxgitem flex_btw '>
+  <!-- <view class='wxgitem flex_btw '>
     <view class='left'>维修种类</view>
     <view class='input textL hidden1'  bindtap='onOpen1'> <text  wx:for="{{choosenamet}}" wx:key="index">{{item}} </text> </view>
     <text class='iconfont icon-jiantou color898989'></text>
-  </view>
+  </view> -->
   <view class='textarea2'>
     <view >服务详情：</view>
     <textarea wx:if="{{textareahidden}}"  focus="{{textareahidden}}" class='size28 color9' bindinput='input' bindblur='unshow'  name='intro' value='{{intro}}' maxlength='1000'>

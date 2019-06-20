@@ -16,11 +16,14 @@ Page({
    */
   onLoad: function (options) {
     wx.showLoading()
+    this.setData({
+      url:options.url
+    })
     this.init(options.id)
   },
   init(id) {
     var that = this, pjurl = '';
-    util.getJSON({ apiUrl: apiurl.repair_show+id }, function (res) {
+    util.getJSON({ apiUrl: apiurl[that.data.url]+id }, function (res) {
       var result = res.data.result
       
       that.setData({

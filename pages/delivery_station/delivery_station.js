@@ -43,7 +43,7 @@ Page({
   },
 
   onLoad: function (options) {
-    util.loading()
+    // util.loading()
     let that = this
     if(options.data){
       var data = JSON.parse(options.data)

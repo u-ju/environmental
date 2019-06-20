@@ -158,7 +158,7 @@ function wxSortPickerViewLower(e) {
 }
 
 function wxSortPickerViewScroll(e) {
-    console.log(e.detail.scrollTop);
+    // console.log(e.detail.scrollTop);
 }
 
 function setViewWH(that) {

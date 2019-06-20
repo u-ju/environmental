@@ -163,20 +163,33 @@ const apiList = {
   
 
   // OnsiteRecycleController
+  // POST 个人维修申请
+  recycle_userStore: basePath + '/front/recycle/userStore',
+  //GET 个人维修详情
+  recycle_userShow: basePath + '/front/recycle/userShow',
+  // POST 个人维修更新
+  recycle_userUpdate: basePath + '/front/recycle/userUpdate',
+  //GET 维修列表
+  recycle_index: basePath + '/front/recycle/index',
+  //GET 维修详情
+  recycle_show: basePath + '/front/recycle/show?id=',
+  //GET 维修列表
+  recycle_home: basePath + '/front/recycle/home',
+
   // GET 上门回收信息
-  onsiteRecycle: basePath + '/front/onsiteRecycle',
-  // POST 订单创建提交
-  onsiteRecycle_orderStore: basePath + '/front/onsiteRecycle/orderStore',
-  // GET 发起人订单列表
-  onsiteRecycle_orderIndex: basePath + '/front/onsiteRecycle/orderIndex',
-  // GET 发起人订单详情
-  onsiteRecycle_orderShow: basePath + '/front/onsiteRecycle/orderShow',
-  // GET 回收人订单列表
-  onsiteRecycle_orderRecycleIndex: basePath + '/front/onsiteRecycle/orderRecycleIndex',
-  // GET 回收人订单详情
-  onsiteRecycle_orderRecycleShow: basePath + '/front/onsiteRecycle/orderRecycleShow',
-  // POST 订单评估提交
-  onsiteRecycle_orderEvaluate: basePath + '/front/onsiteRecycle/orderEvaluate',
+  // onsiteRecycle: basePath + '/front/onsiteRecycle',
+  // // POST 订单创建提交
+  // onsiteRecycle_orderStore: basePath + '/front/onsiteRecycle/orderStore',
+  // // GET 发起人订单列表
+  // onsiteRecycle_orderIndex: basePath + '/front/onsiteR/orderIndex',
+  // // GET 发起人订单详情
+  // onsiteRecycle_orderShow: basePath + '/front/onsiteRecycle/orderShow',
+  // // GET 回收人订单列表
+  // onsiteRecycle_orderRecycleIndex: basePath + '/front/onsiteRecycle/orderRecycleIndex',
+  // // GET 回收人订单详情
+  // onsiteRecycle_orderRecycleShow: basePath + '/front/onsiteRecycle/orderRecycleShow',
+  // // POST 订单评估提交
+  // onsiteRecycle_orderEvaluate: basePath + '/front/onsiteRecycle/orderEvaluate',
 
 
   // GarbageController
@@ -433,26 +446,26 @@ const apiList = {
   // POST 个人维修申请
   repair_userStore: basePath + '/front/repair/userStore',
   //GET 个人维修详情
-  repair_userShow: basePath + '/front/repair/userShow?repair_id=',
+  repair_userShow: basePath + '/front/repair/userShow',
   // POST 个人维修更新
   repair_userUpdate: basePath + '/front/repair/userUpdate',
   //GET 维修列表
   repair_index: basePath + '/front/repair/index',
   //GET 维修详情
-  repair_show: basePath + '/front/repair/show?repair_id=',
+  repair_show: basePath + '/front/repair/show?id=',
   //GET 维修列表
   repair_home: basePath + '/front/repair/home',
 
   // POST 个人维修申请
   jiazheng_userStore: basePath + '/front/jiazheng/userStore',
   //GET 个人维修详情
-  jiazheng_userShow: basePath + '/front/jiazheng/userShow?jiazheng_id=',
+  jiazheng_userShow: basePath + '/front/jiazheng/userShow',
   // POST 个人维修更新
   jiazheng_userUpdate: basePath + '/front/jiazheng/userUpdate',
   //GET 维修列表
   jiazheng_index: basePath + '/front/jiazheng/index',
   //GET 维修详情
-  jiazheng_show: basePath + '/front/jiazheng/show?jiazheng_id=',
+  jiazheng_show: basePath + '/front/jiazheng/show?id=',
   //GET 维修列表
   jiazheng_home: basePath + '/front/jiazheng/home',
 

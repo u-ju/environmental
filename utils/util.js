@@ -53,6 +53,7 @@ module.exports = {
   putSync: putSync,
   navigateBack:navigateBack,
   build: build,
+  uploadpic: uploadpic,
   upload_pic: upload_pic,
   popup: popup,
   allowUploadFormat: allowUploadFormat,
@@ -247,6 +248,50 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
 
     
   });
+}
+function uploadpic(page, num, names, index = '', suc) {
+  var that = this //获取上下文
+  var name = page.data[names]
+  if (index !== '') {
+    name = name[index]
+  }
+  //选择图片
+  wx.chooseImage({
+    count: num,
+    sizeType: ['compressed'],
+    sourceType: ['album', 'camera'],
+    success: function (res) {
+      var tempFiles = res.tempFiles
+      var promiseArr = []
+      for (var i in tempFiles) {
+
+        let promise = new Promise((resolve, reject) => {
+          wx.getFileSystemManager().readFile({
+            filePath: tempFiles[i]['path'], //选择图片返回的相对路径
+            encoding: 'base64', //编码格式
+            success: res => { //成功的回调 
+              resolve(res)
+            },
+            fail: function (error) {
+              reject(error);
+            },
+          })
+        })
+        promiseArr.push(promise)
+      }
+      Promise.all(promiseArr).then((res) => {
+        //对返回的result数组进行处理
+        that.loading()
+        for (var i in res) {
+          tempFiles[i]['path_base'] = 'data:image/png;base64,' + res[i].data
+          tempFiles[i]['upload_percent'] = 0
+          tempFiles[i]['path_server'] = ''
+          name.push(tempFiles[i])
+        }
+        suc(name)
+      })
+    }
+  })
 }
 function upload_pic(url, that, upload_picture_list, j, suc, update) {
   //上传返回值

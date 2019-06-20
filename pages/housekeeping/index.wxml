@@ -1,34 +1,39 @@
 <!--pages/business/index.wxml-->
 <view class='seach_item flex_btw align_center'>
-  <view class='seach  flex_btw align_center'>
-    <input bindinput='search'  bindconfirm="searchSubmit" value='{{search}}' name='search' ></input>
-    <image src='../../images/video_cz.png' bindtap='searchSubmit' class='' ></image>
+  <view class='flex_btw align_center location' bindtap='nav'>
+    <text class='iconfont icon-dingwei color4fd6f0 size36'></text>
+    <text class=' color6 hidden1'>{{address}}</text>
   </view>
-  <view class='color27AAD9' bindtap='weixiu' data-jiazheng='{{jiazheng}}'>成为商家</view>
+  <view class='seach  flex_btw align_center'>
+    <input bindinput='search' bindconfirm="searchSubmit" value='{{search}}' name='search'></input>
+    <image src='../../images/video_cz.png' bindtap='searchSubmit' class=''></image>
+  </view>
+  <view class='color27AAD9' bindtap='weixiu' >家政入驻</view>
 </view>
 <view class='banner'>
-  <image  src='{{banner_arr[0].image}}'></image>
+  <image src='{{banner_arr[0].image}}'></image>
 </view>
 <view class='flex wrap choose_item'>
-  <view class='item' wx:for="{{cate_arr}}" wx:key='index' data-index='{{index}}' data-cate_id='{{item.id}}' data-choose='{{item.choose}}' bindtap='choose'>
+  <view class='item' wx:for="{{cate_arr}}" wx:key='index' data-index='{{index}}' data-id='{{item.id}}' data-choose='{{item.choose}}' bindtap='choose'>
     <text class='item_zi {{item.choose?"choose":""}}'>{{item.name}}</text>
   </view>
 </view>
 <view class='tuijian'>
   <view class='size30 color4 padding34'>为您推荐</view>
-  <view class='tuijian_item flex align_center' wx:for="{{list}}" wx:key='index' bindtap='detail' data-id='{{item.jiazheng_id}}'>
-    <view class='images'>
-      <image src='{{item.thumb}}'></image>
-    </view>
-    
-    <view class='miaoshu flex_col_1 justify_btw'>
-      <view class='hidden2 size28'>{{item.intro}}</view>
-      <view class='flex align_center'>
-        <text class='renzh' wx:if="{{item.is_auth==1}}">企业已认证</text>
-        <text class='colorC3'>欢迎来电咨询</text>
+  <view class='tuijian_item flex align_center' wx:for="{{list}}" wx:key='index' bindtap='detail' data-id='{{item.id}}' wx:if="{{item.id}}" >
+    <!-- <block wx:if="{{item.intro}}"> -->
+      <view class='images'>
+        <image src='{{item.thumb}}'></image>
       </view>
-    </view>
-    <image class='phone' data-phone='{{item.phone}}' src='../../images/stel.png' catchtap='calling'></image>
+      <view class='miaoshu flex_col_1 justify_btw'>
+        <view class='hidden2 size28'>{{item.title}}</view>
+        <view class='flex align_center'>
+          <text class='renzh' wx:if="{{item.is_auth==1}}">信息已认证</text>
+          <text class='colorC3'>欢迎来电咨询</text>
+        </view>
+      </view>
+      <image class='phone' data-phone='{{item.contact}}' src='../../images/phonei.png' catchtap='calling'></image>
+    <!-- </block> -->
   </view>
   <empty wx:if="{{list.length==0}}" />
 </view>

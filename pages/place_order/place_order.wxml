@@ -1,86 +1,38 @@
 <!--pages/place_order/place_order.wxml-->
-<!-- <import src="../../Components/model/model.wxml"/> -->
-<!-- <template is="areaData" data="{{...item}}"/> -->
-<form bindsubmit="formSubmit" >
-<view class='bg over_hid margin_btn26'>
-  <view class="container">
-    <view class='color153'>
-    <text>
-    大件类型：\n家具：柜子、床、桌子等\n电器：电视、洗衣机、冰箱、热水器等\n建筑垃圾：水泥、钢筋、玻璃等\n在线预约上门服务评估价格回收后环保金到账
-    </text>
-    </view>
-    
-    <view class="picture_list">
-      <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
-        <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
-        <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
-        <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
-        <text class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
+<view class='seach_item flex_btw align_center'>
+  <view class='flex_btw align_center location' bindtap='nav'>
+    <text class='iconfont icon-dingwei color4fd6f0 size36'></text>
+    <text class=' color6 hidden1'>{{address}}</text>
+  </view>
+  <view class='seach  flex_btw align_center'>
+    <input bindinput='search' bindconfirm="searchSubmit" value='{{search}}' name='search'></input>
+    <image src='../../images/video_cz.png' bindtap='searchSubmit' class=''></image>
+  </view>
+  <view class='color27AAD9' bindtap='weixiu' >我是回收人员</view>
+</view>
+<view class='banner'>
+  <image src='{{banner_arr[0].image}}'></image>
+</view>
+<view class='flex wrap choose_item'>
+  <view class='item' wx:for="{{cate_arr}}" wx:key='index' data-index='{{index}}' data-id='{{item.id}}' data-choose='{{item.choose}}' bindtap='choose'>
+    <text class='item_zi {{item.choose?"choose":""}}'>{{item.name}}</text>
+  </view>
+</view>
+<view class='tuijian'>
+  <view class='size30 color4 padding34'>精选推荐</view>
+  <view class='tuijian_item flex align_center' wx:for="{{list}}" wx:key='index' bindtap='detail' data-id='{{item.id}}' wx:if="{{item.id}}" >
+      <view class='images'>
+        <image src='{{item.thumb}}'></image>
       </view>
-
-      <view class='picture_item'>
-        <view class="add-image click_camera flex_col align_center" bindtap='uploadpic'>
-          <image mode='aspectFill' class='camera' src='../../images/camera@2x.png'></image>
-          <view class='color153'>点击拍照</view> 
+      <view class='miaoshu flex_col_1 justify_btw'>
+        <view class='hidden2 size28'>{{item.title}}</view>
+        <view class='flex align_center'>
+          <text class='renzh' wx:if="{{item.is_auth==1}}">信息已认证</text>
+          <text class='colorC3'>欢迎来电咨询</text>
         </view>
       </view>
-    </view>
-    <textarea placeholder='点击添加更多物品描述...' placeholder-class='color153'  wx:if="{{show}}" focus="{{show}}"  bindinput='input' bindblur='unshow'  name='intro' value='{{intro}}'></textarea>
-    <view class='color153 textarea' bindtap='show'   wx:else>{{intro}}</view>
+      <image class='phone' data-phone='{{item.contact}}' src='../../images/phonei.png' catchtap='calling'></image>
+    <!-- </block> -->
   </view>
+  <empty wx:if="{{list.length==0}}" />
 </view>
-<view class='bg over_hid'>
-  <view class="container paddind40">
-    <view class='flex align_center message'>
-      <view class='size28 color4 width160'>联系人</view>
-      <input class='size28 color9' placeholder-class='color163' name='contacts' placeholder='姓名'></input>
-    </view>
-    <view class='flex align_center message'>
-      <view class='size28 color4 width160'>电话</view>
-      <input class='size28 color9' type='number' maxlength='11' name='contact' placeholder-class='color163' placeholder='手机号'></input>
-    </view>
-    <view class='flex align_center message'>
-      <view class='size28 color4 width160'>选择区域</view>
-      <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' ban='biotope' bind:choosea='choosearea' />
-      <!-- <input class="size28 color9"  disabled='disabled' name='area_id' placeholder-class='color163' value='{{areaSelectedStr}}' placeholder='选择区域' bindtap="cascadePopup" ></input> -->
-      
-      <image class='right' mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
-    </view>
-    <view class='flex align_center message'>
-      <view class='size28 color4 width160'>详细地址</view>
-      <input class='size28 color9' placeholder-class='color163' name='address' placeholder='例:8栋2单元305'></input>
-    </view>
-    <view class='flex align_center message'>
-      <view class='size28 color4 width160'>预约时间</view>
-      <!-- <input class='size28 color4' placeholder-class='color163' placeholder='点击选择'></input> -->
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-        <input class='size28 color9' placeholder-class='color163' name='appoint_time' disabled='disabled' value='{{time}}' placeholder='点击选择'/>
-      </picker>
-      <image class='right' mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
-    </view>
-    
-  </view>
-  <button class='submitButton' formType="submit" disabled='{{disabled}}'>提交订单</button>
-  <!-- disabled='{{disabled}}'  class='{{disabled?"bgDDDDDD":""}}' -->
-</view>
-</form>
-
-
-<!-- 
-<view class="picture_list">
-
-    <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
-      <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
-      <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
-      <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_percent}}%</view>
-      <text class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
-    </view>
-
-    <view class='picture_item'>
-      <view class="add-image" bindtap='uploadpic'>
-        <text>+</text>
-      </view>
-    </view>
-  </view>
-  <button bindtap='uploadimage' class='yes-upload'>确定上传</button> -->
-  

@@ -1,45 +1,52 @@
 <!--pages/housekeeping_detail/index.wxml-->
 <block wx:if="{{result}}">
-<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}">
+  <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}">
     <block wx:for="{{result.images}}" wx:key="index">
       <swiper-item>
           <image src="{{item}}" class="slide-image" />
       </swiper-item>
     </block>
-</swiper>
-<view class='titlexx'>
-  <view class='size32 color4'>{{result.title}}</view>
-  <view class='flex_btw flex-end'>
-    <view class='colorFE3939 size22' wx:if="{{result.is_auth}}">企业已认证</view>
-    <!-- <view class='center' bindtap='share'>
-      <image src='../../images/video_fx.png' class='share'></image>
+</swiper> -->
+  <view class='center'>
+    <image class='banner' src='{{result.thumb}}'></image>
+  </view>
+  <view class='titlexx'>
+    <view class='flex_btw'>
+      <view class='size32 color4 titlec'>{{result.title}}</view>
+      <button class='center ' open-type='share'>
+        <text class='iconfont icon-share size36  color4fd6f0 '></text>
+        <view class='color898989 size22'>分享</view>
+      </button>
+    </view>
+    <view class='flex_btw flex-end'>
+      <view class='colorFE3939 size22'>
+        <text wx:if="{{result.is_auth}}">企业已认证</text>
+      </view>
+      <!-- <button class='center' open-type='share'>
+      <text class='iconfont icon-share size36  color4fd6f0 '></text>
       <view class='color898989 size22'>分享</view>
-    </view> -->
-    <button class='center' open-type='share'>
-      <image src='../../images/video_fx.png' class='share'></image>
-      <view class='color898989 size22'>分享</view>
-    </button>
-  </view>
-</view>               
-<view class='con'>
-<view class='flex_btw align_center big'>
-    <view class='flex align_center'>
-      服务区域：
+    </button> -->
     </view>
   </view>
-  <view class='flex_btw align_center big'>
-    <view class='flex align_center'>
-      商家电话：{{result.phone}}
+  <view class='con'>
+    <view class='flex_btw align_center big'>
+      <view class='flex align_center'>
+        服务区域：{{result.area_name}}
+      </view>
     </view>
-      <image src="../../images/stel.png" class='calling' data-phone='{{result.phone}}' bindtap='calling' ></image>
-  </view>
-  <view class='flex_btw align_center big'>
-    <view class='flex align_center'>
-      商家地址：{{result.area_name}}{{result.address}}
+    <view class='flex_btw align_center big'>
+      <view class='flex align_center'>
+        商家电话：{{result.contact}}
+      </view>
+      <image src="../../images/phonei.png" class='calling' data-phone='{{result.contact}}' bindtap='calling'></image>
     </view>
-    <image src="../../images/icon_location@2x.png" class='dingwei'  bindtap='location'></image>
+    <view class='flex_btw align_center big'>
+      <view class='flex align_center'>
+        商家地址：{{result.area_name}}{{result.address}}
+      </view>
+      <image src="../../images/catering_lca.png" class='dingwei' bindtap='location'></image>
+    </view>
   </view>
-</view>
 </block>
 <view class='fwxq'>
   <view class='fwxq_bor'>服务详情</view>

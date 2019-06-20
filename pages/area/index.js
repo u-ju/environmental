@@ -12,29 +12,12 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    // 页面初始化 options为页面跳转所带来的参数
-    // app.func.req('getCarBrand?cx=1', function (res) {
-    //   if (res.data.result == 'false') {
-    //     console.log('false');
-    //     that.wetoast.toast({
-    //       title: res.data.msg,
-    //       duration: 2000
-    //     })
-    //   } else {
-    //     that.setData({
-    //       brandList: res.data.brandList,
-    //       wordindex: res.data.brandList,
-    //     });
-    //     var cData = that.data.brandList;
-    //     cData[0].wordindex = "#";//先修改json值
-    //     that.setData({ //再set值
-    //       wordindex: cData
-    //     })
-    //   }
-    // }, function (res) {
-
-    // });
-  that.init()
+    if (options.type=="city"){
+      that.initcity()
+    }else{
+      that.init()
+    }
+    
   },
   init() {
     var that = this;
@@ -47,15 +30,35 @@ Page({
       // }
       wxSortPickerView.init(list, that);
       that.setData({
+        list: list
+      })
+      util.hideLoading()
+    })
+  },
+  initcity() {
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.area + wx.getStorageSync('locAddressID') }, function (res) {
+      var result = res.data.result
+      var list = result.list;
+      var name = []
+      wxSortPickerView.init(list, that);
+      that.setData({
         list: list,
+        type: "city"
       })
       util.hideLoading()
     })
   },
   wxSortPickerViewItemTap: function (e) {
-    console.log(e.currentTarget.dataset.text);
-    wx.setStorageSync("locAddress", e.currentTarget.dataset.text.text)
-    wx.setStorageSync("locAddressID", e.currentTarget.dataset.text.id)
+    
+    if (this.data.type=="city"){
+      
+      wx.setStorageSync("locAddresscity", e.currentTarget.dataset.text.text)
+      wx.setStorageSync("locAddresscityID", e.currentTarget.dataset.text.id)
+    }else{
+      wx.setStorageSync("locAddress", e.currentTarget.dataset.text.text)
+      wx.setStorageSync("locAddressID", e.currentTarget.dataset.text.id)
+    }
     wx.navigateBack()
   },
   onReady: function () {

@@ -8,13 +8,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banner_arr:[],
-    cate_arr:[],
-    jiazheng:{},
-    list: [],
+    banner_arr: [],
+    cate_arr: [],
+    jiazheng: {},
+    list: [0],
     page: {},
-    choosed:[],
-    choose:''
+    choosed: [],
+    choose: '',
+    search: '',
+    keywords: ''
   },
 
   /**
@@ -27,10 +29,9 @@ Page({
         keywords: keywords,
         search: options.keywords
       })
-      this.init(1, keywords)
-    } else {
-      this.init()
     }
+    wx.setStorageSync("locAddresscity", '')
+    wx.setStorageSync("locAddresscityID", '')
   },
 
   /**
@@ -40,6 +41,7 @@ Page({
 
   },
   search(e) {
+    
     if (e.detail.value == '') {
       this.setData({
         keywords: "&keywords="
@@ -57,28 +59,29 @@ Page({
     })
     this.init(1, keywords)
   },
-  choose(e){
-    wx.showLoading()
+  choose(e) {
     // console.log(e.currentTarget.dataset.choose)
     var cate_arr = this.data.cate_arr, choosed = this.data.choosed, choose = this.data.choose
     // cate_arr[e.currentTarget.dataset.index].choose = !e.currentTarget.dataset.choose
-    // if (choosed.indexOf(e.currentTarget.dataset.cate_id)==-1){
-    //   choosed.push(e.currentTarget.dataset.cate_id)
-    // }else{
-    //   choosed.splice(choosed.indexOf(e.currentTarget.dataset.cate_id), 1); 
+    // if (choosed.indexOf(e.currentTarget.dataset.id) == -1) {
+    //   choosed.push(e.currentTarget.dataset.id)
+    // } else {
+    //   choosed.splice(choosed.indexOf(e.currentTarget.dataset.id), 1);
     // }
+    wx.showLoading()
     for (var i in cate_arr){
       cate_arr[i]["choose"]=false
     }
     cate_arr[e.currentTarget.dataset.index].choose = !e.currentTarget.dataset.choose
-    if (choose == e.currentTarget.dataset.cate_id){
+    if (choose == e.currentTarget.dataset.id){
       choose=''
     }else{
-      choose = e.currentTarget.dataset.cate_id
+      choose = e.currentTarget.dataset.id
     }
     this.setData({
       cate_arr: cate_arr,
-      choose: choose
+      // choosed: choosed
+      choose:choose
     })
     this.init()
   },
@@ -86,30 +89,37 @@ Page({
     var that = this;
     util.getJSON({ apiUrl: apiurl.jiazheng_home }, function (res) {
       var cate_arr = res.data.result.cate_arr
-      for (var i in cate_arr){
-        cate_arr[i]["choose"]=false
+      for (var i in cate_arr) {
+        cate_arr[i]["choose"] = false
       }
       that.setData({
-        jiazheng: res.data.result.jiazheng,
+        is_jiazheng: res.data.result.is_jiazheng,
         banner_arr: res.data.result.banner_arr,
         cate_arr: cate_arr,
       })
     })
   },
-  init(page = 1, keywords='') {
-    var that = this,pjurl='';
-    if (that.data.choose != '' && that.data.choose !=undefined){
-      pjurl = "&cate_id="+that.data.choose
+  init(page = 1, keywords = '') {
+    var that = this, pjurl = '', area_id = '';
+    if (that.data.choose.length > 0 && that.data.choose != undefined) {
+      // for (var i in that.data.choosed) {
+      //   pjurl = pjurl + "&cate_tag[" + i + "]=" + that.data.choosed[i]
+      // }
+      pjurl = "&cate_tag[0]=" + that.data.choose
+    }
+    if (wx.getStorageSync('locAddresscityID') != '' && wx.getStorageSync('locAddresscityID') != undefined) {
+      area_id = "&area_id=" + wx.getStorageSync('locAddresscityID')
     }
     if (that.data.keywords != '' && that.data.keywords != undefined) {
       keywords = that.data.keywords
     }
-    util.getJSON({ apiUrl: apiurl.jiazheng_index + "?page=" + page + pjurl + keywords}, function (res) {
+    util.getJSON({ apiUrl: apiurl.jiazheng_index + "?page=" + page + pjurl + area_id + keywords }, function (res) {
       var result = res.data.result
-      var list = result.list
+      var list = result.list || []
       if (page != 1) {
         list = that.data.list.concat(list)
       }
+      
       that.setData({
         list: list,
         page: result.page,
@@ -117,10 +127,10 @@ Page({
       wx.hideLoading()
     })
   },
-  detail(e){
-    console.log(e.currentTarget.dataset.id)
+  detail(e) {
+    
     wx.navigateTo({
-      url: '../housekeeping_detail/index?id='+e.currentTarget.dataset.id,
+      url: '../housekeeping_detail/index?id=' + e.currentTarget.dataset.id,
     })
   },
 
@@ -130,13 +140,15 @@ Page({
   onPullDownRefresh: function () {
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
-    var that = this, pjurl="";
-    if (that.data.choose != '' && that.data.choose != undefined) {
-      pjurl = "&cate_id="+that.data.choose
+    var that = this, pjurl = "";
+    if (that.data.choosed.length > 0 && that.data.choosed != undefined) {
+      for (var i in that.data.choosed) {
+        pjurl = pjurl + "&cate_tag[" + i + "]=" + that.data.choosed[i]
+      }
     }
-    util.getJSON({ apiUrl: apiurl.jiazheng_index + "?page=1" + pjurl}, function (res) {
+    util.getJSON({ apiUrl: apiurl.jiazheng_index + "?page=1" + pjurl }, function (res) {
       var result = res.data.result
-      console.log(result)
+      
       that.setData({
         list: result.list,
         page: result.page,
@@ -170,7 +182,7 @@ Page({
     }
   },
   calling: function (e) {//拨打电话
-    console.log(e.target.dataset.phone)
+   
     wx.makePhoneCall({
       phoneNumber: e.target.dataset.phone, //此号码并非真实电话号码，仅用于测试
       success: function () {
@@ -181,17 +193,25 @@ Page({
       }
     })
   },
-  weixiu(e){
-    console.log(e.target.dataset.jiazheng)
-    var jiazheng=''
-    if (e.target.dataset.jiazheng.jiazheng_id){
-      jiazheng = e.target.dataset.jiazheng.jiazheng_id
-    }
+  weixiu(e) {
+
+    var jiazheng = this.data.is_jiazheng || ''
     wx.navigateTo({
       url: '../housekeeping_edit/index?jiazheng=' + jiazheng,
     })
   },
-  onShow(){
+  onShow() {
     this.orderShow()
+    this.setData({
+      address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress')
+    })
+    
+    this.init()
+  },
+  nav() {
+    wx.navigateTo({
+      url: '../area/index?type=city',
+    })
+
   }
 })

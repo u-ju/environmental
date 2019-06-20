@@ -40,3 +40,6 @@ page{
 .fwxq{
   padding: 35rpx 32rpx;
 }
+.flex_col{
+  width: 300rpx;
+}

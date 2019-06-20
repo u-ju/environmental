@@ -55,16 +55,17 @@ page{
 .tuijian_item{
   padding: 14rpx 50rpx 14rpx 34rpx;
   border-bottom: 1px solid #eee;
+  justify-content: space-between;
 }
 .tuijian_item .images{
-  width: 220rpx;
-  height:164rpx;
-  margin-right: 20rpx;
+  width: 160rpx;
+  height:160rpx;
+  /* margin-right: 32rpx; */
   border-radius: 50%;
 }
 .images image{
-  width: 164rpx;
-  height:164rpx;
+  width: 160rpx;
+  height:160rpx;
 }
 .miaoshu{
   width: 360rpx;
@@ -93,7 +94,7 @@ page{
   color: #C3C3C3;
 }
 .seach{
-  width:380rpx;
+  width: 340rpx;
   padding: 0 18rpx;
   height:62rpx;
   background:rgba(238,238,238,1);
@@ -104,8 +105,11 @@ page{
   height:44rpx;
 }
 .seach input{
-  width: 336rpx;
+  width: 300rpx;
 }
 .seach_item{
   padding: 20rpx 32rpx 32rpx 32rpx;
+}
+.icon-dingwei{
+  margin-right: 8rpx;
 }

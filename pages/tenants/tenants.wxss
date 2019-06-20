@@ -1,5 +1,4 @@
 /* pages/tenants/tenants.wxss */
-/* @import '../place_order/place_order'; */
 @import '../realname_authentication/realname_authentication';
 page{
   background-color: white;
@@ -115,9 +114,7 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   width: 292rpx;
   height: 176rpx;
 }
-.picture_item{
-  /* padding-top:23rpx; */
-}
+
 .picture_item>image{
   margin-top: -23rpx;
 }

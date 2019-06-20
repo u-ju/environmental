@@ -1,7 +1,7 @@
 {
-  "navigationBarTitleText": "上门回收",
   "usingComponents": {
-    "wux-popup": "../../Components/popup/index",
-    "area": "../../Components/area/index"
-  }
+    "empty": "../../Components/empty/index"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
 }

@@ -24,7 +24,7 @@ Page({
     maskVisual: 'hidden',
     provinceName: '请选择',
     status_name: '',
-    url: 'jiazheng_userStore',
+    url: 'recycle_userStore',
     post: false,
 
     textareahidden: false,
@@ -34,7 +34,8 @@ Page({
     chooset: [],
     choosenamet: [],
     upload_picture_list: [],
-    jiazheng_id:''
+    recycle_id: ''
+
   },
 
   /**
@@ -56,7 +57,7 @@ Page({
     })
   },
   onLoad: function (options) {
-    if (options.jiazheng != '' && options.jiazheng != undefined && options.jiazheng != 0) {
+    if (options.recycle != '' && options.recycle != undefined && options.recycle != 0) {
       this.userShow()
 
     }
@@ -72,21 +73,21 @@ Page({
       }
     });
     // this.loadAddress();
-    this.tab()
+    // this.tab()
   },
   userShow(id) {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.jiazheng_userShow }, function (res) {
+    util.getJSON({ apiUrl: apiurl.recycle_userShow }, function (res) {
       var result = res.data.result, upload_picture_list = []
       if (result.thumb) {
         upload_picture_list.push({ upload_percent: 100, 'path_server': result.thumb })
       }
 
       that.setData({
-        choose: result.cate_tag || [],
-        choosename: result.cate_tag_name || [],
-        chooset: result.cate_tag || [],
-        choosenamet: result.cate_tag_name || [],
+        // choose: result.cate_tag || [],
+        // choosename: result.cate_tag_name || [],
+        // chooset: result.cate_tag || [],
+        // choosenamet: result.cate_tag_name || [],
         title: result.title || '',
         contact: result.contact || '',
         address: result.address || '',
@@ -96,15 +97,15 @@ Page({
 
         intro: result.intro || '',
         status_name: result.status_name || '',
-        url: 'jiazheng_userUpdate',
-        jiazheng_id: result.id
+        url: 'recycle_userUpdate',
+        recycle_id: result.id
       })
       wx.hideLoading()
     })
   },
   tab() {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.jiazheng_home }, function (res) {
+    util.getJSON({ apiUrl: apiurl.recycle_home }, function (res) {
       var cate_arr = res.data.result.cate_arr
       for (var i in cate_arr) {
         cate_arr[i]["value"] = cate_arr[i]["id"]
@@ -118,18 +119,18 @@ Page({
 
   },
   formSubmit(e) {
-    console.log(e)
+
     var data = e.detail.value, that = this;
     data.area_id = that.data.area_id
-    for (var i in that.data.chooset) {
-      data['cate_tag[' + i + ']'] = that.data.chooset[i]
-    }
+    // for (var i in that.data.chooset) {
+    //   data['cate_tag[' + i + ']'] = that.data.chooset[i]
+    // }
     that.setData({
       post: true
     })
     data["intro"] = this.data.intro
-    if (that.data.url == 'jiazheng_userUpdate') {
-      data['id'] = that.data.jiazheng_id
+    if (that.data.url == 'recycle_userUpdate') {
+      data['id'] = that.data.recycle_id
     }
     data['thumb'] = that.data.upload_picture_list[0]['path_server']
     util.postJSON({ apiUrl: apiurl[that.data.url], data: data }, function (res) {
@@ -146,7 +147,7 @@ Page({
         })
       }, 3000)
     }, function (res) {
-      console.log(res.data.message)
+
       // if (res.data.message == "更新成功") {
       //   // wx.navigateBack()
       // }
@@ -161,7 +162,7 @@ Page({
     })
   },
   choosearea(e) {
-    console.log(e)
+
     this.setData({
       areaSelectedStr: e.detail.areaSelectedStr,
       area_id: e.detail.area_id_val
@@ -172,7 +173,7 @@ Page({
     var index = e.currentTarget.dataset.indexnum;
 
     util.uploadpic(that, 1, 'upload_picture_list', '', function (images) {
-      console.log(images)
+     
       that.setData({
         upload_picture_list: images,
       });

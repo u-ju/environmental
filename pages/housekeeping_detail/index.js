@@ -15,9 +15,6 @@ Page({
     interval: 5000,
     duration: 1000,
     banner: [
-      { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
-      { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
-      { image: 'http://wyhb.zhanghi.cn/storage/views/home/background@3x.png' },
     ],
     result: ""
   },
@@ -128,6 +125,11 @@ Page({
   onReachBottom: function () {
 
   },
-
+  onShareAppMessage: function () {
+    var pjdata = {
+      id: this.data.id
+    }
+    return util.share('啄木鸟环保', '../housekeeping_detail/index&pjdata=' + JSON.stringify(pjdata))
+  }
 
 })

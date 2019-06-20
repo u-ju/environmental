@@ -1,23 +1,23 @@
 <!--pages/maintenanceworker_detail/index.wxml-->
 <view class='top flex_btw align_center'>
   <view class='flex_btw align_center'>
-    <image class='header' src='{{result.avatar}}'></image>
+    <image class='header' src='{{result.thumb}}'></image>
     <view class='flex_col flex_ard'>
-      <view class='size36'>{{result.name}}</view>
-      <view>{{result.cate_name}}</view>
+      <view class='size36'>{{result.title}}</view>
+      <view><text wx:for="{{result.cate_tag_name}}" wx:key="index">{{item}} </text></view>
     </view>
   </view>
-  <image src='../../images/stel.png' data-phone='{{result.phone}}' bindtap='calling' class='phone'></image>
+  <image src='../../images/phonewx.png' data-phone='{{result.contact}}' bindtap='calling' class='phone'></image>
 </view>
 <view class='grxx'>
   <view>
-    <text class='color898989'>联系人</text><text>{{result.name}}</text>
+    <text class='color898989'>联系人</text><text>{{result.title}}</text>
   </view>
   <view>
-    <text class='color898989'>联系电话</text><text>{{result.phone}}</text>
+    <text class='color898989'>联系电话</text><text>{{result.contact}}</text>
   </view>
   <view class='flex'>
-    <text class='color898989'>服务区域</text><text>{{result.area_name}}</text>
+    <text class='color898989'>服务区域</text><text>{{result.area_name}}{{result.address}}</text>
   </view>
 </view>
 <view class='fwxq'>

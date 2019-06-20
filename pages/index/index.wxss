@@ -309,7 +309,7 @@ page {
 }
 
 .agriculturalitem image {
-  width: 240rpx;
+  width: 188rpx;
   height: 160rpx;
   border-radius: 8rpx;
 }
@@ -376,7 +376,7 @@ page {
   border-radius: 10rpx 10rpx 10rpx 10rpx;
   overflow: hidden;
   width:686rpx;
-  height:188rpx;
+  height:240rpx;
 }
 .refresh-loading{
   width: 50rpx;

@@ -42,6 +42,7 @@ Page({
           content: result.content,
         })
       }else{
+        
         WxParse.wxParse('article', 'html', result.content, that, 5);
       }
       
