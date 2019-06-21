@@ -320,13 +320,15 @@ page {
 }
 
 .agriculturalD .flex_col {
-  width: 420rpx;
+  width: 460rpx;
 }
 
 .swiper-box {
   height: 320rpx;
 }
-
+.swiper-box1 {
+  height: 150rpx;
+}
 .tab {
   /* padding: 32rpx 24rpx 24rpx 24rpx; */
 }

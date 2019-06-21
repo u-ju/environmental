@@ -124,7 +124,7 @@ Page({
  // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
-    util.getJSON({ apiUrl: apiurl.shop_goodsIndex+'?shop_id=' + that.data.shop_id + "&page=1" }, function (res) {
+    util.getJSON({ apiUrl: apiurl.shopComment_index + shop_id + "&page=1" }, function (res) {
       var result = res.data.result
       console.log(result)
       that.setData({

@@ -33,8 +33,7 @@
           <view class='color4 size28 flex_btw'>
             <view class='one-hidden width'>{{item.sku_name}}</view>
             <view class='color898989'>
-              <text class='iconfont icon-cuohao size22'></text> 
-              {{item.buy_count}}
+              <text class='iconfont icon-cuohao size22'></text> {{item.buy_count}}
             </view>
           </view>
           <view class='colorFE2C2C size28'>￥{{item.price}}</view>
@@ -64,43 +63,51 @@
     <view class=' reicon color898989'>订单状态：{{result.order_status_name}}</view>
     <view class=' reicon color898989'>创建时间：{{result.created_at}}</view>
   </view>
-  
+
 </block>
 
 
 
-<block wx:for="{{result.button_arr}}"  wx:key="index">
-  <view class='submitButton'  bindtap='click' data-key='{{item.key}}' data-name='{{item.name}}'>{{item.name}}</view>
-</block> 
+<block wx:for="{{result.button_arr}}" wx:key="index">
+  <view class='submitButton' bindtap='click' data-key='{{item.key}}' data-name='{{item.name}}'>{{item.name}}</view>
+</block>
 <wux-popup closable visible="{{ visible1 }}" title='填写发货单号' classN='width686' bind:close="onClose1">
   <form bindsubmit="formSubmit">
-  <view class='expressitem'>
-  <view class='flex_btw align_center express' wx:for='{{skunum}}' wx:key ="index" wx:for-index="indexnum">
-    <view>
-      <view class='flex align_center'>
-        <view class='itemL'>选择快递 </view>
-        <view class='select_box'>
-          <view class='select' catchtap='selectTap' data-index='{{indexnum}}'>
-            <input disabled='true' placeholder='请选择' name='logistics[{{indexnum}}][express_key]' value='{{express_name[indexnum]}}'></input>
+    <!-- <view class='expressitem '>
+      
+    </view> -->
+  <view   class='expressitem ' >
+    <view class='flex_btw align_center express visible' wx:for='{{skunum}}' wx:key="index" wx:for-index="indexnum">
+        <view>
+          <view class='flex align_center'>
+            <view class='itemL'>选择快递 </view>
+            <view class='select_box'>
+            <!-- <picker bindchange="bindPickerChange2" data-indexnum='{{indexnum}}' value="{{objectIndex[indexnum]}}" range="{{order_logistics_express}}" range-key="name">
+              <view class="picker">
+              <input disabled='true' placeholder='请选择' name='logistics[{{indexnum}}][express_key]' value='{{order_logistics_express[objectIndex].name}}'></input>
+              </view>
+            </picker> -->
+              <view class='select'  catchtap='selectTap' data-index='{{indexnum}}'>
+                <input disabled='true' placeholder='请选择' name='logistics[{{indexnum}}][express_key]' value='{{express_name[indexnum]}}'></input>
+              </view>
+              <view class='option_box' style='height:{{show[indexnum]?(order_logistics_express.length>2?220:order_logistics_express.length*60):0}}rpx;'>
+                <text class='option' style='{{index==order_logistics_express.length-1&&"border:0;"}}' wx:for='{{order_logistics_express}}' wx:key='this' data-key='{{item.key}}' data-name='{{item.name}}' catchtap='optionTap' data-indexnum='{{indexnum}}' data-index='{{indexnum}}'>{{item.name}}</text>
+              </view>
+            </view>
           </view>
-          <view class='option_box' style='height:{{show[indexnum]?(order_logistics_express.length>2?156:order_logistics_express.length*60):0}}rpx;'>
-            <text class='option' style='{{index==order_logistics_express.length-1&&"border:0;"}}' wx:for='{{order_logistics_express}}' wx:key='this' data-key='{{item.key}}' data-name='{{item.name}}' catchtap='optionTap' data-indexnum='{{indexnum}}' data-index='{{indexnum}}'>{{item.name}}</text>
+          <view class='flex align_center'>
+            <view class='itemL'>填写单号 </view>
+            <input placeholder='' bindinput='inputs' data-index='{{indexnum}}' name='logistics[{{indexnum}}][express_num]' value='{{express_num[indexnum]}}'></input>
           </view>
         </view>
+        <image src='../../images/delc.png' class='delete_' bindtap='delsku' data-index='{{indexnum}}'></image>
       </view>
-      <view class='flex align_center'>
-        <view class='itemL'>填写单号 </view>
-        <input  placeholder=''  bindinput='inputs' data-index='{{indexnum}}'  name='logistics[{{indexnum}}][express_num]' value='{{express_num[indexnum]}}'></input>
-      </view>
+  </view>
+    <view class='additem' bindtap='addexpress'>
+      <image src='../../images/addspu.png'></image>
+      <view>添加物流</view>
     </view>
-    <image src='../../images/delc.png' class='delete_' bindtap='delsku' data-index='{{indexnum}}'></image>
-  </view>
-  </view>
-  <view class='additem' bindtap='addexpress'>
-    <image src='../../images/addspu.png'></image>
-    <view>添加物流</view>
-  </view>
-   <button formType="submit" disabled='{{expressbtn}}' class='surebtn'>确认</button>
+    <button formType="submit" disabled='{{expressbtn}}' class='surebtn'>确认</button>
   </form>
 </wux-popup>
 
@@ -112,11 +119,11 @@
       <view class='color5DC47A'>添加物流</view>
     </view>
     <view class='weui-cell-third over_look'>
-      <view wx:for="{{order_logistics}}" wx:key="index" wx:for-item='order_logistics'  class='order_logistics'>
+      <view wx:for="{{order_logistics}}" wx:key="index" wx:for-item='order_logistics' class='order_logistics'>
 
         <view class=' size28 color4 kdnr flex_btw'>
           <text>承运快递：{{order_logistics['express_key_name']}} {{order_logistics['express_num']}}</text>
-          <text class='colorEA2C2C' data-id='{{order_logistics.logistics_id}}' bindtap='dellog' >删除</text>
+          <text class='colorEA2C2C' data-id='{{order_logistics.logistics_id}}' bindtap='dellog'>删除</text>
         </view>
         <view class=''>
 

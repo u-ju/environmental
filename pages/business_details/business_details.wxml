@@ -34,7 +34,10 @@
         </view>
       </view>
     </view>
-    <view class='money'>￥{{!result.cost?0:result.cost}}/人</view>
+    <view class='money flex_btw'>
+      <view>￥{{!result.cost?0:result.cost}}/人</view>
+      <view class='size24'>优惠{{result.user_discount_percent}}%</view>
+    </view>
     <view class='label flex align_center'>
       <image src='../../images/stime.png' class='labelpic'></image>
       <view>{{result.business_status_name}} | {{result.business_time}}</view>

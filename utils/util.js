@@ -653,7 +653,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
           if (warning) {
             warning(res)
           }
-          that.info_dialog(res.data.message)
+          that.alert1(res.data.message, 1000)
         }
       }
     },
@@ -662,7 +662,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
         ErrorMsg(e)
       }
       //console.log(e.errMsg)
-      that.info_dialog(e.errMsg)
+      that.alert1(e.errMsg,1000)
     }
   });
   // wx.hideLoading();
@@ -748,7 +748,7 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
           if (warning) {
             warning(res)
           }
-          that.info_dialog(res.data.message)
+          that.alert1(res.data.message, 1000)
         }
         
       }
@@ -757,7 +757,7 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
       if (ErrorMsg) {
         ErrorMsg(ErrorMsg1)
       }
-      that.info_dialog(ErrorMsg1.errMsg)
+      that.alert1(ErrorMsg1.errMsg, 1000)
     }
   });
   // wx.hideLoading();

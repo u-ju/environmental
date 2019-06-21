@@ -109,6 +109,10 @@ Component({
           current: that.data.current-1
         })
       }
+      console.log(that.data.current)
+      if (that.data.current == -1 || that.data.current==undefined){
+        return
+      }
       return that.triggerEvent("choosea", {
         areaSelectedStr: areaSelectedStr,
         area_id_val: that.data.cengji[that.data.current]['area'][that.data.index] && that.data.cengji[that.data.current]['area'][that.data.index]["area_id"] ? that.data.cengji[that.data.current]['area'][that.data.index]["area_id"]:'',

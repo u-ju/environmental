@@ -172,7 +172,16 @@ Page({
   onPullDownRefresh: function () {
     var that = this;
     wx.showNavigationBarLoading();
-    util.getJSON({ apiUrl: apiurl[that.data.tab[that.data.current]["url"]] + '?page=' + 1 }, function (res) {
+    
+    var  current = that.data.current
+
+    var url = ''
+    for (var i in that.data.tab) {
+      if (that.data.tab[i]["id"] == current) {
+        url = that.data.tab[i]["url"]
+      }
+    }
+    util.getJSON({ apiUrl: apiurl[url] + '?page=' + 1 }, function (res) {
       var result = res.data.result
       var list = result.list
       that.setData({

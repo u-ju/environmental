@@ -156,7 +156,7 @@ form{
 .share view{
   font-size: 24rpx;
   color: #444;
-  height: 28rpx;
+  /* height: 28rpx; */
   line-height: 28rpx;
   position: absolute;
   bottom: 0;

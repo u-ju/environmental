@@ -161,7 +161,9 @@ Page({
     util.postJSON({ apiUrl: apiurl.shopComment_comment, data: data }, function (res) {
       var result = res.data.result
       util.alert(res.data.message)
-      util.navigateBack()
+      wx.reLaunch({
+        url: '../index/index',
+      })
       that.setData({
         disabled: false
       })

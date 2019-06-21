@@ -19,21 +19,37 @@ Page({
     express_num:[],
     expressbtn:false,
     exurl:'shopOrder_deliver',
+    objectIndex:[]
+  },
+  bindPickerChange2: function (e) {
+    console.log(e)
+    var express_name = this.data.express_name
+    var express_key = this.data.express_key
+    var objectIndex = this.data.objectIndex
+    express_key[e.currentTarget.dataset.indexnum] = this.data.order_logistics_express[e.detail.value].key
+    express_name[e.currentTarget.dataset.indexnum] = this.data.order_logistics_express[e.detail.value].name
+    objectIndex[e.currentTarget.dataset.indexnum] = e.detail.value
+    this.setData({
+      objectIndex: objectIndex,
+      express_key: express_key,
+      objectIndex :objectIndex
+
+    })
   },
   addexpress() {
     var express_name = this.data.express_name
     var express_key = this.data.express_key
-    var express_num = this.data.express_num
+    var objectIndex = this.data.objectIndex
     var show = this.data.show
     express_name.push('')
     express_key.push('')
-    // express_num.push('')
+    objectIndex.push('')
     show.push(false)
     this.setData({
       skunum: this.data.skunum + 1,
       express_name: express_name,
       express_key: express_key,
-      // express_num: express_num
+      objectIndex: objectIndex
     })
   },
   delsku(e) {
@@ -65,7 +81,7 @@ Page({
     var express_key = this.data.express_key
     
     express_key[e.currentTarget.dataset.indexnum] = keyv
-      express_name[e.currentTarget.dataset.indexnum] = name
+    express_name[e.currentTarget.dataset.indexnum] = name
     var show = this.data.show
     show[e.currentTarget.dataset.indexnum] = !show[e.currentTarget.dataset.indexnum]
     this.setData({

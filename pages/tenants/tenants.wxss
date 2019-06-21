@@ -36,6 +36,7 @@ page{
 }
 .input{
   overflow: hidden;
+  position: relative;
   /* display: flex;
   width: 510rpx; */
 }
@@ -265,7 +266,7 @@ navigator{
   height: 134rpx;
 }
 .time{
-  width:182rpx;
+  width:220rpx;
   height:42rpx;
   position: relative;
   
@@ -274,7 +275,7 @@ navigator{
   margin-left: 30rpx;
 }
 .timePeriod{
-  width:182rpx;
+  width:220rpx;
   height:42rpx;
   background:#4FD7F1;
   border-radius:5rpx;
@@ -444,4 +445,10 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   width: 100%;
   height: 100%;
   z-index: 88;
+}
+.posiab{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform:translate(0,-50%) 
 }

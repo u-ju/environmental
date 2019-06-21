@@ -1,7 +1,9 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/buurtNews/index",
+    "pages/buurtNewsDetail/index",
+    "pages/tenantsIndex/index",
     "pages/recycleEdit/index",
     "pages/place_order/place_order",
     "pages/maintenance_worker/index",
@@ -9,7 +11,7 @@
     "pages/renting/release/index",
     "pages/renting/detail/index",
     "pages/renting/index/index",
-    
+    "pages/agriculturalMerchantsOrder/index",
     "pages/recruitment/recruit/myposition/index",
     "pages/recruitment/recruit/my/index",
     "pages/recruitment/recruit/interview/index",
@@ -56,7 +58,7 @@
     "pages/myOrderRefund/index",
     "pages/agriculturalMerchantsOrderDeail/index",
     "pages/agriculturalRefund/index",
-    "pages/agriculturalMerchantsOrder/index",
+    
     "pages/agriculturalRecommendation/index",
     "pages/businessProduct/index",
     "pages/businessinforcheck/index",
@@ -65,7 +67,7 @@
     "pages/businessmerchants/index",
     "pages/businessOrder/index",
     "pages/agriculturalLook/index",
-    "pages/tenantsIndex/index",
+    
     "pages/tenantsChoice/index",
     "pages/unopen/index",
     "pages/businessProductview/index",

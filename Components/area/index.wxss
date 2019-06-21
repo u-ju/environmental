@@ -128,7 +128,7 @@
 }
 input{
   width: 484rpx;
-  height: 100%;
+  height: 96rpx;
 }
 /* .paddingtb30{
   padding: 0 0 50rpx 0;
@@ -137,6 +137,10 @@ input{
 .width460{
   width: 460rpx;
 }
-.wxgitem .width480{
-width: 478rpx;
+.width480{
+  width: 478rpx !important;
+}
+.height96{
+  height: 96rpx;
+  padding-right: 56rpx;
 }

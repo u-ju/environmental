@@ -20,7 +20,7 @@
     <view class='item  flex align_center' wx:if="{{!disabled1}}">
       <text class='size28 color6'>区域</text>
       <view class='input'>
-        <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' tokonw='city' ban='county' bind:choosea='choosearea' />
+        <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}'  classN='width460 height96' tokonw='city' ban='county' bind:choosea='choosearea' />
       </view>
       <text class='iconfont icon-jiantou color989898'></text>
     </view>

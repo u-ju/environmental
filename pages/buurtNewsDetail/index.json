@@ -1,5 +1,4 @@
 {
-  "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "menu": "../../Components/menu/index"
   }

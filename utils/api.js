@@ -4,7 +4,7 @@ const apiList = {
   base: basePath,
   wx_appid : "wx9af47449f54c0be7",
   build : 99999999,
-  // build : 20190614,
+  // build : 20190621,
   collectUpdate: basePath + '/front/collect/update',
   collectIndex: basePath + '/front/collect/index?source=',
 
@@ -475,5 +475,14 @@ const apiList = {
   travelPerson_index: basePath + '/front/travelPerson/index',
   travelPerson_update: basePath + '/front/travelPerson/update',
   travelPerson_destroy: basePath + '/front/travelPerson/destroy',
+  // BuurtNewsController 社区文化
+  buurtNews:{ 
+    index: basePath + '/front/buurtNews/index',//GET 文化列表
+    show: basePath + '/front/buurtNews/show?news_id=',//GET 文化详情
+    replyStore: basePath + '/front/buurtNews/replyStore',//POST 回复提交
+    replyIndex: basePath + '/front/buurtNews/replyIndex?news_id=',//GET 回复列表
+    praiseStore: basePath + '/front/buurtNews/praiseStore',//POST 点赞提交
+    replyPraiseStore: basePath + '/front/buurtNews/replyPraiseStore',//POST 回复点赞提交
+  }
 }
 module.exports = apiList;

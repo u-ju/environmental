@@ -26,7 +26,7 @@
     <input name='address' value='{{address}}'></input>
   </view>
   <view class='wxgitem flex_btw '>
-    <view class='left'>维修种类</view>
+    <view class='left'>服务种类</view>
     <view class='input textL hidden1'  bindtap='onOpen1'> <text  wx:for="{{choosenamet}}" wx:key="index">{{item}} </text> </view>
     <text class='iconfont icon-jiantou color898989'></text>
   </view>
@@ -72,7 +72,7 @@
 <wux-popup  visible="{{ visible1 }}" position="bottom"  bind:close="close1">
   <view class='flex_btw align_center yysj'>
     <image src='../../images/ch_del.png' class='ch_del' bindtap='ch_del'></image>
-    <text>维修种类</text>
+    <text>服务种类</text>
     <image src='../../images/ch_true.png' class='ch_true' bindtap='ch_true'></image>
   </view>
   <view class='flex_btw cateitem wrap'>

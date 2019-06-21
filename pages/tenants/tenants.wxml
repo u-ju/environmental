@@ -26,8 +26,8 @@
     <view class='item  flex align_center' wx:if="{{!disabled1}}">
       <text class='size28 color6'>区域</text>
       <view class='input flex_btw align_center'>
-        <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' classN='width460' tokonw='city' ban='county' bind:choosea='choosearea' />
-        <text class='iconfont icon-jiantou color989898'></text>
+        <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' classN='width460 height96' tokonw='city' ban='county' bind:choosea='choosearea' />
+        <text class='iconfont icon-jiantou color989898 posiab' ></text>
       </view>
     </view>
 
@@ -58,7 +58,7 @@
       <text class='size28 color6'>营业时间</text>
       <view class='input flex_btw align_center' bindtap='opent'>
         <view class='width460'>
-          <text wx:for="{{timevalueR}}" wx:key="index">{{item}} </text>
+          <text class='color9' wx:for="{{timevalueR}}" wx:key="index">{{item}} </text>
         </view>
         <text class='iconfont icon-jiantou color989898'></text>
       </view>
@@ -87,62 +87,7 @@
       <textarea wx:if="{{show}}" focus="{{show}}" class='size28 color9' bindinput='input' bindblur='unshow' data-contact='introt' value='{{intro}}' name='intro'></textarea>
       <view class='textarea size28 color9' bindtap='show' wx:else>{{intro}}</view>
     </view>
-    <!-- <view class='item1 flex align_center textareaitem'>
-      <text class='size28 color6'>预定信息</text>
-      <view class='reservation size28 color9'>
-        <view class='flex'>
-          <text>可接纳人数：</text>
-          <input class='per' name='reservation[min_person]'  bindinput='input' data-contact='reservation[min_person]t' value="{{min_person}}" ></input>
-          <text>—</text>
-          <input class='per' name='reservation[max_person]'  bindinput='input' data-contact='reservation[max_person]t' value="{{max_person}}"></input>
-          <text>人</text>
-        </view>
-        <view class='flex align_center roomitem'>
-          <text>接受预定房型： </text>
-          <scroll-view scroll-x="true" class="scroll-header flex align_center">
-            <view class='featuresitem' wx:for="{{room_list}}" wx:for-item='roomitem' wx:key="index">
-              <view class='features  {{m1.indexO(room,roomitem)==-1?"featuresinput":""}} hidden1' data-item='{{roomitem}}' bindtap='roomcz'>{{roomitem}}</view>
-            </view>
-            
-          </scroll-view>
-        </view>
-      </view>
-    </view> -->
-    <!-- <view class='featuresitem' wx:for="{{room}}" wx:key="index">
-              <view class='features hidden1'>{{item}}</view>
-              <image src='../../images/delt.png' class='delt' bindtap='delroom' data-index='{{index}}'></image>
-            </view>
-            <view class='featuresitem' >
-              <input placeholder='自定义' class='features featuresinput' value='{{roomv}}' hidden='{{room.length==4}}' bindconfirm="room"></input>
-            </view> -->
-    <!-- <view class='item1 flex align_center textareaitem'>
-      <text class='size28 color6'>营业许可</text>
-      <view class='businessLicense'>
-        <view class='license flex align_center'>
-          <view>单位名称：</view>
-          <input name='license_info[company_name]' data-contact='license_info[company_name]t' bindinput='input' value="{{company_name}}" ></input>
-        </view>
-        <view class='license flex align_center'>
-          <view>许可证号：</view>
-          <input name='license_info[license_no]' data-contact='license_info[license_no]t' bindinput='input'  value="{{license_no}}"></input>
-        </view>
-        <view class='license flex align_center'>
-          <view> 法定代表人：</view>
-          <input name='license_info[legal_person]' data-contact='license_info[legal_person]t' bindinput='input'  value="{{legal_person}}"></input>
-        </view>
-        <view class='license flex align_center'>
-          <view> 经营地址：</view>
-          <view wx:if="{{!showa}}" class='textarea1' bindtap='showa'>{{business_address}}</view>
-          <textarea wx:else  auto-focus='{{showa}}' focus='{{showa}}' bindinput='inputa' bindblur='unshowa' name='license_info[business_address]' data-contact='license_info[business_address]t'  value="{{business_address}}" ></textarea>
-          
-        </view>
-        <view class='license flex align_center'>
-          <view>经营范围：</view>
-           <view wx:if="{{!shows}}" class='textarea1' bindtap='shows'>{{business_scope}}</view>
-          <textarea wx:else bindinput='inputs'  auto-focus='{{shows}}' focus='{{shows}}'  bindblur='unshows' name='license_info[business_scope]' data-contact='license_info[business_scope]t'   value="{{business_scope}}"></textarea>
-        </view>
-      </view>
-    </view> -->
+    
     <block wx:for="{{image}}" wx:key="{{index}}">
       <view class='item1 flex align_center image'>
         <text class='size28 color6'>{{item.title}}</text>
@@ -257,8 +202,8 @@
             <view class='timePeriod'>{{item}}</view>
             <image src='../../images/delt.png' class='delt' bindtap='deltime' data-index='{{index}}'></image>
           </view>
-          <view class='time' bindtap='timeadd'>
-            <view class='timePeriod size24'>添加其他时间段</view>
+          <view class='time' bindtap='timeadd' hidden='{{timevalue.length>3}}'>
+            <view class='timePeriod size24'>点击添加其他时间段</view>
           </view>
         </view>
       </view>

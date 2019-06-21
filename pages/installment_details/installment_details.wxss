@@ -223,7 +223,7 @@
   margin-left: 10rpx;
 }
 .scoreitem{
-  margin-bottom: 16rpx;
+  margin: 16rpx 0;
 }
 .fixbtn{
   width:225rpx;

@@ -65,7 +65,7 @@
   <image src="{{nper.image}}" />
 </view> -->
       <view class='tab'>
-        <swiper class="swiper-box" indicator-dots="{{indicatorDotstag}}" autoplay="{{autoplaytag}}" interval="{{intervaltag}}" duration="{{durationtag}}" indicator-active-color="{{afterColortag}}" indicator-color="{{beforeColortag}}">
+        <swiper class=" {{tag.length>4?'swiper-box':'swiper-box1'}}" indicator-dots="{{indicatorDotstag}}" autoplay="{{autoplaytag}}" interval="{{intervaltag}}" duration="{{durationtag}}" indicator-active-color="{{afterColortag}}" indicator-color="{{beforeColortag}}">
           <block wx:for="{{taglen}}" wx:key="index" wx:for-index="indexnum">
             <swiper-item>
               <view class='flex wrap'>
@@ -161,7 +161,7 @@
           <image src='{{item.thumb}}' mode='aspectFill'></image>
           <view class='flex_btw flex_col'>
             <view class='hidden2'>{{item.spu_name}}{{item.sku_name}}</view>
-            <view class='colorEA2C2C'>￥{{item.price}}</view>
+            <view class='colorEA2C2C'>￥{{item.price}} <text class='size24' wx:if='{{item.user_return>0}}'> (可返现{{item.user_return}})</text></view>
           </view>
         </view>
       </view>

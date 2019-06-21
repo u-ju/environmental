@@ -2,7 +2,7 @@
 <view class='banner'>
   <image src='{{result.background}}'></image>
   <view class='center colorfff zong'> <text class='size36'>总收益 </text> <text class='size36'> {{stat.total_amount}}</text></view>
-  <view class='invite size30 color27AAD9' bindtap='open3'>邀请二维码</view>
+  <view class='invite size30' bindtap='open3'>邀请二维码</view>
   <view class='num size24 flex_ard center align_center wrap'>
     <view>
       <view class='size30'>￥{{stat.user_amount}}</view>

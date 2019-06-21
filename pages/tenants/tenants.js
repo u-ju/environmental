@@ -91,6 +91,7 @@ Page({
     clicktime:'0:00-0:00',
     showa:false,
     shows: false,
+    timezc: 0
   },
   checkboxChange(e) {
     this.setData({
@@ -102,8 +103,7 @@ Page({
     var timevalue = this.data.timevalue
     var time = this.data.hour1[val[0]] + '-' + this.data.hour1[val[1]];
     var timenum = timevalue.length-1
-
-    timevalue[timenum] = time
+    console.log(this.data.timezc)
     this.setData({
       timevalue: timevalue,
       clicktime: time
@@ -117,13 +117,15 @@ Page({
   opent(){
     this.setData({
       visiblet:true,
-      timevalue:this.data.timevalueR,
-      clicktime: '0:00-0:00'
+      timezc: 0,
+      timevalue: util.copyarr(this.data.timevalueR),
+      clicktime: this.data.clicktime,
     })
   },
   colset(){
     this.setData({
-      visiblet: false
+      visiblet: false,
+      timecz:0
     })
   },
   deltime(e){
@@ -137,14 +139,16 @@ Page({
   },
   ch_del(){
     this.setData({
-      visiblet:false
+      visiblet:false,
+      timecz: 0
     })
   },
   ch_true(){
     
     this.setData({
       visiblet: false,
-      timevalueR: this.data.timevalue
+      timevalueR: util.copyarr(this.data.timevalue),
+      timecz:0
     })
     wx.setStorageSync('timevaluet', this.data.timevalue)
   },
@@ -153,7 +157,8 @@ Page({
 
     timevalue.push(this.data.clicktime)
     this.setData({
-      timevalue: timevalue
+      timevalue: timevalue,
+      timezc:1
     })
   },
   features(e){
@@ -195,25 +200,6 @@ Page({
     })
     wx.setStorageSync('roomt', room)
   },
-  // room(e) {
-  //   var room = this.data.room
-  //   room.push(e.detail.value)
-  //   this.setData({
-  //     room: room,
-  //     roomv: ''
-  //   })
-  //   wx.setStorageSync('roomt', room)
-  // },
-  // delroom(e) {
-  //   let index = e.currentTarget.dataset.index;
-  //   let room = this.data.room;
-  //   room.splice(index, 1);
-  //   this.setData({
-  //     room: room
-  //   })
-  //   wx.setStorageSync('roomt', room)
-  // },
-  // var fileName = util.now_time() +'.mp4';
   uploadvideo(e){
     var that = this;
     

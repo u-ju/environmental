@@ -55,7 +55,7 @@ input{
 }
 .delete_{
   width:38rpx;
-  height:44rpx;
+  height:38rpx;
 }
 .express .align_center{
   margin-top: 36rpx;
@@ -78,6 +78,9 @@ input{
   max-height: 440rpx;
   overflow: scroll;
 }
+.expressitem input{
+  height:68rpx;
+}
 .btndd{
   border: 1px solid #D2D2D2;
 }
@@ -86,6 +89,9 @@ input{
   position: absolute;
   top: -40rpx;
   left: 32rpx;
+}
+.option_box{
+  top: 72rpx;
 }
 .addwl image{
   width: 40rpx;
@@ -131,4 +137,7 @@ input{
   height:130rpx;
   margin: 20rpx 40rpx 0 0;
   background-color: #eee;
+}
+.visible{
+  overflow: visible;
 }
