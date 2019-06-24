@@ -1,0 +1,50 @@
+<!--pages/recruitment/recruit/cardCreate/index.wxml-->
+<view class='with686'>
+  <view>创建名片</view>
+  <view class='flex_btw align_center item'>
+    <view class='left'>
+      头像
+    </view>
+    <view class='picture_item'  bindtap='uploadpic'>
+      <view wx:if="{{upload_picture_list.length==0}}" class='bgg flex_ard align_center'>
+        
+      </view>
+      <view wx:else>
+        <image wx:if="{{upload_picture_list[0].upload_percent < 100}}" src="{{upload_picture_list[0].path}}" mode="aspectFill"></image>
+            <image wx:if="{{upload_picture_list[0].upload_percent == 100}}"  bindtap="previewImg" data-src="{{upload_picture_list[0].path_server}}" src="{{upload_picture_list[0].path_server}}" mode="aspectFill"></image>
+            <view class="upload_progress" wx:if="{{upload_picture_list[0].upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{upload_picture_list[0].upload_percent}}%</view>
+      </view>
+    </view>
+  </view>
+  <view class='flex align_center item'>
+    <view class='left'>
+      姓名
+    </view>
+    <input></input>
+  </view>
+  <view class='flex align_center item'>
+    <view class='left'>
+      联系电话
+    </view>
+    <input></input>
+  </view>
+  <view class='flex align_center item'>
+    <view class='left'>
+      我的公司
+    </view>
+    <input></input>
+  </view>
+  <view class='flex align_center item'>
+    <view class='left'>
+      我的职务
+    </view>
+    <input></input>
+  </view>
+  <view class='flex align_center item'>
+    <view class='left'>
+      我的邮箱
+    </view>
+    <input></input>
+  </view>
+  <button class='submitButton'>确定</button>
+</view>

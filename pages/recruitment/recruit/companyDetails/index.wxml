@@ -1,0 +1,9 @@
+<!--pages/recruitment/recruit/companyDetails/index.wxml-->
+<view class='pagetype'>
+  <view>公司全称</view>
+  <view class='flex_btw'>
+    <input class='name' name='name' bindinput='num' value='{{name}}'></input>
+    <view>
+      <text class='colorff1919'>{{name.length||0}}</text>/40</view>
+  </view>
+</view>

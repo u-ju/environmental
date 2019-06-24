@@ -1,0 +1,72 @@
+/* pages/recruitment/recruit/positionDetails/index.wxss */
+page{
+  font-size: 28rpx;
+  padding-bottom: 100rpx;
+}
+.pagetype{
+  padding: 0 32rpx;
+}
+.tag{
+  margin-right: 40rpx;
+}
+.top{
+  padding: 26rpx 32rpx;
+  border-bottom: 1px solid #eee;
+}
+.tagitem{
+  margin: 30rpx 0 40rpx 0;
+}
+.company{
+ padding: 22rpx 32rpx;
+  border-bottom: 1px solid #eee;
+}
+.company image{
+  width: 62rpx;
+  height: 62rpx;
+  margin-right: 30rpx;
+}
+.icon-weibiaoti-{
+  font-size: 40rpx;
+  margin: 0 20rpx;
+}
+.company .bold{
+  margin-top: 14rpx;
+}
+.addr{
+  border-bottom: 20rpx solid #eee;
+}
+.addr>.bold{
+  margin:0 0 20rpx 0;
+}
+.addr .address{
+  line-height: 40rpx;
+  width: 520rpx;
+}
+.job{
+  padding: 40rpx 36rpx;
+}
+.content{
+  margin: 36rpx 0 26rpx 0;
+}
+.cond{
+  line-height: 40rpx;
+}
+.call{
+  width:240rpx;
+  height:98rpx;
+  background:#4FD6F0;
+  text-align: center;
+  line-height: 98rpx;
+  color: #fff;
+}
+.bottom{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  
+}
+.padl30{
+  padding-left: 30rpx;
+}

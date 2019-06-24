@@ -1,0 +1,39 @@
+/* pages/recruitment/recruit/cardCreate/index.wxss */
+page{
+  font-size: 28rpx;
+}
+.with686{
+  width: 686rpx;
+  margin: auto;
+}
+.with686 input{
+  height: 106rpx;
+  width: 560rpx;
+}
+.with686 .left{
+  height: 106rpx;
+  width: 126rpx;
+  line-height: 106rpx;
+}
+.with686 .item{
+  border-bottom: 1px solid #eee;
+}
+.bgg,.picture_item image{
+  width:100rpx;
+  height:100rpx;
+  border-radius: 50%;
+  background-color: #e8e8e8;
+}
+.picture_item{
+  position: relative;
+}
+.upload_progress{
+  position: absolute;
+  font-size: 26rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%)
+}
+.submitButton{
+  margin-top: 56rpx;
+}

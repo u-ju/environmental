@@ -95,9 +95,14 @@ Page({
       console.log(res)
       
       that.setData({
-        tab: res.data.result.news_cate
+        tab: res.data.result.buurt_news_cate
       });
-      that.init();
+      if (res.data.result.buurt_news_cate.length>0){
+        that.init();
+      }else{
+        wx.hideLoading()
+      }
+      
     })
     // if (app.globalData.config.news_cate.length > 0) {
     //   that.init();

@@ -352,6 +352,7 @@ function uploadV(url, that, res,  suc, update) {
     url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  
     filePath: res.tempFilePath, //上传的文件本地地址    
     name: 'video',
+    compressed:true,
     formData: {
       // "video": res,
       'source': 'file'

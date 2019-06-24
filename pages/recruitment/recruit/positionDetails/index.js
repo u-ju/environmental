@@ -1,20 +1,18 @@
-// pages/recruitment/recruit/interview/index.js
+// pages/recruitment/recruit/positionDetails/index.js
 Page({
 
   /**
    * 页面的初始数据
-   */                                       
+   */
   data: {
-    tabTxt: ['最新', '成都 ', '公司', '要求'],
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress')
-    })
+
   },
 
   /**

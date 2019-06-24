@@ -1,4 +1,4 @@
-// pages/recruitment/recruit/resume/index.js
+// pages/recruitment/recruit/companyDetails/index.js
 Page({
 
   /**
@@ -7,7 +7,25 @@ Page({
   data: {
 
   },
-
+  num(e){
+    console.log(e.detail.value)
+    var that=this
+    this.numlis(e.detail.value,40,function(){
+      that.setData({
+        name: e.detail.value
+      })
+    },function(){
+      that.setData({
+        name: that.data.name
+      })
+    })
+  },
+  numlis(value, num,suc, err){
+    if (value.length>num){
+      return err()
+    }
+    suc()
+  },
   /**
    * 生命周期函数--监听页面加载
    */

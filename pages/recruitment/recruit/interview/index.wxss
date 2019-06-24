@@ -1,2 +1,51 @@
 /* pages/recruitment/recruit/interview/index.wxss */
-@import '../resume/index';
+@import '../../../renting/index/index';
+page{
+  font-size: 28rpx;
+}
+.head{
+  width:60rpx;
+  height:60rpx;
+  border-radius: 50%;
+  margin-right: 28rpx;
+  background-color: #eee;
+}
+.person{
+  margin-top: 16rpx;
+}
+.moudel{
+  width:100rpx;
+  height:50rpx;
+  background:#eee;
+  border-radius:10rpx;
+  text-align: center;
+  line-height: 50rpx;
+  margin-right: 30rpx;
+}
+.resume{
+  padding: 40rpx 32rpx 26rpx 32rpx;
+  border-bottom: 20rpx solid #EEEEEE;
+}
+.martb28{
+  margin: 28rpx 0;
+}
+/* .seach{
+  width: 340rpx;
+  padding: 0 18rpx;
+  height:62rpx;
+  background:rgba(238,238,238,1);
+  border-radius:31rpx;
+}
+.seach image{
+  width:44rpx;
+  height:44rpx;
+}
+.seach input{
+  width: 300rpx;
+}
+.seach_item{
+  padding: 20rpx 32rpx 32rpx 32rpx;
+}
+.icon-dingwei{
+  margin-right: 8rpx;
+} */

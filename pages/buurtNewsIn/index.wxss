@@ -1,0 +1,2 @@
+/* pages/buurtNewsIn/index.wxss */
+@import '../tenants/tenants.wxss'

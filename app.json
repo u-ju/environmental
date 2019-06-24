@@ -1,7 +1,20 @@
 {
   "pages": [
+    
+    "pages/recruitment/recruit/companyDetails/index",
+    "pages/recruitment/recruit/positionDetails/index",
+    "pages/recruitment/recruit/interview/index",
+    "pages/renting/index/index",
     "pages/index/index",
-    "pages/buurtNews/index",
+    
+    "pages/recruitment/recruit/cardCreate/index",
+    "pages/recruitment/recruit/myposition/index",
+    
+    
+    
+    "pages/recruitment/index/index",
+    
+    "pages/buurtNewsIn/index",
     "pages/buurtNewsDetail/index",
     "pages/tenantsIndex/index",
     "pages/recycleEdit/index",
@@ -10,13 +23,10 @@
     "pages/housekeeping_edit/index",
     "pages/renting/release/index",
     "pages/renting/detail/index",
-    "pages/renting/index/index",
+    
     "pages/agriculturalMerchantsOrder/index",
-    "pages/recruitment/recruit/myposition/index",
-    "pages/recruitment/recruit/my/index",
-    "pages/recruitment/recruit/interview/index",
-    "pages/recruitment/recruit/resume/index",
-    "pages/recruitment/index/index",
+    
+    
     "pages/myCollection/index",
     "pages/assets/index",
     "pages/family/associated/index",

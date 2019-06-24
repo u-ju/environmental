@@ -1,0 +1,9 @@
+/* pages/recruitment/recruit/companyDetails/index.wxss */
+.pagetype{
+  padding: 0 32rpx;
+  border-bottom: 20rpx solid #eee;
+}
+.name{
+  height: 66rpx;
+  width: 600rpx;
+}
