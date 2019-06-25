@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我发布的职位",
+  "usingComponents": {
+    "area": "../../Components/area/index",
+    "wux-popup": "../../Components/popup/index"
+  }
+}

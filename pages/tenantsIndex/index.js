@@ -41,6 +41,7 @@ Page({
     wx.navigateTo({
       url: '../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info) + "&room_list=" + JSON.stringify(this.data.room_list),
     })
+    console.log('../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info) + "&room_list=" + JSON.stringify(this.data.room_list))
   },
   erwm(e){
     console.log(e)

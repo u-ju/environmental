@@ -30,7 +30,7 @@
   </view>
   <view class='colorFE2C2C size36 '>
     <text class='bold'>{{result.source=="exchange"?"社区惠民价":"价格"}}：￥{{result.price}}</text> 
-    <text class='size28' wx:if='{{result.user_return>0}}'> (可返现{{result.user_return}})</text>
+    <text class='size28' wx:if='{{result.user_return>0}}'> (积分兑环保金{{result.user_return}})</text>
   </view>
   <view class='size22 color898989 flex_btw'>
     <text>运费：{{result.freight>0?result.install_fee:'免'}}</text>

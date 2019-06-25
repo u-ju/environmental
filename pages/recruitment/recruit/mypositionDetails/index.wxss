@@ -1,0 +1,69 @@
+/* pages/recruitment/recruit/mypositionDetails/index.wxss */
+.from{
+  width: 686rpx;
+  margin: auto;
+}
+.item .color9{
+  width: 160rpx;
+}
+.item>input,.input,.input1 input{
+  width: 500rpx;
+  height: 106rpx;
+  padding-right: 50rpx;
+}
+.item{
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+.icon-jiantou1{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+textarea{
+  width:666rpx;
+  height:300rpx;
+  border:2rpx solid #eee;
+  border-radius:10rpx;
+  margin-bottom: 10rpx;
+  padding:  20rpx 10rpx;
+}
+.detail{
+  margin: 36rpx 0;
+}
+.submitButton{
+  margin-top: 46rpx;
+}
+.yysj{
+  padding: 28rpx 32rpx;
+  border-bottom: 1px solid #eee;
+  color: #444;
+}
+.yysj .ch_del{
+  width: 40rpx;
+  height: 40rpx;
+}
+.yysj .ch_true{
+  width: 48rpx;
+  height: 30rpx;
+}
+.timechoice{
+  padding: 50rpx 0;
+}
+.textL{
+  text-align: left
+}
+.record{
+  padding: 16rpx 20rpx;
+  border: 1px solid #eee;
+  margin-right: 20rpx;
+}
+.recorditem{
+  padding: 20rpx 32rpx 60rpx 32rpx;
+  margin: auto;
+}
+.recordactive{
+  background-color: #4FD7F0;
+  color: #fff;
+}

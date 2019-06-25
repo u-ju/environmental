@@ -1,11 +1,12 @@
 {
   "pages": [
-    
+    "pages/index/index",
+    "pages/recruitment/recruit/mypositionDetails/index",
     "pages/recruitment/recruit/companyDetails/index",
     "pages/recruitment/recruit/positionDetails/index",
     "pages/recruitment/recruit/interview/index",
     "pages/renting/index/index",
-    "pages/index/index",
+    
     
     "pages/recruitment/recruit/cardCreate/index",
     "pages/recruitment/recruit/myposition/index",

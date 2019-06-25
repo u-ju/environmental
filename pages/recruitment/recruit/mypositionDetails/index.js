@@ -1,42 +1,51 @@
-// pages/tenantsChoice/index.js
-const app = getApp()
-var util = require('../../utils/util.js');
-var apiurl = require('../../utils/api.js');
+// pages/recruitment/recruit/mypositionDetails/index.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    visiblet: false,
+    visibler: true,
+    item: ['初中及以下', '高中','大专']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    var apply_info = JSON.parse(options.apply_info)
-    if (apply_info){
-      this.setData({
-        apply_info: apply_info,
-        room_list: options.room_list
-      })
+    var money1 = [], money2 = []
+    for (var i = 0; i < 24; i++) {
+      money1.push(i + "K")
+      money2.push(i + "K")
     }
-  },
-  offline(e){
-    wx.navigateTo({
-      url: '../tenants/tenants?room_list=' + this.data.room_list + "&apply_info=" + JSON.stringify(this.data.apply_info) + "&source=" + e.currentTarget.dataset.key,
+    this.setData({
+      money1: money1,
+      money2: money2,
     })
   },
-  online(e){
-    wx.navigateTo({
-      url: '../tenants/online?source=' + e.currentTarget.dataset.key + "&apply_info=" + JSON.stringify(this.data.apply_info),
+  bindChange(e){
+    console.log(e)
+  },
+  open() {
+    this.setData({
+      ['visible' + e.target.dataset.name]: true
     })
   },
-  league(e) {
-    wx.navigateTo({
-      url: '../tenants/league?source=' + e.currentTarget.dataset.key + "&apply_info=" + JSON.stringify(this.data.apply_info),
+  colse(e){
+    this.setData({
+      ['visible' + e.target.dataset.name]: false
+    })
+  },
+  ch_del() {
+    this.setData({
+      visiblet: false
+    })
+  },
+  ch_true() {
+    this.setData({
+      visiblet: false
     })
   },
   /**

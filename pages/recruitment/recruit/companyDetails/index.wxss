@@ -1,9 +1,27 @@
 /* pages/recruitment/recruit/companyDetails/index.wxss */
+@import '../../../tenants/tenants.wxss';
 .pagetype{
-  padding: 0 32rpx;
+  padding: 0 32rpx 50rpx 32rpx;
   border-bottom: 20rpx solid #eee;
 }
 .name{
   height: 66rpx;
   width: 600rpx;
+}
+.inputitem{
+  border-bottom: 1px solid #eee;
+}
+.intro{
+  width:666rpx;
+  height:300rpx;
+  border:2rpx solid #eee;
+  border-radius:10rpx;
+  margin-bottom: 10rpx;
+  padding:  20rpx 10rpx;
+}
+.tname{
+  margin: 40rpx 0 20rpx 0;
+}
+.notice{
+  padding: 30rpx 32rpx;
 }

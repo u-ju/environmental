@@ -1,9 +1,46 @@
 <!--pages/recruitment/recruit/companyDetails/index.wxml-->
 <view class='pagetype'>
-  <view>公司全称</view>
-  <view class='flex_btw'>
-    <input class='name' name='name' bindinput='num' value='{{name}}'></input>
-    <view>
-      <text class='colorff1919'>{{name.length||0}}</text>/40</view>
+  <view class='inputitem'>
+    <view class='tname'>公司全称</view>
+    <view class='flex_btw'>
+      <input class='name' name='name' bindinput='num' value='{{name}}' maxlength='40' placeholder='请输入营业执照上面的公司名称'></input>
+      <view>
+        <text class='colorff1919'>{{name.length||0}}</text>/40</view>
+    </view>
   </view>
+  <view>
+    <view class='tname'>公司简介</view>
+    <textarea class='intro' name='intro' bindinput='intronum' value='{{intro}}' maxlength='1000'></textarea>
+    <view class='textR'>
+      <text class='colorff1919'>{{intro.length||0}}</text>/1000</view>
+  </view>
+  <block wx:for="{{image}}" wx:key="{{index}}">
+      <view class='item1 flex align_center image' >
+        <text class='size28 color6'>{{item.title}}</text>
+        <view class="picture_list">
+          <view class="picture_item {{item.id}}" wx:if="{{item.upload_picture_list.length>0}}">
+            <image wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" src="{{item.upload_picture_list[0].path}}" mode="aspectFill"></image>
+            <image wx:if="{{item.upload_picture_list[0].upload_percent == 100}}"  bindtap="previewImg" data-src="{{item.upload_picture_list[0].path_server}}" src="{{item.upload_picture_list[0].path_server}}" mode="aspectFill"></image>
+            <view class="upload_progress" wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_picture_list[0].upload_percent}}%</view>
+            <image src='../../../../images/delt.png' class='del' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></image>
+          </view>
+          <view wx:else class='picture_item' bindtap='uploadpic' data-index="{{index}}">
+            <view class='bgg flex_ard align_center'>
+              <image src='../../../../images/camera2x.png'></image>
+            </view>
+            <view class='size26 bold center'>{{item.text}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
 </view>
+
+<view class='notice color9'>
+  <view>注意事项</view>
+  <text class='color9'>
+                            1、请输入所属公司营业执照上面的公司名称
+2、请注意区分总公司和分公司
+3、公司名称将用于后续的企业认证使用，请确保准确性
+                        </text>
+</view>
+<view class='submitButton'>完成</view>
