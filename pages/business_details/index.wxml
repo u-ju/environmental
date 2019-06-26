@@ -1,25 +1,28 @@
-<!--pages/business_details/index.wxml-->
+<!--pages/business_details/business_details.wxml-->
 <block wx:if="{{result}}">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' bindchange="swiperChange" current="{{cur}}">
     <swiper-item wx:if="{{result.video}}">
-      <video src="{{result.video}}" custom-cache='{{false}}' poster="{{result.images[0]}}" objectFit="contain"></video>
-      <!-- autoplay='autoplay' -->
+      <video src="{{result.video}}" custom-cache='{{false}}' objectFit="contain"></video>
     </swiper-item>
-    <!-- <block wx:for="{{4}}" wx:key="index"> -->
     <swiper-item wx:for="{{result.images}}" wx:key="index">
-      <image src="{{item}}" class="slide-image" mode='aspectFill' />
-
+      <image src="{{item}}" class="slide-image" mode='aspectFill' bindtap='previewImg' data-src='{{item}}' />
     </swiper-item>
-    <!-- </block> -->
 
   </swiper>
   <view class='dotbox flex'>
-    <view class='dotbtn {{cur>0?"dotpic":""}}' data-index='0' bindtap='swiperC' wx:if='{{result.video}}'>
+    <view class='dotbtn {{cur==0&&result.video?"":"dotpic"}}' data-index='0' bindtap='swiperC' wx:if='{{result.video}}'>
       <text class='iconfont icon-bofang size20'></text> 视频</view>
-    <view class='dotbtn {{cur==0?"dotpic":""}}' data-index='1' bindtap='swiperC'>图片</view>
+    <view class='dotbtn {{cur>0||!result.video?"":"dotpic"}}' data-index='1' bindtap='swiperC'>图片</view>
   </view>
   <view class='con'>
-    <view class='size32 color4 bold title'>{{result.title}}</view>
+    <view class='flex_btw align_center'>
+      <view class='size32 color4 bold title'>{{result.title}}</view>
+
+      <view class='flex_btw align_center'>
+        <view class='iconfont  {{result.is_collect==1?"icon-collection-b":"icon-collection"}} color4fd6f0' bindtap='collect' data-source='shop' data-id='{{result.shop_id}}'></view>
+        <button open-type='share' class='iconfont icon-share color4fd6f0'></button>
+      </view>
+    </view>
     <view class='flex_btw align_center'>
       <view class='flex align_center score'>
         <image src='../../images/smasonry.png' class='masonry' wx:for="{{comment_score}}" wx:key="index"></image>
@@ -31,7 +34,10 @@
         </view>
       </view>
     </view>
-    <view class='money'>￥{{!result.cost?0:result.cost}}/人</view>
+    <view class='money flex_btw'>
+      <view>￥{{!result.cost?0:result.cost}}/人</view>
+      <view class='size24'>优惠{{result.user_discount_percent}}%</view>
+    </view>
     <view class='label flex align_center'>
       <image src='../../images/stime.png' class='labelpic'></image>
       <view>{{result.business_status_name}} | {{result.business_time}}</view>
@@ -41,18 +47,12 @@
         <image src='../../images/sloc.png' class='labelpic'></image>
         <view class='address'>
           <view class='hidden1 '>{{result.area_name}}{{result.address}}</view>
-          <!-- <view class='color898989 size24 hidden1 margint20'>距离地铁3号线春熙路c口直走200米</view> -->
         </view>
       </view>
       <image src='../../images/stel.png' data-phone='{{result.contact}}' bindtap='calling' class='labeltel'></image>
     </view>
   </view>
   <view class='details'>
-    <!-- <view class='reservation' bindtap='reservation'>
-      <image src='../../images/seat.png' class='labelpic'></image>
-      <text>订座</text>
-      <text class='color898989 size24'>（已订5桌）</text>
-    </view> -->
     <view class='tab'>
       <view class='flex'>
         <view wx:for="{{tab}}" wx:key="index" class='tabitem bold {{active==index?"active":""}}' data-index='{{index}}' bindtap='tabswitch'>{{item}}</view>
@@ -60,28 +60,29 @@
     </view>
     <scroll-view scroll-y scroll-with-animation class="nav_right" scroll-into-view="{{toView}}" bindscroll='scroll' style="height:{{s_height}}px;">
       <view class='spu view0' id='view0'>
-      <block wx:if="{{goods.length>0}}">
-        <view class='flex_btw'>
-          <view class='spug flex_col' wx:for="{{goods}}" wx:key="index" data-id='{{item.sku_id}}' bindtap='goods'>
-            <image src='{{item.thumb}}'></image>
-            <view class='spud'>
-              <view class='size26 center hidden1'>{{item.spu_name}}{{item.sku_name}}</view>
-              <view class='flex_btw align_center spum'>
-                <text class='size26 colorFE2C2C'>￥{{item.price}}</text>
+        <block wx:if="{{goods.length>0}}">
+          <view class=' {{goods.length==2?"flex":"flex_btw"}}'>
+            <view class='spug flex_col' wx:for="{{goods}}" wx:key="index" data-id='{{item.sku_id}}' bindtap='goods'>
+              <image src='{{item.thumb}}'></image>
+              <view class='spud'>
+                <view class='size26 center hidden1'>{{item.spu_name}}{{item.spu_name}}</view>
+                <view class='flex_btw align_center spum'>
+                  <text class='size26 colorFE2C2C'>￥{{item.price}}</text>
+                </view>
               </view>
             </view>
           </view>
-        </view>
-        <!-- <view class='more flex align_center'>
-          <view>更多</view>
-          <text class='iconfont icon-xiangxiajiantou'></text>
-        </view> -->
+          <view class='more flex align_center' bindtap='moregoods'>
+            <view>更多</view>
+            <text class='iconfont icon-xiangxiajiantou'></text>
+          </view>
         </block>
       </view>
       <view class='goods_intr3 view1' id='view1'>
         <view class='size28 color4 allpl flex_btw align_center'>
-          <view><text class='bold'>用户评论</text> （{{list.length}}条）</view>
-          <view class='flex align_center' >
+          <view>
+            <text class='bold'>用户评论</text> （{{list.length}}条）</view>
+          <view class='flex align_center'>
             <navigator class='flex align_center' url='../comment/shopComment?id={{shop_id}}'>
               <image src='../../images/pinglun.png' class='pinglun'></image>
               <text>立即评论</text>
@@ -123,10 +124,10 @@
       </view>
       <view class='spuinfor view2' id='view2'>
         <view class='bold pad40'>商户信息</view>
-        <view class='flex_btw align_center pad40' bindtap='license'>
+        <!-- <view class='flex_btw align_center pad40' bindtap='license'>
           <view>营业许可资质</view>
           <text class='iconfont icon-jiantou1 color898989'></text>
-        </view>
+        </view> -->
         <view class='padtb20'>商家描述</view>
         <view class='color898989'>
           {{result.intro}}
@@ -134,39 +135,4 @@
       </view>
     </scroll-view>
   </view>
-
-
-
-  <!-- <view class='color6 size26'>{{result.intro}}</view>
-    <view class='color9'></view>
-    <view class='flex_btw align_center big' bindtap='location'>
-      <view class='flex align_center'>
-        <text class='color4'>{{result.area_name}}{{result.address}}</text>
-      </view>
-      <view class='image'>
-        <image src="../../images/locations.png" class='dingwei' mode='aspectFit'></image>
-      </view>
-    </view>
-    <view class='flex_btw align_center big' data-phone='{{result.contact}}' bindtap='calling'>
-      <view class='flex align_center'>
-        <text class='color4'>商家电话</text>
-        <text class='color4 marl'>{{result.contact}}</text>
-      </view>
-      <view class='image'>
-        <image src="../../images/stel.png" class='dingwei' mode='aspectFit'></image>
-      </view>
-    </view> -->
-  <!-- <view class='plan' wx:if="{{list.length>0}}">
-    <view class='bold color4 size30'>产品列表</view>
-    <view wx:for='{{list}}' wx:key="index" wx:for-item='list' data-sku_id='{{list.sku_id}}' bindtap='detail' class='item flex_btw'>
-      <image src='{{list.thumb}}'></image>
-      <view class='right flex_col_1 flex_btw'>
-        <view class='color6 hidden3'>{{list.spu_name}} {{list.sku_name}}</view>
-        <view class='flex_btw align_center'>
-          <view class='colorFE3434'>￥{{list.price}}</view>
-          <view class='color6'>{{list.area_name}}</view>
-        </view>
-      </view>
-    </view>
-  </view> -->
 </block>

@@ -22,9 +22,8 @@ Page({
   choose(e) {
     var list = this.data.list
     var that = this;
-    console.log()
     util.postJSON({ apiUrl: apiurl.shippingAddress_update, data: { address_id: e.currentTarget.dataset.id, default: 1 } }, function (res) {
-      util.alert(res.data.message)
+      util.alert1(res.data.message)
       that.init()
     })
   },

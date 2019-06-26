@@ -16,27 +16,45 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    var apply_info = JSON.parse(options.apply_info)
-    if (apply_info){
-      this.setData({
-        apply_info: apply_info,
-        room_list: options.room_list
+    // var apply_info = JSON.parse(options.apply_info)
+    // if (apply_info){
+    //   this.setData({
+    //     apply_info: apply_info,
+    //     room_list: options.room_list
+    //   })
+    // }
+    this.init()
+  },
+  init() {
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.shop_ }, function (res) {
+      var result = res.data.result
+      that.setData({
+        is_apply: result.is_apply,
+        apply_info: result.apply_info,
+        online_list: result.shop_info.online_list,
+        offline_list: result.shop_info.offline_list,
+        room_list: result.apply_info.buttun_list,
+        league_list: result.shop_info.league_list,
+        share_mobile: result.apply_info.share_mobile,
+        feature_list: result.apply_info.feature_list
       })
-    }
+      wx.hideLoading()
+    })
   },
   offline(e){
     wx.navigateTo({
-      url: '../tenants/tenants?room_list=' + this.data.room_list + "&apply_info=" + JSON.stringify(this.data.apply_info) + "&source=" + e.currentTarget.dataset.key,
+      url: '../tenants/tenants?room_list=' + this.data.room_list + "&feature_list=" + JSON.stringify(this.data.feature_list) + "&source=" + e.currentTarget.dataset.key + "&share_mobile=" + this.data.share_mobile,
     })
   },
   online(e){
     wx.navigateTo({
-      url: '../tenants/online?source=' + e.currentTarget.dataset.key + "&apply_info=" + JSON.stringify(this.data.apply_info),
+      url: '../tenants/online?source=' + e.currentTarget.dataset.key + "&share_mobile=" + this.data.share_mobile,
     })
   },
   league(e) {
     wx.navigateTo({
-      url: '../tenants/league?source=' + e.currentTarget.dataset.key + "&apply_info=" + JSON.stringify(this.data.apply_info),
+      url: '../tenants/league?source=' + e.currentTarget.dataset.key + "&share_mobile=" + this.data.share_mobile,
     })
   },
   /**

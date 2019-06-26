@@ -12,12 +12,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
-    if (options.children){
-      this.setData({
-        items: JSON.parse(options.children)
-      })
-    }
+    this.setData({
+      items: getApp().globalData.front_tshop_index
+    })
   },
 
   /**
@@ -52,9 +49,6 @@ Page({
         }
       })
     }
-    wx.showLoading({
-      title: '加载中',
-    })
     var url = e.currentTarget.dataset.link.control
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
       for (var i in e.currentTarget.dataset.link.params) {
@@ -68,6 +62,11 @@ Page({
     console.log(url)
     wx.navigateTo({
       url: url,
+      fail(){
+        wx.navigateTo({
+          url: '../unopen/index',
+        })
+      }
     })
     
     

@@ -11,7 +11,7 @@ Page({
     var pages = getCurrentPages();
     console.log(pages);
     var delta = pages.length>2?pages.length - 2:1
-    var hint = JSON.parse(e.hint)
+    var hint = app.globalData.hint
     wx.hideLoading()
     this.setData({
       hint: hint,

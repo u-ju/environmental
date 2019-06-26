@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "求职招聘",
+  "usingComponents": {
+    "empty": "../../Components/empty/index"
+  }
+}

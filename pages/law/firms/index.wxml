@@ -1,7 +1,7 @@
-<!--pages/renting/index/index.wxml-->
+<!--pages/law/firms/index.wxml-->
 <view class='flex_btw fixtop align_center'>
   <view class='flex_btw align_center location'>
-    <image src="../../../images/sloc.png" class='icon_location' mode='aspectFit' />
+    <text class='iconfont icon-weibiaoti- color4fd6f0 size36'></text>
     <text class=' color6 hidden1'>成都</text>
   </view>
   <view class='search flex_btw align_center'>
@@ -10,7 +10,6 @@
   </view>
   <view class='color4AD6A3'>发布</view>
 </view>
-
 <view class='pagetype'>
   <view class="tabTit box">
     <view class="flex align_center {{tabIndex==index?'color27AAD9':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
@@ -62,20 +61,13 @@
   </view>
   <view class='tabzc'></view>
 </view>
-
 <view class='rentitem'>
-  <view class='flex_btw renting' >
+  <view class='flex_btw renting' wx:if="{{list.length>0}}">
     <image class='rentpic'></image>
     <view class='flex_col flex_btw'>
-      <view class='size28'>无中介，可月付包网费物管费清洁 费天府一街单间合租</view>
-      <view class='size22 color898989'>天府新区-保利星座 拷贝</view>
-      <view class='flex align_center'>
-        <view class='colorff1919 marr40'>580元/月</view>     
-        <view class='size22 tag color898989'>
-          <text>3室1厅</text>
-          <text>合租</text>
-        </view>
-      </view>
+      <view class='size28 hidden1'>胡桃木大板桌奥坎实木大板红木茶 餐桌实木原木桌</view>
+      <view class=' hidden2'>律所成立10余年以来，为多家大型外资上市公司处理过各类纠纷事件...... 拷贝 </view>   
     </view>
   </view>
+   <empty wx:else />
 </view>

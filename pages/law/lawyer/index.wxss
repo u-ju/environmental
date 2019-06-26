@@ -1,0 +1,10 @@
+/* pages/law/lawyer/index.wxss */
+@import '../../renting/index';
+.rentpic{
+  width:88rpx;
+  height:88rpx;
+  border-radius: 50%;
+}
+.renting .flex_col{
+  width: 580rpx;
+}

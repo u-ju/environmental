@@ -12,8 +12,8 @@ Page({
       { key: 'days', name: '日' },
       { key: 'week', name: '月' },
       { key: 'month', name: '周' },
-      { key: 'year', name: '季度' },
-      { key: 'quarter', name: '年' },
+      { key: 'quarter', name: '季度' },
+      { key: 'year', name: '年' },
     ],
     curr:'days'
   },

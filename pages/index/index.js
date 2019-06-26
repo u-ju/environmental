@@ -164,6 +164,11 @@ Page({
         taglen: Math.ceil(tag.length / 8),
         seckill_list: result.seckill_list||''
       })
+      for (var i in tag ){
+        if (tag[i]['control']['key'] =='front_tshop_index'){
+          getApp().globalData.front_tshop_index = tag[i]["children"]
+        }
+      }
       if (result.seckill_list && result.seckill_list[0]&& result.seckill_list[0].end_at) {
         that.data.timer = setInterval(() => {
 

@@ -135,7 +135,40 @@ Page({
       showmodel: !this.data.showmodel,
     })
   },
-  
+  previewImage() {
+    // 在自定义组件下，当前组件实例的 this，以操作组件内 <canvas> 组件
+    const that = this.selectComponent('#qrcode')
+    console.log("huhu")
+    wx.canvasToTempFilePath({
+      canvasId: 'wux-qrcode',
+      success: (res1) => {
+        // wx.previewImage({
+        //   urls: [res.tempFilePath]
+        // })
+        wx.showModal({
+          title: '保存图片',
+          content: '确定要保存二维码？',
+          confirmColor: '#333',
+          success: function (res) {
+            if (res.confirm) {
+              wx.saveImageToPhotosAlbum({
+                filePath: res1.tempFilePath,
+                success(res) {
+                  wx.showToast({
+                    title: '保存成功',
+                    icon: 'none',
+                    duration: 2000,
+                  });
+                }
+              })
+            }
+          }, fail: function (res) {
+            console.log(11111)
+          }
+        })
+      }
+    }, that)
+  },
   onReady: function () {
 
   },

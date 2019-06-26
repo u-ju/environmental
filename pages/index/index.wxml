@@ -69,7 +69,7 @@
           <block wx:for="{{taglen}}" wx:key="index" wx:for-index="indexnum">
             <swiper-item>
               <view class='flex wrap'>
-                <view wx:for="{{8}}" wx:key="index" class='tabitem' bindtap='link' data-link='{{tag[indexnum*8+index]["control"]}}' data-children='{{tag[indexnum*8+index]["children"]}}' wx:if="{{tag.length>indexnum*8+index}}">
+                <view wx:for="{{8}}" wx:key="index" class='tabitem' bindtap='link' data-link='{{tag[indexnum*8+index]["control"]}}'  wx:if="{{tag.length>indexnum*8+index}}">
                   <block>
                     <image src='{{tag[indexnum*8+index]["icon"]}}'></image>
                     <view>{{tag[indexnum*8+index]["name"]}}</view>
@@ -119,7 +119,7 @@
               <block wx:for="{{shop_ad.length/3}}" wx:key="index" wx:for-item="num">
                 <swiper-item class='flex_btw'>
                   <view wx:for="012" class='item_lb_pic' wx:key="index" wx:for-item="image" bindtap='shopdetail' data-shop_id='{{shop_ad[(num-0)*3+(image-0)].shop_id}}'>
-                    <image src="{{shop_ad[(num-0)*3+(image-0)].thumb}}" class="tuijian_image" />
+                    <image src="{{shop_ad[(num-0)*3+(image-0)].thumb}}" class="tuijian_image" mode='aspectFill' />
                     <view class='center color6 hidden1'>{{shop_ad[(num-0)*3+(image-0)].title}}</view>
                   </view>
                 </swiper-item>

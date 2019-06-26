@@ -1,19 +1,26 @@
 {
   "pages": [
+    
     "pages/index/index",
-    "pages/recruitment/recruit/mypositionDetails/index",
-    "pages/recruitment/recruit/companyDetails/index",
-    "pages/recruitment/recruit/positionDetails/index",
-    "pages/recruitment/recruit/interview/index",
-    "pages/renting/index/index",
-    
-    
-    "pages/recruitment/recruit/cardCreate/index",
-    "pages/recruitment/recruit/myposition/index",
-    
+    "pages/law/firms/index",
+    "pages/law/lawyer/index",
+    "pages/business_details/business_details",
+    "pages/idle/index",
+    "pages/recruitment/index",
+    "pages/renting/index",
+    "pages/law/index",
+    "pages/law/In/index",
+    "pages/recruitment/mypositionDetails/index",
+    "pages/recruitment/companyDetails/index",
+    "pages/recruitment/positionDetails/index",
     
     
     "pages/recruitment/index/index",
+    
+    "pages/recruitment/cardCreate/index",
+    "pages/recruitment/myposition/index",
+    
+    
     
     "pages/buurtNewsIn/index",
     "pages/buurtNewsDetail/index",

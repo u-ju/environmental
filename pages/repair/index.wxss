@@ -110,6 +110,6 @@ page{
 .seach_item{
   padding: 20rpx 32rpx 32rpx 32rpx;
 }
-.icon-dingwei{
+.icon-weibiaoti-{
   margin-right: 8rpx;
 }

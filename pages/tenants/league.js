@@ -177,7 +177,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     var result = app.globalData.config
-    var share_mobile = options.apply_info ? JSON.parse(options.apply_info).share_mobile : ''
+    var share_mobile = options.share_mobile ? options.share_mobile : ''
     that.setData({
       type: '',
       source: options.source||'',

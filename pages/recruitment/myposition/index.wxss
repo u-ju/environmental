@@ -1,5 +1,5 @@
 /* pages/recruitment/recruit/myposition/index.wxss */
-@import '../interview/index';
+@import '../index.wxss';
 .click{
   width:612rpx;
   height:110rpx;

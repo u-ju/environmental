@@ -70,7 +70,7 @@ Page({
     
     this.setData({
       door_num: door_num,
-      desc: options.desc || ''
+      desc: getApp().globalData.desc
     })
   },
   formSubmit(e) {

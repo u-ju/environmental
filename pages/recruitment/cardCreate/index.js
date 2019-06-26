@@ -1,7 +1,7 @@
 // pages/recruitment/recruit/cardCreate/index.js
 var interval = null
-var util = require('../../../../utils/util.js');
-var apiurl = require('../../../../utils/api.js');
+var util = require('../../../utils/util.js');
+var apiurl = require('../../../utils/api.js');
 Page({
 
   /**

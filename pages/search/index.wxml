@@ -8,8 +8,8 @@
   <input bindinput='search'  bindconfirm="searchSubmit" value='{{search}}' auto-focus='true' name='search' placeholder='输入想要查找的内容' ></input>
   <image class='logoi' src='../../images/logoi.png' bindtap='searchSubmit'></image>
 </view>
-<view class='border' wx:for="{{result}}" wx:key="index">
-  <view class='searchitem' bindtap='link' data-link='{{item.control}}'>
+<view class='border' wx:for="{{result}}" wx:key="index"  bindtap='link' data-link='{{item.control}}'>
+  <view class='searchitem' >
     {{item.name}}
   </view>
 </view>

@@ -63,6 +63,14 @@ App({
     latitude: 30.69015,
     config:[],
     controlContrast:[],
-    appid: util.wx_appid
+    appid: util.wx_appid,
+    order_detail:[],
+    front_tshop_index:[],
+    settle_withdraw_flow:[],
+    balance_withdraw_flow:[],
+    action:'',
+    code:'',
+    desc:'',
+    hint:[]
   }
 })

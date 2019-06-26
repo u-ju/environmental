@@ -30,23 +30,7 @@ Page({
     var that = this, item1 = that.data.item1, item2 = that.data.item2;
     util.getJSON({ apiUrl: apiurl.user }, function (res) {
       var result = res.data.result
-      // var tag_list = result.tag_list
-      // for (var i in result.tag_list){
-      //     if (!result.tag_list[i]["value"]&&result.tag_list[i]["key"]=='mobile'){
-      //       result.tag_list[i]['control']['control'] ='../phone_new/phone_new'
-      //     }
-      //     if (tag_list[i]["key"] == 'realname'){
-      //       var jishu = i
-      //       util.getJSON({ apiUrl: apiurl.realname }, function (res) {
-      //         if (res.data.result.status != -1) {
-      //           tag_list[jishu]['control']['control'] = '../realname_suc/index?result=' + JSON.stringify(res.data.result)
-      //         }
-      //         that.setData({
-      //           tag_list: tag_list
-      //         })
-      //       })
-      //     }
-      // }
+      
       var l_one = result.l_one, l_three = result.l_three
       if (!l_one.mobile.name){
         l_one.mobile['control']['control'] = '../phone_new/phone_new'
@@ -54,6 +38,9 @@ Page({
       for (var i in l_three){
         if (l_three[i]['control']["key"] == 'front_bind_mobile' && l_three[i]["attach"]["is_bind"] == 0){
           l_three[i]['control']['control'] = '../phone_new/phone_new'
+        }
+        if (l_three[i]['control']["key"] == 'front_bind_area') {
+          getApp().globalData.desc =l_three[i]['attach']['desc']
         }
       }
       that.setData({

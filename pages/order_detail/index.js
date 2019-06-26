@@ -35,14 +35,14 @@ Page({
     //   spec_value: 
     // }
     // console.log(JSON.parse(options.result))
-    var result = JSON.parse(options.result)
-    
+    var result = getApp().globalData.order_detail
+    console.log(result)
     this.setData({
       result: result,
       order_source: result.order_source,
       data: { pay_source: 'order', order_key: result.order_key },
       nper: app.globalData.config.protocol.nper
-      // , address_id: that.data.address.address_id
+      //  address_id: that.data.address.address_id
     })
     
   },

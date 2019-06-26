@@ -1,5 +1,5 @@
 /* pages/recruitment/recruit/companyDetails/index.wxss */
-@import '../../../tenants/tenants.wxss';
+@import '../../tenants/tenants.wxss';
 .pagetype{
   padding: 0 32rpx 50rpx 32rpx;
   border-bottom: 20rpx solid #eee;

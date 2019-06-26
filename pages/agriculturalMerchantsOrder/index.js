@@ -67,7 +67,6 @@ Page({
     })
     // this.init()
     if (e.source_ext) {
-      console.log(JSON.parse(e.source_ext))
       this.setData({
         order_id: JSON.parse(e.source_ext),
         current: '5',

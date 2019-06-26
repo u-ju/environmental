@@ -57,7 +57,7 @@
     </view>
     <view class='xiangqing_info' >
       <text class='title'>{{item.spu_name}} {{item.sku_name}}</text>
-      <view class='colorff1919'>价格：￥{{item.price}}</view>
+      <view class='colorff1919'>价格：￥{{item.price}}<text class='size24' wx:if='{{item.user_return>0}}'> (积分兑环保金{{item.user_return}})</text></view>
       
     </view>
   </view>

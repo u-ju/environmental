@@ -39,9 +39,9 @@ Page({
   },
   link(){
     wx.navigateTo({
-      url: '../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info) + "&room_list=" + JSON.stringify(this.data.room_list),
+      url: '../tenantsChoice/index',
     })
-    console.log('../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info) + "&room_list=" + JSON.stringify(this.data.room_list))
+    // console.log('../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info) + "&room_list=" + JSON.stringify(this.data.room_list))
   },
   erwm(e){
     console.log(e)
@@ -88,7 +88,7 @@ Page({
     
     // 在自定义组件下，当前组件实例的 this，以操作组件内 <canvas> 组件
     const that = this.selectComponent('#qrcode')
-    console.log("huhu")
+ 
     wx.canvasToTempFilePath({
       canvasId: 'wux-qrcode',
       success: (res1) => {
@@ -106,7 +106,7 @@ Page({
               })
             }
           }, fail: function (res) {
-            console.log(11111)
+            
           }
         })
       }
@@ -116,7 +116,7 @@ Page({
   detail(e){
     var url =''
     if (e.currentTarget.dataset.source =='offline'){
-      url = '../tenants/tenants?shop_id=' + e.currentTarget.dataset.id + "&room_list=" + JSON.stringify(this.data.room_list) + "&apply_info=" + JSON.stringify(this.data.apply_info)
+      url = '../tenants/tenants?shop_id=' + e.currentTarget.dataset.id + "&room_list=" + JSON.stringify(this.data.room_list) + "&feature_list=" + JSON.stringify(this.data.apply_info.feature_list) + "&share_mobile=" + this.data.apply_info.share_mobile
     } else if (e.currentTarget.dataset.source == 'online'){
       url = '../tenants/online?shop_id=' + e.currentTarget.dataset.id
     } else if (e.currentTarget.dataset.source == 'league') {

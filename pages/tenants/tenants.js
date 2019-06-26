@@ -309,13 +309,13 @@ Page({
 
     var that = this;
 
-    var share_mobile = options.apply_info ? JSON.parse(options.apply_info).share_mobile : ''
+    var share_mobile = options.share_mobile ? JSON.parse(options.share_mobile) : ''
     this.setData({
       hour1: hour1,
       hour2: hour2,
       source: options.source || '',
       // room_list: JSON.parse(options.room_list)
-      features: JSON.parse(options.apply_info).feature_list,
+      features: JSON.parse(options.feature_list),
       share_mobile: share_mobile
     })
     var result = app.globalData.config
@@ -336,7 +336,7 @@ Page({
       type: '',
       shop_settled: app.globalData.config.protocol.shop_settled,
       choosed: wx.getStorageSync('choosedt') || that.data.choosed,
-      features: JSON.parse(options.apply_info).feature_list
+      features: JSON.parse(options.feature_list)
     })
     if (options.shop_id) {
       util.getJSON({ apiUrl: apiurl.shop_showOwn + options.shop_id }, function (res) {

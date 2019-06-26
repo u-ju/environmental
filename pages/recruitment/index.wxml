@@ -1,0 +1,98 @@
+<!--pages/recruitment/recruit/interview/index.wxml-->
+<!-- <view class='seach_item flex_btw align_center'>
+  <view class='flex_btw align_center location' bindtap='nav'>
+    <text class='iconfont icon-dingwei color4fd6f0 size36'></text>
+    <text class=' color6 hidden1'>{{address}}</text>
+  </view>
+  <view class='seach  flex_btw align_center'>
+    <input bindinput='search' bindconfirm="searchSubmit" value='{{search}}' name='search'></input>
+    <image src='../../../../images/video_cz.png' bindtap='searchSubmit' class=''></image>
+  </view>
+  <view class='color27AAD9' bindtap='weixiu' >家政入驻</view>
+</view> -->
+<view class='flex_btw fixtop align_center'>
+  <view class='flex_btw align_center location'>
+    <text class='iconfont icon-weibiaoti- color4fd6f0 size36'></text>
+    <text class=' color6 hidden1'>成都</text>
+  </view>
+  <view class='search flex_btw align_center'>
+    <input value='{{keywords}}' name='keywords' bindinput='search' placeholder='输入想要查找的内容' bindconfirm="searchSubmit"></input>
+    <text class='iconfont icon-sousuo colorfff searchall_pic'></text>
+  </view>
+  <view class='color4AD6A3'>我要招聘</view>
+</view>
+<view class='pagetype'>
+  <view class="tabTit box">
+    <view class="flex align_center {{tabIndex==index?'color27AAD9':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
+      <text class='marginr6'>{{item}}</text>
+      <view>
+        <text class='iconfont icon-jiantou_shang  size20  color4AD6A3' wx:if="{{tabIndex==index}}"></text>
+        <text class='iconfont icon-jiantou_xia size20 colorBE' wx:else></text>
+      </view>
+    </view>
+  </view>
+  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}" hidden='{{tabIndex==0||tabIndex==-1}}'> 
+    <view class='flex allse' wx:if="{{tabIndex==1}}">
+      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{eara}}" wx:key="index" wx:for-index="indexnum" wx:for-item="eara1">
+
+        <view class="qy quyu-left" style='' wx:for="{{eara1}}" wx:key="index">
+          <view class="itemselect {{earaid[indexnum]==item.area_id?'current':''}}" data-index='{{index}}' data-indexnum='{{indexnum}}' data-item='{{item}}' data-id='{{item.area_id}}' data-name='{{item.name}}' bindtap="choose1">
+            {{item.name}}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='flex allse' wx:if="{{tabIndex==2}}">
+      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;">
+        <view class="qy quyu-left" style='' wx:for="{{erji}}" wx:key="index" wx:for-index="index">
+          <view class="itemselect {{cate_id==item.id?'current':''}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose2">
+            {{item.name}}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='' wx:if="{{tabIndex==3}}">
+      <view class='screenitem'>
+        <view>价格区间</view>
+        <scroll-view scroll-x="true" class="scroll-header">
+          <text wx:for='{{searchitem.cost}}' wx:key="index" class='screen {{costindex==index?"active":""}}' data-index='{{index}}' data-name='cost' bindtap='choose3'  data-key='{{item.min}},{{item.max}}'>{{item.name}}</text>
+        </scroll-view>
+      </view>
+      <view class='screenitem'>
+        <view>更多特色</view>
+        <scroll-view scroll-x="true" class="scroll-header">
+          <text wx:for='{{searchitem.feature}}' wx:key="index" class='screen {{feature==item?"active":""}}' bindtap='choose3' data-name='feature' data-key='{{item}}' >{{item}}</text>
+        </scroll-view>
+      </view>
+    </view>
+    <view class='form-btn'>
+      <button class='btn-reset' bindtap='quyuEmpty{{tabIndex}}'>重置</button>
+      <button class='btn-submit' bindtap='submitFilter{{tabIndex}}'>确定</button>
+    </view>
+  </view>
+  <view class='tabzc'></view>
+</view>
+
+<view class='resumeitem'>
+  <view class='resume' wx:if="{{list.length>0}}">
+    <view class='flex_btw align_center'>
+      <view class='size36'>财务实习生</view>
+      <view class='color4fd6f0 size36'>2k-4k</view>
+    </view>
+    <view class='flex_btw align_center martb28'>
+      <view>成都汉光实业有限公司</view>
+      <!-- <view class='color898989'>在职-考虑机会</view> -->
+    </view>
+    <view class='flex_btw'>
+      <view class='flex'>
+        <view class='moudel color898989 size22'>成都</view>
+        <view class='moudel color898989 size22'>1年以内</view>
+      </view>
+    </view>
+    <view class='flex align_center person'>
+      <image class='head'></image>
+      <view class='size28'>陈晨</view>
+    </view>
+  </view>
+  <empty wx:else />
+</view>

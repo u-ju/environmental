@@ -36,6 +36,8 @@ Page({
         if (result.action.length > 1) {
           var action = JSON.stringify(result.action);
           var code = JSON.stringify(result.code);
+          app.globalData.action = result.action
+          app.globalData.code = result.code
           wx.reLaunch({
             url: '../edcs_choose/edcs_choose?action=' + action + '&code=' + code,
           })

@@ -1,7 +1,7 @@
 <!--pages/place_order/place_order.wxml-->
 <view class='seach_item flex_btw align_center'>
   <view class='flex_btw align_center location' bindtap='nav'>
-    <text class='iconfont icon-dingwei color4fd6f0 size36'></text>
+    <text class='iconfont icon-weibiaoti- color4fd6f0 size36'></text>
     <text class=' color6 hidden1'>{{address}}</text>
   </view>
   <view class='seach  flex_btw align_center'>

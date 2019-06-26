@@ -79,6 +79,8 @@ Page({
           { id: 2, name: '我的货款', url: 'settleIndex' },
         ]
       }
+      app.globalData.balance_withdraw_flow = result.balance_withdraw_flow
+      app.globalData.settle_withdraw_flow = result.settle_withdraw_flow
       that.setData({
         tab: tab,
         width: 100 / tab.length+"%",
@@ -86,8 +88,8 @@ Page({
         integral: result.integral,
         settle: result.settle,
         is_password: result.is_password,
-        balance_withdraw_flow: JSON.stringify(result.balance_withdraw_flow),
-        settle_withdraw_flow: JSON.stringify(result.settle_withdraw_flow),
+        // balance_withdraw_flow: JSON.stringify(result.balance_withdraw_flow),
+        // settle_withdraw_flow: JSON.stringify(result.settle_withdraw_flow),
         has_family: result.has_family||'',
         integralurl: 'integralIndex',
         balanceurl: 'balanceIndex',

@@ -44,7 +44,7 @@ Page({
   },
   index() {
     var that = this
-    util.getJSON({ apiUrl: apiurl.news_show + "?news_id=" + that.data.news_id }, function (res) {
+    util.getJSON({ apiUrl: apiurl.buurtNews.show  + that.data.news_id }, function (res) {
       if (res.data.result.content_source == "html") {
         var article = res.data.result.content;
         WxParse.wxParse('article', 'html', article, that, 5);
@@ -57,7 +57,7 @@ Page({
   },
   initreplyIndex(page = 1) {
     var that = this
-    util.getJSON({ apiUrl: apiurl.news_replyIndex + "?news_id=" + that.data.news_id + "&page=" + page }, function (res) {
+    util.getJSON({ apiUrl: apiurl.buurtNews.replyIndex  + that.data.news_id + "&page=" + page }, function (res) {
       var list = res.data.result.list
       for (var i in list) {
         list[i]["huifu"] = false
@@ -82,7 +82,7 @@ Page({
     if (that.data.list[e.currentTarget.dataset.index].page.current_page && Number(that.data.list[e.currentTarget.dataset.index].page.current_page) != Number(that.data.list[e.currentTarget.dataset.index].page.last_page)) {
       page = that.data.list[e.currentTarget.dataset.index].page.current_page + 1
     }
-    util.getJSON({ apiUrl: apiurl.news_replyIndex + "?news_id=" + that.data.news_id + "&parent_id=" + e.currentTarget.dataset.reply_id + "&page=" + page }, function (res) {
+    util.getJSON({ apiUrl: apiurl.buurtNews.replyIndex  + that.data.news_id + "&parent_id=" + e.currentTarget.dataset.reply_id + "&page=" + page }, function (res) {
       var list1 = res.data.result.list
       var list = that.data.list
       list[e.currentTarget.dataset.index].page = res.data.result.page
@@ -96,19 +96,8 @@ Page({
     })
   },
   like(e) {
-    // if (!e.currentTarget.dataset.praise) {
-    //   
-    //   util.postJSON({ apiUrl: apiurl.news_praiseStore, data: { news_id: that.data.news_id, praise: 1 } }, function (res) {
-    //     var result = that.data.result
-    //     result.praise = 1
-    //     result.like = result.like-0 + 1
-    //     that.setData({
-    //       result: result
-    //     })
-    //   })
-    // }
     var that = this;
-    util.postJSON({ apiUrl: apiurl.news_praiseStore, data: { news_id: that.data.news_id } }, function (res) {
+    util.postJSON({ apiUrl: apiurl.buurtNews.praiseStore, data: { news_id: that.data.news_id } }, function (res) {
       var result = that.data.result
       var praise = that.data.result.praise
       var like = that.data.result.like
@@ -190,7 +179,7 @@ Page({
       if (that.data.reply_id) {
         data["parent_id"] = that.data.reply_id
       }
-      util.postJSON({ apiUrl: apiurl.news_replyStore, data: data }, function (res) {
+      util.postJSON({ apiUrl: apiurl.buurtNews.replyStore, data: data }, function (res) {
         that.setData({
           textarea: '',
         })

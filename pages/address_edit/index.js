@@ -12,7 +12,7 @@ Page({
     // 地址
     current: 0,
     areaSelectedStr: '',
-    area_id_val: 0,
+    area_id: 0,
     disabled: false,
     item: '',
     url: 'shippingAddress_store'
@@ -24,6 +24,7 @@ Page({
   onLoad: function (options) {
     if (options.item){
       var item = JSON.parse(options.item)
+      console.log(item)
       this.setData({
         item: item,
         name: item.name,
@@ -38,9 +39,9 @@ Page({
     }
   },
   formSubmit(e){
-    console.log(e)
+    // console.log(e)
     var data = e.detail.value,that = this;
-    data.area_id = that.data.area_id_val
+    data.area_id = that.data.area_id
     that.setData({
       disabled:true
     })
@@ -64,10 +65,10 @@ Page({
       })
   },
   choosearea(e) {
-    console.log(e)
+    // console.log(e)
     this.setData({
       areaSelectedStr: e.detail.areaSelectedStr,
-      area_id_val: e.detail.area_id_val
+      area_id: e.detail.area_id_val
     })
   },
 })

@@ -1,0 +1,23 @@
+/* pages/law/index.wxss */
+page{
+  text-align: center;
+}
+.btn{
+  width:353rpx;
+  height:100rpx;
+  background:#4fd6f0;
+  border-radius:50rpx;
+  margin: 80rpx auto auto auto;
+  line-height: 100rpx;
+  font-size:36rpx;
+  color: #fff;
+}
+.instructions{
+  text-align: left;
+  width: 420rpx;
+  margin: auto;
+  line-height: 48rpx;
+}
+view:first-of-type{
+  margin-top: 400rpx;
+}

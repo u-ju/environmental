@@ -140,4 +140,33 @@ Page({
 
 
   },
+  previewImage(e){
+    const that = this.selectComponent('#qrcode')
+    wx.canvasToTempFilePath({
+      canvasId: 'wux-qrcode',
+      success: (res1) => {
+        wx.showModal({
+          title: '保存图片',
+          content: '确定要保存图片？',
+          confirmColor: '#333',
+          success: function (res) {
+            if (res.confirm) {
+              wx.saveImageToPhotosAlbum({
+                filePath: res1.tempFilePath,
+                success(res) {
+                  wx.showToast({
+                    title: '保存成功',
+                    icon: 'none',
+                    duration: 2000,
+                  });
+                }
+              })
+            }
+          }, fail: function (res) {
+            console.log(11111)
+          }
+        })
+      }
+    }, that)
+  }
 })

@@ -1,0 +1,2 @@
+/* pages/idle/index.wxss */
+@import '../renting/index';

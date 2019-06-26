@@ -21,8 +21,8 @@ Page({
     if (options.action){
       
       this.setData({
-        action: JSON.parse(options.action),
-        code: JSON.parse(options.code)
+        action: app.globalData.action,
+        code: app.globalData.code
       })
       
     }

@@ -28,7 +28,11 @@ Page({
   onLoad: function (options) {
     console.log(options)
     util.loading()
-    var withdraw_flow = JSON.parse(options.withdraw_flow)
+    var withdraw_flow = app.globalData.settle_withdraw_flow
+    if (options.url =='balanceWithdraw'){
+      withdraw_flow = app.globalData.balance_withdraw_flow
+    }
+    
     this.setData({
       withdraw_flow: withdraw_flow,
       is_password: options.is_password,

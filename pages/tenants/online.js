@@ -61,7 +61,7 @@ Page({
     choosead: true
   },
   testcall(e) {
-    console.log(e)
+    // console.log(e)
     util.testjq(e.detail.value, "请输入正确的联系方式", function () {
 
     })
@@ -77,7 +77,7 @@ Page({
         var tempFile = {}
         tempFile.img = res.thumbTempFilePath;
         tempFile.upload_percent = 0
-        console.log(res)
+        // console.log(res)
         var tempFilePath = []
         tempFilePath.push(res.tempFilePath)
         var tempFilesSize = res.size;
@@ -101,7 +101,7 @@ Page({
             that.setData({
               video: tempFile
             })
-            // console.log(e)
+            // // console.log(e)
           })
         } else {
           util.alert("视频上传异常!");
@@ -161,7 +161,7 @@ Page({
     wx.setStorageSync('license_info[business_scope]o', e.detail.value)
   },
   onOpen1() {
-    // console.log("sssss")
+    // // console.log("sssss")
     this.setData({ visible1: true })
   },
   onClose1() {
@@ -169,23 +169,22 @@ Page({
   },
   onChange1(e) {
     this.setData({ title1: e.detail.options.map((n) => n.label).join('-'), cate_id: e.detail.options[e.detail.options.length - 1].id })
-    // console.log('onChange1', e.detail)
-    console.log(e.detail.options[e.detail.options.length - 1].id)
+    // // console.log('onChange1', e.detail)
+    // console.log(e.detail.options[e.detail.options.length - 1].id)
     wx.setStorageSync("cate_ido", e.detail.options[e.detail.options.length - 1].id)
     wx.setStorageSync("title1o", e.detail.options.map((n) => n.label).join('-'))
   },
   onLoad: function (options) {
     var that = this;
     var result = app.globalData.config
-    var share_mobile = options.apply_info?JSON.parse(options.apply_info).share_mobile : ''
-        that.setData({
-          type: '', 
-          source: options.source || '',
-          choosed: wx.getStorageSync('choosedo') || that.data.choosed,
-          shop_settled: app.globalData.config.protocol.shop_settled,
-          share_mobile: share_mobile
-        })
-    // options.shop_id=30
+    var share_mobile = options.share_mobile ? options.share_mobile : ''
+      that.setData({
+        type: '', 
+        source: options.source || '',
+        choosed: wx.getStorageSync('choosedo') || that.data.choosed,
+        shop_settled: app.globalData.config.protocol.shop_settled,
+        share_mobile: share_mobile
+      })
       if (options.shop_id){
         util.getJSON({ apiUrl: apiurl.shop_showOwn  + options.shop_id}, function (res) {
           var result = res.data.result
@@ -269,7 +268,7 @@ Page({
       var that = this
 
       if (that.data.choosead) {
-        console.log(that.data.choosead)
+        // console.log(that.data.choosead)
         return that.setData({
           choosead: false
         })
@@ -277,7 +276,7 @@ Page({
       qqMap.geocoder({
         address: address,
         complete: res => {
-          console.log(res);   //经纬度对象
+          // console.log(res);   //经纬度对象
           if (res.result &&res.result.status == 0 && res.result.location){
             var longitude = that.data.location
             var latitude = that.data.location
@@ -289,7 +288,7 @@ Page({
               longitude: longitude,
               latitude: latitude,
             })
-            console.log(longitude, latitude)
+            // console.log(longitude, latitude)
             wx.setStorageSync('longitudeo', longitude)
             wx.setStorageSync('latitudeo', latitude)
           }
@@ -304,7 +303,7 @@ Page({
 
   },
   input(e) {
-    // console.log(e)
+    // // console.log(e)
     if (e.currentTarget.dataset.contact == "introo") {
       this.setData({
         intro: e.detail.value
@@ -454,7 +453,7 @@ Page({
   uploadpic1: function (e) {
     var that = this //获取上下文
     var upload_picture_list = that.data.upload_picture_list
-    console.log(e)
+    // console.log(e)
     //选择图片
     wx.chooseImage({
       count: 9,
@@ -486,8 +485,8 @@ Page({
             tempFiles[i]['upload_percent'] = 0
             tempFiles[i]['path_server'] = ''
 
-            // console.log(tempFiles[i])
-            // console.log(upload_picture_list)
+            // // console.log(tempFiles[i])
+            // // console.log(upload_picture_list)
             upload_picture_list.push(tempFiles[i])
           }
           that.setData({
@@ -556,7 +555,7 @@ Page({
 
   },
   choosearea(e) {
-    console.log(e)
+    // console.log(e)
     this.setData({
       areaSelectedStr: e.detail.areaSelectedStr,
       area_id_val: e.detail.area_id_val,
@@ -589,7 +588,7 @@ Page({
     data.cate_id = that.data.cate_id
     data["longitude"] = that.data.longitude
     data["latitude"] = that.data.latitude
-    console.log(data)
+    // console.log(data)
     var images = ["license","thumb"]
     for (var a in that.data.image) {
       if (that.data.image[a].upload_picture_list != '') {
@@ -655,7 +654,7 @@ Page({
       }, 0)
 
     }, function (res) {
-      console.log(res.data.message)
+      // console.log(res.data.message)
       that.setData({
         post: false
       })
@@ -671,11 +670,11 @@ Page({
     util.previewImage(e.currentTarget.dataset.src)
   },
   backfill: function (e) {
-    console.log(e)
+    // console.log(e)
     var id = e.currentTarget.id;
     for (var i = 0; i < this.data.suggestion.length; i++) {
       if (i == id) {
-        console.log(this.data.suggestion[i])
+        // console.log(this.data.suggestion[i])
         wx.setStorageSync('addresso', this.data.suggestion[i].title)
 
         wx.setStorageSync('longitudeo', this.data.suggestion[i].longitude)
@@ -717,7 +716,7 @@ Page({
       keyword: e.detail.value, //用户输入的关键词，可设置固定值,如keyword:'KFC'
       region: city, //设置城市名，限制关键词所示的地域范围，非必填参数
       success: function (res) {//搜索成功后的回调
-        console.log(res);
+        // console.log(res);
         var sug = [];
         for (var i = 0; i < res.data.length; i++) {
           sug.push({ // 获取返回结果，放到sug数组中
@@ -739,7 +738,7 @@ Page({
         console.error(error);
       },
       complete: function (res) {
-        console.log(res);
+        // console.log(res);
       }
     });
   }

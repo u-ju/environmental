@@ -385,8 +385,9 @@ Page({
       data: data
     }, function (res) {
       var result = res.data.result
+      getApp().globalData.order_detail = result
       wx.navigateTo({
-        url: '../order_detail/index?result=' + JSON.stringify(result),
+        url: '../order_detail/index',
       })
       that.setData({
         buyok: false,
@@ -682,8 +683,9 @@ Page({
       data: data
     }, function (res) {
       var result = res.data.result
+      getApp().globalData.order_detail = result
       wx.navigateTo({
-        url: '../order_detail/index?result=' + JSON.stringify(result),
+        url: '../order_detail/index',
       })
     })
   },

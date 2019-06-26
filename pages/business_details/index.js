@@ -303,16 +303,7 @@ Page({
       minusStatus: minusStatus
     })
   },
-  license(){
-    wx.navigateTo({
-      url: 'license/index?license_info=' + JSON.stringify(this.data.result.license_info) + "&license=" + this.data.result.license,
-    })
-  },
-  reservation(){
-    wx.navigateTo({
-      url: 'reservation/index?reservation=' + JSON.stringify(this.data.result.reservation) ,
-    })
-  },
+  
   goods(e){
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({

@@ -1,5 +1,5 @@
 /* pages/recruitment/recruit/interview/index.wxss */
-@import '../../../renting/index/index';
+@import '../renting/index';
 page{
   font-size: 28rpx;
 }
@@ -49,3 +49,6 @@ page{
 .icon-dingwei{
   margin-right: 8rpx;
 } */
+.resumeitem{
+  margin-top: 100rpx;
+}

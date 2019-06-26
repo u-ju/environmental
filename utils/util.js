@@ -74,13 +74,26 @@ module.exports = {
 }
 //图片图片预览
 function previewImage(src, imgList) {
+  src = encodeURI(src)
+  
   if (!imgList){
     imgList = [src]
+  }else{
+    for (var i in imgList) {
+      imgList[i] = encodeURI(imgList[i])
+    }
   }
-  wx.previewImage({
-    current: src, // 当前显示图片的http链接
-    urls: imgList // 需要预览的图片http链接列表
-  })
+  console.log(src)
+  // wx.previewImage({
+  //   current: src, // 当前显示图片的http链接
+  //   urls: imgList, // 需要预览的图片http链接列表
+  //   success(e){
+  //     console.log(e)
+  //   },
+  //   fail(e){
+  //     console.log(e)
+  //   }
+  // })
 }
 // 验证手机号
 function testcall(str, alert, cb) {
@@ -603,6 +616,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
       if (res.data.status == 200) {
         // //console.log(res.data)
         if (res.data.result &&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) !="{}"){
+          getApp().globalData.hint = res.data.result.hint
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
@@ -637,6 +651,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
         })
       }else{
         if (res.data.status == 414 && res.data.result&& res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
+          getApp().globalData.hint = res.data.result.hint
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
@@ -702,6 +717,7 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
       }
       if (res.data.status == 200) {
         if (res.data.result &&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
+          getApp().globalData.hint = res.data.result.hint
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
@@ -732,6 +748,7 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
         })
       } else {
         if (res.data.result &&res.data.status == 414&&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
+          getApp().globalData.hint = res.data.result.hint
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
@@ -784,13 +801,15 @@ function loading(msg = '') {
   if (msg == '') {
     wx.showLoading({
       title: "正在加载",
-      mask:true
+      mask:true,
+      duration: 30000,
     });
     return;
   }
   wx.showLoading({
     title: msg,
-    mask: true
+    mask: true,
+    duration: 30000,
   });
 }
 

@@ -1,11 +1,16 @@
-// pages/recruitment/recruit/my/index.js
+// pages/renting/index/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
-
+  data: {                                          
+    tabTxt: ['区域', '价格 ', '更多'],
+    tabactive: -1,
+    qyopen: false,
+    qyshow: true,
+    isfull: false,
+    list:[]
   },
 
   /**

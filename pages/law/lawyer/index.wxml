@@ -1,18 +1,7 @@
-<!--pages/recruitment/recruit/interview/index.wxml-->
-<!-- <view class='seach_item flex_btw align_center'>
-  <view class='flex_btw align_center location' bindtap='nav'>
-    <text class='iconfont icon-dingwei color4fd6f0 size36'></text>
-    <text class=' color6 hidden1'>{{address}}</text>
-  </view>
-  <view class='seach  flex_btw align_center'>
-    <input bindinput='search' bindconfirm="searchSubmit" value='{{search}}' name='search'></input>
-    <image src='../../../../images/video_cz.png' bindtap='searchSubmit' class=''></image>
-  </view>
-  <view class='color27AAD9' bindtap='weixiu' >家政入驻</view>
-</view> -->
+<!--pages/law/lawyer/index.wxml-->
 <view class='flex_btw fixtop align_center'>
   <view class='flex_btw align_center location'>
-    <image src="../../../../images/sloc.png" class='icon_location' mode='aspectFit' />
+    <text class='iconfont icon-weibiaoti- color4fd6f0 size36'></text>
     <text class=' color6 hidden1'>成都</text>
   </view>
   <view class='search flex_btw align_center'>
@@ -72,24 +61,13 @@
   </view>
   <view class='tabzc'></view>
 </view>
-
-<view class='resume'>
-  <view class='flex_btw align_center'>
-    <view class='size36'>财务实习生</view>
-    <view class='color4fd6f0 size36'>2k-4k</view>
-  </view>
-  <view class='flex_btw align_center martb28'>
-    <view>成都汉光实业有限公司</view>
-    <!-- <view class='color898989'>在职-考虑机会</view> -->
-  </view>
-  <view class='flex_btw'>
-    <view class='flex'>
-      <view class='moudel color898989 size22'>成都</view>
-      <view class='moudel color898989 size22'>1年以内</view>
+<view class='rentitem'>
+  <view class='flex_btw renting align_center' wx:if="{{list.length>0}}">
+    <image class='rentpic'></image>
+    <view class='flex_col flex_btw'>
+      <view class='size28'><text class='bold'>胡桃木 </text> <text> 大板桌奥坎实木大板红木茶 餐桌实木原木桌</text></view>
+      <view class=''>擅长刑事纠纷，债务纠纷，财产继承</view>   
     </view>
   </view>
-  <view class='flex align_center person'>
-    <image class='head'></image>
-    <view class='size28'>陈晨</view>
-  </view>
+  <empty wx:else />
 </view>

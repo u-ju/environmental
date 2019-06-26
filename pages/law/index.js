@@ -1,15 +1,13 @@
-// pages/renting/index/index.js
+// pages/law/lawyer/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {                                          
-    tabTxt: ['区域', '价格 ', '更多'],
-    tabactive: -1,
-    qyopen: false,
-    qyshow: true,
-    isfull: false,
+  data: {
+    list:[],
+    tabTxt: ['区域', '纠纷 ', '智能排序'],
+    // 区域                      纠纷                      综合 
   },
 
   /**

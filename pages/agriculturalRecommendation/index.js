@@ -95,19 +95,21 @@ Page({
     })
   },
   onLoad(e){
-    this.init()
+    
     var goods_cate = app.globalData.config.goods_cate
+    console.log(e)
+    var keywords = e.keywords || ''
     this.setData({
-      goods: [goods_cate]
+      goods: [goods_cate],
+      keywords: "&keywords=" + keywords
     })
+    this.init()
   },
   init(page = 1) {
     var that = this;
-    if (that.data.keywords != '' && that.data.keywords != undefined) {
-      keywords = that.data.keywords
-    }
+    
     util.getJSON({
-      apiUrl: apiurl.goods + "?page=" + page + "&source=online&sort=" + that.data.sort + "&order=" + that.data.order + "&cate_id=" + that.data.cate_id
+      apiUrl: apiurl.goods + "?page=" + page + "&source=online&sort=" + that.data.sort + that.data.keywords+ "&order=" + that.data.order + "&cate_id=" + that.data.cate_id 
     }, function (res) {
       var result = res.data.result
       var list = result.list

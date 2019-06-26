@@ -69,7 +69,7 @@
   <block wx:if="{{list.length>0}}">
     <view wx:for="{{list}}" wx:key="index">
       <view class='item flex_btw align_center' wx:if="{{item.value}}">
-        <view class='zuo hidden1'>
+        <view class='zuo '>
           <view class='color6 size28 bold '>
             <text decode="{{true}}" space="{{true}}">{{item.intro}}</text>
           </view>

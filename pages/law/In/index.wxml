@@ -1,0 +1,2 @@
+<!--pages/law/index.wxml-->
+<view class='btn' wx:for='{{buttun_list}}' wx:key="index" bindtap='link' data-key='{{item.url}}'>{{item.name}}</view>

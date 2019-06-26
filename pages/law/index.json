@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "法律援助",
+  "usingComponents": {
+    "empty": "../../Components/empty/index"
+  }
+}

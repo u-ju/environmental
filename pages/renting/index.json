@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "租房服务",
+  "usingComponents": {
+    "empty": "../../Components/empty/index"
+  }
+}

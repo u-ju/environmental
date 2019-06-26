@@ -15,7 +15,7 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.0",
+	"libVersion": "2.7.2",
 	"appid": "wx9af47449f54c0be7",
 	"projectname": "wyhb_let",
 	"debugOptions": {

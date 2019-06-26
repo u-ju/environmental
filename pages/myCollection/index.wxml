@@ -16,7 +16,7 @@
   <block wx:if="{{list.length>0}}">
     <block wx:if='{{list[0].shop_info.thumb}}'>
       <view class='flex_btw agriculturalD' wx:for="{{list}}" bindtap='shopd' wx:key="index" data-source_id='{{item.source_id}}' data-id='{{item.shop_info.shop_id}}' data-source='shop' bindlongtap='shopb' bindtouchstart='touchStart' bindtouchend='touchEnd'>
-        <image src='{{item.shop_info.thumb}}'></image>
+        <image src='{{item.shop_info.thumb}}' mode='aspectFill'></image>
         <view class='flex_btw flex_col'>
           <view class='hidden2'>{{item.shop_info.title}}</view>
           <view class='color9 hidden1'>{{item.shop_info.intro}}</view>

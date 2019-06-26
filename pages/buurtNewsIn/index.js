@@ -197,15 +197,11 @@ Page({
   onLoad: function(options) {
     var that = this;
     var result = app.globalData.config
-    var share_mobile = options.apply_info ? JSON.parse(options.apply_info).share_mobile : ''
+    var share_mobile = ''
     that.setData({
       type: '',
-      // source: options.source || '',
-      // shop_settled: app.globalData.config.protocol.shop_settled,
-      // choosed: wx.getStorageSync('choosede') || that.data.choosed,
       share_mobile: share_mobile
     })
-    // options.shop_id=30
     if (options.shop_id) {
       util.getJSON({
         apiUrl: apiurl.shop_showOwn + options.shop_id

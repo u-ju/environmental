@@ -1,5 +1,5 @@
 /* pages/renting/index/index.wxss */
-@import '../../shopping_mall/shopping_mall';
+@import '../shopping_mall/shopping_mall';
 .search{
   width:376rpx;
   height:62rpx;
