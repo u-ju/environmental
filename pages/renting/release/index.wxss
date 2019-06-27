@@ -1,1 +1,33 @@
 /* pages/renting/release/index.wxss */
+@import '../../tenants/tenants';
+@import '../../recruitment/mypositionDetails/index';
+.item>.flex{
+  width:540rpx;
+  height:106rpx;
+}
+.item>input,.input,.input1 inputt{
+  width:500rpx !important;
+  border: none !important;
+}
+.lc text{
+  display: inline-block;
+  width: 70rpx;
+  color: #898989;
+} 
+.lc input{
+  height:106rpx;
+  width: 200rpx;
+}
+.item1>text{
+  margin-right: 30rpx;
+}
+.item1 textarea,.textarea{
+  width:646rpx;
+  height:306rpx;
+  padding: 10rpx 20rpx;
+  background:#eee;
+  border: none;
+}
+.gaikuang{
+  margin: 48rpx 0 20rpx 0;
+}

@@ -1,0 +1,50 @@
+/* pages/law/detail/index.wxss */
+.banner,.banner image{
+  width:686rpx;
+  height:365rpx;
+  border-radius:15rpx;
+  overflow: hidden;
+}
+.title{
+  padding: 24rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.con{
+  text-indent: 16rpx;
+  line-height: 40rpx;
+  padding-top: 20rpx;
+}
+.top{
+  padding: 20rpx 32rpx;
+  border-bottom: 20rpx solid #eee;
+}
+.item{
+  width:322rpx;
+  height:116rpx;
+  border-radius:10rpx;
+  text-align: center;
+  line-height: 116rpx;
+  margin-bottom: 40rpx;
+  background-color: #2CC2EA;
+}
+.wrap{
+  padding-top: 28rpx;
+  margin-bottom: 120rpx;
+}
+.call{
+  width:268rpx;
+  height:110rpx;
+  background:#4FD7F0;
+  text-align: center;
+  
+  color: #fff;
+}
+.fixed{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width:  calc(100% - 16px);
+  padding-left: 32rpx;
+  background-color: #fff;
+  line-height:110rpx;
+}

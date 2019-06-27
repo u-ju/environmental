@@ -1,4 +1,4 @@
-/* pages/recruitment/recruit/mypositionDetails/index.wxss */
+/* pages/recruitment/mypositionDetails/index.wxss */
 .from{
   width: 686rpx;
   margin: auto;

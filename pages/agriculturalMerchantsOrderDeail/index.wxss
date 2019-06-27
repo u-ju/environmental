@@ -75,8 +75,9 @@ input{
   color: white;
 }
 .expressitem{
-  max-height: 440rpx;
+  max-height: 400rpx;
   overflow: scroll;
+  padding-bottom: 112rpx;
 }
 .expressitem input{
   height:68rpx;
@@ -140,4 +141,9 @@ input{
 }
 .visible{
   overflow: visible;
+}
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: #444;
 }

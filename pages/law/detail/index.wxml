@@ -1,0 +1,24 @@
+<!--pages/law/detail/index.wxml-->
+<view class='top'>
+  <view class='banner'>
+    <image></image>
+  </view>
+  <view class='title'>
+    律所简介
+  </view>
+  <view class='con'>
+    律所成立10余年以来，为多家大型外资上市公司处理过各类纠纷事件，多年的企业法律服务经验更深入的了解企业运作和管理模式，能够正对性的为企业提供专业的法律服务。本律所处理过大量的案件，各类合同纠纷，债权债务，房产纠纷......
+  </view>
+</view>
+<view class='top'>
+  <view class='title'>
+    服务类别
+  </view>
+  <view class='flex_btw wrap'>
+    <view class='item' wx:for="{{4}}"></view>
+  </view>
+</view>
+<view class='flex_btw fixed'>
+  <view>电话：021-08526485</view>
+  <view class='call'>拨打电话</view>
+</view>

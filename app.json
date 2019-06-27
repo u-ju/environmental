@@ -2,26 +2,23 @@
   "pages": [
     
     "pages/index/index",
+    "pages/renting/release/index",
+    "pages/recruitment/mypositionDetails/index",
+    "pages/recruitment/positionDetails/index",
+    "pages/recruitment/myposition/index",
+    "pages/recruitment/cardCreate/index",
+    "pages/law/detail/index",
+    "pages/recruitment/index",
+    "pages/agriculturalRecommendation/index",
     "pages/law/firms/index",
     "pages/law/lawyer/index",
     "pages/business_details/business_details",
     "pages/idle/index",
-    "pages/recruitment/index",
     "pages/renting/index",
     "pages/law/index",
     "pages/law/In/index",
-    "pages/recruitment/mypositionDetails/index",
     "pages/recruitment/companyDetails/index",
-    "pages/recruitment/positionDetails/index",
-    
-    
     "pages/recruitment/index/index",
-    
-    "pages/recruitment/cardCreate/index",
-    "pages/recruitment/myposition/index",
-    
-    
-    
     "pages/buurtNewsIn/index",
     "pages/buurtNewsDetail/index",
     "pages/tenantsIndex/index",
@@ -29,7 +26,6 @@
     "pages/place_order/place_order",
     "pages/maintenance_worker/index",
     "pages/housekeeping_edit/index",
-    "pages/renting/release/index",
     "pages/renting/detail/index",
     
     "pages/agriculturalMerchantsOrder/index",
@@ -77,7 +73,7 @@
     "pages/agriculturalMerchantsOrderDeail/index",
     "pages/agriculturalRefund/index",
     
-    "pages/agriculturalRecommendation/index",
+    
     "pages/businessProduct/index",
     "pages/businessinforcheck/index",
     "pages/businessinforedit/index",

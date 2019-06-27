@@ -402,38 +402,7 @@ navigator{
 .license textarea{
   height: 70rpx;
 }
-checkbox-group{
-  /* margin-left: 32rpx; */
-}
-.license{
-  margin-bottom: 20rpx;
-}
-/*checkbox 选项框大小  */
-checkbox .wx-checkbox-input {
-  width: 40rpx;
-  height: 40rpx;
-  border-color: #4FD6F0;
-}
-/*checkbox选中后样式  */
-checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  background: #4FD6F0;
-}
-/*checkbox选中后图标样式  */
-checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
-  width: 40rpx;
-  height: 40rpx;
-  line-height: 38rpx;
-  text-align: center;
-  font-size: 22rpx;
-  color: #fff;
-  background: transparent;
-  transform: translate(-50%, -50%) scale(1);
-  -webkit-transform: translate(-50%, -50%) scale(1);
-}
-.checkbox{
-  display: flex;
-  align-items: center;
-}
+
 .xieyi{
   color: #4FD6F0;
 }

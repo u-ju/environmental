@@ -37,15 +37,15 @@
 <view class='submitButton'>发布</view>
 <wux-popup visible="{{ visiblet }}" position="bottom" bind:close="colse" data-name='t'>
   <view class='flex_btw align_center yysj'>
-    <image src='../../../../images/ch_del.png' class='ch_del' bindtap='ch_del'></image>
+    <image src='../../../images/ch_del.png' class='ch_del' bindtap='ch_del'></image>
     <text>薪资范围（月薪：千元）</text>
-    <image src='../../../../images/ch_true.png' class='ch_true' bindtap='ch_true'></image>
+    <image src='../../../images/ch_true.png' class='ch_true' bindtap='ch_true'></image>
   </view>
   <view class='timechoice'>
     <view class='flex' wx:if="{{visiblet}}">
       
-      <picker-view indicator-style="height: 76rpx;" style="width: 100%; height: 300rpx;" value="{{value}}" bindchange="bindChange">
-        <picker-view-column>
+      <picker-view indicator-style="height: 76rpx;" style="width: 100%; height: 300rpx;" value="{{value}}" bindchange="bindChange" >
+        <picker-view-column bindpickstart='pickstart'>
           <view wx:for="{{money1}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item}}</view>
         </picker-view-column>
         <picker-view-column>
@@ -58,9 +58,9 @@
 </wux-popup>
 <wux-popup visible="{{ visibler }}" position="bottom" bind:close="colse" data-name='r'>
   <view class='flex_btw align_center yysj'>
-    <image src='../../../../images/ch_del.png' class='ch_del' bindtap='delRecord'></image>
+    <image src='../../../images/ch_del.png' class='ch_del' bindtap='delRecord'></image>
     <text>最低学历</text>
-    <image src='../../../../images/ch_true.png' class='ch_true' bindtap='trueRecord'></image>
+    <image src='../../../images/ch_true.png' class='ch_true' bindtap='trueRecord'></image>
   </view>
   <view class='recorditem flex wrap color4'>
     <view  wx:for="{{item}}" wx:key="index" class='record'>{{item}}</view>

@@ -63,7 +63,11 @@ Page({
     this.setData({
       tabs: order_info_search_status,
       status: order_info_search_status[0]["id"],
-      order_logistics_express: app.globalData.config.order_logistics_express
+      order_logistics_express: app.globalData.config.order_logistics_express,
+      status:0,
+      current:0,
+      index:0,
+      key:0
     })
     // this.init()
     if (e.source_ext) {

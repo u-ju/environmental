@@ -161,7 +161,7 @@ Component({
                   // wx.hideLoading()
                   
                 }, function () {
-                  wx.hideLoading()
+                  // wx.hideLoading()
                   
                 }, function () {
                   wx.hideLoading()

@@ -1,13 +1,15 @@
 // pages/recruitment/recruit/mypositionDetails/index.js
-
+const app = getApp()
+var util = require('../../../utils/util.js');
+var apiurl = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    visiblet: false,
-    visibler: true,
+    visiblet: true,
+    visibler: false,
     item: ['初中及以下', '高中','大专']
   },
 
@@ -16,17 +18,26 @@ Page({
    */
   onLoad: function (options) {
     var money1 = [], money2 = []
-    for (var i = 0; i < 24; i++) {
+    for (var i = 1; i < 24; i++) {
       money1.push(i + "K")
       money2.push(i + "K")
     }
     this.setData({
       money1: money1,
       money2: money2,
+      money: money2
     })
   },
   bindChange(e){
-    console.log(e)
+    // console.log(e)
+    if (this.data.start != e.detail.value[0]){
+      var arr = util.copyarr(this.data.money)
+      var arr2 = arr.slice(e.detail.value[0]+1, arr.length - 1);
+      this.setData({
+        money2: arr2,
+        start: e.detail.value[0]
+      })
+    }
   },
   open() {
     this.setData({
@@ -47,6 +58,9 @@ Page({
     this.setData({
       visiblet: false
     })
+  },
+  pickstart(e){
+    console.log(e)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -110,7 +110,7 @@ input,textarea{
 .add,.additem{
   width:120px;
   text-align: center;
-  margin: 37rpx auto 0 auto
+  margin:  0 auto
 }
 .add image,.additem image{
   width: 70rpx;
@@ -166,40 +166,24 @@ input,textarea{
 }
 
 .option_box{
-
   position: absolute;
-
   top: 92rpx;
-
   width: 100%;
-
-
   box-sizing: border-box;
-
   height: 0;
-
   overflow-y: auto;
-
   border-top: 0;
-
   background: #EEEEEE;
-
   transition: height 0.3s;
   z-index: 999;
 }
 
 .option{
-
   display: block;
-
   line-height: 50rpx;
-
   font-size: 30rpx;
-
   border-bottom: 1px solid #fff;
-
   padding: 10rpx;
-
 }
 
 /* 实现textarea高度自适应 */

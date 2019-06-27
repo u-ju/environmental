@@ -262,13 +262,13 @@ Page({
       sort='smart'
     }
     this.setData({
-      area_id: '',
-      location: '',
-      keywords: '',
-      cate_id:'',
-      cost: "",
-      feature: '',
-      tabTxt: ['智能排序', '附近 ', '餐饮美食', '筛选'],
+      // area_id: '',
+      // location: '',
+      // keywords: '',
+      // cate_id:'',
+      // cost: "",
+      // feature: '',
+      // tabTxt: ['智能排序', '附近 ', '餐饮美食', '筛选'],
       sort: sort,
       tabIndex: index,
       qyopen: qyopen,
@@ -296,6 +296,7 @@ Page({
     this.setData({
       qyopen: false,
       isfull: false,
+      tabIndex:-1
     })
   },
   select: function (e) {
@@ -371,13 +372,20 @@ Page({
   },
   choose3(e){
     // console.log(e)
-    var key = e.currentTarget.dataset.key, name = e.currentTarget.dataset.name;
+    var key = e.currentTarget.dataset.key, name = e.currentTarget.dataset.name, index = e.currentTarget.dataset.index;
     if (name=="cost"){
+      if(key==this.data.cost){
+        key=''
+        index=-1
+      }
       this.setData({
         cost: key,
-        costindex: e.currentTarget.dataset.index
+        costindex: index
       })
     } else if (name =="feature"){
+      if (key == this.data.feature) {
+        key = ''
+      }
       this.setData({
         feature: key
       })
@@ -413,9 +421,10 @@ Page({
     this.setData({
       // this.data.cate_ids
       cate_id: '',
-      tabTxt: tabTxt
+      tabTxt: tabTxt,
+      location:' '
     })
-    this.hidebg()
+    // this.hidebg()
     this.init()
   },
   submitFilter2() {
@@ -431,7 +440,7 @@ Page({
       sort:'',
       costindex:-1
     })
-    this.hidebg()
+    // this.hidebg()
     this.init()
   },
   submitFilter3() {
