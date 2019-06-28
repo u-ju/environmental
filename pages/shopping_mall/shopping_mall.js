@@ -343,7 +343,6 @@ Page({
         })
       })
     } 
-      
     var earaid = that.data.earaid;
     earaid[e.currentTarget.dataset.indexnum] = e.currentTarget.dataset.id
     that.setData({

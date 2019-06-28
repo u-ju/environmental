@@ -1,4 +1,5 @@
 /* pages/recruitment/mypositionDetails/index.wxss */
+
 .from{
   width: 686rpx;
   margin: auto;
@@ -6,7 +7,7 @@
 .item .color9{
   width: 160rpx;
 }
-.item>input,.input,.input1 input{
+.item>input,.input1,.input1 input{
   width: 500rpx;
   height: 106rpx;
   padding-right: 50rpx;
@@ -21,7 +22,7 @@
   top: 50%;
   transform: translate(0,-50%);
 }
-textarea{
+textarea,.textarea{
   width:666rpx;
   height:300rpx;
   border:2rpx solid #eee;
@@ -57,7 +58,7 @@ textarea{
 .record{
   padding: 16rpx 20rpx;
   border: 1px solid #eee;
-  margin-right: 20rpx;
+  margin: 0 20rpx 20rpx 0;
 }
 .recorditem{
   padding: 20rpx 32rpx 60rpx 32rpx;
@@ -66,4 +67,39 @@ textarea{
 .recordactive{
   background-color: #4FD7F0;
   color: #fff;
+}
+.input1 .haslook{
+  max-height: 200rpx;
+  background-color: #fff;
+  position: absolute;
+  top: 94rpx;
+  box-shadow: 0 0 4rpx #eee;
+  z-index: 90;
+  padding: 10rpx 0;
+}
+.addressss{
+  padding: 14rpx 0;
+}
+.icon_location{
+  width: 22rpx;
+  height: 27rpx;
+  margin-right: 6rpx;
+}
+.addressss .hidden1{
+  width: 450rpx;
+}
+.zzctransp{
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.addresszzc{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 88;
 }

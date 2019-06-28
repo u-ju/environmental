@@ -8,7 +8,8 @@ page{
 }
 .with686 input{
   height: 106rpx;
-  width: 560rpx;
+  width: 540rpx;
+  padding-left: 20rpx
 }
 .with686 .left{
   height: 106rpx;

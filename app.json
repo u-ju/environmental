@@ -1,14 +1,29 @@
 {
   "pages": [
+  
+    "pages/recruitment/mypositionDetails/index",
+    "pages/recruitment/myposition/index",
+    "pages/recruitment/companyDetails/index",
+    "pages/recruitment/cardCreate/index",
+    "pages/recruitment/positionDetails/index",
     
     "pages/index/index",
-    "pages/renting/release/index",
-    "pages/recruitment/mypositionDetails/index",
-    "pages/recruitment/positionDetails/index",
-    "pages/recruitment/myposition/index",
-    "pages/recruitment/cardCreate/index",
-    "pages/law/detail/index",
+    
     "pages/recruitment/index",
+    "pages/recruitment/index/index",
+    "pages/idle/list/index",
+    
+    
+    "pages/idle/detail/index",
+    
+    
+    "pages/renting/release/index",
+    
+    
+    
+    
+    "pages/law/detail/index",
+    
     "pages/agriculturalRecommendation/index",
     "pages/law/firms/index",
     "pages/law/lawyer/index",
@@ -17,8 +32,8 @@
     "pages/renting/index",
     "pages/law/index",
     "pages/law/In/index",
-    "pages/recruitment/companyDetails/index",
-    "pages/recruitment/index/index",
+    
+    
     "pages/buurtNewsIn/index",
     "pages/buurtNewsDetail/index",
     "pages/tenantsIndex/index",

@@ -144,3 +144,6 @@ input{
   height: 96rpx;
   padding-right: 56rpx;
 }
+.width550{
+  width: 550rpx;
+}

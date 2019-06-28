@@ -5,36 +5,60 @@
   }
   module.exports.indexO = indexO;
 </wxs>
+<form bindsubmit="submit">
 <view class='from'>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>职位名称</text>
-    <input class='size28 color6'  data-contact='titlet' name='title'  value='{{title}}'></input>
+    <input class='size28 color6'  data-contact='titlet' name='name'  value='{{name}}'></input>
   </view>
   <view class='item  flex_btw align_center'>
-    <text class='size28 color9'>薪资范围</text>
-    <input class='size28 color6'  data-contact='titlet' name='title'  value='{{title}}'></input>
+    <text class='size28 color9'>所属行业</text>
+    <input class='size28 color6'  data-contact='titlet' disabled='true' name='cate_name'  value='{{cate_name}}'  bindtap='open' data-name='1'></input>
     <text class='iconfont icon-jiantou1'></text>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>经验要求</text>
-    <input class='size28 color6'  data-contact='titlet' name='title'  value='{{title}}'></input>
+    <input class='size28 color6'  data-contact='titlet' name='experience'  value='{{experience}}' disabled='true' bindtap='open' data-name='e'></input>
     <text class='iconfont icon-jiantou1'></text>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>最低学历</text>
-    <input class='size28 color6'  data-contact='titlet' name='title'  value='{{title}}'></input>
+    <input class='size28 color6'  data-contact='titlet' name='education'  value='{{education}}' disabled='true' bindtap='open' data-name='r'></input>
     <text class='iconfont icon-jiantou1'></text>
   </view>
   <view class='item  flex_btw align_center'>
-    <text class='size28 color9'>职位名称</text>
-    <input class='size28 color6'  data-contact='titlet' name='title'  value='{{title}}'></input>
+    <text class='size28 color9'>薪资范围 </text>
+    <input class='size28 color6'  data-contact='titlet' name='salary'  value='{{salary}}' disabled='true' bindtap='open' data-name='t'></input>
+    <text class='iconfont icon-jiantou1'></text>
+  </view>
+  <view class='item  flex_btw align_center'>
+    <text class='size28 color9'>工作地点</text>
+    <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' classN="width550"  tokonw='city' ban='county' bind:choosea='choosearea' />
+    <text class='iconfont icon-jiantou1'></text>
+  </view>
+  <view class='item  flex_btw align_center'>
+    <text class='size28 color9'>详细地址</text>
+    <view class='input1'>
+        <input class='size28 ' name='address' bindblur='czaddress' data-contact='addresso' disabled='{{disabled1}}' value='{{address}}' bindinput="getsuggest"></input>
+        <scroll-view scroll-y class='haslook' wx:if='{{suggestion.length>0}}'>
+          <view wx:for="{{suggestion}}" wx:key="index" class='addressss flex align_center' bindtap="backfill" id="{{index}}">
+            <image src='../../../images/icon_location.png' class='icon_location'></image>
+            <view class='hidden1'>{{item.title}}
+              <text class='color9'>{{item.addr}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
   </view>
   <view class=''>
     <view class='size28 color9 detail'>职位详情</view>
-    <textarea></textarea>
+    <textarea wx:if="{{show}}" focus="{{show}}" class='size28 ' bindinput='input' bindblur='unshow'   value='{{content}}' name='content'></textarea>
+      <view class='textarea size28 ' bindtap='show' wx:else>{{content}}</view>
   </view>
 </view>
-<view class='submitButton'>发布</view>
+<!-- <view class='submitButton'>发布</view> -->
+<button class='submitButton' form-type="submit" disabled='{{post}}'>发布</button>
+</form>
 <wux-popup visible="{{ visiblet }}" position="bottom" bind:close="colse" data-name='t'>
   <view class='flex_btw align_center yysj'>
     <image src='../../../images/ch_del.png' class='ch_del' bindtap='ch_del'></image>
@@ -45,11 +69,11 @@
     <view class='flex' wx:if="{{visiblet}}">
       
       <picker-view indicator-style="height: 76rpx;" style="width: 100%; height: 300rpx;" value="{{value}}" bindchange="bindChange" >
-        <picker-view-column bindpickstart='pickstart'>
-          <view wx:for="{{money1}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item}}</view>
+        <picker-view-column >
+          <view wx:for="{{salary1}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item.name}}</view>
         </picker-view-column>
         <picker-view-column>
-          <view wx:for="{{money2}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item}}</view>
+          <view wx:for="{{salary2}}" wx:key="index" style="line-height: 76rpx" class='timec'>{{item.name}}</view>
         </picker-view-column>
 
       </picker-view>
@@ -63,6 +87,19 @@
     <image src='../../../images/ch_true.png' class='ch_true' bindtap='trueRecord'></image>
   </view>
   <view class='recorditem flex wrap color4'>
-    <view  wx:for="{{item}}" wx:key="index" class='record'>{{item}}</view>
+    <view  wx:for="{{educationi}}" wx:key="index" class='record {{item.id==educationidt?"recordactive":""}}' bindtap='education' data-id='{{item.id}}' data-name='{{item.name}}'>{{item.name}}</view>
   </view>
 </wux-popup>
+<wux-popup visible="{{ visiblee }}" position="bottom" bind:close="colse" data-name='e'>
+  <view class='flex_btw align_center yysj'>
+    <image src='../../../images/ch_del.png' class='ch_del' bindtap='delexperience'></image>
+    <text>经验要求</text>
+    <image src='../../../images/ch_true.png' class='ch_true' bindtap='trueexperience'></image>
+  </view>
+  <view class='recorditem flex wrap color4'>
+    <view  wx:for="{{experiencei}}" wx:key="index" class='record {{item.id==experienceidt?"recordactive":""}}' bindtap='experience' data-id='{{item.id}}' data-name='{{item.name}}'>{{item.name}}</view>
+  </view>
+</wux-popup>
+<view class='addresszzc' bindtap='addresszzc'  wx:if='{{suggestion.length>0}}' ></view>
+
+<wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="所属行业" options="{{ cate }}" defaultFieldNames="{{object}}" bind:close="colse" data-name='1' bind:change="onChange1" />

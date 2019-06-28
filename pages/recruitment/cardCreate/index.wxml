@@ -1,4 +1,5 @@
 <!--pages/recruitment/recruit/cardCreate/index.wxml-->
+<form bindsubmit="submit">
 <view class='with686'>
   <view>创建名片</view>
   <view class='flex_btw align_center item'>
@@ -6,8 +7,8 @@
       头像
     </view>
     <view class='picture_item'  bindtap='uploadpic'>
-      <view wx:if="{{upload_picture_list.length==0}}" class='bgg flex_ard align_center'>
-        
+      <view wx:if="{{upload_picture_list[0].path_server.length==0}}" class='bgg flex_ard align_center'>
+        <!-- <image src="{{upload_picture_list[0].path_server}}" mode="aspectFill"></image> -->
       </view>
       <view wx:else>
         <image wx:if="{{upload_picture_list[0].upload_percent < 100}}" src="{{upload_picture_list[0].path}}" mode="aspectFill"></image>
@@ -20,31 +21,40 @@
     <view class='left'>
       姓名
     </view>
-    <input></input>
+    <input name='name' value='{{name}}'></input>
   </view>
   <view class='flex align_center item'>
     <view class='left'>
       联系电话
     </view>
-    <input></input>
+    <input name='contact' value='{{contact}}'></input>
   </view>
   <view class='flex align_center item'>
     <view class='left'>
       我的公司
     </view>
-    <input></input>
+    <input disabled='disabled'></input>
+    <view class='iconfont icon-jiantou1'></view>
+  </view>
+  <view class='flex align_center item'>
+    <view class='left'>
+      发布职位
+    </view>
+    <input disabled='disabled'></input>
+    <view class='iconfont icon-jiantou1'></view>
   </view>
   <view class='flex align_center item'>
     <view class='left'>
       我的职务
     </view>
-    <input></input>
+    <input  name='duty' value='{{duty}}'></input>
   </view>
   <view class='flex align_center item'>
     <view class='left'>
       我的邮箱
     </view>
-    <input></input>
+    <input  name='email' value='{{email}}'></input>
   </view>
-  <button class='submitButton'>确定</button>
+  <button class='submitButton' form-type="submit" disabled='{{post}}'>确定</button>
 </view>
+</form>

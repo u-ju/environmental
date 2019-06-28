@@ -424,7 +424,7 @@ function getToken(valuetstu='',form,cb,mothed) {
   
   if (token && valuetstu!= 801) {
     // return token;
-    return  'zwj'
+    return  'zwj';
   }
   if (valuetstu==801){
     wx.reLaunch({
@@ -510,6 +510,11 @@ function deplay_redirect(redirect_url, timer = 3000) {
     })
   }, timer);
 }
+function navigateTo(redirect_url) {
+  wx.navigateTo({
+    url: redirect_url
+  });
+}
 
 function deplay_navigateTo(redirect_url, timer = 2000) {
   timer = setTimeout(function () {
@@ -577,7 +582,17 @@ function nav(link){
     wx.navigateTo({
       url: url,
       fail: function () {
-        that.alert('该功能暂未开放，敬请期待')
+        wx.navigateTo({
+          url: '../'+url,
+          fail: function () {
+            wx.navigateTo({
+              url: '../../' + url,
+              fail: function () {
+
+              },
+            })
+          },
+        })
       },
     })
   }

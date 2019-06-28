@@ -71,6 +71,7 @@ App({
     action:'',
     code:'',
     desc:'',
-    hint:[]
+    hint:[],
+    is_:''
   }
 })

@@ -31,7 +31,7 @@
       </view>
     </view>
   </view>
-  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}" hidden='{{tabIndex==0||tabIndex==-1}}'> 
+  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}" > 
     <view class='flex allse' wx:if="{{tabIndex==1}}">
       <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{eara}}" wx:key="index" wx:for-index="indexnum" wx:for-item="eara1">
 
@@ -74,25 +74,28 @@
 </view>
 
 <view class='resumeitem'>
-  <view class='resume' wx:if="{{list.length>0}}">
-    <view class='flex_btw align_center'>
-      <view class='size36'>财务实习生</view>
-      <view class='color4fd6f0 size36'>2k-4k</view>
-    </view>
-    <view class='flex_btw align_center martb28'>
-      <view>成都汉光实业有限公司</view>
-      <!-- <view class='color898989'>在职-考虑机会</view> -->
-    </view>
-    <view class='flex_btw'>
-      <view class='flex'>
-        <view class='moudel color898989 size22'>成都</view>
-        <view class='moudel color898989 size22'>1年以内</view>
+  <block  wx:if="{{list.length>0}}">
+    <view class='resume' wx:for="{{list}}" wx:key="index">
+      <view class='flex_btw align_center'>
+        <view class='size36'>{{item.name}}</view>
+        <view class='color4fd6f0 size36'>{{item.salary_name}}</view>
+      </view>
+      <view class='flex_btw align_center martb28'>
+        <view>{{item.company_info.name}}</view>
+        <!-- <view class='color898989'>在职-考虑机会</view> -->
+      </view>
+      <view class='flex_btw'>
+        <view class='flex'>
+          <view class='moudel color898989 size22'>{{item.area_name}}</view>
+          <view class='moudel color898989 size22'>{{item.experience_name}}</view>
+          <view class='moudel color898989 size22'>{{item.education_name}}</view>
+        </view>
+      </view>
+      <view class='flex align_center person'>
+        <image class='head' src='{{item.person_info.avatar}}'></image>
+        <view class='size28'>{{item.person_info.name}}</view>
       </view>
     </view>
-    <view class='flex align_center person'>
-      <image class='head'></image>
-      <view class='size28'>陈晨</view>
-    </view>
-  </view>
+  </block>
   <empty wx:else />
 </view>

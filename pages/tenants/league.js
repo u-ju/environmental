@@ -272,9 +272,7 @@ Page({
   },
   location(address) {
     var that = this
-
     if (that.data.choosead) {
-      // console.log(that.data.choosead)
       return that.setData({
         choosead: false
       })

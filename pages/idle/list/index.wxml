@@ -1,0 +1,37 @@
+<!--pages/recruitment/recruit/myposition/index.wxml-->
+<!-- <view class='resume'>
+  <view class='flex_btw align_center'>
+    <view class='flex_btw align_center'>
+      <image class='head'></image>
+      <view class='size36'>陈晨</view>
+    </view>
+    <view class='color4fd6f0 size36'>2k-4k</view>
+  </view>
+  <view class='flex_btw align_center martb28'>
+    <view>应聘：财务实习生</view>
+    <view class='color898989'>在职-考虑机会</view>
+  </view>
+  <view class='flex_btw' >
+    <view class='flex'>
+      <view class='moudel color898989 size22'>成都</view>
+      <view class='moudel color898989 size22'>1年以内</view>
+    </view>
+    <view class='iconfont icon-bianji color4fd6f0'></view>
+  </view>
+</view> -->
+<view class='list flex_btw'>
+  <image class='thumb'></image>
+  <view class='flex_btw flex_col'>
+    <view>胡桃木大板桌奥坎实木大板红木茶 餐桌实木原木桌</view>
+    <view class='flex_btw'>
+      <view class='colorff1919'>价格：￥580.00 </view>
+      <view class='iconfont icon-bianji color4fd6f0'></view>
+    </view>
+  </view>
+</view>
+<view class='click color27AAD9'>
+    <navigator url='../my_bankcard_add/index' class='flex align_center'> 
+      <text class='iconfont icon-jiahao'></text>
+      <text class='size32'>添加发布</text>
+    </navigator>
+  </view>

@@ -483,6 +483,22 @@ const apiList = {
     replyIndex: basePath + '/front/buurtNews/replyIndex?news_id=',//GET 回复列表
     praiseStore: basePath + '/front/buurtNews/praiseStore',//POST 点赞提交
     replyPraiseStore: basePath + '/front/buurtNews/replyPraiseStore',//POST 回复点赞提交
+  },
+  recruit:{
+    conf: basePath + '/front/recruit/conf',// GET 配置信息
+    postIndex: basePath + '/front/recruit/postIndex',// GET 招聘职位列表
+    postShow: basePath + '/front/recruit/postShow?id=',// GET 招聘职位详情
+    personHome: basePath + '/front/recruit/personHome',// GET 招聘人信息
+    personStore: basePath + '/front/recruit/personStore',// POST 招聘人添加
+    personUpdate: basePath + '/front/recruit/personUpdate',// POST 招聘人更新
+    companyStore: basePath + '/front/recruit/companyStore',// POST 招聘人公司添加
+    companyShow: basePath + '/front/recruit/companyShow',// GET 招聘人公司详情
+    companyUpdate: basePath + '/front/recruit/companyUpdate',// POST 招聘人公司更新
+    personPostStore: basePath + '/front/recruit/personPostStore',// POST 招聘人职位发布
+    personPostIndex: basePath + '/front/recruit/personPostIndex',// GET 招聘人职位列表
+    personPostShow: basePath + '/front/recruit/personPostShow?id=',// GET 招聘人职位详情
+    personPostUpdate: basePath + '/front/recruit/personPostUpdate',// POST  招聘人职位更新
+    personPostDestroy: basePath + '/front/recruit/personPostDestroy',// POST 招聘人职位删除
   }
 }
 module.exports = apiList;
