@@ -38,7 +38,7 @@ Page({
     that.setData({
       news_id: options.id
     })
-    util.loading()
+    // util.loading()
     that.index()
     that.initreplyIndex()
   },

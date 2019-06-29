@@ -103,3 +103,6 @@ textarea,.textarea{
   height: 100%;
   z-index: 88;
 }
+.submitButton{
+  margin: 50rpx 0;
+}

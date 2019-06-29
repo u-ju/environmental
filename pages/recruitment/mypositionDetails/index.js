@@ -19,7 +19,10 @@ Page({
     salary:'',
     salaryid:'',
     valuet:[],
-    object: { label: 'name', value: 'id', children: 'children' }
+    object: { label: 'name', value: 'id', children: 'children' },
+    id:-1,
+    experienceid:'',
+    educationid:''
   },
 
   /**
@@ -281,8 +284,10 @@ Page({
         education: result.education_name,
         educationid: result.education,
         experience: result.experience_name,
+        experienceid: result.experience,
         name: result.name,
         salary: result.salary_name,
+        salaryid: result.salary,
         id: id
       })
       util.hideLoading()
@@ -302,9 +307,10 @@ Page({
     this.setData({
       post: true
     })
-    var url = personPostStore
-    if(this.data.id){
-      url = personPostUpdate
+    console.log(data)
+    var url = "personPostStore"
+    if(this.data.id!=-1){
+      url = "personPostUpdate"
     }
     util.postJSON({
       apiUrl: apiurl.recruit[url],

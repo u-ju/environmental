@@ -1,15 +1,13 @@
 {
   "pages": [
-  
+    "pages/recruitment/index",
+    "pages/recruitment/positionDetails/index",
+    
     "pages/recruitment/mypositionDetails/index",
     "pages/recruitment/myposition/index",
     "pages/recruitment/companyDetails/index",
     "pages/recruitment/cardCreate/index",
-    "pages/recruitment/positionDetails/index",
-    
     "pages/index/index",
-    
-    "pages/recruitment/index",
     "pages/recruitment/index/index",
     "pages/idle/list/index",
     

@@ -19,6 +19,7 @@ import HtmlToJson from './html2json.js';
  **/
 var realWindowWidth = 0;
 var realWindowHeight = 0;
+var index=""
 wx.getSystemInfo({
   success: function (res) {
     realWindowWidth = res.windowWidth
@@ -32,6 +33,7 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
   var that = target;
   var transData = {};//存放转化后的数据
   if (type == 'html') {
+    console.log(data)
     transData = HtmlToJson.html2json(data, bindName);
     // console.log(JSON.stringify(transData, ' ', ' '));
   } else if (type == 'md' || type == 'markdown') {
@@ -50,6 +52,7 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
   that.setData(bindData)
   that.wxParseImgLoad = wxParseImgLoad;
   that.wxParseImgTap = wxParseImgTap;
+  that.videoPlay = videoPlay;
 }
 // 图片点击事件
 function wxParseImgTap(e) {
@@ -63,7 +66,21 @@ function wxParseImgTap(e) {
     })
   }
 }
+function videoPlay(e) {
+  var _index = e.currentTarget.dataset.id
 
+  if (index.indexOf("video")!=-1){
+    
+    var videoContextPrev = wx.createVideoContext(index)
+    videoContextPrev.pause();
+  }
+  index = e.currentTarget.dataset.id
+  setTimeout(function () {
+    //将点击视频进行播放
+    var videoContext = wx.createVideoContext(_index)
+    videoContext.play();
+  }, 500)
+}
 /**
  * 图片视觉宽高计算函数区 
  **/

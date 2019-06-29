@@ -8,9 +8,16 @@ Page({
    * 页面的初始数据
    */                                       
   data: {
-    tabTxt: ['最新', '成都 ', '公司', '要求'],
+    tabTxt: ['最新', '成都 ', '行业', '要求'],
     list:[],
-    tabIndex:-1
+    tabIndex:3,
+    qyopen: true,
+    isfull: true,
+    cateid:[],
+    cate:[],
+    experience:'',
+    education:'',
+    salary:''
   },
 
   /**
@@ -22,6 +29,29 @@ Page({
     })
     this.areaparse()
     this.init()
+    this.conf()
+  },
+  conf() {
+    var that = this;
+    util.getJSON({
+      apiUrl: apiurl.recruit.conf,
+    }, function (res) {
+      var post = res.data.result.post
+      var salary1 = util.copyarr(post.salary), salary2 = util.copyarr(post.salary)
+      salary1.length = salary1.length - 1
+      salary2 = [salary2[0]]
+      that.setData({
+        conf: post,
+        salaryi: post.salary,
+        educationi: post.education,
+        experiencei: post.experience,
+        salary_filteri: post.salary_filter,
+        salary1: salary1,
+        salary2: salary2,
+        cate: [post.cate]
+      })
+      util.hideLoading()
+    })
   },
   init(page = 1) {
     var that = this;
@@ -141,102 +171,72 @@ Page({
     // this.hidebg()
     // this.init()
   },
-  // choose2(e) {
-  //   var that = this, erji = that.data.erji, erjinum = 0, id = e.currentTarget.dataset.id;
-  //   var tabTxt = this.data.tabTxt
-  //   tabTxt[2] = e.currentTarget.dataset.name;
-  //   // wx.showLoading({
-  //   //   title: '加载中',
-  //   // })
-  //   that.setData({
-  //     erji: erji,
-  //     cate_id: id,
-  //     erjinum: erjinum,
-  //     tabTxt: tabTxt
-  //   })
-  //   // that.init(id)
-  //   // that.hidebg()
-  // },
-  // choose3(e) {
-  //   // console.log(e)
-  //   var key = e.currentTarget.dataset.key, name = e.currentTarget.dataset.name, index = e.currentTarget.dataset.index;
-  //   if (name == "cost") {
-  //     if (key == this.data.cost) {
-  //       key = ''
-  //       index = -1
-  //     }
-  //     this.setData({
-  //       cost: key,
-  //       costindex: index
-  //     })
-  //   } else if (name == "feature") {
-  //     if (key == this.data.feature) {
-  //       key = ''
-  //     }
-  //     this.setData({
-  //       feature: key
-  //     })
-  //   }
-  // },
-  // quyuEmpty1() {
-  //   var eara = this.data.eara, earaid = this.data.earaid
-  //   eara.length = 1;
-  //   earaid.length = 1;
-  //   var tabTxt = this.data.tabTxt
-  //   tabTxt[1] = '附近';
-  //   this.setData({
-  //     eara: eara,
-  //     earaid: earaid,
-  //     area_id: '',
-  //     tabTxt: tabTxt
-  //   })
-  //   this.hidebg()
-  //   this.init()
-  // },
-  // submitFilter1() {
-  //   this.setData({
-  //     area_id: this.data.earaid[this.data.earaid.length - 1],
-  //     sort: 'location',
-  //     location: this.data.longitude + ',' + this.data.latitude
-  //   })
-  //   this.init()
-  //   this.hidebg()
-  // },
-  // quyuEmpty2() {
-  //   var tabTxt = this.data.tabTxt
-  //   tabTxt[2] = this.data.tabTxt2;
-  //   this.setData({
-  //     // this.data.cate_ids
-  //     cate_id: '',
-  //     tabTxt: tabTxt,
-  //     location: ' '
-  //   })
-  //   // this.hidebg()
-  //   this.init()
-  // },
-  // submitFilter2() {
-
-  //   this.init()
-  //   this.hidebg()
-  // },
-  // quyuEmpty3() {
-  //   var tabTxt = this.data.tabTxt
-  //   this.setData({
-  //     cost: '',
-  //     feature: '',
-  //     sort: '',
-  //     costindex: -1
-  //   })
-  //   // this.hidebg()
-  //   this.init()
-  // },
-  // submitFilter3() {
-  //   this.setData({
-  //     sort: ''
-  //   })
-  //   this.init()
-  //   this.hidebg()
-  // },
+  choose2(e) {
+    var that = this;
+    var tabTxt = this.data.tabTxt, cate = this.data.cate, cateid=this.data.cateid
+    tabTxt[2] = e.currentTarget.dataset.name;
+    console.log(e)
+    console.log(cate[e.currentTarget.dataset.indexnum])
+    // cate[e.currentTarget.dataset.indexnum][[e.currentTarget.dataset.index]
+    if (cate[e.currentTarget.dataset.indexnum][e.currentTarget.dataset.index]["children"]){
+      cate[e.currentTarget.dataset.indexnum + 1] = cate[e.currentTarget.dataset.indexnum][e.currentTarget.dataset.index]["children"]
+      cateid[e.currentTarget.dataset.indexnum +1] = cate[e.currentTarget.dataset.indexnum][e.currentTarget.dataset.index]["children"][0]["id"]
+      that.setData({
+        cate: cate,
+        cateid: cateid
+      })
+    }
+    cateid[e.currentTarget.dataset.indexnum] = e.currentTarget.dataset.id
+    that.setData({
+      cateid: cateid,
+      tabTxt: tabTxt
+    })
+    
+  },
+  submitFilter2() {
+    this.setData({
+      cate_id: this.data.cateid[this.data.earaid.length - 1],
+    })
+    // this.init()
+    this.hidebg()
+  },
+  quyuEmpty2() {
+    var cate = this.data.cate, cateid = this.data.cateid
+    cate.length = 1;
+    var tabTxt = this.data.tabTxt
+    tabTxt[2] = '行业';
+    this.setData({
+      cate: cate,
+      cateid: [],
+      cate_id: '',
+      tabTxt: tabTxt
+    })
+    this.hidebg()
+    // this.init()
+  },
+  choose3(e){
+    console.log(e)
+    this.setData({
+      [e.currentTarget.dataset.name]: e.currentTarget.dataset.id
+    })
+  },
+  submitFilter3() {
+    this.setData({
+      experience: this.data.experience,
+      education: this.data.education,
+      salary: this.data.salary
+    })
+    this.hidebg()
+  },
+  quyuEmpty3() {
+    
+    this.setData({
+      experience: '',
+      education: '',
+      salary: ''
+    })
+    this.hidebg()
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

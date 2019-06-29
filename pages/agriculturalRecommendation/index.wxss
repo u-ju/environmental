@@ -147,7 +147,7 @@ navigator{
   border-bottom: 1px solid #eee;
 }
 .xiangqing_img{
-  width:240rpx;
+  width:180rpx;
   height:160rpx;
   background-color: #f8f8f8;
   margin-right: 26rpx;
@@ -157,7 +157,7 @@ navigator{
   height:160rpx;
 }
 .xiangqing_info{
-  width: 420rpx;
+  width: 480rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

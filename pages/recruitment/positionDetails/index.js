@@ -1,4 +1,7 @@
 // pages/recruitment/recruit/positionDetails/index.js
+const app = getApp()
+var util = require('../../../utils/util.js');
+var apiurl = require('../../../utils/api.js');
 Page({
 
   /**
@@ -14,7 +17,18 @@ Page({
   onLoad: function (options) {
 
   },
-
+  init(id) {
+    var that = this;
+    util.getJSON({
+      apiUrl: apiurl.recruit.postShow + id,
+    }, function (res) {
+      var result = res.data.result
+      that.setData({
+        result: result
+      })
+      util.hideLoading()
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -423,8 +423,8 @@ function getToken(valuetstu='',form,cb,mothed) {
   var token = wx.getStorageSync('token')||"";
   
   if (token && valuetstu!= 801) {
-    // return token;
-    return  'zwj';
+    return token;
+    // return  'zwj';
   }
   if (valuetstu==801){
     wx.reLaunch({

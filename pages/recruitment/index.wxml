@@ -43,9 +43,9 @@
       </scroll-view>
     </view>
     <view class='flex allse' wx:if="{{tabIndex==2}}">
-      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;">
-        <view class="qy quyu-left" style='' wx:for="{{erji}}" wx:key="index" wx:for-index="index">
-          <view class="itemselect {{cate_id==item.id?'current':''}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose2">
+      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{cate}}" wx:key="index" wx:for-index="indexnum" wx:for-item="cate1">
+        <view class="qy quyu-left" style='' wx:for="{{cate1}}" wx:key="index">
+          <view class="itemselect {{cateid[indexnum]==item.id?'current':''}}" data-index='{{index}}' data-indexnum='{{indexnum}}' data-item='{{item}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose2">
             {{item.name}}
           </view>
         </view>
@@ -53,15 +53,21 @@
     </view>
     <view class='' wx:if="{{tabIndex==3}}">
       <view class='screenitem'>
-        <view>价格区间</view>
+        <view>学历</view>
         <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{searchitem.cost}}' wx:key="index" class='screen {{costindex==index?"active":""}}' data-index='{{index}}' data-name='cost' bindtap='choose3'  data-key='{{item.min}},{{item.max}}'>{{item.name}}</text>
+          <text wx:for='{{educationi}}' wx:key="index" class='screen {{education==item.id?"active":""}}' data-id='{{item.id}}' data-name='education' bindtap='choose3'>{{item.name}}</text>
         </scroll-view>
       </view>
       <view class='screenitem'>
-        <view>更多特色</view>
+        <view>经验</view>
         <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{searchitem.feature}}' wx:key="index" class='screen {{feature==item?"active":""}}' bindtap='choose3' data-name='feature' data-key='{{item}}' >{{item}}</text>
+          <text wx:for='{{experiencei}}' wx:key="index" class='screen {{experience==item.id?"active":""}}' bindtap='choose3' data-name='experience' data-id='{{item.id}}' >{{item.name}}</text>
+        </scroll-view>
+      </view>
+      <view class='screenitem'>
+        <view>薪水</view>
+        <scroll-view scroll-x="true" class="scroll-header">
+          <text wx:for='{{salary_filteri}}' wx:key="index" class='screen {{salary==item.id?"active":""}}' bindtap='choose3' data-name='salary' data-id='{{item.id}}' >{{item.name}}</text>
         </scroll-view>
       </view>
     </view>
@@ -86,9 +92,9 @@
       </view>
       <view class='flex_btw'>
         <view class='flex'>
-          <view class='moudel color898989 size22'>{{item.area_name}}</view>
-          <view class='moudel color898989 size22'>{{item.experience_name}}</view>
-          <view class='moudel color898989 size22'>{{item.education_name}}</view>
+          <view class='moudel color898989 size22' wx:if="{{item.area_name}}">{{item.area_name}}</view>
+          <view class='moudel color898989 size22' wx:if="{{item.experience_name}}">{{item.experience_name}}</view>
+          <view class='moudel color898989 size22' wx:if="{{item.education_name}}">{{item.education_name}}</view>
         </view>
       </view>
       <view class='flex align_center person'>

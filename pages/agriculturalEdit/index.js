@@ -23,6 +23,7 @@ Page({
     images: [],
     price:[],
     stock:[],
+    stock:[],
     url:'shop_goodsStore',
     spu_id:'',
     del:[],
@@ -169,14 +170,16 @@ Page({
   init(){
     var that = this;
     util.getJSON({ apiUrl: apiurl.shop_goodsShowOwn + '?shop_id=' + that.data.shop_id + '&spu_id=' + that.data.spu_id }, function (res) {
-      var result = res.data.result, key = [], key_name = [], price = [], stock = [], thumb = [], images = [], edit=[]
+      var result = res.data.result, key = [], key_name = [], price = [], stock = [], thumb = [], images = [], edit = [], install_fee=[]
       for (var i in result.skus){
         edit[i] = result.skus[i]['sku_key']
         key[i] = result.skus[i]['sku_key']
         key_name[i] = result.skus[i]['sku_name']
         price[i] = result.skus[i]['price']
         stock[i] = result.skus[i]['stock']
-        
+        if(this.data.source == "league"){
+          install_fee[i]= result.skus[i]['install_fee']
+        }
         images[i]=[]
         for (var j in result.skus[i]['images']){
           images[i].push({ upload_percent: 100, path_server: result.skus[i]['images'][j] })
@@ -186,6 +189,11 @@ Page({
         }else{
           thumb[i]=[]
         }
+      }
+      if (this.data.source == "league") {
+        this.setData({
+          install_fee: install_fee
+        })
       }
       var spu_intro = []
       if (result.spu_intro){
@@ -268,6 +276,13 @@ Page({
     stock[e.currentTarget.dataset.index] = e.detail.value
     this.setData({
       stock: stock
+    })
+  },
+  inputi(e) {
+    var install_fee = this.data.install_fee
+    install_fee[e.currentTarget.dataset.index] = e.detail.value
+    this.setData({
+      install_fee: install_fee
     })
   },
   // 上传图片
@@ -438,6 +453,9 @@ Page({
       data['sku_arr[' + i + '][price]'] = e.detail.value['price['+i+']']
       data['sku_arr[' + i + '][stock]'] = e.detail.value['stock[' + i + ']']
       data['sku_arr[' + i + '][thumb]'] = that.data.thumb[i][0]['path_server']
+      if (this.data.source =="league"){
+        data['sku_arr[' + i + '][install_fee]'] = e.detail.value['install_fee[' + i + ']']
+      }
       for (var j in that.data.images[i]){
         data['sku_arr[' + i +'][images][' + j +']'] = that.data.images[i][j]['path_server']
       }
