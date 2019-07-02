@@ -1,23 +1,23 @@
-/* pages/law/index.wxss */
-page{
-  text-align: center;
+/* pages/recruitment/mypositionDetails/index.wxss */
+
+@import '../../recruitment/mypositionDetails/index';
+@import '../../recruitment/companyDetails/index';
+.item>input,.input,.input1 input{
+  border: none;
 }
-.btn{
-  width:353rpx;
-  height:100rpx;
-  background:#4fd6f0;
-  border-radius:50rpx;
-  margin: 80rpx auto auto auto;
-  line-height: 100rpx;
-  font-size:36rpx;
-  color: #fff;
+.jianjie textarea,.textarea{
+  /* width:666rpx;
+  height:300rpx; */
+  width:528rpx;
+  border:2rpx solid #eee;
+  border-radius:10rpx;
+  margin-bottom:10rpx;
+  padding:20rpx 10rpx;
+
 }
-.instructions{
-  text-align: left;
-  width: 420rpx;
-  margin: auto;
-  line-height: 48rpx;
+.jianjie{
+  margin-top: 20rpx;
 }
-view:first-of-type{
-  margin-top: 400rpx;
+.recorditem{
+  padding: 60rpx 36rpx 60rpx 70rpx;
 }

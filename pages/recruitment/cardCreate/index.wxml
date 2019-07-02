@@ -33,15 +33,19 @@
     <view class='left'>
       我的公司
     </view>
-    <input disabled='disabled'></input>
-    <view class='iconfont icon-jiantou1'></view>
+    <navigator class='flex align_center' url='../companyDetails/index?is_={{is_recruit_company}}'>
+      <input disabled='disabled'></input>
+      <view class='iconfont icon-jiantou1'></view>
+    </navigator>
   </view>
   <view class='flex align_center item'>
     <view class='left'>
       发布职位
     </view>
-    <input disabled='disabled'></input>
-    <view class='iconfont icon-jiantou1'></view>
+    <navigator class='flex align_center' url='../myposition/index?is_={{is_recruit_company}}'>
+      <input disabled='disabled'></input>
+      <view class='iconfont icon-jiantou1'></view>
+    </navigator>
   </view>
   <view class='flex align_center item'>
     <view class='left'>

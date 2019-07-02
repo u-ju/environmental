@@ -191,7 +191,8 @@ Page({
     if (e.currentTarget.dataset.link.key == 'front_share_home') {
       return util.getJSON({ apiUrl: apiurl.share }, function (res) {
         var result = res.data.result
-        url = url + "&result=" + JSON.stringify(result)
+        // url = url + "&result=" + JSON.stringify(result)
+        getApp().globalData.front_share_home = result
         util.hideLoading()
         wx.navigateTo({
           url: url,

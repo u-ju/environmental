@@ -1,13 +1,24 @@
 {
   "pages": [
+    "pages/law/In/index",
+    "pages/law/index",
+    "pages/law/detail/index",
+    
+    "pages/law/firms/index",
+    "pages/law/lawyer/index",
+    "pages/index/index",
     "pages/recruitment/index",
+    "pages/recruitment/mypositionDetails/index",
+    
+    "pages/recruitment/companyDetails/index",
+    
     "pages/recruitment/positionDetails/index",
     
-    "pages/recruitment/mypositionDetails/index",
+    
     "pages/recruitment/myposition/index",
-    "pages/recruitment/companyDetails/index",
+    
     "pages/recruitment/cardCreate/index",
-    "pages/index/index",
+    
     "pages/recruitment/index/index",
     "pages/idle/list/index",
     
@@ -20,16 +31,13 @@
     
     
     
-    "pages/law/detail/index",
     
     "pages/agriculturalRecommendation/index",
-    "pages/law/firms/index",
-    "pages/law/lawyer/index",
+    
     "pages/business_details/business_details",
     "pages/idle/index",
     "pages/renting/index",
-    "pages/law/index",
-    "pages/law/In/index",
+    
     
     
     "pages/buurtNewsIn/index",

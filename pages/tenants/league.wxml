@@ -45,7 +45,7 @@
       </view>
     </view>
     <view class='item1 flex align_center textareaitem'>
-      <text class='size28 color6'>商家描述</text>
+      <text class='size28 color6'>商家描述 \n（可选填）</text>
       <textarea wx:if="{{show}}" focus="{{show}}" class='size28 color9' bindinput='input' bindblur='unshow' data-contact='intro' value='{{intro}}' name='intro'></textarea>
       <view class='textarea size28 color9' bindtap='show' wx:else>{{intro}}</view>
     </view>
@@ -77,7 +77,7 @@
       </view>
     </view> -->
     <block wx:for="{{image}}" wx:key="{{index}}">
-      <view class='item1 flex align_center image' >
+      <view class='item1 flex align_center image'  hidden='{{item.id==1}}'>
         <text class='size28 color6'>{{item.title}}</text>
         <view class="picture_list">
           <view class="picture_item {{item.id}}" wx:if="{{item.upload_picture_list.length>0}}">
@@ -98,7 +98,7 @@
     </block>
 
     <view class='item1 flex align_center image'>
-      <text class='size28 color6'>店内图片</text>
+      <text class='size28 color6'>店内图片\n (至少一张)</text>
       <view class="picture_listmore">
         <view class="picture_itemmore" wx:if='{{video.src}}'>
           <image wx:if="{{video.upload_percent < 100}}" src="{{video.img}}" mode="aspectFill"></image>

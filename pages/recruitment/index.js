@@ -9,15 +9,22 @@ Page({
    */                                       
   data: {
     tabTxt: ['最新', '成都 ', '行业', '要求'],
+    tabTxt1: ['最新', '成都 ', '行业', '要求'],
     list:[],
-    tabIndex:3,
-    qyopen: true,
-    isfull: true,
+    tabIndex:-1,
+    qyopen: false,
+    isfull: false,
     cateid:[],
     cate:[],
     experience:'',
     education:'',
-    salary:''
+    salary:'',
+    // [{ "key": "sort", "value": "recommend", "description": "newest\nrecommend", "type": "text", "enabled": false }]
+    sorti:[
+      { name: '推荐', key: 'nrecommend' },
+      { name: '最新', key: 'newest' },
+    ],
+    sort:''
   },
 
   /**
@@ -30,6 +37,16 @@ Page({
     this.areaparse()
     this.init()
     this.conf()
+  },
+  detail(e){
+    wx.navigateTo({
+      url: 'positionDetails/index?id=' + e.currentTarget.dataset.id,
+    })
+  },
+  link(){
+    wx.navigateTo({
+      url: 'cardCreate/index',
+    })
   },
   conf() {
     var that = this;
@@ -55,9 +72,15 @@ Page({
   },
   init(page = 1) {
     var that = this;
-    var data = {}
-    // { source: "offline", cate_id: that.data.cate_id, page: page, keywords: that.data.keywords, area_id: that.data.area_id, location: that.data.location, feature: this.data.feature, cost: this.data.cost, sort: that.data.sort }
-
+    var data = {
+      experience: that.data.experience||'',
+      education: that.data.education || '',
+      salary: that.data.salary || '',
+      cate_id: that.data.cate_id || '',
+      keywords: that.data.keywords || '',
+      area_id: that.data.area_id || '',
+      sort: that.data.sort || ''
+    }
     util.getJSON({
       apiUrl: apiurl.recruit.postIndex + "?1=1",
       data: data
@@ -121,10 +144,39 @@ Page({
       tabIndex: -1
     })
   },
+  choose0(e) {
+    console.log(e)
+    this.setData({
+      sortf: e.currentTarget.dataset.key,
+      sortfname: e.currentTarget.dataset.name
+    })
+  },
+  submitFilter0() {
+    var tabTxt = util.copyarr(this.data.tabTxt1)
+    tabTxt[0] = this.data.sortfname;
+    this.setData({
+      tabTxt: tabTxt,
+      sort: this.data.sortf,
+      experience: '',
+      education: '',
+      salary: '',
+      cate_id: '', 
+      keywords: '', 
+      area_id: '', 
+    })
+    this.hidebg()
+  },
+  quyuEmpty0() {
+    this.setData({
+      sort: '',
+      tabTxt: util.copyarr(this.data.tabTxt1)
+    })
+    this.hidebg()
+  },
   choose1(e) {
     var that = this;
-    var tabTxt = this.data.tabTxt
-    tabTxt[1] = e.currentTarget.dataset.name;
+    
+    
     var id = e.currentTarget.dataset.id
     if (e.currentTarget.dataset.indexnum == 0 && e.currentTarget.dataset.id != this.data.eara[0][0]['area_id']) {
       that.addressd(e.currentTarget.dataset.id, e.currentTarget.dataset.name, function (e) {
@@ -143,14 +195,21 @@ Page({
     earaid[e.currentTarget.dataset.indexnum] = e.currentTarget.dataset.id
     that.setData({
       earaid: earaid,
-      tabTxt: tabTxt
+      earaname: e.currentTarget.dataset.name
     })
   },
   submitFilter1() {
+    var tabTxt = util.copyarr(this.data.tabTxt1)
+    tabTxt[1] = this.data.earaname;
     this.setData({
+      tabTxt: tabTxt,
       area_id: this.data.earaid[this.data.earaid.length - 1],
-      sort: 'location',
-      location: this.data.longitude + ',' + this.data.latitude
+      sort: '',
+      experience: '',
+      education: '',
+      salary: '',
+      keywords: '',
+      cate_id: '', 
     })
     // this.init()
     this.hidebg()
@@ -158,23 +217,21 @@ Page({
   quyuEmpty1() {
     var eara = this.data.eara, earaid = this.data.earaid
     eara.length = 1;
-    // earaid.length = 1;
     console.log(earaid)
-    var tabTxt = this.data.tabTxt
-    tabTxt[1] = '成都';
+    var tabTxt = util.copyarr(this.data.tabTxt1)
     this.setData({
       eara: eara,
       earaid: [wx.getStorageSync('locAddressID')],
       area_id: '',
-      tabTxt: tabTxt
+      tabTxt: util.copyarr(this.data.tabTxt1)
     })
     // this.hidebg()
     // this.init()
   },
   choose2(e) {
     var that = this;
-    var tabTxt = this.data.tabTxt, cate = this.data.cate, cateid=this.data.cateid
-    tabTxt[2] = e.currentTarget.dataset.name;
+    var  cate = this.data.cate, cateid=this.data.cateid
+    // tabTxt[2] = e.currentTarget.dataset.name;
     console.log(e)
     console.log(cate[e.currentTarget.dataset.indexnum])
     // cate[e.currentTarget.dataset.indexnum][[e.currentTarget.dataset.index]
@@ -189,13 +246,22 @@ Page({
     cateid[e.currentTarget.dataset.indexnum] = e.currentTarget.dataset.id
     that.setData({
       cateid: cateid,
-      tabTxt: tabTxt
+      catename: e.currentTarget.dataset.name
     })
     
   },
   submitFilter2() {
+    var tabTxt = util.copyarr(this.data.tabTxt1)
+    tabTxt[2] = this.data.catename;
     this.setData({
+      tabTxt: tabTxt,
       cate_id: this.data.cateid[this.data.earaid.length - 1],
+      sort: '',
+      experience: '',
+      education: '',
+      salary: '',
+      keywords: '',
+      area_id: '', 
     })
     // this.init()
     this.hidebg()
@@ -203,13 +269,11 @@ Page({
   quyuEmpty2() {
     var cate = this.data.cate, cateid = this.data.cateid
     cate.length = 1;
-    var tabTxt = this.data.tabTxt
-    tabTxt[2] = '行业';
     this.setData({
       cate: cate,
       cateid: [],
       cate_id: '',
-      tabTxt: tabTxt
+      tabTxt: util.copyarr(this.data.tabTxt1)
     })
     this.hidebg()
     // this.init()
@@ -222,9 +286,9 @@ Page({
   },
   submitFilter3() {
     this.setData({
-      experience: this.data.experience,
-      education: this.data.education,
-      salary: this.data.salary
+      experience: this.data.experiencef,
+      education: this.data.educationf,
+      salary: this.data.salaryf
     })
     this.hidebg()
   },
@@ -233,10 +297,15 @@ Page({
     this.setData({
       experience: '',
       education: '',
-      salary: ''
+      salary: '',
+      cate_id: '',
+      keywords: '',
+      area_id: '', 
+      sort:''
     })
     this.hidebg()
   },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

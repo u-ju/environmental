@@ -1,31 +1,31 @@
 <!--pages/recruitment/recruit/positionDetails/index.wxml-->
 <view class='pagetype top'>
   <view class='flex_btw align_center'>
-    <view class='size36'>财务实习生</view>
-    <view class='color4fd6f0 size36'>2k-4k</view>
+    <view class='size36'>{{result.name}}</view>
+    <view class='color4fd6f0 size36'>{{result.salary_name}}</view>
   </view>
   <view class='flex align_center size22 color898989 tagitem'>
-    <view class='tag'>成都</view>
+    <view class='tag'>{{result.area_cut_name}}</view>
   </view>
-  <view class='size22 color898989'>发布时间：2019-1-15</view>
+  <view class='size22 color898989'>发布时间：{{result.created_at}}</view>
 </view>
 <view class='company flex_btw align_center'>
   <view class='flex'>
-    <image></image>
+    <image src='{{result.company_info.thumb}}'></image>
     <view class='flex_col flex_btw'>
-      <view class='bold'>长江实业集团</view>
-      <view class='size26'>地产.酒店.股票投资</view>
+      <view class='bold'>{{result.company_info.name}}</view>
+      <view class='size26 hidden1'>{{result.company_info.intro}}</view>
     </view>
   </view>
   <view class='iconfont icon-jiantou1'></view>
 </view>
 <view class='company addr'>
   <view class='bold'>工作地点</view>
-  <view class='flex_btw align_center'>
+  <view class='flex_btw align_center' bindtap='location'>
     <view class='flex align_center'>
       <view class='iconfont icon-weibiaoti- color4fd6f0'></view>
       <view class='flex_col flex_btw'>
-        <view class='size26 address'>成都市高新区奥克斯广场a座11楼成都市高新 区奥克斯广场a座11楼</view>
+        <view class='size26 address'>{{result.area_name}} {{result.address}}</view>
       </view>
     </view>
     <view class='iconfont icon-jiantou1'></view>
@@ -35,24 +35,10 @@
   <view>职位详情</view>
   <view class='content'>工作内容</view>
   <view class='cond'>
-    <text>工作内容和任务主要包括货币资金核算、往来结算、工资核算、货币资金收支的监督等。
-1.做好现金收付的核算
-2.做好银行存款的收付核算
-3.认真登记日记账，保证日清月结
-4.保管库存现金和有价证券
-5.保管有关印章，登记注销支票
-6.复核收入凭证，办理销售结算
-7.办理往来结算，建立清算制度
-8.管理企业的备用金
-9.核算其他往来款项，防止坏账损失
-10.审核工资单据，发放工资奖金
-11.负责工资核算，提供工资数据
-资金收支过程中会面临很多消极因素，为了保证资金收支的安全，必须对其实施有效的监督。出纳监督是依据国家有关的法律法规和企业的规章制度，在维护财经纪律、执行会计制度的工作权限内，坚决抵制不合法的收支和弄虚作假的行为。出纳在办理现金和银行存款各项业务时，要严格按照财经法规进行，违反规定的业务一律拒绝办理。随时检查和监督财经纪律的执行情况，以保证出纳工作的合法性、合理性，保护单位的经济利益不受侵害。
-                        
-    </text>
+    <text>{{result.content}}</text>
   </view>
 </view>
 <view class='flex_btw align_center bottom'>
-  <view class='size32 padl30'>联系电话：18217650969</view>
-  <view class='call'>拨打电话</view>
+  <view class='size32 padl30'>联系电话：{{result.person_info.contact}}</view>
+  <view class='call' bindtap='calling' data-phone='{{result.person_info.contact}}'  >拨打电话</view>
 </view>

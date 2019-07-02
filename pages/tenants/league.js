@@ -195,7 +195,7 @@ Page({
         ], upload_picture_list = []
 
         image[0]["upload_picture_list"][0]['path_server'] = result.license || '';
-        image[1]["upload_picture_list"][0]['path_server'] = result.thumb
+        image[1]["upload_picture_list"][0]['path_server'] = ''
         for (var i in result.images) {
           upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
         }

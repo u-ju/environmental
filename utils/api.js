@@ -499,6 +499,14 @@ const apiList = {
     personPostShow: basePath + '/front/recruit/personPostShow?id=',// GET 招聘人职位详情
     personPostUpdate: basePath + '/front/recruit/personPostUpdate',// POST  招聘人职位更新
     personPostDestroy: basePath + '/front/recruit/personPostDestroy',// POST 招聘人职位删除
-  }
+  },
+  law: {
+    conf: basePath + '/front/law/conf',// GET 配置信息
+    index: basePath + '/front/law/index',// GET 列表
+    show: basePath + '/front/law/show?id=',// GET 详情
+    infoHome: basePath + '/front/law/infoHome',// GET 入驻信息
+    infoStore: basePath + '/front/law/infoStore',// POST 入驻添加
+    infoUpdate: basePath + '/front/law/infoUpdate',// POST 入驻添加
+  },
 }
 module.exports = apiList;

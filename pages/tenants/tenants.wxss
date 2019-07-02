@@ -30,7 +30,7 @@ page{
   height: 28rpx;
 }
 .item>input,.input,.input1 input{
-  width:496rpx;
+  width:496rpx !important;
   border-bottom: 1px solid #eee;
   height: 94rpx;
 }

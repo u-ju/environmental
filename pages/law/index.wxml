@@ -8,7 +8,7 @@
     <input value='{{keywords}}' name='keywords' bindinput='search' placeholder='输入想要查找的内容' bindconfirm="searchSubmit"></input>
     <text class='iconfont icon-sousuo colorfff searchall_pic'></text>
   </view>
-  <view class='color4AD6A3'>入驻</view>
+  <view class='color4AD6A3'><navigator url='In/index'>入驻</navigator></view>
 </view>
 <view class='pagetype'>
   <view class="tabTit box">
@@ -20,40 +20,26 @@
       </view>
     </view>
   </view>
-  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}" hidden='{{tabIndex==0||tabIndex==-1}}'> 
-    <view class='flex allse' wx:if="{{tabIndex==1}}">
+  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}" hidden='{{tabIndex==-1||tabIndex==2}}'> 
+    <view class='flex allse' wx:if="{{tabIndex==0}}">
       <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{eara}}" wx:key="index" wx:for-index="indexnum" wx:for-item="eara1">
 
         <view class="qy quyu-left" style='' wx:for="{{eara1}}" wx:key="index">
-          <view class="itemselect {{earaid[indexnum]==item.area_id?'current':''}}" data-index='{{index}}' data-indexnum='{{indexnum}}' data-item='{{item}}' data-id='{{item.area_id}}' data-name='{{item.name}}' bindtap="choose1">
+          <view class="itemselect {{earaid[indexnum]==item.area_id?'current':''}}" data-index='{{index}}' data-indexnum='{{indexnum}}' data-item='{{item}}' data-id='{{item.area_id}}' data-name='{{item.name}}' bindtap="choose0">
             {{item.name}}
           </view>
         </view>
       </scroll-view>
     </view>
-    <view class='flex allse' wx:if="{{tabIndex==2}}">
-      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;">
-        <view class="qy quyu-left" style='' wx:for="{{erji}}" wx:key="index" wx:for-index="index">
-          <view class="itemselect {{cate_id==item.id?'current':''}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose2">
-            {{item.name}}
-          </view>
+    <view class='flex allse' wx:if="{{tabIndex==1}}">
+      <view class='sortitem'>
+        <view wx:for="{{cate_tagi}}" wx:key="index" class='flex align_center sort' bindtap='choose1' data-id='{{item.id}}' data-name='{{item.name}}'>
+          <view class='{{item.id==cate_?"color4AD6A3":""}}'>{{item.name}}</view>
+          <image wx:if="{{item.id==cate_}}" src='../../images/ch_true.png' class='ch_true'></image>
         </view>
-      </scroll-view>
-    </view>
-    <view class='' wx:if="{{tabIndex==3}}">
-      <view class='screenitem'>
-        <view>价格区间</view>
-        <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{searchitem.cost}}' wx:key="index" class='screen {{costindex==index?"active":""}}' data-index='{{index}}' data-name='cost' bindtap='choose3'  data-key='{{item.min}},{{item.max}}'>{{item.name}}</text>
-        </scroll-view>
-      </view>
-      <view class='screenitem'>
-        <view>更多特色</view>
-        <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{searchitem.feature}}' wx:key="index" class='screen {{feature==item?"active":""}}' bindtap='choose3' data-name='feature' data-key='{{item}}' >{{item}}</text>
-        </scroll-view>
       </view>
     </view>
+    
     <view class='form-btn'>
       <button class='btn-reset' bindtap='quyuEmpty{{tabIndex}}'>重置</button>
       <button class='btn-submit' bindtap='submitFilter{{tabIndex}}'>确定</button>
@@ -62,12 +48,14 @@
   <view class='tabzc'></view>
 </view>
 <view class='rentitem'>
-  <view class='flex_btw renting align_center' wx:if="{{list.length>0}}">
-    <image class='rentpic'></image>
-    <view class='flex_col flex_btw'>
-      <view class='size28'><text class='bold'>胡桃木 </text> <text> 大板桌奥坎实木大板红木茶 餐桌实木原木桌</text></view>
-      <view class=''>擅长刑事纠纷，债务纠纷，财产继承</view>   
+  <block  wx:if="{{list[0].name}}">
+    <view class='flex_btw renting align_center' wx:for="{{list}}" wx:key="index" bindtap='detail' data-id='{{item.id}}'> 
+      <image class='rentpic' src='{{item.thumb}}'></image>
+      <view class='flex_col flex_btw'>
+        <view class='size28'><text class='bold'>{{item.name}} </text> </view>
+        <view class=''>{{item.intro}}</view>   
+      </view>
     </view>
-  </view>
+  </block>
   <empty wx:else />
 </view>

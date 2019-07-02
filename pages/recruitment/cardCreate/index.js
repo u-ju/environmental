@@ -51,7 +51,8 @@ Page({
         duty: duty,
         email: email,
         name: name,
-        is_recruit_person: result.is_recruit_person
+        is_recruit_person: result.is_recruit_person,
+        is_recruit_company: result.is_recruit_company
       })
       wx.hideLoading()
     })
@@ -87,9 +88,9 @@ Page({
       that = this
     data.avatar = this.data.upload_picture_list[0].path_server
     // console.log(data)
-    url = personUpdate
+    url = "personUpdate"
     if (this.data.is_recruit_person == 0) {
-      url = personStore
+      url = "personStore"
     }
     this.setData({
       post: true
@@ -101,6 +102,7 @@ Page({
       that.setData({
         post: false
       })
+      that.init()
       wx.hideLoading()
     }, function(res) {
       that.setData({

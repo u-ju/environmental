@@ -266,7 +266,7 @@ function uploadpic(page, num, names, index = '', suc) {
   var that = this //获取上下文
   var name = page.data[names]
   if (index !== '') {
-    name = name[index]
+    name = name[index]["upload_picture_list"]
   }
   //选择图片
   wx.chooseImage({

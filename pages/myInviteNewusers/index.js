@@ -41,7 +41,7 @@ Page({
     //   })
     //   util.hideLoading()
     // })
-    var result = JSON.parse(options.result)
+    var result = getApp().globalData.front_share_home
     this.setData({
       result: result,
       value: result.share_qrcode,

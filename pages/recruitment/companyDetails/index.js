@@ -48,7 +48,7 @@ Page({
     var that = this
     this.numlis(e.detail.value, 2000, function () {
       that.setData({
-        name: e.detail.value
+        intro: e.detail.value
       })
     })
   },
@@ -58,39 +58,48 @@ Page({
     }
     suc()
   },
-  uploadpic1(e) {
+  uploadpic(e) {
     var that = this;
-    var index = e.currentTarget.dataset.indexnum;
-
-    util.uploadpic(that, 1, 'upload_picture_list', e.currentTarget.dataset.indexnum, function (images) {
-      console.log(images)
+    var index = e.currentTarget.dataset.index,image=this.data.image;
+    util.uploadpic(that, 1, 'image', index, function (images) {
+      console.log(image)
+      image[index]["upload_picture_list"]=images
       that.setData({
-        ['upload_picture_list[' + index+']']: images,
+        image: image,
       });
       for (var j in images) {
         if (images[j]['upload_percent'] == 0) {
           //调用函数
           util.upload_pic(apiurl.upload_image, that, images, j, function (e) {
+            image[index]["upload_picture_list"] = e
             that.setData({
-              upload_picture_list: e,
+              image: image,
             });
             util.hideLoading()
           }, function (e) {
+            image[index]["upload_picture_list"] = e
             that.setData({
-              upload_picture_list: e,
+              image: image,
             });
           })
         }
       }
     })
   },
+  deleteImg(e){
+    var image = this.data.image;
+    image[e.currentTarget.dataset.index]["upload_picture_list"]=[]
+    this.setData({
+      image: image,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.init()
-    if (getApp().globalData.is_==1){
-      
+    console.log(options)
+    if (options.is_==1){
+      this.init()
       this.setData({
         url: "companyUpdate"
       })
@@ -100,8 +109,9 @@ Page({
   submit(e) {
     console.log(e)
     var data = e.detail.value,that = this
-    data.thumb = this.data.image[0].upload_picture_list[0].path_server
-    data.license = this.data.image[1].upload_picture_list[0].path_server
+    console.log(this.data.image[0])
+    data.thumb = this.data.image[0]['upload_picture_list'][0]['path_server']||""
+    data.license = this.data.image[1]['upload_picture_list'][0]['path_server']||''
     this.setData({
       post: true
     })
@@ -113,6 +123,7 @@ Page({
       that.setData({
         post: false
       })
+      wx.navigateBack()
       wx.hideLoading()
     }, function (res) {
       that.setData({

@@ -19,7 +19,7 @@
     <input value='{{keywords}}' name='keywords' bindinput='search' placeholder='输入想要查找的内容' bindconfirm="searchSubmit"></input>
     <text class='iconfont icon-sousuo colorfff searchall_pic'></text>
   </view>
-  <view class='color4AD6A3'>我要招聘</view>
+  <view class='color4AD6A3' bindtap='link'>我要招聘</view>
 </view>
 <view class='pagetype'>
   <view class="tabTit box">
@@ -32,6 +32,14 @@
     </view>
   </view>
   <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}" > 
+    <view class='flex allse' wx:if="{{tabIndex==0}}">
+      <view class='sortitem'>
+        <view wx:for="{{sorti}}" wx:key="index" class='flex align_center sort' bindtap='choose0' data-key='{{item.key}}' data-name='{{item.name}}'>
+          <view class='{{item.key==sortf?"color4AD6A3":""}}'>{{item.name}}</view>
+          <image wx:if="{{item.key==sortf}}" src='../../images/ch_true.png' class='ch_true'></image>
+        </view>
+      </view>
+    </view>
     <view class='flex allse' wx:if="{{tabIndex==1}}">
       <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{eara}}" wx:key="index" wx:for-index="indexnum" wx:for-item="eara1">
 
@@ -55,19 +63,19 @@
       <view class='screenitem'>
         <view>学历</view>
         <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{educationi}}' wx:key="index" class='screen {{education==item.id?"active":""}}' data-id='{{item.id}}' data-name='education' bindtap='choose3'>{{item.name}}</text>
+          <text wx:for='{{educationi}}' wx:key="index" class='screen {{education==item.id?"active":""}}' data-id='{{item.id}}' data-name='educationf' bindtap='choose3'>{{item.name}}</text>
         </scroll-view>
       </view>
       <view class='screenitem'>
         <view>经验</view>
         <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{experiencei}}' wx:key="index" class='screen {{experience==item.id?"active":""}}' bindtap='choose3' data-name='experience' data-id='{{item.id}}' >{{item.name}}</text>
+          <text wx:for='{{experiencei}}' wx:key="index" class='screen {{experience==item.id?"active":""}}' bindtap='choose3' data-name='experiencef' data-id='{{item.id}}' >{{item.name}}</text>
         </scroll-view>
       </view>
       <view class='screenitem'>
         <view>薪水</view>
         <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{salary_filteri}}' wx:key="index" class='screen {{salary==item.id?"active":""}}' bindtap='choose3' data-name='salary' data-id='{{item.id}}' >{{item.name}}</text>
+          <text wx:for='{{salary_filteri}}' wx:key="index" class='screen {{salary==item.id?"active":""}}' bindtap='choose3' data-name='salaryf' data-id='{{item.id}}' >{{item.name}}</text>
         </scroll-view>
       </view>
     </view>
@@ -81,14 +89,13 @@
 
 <view class='resumeitem'>
   <block  wx:if="{{list.length>0}}">
-    <view class='resume' wx:for="{{list}}" wx:key="index">
+    <view class='resume' wx:for="{{list}}" wx:key="index" bindtap='detail' data-id='{{item.id}}'>
       <view class='flex_btw align_center'>
         <view class='size36'>{{item.name}}</view>
         <view class='color4fd6f0 size36'>{{item.salary_name}}</view>
       </view>
       <view class='flex_btw align_center martb28'>
         <view>{{item.company_info.name}}</view>
-        <!-- <view class='color898989'>在职-考虑机会</view> -->
       </view>
       <view class='flex_btw'>
         <view class='flex'>

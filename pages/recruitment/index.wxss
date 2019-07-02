@@ -59,3 +59,18 @@ page{
   width: auto;
   padding: 0 20rpx;
 }
+.ch_true{
+  width:28rpx;
+  height:20rpx;
+  margin-left: 80rpx;
+}
+.sort{
+
+  padding: 16rpx 0;
+  width: 100%;
+}
+.sortitem{
+ width: 92%;
+  padding: 20rpx 4%;  
+  background-color: white;
+}

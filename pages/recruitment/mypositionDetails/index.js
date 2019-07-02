@@ -22,6 +22,9 @@ Page({
     object: { label: 'name', value: 'id', children: 'children' },
     id:-1,
     experienceid:'',
+    educationid:'',
+    salaryt:'',
+    education:'',
     educationid:''
   },
 
@@ -29,8 +32,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.init(1)
+    // 
     this.conf()
+    if(options.id){
+      this.init(1)
+    }
   },
   onChange1(e) {
     console.log(e)
@@ -42,8 +48,8 @@ Page({
   open(e) {
     this.setData({
       ['visible' + e.target.dataset.name]: true,
-      salaryt: this.data.salary,
-      salaryidt: this.data.salaryid,
+      salaryt: this.data.salary || this.data.salaryt,
+      salaryidt: this.data.salaryid || this.data.salaryid,
       value: this.data.valuet,
     })
   },
@@ -61,12 +67,13 @@ Page({
   ch_true() {
     this.setData({
       visiblet: false,
-      salary: this.data.salaryt,
-      salaryid: this.data.salaryidt,
-      valuet: this.data.value,
-      educationid: this.data.educationidt,
-      experienceid: this.data.experienceidt,
+      salary: this.data.salaryt||'',
+      salaryid: this.data.salaryidt || '',
+      valuet: this.data.value || '',
+      // educationid: this.data.educationidt || '',
+      // experienceid: this.data.experienceidt || '',
     })
+    console.log(this.data.salaryt)
   },
   bindChange(e) {
     console.log(e.detail.value)
@@ -135,6 +142,11 @@ Page({
   unshow() {
     this.setData({
       show: false
+    })
+  },
+  input(e){
+    this.setData({
+      content: e.detail.value
     })
   },
   // 区域
@@ -255,6 +267,7 @@ Page({
       var salary1 = util.copyarr(post.salary), salary2 = util.copyarr(post.salary)
       salary1.length = salary1.length-1
       salary2 = [salary2[0]]
+      console.log(salary1)
       that.setData({
         conf: post,
         salaryi: post.salary,
@@ -263,7 +276,9 @@ Page({
         salary_filteri: post.salary_filter,
         salary1: salary1,
         salary2: salary2,
-        cate: post.cate
+        cate: post.cate,
+        salaryt: salary1[0]['name'],
+        salaryidt: salary1[0]['id'] + "," + salary1[0]['id'],
       })
       util.hideLoading()
     })
@@ -287,7 +302,7 @@ Page({
         experienceid: result.experience,
         name: result.name,
         salary: result.salary_name,
-        salaryid: result.salary,
+        salaryid: result.salary_front + ',' + result.salary_end,
         id: id
       })
       util.hideLoading()
@@ -319,6 +334,7 @@ Page({
       that.setData({
         post: false
       })
+      wx.navigateBack()
       wx.hideLoading()
     }, function (res) {
       that.setData({

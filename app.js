@@ -72,6 +72,7 @@ App({
     code:'',
     desc:'',
     hint:[],
-    is_:''
+    is_:'',
+    front_share_home:[]
   }
 })

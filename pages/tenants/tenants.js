@@ -49,8 +49,8 @@ Page({
     shop_cate: [],
     type: '',
     image: [
-      // { title: '营业执照', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
-      { title: '店招上传', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
+      { title: '营业执照', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
+      // { title: '店招上传', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
     ],
     upload_picture_list: [],
     cate_id: '',
@@ -348,7 +348,7 @@ Page({
         var  upload_picture_list = []
 
         image[0]["upload_picture_list"][0]['path_server'] = result.license||'';
-        image[1]["upload_picture_list"][0]['path_server'] = result.thumb
+        image[1]["upload_picture_list"][0]['path_server'] =  ''
         for (var i in result.images) {
           upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
         }

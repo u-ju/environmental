@@ -11,6 +11,9 @@ page{
   width: 540rpx;
   padding-left: 20rpx
 }
+.with686 navigator{
+  width: 560rpx;
+}
 .with686 .left{
   height: 106rpx;
   width: 126rpx;

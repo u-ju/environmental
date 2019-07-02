@@ -111,7 +111,9 @@ Component({
       }
       console.log(that.data.current)
       if (that.data.current == -1 || that.data.current==undefined){
-        return
+        return this.setData({
+          current: 0
+        })
       }
       return that.triggerEvent("choosea", {
         areaSelectedStr: areaSelectedStr,

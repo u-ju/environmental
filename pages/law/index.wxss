@@ -1,5 +1,5 @@
 /* pages/law/lawyer/index.wxss */
-@import '../renting/index';
+@import '../recruitment/index';
 .rentpic{
   width:160rpx;
   height:160rpx;
@@ -7,4 +7,17 @@
 }
 .renting .flex_col{
   width: 480rpx;
+  height: 160rpx;
+}
+.sort{
+  padding: 16rpx 0;
+  width: 100%;
+}
+.sortitem{
+ width: 92%;
+  padding: 20rpx 4%;  
+  background-color: white;
+}
+.tabTit {
+  justify-content:space-around;
 }

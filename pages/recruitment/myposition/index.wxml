@@ -15,12 +15,14 @@
       <view class='moudel color898989 size22'>{{item.experience_name}}</view>
       <view class='moudel color898989 size22'>{{item.education_name}}</view>
     </view>
-    <view class='iconfont icon-bianji color4fd6f0'></view>
+    <navigator url='../mypositionDetails/index?id={{item.id}}'>
+      <view class='iconfont icon-bianji color4fd6f0'></view>
+    </navigator>
   </view>
 </view>
 
 <view class='click color27AAD9'>
-    <navigator url='../my_bankcard_add/index' class='flex align_center'> 
+    <navigator url='../mypositionDetails/index' class='flex align_center'> 
       <text class='iconfont icon-jiahao'></text>
       <text class='size32'>添加职位</text>
     </navigator>

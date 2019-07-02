@@ -1,4 +1,8 @@
 {
-  "navigationBarTitleText": "法律服务",
-  "usingComponents": {}
+  "navigationBarTitleText": "入驻",
+  "usingComponents": {
+    "wux-cascader": "../../Components/cascader/index",
+    "area": "../../Components/area/index",
+    "wux-popup": "../../Components/popup/index"
+  }
 }

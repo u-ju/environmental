@@ -7,7 +7,7 @@
 .item .color9{
   width: 160rpx;
 }
-.item>input,.input1,.input1 input{
+.item>input.color6,.item>.leibie,.input1 input.color6{
   width: 500rpx;
   height: 106rpx;
   padding-right: 50rpx;
@@ -104,5 +104,5 @@ textarea,.textarea{
   z-index: 88;
 }
 .submitButton{
-  margin: 50rpx 0;
+  margin: 50rpx auto;
 }
