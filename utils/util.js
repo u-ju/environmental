@@ -181,7 +181,7 @@ function replaceStr(str) {
 }
 
 //上传方法
-function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
+function upload_file_server(url, that, upload_picture_list, j, arr, storge,suc='') {
   //上传返回值
   var _this = this;
   // //console.log(upload_picture_list[j])
@@ -213,7 +213,10 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge) {
       } else {
         upload_picture_list[j]['path_server'] = filename
       }
-      
+      if (suc){
+        console.log('sssssss')
+        suc(upload_picture_list)
+      }
       if (arr =='upload_picture_list1'){
         _this.hideLoading()
         that.setData({
@@ -423,8 +426,8 @@ function getToken(valuetstu='',form,cb,mothed) {
   var token = wx.getStorageSync('token')||"";
   
   if (token && valuetstu!= 801) {
-    return token;
-    // return  'zwj';
+    // return token;
+    return  'zwj';
   }
   if (valuetstu==801){
     wx.reLaunch({

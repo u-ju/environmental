@@ -39,15 +39,15 @@
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>服务类别</text>
     <!-- <input class='size28 color6'  data-contact='titlet' name='cate'  value='{{cate}}' disabled='true' bindtap='open' data-name='e'></input> -->
-    <view class='size28  leibie   flex_btw align_center' bindtap='open' data-name='e'>
+    <view class='size28  leibie   flex align_center' bindtap='open' data-name='e'>
       <text wx:for="{{cate_tag_name}}" class='color6' wx:key="index">{{item}}</text>
     </view>
     <text class='iconfont icon-jiantou1'></text>
   </view>
   <view class='flex_btw align_center jianjie'>
     <view class='size28 color9 detail'>简介</view>
-    <textarea wx:if="{{show}}" focus="{{show}}" class='size28 ' bindinput='input' bindblur='unshow'   value='{{content}}' name='content'></textarea>
-      <view class='textarea size28 ' bindtap='show' wx:else>{{content}}</view>
+    <textarea wx:if="{{show}}" focus="{{show}}" class='size28 ' bindinput='input' bindblur='unshow'   value='{{intro}}' name='intro'></textarea>
+      <view class='textarea size28 ' bindtap='show' wx:else>{{intro}}</view>
   </view>
   <block wx:for="{{image}}" wx:key="{{index}}">
       <view class='item1 flex align_center image' >

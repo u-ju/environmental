@@ -101,13 +101,10 @@ Page({
         image: image,
         name: result.law.name || "",
         intro: result.law.intro || "",
+        price: result.law.price || "",
         contact: result.law.contact || "",
         area_id: result.law.area_id || "",
         address: result.law.address || "",
-        cate_tag: result.law.cate_tag || [],
-        cate_tagf: result.law.cate_tag || [],
-        cate_tag_name: result.law.cate_tag_name || [],
-        cate_tag_namef: result.law.cate_tag_name || [],
         areaSelectedStr: result.law.area_name || "",
         status_remark: result.law.status_remark || "",
       })
@@ -141,26 +138,50 @@ Page({
   },
   uploadpic(e) {
     var that = this;
-    var index = e.currentTarget.dataset.index, image = this.data.image;
-    util.uploadpic(that, 1, 'image', index, function (images) {
-      console.log(image)
-      image[index]["upload_picture_list"] = images
+    var index = e.currentTarget.dataset.indexnum;
+
+    util.uploadpic(that, 1, 'upload_picture_list', '', function (images) {
+      console.log(images)
       that.setData({
-        image: image,
+        upload_picture_list: images,
       });
       for (var j in images) {
         if (images[j]['upload_percent'] == 0) {
           //调用函数
           util.upload_pic(apiurl.upload_image, that, images, j, function (e) {
-            image[index]["upload_picture_list"] = e
             that.setData({
-              image: image,
+              upload_picture_list: e,
             });
             util.hideLoading()
           }, function (e) {
-            image[index]["upload_picture_list"] = e
             that.setData({
-              image: image,
+              upload_picture_list: e,
+            });
+          })
+        }
+      }
+    })
+  },
+  uploadpic1(e) {
+    var that = this;
+    var index = e.currentTarget.dataset.indexnum;
+
+    util.uploadpic(that, 9, 'lunbo', '', function (images) {
+      console.log(images)
+      that.setData({
+        lunbo: images,
+      });
+      for (var j in images) {
+        if (images[j]['upload_percent'] == 0) {
+          //调用函数
+          util.upload_pic(apiurl.upload_image, that, images, j, function (e) {
+            that.setData({
+              lunbo: e,
+            });
+            util.hideLoading()
+          }, function (e) {
+            that.setData({
+              lunbo: e,
             });
           })
         }
@@ -168,10 +189,16 @@ Page({
     })
   },
   deleteImg(e) {
-    var image = this.data.image;
-    image[e.currentTarget.dataset.index]["upload_picture_list"] = []
     this.setData({
-      image: image,
+      upload_picture_list: [],
+    });
+  },
+  deleteImg1(e){
+    let upload_picture_list = this.data.lunbo;
+    let index = e.currentTarget.dataset.index;
+    upload_picture_list.splice(index, 1);
+    this.setData({
+      lunbo: upload_picture_list
     });
   },
   // 定位
@@ -289,9 +316,11 @@ Page({
   
   submit(e) {
     console.log(e)
-    var data = e.detail.value, that = this, cate_tag = this.data.cate_tag
-    data.thumb = this.data.image[1]['upload_picture_list'][0]['path_server'] || ""
-    data.license = this.data.image[0]['upload_picture_list'][0]['path_server'] || ''
+    var data = e.detail.value, that = this,lunbo = this.data.lunbo
+    data.thumb = this.data.upload_picture_list[0]['path_server'] || ""
+    for (var a in lunbo){
+      data["images[" + a + "]"] = lunbo[a]['path_server']
+    }
     data.area_id=this.data.area_id
     data.intro = this.data.intro  
     for (var i in cate_tag){

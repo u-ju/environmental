@@ -9,6 +9,7 @@
   /* width:666rpx;
   height:300rpx; */
   width:528rpx;
+  height:100rpx;
   border:2rpx solid #eee;
   border-radius:10rpx;
   margin-bottom:10rpx;

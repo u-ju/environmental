@@ -8,15 +8,17 @@
     <input value='{{keywords}}' name='keywords' bindinput='search' placeholder='输入想要查找的内容' bindconfirm="searchSubmit"></input>
     <text class='iconfont icon-sousuo colorfff searchall_pic'></text>
   </view>
-  <view class='color4AD6A3'>发布</view>
+  <view class='color4AD6A3' bindtap='link'>发布</view>
 </view>
 <view class='rentitem'>
-  <view class='flex_btw renting' wx:if="{{list.length>0}}">
-    <image class='rentpic'></image>
-    <view class='flex_col flex_btw'>
-      <view class='size28'>胡桃木大板桌奥坎实木大板红木茶 餐桌实木原木桌</view>
-      <view class='colorff1919 marr40'>价格：￥580.00 </view>   
+  <block wx:if="{{list[0].id}}">
+    <view class='flex_btw renting' wx:for="{{list}}" wx:key="index" bindtap='detail' data-id='{{item.id}}'>
+      <image class='rentpic' src='{{item.thumb}}'></image>
+      <view class='flex_col flex_btw'>
+        <view class='size28'>{{item.title}}</view>
+        <view class='colorff1919 marr40'>价格：￥{{item.price}}</view>   
+      </view>
     </view>
-  </view>
+  </block>
   <empty wx:else />
 </view>

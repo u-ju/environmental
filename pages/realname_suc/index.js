@@ -28,6 +28,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  nav(){
+    wx.navigateTo({
+      url: '../realname_authentication/realname_authentication',
+    })
+  },
   onLoad: function (options) {
     var that = this;
     util.getJSON({ apiUrl: apiurl.realname }, function (res) {

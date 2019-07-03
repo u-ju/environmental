@@ -23,6 +23,20 @@ Page({
       })
     }
   },
+  del(e){
+    var that = this;
+    console.log(e)
+    var dat={}
+    data["id[0]"] = e.currentTarget.dataset.id
+    util.popoutc('是否确定删除该职位', '否', '#444444', '是', '#4FD6F0', function () {
+      console.log("取消")
+    }, function () {
+      util.postJSON({ apiUrl: apiurl.recruit.personPostDestroy }, function (res) {
+        util.alert1(res.data.message)
+        that.init()
+      })
+    })
+  },
   init(page=1) {
     var that = this;
     util.getJSON({

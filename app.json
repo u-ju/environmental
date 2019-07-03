@@ -1,12 +1,24 @@
 {
   "pages": [
+    "pages/idle/In/index",
+    "pages/index/index",
+    "pages/tenants/tenants",
+    
+    "pages/realname_suc/index",
+    
+    "pages/realname_authentication/realname_authentication",
+    
+    "pages/idle/index",
+    "pages/idle/list/index",
+    "pages/idle/detail/index",
+    
     "pages/law/In/index",
     "pages/law/index",
     "pages/law/detail/index",
     
     "pages/law/firms/index",
     "pages/law/lawyer/index",
-    "pages/index/index",
+    
     "pages/recruitment/index",
     "pages/recruitment/mypositionDetails/index",
     
@@ -20,10 +32,7 @@
     "pages/recruitment/cardCreate/index",
     
     "pages/recruitment/index/index",
-    "pages/idle/list/index",
     
-    
-    "pages/idle/detail/index",
     
     
     "pages/renting/release/index",
@@ -35,7 +44,7 @@
     "pages/agriculturalRecommendation/index",
     
     "pages/business_details/business_details",
-    "pages/idle/index",
+    
     "pages/renting/index",
     
     
@@ -58,13 +67,12 @@
     "pages/installment/installment",
     "pages/agriculturalDetail/index",
     "pages/myInviteNewusers/index",
-    "pages/realname_authentication/realname_authentication",
+    
     "pages/installment_details/installment_details",
     "pages/order/index",
     "pages/login/login",
     "pages/login/index",
     "pages/setting/setting",
-    "pages/tenants/tenants",
     
     "pages/withdrawal_record/transfer",
     "pages/withdrawal/transfer",
@@ -154,7 +162,7 @@
     "pages/payment/index",
     "pages/video_detail/index",
     "pages/video/index",
-    "pages/realname_suc/index",
+    
     "pages/error/error",
     "pages/pay/index",
     "pages/edsc_site/edsc_site",

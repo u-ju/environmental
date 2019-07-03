@@ -508,5 +508,16 @@ const apiList = {
     infoStore: basePath + '/front/law/infoStore',// POST 入驻添加
     infoUpdate: basePath + '/front/law/infoUpdate',// POST 入驻添加
   },
+  idle: {
+    conf: basePath + '/front/idle/conf',// GET 配置信息
+    index: basePath + '/front/idle/index',// GET 列表
+    show: basePath + '/front/idle/show?id=',// GET 详情
+    infoHome: basePath + '/front/idle/infoHome',// GET 入驻信息
+    infoStore: basePath + '/front/idle/infoStore',// POST 闲置发布
+    infoUpdate: basePath + '/front/idle/infoUpdate',// POST 入驻添加
+    infoIndex: basePath + '/front/idle/infoIndex',// GET 闲置列表
+    infoShow: basePath + '/front/idle/infoShow?id=',// GET 详情
+    infoDestroy: basePath + '/front/idle/infoDestroy',// POST 入驻添加
+  },
 }
 module.exports = apiList;

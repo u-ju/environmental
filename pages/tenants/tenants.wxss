@@ -274,6 +274,7 @@ navigator{
 .timeitem{
   margin-left: 30rpx;
 }
+
 .timePeriod{
   width:220rpx;
   height:42rpx;
@@ -420,4 +421,7 @@ navigator{
   right: 0;
   top: 50%;
   transform:translate(0,-50%) 
+}
+.timesitem{
+  width: 160rpx;
 }

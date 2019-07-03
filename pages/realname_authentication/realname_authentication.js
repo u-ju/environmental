@@ -90,7 +90,10 @@ Page({
     for (var j in upload_picture) {
       if (upload_picture[j]['upload_percent'] == 0) {
         　　　　　　//调用函数
-        util.upload_file_server(apiurl.upload_image, page, upload_picture, j,arr)
+        util.upload_file_server(apiurl.upload_image, page, upload_picture, j,arr,'',function(img){
+          console.log(arr,img)
+          wx.setStorageSync(arr+'s', img)
+        })
       }
     }
   },
@@ -162,26 +165,44 @@ Page({
       that.setData({
         sure:true
       })
-      util.postJSON({ apiUrl: apiurl.realname_verify, data: data}, function (res) {
-          util.alert(res.data.message)
-          util.navigateBack(2)  
-      },function(){
-        that.setData({
-          sure: false
-        })
-        }, function () {
-          that.setData({
-            sure: false
-          })
-        })
+      console.log(data)
+      // util.postJSON({ apiUrl: apiurl.realname_verify, data: data}, function (res) {
+      //     util.alert(res.data.message)
+      //     util.navigateBack(2)  
+      // },function(){
+      //   that.setData({
+      //     sure: false
+      //   })
+      //   }, function () {
+      //     that.setData({
+      //       sure: false
+      //     })
+      //   })
     // }
   },
   /**
    * 生命周期函数--监听页面加载
    */
+  input(e) {
+    console.log(e)
+    wx.setStorageSync(e.currentTarget.dataset.name + "s", e.detail.value)
+  },
   onLoad: function (options) {
-
+    // console.log(wx.getStorageSync("upload_picture_lists"))
+    var arr = ['realname', 'idcard', 'nation', "address", 'upload_picture_list', 'upload_picture_list1','upload_picture_list2']
+    for(var i in arr){
+      this.setData({
+        [arr[i]]: wx.getStorageSync(arr[i] + 's') 
+      })
+    }
     wx.hideLoading()
   },
-
+  onUnload(){
+    var that = this;
+    // return util.popoutc('是否保存实名认证中已填写的内容', '不保存', '#444444', '保存', '#4FD6F0', function () {
+    //   console.log("取消")
+    // }, function () {
+    //   console.log("确定")
+    // })
+  }
 })

@@ -1,15 +1,15 @@
 <!--pages/housekeeping_detail/index.wxml-->
 <block wx:if="{{result}}">
-  <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color="{{beforeColor}}">
     <block wx:for="{{result.images}}" wx:key="index">
       <swiper-item>
           <image src="{{item}}" class="slide-image" />
       </swiper-item>
     </block>
-</swiper> -->
-  <view class='center'>
+</swiper>
+  <!-- <view class='center'>
     <image class='banner' src='{{result.thumb}}'></image>
-  </view>
+  </view> -->
   <view class='titlexx'>
     <view class='size32 color4 titlec'>{{result.title}}</view>
     <view class='colorff1919'>价格：￥580.00 </view>
@@ -22,12 +22,12 @@
       <view class='iconfont icon-tubiao210 calling color4fd6f0' data-phone='{{result.contact}}' bindtap='calling'></view>
       <!-- <image src="../../../images/phonei.png" class='calling' data-phone='{{result.contact}}' bindtap='calling'></image> -->
     </view>
-    <view class='flex_btw align_center big'>
+    <view class='flex_btw align_center big'  bindtap='location'>
       <view class='flex align_center'>
         所在地址：{{result.area_name}}{{result.address}}
       </view>
       <!-- <image src="../../../images/catering_lca.png" class='dingwei' bindtap='location'></image> -->
-      <view class='iconfont icon-weibiaoti- dingwei color4fd6f0' bindtap='location'></view>
+      <view class='iconfont icon-weibiaoti- dingwei color4fd6f0'></view>
     </view>
   </view>
 </block>

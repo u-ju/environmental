@@ -128,15 +128,7 @@ Page({
       timecz:0
     })
   },
-  deltime(e){
-    let index = e.currentTarget.dataset.index;
-    let timevalue = this.data.timevalue;
-    timevalue.splice(index, 1);
-    this.setData({
-      timevalue: timevalue,
-
-    })
-  },
+  
   ch_del(){
     this.setData({
       visiblet:false,
@@ -144,13 +136,23 @@ Page({
     })
   },
   ch_true(){
-    
+    var timevalue = this.data.timevalueR || [];
+    timevalue.push(this.data.clicktime)
+    console.log(timevalue)
     this.setData({
       visiblet: false,
-      timevalueR: util.copyarr(this.data.timevalue),
+      timevalueR: timevalue,
       timecz:0
     })
     wx.setStorageSync('timevaluet', this.data.timevalue)
+  },
+  deltime(e) {
+    let index = e.currentTarget.dataset.index;
+    let timevalue = this.data.timevalueR;
+    timevalue.splice(index, 1);
+    this.setData({
+      timevalueR: timevalue,
+    })
   },
   timeadd(e){
     var timevalue = this.data.timevalue||[];
@@ -310,12 +312,12 @@ Page({
     var that = this;
 
     var share_mobile = options.share_mobile ? JSON.parse(options.share_mobile) : ''
+    var feature_list = options.feature_list ? JSON.parse(options.feature_list) : ''
     this.setData({
       hour1: hour1,
       hour2: hour2,
       source: options.source || '',
-      // room_list: JSON.parse(options.room_list)
-      features: JSON.parse(options.feature_list),
+      features: feature_list,
       share_mobile: share_mobile
     })
     var result = app.globalData.config
@@ -334,7 +336,7 @@ Page({
     that.setData({
       shop_cate: shop_cate,
       type: '',
-      shop_settled: app.globalData.config.protocol.shop_settled,
+      shop_settled: app.globalData.config.protocol.shop_settled||'',
       choosed: wx.getStorageSync('choosedt') || that.data.choosed,
       features: JSON.parse(options.feature_list)
     })

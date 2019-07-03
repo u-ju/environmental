@@ -57,7 +57,8 @@ Page({
       
       keywords: that.data.keywords || '',
       area_id: that.data.area_id || '',
-      cate_tag: that.data.cate_tag || ''
+      cate_tag: that.data.cate_tag || '',
+      page:page
     }
     util.getJSON({
       apiUrl: apiurl.law.index + "?1=1",
@@ -194,38 +195,33 @@ Page({
     this.hidebg()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+    var that = this;
+    var that = this;
+    var data = {
+
+      keywords: that.data.keywords || '',
+      area_id: that.data.area_id || '',
+      cate_tag: that.data.cate_tag || ''
+    }
+    util.getJSON({
+      apiUrl: apiurl.law.index + "?page=1",
+      data: data
+    }, function (res) {
+      var result = res.data.result
+      var list = result.list
+      that.setData({
+        list: list,
+        page: result.page,
+      })
+      // 隐藏导航栏加载框
+      wx.hideNavigationBarLoading();
+      // 停止下拉动作
+      wx.stopPullDownRefresh();
+      wx.hideLoading()
+    })
 
   },
 
@@ -233,13 +229,19 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+      that.init( Number(that.data.page.current_page) + 1)
+    } else {
+      that.setData({
+        last: true
+      })
+      wx.hideLoading()
+    }
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

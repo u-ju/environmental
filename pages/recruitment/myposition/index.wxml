@@ -1,5 +1,5 @@
 <!--pages/recruitment/recruit/myposition/index.wxml-->
-<view class='resume' wx:for="{{list}}" wx:key="index">
+<view class='resume' wx:for="{{list}}" wx:key="index" bindlongtap='del' data-id='{{item.id}}'>
   <view class='flex_btw align_center'>
     <view class='flex_btw align_center'>
       {{item.name}}

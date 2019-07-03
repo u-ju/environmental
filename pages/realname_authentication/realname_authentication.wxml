@@ -2,19 +2,19 @@
 <form  bindsubmit="formSubmit">
 <view class='flex flex_a align_center'>
   <view class='left'>姓名</view>
-  <input name='realname' placeholder='请输入姓名'></input>
+  <input name='realname' placeholder='请输入姓名' value='{{realname}}' bindinput='input' data-name='realname'></input>
 </view>
 <view class='flex flex_a align_center'>
   <view class='left'>身份证号</view>
-  <input name='idcard'  placeholder='请输入身份证号'></input>
+  <input name='idcard'  placeholder='请输入身份证号' value='{{idcard}}' bindinput='input' data-name='idcard'></input>
 </view>
 <view class='flex flex_a align_center'>
-  <view class='left'>民族</view>
-  <input name='nation'  placeholder='请输入民族'></input>
+  <view class='left'><text>民族（选填）</text></view>
+  <input name='nation'  placeholder='请输入民族' value='{{nation}}' bindinput='input' data-name='nation'></input>
 </view>
 <view class='flex flex_a align_center'>
-  <view class='left'>证件地址</view>
-  <input name='address' placeholder='请输入地址'></input>
+  <view class='left'><text>证件地址 \n （选填）</text></view>
+  <input name='address' placeholder='请输入地址' value='{{address}}' bindinput='input' data-name='address'></input>
 </view>
 <view class='size30 mar'>拍摄/上传您的二代身份证</view>
 <view class="picture_list">

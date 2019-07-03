@@ -82,7 +82,7 @@
   </view>
 
   <view class='item1 flex align_center image'>
-    <text class='size28 '>社播图</text>
+    <text class='size28 '>轮播图</text>
     <view class="picture_listmore">
       <view wx:for="{{lunbo}}" class="picture_itemmore" wx:key="{{index}}">
         <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>

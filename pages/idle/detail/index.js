@@ -26,7 +26,7 @@ Page({
     var that = this
     options.id=1
     // if (options.id) {
-    util.getJSON({ apiUrl: apiurl.jiazheng_show + options.id }, function (res) {
+    util.getJSON({ apiUrl: apiurl.idle.show + options.id }, function (res) {
         var result = res.data.result
         that.setData({
           result: result,
@@ -36,7 +36,30 @@ Page({
       })
     // }
   },
+  calling: function (e) {//拨打电话
+    console.log(e.target.dataset.phone)
+    wx.makePhoneCall({
+      phoneNumber: e.target.dataset.phone, //此号码并非真实电话号码，仅用于测试
+      success: function () {
+        console.log("拨打电话成功！")
+      },
+      fail: function () {
+        console.log("拨打电话失败！")
+      }
+    })
+  },
+  location() {
+    var that = this;
+    var result = that.data.result;
 
+    wx.openLocation({
+      latitude: Number(result.latitude),
+      longitude: Number(result.longitude),
+      scale: 28,
+      name: result.area_name,
+      address: result.address,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

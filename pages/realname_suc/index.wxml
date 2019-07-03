@@ -1,6 +1,6 @@
 <!--pages/realname_suc/index.wxml-->
 <block wx:if='{{status>-1}}'>
-  <view class='item'>
+  <view class='item' >
     <view class='flex'>
       <view class='left_item'>姓名</view>
       <view class='right_item'>{{result.realname}}</view>
