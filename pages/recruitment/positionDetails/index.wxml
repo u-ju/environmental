@@ -9,12 +9,12 @@
   </view>
   <view class='size22 color898989'>发布时间：{{result.created_at}}</view>
 </view>
-<view class='company flex_btw align_center'>
+<view class='company flex_btw align_center' bindtap='company'>
   <view class='flex'>
     <image src='{{result.company_info.thumb}}'></image>
     <view class='flex_col flex_btw'>
       <view class='bold'>{{result.company_info.name}}</view>
-      <view class='size26 hidden1'>{{result.company_info.intro}}</view>
+      <!-- <view class='size26 hidden1'>{{result.company_info.intro}}</view> -->
     </view>
   </view>
   <view class='iconfont icon-jiantou1'></view>

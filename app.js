@@ -73,6 +73,8 @@ App({
     desc:'',
     hint:[],
     is_:'',
-    front_share_home:[]
+    front_share_home:[],
+    company_info:'',
+    id:''
   }
 })

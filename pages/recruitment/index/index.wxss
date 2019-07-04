@@ -1,12 +1,23 @@
 /* pages/recruitment/index/index.wxss */
-.button{
-  width:353rpx;
-  height:100rpx;
-  background:#4FD6F0;
-  border-radius:50rpx;
-  margin: 160rpx auto;
-  color: white;
-  text-align: center;
-  line-height: 100rpx;
-  font-size: 36rpx;
+@import '../index.wxss';
+page{
+  line-height: 40rpx;
+}
+.company{
+  padding: 30rpx 32rpx;
+  border-bottom: 20rpx solid #eee;
+}
+.marginb{
+  margin-bottom: 30rpx;
+}
+.company image{
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 20rpx;
+}
+.titlo{
+  padding: 32rpx;
+}
+.resume{
+  border-bottom: 2rpx solid #eee;
 }

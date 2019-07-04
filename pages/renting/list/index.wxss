@@ -1,0 +1,19 @@
+/* pages/recruitment/myposition/index.wxss */
+@import '../../recruitment/myposition/index.wxss';
+.thumb{
+  width:244rpx;
+  height:146rpx;
+  border-radius:5rpx;
+}
+.list .flex_col{
+  width: 420rpx;
+  height:146rpx;
+}
+.list{
+  padding: 28rpx 32rpx;
+  border-bottom: 20rpx solid #eee;
+  margin: 0;
+}
+.mar10{
+  margin: 0 10rpx;
+}

@@ -10,7 +10,7 @@ Page({
   data: {
     tabTxt: ['最新', '成都 ', '行业', '要求'],
     tabTxt1: ['最新', '成都 ', '行业', '要求'],
-    list:[],
+    list:[0],
     tabIndex:-1,
     qyopen: false,
     isfull: false,
@@ -39,6 +39,7 @@ Page({
     this.conf()
   },
   detail(e){
+    getApp().globalData.id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: 'positionDetails/index?id=' + e.currentTarget.dataset.id,
     })

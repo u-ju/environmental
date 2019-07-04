@@ -19,18 +19,18 @@
     <view class='iconfont icon-bianji color4fd6f0'></view>
   </view>
 </view> -->
-<view class='list flex_btw' wx:for="{{list}}" wx:key="index">
+<view class='list flex_btw' wx:for="{{list}}" wx:key="index" bindlongtap='del'>
   <image class='thumb' src='{{item.thumb}}'></image>
   <view class='flex_btw flex_col'>
     <view>{{item.title}}</view>
     <view class='flex_btw'>
       <view class='colorff1919'>价格：￥{{item.price}} </view>
-      <view class='iconfont icon-bianji color4fd6f0'></view>
+      <view class='iconfont icon-bianji color4fd6f0' catchtap='detail' data-id='{{item.id}}'></view>
     </view>
   </view>
 </view>
 <view class='click color27AAD9'>
-    <navigator url='../my_bankcard_add/index' class='flex align_center'> 
+    <navigator url='../In/index' class='flex align_center'> 
       <text class='iconfont icon-jiahao'></text>
       <text class='size32'>添加发布</text>
     </navigator>

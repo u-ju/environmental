@@ -85,17 +85,6 @@ Page({
       }
     })
   },
-  location() {
-    var that = this;
-    var result = that.data.result;
-    wx.openLocation({
-      latitude: Number(result.latitude),
-      longitude: Number(result.longitude),
-      scale: 28,
-      name: result.area_name,
-      address: result.address,
-    })
-  },
   /**
    * 用户点击右上角分享
    */

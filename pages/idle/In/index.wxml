@@ -9,18 +9,20 @@
   <view class='from'>
     <view class='item  flex_btw align_center'>
       <text class='size28 color9'>标题</text>
-      <input class='size28 color6' data-contact='titlet' name='name' value='{{name}}'></input>
-    </view>
-
-    <view class='item  flex_btw align_center'>
-      <text class='size28 color9'>联系方式</text>
-      <input class='size28 color6' data-contact='titlet' name='contact' value='{{contact}}'></input>
+      <input class='size28 color6' data-contact='titlet' name='title' value='{{title}}'></input>
     </view>
     <view class='item  flex_btw align_center'>
       <text class='size28 color9'>价格</text>
       <input class='size28 color6' data-contact='titlet' name='price' value='{{price}}'></input>
     </view>
-
+    <view class='item  flex_btw align_center'>
+      <text class='size28 color9'>联系人</text>
+      <input class='size28 color6' data-contact='titlet' name='linkman' value='{{linkman}}'></input>
+    </view>
+    <view class='item  flex_btw align_center'>
+      <text class='size28 color9'>联系方式</text>
+      <input class='size28 color6' data-contact='titlet' name='contact' value='{{contact}}'></input>
+    </view>
     <view class='item  flex_btw align_center'>
       <text class='size28 color9'>区域</text>
       <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' classN="width550" tokonw='city' ban='county' bind:choosea='choosearea' />
@@ -29,7 +31,7 @@
     <view class='item  flex_btw align_center'>
       <text class='size28 color9'>详细地址</text>
       <view class='input1'>
-        <input class='size28 ' name='address' bindblur='czaddress' data-contact='addresso' disabled='{{disabled1}}' value='{{address}}' bindinput="getsuggest"></input>
+        <input class='size28 color6' name='address' bindblur='czaddress' data-contact='addresso' disabled='{{disabled1}}' value='{{address}}' bindinput="getsuggest"></input>
         <scroll-view scroll-y class='haslook' wx:if='{{suggestion.length>0}}'>
           <view wx:for="{{suggestion}}" wx:key="index" class='addressss flex align_center' bindtap="backfill" id="{{index}}">
             <image src='../../../images/icon_location.png' class='icon_location'></image>

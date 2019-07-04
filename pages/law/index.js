@@ -10,7 +10,7 @@ Page({
   data: {
     tabTxt: ['区域', '纠纷 '],
     tabTxt1: ['区域', '纠纷 '],
-    list: [],
+    list: [0],
     tabIndex: -1,
     qyopen: false,
     isfull: false,

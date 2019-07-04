@@ -2,7 +2,7 @@
 <view class='flex_btw fixtop align_center'>
   <view class='flex_btw align_center location'>
     <text class='iconfont icon-weibiaoti- color4fd6f0 size36'></text>
-    <text class=' color6 hidden1'>成都</text>
+    <text class=' color6 hidden1'>{{address}}</text>
   </view>
   <view class='search flex_btw align_center'>
     <input value='{{keywords}}' name='keywords' bindinput='search' placeholder='输入想要查找的内容' bindconfirm="searchSubmit"></input>
@@ -11,13 +11,15 @@
   <view class='color4AD6A3' bindtap='link'>发布</view>
 </view>
 <view class='rentitem'>
-  <block wx:if="{{list[0].id}}">
+  <block wx:if="{{list.length>0}}">
     <view class='flex_btw renting' wx:for="{{list}}" wx:key="index" bindtap='detail' data-id='{{item.id}}'>
-      <image class='rentpic' src='{{item.thumb}}'></image>
-      <view class='flex_col flex_btw'>
-        <view class='size28'>{{item.title}}</view>
-        <view class='colorff1919 marr40'>价格：￥{{item.price}}</view>   
-      </view>
+      <block wx:if="{{list[0].id}}">
+        <image class='rentpic' src='{{item.thumb}}'></image>
+        <view class='flex_col flex_btw'>
+          <view class='size28'>{{item.title}}</view>
+          <view class='colorff1919 marr40'>价格：￥{{item.price}}</view>
+        </view>
+      </block>
     </view>
   </block>
   <empty wx:else />

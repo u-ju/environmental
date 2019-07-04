@@ -1,61 +1,83 @@
 <!--pages/renting/release/index.wxml-->
+<wxs module="m1">
+  var indexO = function(arr, val) {
+    return arr.indexOf(val)
+  }
+  module.exports.indexO = indexO;
+</wxs>
+<form bindsubmit="submit">
 <view class='from'>
   <view class='item  flex_btw align_center'>
+    <text class='size28 color9'>联系人：</text>
+    <input class='size28 ' data-contact='titlet' name='linkman' value='{{linkman}}'></input>
+  </view>
+  <view class='item  flex_btw align_center'>
+    <text class='size28 color9'>联系电话：</text>
+    <input class='size28 ' data-contact='titlet' name='contact' value='{{contact}}'></input>
+  </view>
+  <view class='item  flex_btw align_center'>
     <text class='size28 color9'>标题：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+    <input class='size28 ' data-contact='title' name='title' value='{{title}}'></input>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>租金：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+    <input class='size28 ' data-contact='titlet' name='rent' value='{{rent}}'></input>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>付款方式：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+    <input class='size28 ' data-contact='titlet' disabled='disabled' name='payment_name' value='{{payment_name}}' data-name='4' bindtap='open'></input>
     <text class='iconfont icon-jiantou1'></text>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>房型：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+    <input class='size28 ' data-contact='titlet' disabled='disabled' name='room_name' value='{{room_name}}' data-name='3' bindtap='open'></input>
     <text class='iconfont icon-jiantou1'></text>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>装修：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+    <input class='size28 ' data-contact='titlet' disabled='disabled' name='decoration_name' value='{{decoration_name}}' data-name='2' bindtap='open'></input>
     <text class='iconfont icon-jiantou1'></text>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>面积：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+    <input class='size28 ' data-contact='titlet' name='acreage' value='{{acreage}}'></input>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>朝向：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+    <input class='size28 ' data-contact='titlet' name='aspect_name' disabled='disabled' value='{{aspect_name}}' data-name='1' bindtap='open'></input>
+    <text class='iconfont icon-jiantou1'></text>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>楼层：                     </text>
     <view class='flex lc align_center'>
-      <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+      <input class='size28 ' data-contact='titlet' name='layer' value='{{layer}}'></input>
       <text>楼/共</text>
-      <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+      <input class='size28 ' data-contact='titlet' name='layer_max' value='{{layer_max}}'></input>
       <text>层</text>
     </view>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>出租类型：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+    <input class='size28 ' data-contact='titlet' disabled='disabled' name='mode_name' value='{{mode_name}}' data-name='5' bindtap='open'></input>
+    <text class='iconfont icon-jiantou1'></text>
+  </view>
+  <view class='item  flex_btw align_center'>
+    <text class='size28 color9'>区域：</text>
+    <area title='选择区域' areaSelectedStr='{{areaSelectedStr}}' classN="width550"  tokonw='city' ban='county' bind:choosea='choosearea' />
     <text class='iconfont icon-jiantou1'></text>
   </view>
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>地址：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+    <input class='size28 ' data-contact='titlet' name='address' value='{{address}}'></input>
   </view>
-  <view class='item  flex_btw align_center'>
-    <text class='size28 color9'>联系电话：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
-  </view>
+  
+  
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>房屋配置：</text>
-    <input class='size28 ' data-contact='titlet' name='title' value='{{title}}'></input>
+    <!-- <input class='size28 ' data-contact='titlet'disabled='disabled'  name='config_tag' value='{{config_tag}}'></input> -->
+    <view class='flex color9 config_tag'>
+      <view wx:for="{{config_tag_name}}" wx:key="index">{{item}}</view>
+    </view>
     <text class='iconfont icon-jiantou1'></text>
   </view>
   <view>
@@ -101,4 +123,74 @@
     </view>
   </view>
 </view>
-<view class='submitButton'>提交审核</view>
+<button class='submitButton' form-type="submit" disabled='{{post}}'>提交审核</button>
+</form>
+<!-- <view class='submitButton'>提交审核</view> -->
+<wux-popup visible="{{ visible1 }}" position="bottom" bind:close="colse" data-name='1' data-key='aspect'>
+  <view class='flex_btw align_center yysj'>
+    <image src='../../../images/ch_del.png' class='ch_del' bindtap='del' data-num='1' data-key='aspect'></image>
+    <text>朝向</text>
+    <image src='../../../images/ch_true.png' class='ch_true' bindtap='truec' data-num='1' data-key='aspect'></image>
+  </view>
+  <view class='recorditem flex_btw wrap color4'>
+    <view  wx:for="{{aspecti}}" wx:key="index" class='record  {{aspectf==item.id?"recordactive":""}}' bindtap='choice' data-id='{{item.id}}' data-name='{{item.name}}' data-key='aspect'>{{item.name}}</view>
+  </view>
+</wux-popup>
+<wux-popup visible="{{ visible2 }}" position="bottom" bind:close="colse" data-name='2' data-key='decoration'>
+  <view class='flex_btw align_center yysj'>
+    <image src='../../../images/ch_del.png' class='ch_del' bindtap='del' data-num='2' data-key='decoration'></image>
+    <text>装修</text>
+    <image src='../../../images/ch_true.png' class='ch_true' bindtap='truec' data-num='2' data-key='decoration'></image>
+  </view>
+  <view class='recorditem flex wrap color4'>
+    <view  wx:for="{{decorationi}}" wx:key="index" class='record  {{decorationf==item.id?"recordactive":""}}' bindtap='choice' data-id='{{item.id}}' data-key='decoration' data-name='{{item.name}}'>{{item.name}}</view>
+  </view>
+</wux-popup>
+<wux-popup visible="{{ visible3 }}" position="bottom" bind:close="colse" data-name='3' data-key='room'>
+  <view class='flex_btw align_center yysj'>
+    <image src='../../../images/ch_del.png' class='ch_del' bindtap='del' data-num='3' data-key='room'></image>
+    <text>房型</text>
+    <image src='../../../images/ch_true.png' class='ch_true' bindtap='truec' data-num='3' data-key='room'></image>
+  </view>
+  <view class='recorditem flex wrap color4'>
+    <view  wx:for="{{roomi}}" wx:key="index" class='record  {{roomf==item.id?"recordactive":""}}' bindtap='choice' data-id='{{item.id}}' data-name='{{item.name}}' data-key='room'>{{item.name}}</view>
+  </view>
+</wux-popup>
+<wux-popup visible="{{ visible4 }}" position="bottom" bind:close="colse" data-name='4' data-key='payment'>
+  <view class='flex_btw align_center yysj'>
+    <image src='../../../images/ch_del.png' class='ch_del' bindtap='del' data-num='4' data-key='payment'></image>
+    <text>付款方式</text>
+    <image src='../../../images/ch_true.png' class='ch_true' bindtap='truec' data-num='4' data-key='payment'></image>
+  </view>
+  <view class='recorditem flex wrap color4'>
+    <view  wx:for="{{paymenti}}" wx:key="index" class='record  {{paymentf==item.id?"recordactive":""}}' bindtap='choice' data-id='{{item.id}}' data-name='{{item.name}}' data-key='payment'>{{item.name}}</view>
+  </view>
+</wux-popup>
+<wux-popup visible="{{ visible5 }}" position="bottom" bind:close="colse" data-name='5' data-key='mode'>
+  <view class='flex_btw align_center yysj'>
+    <image src='../../../images/ch_del.png' class='ch_del' bindtap='del' data-num='5' data-key='mode'></image>
+    <text>出租类型</text>
+    <image src='../../../images/ch_true.png' class='ch_true' bindtap='truec' data-num='5' data-key='mode'></image>
+  </view>
+  <view class='recorditem flex wrap color4'>
+    <view  wx:for="{{modei}}" wx:key="index" class='record  {{modef==item.id?"recordactive":""}}' bindtap='choice' data-id='{{item.id}}' data-name='{{item.name}}' data-key='mode'>{{item.name}}</view>
+  </view>
+</wux-popup>
+<wux-popup visible="{{ visible6 }}" position="bottom" bind:close="colse">
+  <view class='flex_btw align_center yysj'>
+    <image src='../../../images/ch_del.png' class='ch_del' bindtap='deltag'></image>
+    <text>房屋配置</text>
+    <image src='../../../images/ch_true.png' class='ch_true' bindtap='truetag'></image>
+  </view>
+  <view class='recorditem flex wrap color4'>
+    <view  wx:for="{{config_tagi}}" wx:key="index" class='flex'>
+      
+      <view class='tag   {{m1.indexO(config_tagf,item.id)==-1?"":"tagactive"}}' bindtap='tag' data-id='{{item.id}}' data-name='{{item.name}}'>
+        <image src='{{item.icon}}' class='icon'></image>
+        <view>{{item.name}}</view>
+      </view>
+      
+    </view>
+  </view>
+</wux-popup>
+<view class='addresszzc' bindtap='addresszzc'  wx:if='{{suggestion.length>0}}' ></view>

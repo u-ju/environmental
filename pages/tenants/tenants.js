@@ -308,7 +308,7 @@ Page({
     wx.setStorageSync("title1t", e.detail.options.map((n) => n.label).join('-'))
   },
   onLoad: function (options) {
-
+    
     var that = this;
 
     var share_mobile = options.share_mobile ? JSON.parse(options.share_mobile) : ''
@@ -408,10 +408,10 @@ Page({
         { title: '店招上传', upload_picture_list: wx.getStorageSync("image1t"), text: "点击拍摄/上传图片", id: 1 },
       ], upload_picture_list = wx.getStorageSync("upload_picture_listt") || []
       var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
-      
+      var title = wx.getStorageSync("titlet")
       that.setData({
         contact: wx.getStorageSync("contactt"),
-        title: wx.getStorageSync("titlet"),
+        title: title,
         address: wx.getStorageSync("addresst"),
         intro: wx.getStorageSync("introt"),
         type_val: type_val,
@@ -433,16 +433,11 @@ Page({
         video: wx.getStorageSync('videot'),
         features: wx.getStorageSync('featurest') || that.data.features,
         cost: wx.getStorageSync('costt'),
-        // min_person: wx.getStorageSync('reservation[min_person]t'),
-        // max_person: wx.getStorageSync('reservation[max_person]t'),
-        // company_name: wx.getStorageSync('license_info[company_name]t')||'',
-        // license_no: wx.getStorageSync('license_info[license_no]t') || '',
-        // legal_person: wx.getStorageSync('license_info[legal_person]t') || '',
-        // business_address: wx.getStorageSync('license_info[business_address]t') || '',
-        // business_scope: wx.getStorageSync('license_info[business_scope]t') || '',
         share_mobile: wx.getStorageSync('share_mobilet') || that.data.share_mobile,
       })
+      console.log(this.data.title)
     }
+    console.log(this.data.title)
   },
   location(address) {
     var that = this
@@ -481,6 +476,7 @@ Page({
 
   },
   input(e) {
+    console.log(e.detail.value)
     if (e.currentTarget.dataset.contact == "introt") {
       this.setData({
         intro: e.detail.value
@@ -491,6 +487,9 @@ Page({
         
       })
     }
+    this.setData({
+      [e.currentTarget.dataset.contact]:e.detail.value
+    })
     // if (e.currentTarget.dataset.contact == "addresst") {
     //   this.setData({
     //     address: e.detail.value
@@ -539,7 +538,9 @@ Page({
         util.loading()
         var tempFiles = res.tempFiles
         var promiseArr = []
+        console.log(tempFiles)
         for (var i in tempFiles) {
+          
           let promise = new Promise((resolve, reject) => {
             wx.getFileSystemManager().readFile({
               filePath: tempFiles[i]['path'], //选择图片返回的相对路径
@@ -770,7 +771,9 @@ Page({
     wx.setStorageSync('choosedt', this.data.choosed)
   },
   formSubmit(e) {
+    console.log(e)
     var that = this;
+    console.log(this.data.title)
     if (that.data.choosed != 1) {
       return util.alert('请勾选用户协议')
     }
@@ -797,7 +800,7 @@ Page({
     // that.data.cate_id
     data["longitude"] = that.data.longitude
     data["latitude"] = that.data.latitude
-
+    console.log(data)
     var images = ["license", "thumb"]
     for (var a in that.data.image) {
       if (that.data.image[a].upload_picture_list != '') {

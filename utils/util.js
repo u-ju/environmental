@@ -432,6 +432,12 @@ function getToken(valuetstu='',form,cb,mothed) {
   if (valuetstu==801){
     wx.reLaunch({
       url: '../index/index',
+      fail(){
+        wx.reLaunch({
+          url: '../../index/index',
+          
+        })
+      }
     })
     return false
   }

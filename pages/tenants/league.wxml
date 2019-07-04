@@ -98,21 +98,9 @@
     </block>
 
     <view class='item1 flex align_center image'>
-      <text class='size28 color6'>店内图片\n (至少一张)</text>
+      <text class='size28 color6'>店内图片视频\n (至少一张)</text>
       <view class="picture_listmore">
-        <view class="picture_itemmore" wx:if='{{video.src}}'>
-          <image wx:if="{{video.upload_percent < 100}}" src="{{video.img}}" mode="aspectFill"></image>
-          <video wx:if="{{video.upload_percent == 100}}" src='{{video.src}}'></video>
-          <view class="upload_progress" wx:if="{{video.upload_percent < 100}}" data-index="{{index}}">{{video.upload_percent}}%</view>
-          <view class='del' bindtap='deletevideo' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}">
-            <image src='../../images/delt.png'></image>
-          </view>
-        </view>
-        <view class='picture_itemmore ' bindtap='uploadvideo' wx:else data-index="{{index}}">
-          <view class="add-image click_camera flex_col align_center">
-            <image mode='aspectFill' class='videot' src='../../images/videot.png'></image>
-          </view>
-        </view>
+        
         <view wx:for="{{upload_picture_list}}" class="picture_itemmore" wx:key="{{index}}">
           <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
           <image wx:if="{{item.upload_percent == 100}}"  bindtap="previewImg" data-src="{{item.path_server}}"   src="{{item.path_server}}" mode="aspectFill"></image>
@@ -125,6 +113,19 @@
         <view class='picture_itemmore ' bindtap='uploadpic1' wx:if="{{!disabled1}}" data-index="{{index}}">
           <view class="add-image click_camera flex_col align_center">
             <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
+          </view>
+        </view>
+        <view class="picture_itemmore" wx:if='{{video.src}}'>
+          <image wx:if="{{video.upload_percent < 100}}" src="{{video.img}}" mode="aspectFill"></image>
+          <video wx:if="{{video.upload_percent == 100}}" src='{{video.src}}'></video>
+          <view class="upload_progress" wx:if="{{video.upload_percent < 100}}" data-index="{{index}}">{{video.upload_percent}}%</view>
+          <view class='del' bindtap='deletevideo' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}">
+            <image src='../../images/delt.png'></image>
+          </view>
+        </view>
+        <view class='picture_itemmore ' bindtap='uploadvideo' wx:else data-index="{{index}}">
+          <view class="add-image click_camera flex_col align_center">
+            <image mode='aspectFill' class='videot' src='../../images/videot.png'></image>
           </view>
         </view>
       </view>

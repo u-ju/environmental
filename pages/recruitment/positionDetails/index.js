@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.init(options.id)
+    
   },
   init(id) {
     var that = this;
@@ -26,7 +26,13 @@ Page({
       that.setData({
         result: result
       })
+      getApp().globalData.company_info = result.company_info
       util.hideLoading()
+    })
+  },
+  company(){
+    wx.navigateTo({
+      url: '../index/index',
     })
   },
   calling: function (e) {//拨打电话
@@ -64,7 +70,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.init(getApp().globalData.id)
   },
 
   /**

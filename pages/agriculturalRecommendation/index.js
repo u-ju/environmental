@@ -114,7 +114,7 @@ Page({
       var result = res.data.result
       var list = result.list
       if (page != 1) {
-        list = that.data.news.concat(list)
+        list = that.data.list.concat(list)
       }
       that.setData({
         list: list,

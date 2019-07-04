@@ -9,3 +9,12 @@
 .colorff1919{
   margin: 20rpx 0 10rpx 0;
 }
+swiper{
+  width:686rpx;
+  height:480rpx;
+  border-radius:10rpx;
+  margin: auto;
+}
+swiper image{
+  border-radius: 10rpx;
+}

@@ -19,7 +19,7 @@ Page({
     this.init()
   },
   del(e) {
-    var that = this;
+    var that = this, data=[];
     console.log(e)
     var dat = {}
     data["id[0]"] = e.currentTarget.dataset.id
@@ -30,6 +30,11 @@ Page({
         util.alert1(res.data.message)
         that.init()
       })
+    })
+  },
+  detail(e){
+    wx.navigateTo({
+      url: '../In/index?id=' + e.currentTarget.dataset.id,
     })
   },
   init(page = 1) {

@@ -1,6 +1,6 @@
 /* pages/recruitment/mypositionDetails/index.wxss */
 @import '../../renting/release/index';
-.item1 textarea,.textarea{
+.jianjie textarea,.textarea{
   width:540rpx;
   height:100rpx;
   border:2rpx solid rgba(238,238,238,1);
@@ -8,4 +8,8 @@
   padding: 16rpx 10rpx;
   background-color: transparent;
   margin-top: 30rpx;
+  
+}
+.item>input,.input,.input1 input{
+  border: none;
 }

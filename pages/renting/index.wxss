@@ -15,7 +15,10 @@
 }
 .tabTit {
   position: fixed;
-  top: 100rpx;
+  top: 94rpx;
+}
+.slidown{
+  top:186rpx;
 }
 .rentpic{
   width:244rpx;
@@ -38,4 +41,60 @@
 }
 .tag text{
   margin-right: 20rpx;
+}
+.sortitem{
+  background-color: #fff;
+   width: 100%;
+   padding: 16rpx 0;
+}
+.sort{
+  padding: 16rpx 0;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+.ch_true{
+  position: absolute;
+  right: 10%;
+  width:28rpx;
+  height:20rpx;
+}
+.custom input{
+  width:130rpx;
+  height:62rpx;
+  background:rgba(229,229,229,1);
+  border-radius:5rpx;
+  margin: 0 10rpx;
+  text-align: center;
+}
+.allse>view.custom{
+  background-color: #fff;
+  padding-bottom: 20rpx;
+}
+.morec{
+  min-width:120rpx;
+  height:62rpx;
+  padding: 0 15rpx;
+  background:rgba(229,229,229,1);
+  border-radius:5rpx;
+  text-align: center;
+  line-height: 62rpx;
+  margin: 15rpx 14rpx; 
+  color: #898989;
+}
+.moretitle{
+  padding: 20rpx 30rpx 10rpx 30rpx;
+}
+.morea{
+  background-color:  #4FD6F0;
+  color: white;
+}
+.more{
+  background-color: white;
+  padding: 30rpx 0;
+  max-height: 600rpx;
+  overflow-y: scroll;
+}
+.pad16{
+  padding: 0 16rpx;
 }

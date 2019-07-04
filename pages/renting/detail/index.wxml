@@ -7,41 +7,41 @@
   </block>
 </swiper>
 <view class='dettil'>
-  <view class='marb8'>无中介，可月付包网费物管费清洁费天府一街单间合租 费天府一街单间合租</view>
+  <view class='marb8'>{{result.title}}</view>
   <view class='flex_btw'>
-    <view> <text class='size32 colorff1919'>600元/月</text> <text class='size22 '>（押一付一）</text></view>
-    <view class='center color898989大家都在发'>
+    <view> <text class='size32 colorff1919'>{{result.rent}}元/月</text> <text class='size22 '>（{{result.payment_name}}）</text></view>
+    <!-- <view class='center color898989大家都在发'>
       <text class='iconfont icon-share'></text>
       <view>分享</view>
-    </view>
+    </view> -->
   </view>
 </view>
 <view class='infor'>
   <view class='infortag flex wrap'>
     <view>
       <text class='color898989'>房型</text>
-      <text>1室1厅1卫（整租）</text>
+      <text>{{result.room_name}}（{{result.mode_name}}）</text>
     </view>
     <view>
       <text class='color898989'>装修</text>
-      <text>豪华装修</text>
+      <text>{{result.decoration_name}}</text>
     </view>
     <view>
       <text class='color898989'>面积</text>
-      <text>40㎡</text>
+      <text>{{result.acreage}}㎡</text>
     </view>
     <view>
       <text class='color898989'>朝向</text>
-      <text>东</text>
+      <text>{{result.aspect_name}}</text>
     </view>
     <view>
       <text class='color898989'>楼层</text>
-      <text>中层</text>
+      <text>{{result.layer}}楼/共{{result.layer_max}}楼</text>
     </view>
-    <view>
+    <!-- <view>
       <text class='color898989'>类型</text>
       <text>公寓</text>
-    </view>
+    </view> -->
   </view>
   
                             
@@ -49,11 +49,11 @@
 
                         
   <view class='flex_btw align_center mart60'>
-    <view>地址：保利星座（高新区 大源）  </view>
+    <view>地址：{{result.area_name}} {{result.address}} </view>
     <text class='iconfont icon-dingwei size36'></text>
   </view>
   <view class='flex_btw align_center mart60'>
-    <view>联系电话：1823547895  </view>
+    <view>联系电话：{{result.contact}}  </view>
     <text class='iconfont icon-tubiao210 color4AD6A3 size36'></text>
   </view>
 </view>
@@ -69,9 +69,7 @@
 <view class=''>
   <view class='title'>房源概况 </view>
   <view class='describe'>
-    周边配套设施：学校、医院、银行、公园、餐饮、娱乐、菜市场、超市、商场等设施齐全
-房源特点：房屋干净，随时入住，无中介，可月付. 为年轻人打造美丽精彩家居生活，知名设计师匠心打造美式田园风、欧式简约风、优雅地中海等装修风格，全新家具电器，手绘油画装点你的梦想空间；支持异地、同城免费换房，工作调动住房零损失。美丽屋给予您的不仅仅是租住无忧，更是高品质的体验。
-美丽屋承诺酒店式服务 无忧调换真实图片 续租免押金 月付房租 中途退租转租无违
+    {{result.intro}}
                         
   </view>
 </view>

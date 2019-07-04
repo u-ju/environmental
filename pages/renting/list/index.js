@@ -1,30 +1,46 @@
-// pages/idle/index.js
-const app = getApp()
-var util = require('../../utils/util.js');
-var apiurl = require('../../utils/api.js');
+// pages/rentingment/renting/myposition/index.js
+var app = getApp()
+var util = require('../../../utils/util.js');
+var apiurl = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[0]
+
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
-    this.setData({
-      address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress')
-    })
+
     this.init()
+  },
+  del(e) {
+    var that = this, data=[];
+    console.log(e)
+    var dat = {}
+    data["id[0]"] = e.currentTarget.dataset.id
+    util.popoutc('是否确定删除该閑置物品', '否', '#444444', '是', '#4FD6F0', function () {
+      console.log("取消")
+    }, function () {
+      util.postJSON({ apiUrl: apiurl.renting.infoDestroy }, function (res) {
+        util.alert1(res.data.message)
+        that.init()
+      })
+    })
+  },
+  detail(e){
+    wx.navigateTo({
+      url: '../release/index?id=' + e.currentTarget.dataset.id,
+    })
   },
   init(page = 1) {
     var that = this;
-    var data = {
-
-      keywords: that.data.keywords || ''
-    }
     util.getJSON({
-      apiUrl: apiurl.idle.index + "?1=1",
-      data: data
+      apiUrl: apiurl.renting.infoIndex + '?page=' + page,
     }, function (res) {
       var result = res.data.result
       var list = result.list
@@ -34,31 +50,17 @@ Page({
       that.setData({
         list: list,
         page: result.page,
-        hideHeader: true,
-        hideBottom: true
+        last: false
       })
-      wx.hideLoading()
+      util.hideLoading()
     })
   },
-  detail(e) {
-    wx.navigateTo({
-      url: 'detail/index?id=' + e.currentTarget.dataset.id,
-    })
-  },
-  link() {
-    wx.navigateTo({
-      url: 'list/index',
-    })
-  },
-  
-
   onPullDownRefresh: function () {
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
-    util.getJSON({ apiUrl: apiurl.idle.index + "?page=1"+ "&keywords=" + that.data.keywords }, function (res) {
+    util.getJSON({ apiUrl: apiurl.renting.infoIndex + '?page=1' }, function (res) {
       var result = res.data.result
-      console.log(result)
       that.setData({
         list: result.list,
         page: result.page,
@@ -83,7 +85,7 @@ Page({
     })
     // 页数+1
     if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
-      that.init( Number(that.data.page.current_page) + 1)
+      that.init(that.data.cate_id, Number(that.data.page.current_page) + 1)
     } else {
       that.setData({
         last: true
@@ -91,4 +93,14 @@ Page({
       wx.hideLoading()
     }
   },
+
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+
 })

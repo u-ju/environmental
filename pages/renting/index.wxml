@@ -8,7 +8,7 @@
     <input value='{{keywords}}' name='keywords' bindinput='search' placeholder='输入想要查找的内容' bindconfirm="searchSubmit"></input>
     <text class='iconfont icon-sousuo colorfff searchall_pic'></text>
   </view>
-  <view class='color4AD6A3'>发布</view>
+  <view class='color4AD6A3' bindtap='link'>发布</view>
 </view>
 
 <view class='pagetype'>
@@ -21,38 +21,59 @@
       </view>
     </view>
   </view>
-  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}" hidden='{{tabIndex==0||tabIndex==-1}}'> 
-    <view class='flex allse' wx:if="{{tabIndex==1}}">
+  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}" hidden='{{tabIndex==-1}}'>
+    <view class='flex allse' wx:if="{{tabIndex==0}}">
       <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{eara}}" wx:key="index" wx:for-index="indexnum" wx:for-item="eara1">
 
         <view class="qy quyu-left" style='' wx:for="{{eara1}}" wx:key="index">
-          <view class="itemselect {{earaid[indexnum]==item.area_id?'current':''}}" data-index='{{index}}' data-indexnum='{{indexnum}}' data-item='{{item}}' data-id='{{item.area_id}}' data-name='{{item.name}}' bindtap="choose1">
+          <view class="itemselect {{earaid[indexnum]==item.area_id?'current':''}}" data-index='{{index}}' data-indexnum='{{indexnum}}' data-item='{{item}}' data-id='{{item.area_id}}' data-name='{{item.name}}' bindtap="choose0">
             {{item.name}}
           </view>
         </view>
       </scroll-view>
     </view>
-    <view class='flex allse' wx:if="{{tabIndex==2}}">
-      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;">
-        <view class="qy quyu-left" style='' wx:for="{{erji}}" wx:key="index" wx:for-index="index">
-          <view class="itemselect {{cate_id==item.id?'current':''}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose2">
-            {{item.name}}
-          </view>
+    <view class=' allse' wx:if="{{tabIndex==1}}">
+      <view class='sortitem'>
+        <view wx:for="{{price_intervali}}" wx:key="index" class='flex_ard align_center sort' bindtap='choose1' data-id='{{item.id}}' data-name='{{item.name}}' data-min='{{item.min}}' data-max='{{item.max}}'>
+          <view class='cneter {{item.id==cate_?"color4AD6A3":""}}'>{{item.name}}</view>
+          <image wx:if="{{item.id==cate_}}" src='../../images/ch_true.png' class='ch_true'></image>
         </view>
-      </scroll-view>
-    </view>
-    <view class='' wx:if="{{tabIndex==3}}">
-      <view class='screenitem'>
-        <view>价格区间</view>
-        <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{searchitem.cost}}' wx:key="index" class='screen {{costindex==index?"active":""}}' data-index='{{index}}' data-name='cost' bindtap='choose3'  data-key='{{item.min}},{{item.max}}'>{{item.name}}</text>
-        </scroll-view>
       </view>
-      <view class='screenitem'>
-        <view>更多特色</view>
-        <scroll-view scroll-x="true" class="scroll-header">
-          <text wx:for='{{searchitem.feature}}' wx:key="index" class='screen {{feature==item?"active":""}}' bindtap='choose3' data-name='feature' data-key='{{item}}' >{{item}}</text>
-        </scroll-view>
+      <view class='flex_ard align_center custom'>
+        <view class='flex align_center '>
+          <text>自定义</text>
+          <input placeholder='最低价' value='{{min}}' bindinput='input' data-name='min'></input>
+          <text> - </text>
+          <input placeholder='最高价' value='{{max}}' bindinput='input' data-name='max'></input>
+          <text>元</text>
+        </view>
+      </view>
+
+    </view>
+    <view class=' more' wx:if="{{tabIndex==2}}">
+      <view>
+        <view class='moretitle'>房型</view>
+        <view class='flex wrap pad16'>
+          <view class='morec {{roomt==item.id?"morea":""}}' wx:for="{{roomi}}" wx:key="index" data-id='{{item.id}}' data-name='room' bindtap='choose2'>{{item.name}}</view>
+        </view>
+      </view>
+      <view>
+        <view class='moretitle'>整租/合租</view>
+        <view class='flex wrap pad16'>
+          <view class='morec {{modet==item.id?"morea":""}}' wx:for="{{modei}}" wx:key="index" wx:key="index" data-id='{{item.id}}' data-name='mode' bindtap='choose2'>{{item.name}}</view>
+        </view>
+      </view>
+      <view>
+        <view class='moretitle'>装修</view>
+        <view class='flex wrap pad16'>
+          <view class='morec {{decorationt==item.id?"morea":""}}' wx:for="{{decorationi}}" wx:key="index" wx:key="index" data-id='{{item.id}}' data-name='decoration' bindtap='choose2'>{{item.name}}</view>
+        </view>
+      </view>
+      <view>
+        <view class='moretitle'>排序</view>
+        <view class='flex wrap pad16'>
+          <view class='morec {{ordert==item.id?"morea":""}}' wx:for="{{sorti}}" wx:key="index" wx:key="index" data-id='{{item.id}}' data-name='order' bindtap='choose2'>{{item.name}}</view>
+        </view>
       </view>
     </view>
     <view class='form-btn'>
@@ -64,19 +85,22 @@
 </view>
 
 <view class='rentitem'>
-  <view class='flex_btw renting' wx:if="{{list.length>0}}">
-    <image class='rentpic'></image>
+  <block wx:if="{{list.length>0}}">
+  <view class='flex_btw renting' wx:for="{{list}}" wx:key="index" wx:if="{{item.id}}" bindtap='detail' data-id='{{item.id}}' >
+    <image class='rentpic' src='{{item.thumb}}'></image>
     <view class='flex_col flex_btw'>
-      <view class='size28'>无中介，可月付包网费物管费清洁 费天府一街单间合租</view>
-      <view class='size22 color898989'>天府新区-保利星座 拷贝</view>
+      <view class='size28'>{{item.title}}</view>
+      <view class='size22 color898989'>{{item.area_cut_name}}</view>
       <view class='flex align_center'>
-        <view class='colorff1919 marr40'>580元/月</view>     
+        <view class='colorff1919 marr40'>{{item.rent}}元/月</view>
         <view class='size22 tag color898989'>
-          <text>3室1厅</text>
-          <text>合租</text>
+          <text>{{item.room_name}}</text>
+          <text>{{item.mode_name}}</text>
         </view>
       </view>
     </view>
   </view>
+  </block>
   <empty wx:else />
 </view>
+<view class="fullbg {{isfull ?'fullopacity':''}}"  bindtap="hidebg"></view>

@@ -13,17 +13,10 @@ Page({
    */
   data: {
     visiblee: false,
-    cate_tag:[],
-    cate_tagf: [],
-    cate_tag_namef:[],
-    cate_tag_name: [],
-    cate_tagi: [],
     show:false,
-    image:[
-      { title: '展示图', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
-      { title: '执照/证书', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
-    ],
-    is_law:0
+    id:-1,
+    lunbo:[],
+    upload_picture_list:[]
   },
 
   /**
@@ -32,7 +25,9 @@ Page({
   onLoad: function (options) {
     // 
     this.conf()
-    this.init()
+    if (options.id){
+      this.init(options.id)
+    }
   },
   onChange1(e) {
     console.log(e)
@@ -52,61 +47,34 @@ Page({
     })
   },
   
-  // 经验
-  delcate() {
-    this.setData({
-      visiblee: false,
-      cate_tag_namef: this.data.cate_tag_name,
-      cate_tagf: this.data.cate_tag
-    })
-  },
-  truecate() {
-    this.setData({
-      visiblee: false,
-      cate_tag_name: this.data.cate_tag_namef,
-      cate_tag: this.data.cate_tagf
-    })
-  },
-  cate(e) {
-    var cate_tag = this.data.cate_tagf, cate_tag_name = this.data.cate_tag_namef
-    if (cate_tag.indexOf(e.currentTarget.dataset.id)==-1){
-      cate_tag.push(e.currentTarget.dataset.id)
-      cate_tag_name.push(e.currentTarget.dataset.name)
-    }else{
-      cate_tag.splice(cate_tag.indexOf(e.currentTarget.dataset.id), 1)
-      cate_tag_name.splice(cate_tag.indexOf(e.currentTarget.dataset.id), 1)
-    }
-    console.log(cate_tag)
-    this.setData({
-      cate_tagf: cate_tag,
-      cate_tag_namef: cate_tag_name,
-    })
-  },
-  init() {
+  
+  init(id) {
     var that = this;
     util.getJSON({
-      apiUrl: apiurl.law.infoHome,
+      apiUrl: apiurl.idle.infoShow+id,
     }, function (res) {
-      var result = res.data.result
-      var image = [
-        { title: '展示图', upload_picture_list: [{ upload_percent: 100, path_server: result.law.license || "" }], text: "点击拍摄/上传图片", id: 0 },
-        { title: '执照/证书', upload_picture_list: [{ upload_percent: 100, path_server: result.law.thumb || "" }], text: "点击拍摄/上传图片", id: 1 },
-      ]
-      if (result.is_law==0){
-        image=that.data.image
+      var result = res.data.result,lunbo= [],upload_picture_list= []
+      if (result.thumb){
+        upload_picture_list=[{ upload_percent: 100, path_server: result.thumb || "" }]
       }
-
+      if (result.images.length>0){
+        for(var i in result.images){
+          lunbo.push({ upload_percent: 100, path_server: result.images[i] || "" })
+        }
+      }
       that.setData({
-        is_law: result.is_law,
-        image: image,
-        name: result.law.name || "",
-        intro: result.law.intro || "",
-        price: result.law.price || "",
-        contact: result.law.contact || "",
-        area_id: result.law.area_id || "",
-        address: result.law.address || "",
-        areaSelectedStr: result.law.area_name || "",
-        status_remark: result.law.status_remark || "",
+        id: result.id,
+        lunbo: lunbo,
+        upload_picture_list: upload_picture_list,
+        title: result.title || "",
+        intro: result.intro || "",
+        price: result.price || "",
+        contact: result.contact || "",
+        linkman: result.linkman || "",
+        area_id: result.area_id || "",
+        address: result.address || "",
+        areaSelectedStr: result.area_name || "",
+        status_remark: result.status_remark || "",
       })
       wx.hideLoading()
     })
@@ -139,9 +107,7 @@ Page({
   uploadpic(e) {
     var that = this;
     var index = e.currentTarget.dataset.indexnum;
-
     util.uploadpic(that, 1, 'upload_picture_list', '', function (images) {
-      console.log(images)
       that.setData({
         upload_picture_list: images,
       });
@@ -165,7 +131,6 @@ Page({
   uploadpic1(e) {
     var that = this;
     var index = e.currentTarget.dataset.indexnum;
-
     util.uploadpic(that, 9, 'lunbo', '', function (images) {
       console.log(images)
       that.setData({
@@ -304,12 +269,9 @@ Page({
   conf(){
     var that = this;
     util.getJSON({
-      apiUrl: apiurl.law.conf ,
+      apiUrl: apiurl.idle.conf ,
     }, function (res) {
-      var cate_tag = res.data.result.cate_tag
-      that.setData({
-        cate_tagi: cate_tag
-      })
+      
       util.hideLoading()
     })
   },
@@ -323,19 +285,17 @@ Page({
     }
     data.area_id=this.data.area_id
     data.intro = this.data.intro  
-    for (var i in cate_tag){
-      data["cate_tag[" + i + "]"] = cate_tag[i]
-    }
     this.setData({
       post: true
     })
     console.log(data)
     var url = "infoStore"
-    if (this.data.is_law!=0){
+    if (this.data.id!=-1){
       url = "infoUpdate"
+      data.id = this.data.id
     }
     util.postJSON({
-      apiUrl: apiurl.law[url],
+      apiUrl: apiurl.idle[url],
       data: data
     }, function (res) {
       that.setData({

@@ -1,4 +1,7 @@
 // pages/recruitment/index/index.js
+const app = getApp()
+var util = require('../../../utils/util.js');
+var apiurl = require('../../../utils/api.js');
 Page({
 
   /**
@@ -12,9 +15,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var company_info = getApp().globalData.company_info
+    this.init()
+    this.setData({
+      company_info:getApp().globalData.company_info
+    })
   },
-
+  init(page = 1) {
+    var that = this;
+    var data = {
+      company_id: getApp().globalData.company_info.id
+    }
+    util.getJSON({
+      apiUrl: apiurl.recruit.postIndex + "?1=1",
+      data: data
+    }, function (res) {
+      var result = res.data.result
+      var list = result.list
+      if (page != 1) {
+        list = that.data.list.concat(list)
+      }
+      that.setData({
+        list: list,
+        page: result.page,
+        hideHeader: true,
+        hideBottom: true
+      })
+      wx.hideLoading()
+    })
+  },
+  detail(e) {
+    getApp().globalData.id = e.currentTarget.dataset.id
+    wx.navigateBack()
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -3,8 +3,8 @@ const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
   base: basePath,
   wx_appid : "wx9af47449f54c0be7",
-  build : 99999999,
-  // build : 20190626,
+  // build : 99999999,
+  build : 20190626,
   collectUpdate: basePath + '/front/collect/update',
   collectIndex: basePath + '/front/collect/index?source=',
 
@@ -518,6 +518,17 @@ const apiList = {
     infoIndex: basePath + '/front/idle/infoIndex',// GET 闲置列表
     infoShow: basePath + '/front/idle/infoShow?id=',// GET 详情
     infoDestroy: basePath + '/front/idle/infoDestroy',// POST 入驻添加
+  },
+  renting: {
+    conf: basePath + '/front/renting/conf',// GET 配置信息
+    index: basePath + '/front/renting/index',// GET 列表
+    show: basePath + '/front/renting/show?id=',// GET 详情
+    infoHome: basePath + '/front/renting/infoHome',// GET 入驻信息
+    infoStore: basePath + '/front/renting/infoStore',// POST 闲置发布
+    infoUpdate: basePath + '/front/renting/infoUpdate',// POST 入驻添加
+    infoIndex: basePath + '/front/renting/infoIndex',// GET 闲置列表
+    infoShow: basePath + '/front/renting/infoShow?id=',// GET 详情
+    infoDestroy: basePath + '/front/renting/infoDestroy',// POST 入驻添加
   },
 }
 module.exports = apiList;

@@ -1,41 +1,45 @@
 {
   "pages": [
-    "pages/idle/In/index",
     "pages/index/index",
+    "pages/renting/index",
+    "pages/renting/release/index",
+    "pages/renting/list/index",
+    
+    
+    
+    
+    "pages/renting/detail/index",
+    
+    "pages/idle/list/index",
+    "pages/idle/In/index",
+    "pages/idle/index",
+    "pages/idle/detail/index",
+
     "pages/tenants/tenants",
     
     "pages/realname_suc/index",
     
     "pages/realname_authentication/realname_authentication",
     
-    "pages/idle/index",
-    "pages/idle/list/index",
-    "pages/idle/detail/index",
+    
     
     "pages/law/In/index",
     "pages/law/index",
     "pages/law/detail/index",
-    
     "pages/law/firms/index",
     "pages/law/lawyer/index",
     
     "pages/recruitment/index",
+    "pages/recruitment/index/index",
     "pages/recruitment/mypositionDetails/index",
-    
     "pages/recruitment/companyDetails/index",
-    
     "pages/recruitment/positionDetails/index",
-    
-    
     "pages/recruitment/myposition/index",
-    
     "pages/recruitment/cardCreate/index",
     
-    "pages/recruitment/index/index",
     
     
     
-    "pages/renting/release/index",
     
     
     
@@ -45,7 +49,7 @@
     
     "pages/business_details/business_details",
     
-    "pages/renting/index",
+    
     
     
     
@@ -56,7 +60,7 @@
     "pages/place_order/place_order",
     "pages/maintenance_worker/index",
     "pages/housekeeping_edit/index",
-    "pages/renting/detail/index",
+    
     
     "pages/agriculturalMerchantsOrder/index",
     

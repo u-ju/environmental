@@ -1,3 +1,39 @@
 <!--pages/recruitment/index/index.wxml-->
-<view class='button'>我要求职</view>
-<view class='button'>我要招聘</view>
+<view class='company flex align_center' >
+  <image class='logo' src='{{company_info.thumb}}'></image>
+  <view>
+    <view>{{company_info.name}}</view>
+    <!-- <view class='size26'>{{company_info.intro}}</view> -->
+  </view>
+</view>
+<view class='company'>
+  <view class='marginb'>公司介绍</view>
+  <view>
+  {{company_info.intro}}
+  </view>
+</view>
+<view >
+  <view class='titlo'>在招职位</view>
+  <view class='resume' wx:for="{{list}}" wx:key="index" bindtap='detail' data-id='{{item.id}}'>
+      <block wx:if="{{list[0].name}}">
+        <view class='flex_btw align_center'>
+          <view class='size36'>{{item.name}}</view>
+          <view class='color4fd6f0 size36'>{{item.salary_name}}</view>
+        </view>
+        <view class='flex_btw align_center martb28'>
+          <view>{{item.company_info.name}}</view>
+        </view>
+        <view class='flex_btw'>
+          <view class='flex'>
+            <view class='moudel color898989 size22' wx:if="{{item.area_name}}">{{item.area_name}}</view>
+            <view class='moudel color898989 size22' wx:if="{{item.experience_name}}">{{item.experience_name}}</view>
+            <view class='moudel color898989 size22' wx:if="{{item.education_name}}">{{item.education_name}}</view>
+          </view>
+        </view>
+        <view class='flex align_center person'>
+          <image class='head' src='{{item.person_info.avatar}}'></image>
+          <view class='size28'>{{item.person_info.name}}</view>
+        </view>
+      </block>
+    </view>
+</view>
