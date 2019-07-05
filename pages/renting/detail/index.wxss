@@ -45,7 +45,7 @@ page{
 .config .icon{
   width: 50rpx;
   height: 50rpx;
-  background-color: #eee;
+  /* background-color: #eee; */
 }
 .config{
   border-bottom: 20rpx solid #EEEEEE;

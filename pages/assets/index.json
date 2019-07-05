@@ -3,6 +3,7 @@
     "enablePullDownRefresh": true,
     "onReachBottomDistance": 50,
     "usingComponents": {
-      "empty": "../../Components/empty/index"
+      "empty": "../../Components/empty/index",
+      "pay": "../../Components/pay/index"
     }
 }

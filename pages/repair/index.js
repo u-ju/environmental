@@ -42,7 +42,6 @@ Page({
 
   },
   search(e){
-    // console.log(e)
     if (e.detail.value==''){
       this.setData({
         keywords: "&keywords=" 
@@ -54,8 +53,6 @@ Page({
     })
   },
   searchSubmit(e){
-    // console.log(e)
-    // console.log(this.data.search)
     var keywords = "&keywords="+this.data.search
     this.setData({
       keywords: keywords

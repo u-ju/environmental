@@ -78,7 +78,6 @@ Page({
   },
   onLoad: function(options) {
     var that = this;
-    
     this.refreshView = this.selectComponent("#refreshView")
     var formData = wx.getStorageSync('formData')
     if (options.pjurl){
@@ -148,6 +147,7 @@ Page({
     })
   },
   init() {
+    
     var that = this;
     util.getJSON({
       apiUrl: apiurl.index

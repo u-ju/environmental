@@ -27,19 +27,16 @@ Page({
   },
   init() {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.shop_ }, function (res) {
-      var result = res.data.result
-      that.setData({
-        is_apply: result.is_apply,
-        apply_info: result.apply_info,
-        online_list: result.shop_info.online_list,
-        offline_list: result.shop_info.offline_list,
-        room_list: result.apply_info.buttun_list,
-        league_list: result.shop_info.league_list,
-        share_mobile: result.apply_info.share_mobile,
-        feature_list: result.apply_info.feature_list
-      })
-      wx.hideLoading()
+    var result = getApp().globalData.shop
+    that.setData({
+      is_apply: result.is_apply,
+      apply_info: result.apply_info,
+      online_list: result.shop_info.online_list,
+      offline_list: result.shop_info.offline_list,
+      room_list: result.apply_info.buttun_list,
+      league_list: result.shop_info.league_list,
+      share_mobile: result.apply_info.share_mobile,
+      feature_list: result.apply_info.feature_list
     })
   },
   offline(e){

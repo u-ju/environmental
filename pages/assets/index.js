@@ -24,6 +24,7 @@ Page({
     jin: ['balanceIndex', "walletBalanceFamilyIndex"],
     integralurl:'integralIndex',
     balanceurl: 'balanceIndex',
+    data: { pay_source:'repayment'}
   },
   tabchange(e){
     util.loading()
@@ -42,6 +43,10 @@ Page({
         current: options.id
       })
     }
+  },
+  openp(e) {
+    var page = e.detail.page;
+    page.open3()
   },
   integral(e){
     // console.log(e)
@@ -62,7 +67,7 @@ Page({
     })
     this.init()
   },
-  Initialize(){
+  initialize(){
     var that = this;
     util.getJSON({ apiUrl: apiurl.wallet }, function (res) {
       var result = res.data.result;
@@ -94,7 +99,7 @@ Page({
         integralurl: 'integralIndex',
         balanceurl: 'balanceIndex',
       })
-      util.hideLoading()
+      // util.hideLoading()
       that.init()
     })
   },
@@ -120,7 +125,11 @@ Page({
         list: list,
         page: result.page
       })
-      util.hideLoading()
+      if (!wx.getStorageSync('wechatpay')){
+        util.hideLoading()
+        wx.setStorageSync('wechatpay', '')
+      }
+      
     })
   },
   //打开规则提示
@@ -147,9 +156,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    
     if (this.data.current !== '' && this.data.current !== undefined){
       
-      this.Initialize()
+      this.initialize()
     }
     
   },

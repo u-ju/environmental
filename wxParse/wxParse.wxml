@@ -13,8 +13,9 @@
 <template name="wxParseVideo">
   <!--增加video标签支持，并循环添加-->
   <view class="{{item.classStr}} wxParse-{{item.tag}}" style="{{item.styleStr}}" >
-    <video class="{{item.classStr}} wxParse-{{item.tag}}-video" src="{{item.attr.src}}"  objectFit='contain' autoplay='{{false}}' controls bindtap="videoPlay" data-id='video{{item.index}}' id='video{{item.index}}'></video>
+    <video class="{{item.classStr}} wxParse-{{item.tag}}-video" src="{{item.attr.src}}" custom-cache='{{false}}' objectFit='contain' autoplay='{{false}}' controls ></video>
   </view>
+   <!-- bindtap="videoPlay" data-id='video{{item.index}}' id='video{{item.index}}'  -->
 </template>
 
 <template name="wxParseImg">

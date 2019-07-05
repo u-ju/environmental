@@ -1,3 +1,6 @@
+.rel{
+  position: relative;
+}
 canvas{
   margin: 60rpx auto;
 }

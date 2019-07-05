@@ -67,16 +67,23 @@ function wxParseImgTap(e) {
   }
 }
 function videoPlay(e) {
+  console.log(e.currentTarget.dataset)
   var _index = e.currentTarget.dataset.id
+  
+  if (index){
+    console.log(index)
 
-  if (index.indexOf("video")!=-1){
-    
     var videoContextPrev = wx.createVideoContext(index)
     videoContextPrev.pause();
+    videoContextPrev.stop();
+    
   }
-  index = e.currentTarget.dataset.id
+  if (_index==index){
+    return index = _index
+  }
+  index = _index
   setTimeout(function () {
-    //将点击视频进行播放
+    console.log(_index)
     var videoContext = wx.createVideoContext(_index)
     videoContext.play();
   }, 500)

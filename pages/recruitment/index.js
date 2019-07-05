@@ -32,11 +32,23 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress')
+      address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress'),
+      keywords: options.keywords||''
     })
     this.areaparse()
     this.init()
     this.conf()
+  },
+  search(e) {
+    this.setData({
+      keywords: e.detail.value
+    })
+    if (e.detail.value == '') {
+      this.init()
+    }
+  },
+  searchSubmit(e) {
+    this.init()
   },
   detail(e){
     getApp().globalData.id = e.currentTarget.dataset.id

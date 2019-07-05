@@ -229,11 +229,11 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge,suc='
         });
       }else{
         if (storge==1){
-          wx.setStorageSync('upload_picture_listt', upload_picture_list)
+          // wx.setStorageSync('upload_picture_listt', upload_picture_list)
         }else if (storge == 2) {
-          wx.setStorageSync('upload_picture_listo', upload_picture_list)
+          // wx.setStorageSync('upload_picture_listo', upload_picture_list)
         } else if (storge == 3) {
-          wx.setStorageSync('upload_picture_liste', upload_picture_list)
+          // wx.setStorageSync('upload_picture_liste', upload_picture_list)
         }
         _this.hideLoading()
         that.setData({
@@ -247,7 +247,7 @@ function upload_file_server(url, that, upload_picture_list, j, arr, storge,suc='
   // 上传 进度方法
 
   upload_task.onProgressUpdate((res) => {
-    upload_picture_list[j]['upload_percent'] = res.progress
+    upload_picture_list[j]['upload_percent'] = 100
     if (arr == 'upload_picture_list1') { 
       that.setData({
         upload_picture_list1: upload_picture_list
@@ -351,7 +351,7 @@ function upload_pic(url, that, upload_picture_list, j, suc, update) {
   // 上传 进度方法
 
   upload_task.onProgressUpdate((res) => {
-    upload_picture_list[j]['upload_percent'] = res.progress
+    upload_picture_list[j]['upload_percent'] = 100
     update(upload_picture_list)
       // that.setData({
       //   upload_picture_list: upload_picture_list
@@ -426,8 +426,8 @@ function getToken(valuetstu='',form,cb,mothed) {
   var token = wx.getStorageSync('token')||"";
   
   if (token && valuetstu!= 801) {
-    // return token;
-    return  'zwj';
+    return token;
+    // return  'zwj';
   }
   if (valuetstu==801){
     wx.reLaunch({
@@ -646,14 +646,19 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
           })
         
         }else{
+          if (res.data.result && res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+            wx.setStorageSync('popoutccs', 1)
+          }
           call_success(res)
           if (res.data.result &&res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+            
             var popout = res.data.result.popout
             var button_arr = popout.button_arr
             //console.log(button_arr)
             wx.hideLoading()
             that.popoutc(popout.intro, button_arr[0].name, button_arr[0].color, button_arr[1].name, button_arr[1].color, function () {
               that.nav(button_arr[0])
+              
             }, function () {
               that.nav(button_arr[1])
             })
@@ -742,11 +747,15 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
       if (res.data.status == 200) {
         if (res.data.result &&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           getApp().globalData.hint = res.data.result.hint
+          that.loading()
           wx.navigateTo({
             url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
           })
         
         } else {
+          if (res.data.result && res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
+            wx.setStorageSync('popoutccs', 1)
+          }
           call_success(res)
           if (res.data.result &&res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
             var popout = res.data.result.popout

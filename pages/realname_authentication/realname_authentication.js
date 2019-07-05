@@ -166,25 +166,24 @@ Page({
         sure:true
       })
       console.log(data)
-      // util.postJSON({ apiUrl: apiurl.realname_verify, data: data}, function (res) {
-      //     util.alert(res.data.message)
-      //     util.navigateBack(2)  
-      // },function(){
-      //   that.setData({
-      //     sure: false
-      //   })
-      //   }, function () {
-      //     that.setData({
-      //       sure: false
-      //     })
-      //   })
+      util.postJSON({ apiUrl: apiurl.realname_verify, data: data}, function (res) {
+          util.alert(res.data.message)
+          util.navigateBack(2)  
+      },function(){
+        that.setData({
+          sure: false
+        })
+        }, function () {
+          that.setData({
+            sure: false
+          })
+        })
     // }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   input(e) {
-    console.log(e)
     wx.setStorageSync(e.currentTarget.dataset.name + "s", e.detail.value)
   },
   onLoad: function (options) {

@@ -8,7 +8,7 @@
 <form  bindsubmit="formSubmit">
   <view class='wxgitem flex_btw '>
     <view class='left'>联系人</view>
-    <input name='title' value='{{title}}'></input>
+    <input name='title' value='{{title}}' ></input>
   </view>
   <view class='wxgitem flex_btw '>
     <view class='left'>联系方式</view>

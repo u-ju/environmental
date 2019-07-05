@@ -12,8 +12,20 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress')
+      address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress'),
+      keywords: options.keywords || ''
     })
+    this.init()
+  },
+  search(e) {
+    this.setData({
+      keywords: e.detail.value
+    })
+    if (e.detail.value == '') {
+      this.init()
+    }
+  },
+  searchSubmit(e) {
     this.init()
   },
   init(page = 1) {

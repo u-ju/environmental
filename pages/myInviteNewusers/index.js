@@ -29,8 +29,9 @@ Page({
     this.init()
   },
   onLoad: function (options) {
-    util.loading()
-    var that = this;
+
+    // this.init()
+    
     // util.getJSON({ apiUrl: apiurl.share }, function (res) {
     //   var result = res.data.result
 
@@ -41,14 +42,7 @@ Page({
     //   })
     //   util.hideLoading()
     // })
-    var result = getApp().globalData.front_share_home
-    this.setData({
-      result: result,
-      value: result.share_qrcode,
-      stat: result.stat,
-      share_qrcode_desc: result.share_qrcode_desc
-    })
-    that.init()
+    
   },
   init(page = 1) {
     var that = this;
@@ -67,6 +61,11 @@ Page({
         page: result.page,
       })
       util.hideLoading()
+      if (wx.getStorageSync("popoutccs")==1){
+        return wx.setStorageSync('popoutccs', '')
+      }
+      that.share()
+      
     })
   },
   open3(e) {
@@ -96,8 +95,34 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
+  share(){
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.share }, function (res) {
+      var result = res.data.result
+      // url = url + "&result=" + JSON.stringify(result)
+      getApp().globalData.front_share_home = result
+      that.setData({
+        result: result,
+        value: result.share_qrcode,
+        stat: result.stat,
+        share_qrcode_desc: result.share_qrcode_desc
+      })
+    
+    }, function (e) {
+      return
+    })
+  },
   onShow: function () {
-
+    util.loading()
+    var that = this;
+    var result = getApp().globalData.front_share_home
+    this.setData({
+      result: result,
+      value: result.share_qrcode,
+      stat: result.stat,
+      share_qrcode_desc: result.share_qrcode_desc
+    })
+    that.init()
   },
   onPullDownRefresh: function () {
     // 显示顶部刷新图标

@@ -1,10 +1,10 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/renting/index",
     "pages/renting/release/index",
     "pages/renting/list/index",
-    
     
     
     

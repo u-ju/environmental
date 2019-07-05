@@ -429,7 +429,7 @@ Page({
         that.setData({
           ['image[' + index + '].upload_picture_list']: upload_picture_list,
         });
-        wx.setStorageSync('image' + index+'e', upload_picture_list)
+        // wx.setStorageSync('image' + index+'e', upload_picture_list)
       }
     })
     // 上传 进度方法
@@ -451,7 +451,7 @@ Page({
     that.setData({
       ['image[' + e.currentTarget.dataset.index + '].upload_picture_list']: [],
     });
-    wx.setStorageSync('image' + e.currentTarget.dataset.index+'e', [])
+    // wx.setStorageSync('image' + e.currentTarget.dataset.index+'e', [])
     // 
   },
   // 查看图片

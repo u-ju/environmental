@@ -1,7 +1,10 @@
 <!--pages/myInviteNewusers/index.wxml-->
 <view class='banner'>
   <image src='{{result.background}}'></image>
-  <view class='center colorfff zong'> <text class='size36'>总收益 </text> <text class='size36'> {{stat.total_amount}}</text></view>
+  <view class='center colorfff zong'>
+    <text class='size36'>总收益 </text>
+    <text class='size36'> {{stat.total_amount}}</text>
+  </view>
   <view class='invite size30' bindtap='open3'>邀请二维码</view>
   <view class='num size24 flex_ard center align_center wrap'>
     <view>
@@ -28,20 +31,20 @@
 <view wx:if="{{list.length>0}}">
   <block wx:if="{{list[0].id}}">
     <view class=' flex_btw align_center' wx:for="{{list}}" wx:key="index">
-      <view class='item flex align_center'  wx:if="{{curre=='shareUserIndex'}}">
+      <view class='item flex align_center' wx:if="{{curre=='shareUserIndex'}}">
 
-          <image src='{{item.user_info.avatar}}'></image>
-          <view class='flex_btw flex_col'>
-            <view>{{item.user_info.nickname}}</view>
-            <view class='size24'>{{item.created_at}}</view>
-          </view>
+        <image src='{{item.user_info.avatar}}'></image>
+        <view class='flex_btw flex_col'>
+          <view>{{item.user_info.nickname}}</view>
+          <view class='size24'>{{item.created_at}}</view>
+        </view>
       </view>
       <view class='item flex align_center' wx:else bindtap='shop_info' data-id='{{item.shop_info.id}}'>
-          <image class='shop' src='{{item.shop_info.thumb}}'></image>
-          <view class='flex_btw flex_col'>
-            <view>{{item.shop_info.title}}</view>
-            <view class='size24'>{{item.created_at}}</view>
-          </view>
+        <image class='shop' src='{{item.shop_info.thumb}}'></image>
+        <view class='flex_btw flex_col'>
+          <view>{{item.shop_info.title}}</view>
+          <view class='size24'>{{item.created_at}}</view>
+        </view>
       </view>
     </view>
   </block>
@@ -51,7 +54,7 @@
 <wux-popup closable visible="{{ visible3 }}" bind:close="onClose3">
   <!-- <view class='center' wx:if="{{!share_qrcode}}" style='width:400rpx; height:400rpx;margin: auto;line-height: 400rpx;'>{{share_qrcode_desc}}</view>
   <block wx:else> -->
-    <wux-qrcode id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+  <wux-qrcode id="qrcode" wx:if="{{visible3}}" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
 
   <!-- </block> -->
 </wux-popup>

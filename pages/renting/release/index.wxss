@@ -46,7 +46,7 @@ textarea,.textarea{
   color: white;
 }
 .icon{
- background-color: #eee;
+ /* background-color: #eee; */
  width: 60rpx;
  height: 60rpx; 
 }
@@ -54,11 +54,11 @@ textarea,.textarea{
   width: 100rpx;
   text-align: center;
   margin: 0 18rpx 40rpx 14rpx;
-  border: 2rpx solid #eee;
+  border: 2rpx solid transparent;
   padding-bottom: 6rpx;
 }
 .tagactive{
-  border-color: #4FD7F0;
+  border: 2rpx solid #eee;
 }
 .config_tag view{
   line-height: 106rpx;

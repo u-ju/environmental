@@ -75,7 +75,7 @@
   <view class='item  flex_btw align_center'>
     <text class='size28 color9'>房屋配置：</text>
     <!-- <input class='size28 ' data-contact='titlet'disabled='disabled'  name='config_tag' value='{{config_tag}}'></input> -->
-    <view class='flex color9 config_tag'>
+    <view class='flex color9 config_tag' data-name='6' bindtap='open'>
       <view wx:for="{{config_tag_name}}" wx:key="index">{{item}}</view>
     </view>
     <text class='iconfont icon-jiantou1'></text>

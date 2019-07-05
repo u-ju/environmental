@@ -6,7 +6,7 @@
 }
 .swiperbox ,swiper image{
   width: 100%;
-  height: 600rpx;
+  height: 750rpx;
   border-radius: 0;
 }
 

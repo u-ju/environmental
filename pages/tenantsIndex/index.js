@@ -25,6 +25,7 @@ Page({
     var that = this;
     util.getJSON({ apiUrl: apiurl.shop_}, function (res) {
       var result = res.data.result
+      getApp().globalData.shop = result
       that.setData({
         is_apply: result.is_apply,
         apply_info: result.apply_info,

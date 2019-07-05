@@ -103,7 +103,6 @@ Page({
     var timevalue = this.data.timevalue
     var time = this.data.hour1[val[0]] + '-' + this.data.hour1[val[1]];
     var timenum = timevalue.length-1
-    console.log(this.data.timezc)
     this.setData({
       timevalue: timevalue,
       clicktime: time
@@ -138,13 +137,12 @@ Page({
   ch_true(){
     var timevalue = this.data.timevalueR || [];
     timevalue.push(this.data.clicktime)
-    console.log(timevalue)
     this.setData({
       visiblet: false,
       timevalueR: timevalue,
       timecz:0
     })
-    wx.setStorageSync('timevaluet', this.data.timevalue)
+    wx.setStorageSync('timevaluet', this.data.timevalueR)
   },
   deltime(e) {
     let index = e.currentTarget.dataset.index;
@@ -153,6 +151,7 @@ Page({
     this.setData({
       timevalueR: timevalue,
     })
+    wx.setStorageSync('timevaluet', this.data.timevalueR)
   },
   timeadd(e){
     var timevalue = this.data.timevalue||[];
@@ -435,9 +434,7 @@ Page({
         cost: wx.getStorageSync('costt'),
         share_mobile: wx.getStorageSync('share_mobilet') || that.data.share_mobile,
       })
-      console.log(this.data.title)
     }
-    console.log(this.data.title)
   },
   location(address) {
     var that = this
@@ -476,7 +473,6 @@ Page({
 
   },
   input(e) {
-    console.log(e.detail.value)
     if (e.currentTarget.dataset.contact == "introt") {
       this.setData({
         intro: e.detail.value
@@ -538,7 +534,6 @@ Page({
         util.loading()
         var tempFiles = res.tempFiles
         var promiseArr = []
-        console.log(tempFiles)
         for (var i in tempFiles) {
           
           let promise = new Promise((resolve, reject) => {
@@ -618,7 +613,7 @@ Page({
         that.setData({
           ['image[' + index + '].upload_picture_list']: upload_picture_list,
         });
-        wx.setStorageSync('image' + index+'t', upload_picture_list)
+        // wx.setStorageSync('image' + index+'t', upload_picture_list)
       }
     })
     // 上传 进度方法
@@ -644,7 +639,7 @@ Page({
     that.setData({
       ['image[' + e.currentTarget.dataset.index + '].upload_picture_list']: [],
     });
-    wx.setStorageSync('image' + e.currentTarget.dataset.index + 't', [])
+    // wx.setStorageSync('image' + e.currentTarget.dataset.index + 't', [])
     // 
   },
   uploadpic1: function (e) {
@@ -713,7 +708,7 @@ Page({
     this.setData({
       upload_picture_list: upload_picture_list
     });
-    wx.setStorageSync('upload_picture_listt', upload_picture_list)
+    // wx.setStorageSync('upload_picture_listt', upload_picture_list)
 
   },
   /**
@@ -771,9 +766,7 @@ Page({
     wx.setStorageSync('choosedt', this.data.choosed)
   },
   formSubmit(e) {
-    console.log(e)
     var that = this;
-    console.log(this.data.title)
     if (that.data.choosed != 1) {
       return util.alert('请勾选用户协议')
     }
@@ -796,11 +789,9 @@ Page({
     data.area_id = that.data.area_id_val
     data.type = 2
     data.intro = that.data.intro
-    data.cate_id = 40
-    // that.data.cate_id
+    data.cate_id = that.data.cate_id
     data["longitude"] = that.data.longitude
     data["latitude"] = that.data.latitude
-    console.log(data)
     var images = ["license", "thumb"]
     for (var a in that.data.image) {
       if (that.data.image[a].upload_picture_list != '') {

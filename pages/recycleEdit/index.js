@@ -41,6 +41,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  // inputttt(e){
+  //   wx.setStorageSync('titlett', e.detail.value)
+  // },
   show() {
     this.setData({
       textareahidden: 1
@@ -57,6 +60,7 @@ Page({
     })
   },
   onLoad: function (options) {
+   
     if (options.recycle != '' && options.recycle != undefined && options.recycle != 0) {
       this.userShow()
 

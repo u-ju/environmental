@@ -75,6 +75,8 @@ App({
     is_:'',
     front_share_home:[],
     company_info:'',
-    id:''
+    id:'',
+    config_tag:[],
+    shop:[]
   }
 })

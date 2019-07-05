@@ -130,7 +130,8 @@ Component({
       })
       wx.showLoading({
         title: '加载中',
-        mask: true
+        mask: true,
+        duration: 40000,
       })
       var data = { pay_key: that.data.items.pay_key, payment: that.data.payment, pay_amount: that.data.pay_amount, pay_cash: that.data.pay_amount }
         // , payment_ext: that.data.payment_ext
@@ -142,7 +143,7 @@ Component({
           var result = res.data.result
           if (result.payment == "balance" || result.payment == "installment") {
             util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
-              util.alert("支付成功")
+              // util.alert("支付成功")
               
             }, function () {
               
@@ -159,12 +160,12 @@ Component({
               success(res1) {
                 util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
                   // wx.hideLoading()
-                  
+                  wx.setStorageSync('wechatpay', 1)
                 }, function () {
                   // wx.hideLoading()
                   
                 }, function () {
-                  wx.hideLoading()
+                  // wx.hideLoading()
                   
                 })
               },
@@ -175,141 +176,6 @@ Component({
           }
         })
     },
-    // 地区选择
-    // loadAddress: function (options) {
-    //   var that = this;
-    //   this.getArea(0, function (array, area) {
-    //     var cengji = that.data.cengji
-    //     cengji[0]['array'] = array
-    //     cengji[0]['area'] = area
-    //     that.setData({
-    //       cengji: cengji
-    //     });
-    //   });
-    // },
-    // cascadePopup: function () {
-    //   var animation = wx.createAnimation({
-    //     duration: 500,
-    //     timingFunction: 'ease-in-out',
-    //   });
-    //   this.animation = animation;
-    //   animation.translateY(-285).step();
-    //   this.setData({
-    //     animationData: this.animation.export(),
-    //     maskVisual: 'show'
-    //   });
-    // },
-    // cascadeDismiss: function () {
-    //   this.animation.translateY(285).step();
-    //   this.setData({
-    //     animationData: this.animation.export(),
-    //     maskVisual: 'hidden'
-    //   });
-    // },
-    // choosearea(e) {
-    //   var that = this;
-    //   var index = e.currentTarget.dataset.index;
-    //   var cengji = this.data.cengji;
-    //   cengji[this.data.current]['currentname'] = this.data.cengji[this.data.current]['array'][index]
-    //   cengji[this.data.current]['currentindex'] = index
-    //   this.setData({
-    //     cengji: cengji
-    //   });
-      
-    //   if (cengji[this.data.current]['area'][0]["type"]==that.data.ban){//在哪一层停止
-    //     var areaSelectedStr = ''
-    //     for (var i in cengji) {
-    //       areaSelectedStr = areaSelectedStr + " " + cengji[i].currentname
-    //       if (cengji[i]['area'][0]["type"] == that.data.tokonw) {//知道与之对应的选择的昵称
-    //         this.setData({
-    //           konwname: cengji[i].currentname
-    //         })
-    //       }
-    //     }
-    //     that.cascadeDismiss();
-    //     return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, konwname: that.data.konwname })
-    //   }
-      
-    //   console.log(cengji[this.data.current]['area'][0]["type"])
-    //   if (cengji[this.data.current]['area'][0]["type"] == 'biotope') {
-    //     this.setData({
-    //       isbiotope: true,
-    //       biotopecurrent: this.data.current,
-    //       biotope_name: cengji[this.data.current]['array'][index]
-    //     })
-    //   }
-    //   if (this.data.current < that.data.biotopecurrent) {
-    //     this.setData({
-    //       isbiotope: false,
-    //       biotope_name:''
-    //     })
-    //   }
-    //   this.getArea(this.data.cengji[that.data.current]['area'][index]["area_id"], function (array, area) {
-    //     if (area.length == 0) {
-    //       var areaSelectedStr = ''
-    //       for (var i in cengji) {
-    //         if (i > that.data.current) {
-    //           cengji.splice(i, 1)
-             
-    //         }else{
-    //           areaSelectedStr = areaSelectedStr + " " + cengji[i].currentname
-    //         }
-            
-    //       }
-    //       that.setData({
-    //         areaSelectedStr: areaSelectedStr,
-    //         area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"]
-    //       });
-    //       that.cascadeDismiss();
-    //       return that.triggerEvent("choosea", { areaSelectedStr: areaSelectedStr, area_id_val: that.data.cengji[that.data.current]['area'][index]["area_id"], area: that.data.cengji[that.data.current]['area'][index], isbiotope: that.data.isbiotope, biotope_name: that.data.biotope_name, konwname: that.data.konwname})
-    //     }
-    //     // var current = that.data.current
-
-    //     if (that.data.currentindex <= that.data.current) {
-    //       cengji.push({ currentname: '请选择', array: array, area: area, currentindex: -1 })
-
-    //     } else {
-
-    //       for (var i in cengji) {
-    //         if (i > that.data.current) {
-    //           cengji.splice(i, 1)
-    //         }
-    //       }
-    //       cengji[that.data.current + 1] = { currentname: '请选择', array: array, area: area, currentindex: -1 }
-    //     }
-    //     that.setData({
-    //       cengji: cengji,
-    //       current: that.data.current + 1,
-    //       currentindex: that.data.current + 1,
-    //     });
-
-    //   });
-    // },
-    // getArea: function (pid, cb) {
-    //   var that = this;
-    //   util.getJSON({ apiUrl: apiurl.area + pid }, function (res) {
-    //     var area = res.data.result.list, array = []
-    //     for (var i = 0; i < area.length; i++) {
-    //       array[i] = area[i]['name'];
-    //     }
-    //     cb(array, area)
-    //   })
-    // },
-    // currentChanged: function (e) {
-    //   // swiper滚动使得current值被动变化，用于高亮标记
-    //   var current = e.detail.current;
-    //   this.setData({
-    //     current: current
-    //   });
-      
-    // },
-    // changeCurrent: function (e) {
-    //   // 记录点击的标题所在的区级级别
-    //   var current = e.currentTarget.dataset.current;
-    //   this.setData({
-    //     current: current,
-    //     // currentindex: current,
-    //   });
-    // },
+    
   }
 })

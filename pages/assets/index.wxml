@@ -22,12 +22,15 @@
   <view class='money justify_center flex align_center'>
     <text class='size72 colorFFBF1A bold'>￥{{balance}}</text>
   </view>
+  <!-- <view class='flex_ard'> -->
   <view class='size36  withdrawal'>
     <navigator url='../withdrawal/withdrawal?money={{balance}}&is_password={{is_password}}&withdraw_flow={{balance_withdraw_flow}}&url=balanceWithdraw'>提现</navigator>
   </view>
   <view class='size36  withdrawal zhuan color4fd6f0'>
     <navigator url='../withdrawal/transfer?type=2&money={{balance}}'>转账</navigator>
   </view>
+  <!-- </view> -->
+  <pay choose="{{choose}}" data="{{data}}" styles="width:310rpx;height:88rpx;margin:0 auto 18rpx auto;border-radius:10rpx;line-height:88rpx;text-align:center;" bind:open='openp' title='一键还款'  />
   <view class='flex_ard align_center flex brx'>
     <view class=' size28 {{balanceurl=="balanceIndex"?"color299EF0":"color989898"}}' bindtap='balance' data-url='balanceIndex'>环保金明细</view>
     <view class='size28 navigator {{balanceurl=="walletBalanceFamilyIndex"?"color299EF0":"color989898"}}' wx:if="{{has_family==1}}" bindtap='balance' data-url='walletBalanceFamilyIndex'>家庭环保金记录</view>

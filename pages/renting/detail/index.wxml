@@ -60,9 +60,9 @@
 <view class=''>
   <view class='title'>房屋配置 </view>
   <view class='flex wrap config'>
-    <view class='center' wx:for="{{14}}" wx:key="index">
-      <image class='icon'></image>
-      <view>WIFI</view>
+    <view class='center' wx:for="{{tag}}" wx:key="index">
+      <image class='icon' src='{{item.icon}}'></image>
+      <view>{{item.name}}</view>
     </view>
   </view>
 </view>

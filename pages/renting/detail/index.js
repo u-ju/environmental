@@ -23,8 +23,17 @@ Page({
       apiUrl: apiurl.renting.show + id,
     }, function (res) {
       var result = res.data.result
+      var config_tag=getApp().globalData.config_tag
+      var config_tag1 = result.config_tag
+      var tag = []
+      for (var i in config_tag){
+        if (config_tag1.indexOf(config_tag[i]["id"])>-1){
+          tag.push(config_tag[i])
+        }
+      }
       that.setData({
-        result: result
+        result: result,
+        tag: tag
       })
       util.hideLoading()
     })
