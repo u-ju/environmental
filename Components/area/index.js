@@ -67,6 +67,7 @@ Component({
 
     onload() {
       this.loadAddress()
+     
     },
     // 地区选择
     loadAddress: function(options) {
@@ -78,6 +79,9 @@ Component({
         that.setData({
           cengji: cengji
         });
+        that.choosearea('', 0,function(){
+          that.choosearea('', 0)
+        })
       });
     },
     cascadePopup: function() {
@@ -126,9 +130,9 @@ Component({
         unit: that.data.unit
       })
     },
-    choosearea(e) {
+    choosearea(e,indexn,suc) {
       var that = this;
-      var index = e.currentTarget.dataset.index;
+      var index = e ? e.currentTarget.dataset.index :indexn
       var cengji = this.data.cengji,konwname = '';
       cengji[this.data.current]['currentname'] = this.data.cengji[this.data.current]['array'][index]
       cengji[this.data.current]['currentindex'] = index
@@ -219,7 +223,9 @@ Component({
           current: that.data.current + 1,
           currentindex: that.data.current + 1,
         });
-
+        if (suc){
+          suc()
+        }
       });
     },
     getArea: function(pid, cb) {

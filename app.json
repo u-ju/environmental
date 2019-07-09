@@ -5,9 +5,9 @@
     "pages/renting/index",
     "pages/renting/release/index",
     "pages/renting/list/index",
+    "pages/shopping_mall/shopping_mall",
     
-    
-    
+    "pages/myCommunity/index",
     "pages/renting/detail/index",
     
     "pages/idle/list/index",
@@ -85,12 +85,12 @@
     "pages/area/index",
     "pages/address_edit/index",
     "pages/map/index",
-    "pages/myCommunity/index",
+    
     "pages/myGreenCredit/index",
     "pages/myGreenCredit/list",
     "pages/guide/index",
     "pages/myCart/index",
-    "pages/shopping_mall/shopping_mall",
+    
     "pages/business_details/viewcomments/index",
     "pages/personal_center/personal_center",
     "pages/business_details/product/index",

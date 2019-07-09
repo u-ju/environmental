@@ -15,7 +15,7 @@
     <block wx:for="{{tablen}}" wx:key="index" wx:for-index="indexnum">
       <swiper-item bindtap='link' data-link='{{item.control}}'>
         <view class='flex wrap'>
-          <view wx:for="{{10}}" wx:key="index" class='tabitem {{cate_ids==shop_cate[indexnum*10+index]["id"]?"color27AAD9":""}}' bindtap="selctTab" data-index="{{index}}" data-name='{{shop_cate[indexnum*10+index]["name"]}}' data-current='{{shop_cate[indexnum*10+index]["id"]}}'
+          <view wx:for="{{10}}" wx:key="index" class='tabitem {{cate_ids==shop_cate[indexnum*10+index]["id"]?"color27AAD9":""}}' bindtap="selctTab" data-index="{{index}}" data-name='{{shop_cate[indexnum*10+index]["name"]}}'  data-item='{{shop_cate[indexnum*10+index]}}' data-current='{{shop_cate[indexnum*10+index]["id"]}}'
             wx:if="{{shop_cate.length>indexnum*10+index}}">
             <block>
               <image src='{{shop_cate[indexnum*10+index]["icon"]}}'></image>
@@ -55,13 +55,20 @@
       </scroll-view>
     </view>
     <view class='flex allse' wx:if="{{tabIndex==2}}">
-      <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;">
+    <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{erji}}" wx:key="index" wx:for-index="indexnum" wx:for-item="aa">
+        <view class="qy quyu-left" style='' wx:for="{{aa}}" wx:key="index">
+          <view class="itemselect {{cateid[indexnum]==item.id?'current':''}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' data-item='{{item}}' data-indexnum='{{indexnum}}'  bindtap="choose2">
+            {{item.name}}
+          </view>
+        </view>
+      </scroll-view>
+      <!-- <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;">
         <view class="qy quyu-left" style='' wx:for="{{erji}}" wx:key="index" wx:for-index="index">
           <view class="itemselect {{cate_id==item.id?'current':''}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' bindtap="choose2">
             {{item.name}}
           </view>
         </view>
-      </scroll-view>
+      </scroll-view> -->
     </view>
     <view class='' wx:if="{{tabIndex==3}}">
       <view class='screenitem'>

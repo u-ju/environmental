@@ -34,7 +34,7 @@ Page({
     loadMoreData: '加载更多……',
     erjinum:1,
     cate_ids:0,
-    tabTxt: ['智能排序', '附近 ', '餐饮美食', '筛选'],
+    tabTxt: ['智能排序', '附近 ', '全部', '筛选'],
     tabactive:-1,
     qyopen: false,
     qyshow: true,
@@ -45,7 +45,8 @@ Page({
     cost:"",
     feature:'',
     costindex:-1,
-    sort:''
+    sort:'',
+    cateid:[]
   },
   search(e) {
 
@@ -149,14 +150,23 @@ Page({
       getApp().globalData.config = result;
       var shop_cate = app.globalData.config.shop_cate
       var tabTxt = that.data.tabTxt
-      tabTxt[2] = shop_cate[0].name;
-
+      var erji = util.copyarr(shop_cate)
+      erji.unshift({
+        id:"",
+        name: "全部",
+        parent_id:"0",
+        sort:""
+      })
       that.setData({
         shop_cate: shop_cate,
-        erji: shop_cate[0].children,
-        cate_id: shop_cate[0].id,
-        cate_ids: shop_cate[0].id,
-        tabTxt2: shop_cate[0].name,
+        erji: [erji],
+        // shop_cate[0].children
+        cate_id: '',
+        // shop_cate[0].id
+        cate_ids: '',
+        // shop_cate[0].id
+        tabTxt2: tabTxt,
+        // shop_cate[0].name
         tablen: Math.ceil(shop_cate.length / 10),
         tabTxt: tabTxt
       })
@@ -314,12 +324,13 @@ Page({
     }
     var tabTxt = this.data.tabTxt
     tabTxt[2] = e.currentTarget.dataset.name;
+    this.selctTab2(e.currentTarget.dataset.item, e.currentTarget.dataset.name, e.currentTarget.dataset.current)
     this.setData({
       indexSize: e.currentTarget.dataset.index,
       cate_id: e.currentTarget.dataset.current,
       cate_ids: e.currentTarget.dataset.current,
+      cateid: [e.currentTarget.dataset.current],
       tabTxt2: e.currentTarget.dataset.name,
-      erji: this.data.shop_cate[e.currentTarget.dataset.index].children || [],
       shop_cate: shop_cate,
       erjinum: 1,
       tabTxt: tabTxt
@@ -353,17 +364,53 @@ Page({
 
 
   },
-  choose2(e) {
-    var that = this, erji = that.data.erji, erjinum = 0, id = e.currentTarget.dataset.id;
-    var tabTxt = this.data.tabTxt
-    tabTxt[2] = e.currentTarget.dataset.name;
-    // wx.showLoading({
-    //   title: '加载中',
-    // })
+  selctTab2(item, name, id){
+    var that = this;
+    var erji = that.data.erji,cateid=this.data.cateid
+    var child = item.children || []
+    child = util.copyarr(child)
+    child.unshift({
+      id: id,
+      name: name,
+      parent_id: "0",
+      sort: ""
+    })
+    cateid[0] = id
+    cateid[1] = child[0]["id"]
+    erji[1] = child
+    console.log(erji)
     that.setData({
       erji: erji,
+      cateid: cateid
+    })
+  },
+  choose2(e) {
+    var that = this, erji = that.data.erji, erjinum = 0, id = e.currentTarget.dataset.id, cateid = that.data.cateid;
+    var tabTxt = this.data.tabTxt
+    tabTxt[2] = e.currentTarget.dataset.name;
+    if (e.currentTarget.dataset.indexnum == 0 ) {
+
+      var erji = that.data.erji
+      var child = e.currentTarget.dataset.item.children||[]
+      child = util.copyarr(child)
+      child.unshift({
+        id: id,
+        name:  e.currentTarget.dataset.name,
+        parent_id: "0",
+        sort: ""
+      })
+      console.log(child)
+      cateid[0] = id
+      cateid[1] = child[0]["id"]
+      erji[1] = child
+      that.setData({
+        erji: erji,
+        cateid: cateid
+      })
+    } 
+    that.setData({
       cate_id: id,
-      erjinum: erjinum,
+      cate_ids: cateid[0],
       tabTxt: tabTxt
     })
     // that.init(id)
