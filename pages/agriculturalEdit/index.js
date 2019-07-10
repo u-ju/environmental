@@ -19,7 +19,7 @@ Page({
     show: [false],
     key_name:[],
     key:[],
-    thumb:[],
+    // thumb:[],
     images: [],
     price:[],
     stock:[],
@@ -37,12 +37,10 @@ Page({
     // if (this.data.skunum + 1 > this.data.spec_group_arr.length){
     //   return util.alert('')
     // }
-    var thumb = this.data.thumb
     var images = this.data.images
     var key_name = this.data.key_name
     var key = this.data.key
     var price = this.data.price
-    thumb.push([])
     images.push([])
     price.push('')
     key_name.push('')
@@ -50,7 +48,6 @@ Page({
     this.setData({
       skunum: this.data.skunum+1,
       images: images,
-      thumb: thumb,
       key_name: key_name,
       key: key
     })
@@ -60,7 +57,6 @@ Page({
     this.setData({
       skunum: this.data.skunum - 1,
     })
-    var thumb = this.data.thumb.splice(index, 1)
     var images = this.data.images.splice(index, 1)
     var key_name = this.data.key_name.splice(index, 1)
     var key = this.data.key.splice(index, 1)
@@ -69,7 +65,6 @@ Page({
       del = del.push(e.currentTarget.dataset.key)
     }
     this.setData({
-      // thumb: thumb,
       // images: images,
       // key_name: key_name,
       // key: key,
@@ -112,7 +107,6 @@ Page({
         key: [],
         // price:[],
         // stock:[],
-        // thumb:[],
         // images:[]
       })
       }, function (e) {
@@ -170,7 +164,7 @@ Page({
   init(){
     var that = this;
     util.getJSON({ apiUrl: apiurl.shop_goodsShowOwn + '?shop_id=' + that.data.shop_id + '&spu_id=' + that.data.spu_id }, function (res) {
-      var result = res.data.result, key = [], key_name = [], price = [], stock = [], thumb = [], images = [], edit = [], install_fee=[]
+      var result = res.data.result, key = [], key_name = [], price = [], stock = [],  images = [], edit = [], install_fee=[]
       for (var i in result.skus){
         edit[i] = result.skus[i]['sku_key']
         key[i] = result.skus[i]['sku_key']
@@ -183,11 +177,6 @@ Page({
         images[i]=[]
         for (var j in result.skus[i]['images']){
           images[i].push({ upload_percent: 100, path_server: result.skus[i]['images'][j] })
-        }
-        if (result.skus[i]['thumb'] ){
-          thumb[i] = [{ upload_percent: 100, path_server: result.skus[i]['thumb'] }]
-        }else{
-          thumb[i]=[]
         }
       }
       if (this.data.source == "league") {
@@ -209,7 +198,6 @@ Page({
         key_name: key_name,
         price: price,
         stock: stock,
-        thumb: thumb,
         status: result.status,
         images: images,
         skunum: result.skus.length,
@@ -314,33 +302,33 @@ Page({
       }
     })
   },
-  uploadpicthumb(e) {
-    var that = this;
+  // uploadpicthumb(e) {
+  //   var that = this;
     
-    var index = e.currentTarget.dataset.indexnum;
+  //   var index = e.currentTarget.dataset.indexnum;
     
-    this.uploadpic(e, 1, 'thumb', e.currentTarget.dataset.indexnum, function (thumb) {
+  //   this.uploadpic(e, 1, 'thumb', e.currentTarget.dataset.indexnum, function (thumb) {
       
-      that.setData({
-        ['thumb[' + index +']']: thumb,
-      });
-      for (var j in thumb) {
-        if (thumb[j]['upload_percent'] == 0) {
-          //调用函数
-          util.upload_pic(apiurl.upload_image, that, thumb, j, function (e) {
-            that.setData({
-              ['thumb[' + index + ']']: e,
-            });
-            util.hideLoading()
-          }, function (e) {
-            that.setData({
-              ['thumb[' + index + ']']: e,
-            });
-          })
-        }
-      }
-    })
-  },
+  //     that.setData({
+  //       ['thumb[' + index +']']: thumb,
+  //     });
+  //     for (var j in thumb) {
+  //       if (thumb[j]['upload_percent'] == 0) {
+  //         //调用函数
+  //         util.upload_pic(apiurl.upload_image, that, thumb, j, function (e) {
+  //           that.setData({
+  //             ['thumb[' + index + ']']: e,
+  //           });
+  //           util.hideLoading()
+  //         }, function (e) {
+  //           that.setData({
+  //             ['thumb[' + index + ']']: e,
+  //           });
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
   uploadpicimages(e) {
     var that = this;
     var index = e.currentTarget.dataset.indexnum;
@@ -424,12 +412,12 @@ Page({
       this.setData({
         spu_intro:[]
       })
-    } else if (e.currentTarget.dataset.name =="thumb"){
-      var thumb = this.data.thumb;
-      thumb[e.currentTarget.dataset.indexnum]=[]
-      this.setData({
-        thumb: thumb
-      })
+    // } else if (e.currentTarget.dataset.name =="thumb"){
+    //   var thumb = this.data.thumb;
+    //   thumb[e.currentTarget.dataset.indexnum]=[]
+    //   this.setData({
+    //     thumb: thumb
+    //   })
     } else if (e.currentTarget.dataset.name == "images"){
       var images = this.data.images
       images[e.currentTarget.dataset.indexnum].splice(index, 1);
@@ -452,7 +440,7 @@ Page({
       data['sku_arr[' + i+'][key]'] = that.data.key[i]
       data['sku_arr[' + i + '][price]'] = e.detail.value['price['+i+']']
       data['sku_arr[' + i + '][stock]'] = e.detail.value['stock[' + i + ']']
-      data['sku_arr[' + i + '][thumb]'] = that.data.thumb[i][0]['path_server']
+      // data['sku_arr[' + i + '][thumb]'] = that.data.thumb[i][0]['path_server']
       if (this.data.source =="league"){
         data['sku_arr[' + i + '][install_fee]'] = e.detail.value['install_fee[' + i + ']']
       }

@@ -1,0 +1,12 @@
+<view class='zzc' catchtouchmove="move" dat="{{dat}}" wx:if="{{visablen==1}}" >
+   <view class='popup'>
+      <view class='textR'>
+        <image src='../../images/delete_pic.png' class='del' bindtap='close' data-item='' ></image>
+      </view>
+      <image src='{{dat.intro}}' class='con'></image>
+      <view class='btnitem'>
+        <view class='btn' data-item='{{dat.button_arr[0]}}' bindtap='close'>{{dat.button_arr[0]["name"]}}</view>
+        <view class='sure btn' data-item='{{dat.button_arr[1]}}' bindtap='close'>{{dat.button_arr[1]["name"]}}</view>
+      </view>
+   </view> 
+</view>

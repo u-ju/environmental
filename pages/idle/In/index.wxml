@@ -48,7 +48,7 @@
       <textarea wx:if="{{show}}" focus="{{show}}" class='size28 ' bindinput='input' bindblur='unshow' value='{{intro}}' name='intro'></textarea>
       <view class='textarea size28 ' bindtap='show' wx:else>{{intro}}</view>
     </view>
-    <view class='item1 flex align_center image'>
+    <!-- <view class='item1 flex align_center image'>
       <text class='size28 '>缩略图</text>
       <view class="picture_list">
         <view class="picture_item {{id}}" wx:if="{{upload_picture_list.length>0}}">
@@ -64,7 +64,7 @@
           <view class='size26 bold center'>点击上传图片</view>
         </view>
       </view>
-    </view>
+    </view> -->
 
     <view class='item1 flex align_center image'>
       <text class='size28 '>轮播图</text>

@@ -54,9 +54,9 @@ Page({
       apiUrl: apiurl.idle.infoShow+id,
     }, function (res) {
       var result = res.data.result,lunbo= [],upload_picture_list= []
-      if (result.thumb){
-        upload_picture_list=[{ upload_percent: 100, path_server: result.thumb || "" }]
-      }
+      // if (result.thumb){
+      //   upload_picture_list=[{ upload_percent: 100, path_server: result.thumb || "" }]
+      // }
       if (result.images.length>0){
         for(var i in result.images){
           lunbo.push({ upload_percent: 100, path_server: result.images[i] || "" })
@@ -279,7 +279,7 @@ Page({
   submit(e) {
     console.log(e)
     var data = e.detail.value, that = this,lunbo = this.data.lunbo
-    data.thumb = this.data.upload_picture_list[0]['path_server'] || ""
+    // data.thumb = this.data.upload_picture_list[0]['path_server'] || ""
     for (var a in lunbo){
       data["images[" + a + "]"] = lunbo[a]['path_server']
     }

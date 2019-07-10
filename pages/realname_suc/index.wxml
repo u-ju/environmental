@@ -11,7 +11,7 @@
     </view>
     <view class='flex'>
       <view class='left_item'>居住地址</view>
-      <view class='right_item'>{{result.address}}</view>
+      <view class='right_item'>{{result.address||'无'}}</view>
     </view>
     <view class='flex'>
       <view class='left_item'>是否实名</view>

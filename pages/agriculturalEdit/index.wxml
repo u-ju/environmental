@@ -70,7 +70,7 @@
         <view class='left1'>安装费： </view>
         <input placeholder='' value='{{install_fee[indexnum]}}' type='number' bindinput='inputi' data-index='{{indexnum}}' name='install_fee[{{indexnum}}]' class='width140'></input>
       </view>
-      <view class='flex align_center maginb50'>
+      <!-- <view class='flex align_center maginb50'>
         <view class='left1'>缩略图：</view>
         <view class="picture_listmore">
           <view wx:for="{{thumb[indexnum]}}" class="picture_itemmore" wx:key="index">
@@ -88,7 +88,7 @@
             </view>
           </view>
         </view>
-      </view>
+      </view> -->
       <view class='flex align_center maginb50'>
         <view class='left1'>轮播图：</view>
         <view class="picture_listmore">

@@ -1,0 +1,47 @@
+page{
+  position: relative;
+}
+.zzc{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 10000;   
+}
+.popup{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%)
+}
+.del{
+  width: 72rpx;
+  height: 72rpx;
+}
+.con{
+  width: 600rpx;
+  height: 328rpx;
+}
+.btn{
+  width:245rpx;
+  height:80rpx;
+  border:5rpx solid rgba(255,255,255,1);
+  border-radius:40rpx;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 80rpx;
+  margin-left: 20rpx;
+  color: #fff;
+}
+.sure{
+  background-color: #fff;
+  color: #4FD6F0;
+}
+.btnitem{
+  display: flex;
+}
+.textR{
+  text-align: right;
+}

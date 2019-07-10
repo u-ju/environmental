@@ -24,7 +24,6 @@ Page({
     afterColortag: "#27aad9", //当前选中的指示点颜色
     intervaltag: 11000,
     durationtag: 1000,
-
     userInfo: {},
     banner: [],
     block: [],
@@ -40,7 +39,8 @@ Page({
     ak: util.bmak,
     weatherData: '',
     futureWeather: [],
-    imagetq: [{
+    imagetq: [
+      {
         title: '晴',
         images: '../../images/sun@2x.png'
       },
@@ -80,6 +80,9 @@ Page({
     var that = this;
     this.refreshView = this.selectComponent("#refreshView")
     var formData = wx.getStorageSync('formData')
+    this.setData({
+      guidel: wx.getStorageSync('guidel')
+    })
     if (options.pjurl){
       this.setData({
         pjurl: options.pjurl,
@@ -162,8 +165,11 @@ Page({
         user: result.user,
         shop_goods_ad: result.shop_goods_ad,
         taglen: Math.ceil(tag.length / 8),
-        seckill_list: result.seckill_list||''
+        seckill_list: result.seckill_list||'',
+        popout_image: result.popout_image||'',
+        popout: result.popout_image?1:0
       })
+      console.log(that.data.popout)
       for (var i in tag ){
         if (tag[i]['control']['key'] =='front_tshop_index'){
           getApp().globalData.front_tshop_index = tag[i]["children"]
@@ -205,6 +211,20 @@ Page({
       })
     }
   },
+  // 操作指南
+  guidel(e){
+
+    if (e.detail.data&&e.detail.data.control.control){ 
+      util.nav(e.detail.data)
+    } else if (e.detail.data.key=="back"){
+      wx.setStorageSync('guidel', 1)
+    }
+    this.setData({
+      popout:0
+    })
+    // console.log(this.data.popout)
+  },
+  // 天气
   weather() {
     var that = this;
     // 新建bmap对象 

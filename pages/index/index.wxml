@@ -1,12 +1,10 @@
 <!--index.wxml-->
 
 <block wx:if="{{token&&token!=1}}">
-  <!-- bind:onPullState="_pullState" -->
+  <popupImg wx:if="{{!guidel}}" visablen="{{popout}}" dat="{{popout_image}}" bind:close="guidel" />
   <import src="../../Components/tab-bar/tab-bar.wxml" />
   <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
-  <!-- <refresh-view id='refreshView' backgroundColor="#fff" bind:onRefresh="onPullDownRefresh"  /> -->
   <view>
-    <!-- bindtouchstart='handletouchstart' bindtouchmove='handletouchmove' bindtouchend='handletouchend' bindtouchcancel='handletouchcancel' -->
     <view class='center loading' hidden="{{0!=pullState}}">
       <view class="refresh-loading"></view>
     </view>
@@ -35,35 +33,10 @@
         </view>
 
 
-        <!-- <view class='flex wrap'>
-          <block wx:for="{{tag}}" wx:key="index">
-            <view class='index_modular center' bindtap='link' data-link='{{item.control}}' data-children="{{item.children}}">
-
-              <view class='index_modular_cri'>
-                <image mode='aspectFill' src='{{item.icon}}'></image>
-              </view>
-              <view class='index_modular_con color6'>{{item.name}}</view>
-            </view>
-          </block>
-        </view> -->
-
-        <!-- <view class='flex_btw theme wrap'>
-    <block wx:for="{{block}}" wx:key="index">
-      <view class='index_theme flex align_center' bindtap='link' data-link='{{item.control}}' data-open='1'  >
-        <image class='index_themepic' src='{{item.background}}'></image>
-        <view class='flex_col' huhu="{{index}}">
-          <view class='size26 relative'>{{item.name}}</view>
-        </view>
-      </view>
-    </block>
-  </view> -->
 
 
       </view>
 
-      <!-- <view class="ard_index" bindtap='link'  data-link='{{nper.control}}' >
-  <image src="{{nper.image}}" />
-</view> -->
       <view class='tab'>
         <swiper class=" {{tag.length>4?'swiper-box':'swiper-box1'}}" indicator-dots="{{indicatorDotstag}}" autoplay="{{autoplaytag}}" interval="{{intervaltag}}" duration="{{durationtag}}" indicator-active-color="{{afterColortag}}" indicator-color="{{beforeColortag}}">
           <block wx:for="{{taglen}}" wx:key="index" wx:for-index="indexnum">
@@ -93,18 +66,6 @@
               <text class='size34'>{{item.value}}</text>
             </view>
           </view>
-          <!-- <view class='index_putin left'>
-        <view class='size28 color3 flex'>
-          <text >{{user.wallet.title}}</text>
-          <view class='wallet color3 index_putin_right'  bindtap='link' data-link='{{user.wallet.button.attach.control}}'>
-            {{user.wallet.button.title}}
-          </view>
-        </view>
-        <view>
-          <text class='size36 color6ADB7A'>{{user.wallet.value}}</text>
-          <text class='color102'>元</text>
-        </view>
-      </view> -->
 
         </view>
       </view>
