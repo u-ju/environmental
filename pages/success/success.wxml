@@ -1,19 +1,7 @@
-<!-- <wux-result
-    title="支付成功"
-    label='mia'
-    buttons="{{ buttons }}"
-    
-    fixed
-    bind:click="onClick"
-/> -->
-
-<view class='center'>
-  <image src='{{hint.icon}}' class='pay'></image>
-</view>
-<view class='size46 color4 center'>{{hint.title}}</view>
-<view class='color898989 center'><text>{{hint.intro}}</text></view>
-<block wx:for="{{hint.button_arr}}">
-  <view class='btn' bindtap='link' style='background:{{item.color}}' data-control='{{item.control}}' data-key='{{item.key}}'>{{item.name}}</view>
-</block>
-<!-- <view class='btn' bindtap='sure'>确定</view>
-<view class='btn back' bindtap='back'>返回</view> -->
+<swiper class='swiperbox' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" current="{{index}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" >
+  <block wx:for="{{images}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" mode='aspectFill' bindtap='previewImg' data-src='{{item}}' />
+    </swiper-item>
+  </block>
+</swiper>

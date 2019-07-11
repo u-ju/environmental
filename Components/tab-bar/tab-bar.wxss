@@ -1,15 +1,15 @@
 .icon{
-  width:48rpx;
-  height: 48rpx;
-  margin: 10rpx auto 0 auto;
+  width: 60rpx;
+  height: 60rpx;
+  margin: 8rpx auto 0 auto;
 }
 .tabar{
   position: fixed;
   bottom:0;
   width: 100%;
-  height: 98rpx;
+  height: 108rpx;
   z-index: 999;
-  border-top: 1px solid #F7F7F7;
+  /* border-top: 1px solid #F7F7F7; */
 }
 .tabBar{
   width: 100%;
@@ -17,10 +17,11 @@
   position: absolute;
   background:white;
   font-size:20rpx;
-  color:#666;
+  color:#fff;
   display: flex;
   justify-content: space-between;
   z-index: 888;
+  background-color: #5E93D7;
 }
 
  .tabBar-item{
@@ -30,7 +31,7 @@
 }
 /*当前字体颜色*/
 .tabBartext{
-  color:#4FD6F0;
+  color:#48D1CC;
 }
 .tabBar_center{
   position: absolute;
@@ -78,18 +79,11 @@
   position: relative;
   z-index: 2;
 }
-.tabBar>view:nth-of-type(1) image{
-  width: 45rpx;
-  height: 45rpx;
-}
-.tabBar>view:nth-of-type(3) image{
-  width: 46rpx;
-  height: 45rpx;
-}
+
 .tabBar-item .image_box{
-  height: 58rpx;
+  height: 70rpx;
   overflow: hidden;
-  margin: 0 0 4rpx 0;
+  /* margin: 0 0 4rpx 0; */
 }
 .massage{
   position: absolute;

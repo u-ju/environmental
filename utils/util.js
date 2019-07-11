@@ -84,16 +84,18 @@ function previewImage(src, imgList) {
     }
   }
   console.log(src)
-  // wx.previewImage({
-  //   current: src, // 当前显示图片的http链接
-  //   urls: imgList, // 需要预览的图片http链接列表
-  //   success(e){
-  //     console.log(e)
-  //   },
-  //   fail(e){
-  //     console.log(e)
-  //   }
-  // })
+  wx.previewImage({
+    current: src, // 当前显示图片的http链接
+    urls: imgList, // 需要预览的图片http链接列表
+    success(e){
+      console.log(1)
+      console.log(e)
+    },
+    fail(e){
+      console.log(2)
+      console.log(e)
+    }
+  })
 }
 // 验证手机号
 function testcall(str, alert, cb) {
@@ -426,8 +428,8 @@ function getToken(valuetstu='',form,cb,mothed) {
   var token = wx.getStorageSync('token')||"";
   
   if (token && valuetstu!= 801) {
-    return token;
-    // return  'zwj';
+    // return token;
+    return  'zwj';
   }
   if (valuetstu==801){
     wx.reLaunch({

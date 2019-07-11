@@ -13,7 +13,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      items: getApp().globalData.front_tshop_index
+      bgi: getApp().globalData.front_tshop_index.bgi,
+      law_hall: getApp().globalData.front_tshop_index.law_hall,
+      more: getApp().globalData.front_tshop_index.more,
     })
   },
 

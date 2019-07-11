@@ -1,7 +1,28 @@
 <!--pages/convenience_service/index.wxml-->
-<view class='con flex wrap'>
+<!-- <view class='con flex wrap'>
   <view class='item' wx:for='{{items}}' wx:key="index" data-link='{{item.control}}' bindtap='link'>
     <image src='{{item.icon}}'></image>
     <view class='color4 size28 flex_ard align_center'><text>{{item.name}}</text></view>
+  </view>
+</view> -->
+<view class='contain'>
+  <image src='{{bgi}}'></image>
+</view> 
+<view class='more'>
+  <view class='title size30'>更多推荐</view>
+  <view class='flex_btw align_center padd30'>
+    <view class='moreitem' wx:for='{{more}}' wx:key="index" data-link='{{item.control}}' bindtap='link'>
+      <image src='{{item.icon}}'></image>
+      <view class='color4 size28 flex_ard align_center'><text>{{item.name}}</text></view>
+    </view>
+  </view>
+</view>
+<view class='convenience'>
+  <view class='title size30'>便民服务</view>
+  <view class='flex align_center wrap'>
+    <view class='moreitem' wx:for='{{law_hall}}' wx:key="index" data-link='{{item.control}}' bindtap='link'>
+      <image src='{{item.icon}}'></image>
+      <view class='color4 size28 flex_ard align_center'><text>{{item.name}}</text></view>
+    </view>
   </view>
 </view>

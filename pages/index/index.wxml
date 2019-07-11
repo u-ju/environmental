@@ -4,125 +4,49 @@
   <popupImg wx:if="{{!guidel}}" visablen="{{popout}}" dat="{{popout_image}}" bind:close="guidel" />
   <import src="../../Components/tab-bar/tab-bar.wxml" />
   <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
-  <view>
+  <view class='index'>
     <view class='center loading' hidden="{{0!=pullState}}">
       <view class="refresh-loading"></view>
     </view>
     <view class='flex_btw align_center top'>
-      <view class='flex align_center' bindtap='goarea'>
-        <image class='locations' src='../../images/dingwei.png'></image>
+      <view class='flex align_center colorfff' bindtap='goarea'>
+        <view class='iconfont icon-dingwei locations size48'></view>
         <view class='width110 hidden1 bold '>{{address}}</view>
         <text class='iconfont icon-xiajiantou'></text>
       </view>
       <view class='searchall flex_btw align_center' bindtap='search'>
         <text class='iconfont icon-sousuo color4 searchall_pic'></text>
         <input disabled='disabled' value='{{search}}' placeholder='输入想要查找的内容' name='search'></input>
-        <image class='logoi' src='../../images/logoi.png'></image>
       </view>
     </view>
-    <view class='bg'>
-      <view class="container">
-        <view class='banner'>
-          <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{beforeColor}}">
-            <block wx:for="{{banner}}" wx:key="index">
-              <swiper-item bindtap='link' data-link='{{item.control}}'>
-                <image src="{{item.image}}" class="slide-image" />
-              </swiper-item>
-            </block>
-          </swiper>
+    <view class='menu'>
+      <view class='earth'>
+        <view class='circle contain'>
+          <image src='{{tag_bgi}}'></image>
         </view>
-
-
-
-
+        <view class='menuitem'>
+          <view class='menucon flex align_center' wx:for="{{tag}}" wx:key="index"  bindtap='link' data-link='{{item.control}}'>
+            <image src='{{item.icon}}'></image>
+            <view>{{item.name}}</view>
+          </view>
+        </view>
       </view>
-
-      <view class='tab'>
-        <swiper class=" {{tag.length>4?'swiper-box':'swiper-box1'}}" indicator-dots="{{indicatorDotstag}}" autoplay="{{autoplaytag}}" interval="{{intervaltag}}" duration="{{durationtag}}" indicator-active-color="{{afterColortag}}" indicator-color="{{beforeColortag}}">
-          <block wx:for="{{taglen}}" wx:key="index" wx:for-index="indexnum">
-            <swiper-item>
-              <view class='flex wrap'>
-                <view wx:for="{{8}}" wx:key="index" class='tabitem' bindtap='link' data-link='{{tag[indexnum*8+index]["control"]}}'  wx:if="{{tag.length>indexnum*8+index}}">
-                  <block>
-                    <image src='{{tag[indexnum*8+index]["icon"]}}'></image>
-                    <view>{{tag[indexnum*8+index]["name"]}}</view>
-                  </block>
-                </view>
-              </view>
-            </swiper-item>
-          </block>
-        </swiper>
+      <view class='rubbish flex align_center' wx:if="{{ru_float.name}}" bindtap='show'>
+        <image class='rubbishpic' src='{{ru_float.icon}}'></image>
+        <view>{{ru_float.name}}</view>
       </view>
-      <view class='bg marginfff'>
-        <view class="container flex_btw twobr" wx:if="{{user.length>0}}">
-          <view class='index_putin border_right left' wx:for="{{user}}" wx:key="index" style='background-color:{{item.color}};' bindtap='link' data-link='{{item.button.control}}'>
-            <view class='size28  flex_btw'>
-              <text>{{item.name}}</text>
-              <view class='wallet  index_putin_right'>
-                {{item.button.name}}
-              </view>
-            </view>
-            <view>
-              <text class='size34'>{{item.value}}</text>
+    </view>
+    <view class='bg marginfff'>
+      <view class="container flex_btw twobr" wx:if="{{wallet.length>0}}">
+        <view class='index_putin border_right left' wx:for="{{wallet}}" wx:key="index"  bindtap='link' data-link='{{item.button.control}}'>
+          <view class='flex_btw'>
+            <text class='size30'>{{item.name}}</text>
+            <view class='wallet size24 index_putin_right'>
+              {{item.button.name}}
             </view>
           </view>
-
-        </view>
-      </view>
-
-      <view class='bg' wx:if="{{shop_ad.length>0}}">
-        <view class="container ">
-          <view class='flex_btw padding26'>
-            <view class='size28 color3'>联盟商家推荐</view>
-          </view>
-          <view class='recommended'>
-            <swiper interval="6000" autoplay="{{autoplay}}" duration="{{duration}}">
-              <block wx:for="{{shop_ad.length/3}}" wx:key="index" wx:for-item="num">
-                <swiper-item class='flex_btw'>
-                  <view wx:for="012" class='item_lb_pic' wx:key="index" wx:for-item="image" bindtap='shopdetail' data-shop_id='{{shop_ad[(num-0)*3+(image-0)].shop_id}}'>
-                    <image src="{{shop_ad[(num-0)*3+(image-0)].thumb}}" class="tuijian_image" mode='aspectFill' />
-                    <view class='center color6 hidden1'>{{shop_ad[(num-0)*3+(image-0)].title}}</view>
-                  </view>
-                </swiper-item>
-              </block>
-            </swiper>
-          </view>
-        </view>
-      </view>
-      <view class="container " wx:if="{{week_ad.length>0}}">
-        <view class='flex_btw padding26'>
-          <view class='size28 color3'>精选商品推荐</view>
-        </view>
-        <view class='recommended'>
-          <block wx:for="{{result.week_ad}}" wx:key="index">
-            <image src="{{item.image}}" class="slide-image" bindtap='link' data-link='{{item.control}}' />
-          </block>
-
-        </view>
-      </view>
-      <view class='agriculturalitem' wx:if='{{seckill_list.length>0}}'>
-        <view class='flex_btw agricultural'>
-          <view class='size30'>每日拼购</view>
-          <view class='colorff1919 size24' bindtap='link'>{{timeLeft}}</view>
-        </view>
-        <view class='flex_btw agriculturalD' wx:for="{{seckill_list}}" bindtap='seckill' wx:key="index" data-sku_id='{{item.sku_id}}'>
-          <image src='{{item.thumb}}' mode='aspectFill'></image>
-          <view class='flex_btw flex_col'>
-            <view class='hidden2'>{{item.full_name}}</view>
-            <view class='colorEA2C2C'>￥{{item.seckill_price}}（返{{item.return_amount}}环保金）</view>
-          </view>
-        </view>
-      </view>
-      <view class='agriculturalitem' wx:if='{{shop_goods_ad.list.length>0}}'>
-        <view class='flex_btw agricultural'>
-          <view class='size30'>惠民自营</view>
-          <view class='color6ADB7A' bindtap='link' data-link='{{shop_goods_ad.button.control}}'>{{shop_goods_ad.button.name}}</view>
-        </view>
-        <view class='flex_btw agriculturalD' wx:for="{{shop_goods_ad.list}}" bindtap='agriculturalLink' wx:key="index" data-sku_id='{{item.sku_id}}' data-spu_id='{{item.spu_id}}'>
-          <image src='{{item.thumb}}' mode='aspectFill'></image>
-          <view class='flex_btw flex_col'>
-            <view class='hidden2'>{{item.spu_name}}{{item.sku_name}}</view>
-            <view class='colorEA2C2C'>￥{{item.price}} <text class='size24' wx:if='{{item.user_return>0}}'> (积分兑环保金{{item.user_return}})</text></view>
+          <view>
+            <text class='size34 colorfff'>{{item.value}}</text>
           </view>
         </view>
       </view>

@@ -5,5 +5,6 @@
     "wux-cascader": "../../Components/cascader/index",
     "refresh-view": "../../Components/RefreshView/refresh-view"
   },
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "#94DECF"
 }

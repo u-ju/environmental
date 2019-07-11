@@ -1,7 +1,13 @@
 {
   "pages": [
     
+    "pages/myInviteNewusers/index",
     "pages/index/index",
+    "pages/success/success",
+    "pages/installment/installment",
+    
+    "pages/convenience_service/index",
+    
     "pages/renting/index",
     "pages/renting/release/index",
     "pages/renting/list/index",
@@ -68,9 +74,8 @@
     "pages/myCollection/index",
     "pages/assets/index",
     "pages/family/associated/index",
-    "pages/installment/installment",
+    
     "pages/agriculturalDetail/index",
-    "pages/myInviteNewusers/index",
     
     "pages/installment_details/installment_details",
     "pages/order/index",
@@ -123,7 +128,7 @@
     "pages/lostFound/lfDetails/index",
     "pages/lostFound/lostfound/index",
     "pages/delivery_station/index",
-    "pages/success/success",
+    
     "pages/result/index",
     "pages/lostFound/release/index",
     "pages/home_orders/index",
@@ -161,7 +166,7 @@
     "pages/comment/index",
     
     "pages/promote/index",
-    "pages/convenience_service/index",
+    
     "pages/catering/index",
     "pages/payment/index",
     "pages/video_detail/index",

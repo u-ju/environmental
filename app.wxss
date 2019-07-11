@@ -454,3 +454,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 .textR{
   text-align: right
 }
+.contain image{
+  width: 100%;
+  height: 100%
+}

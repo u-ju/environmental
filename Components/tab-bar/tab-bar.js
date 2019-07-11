@@ -4,8 +4,8 @@ function tabbarinit() {
     "id":0,
     "current": 0,
     "pagePath": "../../pages/index/index",
-    "iconPath": "../../images/icon_b@2x.png",
-    "selectedIconPath": "../../images/icon_f@2x.png",
+    "iconPath": "../../images/index.png",
+    "selectedIconPath": "../../images/indexC.png",
     "text": "主页"
     
   },
@@ -22,8 +22,8 @@ function tabbarinit() {
     "id": 2,
     "current": 0,
     "pagePath": "../../pages/personal_center/personal_center",
-    "iconPath": "../../images/my_b@2x.png",
-    "selectedIconPath": "../../images/my_h@2x.png",
+    "iconPath": "../../images/my.png",
+    "selectedIconPath": "../../images/myC.png",
     "text": "我的",
     // "message":1,
     "num":1

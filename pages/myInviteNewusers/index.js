@@ -9,7 +9,7 @@ Page({
    */
   data: {
     list:[0],
-    visible3: false,
+    visible3: true,
     value:'',
     fgColor: 'black',
     // '我邀请的用户', '我邀请的商家'

@@ -6,13 +6,13 @@
         <!-- <navigator wx:if="{{item.show!=1}}" open-type="redirect" url="{{item.pagePath}}"> -->
         <view wx:if="{{item.show!=1}}" bindtap='tabarUrl' data-id='{{item.id}}' data-url="{{item.pagePath}}">
           <view class='image_box'><image class="icon" src='{{item.iconPath}}'></image></view>
-          <view class="{{item.current== 1 ? 'tabBartext' :'color6'}} size26">{{item.text}}</view>
+          <view class="{{item.current== 1 ? 'tabBartext' :'colorfff'}} size26">{{item.text}}</view>
           <view class='massage' wx:if="{{item.message==1&&item.num}}" >{{item.num}}</view>
         </view>
         <!-- </navigator> -->
        <view wx:else class='show' bindtap='show'>
-          <view class='cricle size28'><image src='../../images/sao@2x.png'></image></view>
-          <view class="{{item.current== 1 ? 'tabBartext' :'color6'}} size20 margintop70">{{item.text}}</view>
+          <view class='cricle size28'><image src='../../images/sao.png'></image></view>
+          <view class="{{item.current== 1 ? 'tabBartext' :'colorfff'}} size26  margintop70">{{item.text}}</view>
        </view>
       </view>
     </block>

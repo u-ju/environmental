@@ -158,37 +158,42 @@ Page({
       var result = res.data.result;
       var tag = result.tag;
       that.setData({
-        result: result,
-        banner: result.banner,
-        shop_ad: result.shop_ad,
-        tag: tag,
-        user: result.user,
-        shop_goods_ad: result.shop_goods_ad,
-        taglen: Math.ceil(tag.length / 8),
+        // result: result,
+        // banner: result.banner,
+        // shop_ad: result.shop_ad,
+        // tag: tag,
+        // user: result.user,
+        // shop_goods_ad: result.shop_goods_ad,
+        // taglen: Math.ceil(tag.length / 8),
         seckill_list: result.seckill_list||'',
         popout_image: result.popout_image||'',
-        popout: result.popout_image?1:0
+        popout: result.popout_image?1:0,
+        tag: result.tag || '',
+        ru_float: result.ru_float || '',
+        tag_bgi: result.tag_bgi || '',
+        wallet: result.wallet || '',
       })
       console.log(that.data.popout)
       for (var i in tag ){
         if (tag[i]['control']['key'] =='front_tshop_index'){
           getApp().globalData.front_tshop_index = tag[i]["children"]
         }
+        
       }
-      if (result.seckill_list && result.seckill_list[0]&& result.seckill_list[0].end_at) {
-        that.data.timer = setInterval(() => {
+      // if (result.seckill_list && result.seckill_list[0]&& result.seckill_list[0].end_at) {
+      //   that.data.timer = setInterval(() => {
 
-          that.setData({
-            timeLeft: '离结束：' + util.getTimeLeft(result.seckill_list[0].end_at, result.seckill_list[0].end_at_mts)
-          });
-          if (that.data.timeLeft == "00:00:00" || that.data.timeLeft == "0:00:00:00") {
-            clearInterval(that.data.timer);
-            that.setData({
-              timeLeft: '已结束'
-            });
-          }
-        }, 1000);
-       }
+      //     that.setData({
+      //       timeLeft: '离结束：' + util.getTimeLeft(result.seckill_list[0].end_at, result.seckill_list[0].end_at_mts)
+      //     });
+      //     if (that.data.timeLeft == "00:00:00" || that.data.timeLeft == "0:00:00:00") {
+      //       clearInterval(that.data.timer);
+      //       that.setData({
+      //         timeLeft: '已结束'
+      //       });
+      //     }
+      //   }, 1000);
+      //  }
       
       util.hideLoading()
     })
