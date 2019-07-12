@@ -186,7 +186,7 @@ function replaceStr(str) {
 function upload_file_server(url, that, upload_picture_list, j, arr, storge,suc='') {
   //上传返回值
   var _this = this;
-  // //console.log(upload_picture_list[j])
+  // console.log(upload_picture_list[j]['path'])
   const upload_task = wx.uploadFile({
     // 模拟https
     url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  
@@ -428,8 +428,8 @@ function getToken(valuetstu='',form,cb,mothed) {
   var token = wx.getStorageSync('token')||"";
   
   if (token && valuetstu!= 801) {
-    // return token;
-    return  'zwj';
+    return token;
+    // return  'zwj';
   }
   if (valuetstu==801){
     wx.reLaunch({

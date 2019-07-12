@@ -1,11 +1,10 @@
-/* pages/personal_center/personal_center.wxss */
+/* 
 page{
   border: none;
   padding-bottom:140rpx; 
   font-size: 28rpx;
 }
 .bg{
-  /* background-color: white; */
   padding: 30rpx 32rpx;
   height: 260rpx;
   position: relative;
@@ -37,7 +36,6 @@ page{
   height: 112rpx;
   border-radius: 50%;
   background-color: #fff;
-  /* margin: 0 auto 12rpx auto; */
   position: relative;
   margin: 0 20rpx  0 0;
 }
@@ -105,10 +103,6 @@ page{
 .badge{
   width: 72rpx;
   height: 40rpx;
-  /* position: absolute;
-  top: 50%;
-  left: 10rpx;
-  margin: -20rpx 0 0 0; */
   
 }
 .badgepic{
@@ -127,8 +121,6 @@ page{
   width: 172rpx;
   position: absolute;
   top: -4rpx;
-  /* left: 50%;
-  transform: translate(-50%,-50%); */
   text-align: center;
   z-index: 2;
   height: 46rpx;
@@ -140,15 +132,11 @@ page{
 .assets{
   width:165rpx;
   height:54rpx;
-  /* background:linear-gradient(to right, rgba(255,255,255,.5), 10% , #4FD6F0); */
   border-radius:34rpx;
   padding-left: 23rpx;
-  /* margin-right: -32rpx; */
   opacity: 1;
   line-height: 54rpx;
   background-color: #36D1EF;
-  /* border: 1px solid #fff; */
-  /* background:linear-gradient(200deg,rgba(79,214,240,1),rgba(255,255,255,1)); */
 }
 .assetsitem{
   position: relative;
@@ -184,7 +172,6 @@ page{
 .function{
   padding: 23rpx 32rpx;
   background-color: white;
-  /* margin-top: 27rpx; */
 }
 .funitem{
   width: calc(33.33% - 1px);
@@ -223,4 +210,87 @@ page{
   right: 2rpx;
   top: 130rpx;
   z-index: 2;
+} */
+page{
+ background: linear-gradient( #94DECF, #5E93D7); 
+}
+.pagetop{
+  position: fixed;
+  width: 100%;
+  /* height: 100%; */
+  height: calc(100% - 154rpx);
+  background: linear-gradient( #94DECF, #5E93D7);
+  padding-top: 50rpx;
+}
+.top{
+  width:566rpx;
+  height:206rpx;
+  background:rgba(255,255,255,.6);
+  border-radius:10rpx;
+  margin:auto;
+  position: relative;
+  padding:  20rpx 10rpx 0 110rpx;
+}
+.head{
+  width:100rpx;
+  height:100rpx;
+  border:5rpx solid rgba(255, 255, 255, 0.6);
+  position: absolute;
+  top: -50rpx;
+  border-radius: 50%;
+  left: 0;
+}
+.header{
+  width:100rpx;
+  height:100rpx;
+  border-radius: 50%;
+}
+.pen{
+  width:20rpx;
+  height:20rpx;
+}
+.realname{
+   margin-left: 30rpx;
+}
+.assetsitem{
+  margin-top: 40rpx;
+  
+}
+.btnhead{
+  height: 168rpx;
+}
+.btnhead navigator{
+  width:180rpx;
+  height:68rpx;
+  background:#48D1CC;
+  border-radius:34rpx;
+  text-align: center;
+  line-height: 68rpx;
+  color: #fff;
+}
+.function{
+    width:686rpx;
+    background:rgba(255,255,255,.6);
+    border-radius:10rpx;
+    margin: 20rpx auto 0 auto;
+}
+.funitem{
+  width: 25% ;
+  text-align: center;
+  height: 100rpx;
+  padding: 30rpx 0;
+}
+.funitem image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.settting{
+  position: absolute;
+  right: 33rpx;
+  top: 0rpx;
+  color: white;
+  font-size: 46rpx;
+}
+.icon-shezhi{
+  font-size: 46rpx;
 }

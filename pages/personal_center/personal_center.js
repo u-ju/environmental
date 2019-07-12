@@ -54,7 +54,7 @@ Page({
         // badge: result.badge,
         // background: result.background
       })
-
+      getApp().globalData.userInfo = result.l_one
       util.hideLoading()
     })
     
@@ -102,10 +102,21 @@ Page({
             // console.log(' ----- 验证后 ----- ')
             // console.log(tempFilePaths[0])
             const src = res.tempFilePaths[0]
-            wx.navigateTo({
-              url: `../tailor/tailor?src=${src}`
-            })
+            wx.getFileSystemManager().readFile({
+              filePath: src, //选择图片返回的相对路径
+              encoding: 'base64', //编码格式
+              success: res => { //成功的回调 
+                console.log(res)
+                const data = res.data
+                wx.navigateTo({
+                  url: `../tailor/tailor?src=${src}&data=${data}`
+                })
 
+              },
+              fail: function (error) {
+              },
+            })
+           
           } else {
             wxUtil.info_dialog("上传头像格式不合法!")
           }

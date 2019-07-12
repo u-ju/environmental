@@ -3,6 +3,7 @@ const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
 var WxParse = require('../../wxParse/wxParse.js');
+var qrCodeJS = require('../../utils/qrcode.js');
 Page({
 
   /**
@@ -33,7 +34,8 @@ Page({
       title: '加载中',
     })
     this.setData({
-      agentxy: app.globalData.config.protocol.agent
+      agentxy: app.globalData.config.protocol.agent,
+      avatar: '../../images/logozmn.jpg'
     })
   },
   init() {
@@ -84,10 +86,7 @@ Page({
     })
   },
   open3(e) {
-    console.log(e.currentTarget.dataset.invite)
-    // if (e.currentTarget.dataset.invite==''){
-    //   return false
-    // }
+    qrCodeJS.qrApi.draw(e.currentTarget.dataset.invite, "logoQRCode", 200, 200, null, this.data.avatar); 
     this.setData({
       visible3: true,
       value: e.currentTarget.dataset.invite
@@ -130,10 +129,10 @@ Page({
   },
   previewImage() {
     // 在自定义组件下，当前组件实例的 this，以操作组件内 <canvas> 组件
-    const that = this.selectComponent('#qrcode')
+    var that = this;
     console.log("huhu")
     wx.canvasToTempFilePath({
-      canvasId: 'wux-qrcode',
+      canvasId: 'logoQRCode',
       success: (res1) => {
         // wx.previewImage({
         //   urls: [res.tempFilePath]

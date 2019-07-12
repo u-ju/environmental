@@ -140,5 +140,13 @@
 <view hidden='{{is_apply==1}}' class='button submitButton' bindtap='link'>商家入驻</view>
 
 <wux-popup closable visible="{{ visible3 }}" bind:close="onClose3" bind:closed="onClosed3">
-  <wux-qrcode hidden="{{!visible3||!value}}"  id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+  <!-- <wux-qrcode hidden="{{!visible3||!value}}"  id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" /> -->
+  <view class='canvasitem'>
+    <view class='flex align_center'>
+      <image src='../../images/logoi.png' class='canvaslogo'></image>
+      <text>啄木鸟环保</text>
+    </view>
+    <canvas style="width: 200px;height: 200px;" canvas-id="logoQRCode" class='canvasbg' bindtap='previewImage' wx:if="{{visible3}}" />
+    <view class='center' bindtap='previewImage'>点击保存图片</view>
+  </view>
 </wux-popup>

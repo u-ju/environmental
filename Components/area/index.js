@@ -79,9 +79,9 @@ Component({
         that.setData({
           cengji: cengji
         });
-        that.choosearea('', 0,function(){
-          that.choosearea('', 0)
-        })
+        // that.choosearea('', 0,function(){
+        //   that.choosearea('', 0)
+        // })
       });
     },
     cascadePopup: function() {

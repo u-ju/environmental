@@ -1,40 +1,5 @@
-<!-- <import src="../../Components/tab-bar/tab-bar.wxml"/>
-<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
-<view class='bg flex_ard align_center '>
-  <image src='{{background}}' class='bgpic'></image>
-  <view class="container container1 flex align_center ">
-    <view class='head' bindtap='uploadHeadPhoto'>
-      <image mode='aspectFill' class='header' src='{{result.avatar}}'></image>
-    </view>
-    <view class='size28 flex_col_1 flex_btw'>
-      <view class='badgeitem flex align_center'  data-attach='{{badge.attach}}' data-link='{{badge.control}}' bindtap='link'>
-        
-        <image mode='aspectFill' class='badgebg' src='{{badge.background}}'></image>
-        <view class='badgename'>{{badge.name}}</view>
-      </view>
-      <view  bindtap='name' data-name='{{result.nickname}}'>{{result.nickname}}
-      <image mode='aspectFill' class='pen' src='../../images/pen@2x.png'></image>
-      </view>
-    </view>
-  </view>
-</view>
-<view class='marb20'>
 
-<view class='item' wx:for='{{tag_list}}' wx:key="index" data-attach='{{item.attach}}' data-link='{{item.control}}' bindtap='link'>
-  <view class="container flex_btw align_center" >
-    <view class='size28 color0 '>{{item.name}}</view>
-    <view class='item_right flex align_center'>
-      <text  class='size28  {{!item.value_color?"color9":"color2EB354 bold"}} hidden1' style='color:{{item.value_color}}'>{{item.value}}</text>
-      <image mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
-    </view> 
-  </view>
-</view>
-</view> -->
-<view class='pagetop'>
-  <import src="../../Components/tab-bar/tab-bar.wxml" />
-  <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
-  <view class='bg '>
-    <image src='{{l_one.background}}' class='bgpic'></image>
+  <!-- <view class='bg '>
     <navigator url='../setting/setting' class='settting'>
       <view class='iconfont icon-shezhi'></view>
     </navigator>
@@ -58,30 +23,54 @@
         </view>
       </view>
     </view>
+    </view>
+     -->
+     <!-- <view class='garbage flex' hidden='{{l_two.length==0}}' style='width:{{l_two.length==2?544:652}}rpx'>
+  <view wx:for="{{l_two}}" wx:key='index' style='width:{{100/l_two.length}}%' class='center' bindtap='link' data-link='{{item.control}}'>
+    <image src='{{item.icon}}'></image>
+    <view class='color4'>{{item.name}}</view>
+  </view>
+</view>
+</view> -->
+<view class='pagetop'>
+  <import src="../../Components/tab-bar/tab-bar.wxml" />
+  <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
+  <navigator url='../setting/setting' class='settting'>
+      <view class='iconfont icon-shezhi'></view>
+    </navigator>
+  <view class='top flex_btw'>
+    <view class='head' bindtap='uploadHeadPhoto'>
+      <image mode='aspectFill' class='header' src='{{l_one.avatar}}'></image>
+    </view>
+    <view>
+      <view class='flex align_center'>
+        <view bindtap='name' data-name='{{l_one.nickname}}' class='name'>{{l_one.nickname}}
+          <image mode='aspectFill' class='pen' src='../../images/pen@2x.png'></image>
+        </view>
+        <view data-link='{{l_one.realname.control}}' bindtap='link' class='realname' >({{l_one.realname.name}}) </view>
+      </view>
+      <view class='assetsitem flex_btw '>
+        <view data-link='{{l_one.mobile.control}}' bindtap='link'>{{l_one.mobile.name||"暂未绑定手机号"}} </view>
+      </view>
+    </view>
     <view class='flex_col_1 flex_btw btnhead'>
       <navigator class='assets' url='../myGreenCredit/index'>
         <view class=' flex_ard align_center'>环保信用
-          <text class='iconfont icon-jiantou'></text>
         </view>
       </navigator>
       <navigator class='assets' url='../assets/index'>
         <view class=' flex_ard align_center'>资产详情
-          <text class='iconfont icon-jiantou'></text>
         </view>
       </navigator>
     </view>
   </view>
-  <view class='garbage flex' hidden='{{l_two.length==0}}' style='width:{{l_two.length==2?544:652}}rpx'>
-    <view wx:for="{{l_two}}" wx:key='index' style='width:{{100/l_two.length}}%' class='center' bindtap='link' data-link='{{item.control}}'>
-      <image src='{{item.icon}}'></image>
-      <view class='color4'>{{item.name}}</view>
-    </view>
-  </view>
-</view>
+
+
 <view class='function flex wrap'>
   <view class='funitem {{surplus==1&&index==l_three.length-1?"funnobtm":""}} {{surplus==2&&(index==l_three.length-1||index==l_three.length-2)?"funnobtm":""}} {{surplus==0&&(index==l_three.length-1||index==l_three.length-2||index==l_three.length-3)?"funnobtm":""}}'
     wx:for="{{l_three}}" wx:key='index' bindtap='link' data-link='{{item.control}}' data-attach='{{item.attach}}'>
     <image src='{{item.icon}}'></image>
     <view class='color4'>{{item.name}}</view>
   </view>
+</view>
 </view>

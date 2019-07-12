@@ -1,8 +1,9 @@
 {
   "pages": [
     
-    "pages/myInviteNewusers/index",
     "pages/index/index",
+    "pages/myInviteNewusers/index",
+    "pages/personal_center/personal_center",
     "pages/success/success",
     "pages/installment/installment",
     
@@ -97,7 +98,6 @@
     "pages/myCart/index",
     
     "pages/business_details/viewcomments/index",
-    "pages/personal_center/personal_center",
     "pages/business_details/product/index",
     "pages/operationalData/index",
     "pages/search/index",

@@ -10,7 +10,7 @@
 </view> 
 <view class='more'>
   <view class='title size30'>更多推荐</view>
-  <view class='flex_btw align_center padd30'>
+  <view class='flex_btw align_center padd30 wrap'>
     <view class='moreitem' wx:for='{{more}}' wx:key="index" data-link='{{item.control}}' bindtap='link'>
       <image src='{{item.icon}}'></image>
       <view class='color4 size28 flex_ard align_center'><text>{{item.name}}</text></view>

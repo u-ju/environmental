@@ -307,7 +307,7 @@ Page({
     wx.setStorageSync("title1t", e.detail.options.map((n) => n.label).join('-'))
   },
   onLoad: function (options) {
-    
+    console.log()
     var that = this;
 
     var share_mobile = options.share_mobile ? JSON.parse(options.share_mobile) : ''
@@ -582,6 +582,8 @@ Page({
   upload_file_server(url, that, upload_picture_list, j, index) {
     //上传返回值
     var _this = this;
+    console.log(upload_picture_list[j]['path'])
+    console.log(upload_picture_list[j]['path_base'])
     const upload_task = wx.uploadFile({
       // 模拟https
       url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  

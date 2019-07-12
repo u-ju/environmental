@@ -54,7 +54,7 @@
       </view>
     </view>
     <view class='item  flex align_center'>
-      <text class='size28 color6'>营业时间</text>
+      <text class='size28 color6'>营业时间\n(选填)</text>
       <!-- <view class='input flex_btw align_center' bindtap='opent'>
         <view class='width460'>
           <text class='color9' wx:for="{{timevalueR}}" wx:key="index">{{item}} </text>
@@ -72,7 +72,7 @@
       </scroll-view>
     </view>
     <view class='item  flex align_center'>
-      <text class='size28 color6'>预计人均消费</text>
+      <text class='size28 color6'>预计人均消费\n(选填)</text>
       <view class=' flex_btw consumption align_center'>
         <text>￥</text>
         <input name='cost' data-contact='costt' type='digit'  bindinput='input' value='{{cost}}' ></input>
@@ -91,7 +91,7 @@
       </scroll-view>
     </view>
     <view class='item1 flex align_center textareaitem'>
-      <text class='size28 color6'>商家描述 \n（可选填）</text>
+      <text class='size28 color6'>商家描述 <view></view></text>
       <textarea wx:if="{{show}}" focus="{{show}}" class='size28 color9' bindinput='input' bindblur='unshow' data-contact='introt' value='{{intro}}' name='intro'></textarea>
       <view class='textarea size28 color9' bindtap='show' wx:else>{{intro}}</view>
     </view>
@@ -121,7 +121,7 @@
     </block>
 
     <view class='item1 flex align_center image'>
-      <text class='size28 color6'>店内图片视频\n (至少一张)</text>
+      <text class='size28 color6'>店内图片视频</text>
       <view class="picture_listmore">
         
         <view wx:for="{{upload_picture_list}}" class="picture_itemmore" wx:key="{{index}}">

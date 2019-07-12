@@ -1,4 +1,5 @@
 // pages/qrcode/qrcode.js
+var qrCodeJS = require('../../utils/qrcode.js');
 Page({
   data: {
     value: '',
@@ -8,9 +9,11 @@ Page({
     if (options.qrcode){
 
       this.setData({
-        value: options.qrcode
+        value: options.qrcode,
+        avatar: '../../images/logozmn.jpg',
       })
       wx.hideLoading()
+      qrCodeJS.qrApi.draw(this.data.value, "logoQRCode", 200, 200, null, this.data.avatar); 
     }
    },
   bindinput(e) {
@@ -24,10 +27,9 @@ Page({
   },
   previewImage() {
     // 在自定义组件下，当前组件实例的 this，以操作组件内 <canvas> 组件
-    const that = this.selectComponent('#qrcode')
-    console.log("huhu")
+    const that = this
     wx.canvasToTempFilePath({
-      canvasId: 'wux-qrcode',
+      canvasId: 'logoQRCode',
       success: (res1) => {
         // wx.previewImage({
         //   urls: [res.tempFilePath]

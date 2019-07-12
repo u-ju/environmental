@@ -1,4 +1,4 @@
-import qrjs from './qr.js/index'
+var qrjs=''
 
 /**
  * 字符串转换成 UTF-8
@@ -101,7 +101,7 @@ Component({
          * 将之前在绘图上下文中的描述（路径、变形、样式）画到 canvas 中
          */
         draw(opts = {}) {
-            const { typeNumber, errorCorrectLevel, width, height, fgColor, bgColor, canvasId, data } = Object.assign({}, this.data, opts)
+            const { typeNumber, errorCorrectLevel, width, height, fgColor, bgColor, canvasId, data,logo } = Object.assign({}, this.data, opts)
             const qrcode = qrjs(utf16to8(data), {
                 typeNumber,
                 errorCorrectLevel,

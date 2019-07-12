@@ -2,6 +2,7 @@
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
+var qrCodeJS = require('../../utils/qrcode.js');
 Page({
 
   /**
@@ -33,6 +34,7 @@ Page({
         offline_list: result.shop_info.offline_list,
         room_list: result.apply_info.buttun_list,
         league_list: result.shop_info.league_list,
+        avatar:'../../images/logozmn.jpg'
         // share_mobile: result.share_mobile
       })
       wx.hideLoading()
@@ -51,6 +53,7 @@ Page({
         value: e.currentTarget.dataset.gather_qrcode,
         visible3: true
       })
+      qrCodeJS.qrApi.draw(this.data.value, "logoQRCode", 200, 200, null, this.data.avatar); 
     }else{
       util.alert('你还没有二维码')
     }

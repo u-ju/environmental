@@ -43,18 +43,23 @@ Page({
 
         wx.uploadFile({
           url: apiurl.user_update, // 后台 java 上传接口
-          filePath: avatar,
+          filePath: avatar, 
           name: 'file',
-          formData:
-          {
-            wxid: util.getToken(),
-            fileName: "huhu.png"
+          formData: {
+            "avatar": that.data.src,
+            'source': 'base64'
+          },
+          header: {
+            "content-type": 'application/x-www-form-urlencoded',
+            'token': util.getToken(),
+            'channel': 'let',
+            'build': apiurl.build
           },
           success(res) {
-            console.log(res.data.message)
-            wx.navigateBack({
-              delta: 1,
-            })
+            
+            var data = JSON.parse(res.data);
+            console.log(data)
+            wx.navigateBack()
           },
           fail: function (errMsg) {
             console.log(errMsg);
@@ -63,6 +68,14 @@ Page({
       } else {
         console.log('获取图片失败，请稍后重试')
       }
+    })
+  },
+  getimg(avatar1){
+    util.postJSON({ apiUrl: apiurl.user_update, data: {  avatar: avatar1} }, function (res) {
+      var result = res.data.result
+      util.info_dialog(res.data.message)
+      wx.navigateBack()
+      // util.hideLoading()
     })
   },
   uploadTap() {
@@ -75,16 +88,20 @@ Page({
       success(res) {
         const src = res.tempFilePaths[0]
         //  获取裁剪图片资源后，给data添加src属性及其值
-
+        
         self.wecropper.pushOrign(src)
       }
     })
   },
   onLoad(option) {
+    this.setData({
+      src: option.data
+    })
     const { cropperOpt } = this.data
-
     if (option.src) {
+      console.log(option.data)
       cropperOpt.src = option.src
+      cropperOpt.src1 = option.data
       new WeCropper(cropperOpt)
         .on('ready', (ctx) => {
           console.log(`wecropper is ready for work!`)

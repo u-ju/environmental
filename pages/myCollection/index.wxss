@@ -1,6 +1,9 @@
 /* pages/myCollection/index.wxss */
 @import '../index/index';
 @import '../family/associated/index';
+page{
+  background: white;
+}
 .tabitem{
   width: 100%;
   margin-bottom: 0;

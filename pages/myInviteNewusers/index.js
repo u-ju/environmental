@@ -1,7 +1,7 @@
-// pages/myInviteNewusers/index.js
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
+var qrCodeJS = require('../../utils/qrcode.js');
 Page({
 
   /**
@@ -9,8 +9,8 @@ Page({
    */
   data: {
     list:[0],
-    visible3: true,
-    value:'',
+    visible3: false,
+    value: "https://wyhb.dev.zgwyhb.com/qrcode/WyJzaGFyZSIsMl0",
     fgColor: 'black',
     // '我邀请的用户', '我邀请的商家'
     tab: [
@@ -29,20 +29,12 @@ Page({
     this.init()
   },
   onLoad: function (options) {
-
-    // this.init()
-    
-    // util.getJSON({ apiUrl: apiurl.share }, function (res) {
-    //   var result = res.data.result
-
-    //   that.setData({
-    //     result: result,
-    //     value: result.share_qrcode,
-    //     stat: result.stat
-    //   })
-    //   util.hideLoading()
-    // })
-    
+    this.setData({
+      avatar: '../../images/logozmn.jpg',
+      // getApp().globalData.userInfo.avatar ||
+      logo: '../../images/logoi.png'
+      // getApp().globalData.config.logo
+    })
   },
   init(page = 1) {
     var that = this;
@@ -72,6 +64,7 @@ Page({
     if (!this.data.value){
       return util.alert1(this.data.share_qrcode_desc)
     }
+    qrCodeJS.qrApi.draw(this.data.value, "logoQRCode", 200, 200, null, this.data.avatar); 
     this.setData({
       visible3: true
     })
@@ -113,7 +106,7 @@ Page({
     })
   },
   onShow: function () {
-    util.loading()
+    // util.loading()
     var that = this;
     var result = getApp().globalData.front_share_home
     this.setData({
@@ -123,6 +116,7 @@ Page({
       share_qrcode_desc: result.share_qrcode_desc
     })
     that.init()
+    
   },
   onPullDownRefresh: function () {
     // 显示顶部刷新图标
@@ -166,9 +160,9 @@ Page({
 
   },
   previewImage(e){
-    const that = this.selectComponent('#qrcode')
+    const that = this
     wx.canvasToTempFilePath({
-      canvasId: 'wux-qrcode',
+      canvasId: 'logoQRCode',
       success: (res1) => {
         wx.showModal({
           title: '保存图片',

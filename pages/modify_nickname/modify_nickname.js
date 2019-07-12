@@ -40,9 +40,7 @@ Page({
     util.postJSON({ apiUrl: apiurl.user_update, data: { token: util.getToken(), nickname: e.detail.value.name } }, function (res) {
       var result = res.data.result
       util.info_dialog(res.data.message)
-      wx.navigateTo({
-        url: '../personal_center/personal_center',
-      })
+      wx.navigateBack()
       // util.hideLoading()
     })
   },

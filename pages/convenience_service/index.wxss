@@ -22,8 +22,8 @@ page{
 }
 .more,.convenience{
   width:640rpx;
-  padding: 0 30rpx;
-  min-height: 245rpx;
+  padding: 0 30rpx 20rpx 30rpx;
+  min-height: 225rpx;
   background:rgba(255,255,255,1);
   border-radius:35rpx;
   margin:  -100rpx auto 20rpx auto;
@@ -37,6 +37,7 @@ page{
 .more .moreitem{
   text-align: center;
   margin: 20rpx 0 0 0;
+  min-width: 25%;
 }
 .moreitem image{
   width: 70rpx;
@@ -52,5 +53,5 @@ page{
   text-align: center;
 }
 .padd30{
-  padding: 0 30rpx;
+  /* padding: 0 30rpx; */
 }

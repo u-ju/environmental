@@ -15,13 +15,29 @@ page {
   color: #444;
   /* font-family: PingFangSC-Ultralight, sans-serif; */
 }
-
+.canvasbg{
+  /* border: 20rpx solid #27A9DC; */
+  border-radius: 10rpx;
+  background: #fff;
+  margin-bottom:20rpx;
+  /* background:linear-gradient(14deg,rgba(50,183,164,1),rgba(39,169,220,1)); */
+}
+.canvasitem{
+  width: 200px;
+  height: 300px;
+  margin: auto;
+  color: #444;
+}
 page .navigator-hover {
   background-color: transparent;
   opacity: 1;
   font-family: PingFang-SC-Regular;
 }
-
+.canvaslogo{
+  width:80rpx;
+  height:80rpx;
+  margin: 0 10rpx 16rpx 46rpx;
+}
 .searchall{
   width:420rpx;
   height:56rpx;

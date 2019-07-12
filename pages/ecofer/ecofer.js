@@ -2,6 +2,7 @@
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
+var qrCodeJS = require('../../utils/qrcode.js');
 Page({
 
   /**
@@ -89,8 +90,7 @@ Page({
   },
   previewImage() {
     // 在自定义组件下，当前组件实例的 this，以操作组件内 <canvas> 组件
-    const that = this.selectComponent('#qrcode')
-    console.log("huhu")
+    var that = this;
     wx.canvasToTempFilePath({
       canvasId: 'wux-qrcode',
       success: (res1) => {

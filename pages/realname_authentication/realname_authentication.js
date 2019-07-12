@@ -92,7 +92,7 @@ Page({
         　　　　　　//调用函数
         util.upload_file_server(apiurl.upload_image, page, upload_picture, j,arr,'',function(img){
           console.log(arr,img)
-          wx.setStorageSync(arr+'s', img)
+          // wx.setStorageSync(arr+'s', img)
         })
       }
     }
@@ -188,7 +188,7 @@ Page({
   },
   onLoad: function (options) {
     // console.log(wx.getStorageSync("upload_picture_lists"))
-    var arr = ['realname', 'idcard', 'nation', "address", 'upload_picture_list', 'upload_picture_list1','upload_picture_list2']
+    var arr = ['realname', 'idcard', 'nation', "address"]
     for(var i in arr){
       this.setData({
         [arr[i]]: wx.getStorageSync(arr[i] + 's') 

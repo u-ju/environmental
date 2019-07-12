@@ -52,9 +52,12 @@
 </view>
 <empty wx:else />
 <wux-popup closable visible="{{ visible3 }}" bind:close="onClose3">
-  <!-- <view class='center' wx:if="{{!share_qrcode}}" style='width:400rpx; height:400rpx;margin: auto;line-height: 400rpx;'>{{share_qrcode_desc}}</view>
-  <block wx:else> -->
-  <wux-qrcode id="qrcode" wx:if="{{visible3}}" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
-
-  <!-- </block> -->
+  <view class='canvasitem'>
+    <view class='flex align_center'>
+      <image src='../../images/logoi.png' class='canvaslogo'></image>
+      <text>啄木鸟环保</text>
+    </view>
+    <canvas style="width: 200px;height: 200px;" canvas-id="logoQRCode" class='canvasbg' bindtap='previewImage' wx:if="{{visible3}}" />
+    <view class='center' bindtap='previewImage'>点击保存图片</view>
+  </view>
 </wux-popup>

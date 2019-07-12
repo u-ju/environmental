@@ -57,6 +57,14 @@
     <button formType="submit">提交</button>
   </form>
 </wux-popup>
+
 <wux-popup closable visible="{{ visible3 }}" bind:close="onClose3" bind:closed="onClosed3">
-  <wux-qrcode id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+  <view class='canvasitem'>
+    <view class='flex align_center'>
+      <image src='../../images/logoi.png' class='canvaslogo'></image>
+      <text>啄木鸟环保</text>
+    </view>
+    <canvas style="width: 200px;height: 200px;" canvas-id="logoQRCode" class='canvasbg' bindtap='previewImage' wx:if="{{visible3}}" />
+    <view class='center' bindtap='previewImage'>点击保存图片</view>
+  </view>
 </wux-popup>
