@@ -92,7 +92,7 @@ Page({
     // 在自定义组件下，当前组件实例的 this，以操作组件内 <canvas> 组件
     var that = this;
     wx.canvasToTempFilePath({
-      canvasId: 'wux-qrcode',
+      canvasId: 'logoQRCode',
       success: (res1) => {
         wx.showModal({
           title: '保存图片',

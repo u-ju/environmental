@@ -9,7 +9,10 @@
   height: 750rpx;
   border-radius: 0;
 }
-
+.slide-image,video{
+  width: 750rpx;
+  height: 750rpx;
+}
 .line-through{
   margin-top: 8rpx;
 }
@@ -309,7 +312,11 @@ checkbox .wx-checkbox-input{
   color: transparent;
 }
 .icon-xuanze{
-  line-height:50rpx;
+  /* line-height:50rpx; */
+  font-size: 28rpx;
+  margin-right: 8rpx;
+  /* width: 30rpx;
+  height: 30rpx; */
 }
 .stepper input,.countnum{
   margin: 0 6rpx;
@@ -320,4 +327,7 @@ web-view{
 }
 .title {
   width: 560rpx;
+}
+.carcond .hidden1{
+  width: 200rpx;
 }

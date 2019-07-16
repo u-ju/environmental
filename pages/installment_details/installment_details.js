@@ -143,6 +143,14 @@ Page({
   },
   // 查看图片
   previewImg(e) {
+    var that = this
+    // wx.previewImage({
+    //   current: "https://www.qiaolibeilang.com//public/uploads/images/20180809/free.png",
+    //   urls: [
+    //     "https://www.qiaolibeilang.com//public/uploads/images/20180809/free.png",
+    //     "https://www.qiaolibeilang.com//public/uploads/images/20180809/free.png"
+    //   ],
+    // })
     util.previewImage(e.currentTarget.dataset.src, this.data.result.images)
   },
   /**

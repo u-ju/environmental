@@ -8,10 +8,10 @@
     <view class='center loading' hidden="{{0!=pullState}}">
       <view class="refresh-loading"></view>
     </view>
-    <view class='flex_btw align_center top'>
-      <view class='flex align_center colorfff' bindtap='goarea'>
+    <view class='flex align_center top'>
+      <view class='flex align_center colorfff gotarea hidden1' bindtap='goarea'>
         <view class='iconfont icon-dingwei locations size48'></view>
-        <view class='width110 hidden1 bold '>{{address}}</view>
+        <view class=' hidden1 bold '>{{address}}</view>
         <text class='iconfont icon-xiajiantou'></text>
       </view>
       <view class='searchall flex_btw align_center' bindtap='search'>
@@ -19,13 +19,25 @@
         <input disabled='disabled' value='{{search}}' placeholder='输入想要查找的内容' name='search'></input>
       </view>
     </view>
+    <view class='swiper-notice' wx:if="{{notify.length>0}}">
+      <image src='../../images/notice.png'></image>
+      <swiper class='swiper-nav' vertical='true' autoplay='false' circular='true' interval='3000'>
+        <block wx:for='{{notify}}' wx:key='unique'>
+          <!-- <navigator url='{{item.url}}' hover-class='none'> -->
+            <swiper-item bindtap='link' data-link='{{item.control}}'>
+              <view class='swiper-context'>{{item.name}}</view>
+            </swiper-item>
+          <!-- </navigator> -->
+        </block>
+      </swiper>
+    </view>
     <view class='menu'>
       <view class='earth'>
         <view class='circle contain'>
           <image src='{{tag_bgi}}'></image>
         </view>
         <view class='menuitem'>
-          <view class='menucon flex align_center' wx:for="{{tag}}" wx:key="index"  bindtap='link' data-link='{{item.control}}'>
+          <view class='menucon flex align_center' wx:for="{{tag}}" wx:key="index" bindtap='link' data-link='{{item.control}}'>
             <image src='{{item.icon}}'></image>
             <view>{{item.name}}</view>
           </view>
@@ -36,9 +48,10 @@
         <view>{{ru_float.name}}</view>
       </view>
     </view>
+    
     <view class='bg marginfff'>
       <view class="container flex_btw twobr" wx:if="{{wallet.length>0}}">
-        <view class='index_putin border_right left' wx:for="{{wallet}}" wx:key="index"  bindtap='link' data-link='{{item.button.control}}'>
+        <view class='index_putin border_right left' wx:for="{{wallet}}" wx:key="index" bindtap='link' data-link='{{item.button.control}}'>
           <view class='flex_btw'>
             <text class='size30'>{{item.name}}</text>
             <view class='wallet size24 index_putin_right'>

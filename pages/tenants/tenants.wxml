@@ -79,14 +79,18 @@
       </view>
     </view>
     <view class='item  flex align_center'>
-      <text class='size28 color6'>店铺特色</text>
+      <text class='size28 color6'>店铺特色\n(选填)</text>
       <scroll-view scroll-x='true' class='scroll-header flex align_center featuresnav'>
-        <view class='featuresitem' wx:for="{{features}}" wx:key="index">
+        <view class='featuresitem' wx:for="{{feature_list}}" wx:key="index">
+          <view class='hidden1　features {{m1.indexO(features,item)==-1?"featuresinput":""}}' data-item='{{item}}' bindtap='choice'>{{item}}</view>
+        </view>
+
+        <view class='featuresitem' wx:for="{{features}}" wx:key="index" hidden='{{m1.indexO(feature_list,item)!=-1}}'>
           <view class='features hidden1'>{{item}}</view>
           <image src='../../images/delt.png' class='delt' bindtap='delfeature' data-index='{{index}}'></image>
         </view>
         <view class='featuresitem' >
-        <input placeholder='自定义' class='features featuresinput' value='{{featuresv}}'  bindconfirm="features"></input>
+          <input placeholder='自定义' class='features featuresinput' value='{{featuresv}}'  bindconfirm="features"></input>
         </view>
       </scroll-view>
     </view>

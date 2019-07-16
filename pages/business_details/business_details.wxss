@@ -115,6 +115,9 @@ page{
 .spug{
   width: 212rpx;
   margin-right: 30rpx;
+  border-radius:10rpx;
+  overflow: hidden;
+  border: 1px solid #eee;
 }
 .spug image{
   width: 212rpx;

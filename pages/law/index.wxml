@@ -53,7 +53,7 @@
   <block wx:if="{{list.length>0}}">
     <view class='flex_btw renting align_center' wx:for="{{list}}" wx:key="index" bindtap='detail' data-id='{{item.id}}'>
       <block wx:if="{{list[0].name}}">
-        <image class='rentpic' src='{{item.thumb}}'></image>
+        <image class='rentpic' src='{{item.thumb}}'  mode='aspectfit'></image>
         <view class='flex_col flex_btw'>
           <view class='size28'>
             <text class='bold'>{{item.name}} </text> </view>

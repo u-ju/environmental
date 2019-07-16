@@ -65,7 +65,7 @@
             <view class='spug flex_col' wx:for="{{goods}}" wx:key="index" data-id='{{item.sku_id}}' bindtap='goods'>
               <image src='{{item.thumb}}'></image>
               <view class='spud'>
-                <view class='size26 center hidden1'>{{item.spu_name}}{{item.spu_name}}</view>
+                <view class='size26  hidden1'>{{item.spu_name}}{{item.spu_name}}</view>
                 <view class='flex_btw align_center spum'>
                   <text class='size26 colorFE2C2C'>￥{{item.price}}</text>
                 </view>

@@ -53,7 +53,7 @@
  
   <view class='xiangqing' wx:for="{{list}}" wx:key="index" bindtap="detail" data-sku_id='{{item.sku_id}}'>
     <view class='xiangqing_img'>
-        <image src='{{item.thumb}}'></image>
+        <image src='{{item.thumb}}'  mode='aspectfit'></image>
     </view>
     <view class='xiangqing_info' >
       <text class='title'>{{item.spu_name}} {{item.sku_name}}</text>

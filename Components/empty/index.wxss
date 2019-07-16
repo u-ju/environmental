@@ -2,11 +2,14 @@
   /* position: absolute; */
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   min-height: 200rpx;
   color: #444;
   font-size: 28rpx;
   background-color: transparent;
+}
+.zwsj{
+  width: 500rpx;
+  height: 280rpx;
+  margin: 60rpx 0 20rpx 0
 }

@@ -2,11 +2,12 @@
   "pages": [
     
     "pages/index/index",
+    "pages/success/success",
     "pages/myInviteNewusers/index",
     "pages/personal_center/personal_center",
-    "pages/success/success",
-    "pages/installment/installment",
     
+    "pages/installment/installment",
+    "pages/tenants/tenants",
     "pages/convenience_service/index",
     
     "pages/renting/index",
@@ -22,7 +23,7 @@
     "pages/idle/index",
     "pages/idle/detail/index",
 
-    "pages/tenants/tenants",
+    
     
     "pages/realname_suc/index",
     

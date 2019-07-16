@@ -1,6 +1,7 @@
 /* pages/business_details/product/index.wxss */
 page{
   font-size: 28rpx;
+  padding: 0;
 }
 .searchall{
   width:631rpx;

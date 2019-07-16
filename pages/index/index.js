@@ -12,7 +12,7 @@ Page({
     indicatorDots: false, //显示面板指示点
     autoplay: true, //自动播放
     beforeColor: "white", //指示点颜色
-    afterColor: "coral", //当前选中的指示点颜色
+    afterColor: "coral", //当前选中的指示点颜色 
     beforeColor1: '#2EB354',
     interval: 10000,
     interval1: 6000,
@@ -69,7 +69,20 @@ Page({
     shop_cate: [],
     visible1: false,
     value1: [],
-    pullState: 1
+    pullState: 1,
+    noticeList: [{
+      url: "../tk/tk",
+      context: "多地首套房贷利率上浮 热点城市渐迎零折扣时代 多地首套房贷利率上浮 热点城市渐迎零折扣时代"
+    },
+    {
+      url: "../tk/tk",
+      context: "悦如公寓三周年生日趴邀你免费吃喝欢唱"
+    },
+    {
+      url: "../tk/tk",
+      context: "你想和一群有志青年一起过生日嘛？"
+    }
+    ]
   },
   search(e) {
     wx.navigateTo({
@@ -172,6 +185,7 @@ Page({
         ru_float: result.ru_float || '',
         tag_bgi: result.tag_bgi || '',
         wallet: result.wallet || '',
+        notify: result.notify || '',
       })
       console.log(that.data.popout)
       for (var i in tag ){

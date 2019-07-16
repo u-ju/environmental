@@ -1,341 +1,4 @@
-/**index.wxss**/
 
-/* page {
-  background-color: #fff;
-  padding-bottom: 140rpx;
-  border: 0;
-  font-family: PingFang-SC-Regular;
-}
-
-.bg {
-  background-color: white;
-}
-
-.container {
-  width: 686rpx;
-  margin: auto;
-}
-
-.banner, .recommended {
-  width: 686rpx;
-  height: 250rpx;
-  border-radius: 10rpx;
-  overflow: hidden;
-  position: relative;
-}
-
-.recommended {
-  background-color: white;
-}
-
-.index_theme {
-  width: 300rpx;
-  height: 118rpx;
-  margin-top: 20rpx;
-  text-align: center;
-  padding: 0 20rpx;
-  border-radius: 10rpx;
-  position: relative;
-  color: #f7f7f7;
-}
-
-.index_themepic {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.red_cricle {
-  width: 12rpx;
-  height: 12rpx;
-  border-radius: 50%;
-  position: absolute;
-  background-color: red;
-  right: -14rpx;
-  top: 0rpx;
-}
-
-.index_modular {
-  padding-bottom: 20rpx;
-  width: 25%;
-  text-align: center;
-}
-
-.index_modular_cri {
-  width: 65rpx;
-  height: 65rpx;
-  margin: 26rpx auto 14rpx auto;
-  overflow: hidden;
-}
-
-.index_modular_cri image, .goods_cri image {
-  width: 100%;
-  height: 100%;
-}
-
-.index_modular_con {
-  color: rgb(102, 102, 102);
-}
-
-.bg247 {
-  padding: 20rpx 0;
-}
-
-.slide-image {
-  width: 100%;
-  height: 100%;
-  border-radius: 10rpx;
-}
-
-.marginfff {
-  padding:  26rpx 0;
-}
-
-.marginfff .color0, .marginfff .color46 {
-  display: inline-block;
-  margin-right: 20rpx;
-}
-
-.marginfff .color51 {
-  margin-bottom: 16rpx;
-}
-
-.index_putin {
-  width: 270rpx;
-  height: 86rpx;
-  padding: 18rpx 28rpx;
-  color: #fff;
-  background-color: #fff;
-  box-shadow: -1rpx 5rpx 13rpx 0px rgba(169, 169, 169, 0.23);
-  border-radius: 10rpx;
-}
-
-.index_putin .color6ADB7A {
-  margin-right: 14rpx;
-}
-
-.index_putin_right {
-  margin-left: 52rpx;
-}
-
-.wallet {
-  width: 84rpx;
-  height: 32rpx;
-  text-align: center;
-  line-height: 32rpx;
-  font-size: 24rpx;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 17rpx;
-}
-
-.size34 {
-  font-size: 34rpx;
-}
-
-.padding26 {
-  padding: 26rpx 0;
-}
-
-.goods_cri {
-  width: 62rpx;
-  height: 62rpx;
-  border-radius: 50%;
-  margin-right: 6rpx;
-  overflow: hidden;
-}
-
-.goods_cri .color102 .size20 {
-  margin-top: 10rpx;
-}
-
-.goods {
-  margin-bottom: 26rpx;
-  width: 30%;
-}
-
-.location {
-  width: 22rpx;
-  height: 28rpx;
-  margin-right: 16rpx;
-}
-
-.banner {
-  height: 188rpx;
-  border-radius: 10rpx;
-  margin: 10rpx 0 38rpx 0;
-  overflow: hidden !important;
-}
-
-.login {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.login .miaoshu {
-  margin: 400rpx 0 40rpx 0;
-  font-size: 28rpx;
-}
-
-.button {
-  width: 300rpx;
-  height: 70rpx;
-  border-radius: 60rpx;
-  display: flex;
-  align-items: center;
-  font-size: 30rpx;
-  justify-content: center;
-}
-
-.button image {
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 10rpx;
-}
-
-.tuijian_image {
-  width: 216rpx;
-  height: 170rpx;
-  margin-bottom: 10rpx;
-  border-radius: 10rpx;
-}
-
-.indextop {
-  width: 686rpx;
-  margin: auto;
-  padding: 16rpx 0;
-}
-
-.weather_pic {
-  width: 50rpx;
-  height: 50rpx;
-  margin-right: 18rpx;
-}
-
-.top {
-  padding: 6rpx 32rpx;
-  margin-bottom: 40rpx;
-}
-
-.marginr10 {
-  margin-right: 10rpx;
-}
-
-.item_lb_pic {
-  text-align: center;
-  width: 33.33%;
-}
-
-.ard_index image {
-  width: 686rpx;
-  height: 130rpx;
-  margin: auto;
-}
-
-.ard_index {
-  padding: 16rpx 0;
-  height: 130rpx;
-  text-align: center;
-  background-color: white;
-  margin-top: 20rpx;
-}
-
-.recommended {
-  height: 235rpx;
-}
-
-
-.theme {
-  margin-bottom: 20rpx;
-}
-
-.logo {
-  width: 112rpx;
-  height: 103rpx;
-}
-
-.marginr20 {
-  margin: 0 20rpx;
-}
-
-.agricultural {
-  padding: 14rpx 0;
-}
-
-.agriculturalitem {
-  padding: 0 32rpx;
-  font-size: 28rpx;
-}
-
-.agriculturalitem image {
-  width: 188rpx;
-  height: 160rpx;
-  border-radius: 8rpx;
-}
-
-.agriculturalD {
-  padding: 25rpx 0;
-  border-top: 1px solid #eee;
-}
-
-.agriculturalD .flex_col {
-  width: 460rpx;
-}
-
-.swiper-box {
-  height: 320rpx;
-}
-.swiper-box1 {
-  height: 150rpx;
-}
-
-
-.tabitem {
-  width: 25%;
-  margin-bottom: 50rpx;
-  text-align: center;
-}
-
-.tab image {
-  width: 70rpx;
-  height: 70rpx;
-}
-
-.swiper-box .wx-swiper-dot {
-  width: 24rpx;
-  height: 4rpx;
-  display: inline-flex;
-  margin-left: 0rpx;
-  justify-content: space-between;
-  border-radius: 0;
-}
-
-.swiper-box .wx-swiper-dot::before {
-  content: '';
-  flex-grow: 1;
-  border-radius: 0;
-}
-
-.locations {
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 10rpx;
-}
-
-.width110 {
-  margin-right: 10rpx;
-}
-.banner swiper{
-  border-radius: 10rpx 10rpx 10rpx 10rpx;
-  overflow: hidden;
-  width:686rpx;
-  height:240rpx;
-} */
 .refresh-loading{
   width: 50rpx;
   height: 50rpx;
@@ -365,7 +28,8 @@ page{
   border-radius: 39rpx;
 }
 .top{
-  padding: 10rpx 54rpx 10rpx 26rpx;
+  /* 10rpx 54rpx */
+  padding:  10rpx 26rpx;
 }
 .searchall input{
   height:78rpx;
@@ -373,7 +37,7 @@ page{
 }
 .menu{
   position: relative;
-  padding: 200rpx 0;
+  padding: 150rpx 0;
   overflow: hidden;
   color: white;
 }
@@ -432,11 +96,11 @@ page{
 .rubbish{
   width:244rpx;
   height:95rpx;
-  background:#48d1cc;
+  background:#4DDDCE;
   border-radius:48rpx 0 0 48rpx;
   position: absolute;
   right: 0;
-  top: 56rpx;
+  top: 26rpx;
 }
 .rubbishpic{
   width: 60rpx;
@@ -486,7 +150,51 @@ page{
 }
 
 .button image {
-  width: 40rpx;
-  height: 40rpx;
+  width: 60rpx;
+  height: 60rpx;
   margin-right: 10rpx;
+}
+.swiper-notice {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20rpx auto 10rpx auto;
+  width:700rpx;
+  height:76rpx;
+  background:rgba(255,255,255,0.6);
+  border-radius:10rpx;
+}
+
+.swiper-notice text {
+  font-size: 28rpx;
+  color: #bfbfbf;
+}
+
+.swiper-notice image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.swiper-nav {
+  height: 80rpx;
+  width: 580rpx;
+  margin-left: 26rpx;
+}
+
+.swiper-nav swiper-item {
+  display: flex;
+  align-items: center;
+}
+
+.swiper-context {
+  font-size: 28rpx;
+  letter-spacing: 2rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.gotarea{
+  margin-right: 50rpx;
+  width: 300rpx;
 }

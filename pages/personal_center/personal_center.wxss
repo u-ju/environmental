@@ -220,7 +220,7 @@ page{
   /* height: 100%; */
   height: calc(100% - 154rpx);
   background: linear-gradient( #94DECF, #5E93D7);
-  padding-top: 50rpx;
+  padding-top: 60rpx;
 }
 .top{
   width:566rpx;
@@ -289,8 +289,10 @@ page{
   right: 33rpx;
   top: 0rpx;
   color: white;
-  font-size: 46rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 .icon-shezhi{
-  font-size: 46rpx;
+  font-size: 56rpx;
+  margin-top: -4rpx;
 }

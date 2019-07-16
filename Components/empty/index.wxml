@@ -1,3 +1,4 @@
 <view class="null">
-{{title}}
+  <image src='../../images/zwsj.png' class='zwsj'></image>
+  <view>{{title}}</view>
 </view>

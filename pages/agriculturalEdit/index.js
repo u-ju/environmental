@@ -88,14 +88,13 @@ Page({
     if (e.detail.value.length<1){
       return
     }
-    var value = encodeURI(e.detail.value)
-    
-    // console.log(value)
+    var value = e.detail.value
+
     this.goodsSpecFormat1(value)
   },
   goodsSpecFormat1(value) {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.shop_goodsSpecFormat + value }, function (res) {
+    util.getJSON({ apiUrl: apiurl.shop_goodsSpecFormat, data: { spec_str: value} }, function (res) {
       that.setData({
         spec_group_arr: res.data.result.spec_group_arr
       })

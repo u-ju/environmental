@@ -5,7 +5,7 @@
       <view class="tabBar-item">
         <!-- <navigator wx:if="{{item.show!=1}}" open-type="redirect" url="{{item.pagePath}}"> -->
         <view wx:if="{{item.show!=1}}" bindtap='tabarUrl' data-id='{{item.id}}' data-url="{{item.pagePath}}">
-          <view class='image_box'><image class="icon" src='{{item.iconPath}}'></image></view>
+          <view class='image_box'><image class="iconimage" src='{{item.iconPath}}'></image></view>
           <view class="{{item.current== 1 ? 'tabBartext' :'colorfff'}} size26">{{item.text}}</view>
           <view class='massage' wx:if="{{item.message==1&&item.num}}" >{{item.num}}</view>
         </view>

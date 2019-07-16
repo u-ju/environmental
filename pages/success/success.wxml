@@ -5,3 +5,5 @@
     </swiper-item>
   </block>
 </swiper>
+
+    <view bindtap='previewImageFn'><image src='{{img.src}}' style='width:750rpx; height:540rpx;' mode="aspectFill"></image>点我</view>

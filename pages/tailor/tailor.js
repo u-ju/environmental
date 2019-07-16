@@ -40,38 +40,54 @@ Page({
       if (avatar && that.data.click) {
         console.log(avatar)
         //  获取到裁剪后的图片
+        // let base64 = wx.arrayBufferToBase64(avatar);
+        // var avatar1 = 'data:image/jpg;base64,' + base64;
+        wx.getFileSystemManager().readFile({
+          filePath: avatar, //选择图片返回的相对路径
+          encoding: 'base64', //编码格式
+          success: res => { //成功的回调 
+            console.log(res)
+            var avatar1 = res.data
+            wx.uploadFile({
+              url: apiurl.user_update, // 后台 java 上传接口
+              filePath: avatar,
+              name: 'file',
+              formData: {
+                "avatar": avatar1,
+                'source': 'base64'
+              },
+              header: {
+                "content-type": 'application/x-www-form-urlencoded',
+                'token': util.getToken(),
+                'channel': 'let',
+                'build': apiurl.build
+              },
+              success(res) {
 
-        wx.uploadFile({
-          url: apiurl.user_update, // 后台 java 上传接口
-          filePath: avatar, 
-          name: 'file',
-          formData: {
-            "avatar": that.data.src,
-            'source': 'base64'
+                var data = JSON.parse(res.data);
+                console.log(data)
+                wx.navigateBack()
+              },
+              fail: function(errMsg) {
+                console.log(errMsg);
+              }
+            });
           },
-          header: {
-            "content-type": 'application/x-www-form-urlencoded',
-            'token': util.getToken(),
-            'channel': 'let',
-            'build': apiurl.build
-          },
-          success(res) {
-            
-            var data = JSON.parse(res.data);
-            console.log(data)
-            wx.navigateBack()
-          },
-          fail: function (errMsg) {
-            console.log(errMsg);
-          }
-        });
+          fail: function(error) {},
+        })
+
       } else {
         console.log('获取图片失败，请稍后重试')
       }
     })
   },
-  getimg(avatar1){
-    util.postJSON({ apiUrl: apiurl.user_update, data: {  avatar: avatar1} }, function (res) {
+  getimg(avatar1) {
+    util.postJSON({
+      apiUrl: apiurl.user_update,
+      data: {
+        avatar: avatar1
+      }
+    }, function(res) {
       var result = res.data.result
       util.info_dialog(res.data.message)
       wx.navigateBack()
@@ -88,7 +104,7 @@ Page({
       success(res) {
         const src = res.tempFilePaths[0]
         //  获取裁剪图片资源后，给data添加src属性及其值
-        
+
         self.wecropper.pushOrign(src)
       }
     })
@@ -97,7 +113,9 @@ Page({
     this.setData({
       src: option.data
     })
-    const { cropperOpt } = this.data
+    const {
+      cropperOpt
+    } = this.data
     if (option.src) {
       console.log(option.data)
       cropperOpt.src = option.src

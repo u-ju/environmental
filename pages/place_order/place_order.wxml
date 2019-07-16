@@ -22,7 +22,7 @@
   <view class='size30 color4 padding34'>精选推荐</view>
   <view class='tuijian_item flex align_center' wx:for="{{list}}" wx:key='index' bindtap='detail' data-id='{{item.id}}' wx:if="{{item.id}}" >
       <view class='images'>
-        <image src='{{item.thumb}}'></image>
+        <image src='{{item.thumb}}' mode='aspectfit'></image>
       </view>
       <view class='miaoshu flex_col_1 justify_btw'>
         <view class='hidden2 size28'>{{item.title}}</view>

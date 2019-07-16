@@ -94,7 +94,7 @@ Page({
     const that = this.selectComponent('#qrcode')
  
     wx.canvasToTempFilePath({
-      canvasId: 'wux-qrcode',
+      canvasId: 'logoQRCode',
       success: (res1) => {
         wx.showModal({
           title: '保存图片',

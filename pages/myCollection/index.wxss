@@ -16,6 +16,7 @@ page{
 .agriculturalD {
   border-bottom: 1px solid #eee;
   border-top: none;
+  padding: 20rpx 0;
 }
 .agriculturalD .flex_col{
   width: 460rpx;

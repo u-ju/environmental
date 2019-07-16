@@ -249,6 +249,19 @@ Page({
       video:[]
     })
   },
+  choice(e){
+    var features=this.data.features
+    
+    if (features.indexOf(e.currentTarget.dataset.item)!=-1){
+      features.splice(features.indexOf(e.currentTarget.dataset.item),1)
+    }else{
+      features.push(e.currentTarget.dataset.item)
+    }
+    console.log(features)
+    this.setData({
+      features: features
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -311,12 +324,13 @@ Page({
     var that = this;
 
     var share_mobile = options.share_mobile ? JSON.parse(options.share_mobile) : ''
-    var feature_list = options.feature_list ? JSON.parse(options.feature_list) : ''
+    var feature_list = options.feature_list ? JSON.parse(options.feature_list) : ["停车位", "WIFI", "有包间"]
     this.setData({
       hour1: hour1,
       hour2: hour2,
       source: options.source || '',
-      features: feature_list,
+      features: [], 
+      feature_list: feature_list,
       share_mobile: share_mobile
     })
     var result = app.globalData.config
@@ -584,6 +598,7 @@ Page({
     var _this = this;
     console.log(upload_picture_list[j]['path'])
     console.log(upload_picture_list[j]['path_base'])
+    console.log(upload_picture_list[j])
     const upload_task = wx.uploadFile({
       // 模拟https
       url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  

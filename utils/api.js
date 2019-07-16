@@ -1,10 +1,10 @@
-const basePath = 'https://wyhb.zgwyhb.com/api';
-// const basePath = 'https://wyhb.dev.zgwyhb.com/api';
+// const basePath = 'https://wyhb.zgwyhb.com/api';
+const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
   base: basePath,
   wx_appid : "wx9af47449f54c0be7",
-  // build : 99999999,
-  build : 20190712,
+  build : 99999999,
+  // build : 20190712,
   collectUpdate: basePath + '/front/collect/update',
   collectIndex: basePath + '/front/collect/index?source=',
 
@@ -247,7 +247,7 @@ const apiList = {
   // shop_goodsIndex: basePath + '/front/shop/goodsIndex',
   // shop_goodsShow: basePath + '/front/shop/goodsShow?sku_id=',
 
-  shop_goodsSpecFormat: basePath + '/front/shop/goodsSpecFormat?spec_str=',
+  shop_goodsSpecFormat: basePath + '/front/shop/goodsSpecFormat',
   shop_goodsStore: basePath + '/front/shop/goodsStore',
   shop_goodsIndexOwn: basePath + '/front/shop/goodsIndexOwn?shop_id=',
   shop_goodsShowOwn: basePath + '/front/shop/goodsShowOwn',

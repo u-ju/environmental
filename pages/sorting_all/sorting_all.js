@@ -140,7 +140,7 @@ Page({
     const that = this.selectComponent('#qrcode')
     console.log("huhu")
     wx.canvasToTempFilePath({
-      canvasId: 'wux-qrcode',
+      canvasId: 'logoQRCode',
       success: (res1) => {
         // wx.previewImage({
         //   urls: [res.tempFilePath]

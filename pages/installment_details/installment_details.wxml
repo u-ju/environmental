@@ -40,7 +40,7 @@
   </view>
 </view>
 <view class='goods_intr2'>
-  <view class='color898989 flex_btw size28 align_center' bindtap='open1'>
+  <view class='color898989 flex_btw size28 align_center' bindtap='open1' hidden='{{result.source=="offline"}}'>
     <text decode="{{true}}" space="{{true}}">选择规格/数量</text>
     <!-- 已选&ensp;&ensp;&ensp;&ensp;{{result.sku_name}} -->
     <text class='iconfont icon-jiantou'></text>
@@ -210,7 +210,7 @@
   <view class='carpop'>
     <view class='flex_btw cartop'>
       <view class='flex align_center' bindtap='allchoosecar'>
-        <text class='iconfont icon-xuanze size24 icon {{all==0?"colorD2":""}}'></text>
+        <view class='iconfont icon-xuanze size24 icon {{all==0?"colorD2":""}}'></view>
         <view>全选</view>
       </view>
       <view>价格</view>
@@ -227,7 +227,7 @@
       <block wx:for="{{goodsCart}}" wx:key="index" wx:for-index="carindex" wx:for-index="listnum">
         <view class='flex_btw carcond align_center' wx:for="{{item.goods_arr}}" wx:key="index">
           <view class='flex align_center' bindtap='choosecar' data-sku_id='{{item.sku_id}}' data-count='{{item.count}}' data-listnum='{{listnum}}' data-price='{{item.price}}'>
-            <text class='iconfont icon-xuanze size24  icon {{m1.indexO(choosecar.sku_id[listnum],item.sku_id)==-1?"colorD2":"color27AAD9"}}'></text>
+            <view class='iconfont icon-xuanze size24  icon {{m1.indexO(choosecar.sku_id[listnum],item.sku_id)==-1?"colorD2":"color27AAD9"}}'></view>
             <view class='hidden1 color0'>{{item.spu_name}}{{item.sku_name}}</view>
           </view>
           <view class='colorff1919'>￥{{item.price}}</view>

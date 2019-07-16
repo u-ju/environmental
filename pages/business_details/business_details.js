@@ -123,6 +123,15 @@ Page({
   },
   // 查看图片
   previewImg(e) {
+    console.log(e.currentTarget.dataset.src.split("?")[0])
+    
+    // wx.previewImage({
+    //   current: "http://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/b3d4dd21b97eb771e3ac153f7f9014f9.png",
+    //   urls: [
+    //     "http://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/b3d4dd21b97eb771e3ac153f7f9014f9.png",
+    //     "http://wyhb-res-pr.zgwyhb.com/uploads/image/2019/03/13/b3d4dd21b97eb771e3ac153f7f9014f9.png"
+    //   ],
+    // })
     util.previewImage(e.currentTarget.dataset.src, this.data.result.images)
   },
   commentIndex1(shop_id, page = 1) {
