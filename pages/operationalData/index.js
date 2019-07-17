@@ -10,8 +10,8 @@ Page({
   data: {
     time:[
       { key: 'days', name: '日' },
-      { key: 'week', name: '月' },
-      { key: 'month', name: '周' },
+      { key: 'week', name: '周' },
+      { key: 'month', name: '月' },
       { key: 'quarter', name: '季度' },
       { key: 'year', name: '年' },
     ],

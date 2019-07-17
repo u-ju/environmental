@@ -426,10 +426,10 @@ function unique(array) {
 function getToken(valuetstu='',form,cb,mothed) {
   var that = this;
   var token = wx.getStorageSync('token')||"";
-  
+  return 'zwj';
   if (token && valuetstu!= 801) {
     return token;
-    // return  'zwj';
+
   }
   if (valuetstu==801){
     wx.reLaunch({

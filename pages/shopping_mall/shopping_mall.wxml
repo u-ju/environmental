@@ -13,7 +13,7 @@
 <view class='tab'>
   <swiper class="swiperbox" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}">
     <block wx:for="{{tablen}}" wx:key="index" wx:for-index="indexnum">
-      <swiper-item bindtap='link' data-link='{{item.control}}'>
+      <swiper-item >
         <view class='flex wrap'>
           <view wx:for="{{10}}" wx:key="index" class='tabitem {{cate_ids==shop_cate[indexnum*10+index]["id"]?"color27AAD9":""}}' bindtap="selctTab" data-index="{{index}}" data-name='{{shop_cate[indexnum*10+index]["name"]}}'  data-item='{{shop_cate[indexnum*10+index]}}' data-current='{{shop_cate[indexnum*10+index]["id"]}}'
             wx:if="{{shop_cate.length>indexnum*10+index}}">

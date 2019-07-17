@@ -6,8 +6,7 @@
 </wux-tabs>
 
 <view class='list'>
-  <view class='fkItem' wx:for="{{list}}" wx:key="index" wx:for-index="listindex" bindtap='detail' data-id='{{item.order_id}}'>
-
+  <view class='fkItem' wx:for="{{list}}" wx:key="index" wx:for-index="listindex" bindtap='detail' data-id='{{item.order_id}}' wx:if="{{item.order_id}}">
     <view class='flex_btw'>
       <text class='color4 size28'>订单号：{{item.order_no}}</text>
       <text class='{{item.order_status==0?"color2EB354":""}}{{item.order_status==1?"colorBE":""}}{{item.order_status==2?"colorFE2C2C":""}}'>{{item.order_status_name}} </text>

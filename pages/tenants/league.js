@@ -631,16 +631,14 @@ Page({
       for (var i in arr) {
         wx.setStorageSync(arr[i] + "e", '')
       }
-      setTimeout(function () {
-        wx.reLaunch({
-          url: '../index/index',
-          success() {
-            that.setData({
-              post: false
-            })
-          }
-        })
-      }, 0)
+      if (that.data.shop_id) {
+        util.navigateBack(1, 800)
+      } else {
+        util.navigateBack(2, 800)
+      }
+      that.setData({
+        post: false
+      })
 
     }, function (res) {
       // console.log(res.data.message)

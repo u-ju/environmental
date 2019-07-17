@@ -1,43 +1,10 @@
-
-  <!-- <view class='bg '>
-    <navigator url='../setting/setting' class='settting'>
-      <view class='iconfont icon-shezhi'></view>
-    </navigator>
-    <view class="container container1 flex ">
-      <view class='head' bindtap='uploadHeadPhoto'>
-        <image mode='aspectFill' class='header' src='{{l_one.avatar}}'></image>
-      </view>
-      <view class='size28 flex_col_1 flex_btw'>
-        <view class='badgeitem flex ' wx:if="{{l_one.badge.icon}}" data-link='{{l_one.badge.control}}' bindtap='link'>
-          <image class='badgebg' src='{{l_one.badge.icon}}'></image>
-          <view class='badgename'>{{l_one.badge.name}}</view>
-        </view>
-        <view class='flex align_center'>
-          <view bindtap='name' data-name='{{l_one.nickname}}' class='name'>{{l_one.nickname}}
-            <image mode='aspectFill' class='pen' src='../../images/pen@2x.png'></image>
-          </view>
-          <view data-link='{{l_one.realname.control}}' bindtap='link'>{{l_one.realname.name}} </view>
-        </view>
-        <view class='assetsitem flex_btw'>
-          <view data-link='{{l_one.mobile.control}}' bindtap='link'>{{l_one.mobile.name||"暂未绑定手机号"}} </view>
-        </view>
-      </view>
-    </view>
-    </view>
-     -->
-     <!-- <view class='garbage flex' hidden='{{l_two.length==0}}' style='width:{{l_two.length==2?544:652}}rpx'>
-  <view wx:for="{{l_two}}" wx:key='index' style='width:{{100/l_two.length}}%' class='center' bindtap='link' data-link='{{item.control}}'>
-    <image src='{{item.icon}}'></image>
-    <view class='color4'>{{item.name}}</view>
-  </view>
-</view>
-</view> -->
-<view class='pagetop'>
+<scroll-view scroll-y  class='pagetop'>
   <import src="../../Components/tab-bar/tab-bar.wxml" />
   <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
+  <view style='height:84rpx;'></view>
   <navigator url='../setting/setting' class='settting'>
-      <view class='iconfont icon-shezhi'></view>
-    </navigator>
+    <view class='iconfont icon-shezhi'></view>
+  </navigator>
   <view class='top flex_btw'>
     <view class='head' bindtap='uploadHeadPhoto'>
       <image mode='aspectFill' class='header' src='{{l_one.avatar}}'></image>
@@ -47,7 +14,7 @@
         <view bindtap='name' data-name='{{l_one.nickname}}' class='name'>{{l_one.nickname}}
           <image mode='aspectFill' class='pen' src='../../images/pen@2x.png'></image>
         </view>
-        <view data-link='{{l_one.realname.control}}' bindtap='link' class='realname' >({{l_one.realname.name}}) </view>
+        <view data-link='{{l_one.realname.control}}' bindtap='link' class='realname'>({{l_one.realname.name}}) </view>
       </view>
       <view class='assetsitem flex_btw '>
         <view data-link='{{l_one.mobile.control}}' bindtap='link'>{{l_one.mobile.name||"暂未绑定手机号"}} </view>
@@ -66,11 +33,13 @@
   </view>
 
 
-<view class='function flex wrap'>
-  <view class='funitem {{surplus==1&&index==l_three.length-1?"funnobtm":""}} {{surplus==2&&(index==l_three.length-1||index==l_three.length-2)?"funnobtm":""}} {{surplus==0&&(index==l_three.length-1||index==l_three.length-2||index==l_three.length-3)?"funnobtm":""}}'
-    wx:for="{{l_three}}" wx:key='index' bindtap='link' data-link='{{item.control}}' data-attach='{{item.attach}}'>
-    <image src='{{item.icon}}'></image>
-    <view class='color4'>{{item.name}}</view>
+  <view class='function flex wrap'>
+    <view class='funitem {{surplus==1&&index==l_three.length-1?"funnobtm":""}} {{surplus==2&&(index==l_three.length-1||index==l_three.length-2)?"funnobtm":""}} {{surplus==0&&(index==l_three.length-1||index==l_three.length-2||index==l_three.length-3)?"funnobtm":""}}'
+      wx:for="{{l_three}}" wx:key='index' bindtap='link' data-link='{{item.control}}' data-attach='{{item.attach}}'>
+      <image src='{{item.icon}}'></image>
+      <view class='color4'>{{item.name}}</view>
+    </view>
   </view>
-</view>
-</view>
+  <view style='height:600px'>
+    </view>
+</scroll-view>

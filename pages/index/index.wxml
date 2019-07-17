@@ -4,7 +4,7 @@
   <popupImg wx:if="{{!guidel}}" visablen="{{popout}}" dat="{{popout_image}}" bind:close="guidel" />
   <import src="../../Components/tab-bar/tab-bar.wxml" />
   <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
-  <view class='index'>
+  <scroll-view scroll-y  class='index'>
     <view class='center loading' hidden="{{0!=pullState}}">
       <view class="refresh-loading"></view>
     </view>
@@ -64,7 +64,9 @@
         </view>
       </view>
     </view>
-  </view>
+    <view style='height:600px'>
+    </view>
+  </scroll-view>
 </block>
 <view class='login' wx:elif='{{token==1}}'>
   <view class='miaoshu'>登录后享受更多功能</view>

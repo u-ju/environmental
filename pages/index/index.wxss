@@ -37,7 +37,7 @@ page{
 }
 .menu{
   position: relative;
-  padding: 150rpx 0;
+  padding: 180rpx 0;
   overflow: hidden;
   color: white;
 }
@@ -197,4 +197,13 @@ page{
 .gotarea{
   margin-right: 50rpx;
   width: 300rpx;
+}
+::-webkit-scrollbar {
+
+  width: 0;
+
+  height: 0;
+
+  color: transparent;
+
 }

@@ -12,10 +12,10 @@
 <view class='con'>
   <view class='size28 color4'>其他常见问题</view>
   <block wx:if="{{list.length>0}}">
-  <view  wx:for="{{list}}" wx:key="index" class='flex_btw align_center' bindtap='detail' data-help_id='{{item.help_id}}'>
-    <text class='color6'>{{item.title}}</text>
-    <image src='../../images/list_icon_next@2x.png'></image>
-  </view>
+    <view  wx:for="{{list}}" wx:key="index" class='flex_btw align_center' bindtap='detail' data-help_id='{{item.help_id}}' wx:if="{{item.help_id}}">
+      <text class='color6'>{{item.title}}</text>
+      <image src='../../images/list_icon_next@2x.png'></image>
+    </view>
   </block>
   <empty wx:else />
 </view>

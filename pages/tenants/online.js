@@ -619,39 +619,18 @@ Page({
       var result = res.data.result
 
       util.alert("申请提交成功，等待审核")
-      // wx.setStorageSync("contacto", '')
-      // wx.setStorageSync("discount_percento", '')
-      // wx.setStorageSync("titleo", '')
-      // wx.setStorageSync("addresso", '')
-      // wx.setStorageSync("introo", '')
-      // wx.setStorageSync("area_ido", '')
-      // wx.setStorageSync("typeo", '')
-      // wx.setStorageSync("cate_ido", '')
-      // wx.setStorageSync("title1o", '')
-      // wx.setStorageSync("areaSelectedStro", '')
-      // wx.setStorageSync("image0o", '')
-      // wx.setStorageSync("image1o", '')
-      // wx.setStorageSync("upload_picture_listo", [])
-      // wx.setStorageSync('choosedo', '')
-      // wx.setStorageSync('latitudeo', '')
-      // wx.setStorageSync('longitudeo', '')
-      // wx.setStorageSync('license_info[business_address]o', '')
-      // wx.setStorageSync('license_info[business_scope]o', '')
-      // wx.setStorageSync('videoo', '')
       var arr = ['contact', 'discount_percent', 'title', 'address', 'intro', 'area_id', 'type', 'cate_id', 'title1', 'areaSelectedStr', 'image0', 'image1', "upload_picture_list", 'choosed', 'latitude', "longitude", 'license_info[business_address]', 'license_info[business_scope]', 'license_info[company_name]', 'license_info[license_no]', 'license_info[legal_person]', 'video', 'share_mobile']
       for (var i in arr) {
         wx.setStorageSync(arr[i] + "o", '')
       }
-      setTimeout(function () {
-        wx.reLaunch({
-          url: '../index/index',
-          success() {
-            that.setData({
-              post: false
-            })
-          }
-        })
-      }, 0)
+      if (that.data.shop_id) {
+        util.navigateBack(1, 800)
+      } else {
+        util.navigateBack(2, 800)
+      }
+      that.setData({
+        post: false
+      })
 
     }, function (res) {
       // console.log(res.data.message)

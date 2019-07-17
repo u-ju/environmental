@@ -116,7 +116,7 @@ Page({
   goodsUpDown(){
     var that = this;
     util.postJSON({ apiUrl: apiurl.shop_goodsUpDown, data: { shop_id: that.data.shop_id, spu_id: that.data.spu_id} }, function (res) {
-      util.alert(res.data.message)
+      util.alert1(res.data.message)
       var status = !that.data.status
       that.setData({
         status: Number(status)
@@ -170,18 +170,16 @@ Page({
         key_name[i] = result.skus[i]['sku_name']
         price[i] = result.skus[i]['price']
         stock[i] = result.skus[i]['stock']
-        if(this.data.source == "league"){
+        if (result.source == "league"){
           install_fee[i]= result.skus[i]['install_fee']
+          that.setData({
+            install_fee: install_fee
+          })
         }
         images[i]=[]
         for (var j in result.skus[i]['images']){
           images[i].push({ upload_percent: 100, path_server: result.skus[i]['images'][j] })
         }
-      }
-      if (this.data.source == "league") {
-        this.setData({
-          install_fee: install_fee
-        })
       }
       var spu_intro = []
       if (result.spu_intro){
@@ -211,6 +209,11 @@ Page({
       util.hideLoading()
     })
   },
+  onShow(){
+    if (this.data.spu_id){
+      this.init()
+    }
+  },
   onLoad: function (options) {
     // 
     var goods_cate = app.globalData.config.goods_cate
@@ -222,8 +225,6 @@ Page({
         goods_cate[i]["children"][j]["label"] = goods_cate[i]["children"][j]["name"]
       }
     }
-    // options.spu_id=12
-    // options.id=20
     this.setData({
       goods_cate: goods_cate,
       shop_id: options.id,
@@ -474,15 +475,11 @@ Page({
     })
     util.postJSON({ apiUrl: apiurl[that.data.url], data: data }, function (res) {
       var result = res.data.result
-      util.alert(res.data.message)
-      setTimeout(function(){
-        wx.navigateBack({
-          delta: 1,
-        })
-        that.setData({
-          post: false
-        })
-      },2600)
+      util.alert1(res.data.message)
+      util.navigateBack()
+      that.setData({
+        post: false
+      })
       
     }, function (res) {
       

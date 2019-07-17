@@ -11,7 +11,7 @@ Page({
     allchooseid:[],
     chooseid:[],
     all:0,
-    list:[0]
+    list:[]
   },
 
   /**
@@ -88,7 +88,7 @@ Page({
       data['id[' + i + ']'] = chooseid[i]
     }
     if (chooseid.length<1){
-      return util.alert('请选择删除内容')
+      return util.alert1('请选择删除内容')
     }
     console.log(chooseid.length)
     util.postJSON({ apiUrl: apiurl.shopComment_delShop, data: data }, function (res) {
@@ -143,9 +143,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-wx.showLoading({
-      title: '玩命加载中',
-    })
+    util.loading()
     // 页数+1
     if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
       that.init(Number(that.data.page.current_page) + 1)

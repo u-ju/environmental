@@ -12,14 +12,14 @@ var apiurl = require('../../utils/api.js');
 const date = new Date()
 const hour1 = []
 const hour2 = []
-var min = [':00',":30"]
+var min = [':00', ":30"]
 for (var i = 0; i < 24; i++) {
 
-  for(var a in min){
+  for (var a in min) {
     hour1.push(i + min[a])
     hour2.push(i + min[a])
   }
-  
+
 }
 Page({
 
@@ -28,8 +28,7 @@ Page({
    */
   data: {
     post: false,
-    options2: [
-      {
+    options2: [{
         value: 'beijing',
         label: '北京',
         isLeaf: false,
@@ -41,15 +40,24 @@ Page({
       },
     ],
     value2: [],
-    type_val: [
-      { name: '便民服务', id: 1 },
-      { name: '积分商城', id: 2 },
+    type_val: [{
+        name: '便民服务',
+        id: 1
+      },
+      {
+        name: '积分商城',
+        id: 2
+      },
     ],
     tshop_cate: [],
     shop_cate: [],
     type: '',
-    image: [
-      { title: '营业执照', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
+    image: [{
+        title: '营业执照',
+        upload_picture_list: [],
+        text: "点击拍摄/上传图片",
+        id: 0
+      },
       // { title: '店招上传', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
     ],
     upload_picture_list: [],
@@ -73,23 +81,27 @@ Page({
     choosead: true,
 
 
-    room_list:[],
+    room_list: [],
     hour1: [],
     hour2: [],
     timevalue: [],
-    timevalueR:[],
-    visiblet:false,
-    features:[],
+    timevalueR: [],
+    visiblet: false,
+    features: [],
     featuresv: '',
     room: [],
     roomv: '',
-    items: [
-      { name: 1, value: '同意', checked: true },
-    ],
+    items: [{
+      name: 1,
+      value: '同意',
+      checked: true
+    }, ],
     choose: ['1'],
-    video:{src:''},
-    clicktime:'0:00-0:00',
-    showa:false,
+    video: {
+      src: ''
+    },
+    clicktime: '0:00-0:00',
+    showa: false,
     shows: false,
     timezc: 0
   },
@@ -98,49 +110,49 @@ Page({
       choose: e.detail.value
     })
   },
-  bindChange: function (e) {
+  bindChange: function(e) {
     const val = e.detail.value
     var timevalue = this.data.timevalue
     var time = this.data.hour1[val[0]] + '-' + this.data.hour1[val[1]];
-    var timenum = timevalue.length-1
+    var timenum = timevalue.length - 1
     this.setData({
       timevalue: timevalue,
       clicktime: time
     })
   },
   testcall(e) {
-    util.testjq(e.detail.value, "请输入正确的联系方式", function () {
+    util.testjq(e.detail.value, "请输入正确的联系方式", function() {
 
     })
   },
-  opent(){
+  opent() {
     this.setData({
-      visiblet:true,
+      visiblet: true,
       timezc: 0,
       timevalue: util.copyarr(this.data.timevalueR),
       clicktime: this.data.clicktime,
     })
   },
-  colset(){
+  colset() {
     this.setData({
       visiblet: false,
-      timecz:0
-    })
-  },
-  
-  ch_del(){
-    this.setData({
-      visiblet:false,
       timecz: 0
     })
   },
-  ch_true(){
+
+  ch_del() {
+    this.setData({
+      visiblet: false,
+      timecz: 0
+    })
+  },
+  ch_true() {
     var timevalue = this.data.timevalueR || [];
     timevalue.push(this.data.clicktime)
     this.setData({
       visiblet: false,
       timevalueR: timevalue,
-      timecz:0
+      timecz: 0
     })
     wx.setStorageSync('timevaluet', this.data.timevalueR)
   },
@@ -153,28 +165,28 @@ Page({
     })
     wx.setStorageSync('timevaluet', this.data.timevalueR)
   },
-  timeadd(e){
-    var timevalue = this.data.timevalue||[];
+  timeadd(e) {
+    var timevalue = this.data.timevalue || [];
 
     timevalue.push(this.data.clicktime)
     this.setData({
       timevalue: timevalue,
-      timezc:1
+      timezc: 1
     })
   },
-  features(e){
-    var features = this.data.features||[];
-    if (features.indexOf(e.detail.value)>-1){
+  features(e) {
+    var features = this.data.features || [];
+    if (features.indexOf(e.detail.value) > -1) {
       return
     }
     features.push(e.detail.value)
     this.setData({
       features: features,
-      featuresv:''
+      featuresv: ''
     })
     wx.setStorageSync('featurest', features)
   },
-  delfeature(e){
+  delfeature(e) {
     let index = e.currentTarget.dataset.index;
     let features = this.data.features;
     features.splice(index, 1);
@@ -183,17 +195,17 @@ Page({
     })
     wx.setStorageSync('featurest', features)
   },
-  roomcz(e){
+  roomcz(e) {
     var item = e.currentTarget.dataset.item
     var room = this.data.room
-    for (var i in room){
-      if (room[i] == null || room[i] == undefined){
+    for (var i in room) {
+      if (room[i] == null || room[i] == undefined) {
         room.splice(i, 1);
       }
     }
-    if (room.indexOf(item)>-1){
+    if (room.indexOf(item) > -1) {
       room.splice(room.indexOf(item), 1);
-    }else{
+    } else {
       room.push(e.currentTarget.dataset.item)
     }
     this.setData({
@@ -201,60 +213,60 @@ Page({
     })
     wx.setStorageSync('roomt', room)
   },
-  uploadvideo(e){
+  uploadvideo(e) {
     var that = this;
-    
+
     wx.chooseVideo({
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      success: function(res) {
         util.loading()
         var promiseArr = []
         var tempFile = {}
         tempFile.img = res.thumbTempFilePath;
         tempFile.upload_percent = 0
 
-        var tempFilePath=[]
+        var tempFilePath = []
         tempFilePath.push(res.tempFilePath)
         var tempFilesSize = res.size;
         // if (tempFilesSize <= 25 * 1024 * 1024) {
-          if (util.allowUploadFormat(tempFilePath)){
-            // util.uploadV(res.tempFilePath)
-            util.uploadV(apiurl.upload_video, that, res,function(e){
-              
-              if(e.status!=200){
-                return util.alert(e.message)
-              }
-              tempFile.src = e.result.video_url
-              tempFile.upload_percent=100
-              wx.hideLoading()
-              that.setData({
-                video: tempFile 
-              })
-              wx.setStorageSync('videot', tempFile)
-            },function(e){
-              tempFile.upload_percent = e
-              that.setData({
-                video: tempFile
-              })
+        if (util.allowUploadFormat(tempFilePath)) {
+          // util.uploadV(res.tempFilePath)
+          util.uploadV(apiurl.upload_video, that, res, function(e) {
+
+            if (e.status != 200) {
+              return util.alert(e.message)
+            }
+            tempFile.src = e.result.video_url
+            tempFile.upload_percent = 100
+            wx.hideLoading()
+            that.setData({
+              video: tempFile
             })
-          } else {
-            util.alert("视频上传异常!");
-          }
+            wx.setStorageSync('videot', tempFile)
+          }, function(e) {
+            tempFile.upload_percent = e
+            that.setData({
+              video: tempFile
+            })
+          })
+        } else {
+          util.alert("视频上传异常!");
+        }
         // }
       }
     })
   },
-  deletevideo(){
+  deletevideo() {
     this.setData({
-      video:[]
+      video: []
     })
   },
-  choice(e){
-    var features=this.data.features
-    
-    if (features.indexOf(e.currentTarget.dataset.item)!=-1){
-      features.splice(features.indexOf(e.currentTarget.dataset.item),1)
-    }else{
+  choice(e) {
+    var features = this.data.features
+
+    if (features.indexOf(e.currentTarget.dataset.item) != -1) {
+      features.splice(features.indexOf(e.currentTarget.dataset.item), 1)
+    } else {
       features.push(e.currentTarget.dataset.item)
     }
     console.log(features)
@@ -285,7 +297,7 @@ Page({
       showa: false
     })
   },
-  inputa(e){
+  inputa(e) {
     this.setData({
       business_address: e.detail.value
     })
@@ -300,7 +312,7 @@ Page({
     this.setData({
       shows: false
     })
-  },      
+  },
   inputs(e) {
     this.setData({
       business_scope: e.detail.value
@@ -308,18 +320,25 @@ Page({
     wx.setStorageSync('license_info[business_scope]t', e.detail.value)
   },
   onOpen1() {
-    this.setData({ visible1: true })
+    this.setData({
+      visible1: true
+    })
   },
   onClose1() {
-    this.setData({ visible1: false })
+    this.setData({
+      visible1: false
+    })
   },
   onChange1(e) {
-    this.setData({ title1: e.detail.options.map((n) => n.label).join('-'), cate_id: e.detail.options[e.detail.options.length - 1].id })
- 
+    this.setData({
+      title1: e.detail.options.map((n) => n.label).join('-'),
+      cate_id: e.detail.options[e.detail.options.length - 1].id
+    })
+
     wx.setStorageSync("cate_idt", e.detail.options[e.detail.options.length - 1].id)
     wx.setStorageSync("title1t", e.detail.options.map((n) => n.label).join('-'))
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log()
     var that = this;
 
@@ -329,7 +348,7 @@ Page({
       hour1: hour1,
       hour2: hour2,
       source: options.source || '',
-      features: [], 
+      features: [],
       feature_list: feature_list,
       share_mobile: share_mobile
     })
@@ -345,33 +364,58 @@ Page({
         }
       }
     }
-    
+
     that.setData({
       shop_cate: shop_cate,
       type: '',
-      shop_settled: app.globalData.config.protocol.shop_settled||'',
+      shop_settled: app.globalData.config.protocol.shop_settled || '',
       choosed: wx.getStorageSync('choosedt') || that.data.choosed,
       features: JSON.parse(options.feature_list)
     })
     if (options.shop_id) {
-      util.getJSON({ apiUrl: apiurl.shop_showOwn + options.shop_id }, function (res) {
+      util.getJSON({
+        apiUrl: apiurl.shop_showOwn + options.shop_id
+      }, function(res) {
         var result = res.data.result
-        var image = [
-          { title: '营业执照', upload_picture_list: [{ upload_percent: 100, path_server: '' }], text: "点击拍摄/上传图片", id: 0 },
-          { title: '店招上传', upload_picture_list: [{ upload_percent: 100, path_server: '' }], text: "点击拍摄/上传图片", id: 1 },
+        var image = [{
+            title: '营业执照',
+            upload_picture_list: [{
+              upload_percent: 100,
+              path_server: ''
+            }],
+            text: "点击拍摄/上传图片",
+            id: 0
+          },
+          {
+            title: '店招上传',
+            upload_picture_list: [{
+              upload_percent: 100,
+              path_server: ''
+            }],
+            text: "点击拍摄/上传图片",
+            id: 1
+          },
         ]
-        var  upload_picture_list = []
+        var upload_picture_list = []
 
-        image[0]["upload_picture_list"][0]['path_server'] = result.license||'';
-        image[1]["upload_picture_list"][0]['path_server'] =  ''
+        image[0]["upload_picture_list"][0]['path_server'] = result.license || '';
+        image[1]["upload_picture_list"][0]['path_server'] = ''
         for (var i in result.images) {
-          upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
+          upload_picture_list.push({
+            upload_percent: 100,
+            'path_server': result.images[i]
+          })
         }
-        var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
-        var video={ upload_percent: 100, src: result.video}
+        var type_val = that.data.type_val,
+          shop_cate = that.data.shop_cate,
+          tshop_cate = that.data.tshop_cate
+        var video = {
+          upload_percent: 100,
+          src: result.video
+        }
         var timevalue = []
-        for(var a=0; a< result.business_time.length;a++){
-        	timevalue.push(result.business_time[a].start+'-'+result.business_time[a].end)
+        for (var a = 0; a < result.business_time.length; a++) {
+          timevalue.push(result.business_time[a].start + '-' + result.business_time[a].end)
         }
         that.setData({
           shop_cate: shop_cate,
@@ -395,16 +439,16 @@ Page({
           upload_picture_list: upload_picture_list,
           discount_percent: result.discount_percent,
           status_remark: result.status_remark,
-          
+
           timevalue: timevalue,
-	        timevalueR: timevalue,
-	        // room: result.reservation.room,
-	        video: video,
-	        features: result.feature,
-	        cost: result.cost,
-	        // min_person: result.reservation.min_person,
-	        // max_person: result.reservation.max_person,
-	        // company_name: result.license_info.company_name||'',
+          timevalueR: timevalue,
+          // room: result.reservation.room,
+          video: video,
+          features: result.feature,
+          cost: result.cost,
+          // min_person: result.reservation.min_person,
+          // max_person: result.reservation.max_person,
+          // company_name: result.license_info.company_name||'',
           // license_no: result.license_info.license_no || '',
           // legal_person: result.license_info.legal_person || '',
           // business_address: result.license_info.business_address || '',
@@ -416,11 +460,23 @@ Page({
       })
 
     } else {
-      var image = [
-        { title: '营业执照', upload_picture_list: wx.getStorageSync("image0t") || '', text: "点击拍摄/上传图片", id: 0 },
-        { title: '店招上传', upload_picture_list: wx.getStorageSync("image1t"), text: "点击拍摄/上传图片", id: 1 },
-      ], upload_picture_list = wx.getStorageSync("upload_picture_listt") || []
-      var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
+      var image = [{
+            title: '营业执照',
+            upload_picture_list: wx.getStorageSync("image0t") || '',
+            text: "点击拍摄/上传图片",
+            id: 0
+          },
+          {
+            title: '店招上传',
+            upload_picture_list: wx.getStorageSync("image1t"),
+            text: "点击拍摄/上传图片",
+            id: 1
+          },
+        ],
+        upload_picture_list = wx.getStorageSync("upload_picture_listt") || []
+      var type_val = that.data.type_val,
+        shop_cate = that.data.shop_cate,
+        tshop_cate = that.data.tshop_cate
       var title = wx.getStorageSync("titlet")
       that.setData({
         contact: wx.getStorageSync("contactt"),
@@ -439,8 +495,8 @@ Page({
         discount_percent: wx.getStorageSync('discount_percentt'),
         longitude: wx.getStorageSync('longitudet'),
         latitude: wx.getStorageSync('latitudet'),
-        
-        timevalue: wx.getStorageSync('timevaluet')||[],
+
+        timevalue: wx.getStorageSync('timevaluet') || [],
         timevalueR: wx.getStorageSync('timevaluet'),
         room: wx.getStorageSync('roomt'),
         video: wx.getStorageSync('videot'),
@@ -461,8 +517,8 @@ Page({
     qqMap.geocoder({
       address: address,
       complete: res => {
-  //经纬度对象
-        if (res.result&&res.result.status == 0 && res.result.location) {
+        //经纬度对象
+        if (res.result && res.result.status == 0 && res.result.location) {
           var longitude = that.data.location
           var latitude = that.data.location
           if (that.data.address.indexOf(res.result.title) != -1) {
@@ -483,7 +539,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
   input(e) {
@@ -493,12 +549,12 @@ Page({
       })
     }
     if (e.currentTarget.dataset.contact == "license_info[license_no]t") {
-      util.testwl(e.detail.value, '请输入正确的许可证号', function () {
-        
+      util.testwl(e.detail.value, '请输入正确的许可证号', function() {
+
       })
     }
     this.setData({
-      [e.currentTarget.dataset.contact]:e.detail.value
+      [e.currentTarget.dataset.contact]: e.detail.value
     })
     // if (e.currentTarget.dataset.contact == "addresst") {
     //   this.setData({
@@ -516,10 +572,10 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
-  radioChange: function (e) {//入驻类型选择
+  radioChange: function(e) { //入驻类型选择
     var that = this;
     // if (e.currentTarget.dataset.type=="type"){
     //   that.setData({
@@ -536,7 +592,7 @@ Page({
   },
 
   //选择图片方法
-  uploadpic: function (e) {
+  uploadpic: function(e) {
     var that = this //获取上下文
     var upload_picture_list = []
     //选择图片
@@ -544,12 +600,12 @@ Page({
       count: 1,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      success: function(res) {
         util.loading()
         var tempFiles = res.tempFiles
         var promiseArr = []
         for (var i in tempFiles) {
-          
+
           let promise = new Promise((resolve, reject) => {
             wx.getFileSystemManager().readFile({
               filePath: tempFiles[i]['path'], //选择图片返回的相对路径
@@ -557,7 +613,7 @@ Page({
               success: res => { //成功的回调 
                 resolve(res)
               },
-              fail: function (error) {
+              fail: function(error) {
                 reject(error);
               },
             })
@@ -582,7 +638,7 @@ Page({
 
   },
   //点击上传事件
-  uploadimage: function (index) {
+  uploadimage: function(index) {
     var page = this
     var upload_picture_list = page.data.image[index].upload_picture_list
     //循环把图片上传到服务器 并显示进度       
@@ -615,7 +671,7 @@ Page({
         'build': util.build
       },
       //附近数据，这里为路径     
-      success: function (res) {
+      success: function(res) {
         var data = JSON.parse(res.data);
         // //字符串转化为JSON  
 
@@ -645,30 +701,30 @@ Page({
     });
   },
   // 查看图片
-  previewImg(e){
+  previewImg(e) {
     util.previewImage(e.currentTarget.dataset.src)
   },
   // 删除图片
-  deleteImg: function (e) {
+  deleteImg: function(e) {
 
     var that = this;
-    
+
     that.setData({
       ['image[' + e.currentTarget.dataset.index + '].upload_picture_list']: [],
     });
     // wx.setStorageSync('image' + e.currentTarget.dataset.index + 't', [])
     // 
   },
-  uploadpic1: function (e) {
+  uploadpic1: function(e) {
     var that = this //获取上下文
     var upload_picture_list = that.data.upload_picture_list
- 
+
     //选择图片
     wx.chooseImage({
       count: 9,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      success: function(res) {
         util.loading()
         var tempFiles = res.tempFiles
         var promiseArr = []
@@ -680,7 +736,7 @@ Page({
               success: res => { //成功的回调 
                 resolve(res)
               },
-              fail: function (error) {
+              fail: function(error) {
                 reject(error);
               },
             })
@@ -705,7 +761,7 @@ Page({
     })
   },
   //点击上传事件
-  uploadimage1: function () {
+  uploadimage1: function() {
     var page = this
     var upload_picture_list = page.data.upload_picture_list
     //循环把图片上传到服务器 并显示进度       
@@ -718,7 +774,7 @@ Page({
   },
 
   // 删除图片
-  deleteImg1: function (e) {
+  deleteImg1: function(e) {
     let upload_picture_list = this.data.upload_picture_list;
     let index = e.currentTarget.dataset.index;
     upload_picture_list.splice(index, 1);
@@ -731,35 +787,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
   choosearea(e) {
@@ -788,15 +844,15 @@ Page({
       return util.alert('请勾选用户协议')
     }
     var data = e.detail.value;
-    if (this.data.video.src&&this.data.video.src.length>0){
+    if (this.data.video.src && this.data.video.src.length > 0) {
       data.video = this.data.video.src
     }
-    for (var c in this.data.timevalueR){
+    for (var c in this.data.timevalueR) {
       data['business_time[' + c + '][start]'] = this.data.timevalueR[c].split("-")[0]
       data['business_time[' + c + '][end]'] = this.data.timevalueR[c].split("-")[1]
     }
-    for (var d in this.data.features){
-      data['feature['+d+']'] = this.data.features[d]
+    for (var d in this.data.features) {
+      data['feature[' + d + ']'] = this.data.features[d]
     }
     // for (var e in this.data.room) {
     //   data['reservation[room]['+e+']'] = this.data.room[e]
@@ -820,45 +876,47 @@ Page({
     }
     data["source"] = that.data.source
     var url = apiurl.shop_apply;
-    if (this.data.shop_id) {
+    if (that.data.shop_id) {
       url = apiurl.shop_update;
       data["shop_id"] = that.data.shop_id
     }
     that.setData({
       post: true
     })
- util.postJSON({ apiUrl: url, data: data }, function (res) {
-   var result = res.data.result
+    
+    util.postJSON({
+      apiUrl: url,
+      data: data
+    }, function(res) {
+      var result = res.data.result
 
       util.alert("申请提交成功，等待审核")
-   var arr = ['contact', 'discount_percent', 'title', 'address', 'intro', 'area_id', 'type', 'cate_id', 'title1', 'areaSelectedStr', 'image0', 'image1', "upload_picture_list", 'choosed', 'latitude', "longitude", 'license_info[business_address]', 'license_info[business_scope]', 'license_info[company_name]', 'license_info[license_no]', 'license_info[legal_person]', 'video', 'cost', 'features', 'room', 'timevalue','share_mobile']
-   		for(var i in arr){
-          wx.setStorageSync(arr[i]+"t", '')
-   		}
-   setTimeout(function () {
-     wx.reLaunch({
-       url: '../index/index',
-       success() {
-         that.setData({
-           post: false
-         })
-       }
-     })
-   }, 0)
+      var arr = ['contact', 'discount_percent', 'title', 'address', 'intro', 'area_id', 'type', 'cate_id', 'title1', 'areaSelectedStr', 'image0', 'image1', "upload_picture_list", 'choosed', 'latitude', "longitude", 'license_info[business_address]', 'license_info[business_scope]', 'license_info[company_name]', 'license_info[license_no]', 'license_info[legal_person]', 'video', 'cost', 'features', 'room', 'timevalue', 'share_mobile']
+      for (var i in arr) {
+        wx.setStorageSync(arr[i] + "t", '')
+      }
+      if (this.data.shop_id) {
+        util.navigateBack(1, 800)
+      } else {
+        util.navigateBack(2, 800)
+      }
+      that.setData({
+        post: false
+      })
 
- }, function (res) {
+    }, function(res) {
 
-   that.setData({
-     post: false
-   })
- }, function (res) {
+      that.setData({
+        post: false
+      })
+    }, function(res) {
 
-   that.setData({
-     post: false
-   })
- })
+      that.setData({
+        post: false
+      })
+    })
   },
-  backfill: function (e) {
+  backfill: function(e) {
 
     var id = e.currentTarget.id;
     for (var i = 0; i < this.data.suggestion.length; i++) {
@@ -878,7 +936,7 @@ Page({
       }
     }
   },
-  addresszzc(){
+  addresszzc() {
     this.setData({
       suggestion: []
     })
@@ -889,7 +947,7 @@ Page({
     })
   },
   //触发关键词输入提示事件
-  getsuggest: function (e) {
+  getsuggest: function(e) {
     var _this = this;
     var city = _this.data.konwname || (_this.data.areaSelectedStr && _this.data.areaSelectedStr.split(" ")[1])
     if (e.detail.value == '') {
@@ -903,7 +961,7 @@ Page({
       //获取输入框值并设置keyword参数
       keyword: e.detail.value, //用户输入的关键词，可设置固定值,如keyword:'KFC'
       region: city, //设置城市名，限制关键词所示的地域范围，非必填参数
-      success: function (res) {//搜索成功后的回调
+      success: function(res) { //搜索成功后的回调
 
         var sug = [];
         for (var i = 0; i < res.data.length; i++) {
@@ -922,11 +980,11 @@ Page({
           address: e.detail.value
         });
       },
-      fail: function (error) {
-     
+      fail: function(error) {
+
       },
-      complete: function (res) {
-      
+      complete: function(res) {
+
       }
     });
   }
