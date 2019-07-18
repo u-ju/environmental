@@ -61,9 +61,15 @@ Page({
     
   },
   linke(e){
-    wx.navigateTo({
-      url: e.currentTarget.dataset.url,
-    })
+    console.log(e.currentTarget.dataset.status)
+    if (e.currentTarget.dataset.status==1){
+      wx.navigateTo({
+        url: e.currentTarget.dataset.url,
+      })
+    }else{
+      util.alert1('该商家未通过审核')
+    }
+    
   },
   open3(e) {
     this.setData({

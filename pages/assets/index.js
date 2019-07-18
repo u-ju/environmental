@@ -114,6 +114,9 @@ Page({
         url = that.data.tab[i]["url"]
       }
     }
+    console.log(that.data.tab)
+    console.log(current)
+    console.log(url)
     util.getJSON({ apiUrl: apiurl[url] + '?page=' + page }, function (res) {
       var result = res.data.result
       var list = result.list

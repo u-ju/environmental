@@ -11,7 +11,7 @@
   font-size: 44rpx;
 }
 .location .hidden1{
-  width: auto;
+  width: 100rpx;
 }
 .tabTit {
   position: fixed;

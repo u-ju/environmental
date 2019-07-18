@@ -1,9 +1,31 @@
 <!--pages/result/index.wxml-->
-<view class='center'>
-  <image src='{{hint.icon}}' class='pay'></image>
+<view wx:if="{{hint}}">
+  <view class='center'>
+    <image src='{{hint.icon}}' class='pay'></image>
+  </view>
+  <view class='size46 color4 center'>{{hint.title}}</view>
+  <view class='color898989 center'>
+    <text>{{hint.intro}}</text>
+  </view>
+  <block wx:for="{{hint.button_arr}}">
+    <view class='btn' bindtap='{{item.key}}' style='background:{{item.color}}' data-link='{{item.control}}' data-key='{{item.key}}'>{{item.name}}</view>
+  </block>
 </view>
-<view class='size46 color4 center'>{{hint.title}}</view>
-<view class='color898989 center'><text>{{hint.intro}}</text></view>
-<block wx:for="{{hint.button_arr}}">
-  <view class='btn' bindtap='{{item.key}}' style='background:{{item.color}}' data-link='{{item.control}}' data-key='{{item.key}}'>{{item.name}}</view>
-</block>
+<view class='center' wx:else>
+  <!-- <image class='logo' src='{{logo}}'></image>
+  <view class='T_jindu'>
+    <view class='jindu2' style='width:{{width}}rpx'></view>
+    <view class='jindu'></view>
+  </view> -->
+  <view class='size36 center flex'>
+    
+    <view id="loading1">
+        <view class="demo1"></view>
+        <view class="demo1"></view>
+        <view class="demo1"></view>
+        <view class="demo1"></view>
+        <view class="demo1"></view>
+    </view>
+    <view class='tishi'>支付处理中</view>
+  </view>
+</view>

@@ -20,7 +20,7 @@
       </view>
     </view>
     <view class='swiper-notice' wx:if="{{notify.length>0}}">
-      <image src='../../images/notice.png'></image>
+      <image src='../../images/notice.png' class='className'></image>
       <swiper class='swiper-nav' vertical='true' autoplay='false' circular='true' interval='3000'>
         <block wx:for='{{notify}}' wx:key='unique'>
           <!-- <navigator url='{{item.url}}' hover-class='none'> -->
@@ -64,8 +64,8 @@
         </view>
       </view>
     </view>
-    <view style='height:600px'>
-    </view>
+    <!-- <view style='height:600px'>
+    </view> -->
   </scroll-view>
 </block>
 <view class='login' wx:elif='{{token==1}}'>

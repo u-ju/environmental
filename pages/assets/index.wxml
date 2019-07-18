@@ -46,7 +46,7 @@
 <block wx:elif="{{current==2}}">
   <!-- <view class='size36 color918F8F center'>收到的货款</view> -->
   <view class='money justify_center flex align_center'>
-    <text class='size72 colorFFBF1A bold'>{{settle}}</text>
+    <text class='size72 colorFFBF1A bold'>￥{{settle}}</text>
   </view>
   <view class='size36  withdrawal'>
     <navigator url='../withdrawal/withdrawal?money={{settle}}&is_password={{is_password}}&withdraw_flow={{settle_withdraw_flow}}&url=settleWithdraw'>提现</navigator>

@@ -113,3 +113,7 @@ page{
 .icon-weibiaoti-{
   margin-right: 8rpx;
 }
+.location .hidden1{
+  display: block;
+  width: 100rpx;
+}

@@ -1,0 +1,40 @@
+/* pages/timeout/index.wxss */
+page {
+  background: linear-gradient(#94DECF, #5E93D7);
+  color: #fff;
+  line-height: 60rpx;
+}
+
+.index {
+  position: fixed;
+  width: 100%;
+  height: calc(100%);
+  background: linear-gradient(#94DECF, #5E93D7);
+}
+.play{
+  width: 472rpx;
+  height: 392rpx;
+}
+.logo{
+  width: 88rpx;
+  height: 88rpx;
+}
+.slogan{
+  font-size: 34rpx;
+  
+}
+.introduction{
+  width: 686rpx;
+  margin: 30rpx auto 0 auto;
+}
+.qrcode{
+  width:160rpx;
+  height:160rpx;
+  margin-bottom: 30rpx;
+}
+.logoitem{
+  margin: 140rpx 10rpx 0 30rpx;
+}
+.introduction>view{
+  margin-bottom: 60rpx;
+}

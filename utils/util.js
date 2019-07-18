@@ -426,7 +426,7 @@ function unique(array) {
 function getToken(valuetstu='',form,cb,mothed) {
   var that = this;
   var token = wx.getStorageSync('token')||"";
-  return 'zwj';
+  // return 'zwj';
   if (token && valuetstu!= 801) {
     return token;
 
@@ -643,10 +643,10 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
         // //console.log(res.data)
         if (res.data.result &&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) !="{}"){
           getApp().globalData.hint = res.data.result.hint
-          wx.navigateTo({
-            url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
-          })
-        
+          // wx.navigateTo({
+          //   url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+          // })
+          call_success(res.data.result.hint)
         }else{
           if (res.data.result && res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
             wx.setStorageSync('popoutccs', 1)
@@ -683,9 +683,10 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
       }else{
         if (res.data.status == 414 && res.data.result&& res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           getApp().globalData.hint = res.data.result.hint
-          wx.navigateTo({
-            url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
-          })
+          // wx.navigateTo({
+          //   url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+          // })
+          call_success(res.data.result.hint)
         } else if (res.data.result && res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
           var popout = res.data.result.popout
           var button_arr = popout.button_arr
@@ -750,10 +751,10 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
         if (res.data.result &&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           getApp().globalData.hint = res.data.result.hint
           that.loading()
-          wx.navigateTo({
-            url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
-          })
-        
+          // wx.navigateTo({
+          //   url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+          // })
+          call_success(res.data.result.hint)
         } else {
           if (res.data.result && res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
             wx.setStorageSync('popoutccs', 1)
@@ -784,9 +785,10 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
       } else {
         if (res.data.result &&res.data.status == 414&&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           getApp().globalData.hint = res.data.result.hint
-          wx.navigateTo({
-            url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
-          })
+          // wx.navigateTo({
+          //   url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+          // })
+          call_success(res.data.result.hint)
         } else if (res.data.result &&res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
           var popout = res.data.result.popout
           var button_arr = popout.button_arr

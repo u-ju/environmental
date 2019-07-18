@@ -1,12 +1,13 @@
 
 page{
- background: linear-gradient( #9DF1E2, #83A7F8);
+ background: linear-gradient(#94DECF, #5E93D7);
  
 }
 .pagetop{
   position: fixed;
   width: 100%;
   height: calc(100% - 108rpx);
+  background: linear-gradient(#94DECF, #5E93D7);
   /* padding-top: 60rpx; */
 }
 .top{

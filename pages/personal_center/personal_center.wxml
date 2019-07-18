@@ -40,6 +40,6 @@
       <view class='color4'>{{item.name}}</view>
     </view>
   </view>
-  <view style='height:600px'>
-    </view>
+  <!-- <view style='height:600px'>
+    </view> -->
 </scroll-view>

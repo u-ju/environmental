@@ -4,25 +4,67 @@ var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
 Page({
   data: {
-    flag:true
+    flag: true,
+    width:72,
+    hint:''
   },
   onLoad(e) {
-    util.loading()
-    var pages = getCurrentPages();
+    // util.loading()
+    var pages = getCurrentPages(),
+      that = this;
     console.log(pages);
-    var delta = pages.length>2?pages.length - 2:1
-    var hint = app.globalData.hint
-    wx.hideLoading()
+    for (var i in pages) {
+      console.log(pages[i]['__route__'])
+    }
     this.setData({
-      hint: hint,
-      pages: pages,
-      delta: delta
+      logo: getApp().globalData.config.logo
     })
-    wx.setNavigationBarTitle({
-      title: hint.header,
+    var delta = pages.length > 2 ? pages.length - 2 : 1
+    // that.data.timer = setInterval(() => {
+    //   var width = that.data.width;
+    //   width = width + 4 > 620 ? 72 : width + 4
+    //   that.setData({
+    //     width: width
+    //   })
+    //   if (width==620) {
+    //     // clearInterval(that.data.timer);
+
+    //   }
+    // }, 100)
+    util.postJSON({
+      apiUrl: apiurl.query,
+      data: {
+        pay_key: e.pay_key
+      }
+    }, function(res2) {
+      console.log(res2)
+      // clearInterval(that.data.timer);
+      that.setData({
+        hint: res2,
+        pages: pages,
+        delta: delta,
+        // width:620
+      })
+      console.log(res2)
+      wx.setNavigationBarTitle({
+        title: res2.header,
+      })
+      util.hideLoading()
+    }, function() {
+
+    }, function() {
+
     })
+    // var hint = app.globalData.hint||[]
+    // this.setData({
+    //   hint: hint,
+    //   pages: pages,
+    //   delta: delta
+    // })
+   
+    // wx.hideLoading()
   },
-  ok(e){
+  ok(e) {
     var url = e.currentTarget.dataset.link.control
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
       url = url + "?1=1"
@@ -37,35 +79,41 @@ Page({
     }
 
     if (url.indexOf('../index/index') > -1 || url.indexOf('../personal_center/personal_center') > -1) {
-      console.log(url)
       if (this.data.pages < 3) {
+        
         return wx.navigateBack()
       } else {
-        console.log(url)
         this.setData({
           flag: false
         })
         wx.reLaunch({
           url: url,
-          success(){
+          success() {
             flag: true
           }
         })
       }
+    } else if (url.indexOf('../assets/index') > -1 ) {
+      this.setData({
+        flag: false
+      })
+      return  wx.navigateBack({delta:1})
     } else {
       return wx.navigateTo({
         url: url,
-        fail: function () {
+        fail: function() {
           util.alert('该功能暂未开放，敬请期待')
         },
       })
     }
   },
-  back(){
-    wx.navigateBack({ delta: this.data.delta })
+  back() {
+    wx.navigateBack({
+      delta: this.data.delta
+    })
   },
   onUnload: function() {
-    if (this.data.flag){
+    if (this.data.flag) {
       wx.navigateBack({
         delta: this.data.delta
       })

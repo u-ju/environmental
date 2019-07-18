@@ -5,11 +5,11 @@
     "pages/success/success",
     "pages/myInviteNewusers/index",
     "pages/personal_center/personal_center",
-    
+    "pages/result/index",
     "pages/installment/installment",
     "pages/tenants/tenants",
     "pages/convenience_service/index",
-    
+    "pages/timeout/index",
     "pages/renting/index",
     "pages/renting/release/index",
     "pages/renting/list/index",
@@ -130,7 +130,7 @@
     "pages/lostFound/lostfound/index",
     "pages/delivery_station/index",
     
-    "pages/result/index",
+    
     "pages/lostFound/release/index",
     "pages/home_orders/index",
     "pages/page/index",

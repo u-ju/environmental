@@ -142,14 +142,17 @@ Component({
         function (res) {
           var result = res.data.result
           if (result.payment == "balance" || result.payment == "installment") {
-            util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
-              // util.alert("支付成功")
-              
-            }, function () {
-              
-            }, function () {
-              
+            wx.navigateTo({
+              url: '../result/index?pay_key=' + result.pay_key ,
             })
+            // util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
+            //   // util.alert("支付成功")
+              
+            // }, function () {
+              
+            // }, function () {
+              
+            // })
           } else if (result.payment == "wechat") {
             wx.requestPayment({
               timeStamp: result.pay_info.timeStamp,
@@ -158,16 +161,19 @@ Component({
               signType: result.pay_info.signType,
               paySign: result.pay_info.paySign,
               success(res1) {
-                util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
-                  // wx.hideLoading()
-                  wx.setStorageSync('wechatpay', 1)
-                }, function () {
-                  // wx.hideLoading()
-                  
-                }, function () {
-                  // wx.hideLoading()
-                  
+                wx.navigateTo({
+                  url: '../result/index?pay_key=' + result.pay_key,
                 })
+                // util.postJSON({ apiUrl: apiurl.query, data: { pay_key: result.pay_key } }, function (res2) {
+                //   // wx.hideLoading()
+                //   wx.setStorageSync('wechatpay', 1)
+                // }, function () {
+                //   // wx.hideLoading()
+                  
+                // }, function () {
+                //   // wx.hideLoading()
+                  
+                // })
               },
               fail(res) {
                 util.alert("支付失败")
