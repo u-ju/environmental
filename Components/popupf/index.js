@@ -12,7 +12,7 @@ Component({
       type: String,
       value: '',
     },
-    bdclass: {
+    bdclass:{
       type: String,
       value: '',
     },
@@ -62,14 +62,23 @@ Component({
       value: false,
       observer: 'setPopupVisible',
     },
+    catchtouchmove:{
+      type: String,
+      value: 1,
+    },
     zIndex: {
       type: Number,
       value: 1000,
     },
+    istrue:{
+      type: Boolean,
+      value: true,
+    }
   },
   data: {
     transitionName: '',
     popupVisible: false,
+    
   },
   methods: {
     /**

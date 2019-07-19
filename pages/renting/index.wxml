@@ -83,10 +83,10 @@
   </view>
   <view class='tabzc'></view>
 </view>
-
+<view class='pagetypezzc' catchtouchmove='true' bindtap='hidebg' wx:if="{{qyopen}}"></view>
 <view class='rentitem'>
   <block wx:if="{{list.length>0}}">
-  <view class='flex_btw renting' wx:for="{{list}}" wx:key="index" wx:if="{{item.id}}" bindtap='detail' data-id='{{item.id}}' >
+  <view class='flex_btw renting' wx:for="{{list}}" wx:key="index" wx:if="{{item.id}}" bindtap='detail' data-id='{{item.id}}' wx:if="{{item.id}}" >
     <image class='rentpic' src='{{item.thumb}}'  mode='aspectfit'></image>
     <view class='flex_col flex_btw'>
       <view class='size28'>{{item.title}}</view>

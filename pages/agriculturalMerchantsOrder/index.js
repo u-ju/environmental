@@ -29,7 +29,8 @@ Page({
     express_num: [],
     expressbtn: false,
     exurl: 'shopOrder_deliver',
-    list:[0]
+    list:[0],
+    catchval:0
   },
   onLoad(e) {
     // console.log(app.globalData.config)
@@ -67,7 +68,8 @@ Page({
       status:0,
       current:0,
       index:0,
-      key:0
+      key:0,
+      shop_id: e.id
     })
     // this.init()
     if (e.source_ext) {
@@ -250,7 +252,7 @@ Page({
       }
     }
 
-    util.getJSON({ apiUrl: apiurl.shopOrder_index + "?page=" + page + "&search_status=" + status + plurl }, function (res) {
+    util.getJSON({ apiUrl: apiurl.shopOrder_index + "?page=" + page + "&search_status=" + status + '&shop_id=' + that.data.shop_id + plurl }, function (res) {
       var result = res.data.result
       // console.log(result)
       var list = result.list

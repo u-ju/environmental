@@ -77,6 +77,7 @@ App({
     company_info:'',
     id:'',
     config_tag:[],
-    shop:[]
+    shop:[],
+    avatar:''
   }
 })

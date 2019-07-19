@@ -183,6 +183,7 @@ page {
   width: 700rpx;
   height: 76rpx;
   background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10rpx #94decf;
   border-radius: 10rpx;
 }
 

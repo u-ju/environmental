@@ -21,6 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    util.loading()
     this.setData({
       address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress'),
       keywords: options.keywords || ''
@@ -137,29 +138,7 @@ Page({
   },
   
   choose0(e) {
-    var that = this;
-
-
-    var id = e.currentTarget.dataset.id
-    if (e.currentTarget.dataset.indexnum == 0 && e.currentTarget.dataset.id != this.data.eara[0][0]['area_id']) {
-      that.addressd(e.currentTarget.dataset.id, e.currentTarget.dataset.name, function (e) {
-        var eara = that.data.eara, earaid = that.data.earaid
-        eara[1] = e
-        earaid[0] = id
-        earaid[1] = e[0]["area_id"]
-        that.setData({
-          eara: eara,
-          earaid: earaid
-        })
-      })
-    }
-
-    var earaid = that.data.earaid;
-    earaid[e.currentTarget.dataset.indexnum] = e.currentTarget.dataset.id
-    that.setData({
-      earaid: earaid,
-      earaname: e.currentTarget.dataset.name
-    })
+    util.areatab(this, e.currentTarget.dataset.indexnum, e.currentTarget.dataset.id, e.currentTarget.dataset.name, 1)
   },
   submitFilter0() {
     var tabTxt = util.copyarr(this.data.tabTxt1)
@@ -170,6 +149,7 @@ Page({
       cate_tag:''
     })
     this.hidebg()
+    this.init()
   },
   quyuEmpty0() {
     var eara = this.data.eara, earaid = this.data.earaid
@@ -198,13 +178,13 @@ Page({
       area_id: '',
     })
     this.hidebg()
+    this.init()
   },
   quyuEmpty1() {
     this.setData({
       cate_tag: '',
       tabTxt: util.copyarr(this.data.tabTxt1)
     })
-    this.hidebg()
   },
 
   onPullDownRefresh: function () {

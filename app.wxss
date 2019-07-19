@@ -103,7 +103,13 @@ page .navigator-hover {
     flex-grow: 1; 
     border-radius: 0;
 }
-
+.pagetypezzc{
+  position: fixed;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
 
 .submitButton {
   width: 686rpx;

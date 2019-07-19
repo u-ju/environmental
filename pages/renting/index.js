@@ -21,6 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    util.loading()
     this.setData({
       address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress'),
       keywords: options.keywords || ''
@@ -159,31 +160,8 @@ Page({
   },
 
   choose0(e) {
-    var that = this;
-   
-    var id = e.currentTarget.dataset.id, index = e.currentTarget.dataset.indexnum
-
-    if (e.currentTarget.dataset.indexnum !=2 && e.currentTarget.dataset.id != this.data.eara[index][0]['area_id']) {
-      that.addressd(e.currentTarget.dataset.id, e.currentTarget.dataset.name, function(e) {
-        var eara = that.data.eara, earaid = that.data.earaid
-        
-        eara[index+1] = e
-        earaid[index] = id
-        earaid[index + 1] = e[0]["area_id"]
-        eara.length=index+2
-        that.setData({
-          eara: eara,
-          earaid: earaid
-        })
-      })
-    }
-    
-    var earaid = that.data.earaid;
-    earaid[e.currentTarget.dataset.indexnum] = e.currentTarget.dataset.id
-    that.setData({
-      earaid: earaid,
-      earaname: e.currentTarget.dataset.name
-    })
+    // var that = ;
+    util.areatab(this, e.currentTarget.dataset.indexnum, e.currentTarget.dataset.id,e.currentTarget.dataset.name,2)
   },
   submitFilter0() {
     var tabTxt = util.copyarr(this.data.tabTxt1)
@@ -198,6 +176,8 @@ Page({
       mode: '',
       decoration: ''
     })
+    this.init()
+    this.hidebg()
   },
   quyuEmpty0() {
     var eara = this.data.eara,
@@ -239,6 +219,7 @@ Page({
       mode: '',
       decoration: ''
     })
+    this.init()
     this.hidebg()
   },
   quyuEmpty1() {
@@ -267,6 +248,8 @@ Page({
       area_id: '',
       rent: '',
     })
+
+    this.init()
     this.hidebg()
   },
   quyuEmpty2() {
@@ -277,13 +260,6 @@ Page({
         [arr[i]+'t']: '',
       })
     }
-    // this.setData({
-    //   order: '',
-    //   sort: '',
-    //   room: '',
-    //   mode: '',
-    //   decoration: '',
-    // })
   },
   onPullDownRefresh: function() {
     // 显示顶部刷新图标

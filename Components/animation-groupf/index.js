@@ -83,7 +83,7 @@ Component({
             type: String,
             value: '',
         },
-        catchtouchmove:{
+        catchval:{
           type: String,
           value: 1,
         }
@@ -378,7 +378,7 @@ Component({
          * 点击事件
          */
         onTap() {
-          console.log(this.data.catchtouchmove)
+          console.log(this.data.catchval)
             this.triggerEvent('click')
         },
     },

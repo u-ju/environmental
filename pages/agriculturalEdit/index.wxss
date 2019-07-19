@@ -169,13 +169,14 @@ input,textarea{
   position: absolute;
   top: 92rpx;
   width: 100%;
-  box-sizing: border-box;
-  height: 0;
-  overflow-y: auto;
+  /* box-sizing: border-box; */
+  /* height: 0; */
+  /* overflow-y: scroll; */
   border-top: 0;
   background: #EEEEEE;
   transition: height 0.3s;
-  z-index: 999;
+  z-index: 1013;
+  overflow: scroll;
 }
 
 .option{

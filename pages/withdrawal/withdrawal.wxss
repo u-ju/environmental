@@ -57,7 +57,7 @@ button[disabled]:not([type]){
   color: white;
 }
 .choosech{
-  max-height: 410rpx;
+  max-height: 444rpx;
   overflow: scroll;
   width: 100%;
 }

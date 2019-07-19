@@ -17,6 +17,9 @@
   position: fixed;
   top: 94rpx;
 }
+.pagetype{
+  border: 0;
+}
 .slidown{
   top:186rpx;
 }

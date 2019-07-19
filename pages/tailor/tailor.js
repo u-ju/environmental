@@ -63,7 +63,7 @@ Page({
                 'build': apiurl.build
               },
               success(res) {
-
+                getApp().globalData.avatar = avatar
                 var data = JSON.parse(res.data);
                 console.log(data)
                 wx.navigateBack()
@@ -110,16 +110,11 @@ Page({
     })
   },
   onLoad(option) {
-    this.setData({
-      src: option.data
-    })
     const {
       cropperOpt
     } = this.data
     if (option.src) {
-      console.log(option.data)
       cropperOpt.src = option.src
-      cropperOpt.src1 = option.data
       new WeCropper(cropperOpt)
         .on('ready', (ctx) => {
           console.log(`wecropper is ready for work!`)
@@ -144,5 +139,5 @@ Page({
         })
         .updateCanvas()
     }
-  }
+  },
 })

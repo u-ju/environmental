@@ -67,7 +67,7 @@ Page({
         url: e.currentTarget.dataset.url,
       })
     }else{
-      util.alert1('该商家未通过审核')
+      util.alert1('该商家未通过审核',1200)
     }
     
   },

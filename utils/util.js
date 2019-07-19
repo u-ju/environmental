@@ -70,7 +70,8 @@ module.exports = {
   bmak: bmak,
   previewImage: previewImage,
   pjnav: pjnav,//首页获取分享后的地址在跳转
-  copyarr: copyarr
+  copyarr: copyarr,
+  areatab: areatab,//便民服务地址筛选
 }
 //图片图片预览
 function previewImage(src, imgList) {
@@ -425,6 +426,7 @@ function unique(array) {
  */
 function getToken(valuetstu='',form,cb,mothed) {
   var that = this;
+  // wx.setStorageSync('token', 'zwj')
   var token = wx.getStorageSync('token')||"";
   // return 'zwj';
   if (token && valuetstu!= 801) {
@@ -701,7 +703,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
           if (warning) {
             warning(res)
           }
-          that.alert1(res.data.message, 1000)
+          that.alert1(res.data.message, 3000)
         }
       }
     },
@@ -710,7 +712,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
         ErrorMsg(e)
       }
       //console.log(e.errMsg)
-      that.alert1(e.errMsg,1000)
+      that.alert1(e.errMsg,3000)
     }
   });
   // wx.hideLoading();
@@ -803,7 +805,7 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
           if (warning) {
             warning(res)
           }
-          that.alert1(res.data.message, 1000)
+          that.alert1(res.data.message, 3000)
         }
         
       }
@@ -812,7 +814,7 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
       if (ErrorMsg) {
         ErrorMsg(ErrorMsg1)
       }
-      that.alert1(ErrorMsg1.errMsg, 1000)
+      that.alert1(ErrorMsg1.errMsg, 3000)
     }
   });
   // wx.hideLoading();
@@ -1269,4 +1271,33 @@ function copyarr(arr) {
     arr1.push(arr[i])
   }
   return arr1
+}
+function areatab(that, index, id, name,num){
+  if (index != num) {
+    var eara = that.data.eara, earaid = that.data.earaid
+    earaid[index] = id
+    if (id == that.data.eara[index][0]['area_id']) {
+      eara.length = index + 1
+      earaid.length = index + 1
+      that.setData({
+        eara: eara,
+        earaid: earaid
+      })
+    } else {
+      that.addressd(id, name, function (e) {
+        eara[index + 1] = e
+        earaid[index + 1] = e[0]["area_id"]
+        that.setData({
+          eara: eara,
+          earaid: earaid
+        })
+      })
+    }
+  }
+  var earaid = that.data.earaid;
+  earaid[index] = id
+  that.setData({
+    earaid: earaid,
+    earaname: name
+  })
 }

@@ -1,6 +1,7 @@
+<import src="../../Components/tab-bar/tab-bar.wxml" />
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
 <scroll-view scroll-y  class='pagetop'>
-  <import src="../../Components/tab-bar/tab-bar.wxml" />
-  <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
+  
   <view style='height:84rpx;'></view>
   <navigator url='../setting/setting' class='settting'>
     <view class='iconfont icon-shezhi'></view>

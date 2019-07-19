@@ -53,7 +53,7 @@ page{
   margin-top: 100rpx;
 }
 .slidown {
-  top: 192rpx;
+  top: 184rpx;
 }
 .screen{
   width: auto;

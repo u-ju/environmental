@@ -1,0 +1,10 @@
+/* pages/avatar/index.wxss */
+.avatar{
+  width: 100%;
+  height: 750rpx;
+  margin: 100rpx 0;
+}
+/* page{
+  background-color: #000
+} */
+/* "navigationBarBackgroundColor": "#000", */

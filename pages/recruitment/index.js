@@ -35,6 +35,7 @@ Page({
       address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress'),
       keywords: options.keywords||''
     })
+    util.loading()
     this.areaparse()
     this.init()
     this.conf()
@@ -146,7 +147,10 @@ Page({
       tabIndex: index,
       qyopen: qyopen,
       qyshow: false,
-      isfull: isfull
+      isfull: isfull,
+      experiencef: this.data.experience,
+      educationf: this.data.education,
+      salaryf: this.data.salary,
     })
     
   },
@@ -187,29 +191,7 @@ Page({
     this.hidebg()
   },
   choose1(e) {
-    var that = this;
-    
-    
-    var id = e.currentTarget.dataset.id
-    if (e.currentTarget.dataset.indexnum == 0 && e.currentTarget.dataset.id != this.data.eara[0][0]['area_id']) {
-      that.addressd(e.currentTarget.dataset.id, e.currentTarget.dataset.name, function (e) {
-        var eara = that.data.eara, earaid = that.data.earaid
-        eara[1] = e
-        earaid[0] = id
-        earaid[1] = e[0]["area_id"]
-        that.setData({
-          eara: eara,
-          earaid: earaid
-        })
-      })
-    }
-
-    var earaid = that.data.earaid;
-    earaid[e.currentTarget.dataset.indexnum] = e.currentTarget.dataset.id
-    that.setData({
-      earaid: earaid,
-      earaname: e.currentTarget.dataset.name
-    })
+    util.areatab(this, e.currentTarget.dataset.indexnum, e.currentTarget.dataset.id, e.currentTarget.dataset.name, 1)
   },
   submitFilter1() {
     var tabTxt = util.copyarr(this.data.tabTxt1)
@@ -224,7 +206,7 @@ Page({
       keywords: '',
       cate_id: '', 
     })
-    // this.init()
+    this.init()
     this.hidebg()
   },
   quyuEmpty1() {
@@ -276,7 +258,7 @@ Page({
       keywords: '',
       area_id: '', 
     })
-    // this.init()
+    this.init()
     this.hidebg()
   },
   quyuEmpty2() {
@@ -289,13 +271,14 @@ Page({
       tabTxt: util.copyarr(this.data.tabTxt1)
     })
     this.hidebg()
-    // this.init()
   },
   choose3(e){
-    console.log(e)
+    console.log(this.data[e.currentTarget.dataset.name])
+    var a = e.currentTarget.dataset.name
     this.setData({
-      [e.currentTarget.dataset.name]: e.currentTarget.dataset.id
+      [a]: e.currentTarget.dataset.id,
     })
+    console.log(this.data[e.currentTarget.dataset.name])
   },
   submitFilter3() {
     this.setData({
@@ -303,11 +286,15 @@ Page({
       education: this.data.educationf,
       salary: this.data.salaryf
     })
+    this.init()
     this.hidebg()
   },
   quyuEmpty3() {
     
     this.setData({
+      experiencef: '',
+      educationf: '',
+      salaryf: '',
       experience: '',
       education: '',
       salary: '',
@@ -316,7 +303,6 @@ Page({
       area_id: '', 
       sort:''
     })
-    this.hidebg()
   },
   
   /**

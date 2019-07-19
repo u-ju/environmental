@@ -1,6 +1,9 @@
 /* pages/agriculturalMerchantsOrderDeail/index.wxss */
 @import '../agriculturalEdit/index';
 @import '../my_order_detail/index';
+page{
+  position: relative;
+}
 .size22{
   margin: 0;
 }
@@ -41,9 +44,7 @@ input{
   text-align: left;
   
 }
-.option_box{
-  text-align: left;
-}
+
 .select{
   width: 370rpx;
 }
@@ -93,6 +94,7 @@ input{
 }
 .option_box{
   top: 72rpx;
+  text-align: left;
 }
 .addwl image{
   width: 40rpx;
@@ -142,8 +144,38 @@ input{
 .visible{
   overflow: visible;
 }
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
 width: 0;
 height: 0;
 color: #444;
+} */
+.width686{
+  width: 646rpx;
+  min-height: 700rpx;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: #fff;
+  transform: translate(-50%,-50%);
+  z-index: 1000;
+}
+.fhuo{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .8);
+  left: 0;
+  top: 0;
+  z-index: 999
+}
+.titletop{
+  font-size: 32rpx;
+  text-align: center;
+}
+.icon-cuohao{
+  position: absolute;
+  right: 20rpx;
+  font-size: 30rpx;
 }

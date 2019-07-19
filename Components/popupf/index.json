@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-animation-group": "../animation-groupf/index",
+        "wux-backdrop": "../backdropf/index"
+    }
+}

@@ -20,7 +20,7 @@
   color:#fff;
   display: flex;
   justify-content: space-between;
-  z-index: 888;
+  z-index: 1000;
   background-color: #5E93D7;
 }
 

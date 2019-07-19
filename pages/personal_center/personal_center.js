@@ -84,47 +84,51 @@ Page({
   uploadHeadPhoto: function () {
     // console.log('upload photo .... ');
     var that = this;
-    wx.chooseImage({
-      sizeType: ['compressed'],
-      ourceType: ['album', 'camera'],
-      count: 1,
-      success(res) {
-        const tempFilePaths = res.tempFilePaths;
-        // 只能选择一张图片进行上传
-        if (tempFilePaths.length != 1) {
-          wxUtil.info_dialog("不允许多图上传");
-          return;
-        }
-        var tempFilesSize = res.tempFiles[0].size;
-        // console.log(tempFilesSize)
-        if (tempFilesSize <= 2000000) {//图片小于或者等于2M时 可以执行获取图片
-          if (that.allowUploadFormat(tempFilePaths)) {
-            // console.log(' ----- 验证后 ----- ')
-            // console.log(tempFilePaths[0])
-            const src = res.tempFilePaths[0]
-            wx.getFileSystemManager().readFile({
-              filePath: src, //选择图片返回的相对路径
-              encoding: 'base64', //编码格式
-              success: res => { //成功的回调 
-                console.log(res)
-                const data = res.data
-                wx.navigateTo({
-                  url: `../tailor/tailor?src=${src}&data=${data}`
-                })
-
-              },
-              fail: function (error) {
-              },
-            })
-           
-          } else {
-            wxUtil.info_dialog("上传头像格式不合法!")
-          }
-        } else {
-          wxUtil.info_dialog("上传图片不能大于2M!")
-        }
-      }
+    getApp().globalData.avatar = this.data.l_one.avatar
+    wx.navigateTo({
+      url: `../avatar/index`
     })
+    // wx.chooseImage({
+    //   sizeType: ['compressed'],
+    //   ourceType: ['album', 'camera'],
+    //   count: 1,
+    //   success(res) {
+    //     const tempFilePaths = res.tempFilePaths;
+    //     // 只能选择一张图片进行上传
+    //     if (tempFilePaths.length != 1) {
+    //       wxUtil.info_dialog("不允许多图上传");
+    //       return;
+    //     }
+    //     var tempFilesSize = res.tempFiles[0].size;
+    //     // console.log(tempFilesSize)
+    //     if (tempFilesSize <= 2000000) {//图片小于或者等于2M时 可以执行获取图片
+    //       if (that.allowUploadFormat(tempFilePaths)) {
+    //         // console.log(' ----- 验证后 ----- ')
+    //         // console.log(tempFilePaths[0])
+    //         const src = res.tempFilePaths[0]
+    //         wx.getFileSystemManager().readFile({
+    //           filePath: src, //选择图片返回的相对路径
+    //           encoding: 'base64', //编码格式
+    //           success: res => { //成功的回调 
+    //             console.log(res)
+    //             const data = res.data
+    //             wx.navigateTo({
+    //               url: `../tailor/tailor?src=${src}&data=${data}`
+    //             })
+
+    //           },
+    //           fail: function (error) {
+    //           },
+    //         })
+           
+    //       } else {
+    //         wxUtil.info_dialog("上传头像格式不合法!")
+    //       }
+    //     } else {
+    //       wxUtil.info_dialog("上传图片不能大于2M!")
+    //     }
+    //   }
+    // })
   },
   /**
      * 上传头像格式验证

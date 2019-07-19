@@ -1,0 +1,5 @@
+<!--pages/avatar/index.wxml-->
+<image class='avatar' mode='aspectFit' src='{{avatar}}'></image>
+
+
+<view class='submitButton' bindtap='uploadpic'>点击更换头像</view>

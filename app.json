@@ -2,6 +2,7 @@
   "pages": [
     
     "pages/index/index",
+    "pages/avatar/index",
     "pages/success/success",
     "pages/myInviteNewusers/index",
     "pages/personal_center/personal_center",
@@ -14,7 +15,7 @@
     "pages/renting/release/index",
     "pages/renting/list/index",
     "pages/shopping_mall/shopping_mall",
-    
+    "pages/agriculturalMerchantsOrder/index",
     "pages/myCommunity/index",
     "pages/renting/detail/index",
     
@@ -70,7 +71,7 @@
     "pages/housekeeping_edit/index",
     
     
-    "pages/agriculturalMerchantsOrder/index",
+    
     
     
     "pages/myCollection/index",

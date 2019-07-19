@@ -11,6 +11,7 @@ Page({
     list:[0]
   },
   onLoad: function (options) {
+    util.loading()
     this.setData({
       address: wx.getStorageSync('locAddresscity') || wx.getStorageSync('locAddress'),
       keywords: options.keywords || ''
