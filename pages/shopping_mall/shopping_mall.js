@@ -408,8 +408,11 @@ Page({
         cateid: cateid
       })
     } 
+    cateid[e.currentTarget.dataset.indexnum]=id
+    console.log(cateid)
     that.setData({
-      cate_id: id,
+      cate_id: cateid[e.currentTarget.dataset.indexnum],
+      cateid: cateid,
       cate_ids: cateid[0],
       tabTxt: tabTxt
     })

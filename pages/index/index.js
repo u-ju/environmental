@@ -199,7 +199,7 @@ Page({
 
       //     that.setData({
       //       timeLeft: '离结束：' + util.getTimeLeft(result.seckill_list[0].end_at, result.seckill_list[0].end_at_mts)
-      //     });
+      //     });  
       //     if (that.data.timeLeft == "00:00:00" || that.data.timeLeft == "0:00:00:00") {
       //       clearInterval(that.data.timer);
       //       that.setData({

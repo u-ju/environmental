@@ -1,26 +1,14 @@
 <!--pages/realname_suc/index.wxml-->
 <block wx:if='{{status>-1}}'>
   <view class='item' >
-    <view class='flex'>
-      <view class='left_item'>姓名</view>
-      <view class='right_item'>{{result.realname}}</view>
+    <view class='flex' wx:for='{{result.info}}' wx:key='index'>
+      <view class='left_item' ><text decode="{{true}}" space="{{true}}" space="ensp">{{item.name}}</text></view>
+      <view class='right_item'><text>{{item.value}}</text></view>
     </view>
-    <view class='flex'>
-      <view class='left_item'>身份证号</view>
-      <view class='right_item'>{{result.idcard}}</view>
-    </view>
-    <view class='flex'>
-      <view class='left_item'>居住地址</view>
-      <view class='right_item'>{{result.address||'无'}}</view>
-    </view>
-    <view class='flex'>
-      <view class='left_item'>是否实名</view>
-      <view class='right_item'>{{result.status_name}}</view>
-    </view>
-    <view class='flex' wx:if='{{result.status==2}}'>
+    <!-- <view class='flex' wx:if='{{result.status==2}}'>
       <view class='left_item'>失败原因</view>
       <view class='right_item colorFE2C2C'>{{result.status_remark}}</view>
-    </view>
+    </view> -->
     
   </view>
   <view class='btn size30 submitButton' wx:if='{{result.status==2}}'><navigator url='../phone/phone?type=1'>实名认证</navigator></view>

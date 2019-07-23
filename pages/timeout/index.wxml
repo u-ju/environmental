@@ -10,14 +10,14 @@
     <image src='../../images/unopen.png' class='play'></image>
   </view>
   <view class='introduction size30'>
-    <view>啄木鸟环保智能垃圾分类回收公益项目（简称“啄木鸟”）是啄木鸟环保的主营业务。通过大数据、创新思维和物联网等先进科技，实现对生活</view>
+    <view>啄木鸟环保智能垃圾分类回收公益项目（简称“啄木鸟”）是啄木鸟环保的主营业务。通过大数据、创新思维和物联网等先进科技，实现对生活垃圾前端分类整合、中端统一运输、末端集中处理的“物联网+智能回收” 新模式。</view>
     <view>
       <view>地址:成都市金牛区韦家碾一路118号4栋15层17号</view>
       <view>电话：028-85505853-8012</view>
     </view>
   </view>
   <view class='center'>
-    <image class='qrcode'></image>
+    <image class='qrcode' src='{{qrcode}}'></image>
     <view class='size34'>扫一扫   关注我们</view>
   </view>
 </scroll-view>

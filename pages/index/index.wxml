@@ -25,7 +25,7 @@
         <block wx:for='{{notify}}' wx:key='unique'>
           <!-- <navigator url='{{item.url}}' hover-class='none'> -->
             <swiper-item bindtap='link' data-link='{{item.control}}'>
-              <view class='swiper-context'>{{item.name}}</view>
+              <view class='swiper-context color9'>{{item.name}}</view>
             </swiper-item>
           <!-- </navigator> -->
         </block>

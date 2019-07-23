@@ -5,5 +5,6 @@
     "empty": "../../Components/empty/index"
   },
   "enablePullDownRefresh": true,
-  "onReachBottomDistance": 50
+  "onReachBottomDistance": 50,
+  "navigationBarBackgroundColor": "#94DECF"
 }

@@ -2,6 +2,8 @@
   "pages": [
     
     "pages/index/index",
+    "pages/realname_authentication/realname_authentication",
+    "pages/buurtNews/index",
     "pages/avatar/index",
     "pages/success/success",
     "pages/myInviteNewusers/index",
@@ -18,26 +20,16 @@
     "pages/agriculturalMerchantsOrder/index",
     "pages/myCommunity/index",
     "pages/renting/detail/index",
-    
     "pages/idle/list/index",
     "pages/idle/In/index",
     "pages/idle/index",
     "pages/idle/detail/index",
-
-    
-    
     "pages/realname_suc/index",
-    
-    "pages/realname_authentication/realname_authentication",
-    
-    
-    
     "pages/law/In/index",
     "pages/law/index",
     "pages/law/detail/index",
     "pages/law/firms/index",
     "pages/law/lawyer/index",
-    
     "pages/recruitment/index",
     "pages/recruitment/index/index",
     "pages/recruitment/mypositionDetails/index",
@@ -45,47 +37,24 @@
     "pages/recruitment/positionDetails/index",
     "pages/recruitment/myposition/index",
     "pages/recruitment/cardCreate/index",
-    
-    
-    
-    
-    
-    
-    
-    
-    
     "pages/agriculturalRecommendation/index",
-    
     "pages/business_details/business_details",
     
-    
-    
-    
-    
-    "pages/buurtNewsIn/index",
     "pages/buurtNewsDetail/index",
     "pages/tenantsIndex/index",
     "pages/recycleEdit/index",
     "pages/place_order/place_order",
     "pages/maintenance_worker/index",
     "pages/housekeeping_edit/index",
-    
-    
-    
-    
-    
     "pages/myCollection/index",
     "pages/assets/index",
     "pages/family/associated/index",
-    
     "pages/agriculturalDetail/index",
-    
     "pages/installment_details/installment_details",
     "pages/order/index",
     "pages/login/login",
     "pages/login/index",
     "pages/setting/setting",
-    
     "pages/withdrawal_record/transfer",
     "pages/withdrawal/transfer",
     "pages/family/addBuddy/index",
@@ -93,12 +62,10 @@
     "pages/area/index",
     "pages/address_edit/index",
     "pages/map/index",
-    
     "pages/myGreenCredit/index",
     "pages/myGreenCredit/list",
     "pages/guide/index",
     "pages/myCart/index",
-    
     "pages/business_details/viewcomments/index",
     "pages/business_details/product/index",
     "pages/operationalData/index",
@@ -112,8 +79,6 @@
     "pages/myOrderRefund/index",
     "pages/agriculturalMerchantsOrderDeail/index",
     "pages/agriculturalRefund/index",
-    
-    
     "pages/businessProduct/index",
     "pages/businessinforcheck/index",
     "pages/businessinforedit/index",
@@ -121,7 +86,6 @@
     "pages/businessmerchants/index",
     "pages/businessOrder/index",
     "pages/agriculturalLook/index",
-    
     "pages/tenantsChoice/index",
     "pages/unopen/index",
     "pages/businessProductview/index",
@@ -130,8 +94,6 @@
     "pages/lostFound/lfDetails/index",
     "pages/lostFound/lostfound/index",
     "pages/delivery_station/index",
-    
-    
     "pages/lostFound/release/index",
     "pages/home_orders/index",
     "pages/page/index",
@@ -141,12 +103,10 @@
     "pages/qrcode/index",
     "pages/my_integral/index",
     "pages/housekeeping/index",
-    
     "pages/payShop/index",
     "pages/repair/index",
     "pages/business/index",
     "pages/maintenanceworker_detail/index",
-    
     "pages/housekeeping_detail/index",
     "pages/maintenance/index",
     "pages/bill/index",
@@ -166,14 +126,11 @@
     "pages/ban/index",
     "pages/order_detail/index",
     "pages/comment/index",
-    
     "pages/promote/index",
-    
     "pages/catering/index",
     "pages/payment/index",
     "pages/video_detail/index",
     "pages/video/index",
-    
     "pages/error/error",
     "pages/pay/index",
     "pages/edsc_site/edsc_site",

@@ -30,7 +30,7 @@ page {
 .qrcode{
   width:160rpx;
   height:160rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 .logoitem{
   margin: 140rpx 10rpx 0 30rpx;

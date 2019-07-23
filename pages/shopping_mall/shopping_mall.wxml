@@ -57,7 +57,7 @@
     <view class='flex allse' wx:if="{{tabIndex==2}}">
     <scroll-view class='chice' scroll-y scroll-with-animation style="height:600rpx;" wx:for="{{erji}}" wx:key="index" wx:for-index="indexnum" wx:for-item="aa">
         <view class="qy quyu-left" style='' wx:for="{{aa}}" wx:key="index">
-          <view class="itemselect {{cateid[indexnum]==item.id?'current':''}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' data-item='{{item}}' data-indexnum='{{indexnum}}'  bindtap="choose2">
+          <view class="itemselect {{cateid[indexnum]==item.id?'current':''}} {{cateid[indexnum]}}" data-index='{{index}}' data-id='{{item.id}}' data-name='{{item.name}}' data-item='{{item}}' data-indexnum='{{indexnum}}'  bindtap="choose2">
             {{item.name}}
           </view>
         </view>

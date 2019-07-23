@@ -95,7 +95,7 @@
       </scroll-view>
     </view>
     <view class='item1 flex align_center textareaitem'>
-      <text class='size28 color6'>商家描述 <view></view></text>
+      <text class='size28 color6'>商家描述\n(选填) <view></view></text>
       <textarea wx:if="{{show}}" focus="{{show}}" class='size28 color9' bindinput='input' bindblur='unshow' data-contact='introt' value='{{intro}}' name='intro'></textarea>
       <view class='textarea size28 color9' bindtap='show' wx:else>{{intro}}</view>
     </view>

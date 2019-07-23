@@ -1,2 +1,82 @@
 /* pages/buurtNews/index.wxss */
 @import '../find/find';
+
+
+.index {
+  position: fixed;
+  width: 100%;
+  height: calc(100% - 70rpx);
+  background: linear-gradient(#94DECF, #5E93D7);
+  top: 70rpx;
+  padding-top: 30rpx;
+}
+.tab-h{
+  background-color: #94DECF;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.tab-item.active{
+  color: #fff;
+}
+.tab-item.active:after{
+  background-color: white;
+}
+.tab-item{
+  width: 25%;
+  margin: 0;
+  text-align: center;
+}
+.currentTab0,.currentTab3{
+  width:688rpx;
+  min-height:800rpx;
+  background:rgba(255,255,255,1);
+  border-radius:10rpx;
+  margin: auto;
+}
+.currentTab1{
+  width:688rpx;
+  margin: auto;
+}
+.notice{
+  height:600rpx;
+  background:rgba(255,255,255,1);
+  border-radius:10rpx;
+  /* width: 100%; */
+}
+.btnon{
+  width:200rpx;
+  height:80rpx;
+  background:rgba(72,209,204,1);
+  border-radius:5rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #fff;
+}
+.btn{
+  padding: 20rpx 70rpx;
+}
+.affichepic{
+  width:240rpx;
+  height:160rpx;
+  border-radius:5rpx;
+}
+.affichecon{
+  height:160rpx;
+  width: 380rpx;
+}
+.affiche{
+  padding: 26rpx 20rpx;
+  width: 646rpx;
+  margin-top: 30rpx;
+  background-color: #fff;
+  border-radius:10rpx;
+}
+.service{
+  width: 120rpx;
+  margin: 56rpx 48rpx 70rpx 48rpx;
+}
+.service image{
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 14rpx;
+}

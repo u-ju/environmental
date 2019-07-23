@@ -22,13 +22,13 @@ page{
 
 .picture_item {
   position: relative;
-  padding-top: 38rpx;
   width: 402rpx;
-  height: 206rpx;
+  height: 242rpx;
   background-color: #FFFFFF;
   margin: 0 auto 28rpx auto;
   box-shadow:0px 4rpx 13rpx 0px rgba(200,201,201,0.23);
   border-radius: 10rpx;
+  /* overflow: hidden; */
 }
 
 .picture_item .del {
@@ -63,78 +63,30 @@ page{
 .picture_item>image {
   width:402rpx;
   height:242rpx;
-  margin-top: -38rpx;
 }
 .bgg{
-  background-color: #4FD6F0;
+  background-color: #48D1CC;
   width: 104rpx;
   height: 104rpx;
   border-radius: 50%;
-  margin: 0 auto 24rpx auto;
+  margin: 30rpx auto 24rpx auto;
 }
 .bgg image{
   width: 48rpx;
   height: 44rpx;
 }
-.mar{
-  margin: 100rpx auto 40rpx auto;
-  text-align: center;
+.bgpic{
+  position: absolute;
+  z-index: 1;
 }
-.commodity_screen {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #000;
-  opacity: 0.4;
-  overflow: hidden;
-  z-index: 1000;
+.bgcon{
+  background-color:rgba(0,0,0,.5);
   color: #fff;
-}
-
-.commodity_attr_box {
-  width: 100%;
+  height:242rpx;
   overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  background: #fff;
-  /* padding-top: 20rpx; */
+  position: relative;
+  z-index: 1;
 }
-.head{
-  padding: 20rpx 32rpx;
-  border-bottom: 1px solid #E8E8E8;
-}
-.commodity_attr_box .mes{
-  padding: 0 32rpx;
-}
-.mes>view{
-  padding: 40rpx;
-  border-bottom: 2rpx solid #E8E8E8; 
-}
-.mes>view:last-of-type{
-  border: none;
-}
-button{
-  margin: 50rpx auto
-}
-.sure{
-  margin: 50rpx auto
-}
-.left{
-  width: 200rpx;
-}
-.flex_a{
-  width: 686rpx;
-  height: 110rpx;
-  font-size: 28rpx;
-  color: #444;
-  margin: auto;
-  border-bottom: 1px solid #eee;
-}
-input{
-  color: #898989;
-  width: 486rpx;
+.titlei{
+  margin: 44rpx auto;
 }
