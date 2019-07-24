@@ -2,22 +2,30 @@
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
+var WxParse = require('../../wxParse/wxParse.js');
 var template = require('../../Components/tab-bar/tab-bar.js');
 Page({
   data: {
-    tab: [],
+    
     winHeight: "",//窗口高度
-    currentTab: 1, //预设当前项的值
+    currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     expertList: [
 
     ],
     topNum: 0,
-    news: [],
+    news: [0],
     page: {},
     length: 0,
     cate_id: 0,
-    tabbarid: 0
+    tabbarid: 0,
+    result:[0],
+    tab: [
+      { name: '社区简介', url: 'about' },
+      { name: '社区公告', url: 'notice' },
+      { name: '社区资讯', url: 'index' },
+      { name: '社区服务', url: 'service' },
+    ]
   },
   like(e) {
     // if (!e.currentTarget.dataset.praise){
@@ -61,12 +69,14 @@ Page({
     if (this.data.currentTaB == cur) {
       return false;
     } else {
-      // console.log(e)
       this.setData({
         currentTab: cur,
-        cate_id: e.target.dataset.cate_id
+        news:[0]
       })
-      this.init(e.target.dataset.cate_id)
+      this.init()
+      wx.setNavigationBarTitle({
+        title: this.data.tab[cur]["name"],
+      })
     }
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
@@ -75,53 +85,33 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    //  高度自适应
-    // console.log(Math.ceil(this.data.expertList.length / 4))
-    // console.log(this.data.expertList.length)
     util.loading()
-    wx.getSystemInfo({
-      success: function (res) {
-        var clientHeight = res.windowHeight,
-          clientWidth = res.windowWidth,
-          rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR - 102;
-
-        that.setData({
-          winHeight: calc
-        });
-      }
-    });
-    util.getJSON({ apiUrl: apiurl.config }, function (res) {
-      console.log(res)
-      
-      that.setData({
-        tab: res.data.result.buurt_news_cate
-      });
-      if (res.data.result.buurt_news_cate.length>0){
-        that.init();
-      }else{
-        wx.hideLoading()
-      }
-      
+    wx.setNavigationBarTitle({
+      title: this.data.tab[0]["name"],
     })
-    // if (app.globalData.config.news_cate.length > 0) {
-    //   that.init();
-    // } else {
-    //   wx.hideLoading()
-    // }
+    that.init()
   },
-  init(cate_id = this.data.tab[0].id, page = 1) {
+  init(page = 1) {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.buurtNews.index + "?cate_id=" + cate_id + "&page=" + page }, function (res) {
+    util.getJSON({ apiUrl: apiurl.buurtNews[this.data.tab[this.data.currentTab]['url']]+'?page='+page}, function (res) {
       var result = res.data.result
-
+      if (that.data.currentTab==0){
+        if (res.data.result.content_source == "html") {
+          var article = res.data.result.content;
+          WxParse.wxParse('article', 'html', article, that, 5);
+        }
+        util.hideLoading()
+        return that.setData({
+          result: result
+        })
+      }
       var list = result.list
       if (page != 1) {
         list = that.data.news.concat(list)
       }
       that.setData({
         news: list,
-        page: result.page,
+        page: result.page||'',
         last: false,
         length: Math.ceil(list.length / 4)
       })
@@ -132,9 +122,8 @@ Page({
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
-    util.getJSON({ apiUrl: apiurl.buurtNews.index + "?cate_id=" + that.data.cate_id + "&page=1" }, function (res) {
+    util.getJSON({ apiUrl: apiurl.buurtNews.index + "&page=1" }, function (res) {
       var result = res.data.result
-      console.log(result)
       that.setData({
         news: result.list,
         page: result.page,
@@ -159,6 +148,9 @@ Page({
       title: '玩命加载中',
     })
     // 页数+1
+    if (!that.data.page){
+      return
+    }
     if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
       that.init(that.data.cate_id, Number(that.data.page.current_page) + 1)
     } else {
@@ -171,7 +163,7 @@ Page({
   details(e) {
 
     wx.navigateTo({
-      url: '../buurtNewsDetail/index?id=' + e.currentTarget.dataset.id,
+      url: e.currentTarget.dataset.url+'?id=' + e.currentTarget.dataset.id,
     })
   },
   show() {

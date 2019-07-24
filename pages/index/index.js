@@ -70,19 +70,6 @@ Page({
     visible1: false,
     value1: [],
     pullState: 1,
-    noticeList: [{
-      url: "../tk/tk",
-      context: "多地首套房贷利率上浮 热点城市渐迎零折扣时代 多地首套房贷利率上浮 热点城市渐迎零折扣时代"
-    },
-    {
-      url: "../tk/tk",
-      context: "悦如公寓三周年生日趴邀你免费吃喝欢唱"
-    },
-    {
-      url: "../tk/tk",
-      context: "你想和一群有志青年一起过生日嘛？"
-    }
-    ]
   },
   search(e) {
     wx.navigateTo({
@@ -108,7 +95,9 @@ Page({
       })
       wx.setStorageSync('formData', '')
     }
-    util.loading()
+    if (app.globalData.config.length == 0){
+      util.loading()
+    }
     if (wx.getStorageSync('token') && wx.getStorageSync('token') != 1) {
       that.setData({
         token: util.getToken()
@@ -171,13 +160,6 @@ Page({
       var result = res.data.result;
       var tag = result.tag;
       that.setData({
-        // result: result,
-        // banner: result.banner,
-        // shop_ad: result.shop_ad,
-        // tag: tag,
-        // user: result.user,
-        // shop_goods_ad: result.shop_goods_ad,
-        // taglen: Math.ceil(tag.length / 8),
         seckill_list: result.seckill_list||'',
         popout_image: result.popout_image||'',
         popout: result.popout_image?1:0,
@@ -194,24 +176,9 @@ Page({
         }
         
       }
-      // if (result.seckill_list && result.seckill_list[0]&& result.seckill_list[0].end_at) {
-      //   that.data.timer = setInterval(() => {
-
-      //     that.setData({
-      //       timeLeft: '离结束：' + util.getTimeLeft(result.seckill_list[0].end_at, result.seckill_list[0].end_at_mts)
-      //     });  
-      //     if (that.data.timeLeft == "00:00:00" || that.data.timeLeft == "0:00:00:00") {
-      //       clearInterval(that.data.timer);
-      //       that.setData({
-      //         timeLeft: '已结束'
-      //       });
-      //     }
-      //   }, 1000);
-      //  }
       
       util.hideLoading()
     })
-    // 
     if (app.globalData.config.length == 0) {
       that.adr()
       util.getJSON({
@@ -225,6 +192,7 @@ Page({
       })
 
     } else {
+      util.hideLoading()
       this.setData({
         config: app.globalData.config
       })
@@ -409,10 +377,6 @@ Page({
           util.alert('授权失败')
         }
       })
-
-
-
-
     } else {
       // util.alert("为了您更好的体验,请先同意授权")
       console.log(e)
@@ -443,19 +407,6 @@ Page({
     this.setData({
       pullState: 0
     })
-    // util.getJSON({ apiUrl: apiurl.list + "?cate_id=" + that.data.cate_id + "&page=1" }, function (res) {
-    //   var result = res.data.result
-    //   console.log(result)
-    //   that.setData({
-    //     list: result.list,
-    //     page: result.page,
-    //     last: false
-    //   })
-    // 隐藏导航栏加载框
-    // wx.hideNavigationBarLoading();
-    // 停止下拉动作
-    // wx.stopPullDownRefresh();
-    // })
     setTimeout(function() {
       that.setData({
         pullState: 1
@@ -469,29 +420,6 @@ Page({
       url: '../area/index',
     })
   },
-  //触摸开始
-  // handletouchstart: function (event) {
-  //   this.refreshView.handletouchstart(event)
-  // },
-  // //触摸移动
-  // handletouchmove: function (event) {
-  //   this.refreshView.handletouchmove(event)
-  // },
-  // //触摸结束
-  // handletouchend: function (event) {
-  //   this.refreshView.handletouchend(event)
-  // },
-  // //触摸取消
-  // handletouchcancel: function (event) {
-  //   this.refreshView.handletouchcancel(event)
-  // },
-  // //页面滚动
-  // onPageScroll: function (event) {
-  //   this.refreshView.onPageScroll(event)
-  // },
-  // onPullDownRefresh: function () {
-  //   setTimeout(() => { this.refreshView.stopPullRefresh() }, 1000)
-  // }
 })
 // ,
 //   "enablePullDownRefresh": true

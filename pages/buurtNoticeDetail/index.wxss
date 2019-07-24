@@ -1,0 +1,19 @@
+/* pages/buurtNoticeDetail/index.wxss */
+@import"../../wxParse/wxParse.wxss";
+page{
+  background: linear-gradient(#94DECF, #5E93D7);
+}
+.index {
+  width:688rpx;
+  height:1108rpx;
+  background-color: white;
+  margin: auto;
+  border-radius:10rpx;
+}
+.container{
+  padding: 0 32rpx;
+  margin:  20rpx auto;
+}
+.center{
+  margin: 40rpx auto 32rpx auto;
+}

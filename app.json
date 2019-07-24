@@ -4,6 +4,7 @@
     "pages/index/index",
     "pages/realname_authentication/realname_authentication",
     "pages/buurtNews/index",
+    "pages/buurtNoticeDetail/index",
     "pages/avatar/index",
     "pages/success/success",
     "pages/myInviteNewusers/index",

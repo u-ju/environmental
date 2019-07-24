@@ -476,9 +476,20 @@ const apiList = {
   travelPerson_update: basePath + '/front/travelPerson/update',
   travelPerson_destroy: basePath + '/front/travelPerson/destroy',
   // BuurtNewsController 社区文化
-  buurtNews:{ 
-    index: basePath + '/front/buurtNews/index',//GET 文化列表
-    show: basePath + '/front/buurtNews/show?news_id=',//GET 文化详情
+  // buurtNews:{ 
+  //   index: basePath + '/front/buurtNews/index',//GET 文化列表
+  //   show: basePath + '/front/buurtNews/show?news_id=',//GET 文化详情
+  //   replyStore: basePath + '/front/buurtNews/replyStore',//POST 回复提交
+  //   replyIndex: basePath + '/front/buurtNews/replyIndex?news_id=',//GET 回复列表
+  //   praiseStore: basePath + '/front/buurtNews/praiseStore',//POST 点赞提交
+  //   replyPraiseStore: basePath + '/front/buurtNews/replyPraiseStore',//POST 回复点赞提交
+  // },
+  buurtNews:{
+    about: basePath + '/front/buurtNews/about',//社区简介
+    notice: basePath + '/front/buurtNews/notice',//社区公告列表
+    index: basePath + '/front/buurtNews/index',//社区资讯列表
+    service: basePath + '/front/buurtNews/service',//社区服务
+    show: basePath + '/front/buurtNews/show?id=',//GET 文化详情
     replyStore: basePath + '/front/buurtNews/replyStore',//POST 回复提交
     replyIndex: basePath + '/front/buurtNews/replyIndex?news_id=',//GET 回复列表
     praiseStore: basePath + '/front/buurtNews/praiseStore',//POST 点赞提交

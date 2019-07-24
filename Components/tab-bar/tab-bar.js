@@ -33,12 +33,7 @@ function tabbarinit() {
 }
 //tabbar 主入口
 function tabbarmain(bindName = "tabdata", id, target) {
-  // console.log("11111111111")
-  // if (wx.getStorageSync('tabbarmainid')==id){
-  //   return false
-  // }
-  // wx.setStorageSync('tabbarmainid', id)
-  // console.log("11111111111")
+  
   var that = target;
   var bindData = {};
   var otabbar = tabbarinit();
@@ -50,15 +45,6 @@ function tabbarmain(bindName = "tabdata", id, target) {
   that.setData({
     bindData
   });
-  // console.log(otabbar[id]['pagePath'])
-  // if (otabbar[id]['pagePath']){
-  //   wx.redirectTo({
-  //     url: otabbar[id]['pagePath'],
-  //   })
-  // }
-  // wx.showLoading({
-  //   title: '加载中',
-  // })
 }
 
 module.exports = {

@@ -10,9 +10,9 @@ page{
 .tab-item{margin:0 32rpx;display: inline-block;color: #666666;font-size: 28rpx;}
 .tab-item.active{color: #444444;position: relative;font-size: 28rpx;font-weight: bold;}
 .tab-item.active:after{ content: "";display: block;height: 4rpx;width: 100rpx;background: #4FD6F0;position: absolute; bottom: 2rpx;left: 50%;margin-left: -50rpx;}
-.item-ans{width: 330rpx;overflow: hidden;margin-bottom: 24rpx;}
+.item-ans{width: 330rpx;overflow: hidden;margin-bottom: 24rpx;border-radius: 10rpx;}
 
-.avatar_d{width: 100%;height: 304rpx;}
+.avatar_d{width: 100%;height: 304rpx;background-color: #fff;overflow: hidden}
 .avatar_c{width: 100%;height: 368rpx;}
 .avatar .img{width: 100%;height: 100%;border-radius: 10rpx 10rpx 0 0 ;}
 

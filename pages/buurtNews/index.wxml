@@ -1,4 +1,5 @@
 <!--pages/buurtNews/index.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
 <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
   <block wx:for="{{tab}}" wx:key="index">
     <view class="tab-item {{currentTab==index?'active':''}}" data-cate_id='{{item.id}}' data-current="{{index}}" bindtap="swichNav">{{item.name}}</view>
@@ -6,30 +7,42 @@
 </scroll-view>
 <scroll-view scroll-y="true" class='index'>
   <view wx:if='{{currentTab==0}}' class='currentTab0'>
-
+    <block wx:if='{{result}}'>
+      <block wx:if="{{result.content_source=='url'}}">
+        <web-view src="{{result.content}}"> </web-view>
+      </block>
+      <view class='container' wx:else>
+        <view class='size26 center'>{{result.title}}</view>
+        <block wx:if="{{result.content_source=='html'}}">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </block>
+        <view class='color6 con' wx:elif="{{result.content_source=='text'}}">
+          {{result.content}}
+        </view>
+      </view>
+    </block>
+    <view wx:else class='empty'>
+      <empty />
+    </view>
   </view>
   <view wx:elif='{{currentTab==1}}' class='currentTab1'>
-    <view class='notice'>
-
-      <view class='btn flex_btw'>
-        <view class='btnon'>上一条</view>
-        <view class='btnon'>下一条</view>
+    <view class='flex_btw affiche' wx:for='{{news}}' wx:key="index" wx:if="{{item.title}}"  bindtap='details' data-url='../buurtNoticeDetail/index' data-id='{{item.id}}'>
+      <image class='affichepic' src='{{item.thumb}}' mode='aspectFit'></image>
+      <view class='flex_btw flex_col affichecon'>
+        <view>{{item.title}}</view>
+        <view class='color6 hidden2'>{{item.intro}}</view>
+        <view class='textR color6'>{{item.created_at}}</view>
       </view>
     </view>
-    <view class='flex_btw affiche'>
-        <image class='affichepic'></image>
-        <view class='flex_btw flex_col affichecon'>
-          <view>停气通知！</view>
-          <view class='color6 hidden2'>各位居民明天晚上23:00至次日 凌晨6:00停气检修，请做好.....</view>
-          <view class='textR color6'>2017-07-21</view>
-        </view>
+    <view wx:if="{{news.length==0}}" class='empty'>
+      <empty />
     </view>
   </view>
-  <view wx:elif='{{currentTab==2}}' class='wrap'>
+  <view wx:elif='{{currentTab==2}}' class='wrap currentTab2'>
 
     <block wx:for="{{length}}" wx:key="index" wx:for-item='mulriple'>
       <block wx:for="0123" wx:key="index" wx:for-item='num'>
-        <view class="item-ans a{{index}}" wx:if="{{news[(mulriple) * 4+(num-0)]}}" bindtap='details' data-id='{{news[(mulriple) * 4+(num-0)].news_id}}'>
+        <view class="item-ans a{{index}}" wx:if="{{news[(mulriple) * 4+(num-0)]}}" bindtap='details' data-url='../buurtNewsDetail/index' data-id='{{news[(mulriple) * 4+(num-0)].id}}'>
           <view class="avatar avatar_d {{(index+1)%2==0&&(index+1)%4!=0?'avatar_c':''}} {{(index+1)%3==0?'avatar_c':''}} {{(index+1)%4==0?'avatar_d':''}}">
             <image class="img" src="{{news[(mulriple) * 4+(num-0)].thumb}}" mode='aspectFill'></image>
           </view>
@@ -41,7 +54,7 @@
                   <image mode='aspectFit' class='mess' src="../../images/mess@2x.png"></image>
                   <text class='num colorBE size20'>{{news[(mulriple) * 4+(num-0)].reply}}</text>
                 </view>
-                <view class='flex align_center' catchtap='like' data-praise='{{news[(mulriple) * 4+(num-0)].praise}}' data-id='{{news[(mulriple) * 4+(num-0)].news_id}}' data-index='{{(mulriple) * 4+(num-0)}}'>
+                <view class='flex align_center' catchtap='like' data-praise='{{news[(mulriple) * 4+(num-0)].praise}}' data-id='{{news[(mulriple) * 4+(num-0)].id}}' data-index='{{(mulriple) * 4+(num-0)}}'>
                   <image mode='aspectFit' wx:if='{{news[(mulriple) * 4+(num-0)].praise==0}}' class='mess mess1' src="../../images/lo@2x.png"></image>
                   <image mode='aspectFit' wx:if='{{news[(mulriple) * 4+(num-0)].praise==1}}' class='mess mess1' src="../../images/lo_red@2x.png"></image>
                   <text class='num colorBE size20'>{{news[(mulriple) * 4+(num-0)].like}}</text>
@@ -57,10 +70,13 @@
     </view>
 
   </view>
-  <view wx:elif='{{currentTab==3}}' class='currentTab3 flex warp'>
-    <view class='service'>
-      <image></image>
-      <view>社保服务</view>
+  <view wx:elif='{{currentTab==3}}' class='currentTab3 flex wrap'>
+    <view class='service' wx:for="{{news}}" wx:key='index' wx:if='{{item.icon}}'>
+      <image src='{{item.icon}}' aspectFit></image>
+      <view>{{item.name}}</view>
+    </view>
+    <view wx:if="{{news.length==0}}" class='empty'>
+      <empty />
     </view>
   </view>
 </scroll-view>
