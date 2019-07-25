@@ -2,14 +2,18 @@
 <!-- <view class='instructions' hidden='{{!desc}}'>
   <view class='instructionsn tranla'>
     <view class=' {{moredescnum==1?"hidden2":""}} '>{{desc}}</view>
-    <view class='center' bindtap='moredesc'>
+    <view class='center' bindtap='mo  redesc'>
       <text class='size22'>{{moredescnum==1?"更多":"收起"}}</text>
       <text class='iconfont icon-xiangxiajiantou size22  {{moredescnum==1?"":"transform"}}'></text>
     </view>
   </view>
 </view> -->
 <view class='head'>
-  <image class='banner' src='{{banner}}'></image>
+   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' bindchange="swiperChange" current="{{cur}}">
+    <swiper-item wx:for="{{banner}}" wx:key="index" data-link='{{item.control}}' bindtap='link'>
+      <image src="{{item.image}}" class="slide-image" mode='aspectFill' bindtap='previewImg' data-src='{{item}}' />
+    </swiper-item>
+  </swiper>
   <block hidden='{{!desc}}'>
     <view class='topic'>兑换说明</view>
     <view class=' {{moredescnum==1?"hidden2":""}} moredescnum'>{{desc}}</view>

@@ -31,6 +31,7 @@ page{
 .mess{
   width: 18rpx;
   height: 18rpx;
+  font-size: 18rpx;
   margin-right: 6rpx;
 }
 .huhu>view:first-of-type{

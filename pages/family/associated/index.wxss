@@ -19,7 +19,7 @@
   border-bottom: 4rpx solid transparent;
 }
 .tab .active{
-  border-bottom: 4rpx solid #4FD6F0;
+  border-bottom: 4rpx solid #48D1CC;
 }
 .tabitem{
   

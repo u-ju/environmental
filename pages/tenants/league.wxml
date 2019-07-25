@@ -49,68 +49,19 @@
       <textarea wx:if="{{show}}" focus="{{show}}" class='size28 color9' bindinput='input' bindblur='unshow' data-contact='intro' value='{{intro}}' name='intro'></textarea>
       <view class='textarea size28 color9' bindtap='show' wx:else>{{intro}}</view>
     </view>
-    <!-- <view class='item1 flex align_center textareaitem'>
-      <text class='size28 color6'>营业许可</text>
-      <view class='businessLicense'>
-        <view class='license flex align_center'>
-          <view>单位名称：</view>
-          <input name='license_info[company_name]' data-contact='license_info[company_name]' bindinput='input' value="{{company_name}}"></input>
-        </view>
-        <view class='license flex align_center'>
-          <view>许可证号：</view>
-          <input name='license_info[license_no]' data-contact='license_info[license_no]' bindinput='input' value="{{license_no}}"></input>
-        </view>
-        <view class='license flex align_center'>
-          <view> 法定代表人：</view>
-          <input name='license_info[legal_person]' data-contact='license_info[legal_person]' bindinput='input' value="{{legal_person}}"></input>
-        </view>
-        <view class='license flex align_center'>
-          <view> 经营地址：</view>
-          <view wx:if="{{!showa}}" class='textarea1' bindtap='showa'>{{business_address}}</view>
-          <textarea wx:else  auto-focus='{{showa}}' focus='{{showa}}' bindinput='inputa' bindblur='unshowa' name='license_info[business_address]' data-contact='license_info[business_address]t'  value="{{business_address}}" ></textarea>
-        </view>
-        <view class='license flex align_center'>
-          <view>经营范围：</view>
-          <view wx:if="{{!shows}}" class='textarea1' bindtap='shows'>{{business_scope}}</view>
-          <textarea wx:else bindinput='inputs'  auto-focus='{{shows}}' focus='{{shows}}'  bindblur='unshows' name='license_info[business_scope]' data-contact='license_info[business_scope]o'   value="{{business_scope}}"></textarea>
-        </view>
-      </view>
-    </view> -->
-    <block wx:for="{{image}}" wx:key="{{index}}">
-      <view class='item1 flex align_center image'  hidden='{{item.id==1}}'>
-        <text class='size28 color6'>{{item.title}}</text>
-        <view class="picture_list">
-          <view class="picture_item {{item.id}}" wx:if="{{item.upload_picture_list.length>0}}">
-            <image wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" src="{{item.upload_picture_list[0].path}}" mode="aspectFill"></image>
-            <image wx:if="{{item.upload_picture_list[0].upload_percent == 100}}"  bindtap="previewImg" data-src="{{item.upload_picture_list[0].path_server}}" src="{{item.upload_picture_list[0].path_server}}" mode="aspectFill"></image>
-            <view class="upload_progress" wx:if="{{item.upload_picture_list[0].upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg">{{item.upload_picture_list[0].upload_percent}}%</view>
-            <!-- <text class='del iconfont  icon-cuohao' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></text> -->
-            <image src='../../images/delt.png' class='del' bindtap='deleteImg' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}"></image>
-          </view>
-          <view wx:else class='picture_item' bindtap='uploadpic' data-index="{{index}}">
-            <view class='bgg flex_ard align_center'>
-              <image src='../../images/camera2x.png'></image>
-            </view>
-            <view class='size26 bold center'>{{item.text}}</view>
-          </view>
-        </view>
-      </view>
-    </block>
-
     <view class='item1 flex align_center image'>
       <text class='size28 color6'>店内图片视频</text>
       <view class="picture_listmore">
-        
+
         <view wx:for="{{upload_picture_list}}" class="picture_itemmore" wx:key="{{index}}">
           <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
-          <image wx:if="{{item.upload_percent == 100}}"  bindtap="previewImg" data-src="{{item.path_server}}"   src="{{item.path_server}}" mode="aspectFill"></image>
-          <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}" bindtap="previewImg1">{{item.upload_percent}}%</view>
+          <image wx:if="{{item.upload_percent == 100}}" bindtap="previewImg" data-src="{{item.path_server}}" src="{{item.path_server}}" mode="aspectFill"></image>
+          <view class="upload_progress" wx:if="{{item.upload_percent < 100}}" data-index="{{index}}">{{item.upload_percent}}%</view>
           <view class='del' bindtap='deleteImg1' data-image="image" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}" wx:if="{{!disabled1}}">
             <image src='../../images/delt.png'></image>
           </view>
         </view>
-
-        <view class='picture_itemmore ' bindtap='uploadpic1' wx:if="{{!disabled1}}" data-index="{{index}}">
+        <view class='picture_itemmore ' bindtap='uploadpic' data-number='9' data-num='' wx:if="{{!disabled1}}" data-index="{{index}}">
           <view class="add-image click_camera flex_col align_center">
             <image mode='aspectFill' class='camera' src='../../images/ca_pl.png'></image>
           </view>
@@ -128,6 +79,93 @@
             <image mode='aspectFill' class='videot' src='../../images/videot.png'></image>
           </view>
         </view>
+      </view>
+    </view>
+    <view class='picture flex'>
+      <text class='size28 color6'>法人证件</text>
+      <view>
+        <radio-group bindchange="radioChange">
+          <label class="radio" wx:for="{{certification}}" wx:key="index">
+            <radio value="{{item.value}}" checked="{{item.checked}}" /> {{item.name}}
+          </label>
+        </radio-group>
+        <view wx:if='{{certificationval==1}}'>
+          <view class="picture_list">
+            <view wx:for="{{upload_picture_list0}}" class="picture_item" wx:key="{{index}}">
+              <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+              <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill" bindtap="previewImg" data-src="{{item.path}}"> </image>
+              <text class='del iconfont icon-cuohao' bindtap='deleteImg' data-num="0" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"></text>
+            </view>
+            <view wx:if="{{upload_picture_list0.length<1}}" class='picture_item contain' bindtap='uploadpic' data-num="0">
+              <image class='bgpic' src='../../images/positive.png'></image>
+              <view class='bgcon'>
+                <view class='bgg flex_ard align_center'>
+                  <image src='../../images/camera2x.png'></image>
+                </view>
+                <view class='size30 bold center'>点击拍摄/上传人像面</view>
+              </view>
+            </view>
+          </view>
+          <view class="picture_list">
+            <view wx:for="{{upload_picture_list1}}" class="picture_item" wx:key="{{index}}">
+              <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+              <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill" bindtap="previewImg" data-src="{{item.path}}"> </image>
+              <text class='del iconfont icon-cuohao' bindtap='deleteImg' data-num="1" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"></text>
+            </view>
+            <view wx:if="{{upload_picture_list1.length<1}}" class='picture_item contain' bindtap='uploadpic' data-num="1">
+              <image class='bgpic' src='../../images/reverse.png'></image>
+              <view class='bgcon'>
+                <view class='bgg flex_ard align_center'>
+                  <image src='../../images/camera2x.png'></image>
+                </view>
+                <view class='size30 bold center'>点击拍摄/上传国徽面</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='item1 flex marginb30'>
+      <text class='color6'>营业执照</text>
+      <view>
+        <view class="picture_list">
+          <view wx:for="{{upload_picture_list2}}" class="picture_item" wx:key="{{index}}">
+            <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+            <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill" bindtap="previewImg" data-src="{{item.path}}"> </image>
+            <text class='del iconfont icon-cuohao' bindtap='deleteImg' data-num="2" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"></text>
+          </view>
+          <view wx:if="{{upload_picture_list2.length<1}}" class='picture_item contain' bindtap='uploadpic' data-num="2">
+            <image class='bgpic' src='../../images/yingyezhizhao.png'></image>
+            <view class='bgcon'>
+              <view class='bgg flex_ard align_center'>
+                <image src='../../images/camera2x.png'></image>
+              </view>
+              <view class='size30 bold center'>点击拍摄/营业执照正面</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='item1 flex'>
+      <text class='color6'>结算银行卡</text>
+      <view>
+        <view class="picture_list">
+          <view wx:for="{{upload_picture_list3}}" class="picture_item" wx:key="{{index}}">
+            <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+            <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill" bindtap="previewImg" data-src="{{item.path}}"> </image>
+            <text class='del iconfont icon-cuohao' bindtap='deleteImg' data-num="3" data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}"></text>
+          </view>
+          <view wx:if="{{upload_picture_list3.length<1}}" class='picture_item contain' bindtap='uploadpic' data-num="3">
+            <image class='bgpic' src='../../images/yinhangka.png'></image>
+            <view class='bgcon'>
+              <view class='bgg flex_ard align_center'>
+                <image src='../../images/camera2x.png'></image>
+              </view>
+              <view class='size30 bold center'>点击拍摄/银行卡正面</view>
+            </view>
+          </view>
+        </view>
+        <input class='cardholder' name='' value='' placeholder='请输入持卡人姓名'></input>
       </view>
     </view>
     <view class='item  flex align_center'  wx:if='{{!status}}'>

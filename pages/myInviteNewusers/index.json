@@ -1,4 +1,5 @@
 {
+  "navigationBarBackgroundColor": "#94DECF",
   "navigationBarTitleText": "我的邀请",
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 50,

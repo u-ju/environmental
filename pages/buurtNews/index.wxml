@@ -55,8 +55,9 @@
                   <text class='num colorBE size20'>{{news[(mulriple) * 4+(num-0)].reply}}</text>
                 </view>
                 <view class='flex align_center' catchtap='like' data-praise='{{news[(mulriple) * 4+(num-0)].praise}}' data-id='{{news[(mulriple) * 4+(num-0)].id}}' data-index='{{(mulriple) * 4+(num-0)}}'>
-                  <image mode='aspectFit' wx:if='{{news[(mulriple) * 4+(num-0)].praise==0}}' class='mess mess1' src="../../images/lo@2x.png"></image>
-                  <image mode='aspectFit' wx:if='{{news[(mulriple) * 4+(num-0)].praise==1}}' class='mess mess1' src="../../images/lo_red@2x.png"></image>
+                <text class='iconfont icon-collection-b size22 mess {{news[(mulriple) * 4+(num-0)].praise==0?"color9":"color4fd6f0"}}  '></text>
+                  <!-- <image mode='aspectFit' wx:if='{{news[(mulriple) * 4+(num-0)].praise==0}}' class='mess mess1' src="../../images/lo@2x.png"></image>
+                  <image mode='aspectFit' wx:if='{{news[(mulriple) * 4+(num-0)].praise==1}}' class='mess mess1' src="../../images/lo_red@2x.png"></image> -->
                   <text class='num colorBE size20'>{{news[(mulriple) * 4+(num-0)].like}}</text>
                 </view>
               </view>

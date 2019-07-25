@@ -63,6 +63,7 @@ page{
 .picture_item>image {
   width:402rpx;
   height:242rpx;
+  border-radius: 10rpx;
 }
 .bgg{
   background-color: #48D1CC;
@@ -86,6 +87,7 @@ page{
   overflow: hidden;
   position: relative;
   z-index: 1;
+  border-radius: 10rpx;
 }
 .titlei{
   margin: 44rpx auto;

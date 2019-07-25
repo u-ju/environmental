@@ -4,9 +4,7 @@ page{
   background-color: white;
 }
 .picture_item .del {
-  top:4rpx;
-  right:-20rpx;
-  background-color: transparent
+  background-color: #999
 }
 .banner image{
   width: 686rpx;
@@ -16,7 +14,7 @@ page{
 .from{
   padding: 32rpx;
 }
-.item .color6,.item1 .color6{
+.item .color6,.item1 .color6,.picture .color6 {
   width: 180rpx;
 }
 .item_input{
@@ -57,40 +55,8 @@ page{
   z-index: 90;
   padding: 10rpx 0;
 }
-/* 自定义 radio 样式 */
-radio{
-  width: 38rpx;
-}
-.radio{
-  /* margin: 30rpx 30rpx 0 0; */
-  display: inline-block;
-  width: 33%;
-  margin-bottom:30rpx; 
-}
-radio .wx-radio-input{
-  border-radius: 0%; 
-  width: 24rpx;
-  height: 22rpx;
-  background-color: #E7E5E5;
-  float: left;
-  border: none;
-}
- 
-/* 选中后的样式 （可根据设计稿需求自己修改） */
-radio .wx-radio-input.wx-radio-input-checked::before{
-  /* border-radius: 50%; */
-  width: 24rpx; 
-  height: 22rpx; 
-  line-height: 22rpx;
-  text-align: center;
-  font-size: 20rpx; /* 对勾大小 26rpx */
-  color:#fff; /* 对勾颜色 */
-  /* background: #2facff; */
-  border: none;
-}
-.radio-group{
-  width: 546rpx;
-}
+
+
 .paddingb0{
   padding-bottom: 0
 }
@@ -111,26 +77,6 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   margin-top: 30rpx;
 }
 
-.picture_item,.upload_progress,.picture_item>image{
-  width: 292rpx;
-  height: 176rpx;
-}
-
-.picture_item>image{
-  margin-top: -23rpx;
-}
-.picture_list{
-  margin-left: 0rpx;
-}
-.bgg{
-  background-color: #4FD6F0;
-  width: 70rpx;
-  height: 70rpx;
-}
-.bgg image{
-   width: 32rpx;
-  height: 29rpx;
-}
 form{
   overflow: hidden;
 }
@@ -140,9 +86,7 @@ width:180rpx;
 .picture_item1{
   margin: 10rpx auto;
 }
-.picture_list{
-  width: 300rpx;
-}
+
 navigator{
   display: inline-block;
 }
@@ -187,11 +131,7 @@ navigator{
   left: 0;
   z-index: 2;
 }
-.picture_item{
-  
-  padding-top: 23rpx;
-  height: 153rpx;
-}
+
 .textareaitem{
   margin-top: 50rpx;
 }
@@ -248,9 +188,7 @@ navigator{
   /* margin: 0 -20rpx; */
   width: 500rpx;
 }
-/* .picture_itemmore{
-  
-} */
+
 .picture_itemmore .camera{
   width: 76rpx;
   height: 63rpx;
@@ -264,6 +202,13 @@ navigator{
   background-color: #EEEEEE;
   width: 134rpx;
   height: 134rpx;
+}
+.picture_item{
+  margin: 0;
+  border: 1rpx solid transparent;
+}
+.picture .picture_item{
+  margin: 30rpx 0;
 }
 .time{
   width:220rpx;
@@ -427,4 +372,44 @@ navigator{
 }
 .block{
   display: block;
+}
+radio-group{
+  width: 510rpx;
+  display: flex;
+  justify-content: space-between;
+}
+/* 未选中的样式 */
+radio .wx-radio-input {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;     /* 圆角 */
+    border: 1rpx solid #48D1CC;
+}
+
+/* 选中后 背景及勾 的样式 */
+radio .wx-radio-input.wx-radio-input-checked::before {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;     /* 圆角 */
+    line-height: 40rpx;
+    text-align: center;
+    font-size: 30rpx;       /* 勾大小 */
+    color: #fff;			/* 白色勾  */
+    background: #48D1CC;
+    border: 1rpx solid #48D1CC;
+    transform: translate(-50%, -50%) scale(1);
+}
+.picture{
+  margin: 30rpx 0;
+}
+.cardholder{
+  width:495rpx;
+  height:88rpx;
+  border:2rpx solid rgba(191,191,191,1);
+  border-radius:5rpx;
+  text-indent: 16rpx;
+  margin: 33rpx 0 0 0;
+}
+.marginb30{
+  margin-bottom: 30rpx;
 }

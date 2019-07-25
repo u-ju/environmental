@@ -354,6 +354,7 @@ const apiList = {
   video_replyIndex: basePath + '/front/video/replyIndex',
   video_praiseStore: basePath + '/front/video/praiseStore',
 
+  goodsHome: basePath + '/front/goods/home',
   goods: basePath + '/front/goods/index',
   goods_show: basePath + '/front/goods/show?sku_id=',
   goods_commentIndex: basePath + '/front/goods/commentIndex?spu_id=',

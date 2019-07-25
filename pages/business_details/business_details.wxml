@@ -40,7 +40,7 @@
     </view>
     <view class='label flex align_center'>
       <image src='../../images/stime.png' class='labelpic'></image>
-      <view>{{result.business_status_name}} | {{result.business_time}}</view>
+      <view>{{result.business_time}}</view>
     </view>
     <view class='label flex_btw align_center'>
       <view class='flex' data-latitude='{{result.latitude}}' data-longitude='{{result.longitude}}' bindtap='location'>

@@ -25,3 +25,6 @@
 .notice{
   padding: 30rpx 32rpx;
 }
+.picture_list {
+  margin: 0;
+}

@@ -16,18 +16,7 @@ Page({
    */
   data: {
     post: false,
-    options2: [
-      {
-        value: 'beijing',
-        label: '北京',
-        isLeaf: false,
-      },
-      {
-        value: 'hangzhou',
-        label: '杭州',
-        isLeaf: false,
-      },
-    ],
+    options2: [],
     value2: [],
     type_val: [
       { name: '便民服务', id: 1 },
@@ -36,11 +25,6 @@ Page({
     tshop_cate: [],
     shop_cate: [],
     type: '',
-    image: [
-      { title: '营业执照', upload_picture_list: [], text: "点击拍摄/上传图片", id: 0 },
-      { title: '店招上传', upload_picture_list: [], text: "点击拍摄/上传图片", id: 1 },
-    ],
-    upload_picture_list: [],
     cate_id: '',
     // 地址
 
@@ -58,7 +42,23 @@ Page({
     shop_settled: '',
     suggestion: [],
     konwname: '',
-    choosead: true
+    choosead: true,
+    certification:[
+      { name: '使用实名认证', value: 0, checked:true},
+      { name: '新建', value: 1, checked:false },
+    ],
+    certificationval:'',
+    upload_picture_list: [],
+    upload_picture_list0: [],
+    upload_picture_list1: [],
+    upload_picture_list2: [],
+    upload_picture_list3: [],
+  },
+  radioChange: function (e) { 
+    var that = this;
+    this.setData({
+      certificationval: e.detail.value
+    })
   },
   testcall(e) {
     // // console.log(e)
@@ -185,17 +185,10 @@ Page({
       choosed: wx.getStorageSync('choosede') || that.data.choosed,
       share_mobile: share_mobile
     })
-    // options.shop_id=30
     if (options.shop_id) {
       util.getJSON({ apiUrl: apiurl.shop_showOwn + options.shop_id }, function (res) {
         var result = res.data.result
-        var image = [
-          { title: '营业执照', upload_picture_list: [{ upload_percent: 100, path_server: '' }], text: "点击拍摄/上传图片", id: 0 },
-          { title: '店招上传', upload_picture_list: [{ upload_percent: 100, path_server: '' }], text: "点击拍摄/上传图片", id: 1 },
-        ], upload_picture_list = []
-
-        image[0]["upload_picture_list"][0]['path_server'] = result.license || '';
-        image[1]["upload_picture_list"][0]['path_server'] = ''
+        var upload_picture_list = [], upload_picture_list2 = [{ upload_percent: 100, path_server: result.license }]
         for (var i in result.images) {
           upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
         }
@@ -219,7 +212,7 @@ Page({
           status: result.status,
           status_name: result.status_name,
           title: result.title,
-          image: image,
+          upload_picture_list2: upload_picture_list2,
           cate_id: result.cate_id,
           upload_picture_list: upload_picture_list || '',
           discount_percent: result.discount_percent || '',
@@ -237,10 +230,7 @@ Page({
       })
 
     } else {
-      var image = [
-        { title: '营业执照', upload_picture_list: wx.getStorageSync("image0e") || '', text: "点击拍摄/上传图片", id: 0 },
-        { title: '店招上传', upload_picture_list: wx.getStorageSync("image1e"), text: "点击拍摄/上传图片", id: 1 },
-      ], upload_picture_list = wx.getStorageSync("upload_picture_liste") || []
+      var upload_picture_list = wx.getStorageSync("upload_picture_liste") || []
 
       var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
       that.setData({
@@ -251,7 +241,6 @@ Page({
         type_val: type_val,
         shop_cate: shop_cate,
         tshop_cate: tshop_cate,
-        image: image,
         upload_picture_list: upload_picture_list,
         title1: wx.getStorageSync("title1e"),
         cate_id: wx.getStorageSync("cate_ide"),
@@ -384,138 +373,53 @@ Page({
 
   },
   //点击上传事件
-  uploadimage: function (index) {
-    var page = this
-    var upload_picture_list = page.data.image[index].upload_picture_list
-    //循环把图片上传到服务器 并显示进度       
-    for (var j in upload_picture_list) {
-      if (upload_picture_list[j]['upload_percent'] == 0) {
-        //调用函数
-        page.upload_file_server(apiurl.upload_image, page, upload_picture_list, j, index)
-      }
-    }
-  },
-  upload_file_server(url, that, upload_picture_list, j, index) {
-    //上传返回值
-    var _this = this;
-    const upload_task = wx.uploadFile({
-      // 模拟https
-      url: url, //需要用HTTPS，同时在微信公众平台后台添加服务器地址  
-      filePath: upload_picture_list[j]['path'], //上传的文件本地地址    
-      name: 'file',
-      formData: {
-        "image": upload_picture_list[j]['path_base'],
-        'source': 'base64'
-      },
-      header: {
-        "content-type": 'application/x-www-form-urlencoded',
-        'token': util.getToken(),
-        'channel': 'let',
-        'build': util.build
-      },
-      //附近数据，这里为路径     
-      success: function (res) {
-        var data = JSON.parse(res.data);
-        // //字符串转化为JSON  
+  // 上传图片
 
-        if (data.status == 200) {
-          var filename = data.result.image_url //存储地址 显示
-          upload_picture_list[j]['path_server'] = filename
-          util.hideLoading()
-        } else {
-          upload_picture_list[j]['path_server'] = filename
+  uploadpic(e) {
+    var that = this;
+    
+    var list = 'upload_picture_list' + e.currentTarget.dataset.num||'';
+    console.log(list)
+    var num = e.currentTarget.dataset.number||1
+    util.uploadpic(that, num, list, '', function (images) {
+      console.log(images)
+      that.setData({
+        [list]: images,
+      });
+      for (var j in images) {
+        if (images[j]['upload_percent'] == 0) {
+          //调用函数
+          util.upload_pic(apiurl.upload_image, that, images, j, function (e) {
+            console.log(images)
+            that.setData({
+              [list]: e,
+            });
+            util.hideLoading()
+          }, function (e) {
+            that.setData({
+              [list]: e,
+            });
+          })
         }
-
-        that.setData({
-          ['image[' + index + '].upload_picture_list']: upload_picture_list,
-        });
-        // wx.setStorageSync('image' + index+'e', upload_picture_list)
       }
     })
-    // 上传 进度方法
-
-    upload_task.onProgressUpdate((res) => {
-      upload_picture_list[j]['upload_percent'] = res.progress
-      that.setData({
-        ['image[' + index + '].upload_picture_list']: upload_picture_list,
-      });
-
-
-    });
   },
   // 删除图片
   deleteImg: function (e) {
-
     var that = this;
-
+    var list = 'upload_picture_list' + e.currentTarget.dataset.num;
     that.setData({
-      ['image[' + e.currentTarget.dataset.index + '].upload_picture_list']: [],
+      [list]: [],
     });
-    // wx.setStorageSync('image' + e.currentTarget.dataset.index+'e', [])
-    // 
   },
-  // 查看图片
-  previewImg(e) {
-    util.previewImage(e.currentTarget.dataset.src)
-  },
-  uploadpic1: function (e) {
-    var that = this //获取上下文
-    var upload_picture_list = that.data.upload_picture_list
-    // console.log(e)
-    //选择图片
-    wx.chooseImage({
-      count: 9,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        util.loading()
-        var tempFiles = res.tempFiles
-        var promiseArr = []
-        for (var i in tempFiles) {
-          let promise = new Promise((resolve, reject) => {
-            wx.getFileSystemManager().readFile({
-              filePath: tempFiles[i]['path'], //选择图片返回的相对路径
-              encoding: 'base64', //编码格式
-              success: res => { //成功的回调 
-                resolve(res)
-              },
-              fail: function (error) {
-                reject(error);
-              },
-            })
-          })
-          promiseArr.push(promise)
-        }
-        Promise.all(promiseArr).then((res) => {
-          //对返回的result数组进行处理
-          for (var i in res) {
-            tempFiles[i]['path_base'] = 'data:image/png;base64,' + res[i].data
-            tempFiles[i]['upload_percent'] = 0
-            tempFiles[i]['path_server'] = ''
-
-            // // console.log(tempFiles[i])
-            // // console.log(upload_picture_list)
-            upload_picture_list.push(tempFiles[i])
-          }
-          that.setData({
-            upload_picture_list: upload_picture_list,
-          });
-          that.uploadimage1()
-        })
-      }
-    })
-  },
-  //点击上传事件
-  uploadimage1: function () {
-    var page = this
-    var upload_picture_list = page.data.upload_picture_list
-    //循环把图片上传到服务器 并显示进度       
-    for (var j in upload_picture_list) {
-      if (upload_picture_list[j]['upload_percent'] == 0) {
-        //调用函数
-        util.upload_file_server(apiurl.upload_image, page, upload_picture_list, j, '', 3)
-      }
-    }
+  // 删除图片
+  deleteImg1: function(e) {
+    let upload_picture_list = this.data.upload_picture_list;
+    let index = e.currentTarget.dataset.index;
+    upload_picture_list.splice(index, 1);
+    this.setData({
+      upload_picture_list: upload_picture_list
+    });
   },
 
   // 删除图片

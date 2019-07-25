@@ -2,6 +2,9 @@
 page{
   /* border: none; */
 }
+.swiperbox{
+  height: 260rpx;
+}
 .pageType{
   width: 724rpx;
   padding: 0 10rpx;

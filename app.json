@@ -1,7 +1,8 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/tenants/tenants",
+    
     "pages/realname_authentication/realname_authentication",
     "pages/buurtNews/index",
     "pages/buurtNoticeDetail/index",
@@ -11,7 +12,7 @@
     "pages/personal_center/personal_center",
     "pages/result/index",
     "pages/installment/installment",
-    "pages/tenants/tenants",
+    
     "pages/convenience_service/index",
     "pages/timeout/index",
     "pages/renting/index",

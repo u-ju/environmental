@@ -64,7 +64,10 @@ textarea{
 .picture_item .del {
   top: -10rpx;
   right: -10rpx;
-  background-color: #f00;
+  background-color: #999;
+}
+.picture_list{
+  margin: 0;
 }
 .cate{
   width:150rpx;
@@ -89,4 +92,7 @@ textarea{
 }
 .upload_progress{
   line-height: 176rpx;
+}
+.picture_list{
+  margin: 0;
 }

@@ -8,11 +8,18 @@ Page({
    * 页面的初始数据
    */
   data: {
+    indicatorDots: true,//显示面板指示点
+    autoplay: false,//自动播放
+    beforeColor: "#DCDCDC",//指示点颜色
+    afterColor: "#27AAD9",//当前选中的指示点颜色
+    interval: 5000,
+    duration: 1000,
     showmodel:false,
     list:[0],
     page:{},
     moredescnum:1,
-    keywords:''
+    keywords:'',
+    images:[]
   },
   model(){
     this.setData({
@@ -30,9 +37,15 @@ Page({
    */
   onLoad: function (options) {
     util.loading()
-    this.setData({
-      desc: app.globalData.config.goods_exchange_conf.desc,
-      banner: app.globalData.config.goods_exchange_conf.banner
+    var that = this
+    util.getJSON({ apiUrl: apiurl.goodsHome }, function (res) {
+      
+      var result = res.data.result
+      that.setData({
+        banner: result.banner,
+        desc: result.desc
+      })
+      util.hideLoading()
     })
     if (options.keywords) {
       var keywords = options.keywords
@@ -110,6 +123,31 @@ Page({
       })
       wx.hideLoading()
     }
+  },
+  link(e) {
+    if (e.currentTarget.dataset.link.length == 0) {
+      return 
+    }
+    var url = e.currentTarget.dataset.link.control
+    if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
+      for (var i in e.currentTarget.dataset.link.params) {
+        console.log(i, e.currentTarget.dataset.link.params[i])
+        url = url + "?" + i + "=" + e.currentTarget.dataset.link.params[i]
+      }
+    }
+    if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
+      url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)
+    }
+    console.log(url)
+    wx.navigateTo({
+      url: url,
+      fail() {
+        wx.navigateTo({
+          url: '../unopen/index',
+        })
+      }
+    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
