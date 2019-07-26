@@ -9,7 +9,6 @@ Page({
     hint:''
   },
   onLoad(e) {
-    // util.loading()
     var pages = getCurrentPages(),
       that = this;
     console.log(pages);
@@ -19,50 +18,43 @@ Page({
     this.setData({
       logo: getApp().globalData.config.logo
     })
+    
     var delta = pages.length > 2 ? pages.length - 2 : 1
-    // that.data.timer = setInterval(() => {
-    //   var width = that.data.width;
-    //   width = width + 4 > 620 ? 72 : width + 4
-    //   that.setData({
-    //     width: width
-    //   })
-    //   if (width==620) {
-    //     // clearInterval(that.data.timer);
-
-    //   }
-    // }, 100)
+    that.setData({
+      pages: pages,
+      delta: delta,
+    })
+    if (e.pay_key){
+      that.query(e.pay_key)
+    }else{
+      this.setData({
+        hint: getApp().globalData.hint
+      })
+    }
+  },
+  query(pay_key){
+    var that = this;
     util.postJSON({
       apiUrl: apiurl.query,
       data: {
-        pay_key: e.pay_key
+        pay_key: pay_key,
+        hint:1
       }
-    }, function(res2) {
+    }, function (res2) {
       console.log(res2)
-      // clearInterval(that.data.timer);
       that.setData({
-        hint: res2,
-        pages: pages,
-        delta: delta,
-        // width:620
+        hint: res2.data.result.hint,
       })
       console.log(res2)
       wx.setNavigationBarTitle({
         title: res2.header,
       })
       util.hideLoading()
-    }, function() {
+    }, function () {
 
-    }, function() {
+    }, function () {
 
     })
-    // var hint = app.globalData.hint||[]
-    // this.setData({
-    //   hint: hint,
-    //   pages: pages,
-    //   delta: delta
-    // })
-   
-    // wx.hideLoading()
   },
   ok(e) {
     var url = e.currentTarget.dataset.link.control

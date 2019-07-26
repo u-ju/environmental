@@ -25,7 +25,8 @@ Page({
       { name: '社区公告', url: 'notice' },
       { name: '社区资讯', url: 'index' },
       { name: '社区服务', url: 'service' },
-    ]
+    ],
+    result1:1
   },
   like(e) {
     // if (!e.currentTarget.dataset.praise){
@@ -102,7 +103,8 @@ Page({
         }
         util.hideLoading()
         return that.setData({
-          result: result
+          result: result,
+          result1: util.isempty(result)
         })
       }
       var list = result.list
@@ -116,6 +118,13 @@ Page({
         length: Math.ceil(list.length / 4)
       })
       util.hideLoading()
+    },function(res){
+      if (that.data.currentTab == 0) {
+        
+        return that.setData({
+          result1: util.isempty(res.data.result)
+        })
+      }
     })
   },
   onPullDownRefresh: function () {

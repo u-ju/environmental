@@ -47,7 +47,7 @@ Page({
       { name: '使用实名认证', value: 0, checked:true},
       { name: '新建', value: 1, checked:false },
     ],
-    certificationval:'',
+    certificationval:0,
     upload_picture_list: [],
     upload_picture_list0: [],
     upload_picture_list1: [],
@@ -188,7 +188,14 @@ Page({
     if (options.shop_id) {
       util.getJSON({ apiUrl: apiurl.shop_showOwn + options.shop_id }, function (res) {
         var result = res.data.result
-        var upload_picture_list = [], upload_picture_list2 = [{ upload_percent: 100, path_server: result.license }]
+        var certification = result.lp_idcard.front ? [{ name: '使用实名认证', value: 0, checked: false }, { name: '新建', value: 1, checked: true }] : that.data.certification
+        
+        var upload_picture_list = [],
+          upload_picture_list0 = result.lp_idcard.front ? [{ upload_percent: 100, path_server: result.lp_idcard.front }] : [],
+          upload_picture_list1 = result.lp_idcard.back ? [{ upload_percent: 100, path_server: result.lp_idcard.back }] : [],
+          upload_picture_list2 = result.license ? [{ upload_percent: 100, path_server: result.license }] : [],
+          upload_picture_list3 = result.bankcard.front ? [{ upload_percent: 100, path_server: result.bankcard.front }] : []
+
         for (var i in result.images) {
           upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
         }
@@ -196,6 +203,13 @@ Page({
         var video = { upload_percent: 100, src: result.video }
 
         that.setData({
+          certification: certification,
+          certificationval: result.lp_idcard.front? 1 : 0,
+          upload_picture_list0: upload_picture_list0,
+          upload_picture_list1: upload_picture_list1,
+          upload_picture_list2: upload_picture_list2,
+          upload_picture_list3: upload_picture_list3,
+          cardholder: result.bankcard.cardholder,
           shop_cate: shop_cate,
           shop_id: options.shop_id,
           result: result,
@@ -212,7 +226,6 @@ Page({
           status: result.status,
           status_name: result.status_name,
           title: result.title,
-          upload_picture_list2: upload_picture_list2,
           cate_id: result.cate_id,
           upload_picture_list: upload_picture_list || '',
           discount_percent: result.discount_percent || '',
@@ -321,57 +334,7 @@ Page({
   onShow: function () {
 
   },
-  radioChange: function (e) {//入驻类型选择
-    var that = this;
-
-
-  },
-
-  //选择图片方法
-  uploadpic: function (e) {
-    var that = this //获取上下文
-    var upload_picture_list = []
-    //选择图片
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        util.loading()
-        var tempFiles = res.tempFiles
-        var promiseArr = []
-        for (var i in tempFiles) {
-          let promise = new Promise((resolve, reject) => {
-            wx.getFileSystemManager().readFile({
-              filePath: tempFiles[i]['path'], //选择图片返回的相对路径
-              encoding: 'base64', //编码格式
-              success: res => { //成功的回调 
-                resolve(res)
-              },
-              fail: function (error) {
-                reject(error);
-              },
-            })
-          })
-          promiseArr.push(promise)
-        }
-        Promise.all(promiseArr).then((res) => {
-          //对返回的result数组进行处理
-          for (var i in res) {
-            tempFiles[i]['path_base'] = 'data:image/png;base64,' + res[i].data
-            tempFiles[i]['upload_percent'] = 0
-            tempFiles[i]['path_server'] = ''
-            upload_picture_list.push(tempFiles[i])
-          }
-          that.setData({
-            ['image[' + e.currentTarget.dataset.index + '].upload_picture_list']: upload_picture_list,
-          });
-          that.uploadimage(e.currentTarget.dataset.index)
-        })
-      }
-    })
-
-  },
+ 
   //点击上传事件
   // 上传图片
 
@@ -379,10 +342,10 @@ Page({
     var that = this;
     
     var list = 'upload_picture_list' + e.currentTarget.dataset.num||'';
-    console.log(list)
+    
     var num = e.currentTarget.dataset.number||1
     util.uploadpic(that, num, list, '', function (images) {
-      console.log(images)
+      
       that.setData({
         [list]: images,
       });
@@ -390,7 +353,7 @@ Page({
         if (images[j]['upload_percent'] == 0) {
           //调用函数
           util.upload_pic(apiurl.upload_image, that, images, j, function (e) {
-            console.log(images)
+            
             that.setData({
               [list]: e,
             });
@@ -500,18 +463,19 @@ Page({
     data.cate_id = that.data.cate_id
     data["longitude"] = that.data.longitude
     data["latitude"] = that.data.latitude
-    // console.log(data)
-    var images = ["license", "thumb"]
-    for (var a in that.data.image) {
-      if (that.data.image[a].upload_picture_list != '') {
-        data[images[a]] = that.data.image[a].upload_picture_list[0]['path_server']
-      }
+    data['lp_idcard[type]'] = this.data.certificationval
+    console.log(data['lp_idcard[type]'])
+    if (this.data.certificationval) {
+      data['lp_idcard[front]'] = that.data.upload_picture_list0[0] ? that.data.upload_picture_list0[0]['path_server'] : ''
+      data['lp_idcard[back]'] = that.data.upload_picture_list1[0] ? that.data.upload_picture_list1[0]['path_server'] : ''
     }
+    data['license'] = that.data.upload_picture_list2[0] ? that.data.upload_picture_list2[0]['path_server'] : ''
+    data['bankcard[front]'] = that.data.upload_picture_list3[0] ? that.data.upload_picture_list3[0]['path_server'] : ''
     if (this.data.video.src && this.data.video.src.length > 0) {
       data.video = this.data.video.src
     }
-    data['license_info[business_address]'] = this.data.business_address
-    data['license_info[business_scope]'] = this.data.business_scope
+    // data['license_info[business_address]'] = this.data.business_address
+    // data['license_info[business_scope]'] = this.data.business_scope
     for (var a in that.data.upload_picture_list) {
       data['images[' + a + ']'] = that.data.upload_picture_list[a]['path_server']
     }

@@ -51,17 +51,19 @@ Page({
         }
       })
     }
-    var url = e.currentTarget.dataset.link.control
+    var url = e.currentTarget.dataset.link.control+'?1=1'
     if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
       for (var i in e.currentTarget.dataset.link.params) {
-        console.log(i, e.currentTarget.dataset.link.params[i])
-        url = url + "?" + i + "=" + e.currentTarget.dataset.link.params[i]
+        if (i =='imgsrc'){
+          getApp().globalData.imgsrc = e.currentTarget.dataset.link.params.imgsrc
+        }else{
+          url = url + "&" + i + "=" + e.currentTarget.dataset.link.params[i]
+        }
       }
     }
     if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
-      url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)
+      url = url + "&children=" + JSON.stringify(e.currentTarget.dataset.children)
     }
-    console.log(url)
     wx.navigateTo({
       url: url,
       fail(){

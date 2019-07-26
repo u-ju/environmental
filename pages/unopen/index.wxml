@@ -1,7 +1,7 @@
 <!--pages/unopen/index.wxml-->
 <view class='pic'>
-  <image src='../../images/unopen.png'></image>
+  <image src='{{imgsrc}}'></image>
 </view>
 <view class='unopen'>
-  该功能暂未开放，敬请期待
+  {{explain}}
 </view>

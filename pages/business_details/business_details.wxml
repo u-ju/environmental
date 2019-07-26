@@ -38,9 +38,9 @@
       <view>￥{{!result.cost?0:result.cost}}/人</view>
       <view class='size24'>优惠{{result.user_discount_percent}}%</view>
     </view>
-    <view class='label flex align_center'>
+    <view class='label flex align_center' >
       <image src='../../images/stime.png' class='labelpic'></image>
-      <view>{{result.business_time}}</view>
+      <view>营业中  {{result.business_time}}</view>
     </view>
     <view class='label flex_btw align_center'>
       <view class='flex' data-latitude='{{result.latitude}}' data-longitude='{{result.longitude}}' bindtap='location'>

@@ -78,6 +78,7 @@ App({
     id:'',
     config_tag:[],
     shop:[],
-    avatar:''
+    avatar:'',
+    imgsrc:''
   }
 })

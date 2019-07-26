@@ -7,7 +7,7 @@
 </scroll-view>
 <scroll-view scroll-y="true" class='index'>
   <view wx:if='{{currentTab==0}}' class='currentTab0'>
-    <block wx:if='{{result}}'>
+    <block wx:if='{{result1}}'>
       <block wx:if="{{result.content_source=='url'}}">
         <web-view src="{{result.content}}"> </web-view>
       </block>
@@ -26,7 +26,7 @@
     </view>
   </view>
   <view wx:elif='{{currentTab==1}}' class='currentTab1'>
-    <view class='flex_btw affiche' wx:for='{{news}}' wx:key="index" wx:if="{{item.title}}"  bindtap='details' data-url='../buurtNoticeDetail/index' data-id='{{item.id}}'>
+    <view class='flex_btw affiche' wx:for='{{news}}' wx:key="index" wx:if="{{item.title}}" bindtap='details' data-url='../buurtNoticeDetail/index' data-id='{{item.id}}'>
       <image class='affichepic' src='{{item.thumb}}' mode='aspectFit'></image>
       <view class='flex_btw flex_col affichecon'>
         <view>{{item.title}}</view>
@@ -55,9 +55,7 @@
                   <text class='num colorBE size20'>{{news[(mulriple) * 4+(num-0)].reply}}</text>
                 </view>
                 <view class='flex align_center' catchtap='like' data-praise='{{news[(mulriple) * 4+(num-0)].praise}}' data-id='{{news[(mulriple) * 4+(num-0)].id}}' data-index='{{(mulriple) * 4+(num-0)}}'>
-                <text class='iconfont icon-collection-b size22 mess {{news[(mulriple) * 4+(num-0)].praise==0?"color9":"color4fd6f0"}}  '></text>
-                  <!-- <image mode='aspectFit' wx:if='{{news[(mulriple) * 4+(num-0)].praise==0}}' class='mess mess1' src="../../images/lo@2x.png"></image>
-                  <image mode='aspectFit' wx:if='{{news[(mulriple) * 4+(num-0)].praise==1}}' class='mess mess1' src="../../images/lo_red@2x.png"></image> -->
+                  <text class='iconfont icon-collection-b size22 mess {{news[(mulriple) * 4+(num-0)].praise==0?"color9":"color4fd6f0"}}  '></text>
                   <text class='num colorBE size20'>{{news[(mulriple) * 4+(num-0)].like}}</text>
                 </view>
               </view>

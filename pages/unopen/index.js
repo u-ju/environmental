@@ -5,13 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    imgsrc:'../../images/unopen.png',
+    explain:'该功能暂未开放，敬请期待'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      imgsrc: getApp().globalData.imgsrc || this.data.imgsrc,
+      explain: options.explain || this.data.explain
+    })
     wx.hideLoading()
   },
 

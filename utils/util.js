@@ -72,6 +72,7 @@ module.exports = {
   pjnav: pjnav,//首页获取分享后的地址在跳转
   copyarr: copyarr,
   areatab: areatab,//便民服务地址筛选
+  isempty: isempty
 }
 //图片图片预览
 function previewImage(src, imgList) {
@@ -583,10 +584,13 @@ function nav(link){
   if (JSON.stringify(link.control.params) != "{}") {
     url = url + "?1=1"
     for (var i in link.control.params) {
+      
       url = url + "&" + i + "=" + link.control.params[i]
     }
   }
-  //console.log(url)
+  if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
+    url = url + "&children=" + JSON.stringify(e.currentTarget.dataset.children)
+  }
   if (url.indexOf('../index/index') > -1 || url.indexOf('../personal_center/personal_center') > -1) {
     wx.reLaunch({
       url: url
@@ -642,13 +646,14 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
       }
 
       if (res.data.status == 200) {
-        // //console.log(res.data)
         if (res.data.result &&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) !="{}"){
           getApp().globalData.hint = res.data.result.hint
-          // wx.navigateTo({
-          //   url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
-          // })
-          call_success(res.data.result.hint)
+          if (!formData.hint) {
+            wx.navigateTo({
+              url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+            })
+          }
+          call_success(res)
         }else{
           if (res.data.result && res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
             wx.setStorageSync('popoutccs', 1)
@@ -685,10 +690,12 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
       }else{
         if (res.data.status == 414 && res.data.result&& res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           getApp().globalData.hint = res.data.result.hint
-          // wx.navigateTo({
-          //   url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
-          // })
-          call_success(res.data.result.hint)
+          if (!formData.hint) {
+            wx.navigateTo({
+              url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+            })
+          }
+          call_success(res)
         } else if (res.data.result && res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
           var popout = res.data.result.popout
           var button_arr = popout.button_arr
@@ -753,10 +760,12 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
         if (res.data.result &&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           getApp().globalData.hint = res.data.result.hint
           that.loading()
-          // wx.navigateTo({
-          //   url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
-          // })
-          call_success(res.data.result.hint)
+          if (!formData.hint) {
+            wx.navigateTo({
+              url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+            })
+          }
+          call_success(res)
         } else {
           if (res.data.result && res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
             wx.setStorageSync('popoutccs', 1)
@@ -787,10 +796,12 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
       } else {
         if (res.data.result &&res.data.status == 414&&res.data.result.hasOwnProperty("hint") && JSON.stringify(res.data.result.hint) != "{}") {
           getApp().globalData.hint = res.data.result.hint
-          // wx.navigateTo({
-          //   url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
-          // })
-          call_success(res.data.result.hint)
+          if (!formData.hint) {
+            wx.navigateTo({
+              url: '../result/index?hint=' + JSON.stringify(res.data.result.hint),
+            })
+          }
+          call_success(res)
         } else if (res.data.result &&res.data.result.hasOwnProperty("popout") && JSON.stringify(res.data.result.popout) != "{}") {
           var popout = res.data.result.popout
           var button_arr = popout.button_arr
@@ -1300,4 +1311,13 @@ function areatab(that, index, id, name,num){
     earaid: earaid,
     earaname: name
   })
+}
+function isempty(data){
+  if (data.constructor===Array){
+    return data.length?1:0
+  } else if (data.constructor === String){
+    return data.length ? 1 : 0
+  }else{
+    return JSON.stringify(data) == "{}" ? 0 : 1
+  }
 }

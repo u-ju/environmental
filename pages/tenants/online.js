@@ -47,7 +47,7 @@ Page({
       { name: '使用实名认证', value: 0, checked:true},
       { name: '新建', value: 1, checked:false },
     ],
-    certificationval:'',
+    certificationval:0,
     upload_picture_list: [],
     upload_picture_list0: [],
     upload_picture_list1: [],
@@ -186,15 +186,26 @@ Page({
       if (options.shop_id){
         util.getJSON({ apiUrl: apiurl.shop_showOwn  + options.shop_id}, function (res) {
           var result = res.data.result
-          var upload_picture_list = [], upload_picture_list2 = [{ upload_percent: 100, path_server: result.license }]
+          var certification = result.lp_idcard.front? [{ name: '使用实名认证', value: 0, checked: false }, { name: '新建', value: 1, checked: true }]:that.data.certification
+          var upload_picture_list = [], 
+            upload_picture_list0 = result.lp_idcard.front ? [{ upload_percent: 100, path_server: result.lp_idcard.front }] : [],
+            upload_picture_list1 = result.lp_idcard.back ? [{ upload_percent: 100, path_server: result.lp_idcard.back }] : [],
+            upload_picture_list2 = result.license ? [{ upload_percent: 100, path_server: result.license }] : [],
+            upload_picture_list3 = result.bankcard.front ? [{ upload_percent: 100, path_server: result.bankcard.front }] : []
           for (var i in result.images){
             upload_picture_list.push({ upload_percent: 100, 'path_server': result.images[i] })
           }
           var type_val = that.data.type_val, shop_cate = that.data.shop_cate, tshop_cate = that.data.tshop_cate
           var video = { upload_percent: 100, src: result.video }
-          
           that.setData({
+            certification: certification,
+            certificationval: result.lp_idcard.front?1:0,
+            upload_picture_list0: upload_picture_list0,
+            upload_picture_list1: upload_picture_list1,
+            upload_picture_list2: upload_picture_list2,
+            upload_picture_list3: upload_picture_list3,
             shop_cate: shop_cate,
+            cardholder: result.bankcard.cardholder,
             shop_id: options.shop_id,
             result: result,
             title1: result.cate_name,
@@ -210,23 +221,16 @@ Page({
             status: result.status,
             status_name: result.status_name,
             title: result.title,
-            upload_picture_list2: upload_picture_list2,
             cate_id: result.cate_id,
             upload_picture_list: upload_picture_list || '',
             discount_percent: result.discount_percent || '',
             status_remark: result.status_remark || '',
-            // company_name: result.license_info.company_name||'',
-            // license_no: result.license_info.license_no || '',
-            // legal_person: result.license_info.legal_person || '',
-            // business_address: result.license_info.business_address || '',
-            // business_scope: result.license_info.business_scope || '',
             video: video,
             source: result.source,
             share_mobile: result.share_mobile || '',
           })
           wx.hideLoading()
         })
-
       }else{
         var image = [
           { title: '营业执照', upload_picture_list: wx.getStorageSync("image0o") || '', text: "点击拍摄/上传图片", id: 0 },
@@ -319,11 +323,7 @@ Page({
   onShow: function () {
 
   },
-  radioChange: function (e) {//入驻类型选择
-    var that = this;
-    
-
-  },
+  
 
   //选择图片方法
   // 上传图片
@@ -332,10 +332,10 @@ Page({
     var that = this;
     
     var list = 'upload_picture_list' + e.currentTarget.dataset.num||'';
-    console.log(list)
+    
     var num = e.currentTarget.dataset.number||1
     util.uploadpic(that, num, list, '', function (images) {
-      console.log(images)
+      
       that.setData({
         [list]: images,
       });
@@ -343,7 +343,7 @@ Page({
         if (images[j]['upload_percent'] == 0) {
           //调用函数
           util.upload_pic(apiurl.upload_image, that, images, j, function (e) {
-            console.log(images)
+            
             that.setData({
               [list]: e,
             });
@@ -453,13 +453,13 @@ Page({
     data.cate_id = that.data.cate_id
     data["longitude"] = that.data.longitude
     data["latitude"] = that.data.latitude
-    // console.log(data)
-    var images = ["license","thumb"]
-    for (var a in that.data.image) {
-      if (that.data.image[a].upload_picture_list != '') {
-        data[images[a]] = that.data.image[a].upload_picture_list[0]['path_server']
-      }
+    data['lp_idcard[type]'] = this.data.certificationval
+    if (this.data.certificationval) {
+      data['lp_idcard[front]'] = that.data.upload_picture_list0[0] ? that.data.upload_picture_list0[0]['path_server'] : ''
+      data['lp_idcard[back]'] = that.data.upload_picture_list1[0] ? that.data.upload_picture_list1[0]['path_server'] : ''
     }
+    data['license'] = that.data.upload_picture_list2[0] ? that.data.upload_picture_list2[0]['path_server'] : ''
+    data['bankcard[front]'] = that.data.upload_picture_list3[0] ? that.data.upload_picture_list3[0]['path_server'] : ''
     if (this.data.video.src && this.data.video.src.length > 0) {
       data.video = this.data.video.src
     }
