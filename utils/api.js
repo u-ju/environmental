@@ -542,5 +542,12 @@ const apiList = {
     infoShow: basePath + '/front/renting/infoShow?id=',// GET 详情
     infoDestroy: basePath + '/front/renting/infoDestroy',// POST 入驻添加
   },
+  huifu:{
+    provIndex: basePath + '/common/huifu/provIndex',//获取省列表
+    cityIndex: basePath + '/common/huifu/cityIndex',//获取市列表
+    countyIndex: basePath + '/common/huifu/countyIndex',//获取区列表
+    headBankIndex: basePath + '/common/huifu/headBankIndex',//获取总行列表
+    branchBankIndex: basePath + '/common/huifu/branchBankIndex',//获取支行行列表
+  }
 }
 module.exports = apiList;

@@ -1,0 +1,14 @@
+/* pages/bank/province/index.wxss */
+@import "../../../Components/wxSortPickerView/wxSortPickerView.wxss";
+.search{
+  width: 670rpx;
+  margin: auto;
+  border: 1rpx solid #eee;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+input{
+  width: 600rpx;
+  padding-left: 20rpx;
+  height: 80rpx;
+}

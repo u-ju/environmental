@@ -12,7 +12,7 @@
         <web-view src="{{result.content}}"> </web-view>
       </block>
       <view class='container' wx:else>
-        <view class='size26 center'>{{result.title}}</view>
+        <view class='size32 center'>{{result.title}}</view>
         <block wx:if="{{result.content_source=='html'}}">
           <template is="wxParse" data="{{wxParseData:article.nodes}}" />
         </block>
@@ -29,7 +29,7 @@
     <view class='flex_btw affiche' wx:for='{{news}}' wx:key="index" wx:if="{{item.title}}" bindtap='details' data-url='../buurtNoticeDetail/index' data-id='{{item.id}}'>
       <image class='affichepic' src='{{item.thumb}}' mode='aspectFit'></image>
       <view class='flex_btw flex_col affichecon'>
-        <view>{{item.title}}</view>
+        <view class='hidden1 color4 size30'>{{item.title}}</view>
         <view class='color6 hidden2'>{{item.intro}}</view>
         <view class='textR color6'>{{item.created_at}}</view>
       </view>

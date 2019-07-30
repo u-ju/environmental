@@ -88,7 +88,7 @@ function query(text) {
     return arrRslt;
 }
 
-function init(array, that, callback) {
+function init(array, that, data = ["name", "area_id"]) {
     var temData = that.data.wxSortPickerData;
     if(typeof temData == 'undefined'){
         temData = {};
@@ -99,10 +99,10 @@ function init(array, that, callback) {
     that.wxSortPickerViewTemTagTap = wxSortPickerViewTemTagTap;
     setViewWH(that);
 
-    buildTextData(that,array);
+  buildTextData(that, array, data);
 }
 
-function buildTextData(that,arr){
+function buildTextData(that,arr,data){
     var textData = [{ tag: "A", textArray: [] }, 
                { tag: "B", textArray: [] }, 
                { tag: "C", textArray: [] }, 
@@ -133,11 +133,11 @@ function buildTextData(that,arr){
     
     var temABC = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '#'];
     for (var i = 0; i < arr.length; i++ ){
-        var text = arr[i].name;
+      var text = arr[i][data[0]];
         var firstChar = text.substr(0, 1);
         var reg = query(firstChar)[0];
         var temIndex = temABC.indexOf(reg);
-      textData[temIndex].textArray.push({ text: text, id: arr[i].area_id});
+      textData[temIndex].textArray.push({ text: text, id: arr[i][data[1]]});
     }
     var temData = that.data.wxSortPickerData;
     if(typeof temData == 'undefined'){
@@ -150,11 +150,11 @@ function buildTextData(that,arr){
 }
 
 function wxSortPickerViewUpper(e) {
-    console.dir(e);
+    // console.dir(e);
 }
 
 function wxSortPickerViewLower(e) {
-    console.dir(e);
+    // console.dir(e);
 }
 
 function wxSortPickerViewScroll(e) {

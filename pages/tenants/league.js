@@ -53,6 +53,8 @@ Page({
     upload_picture_list1: [],
     upload_picture_list2: [],
     upload_picture_list3: [],
+    isbank: 0,
+    bankcard: ''
   },
   radioChange: function (e) { 
     var that = this;
@@ -210,6 +212,9 @@ Page({
           upload_picture_list2: upload_picture_list2,
           upload_picture_list3: upload_picture_list3,
           cardholder: result.bankcard.cardholder,
+          cardNo: result.bankcard.cardNo,
+          subBank: result.bankcard.subBank?result.bankcard.subBank[result.bankcard.subBank.length - 1].branchName:[],
+          bankcard: result.bankcard.subBank,
           shop_cate: shop_cate,
           shop_id: options.shop_id,
           result: result,
@@ -332,7 +337,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (wx.getStorageSync('branchBankIndex') && this.data.isbank == 1) {
+      this.setData({
+        subBank: wx.getStorageSync('branchBankIndex').branchName,
 
+      })
+    }
+    this.setData({
+      isbank: 1
+    })
   },
  
   //点击上传事件
@@ -470,7 +483,8 @@ Page({
       data['lp_idcard[back]'] = that.data.upload_picture_list1[0] ? that.data.upload_picture_list1[0]['path_server'] : ''
     }
     data['license'] = that.data.upload_picture_list2[0] ? that.data.upload_picture_list2[0]['path_server'] : ''
-    data['bankcard[front]'] = that.data.upload_picture_list3[0] ? that.data.upload_picture_list3[0]['path_server'] : ''
+    // data['bankcard[front]'] = that.data.upload_picture_list3[0] ? that.data.upload_picture_list3[0]['path_server'] : ''
+    data['bankcard[subBank]'] = wx.getStorageSync('branchBankIndex') ? JSON.stringify([wx.getStorageSync('provIndex'), wx.getStorageSync('cityIndex'), wx.getStorageSync('headBankIndex'), wx.getStorageSync('branchBankIndex')]) : that.data.bankcard
     if (this.data.video.src && this.data.video.src.length > 0) {
       data.video = this.data.video.src
     }

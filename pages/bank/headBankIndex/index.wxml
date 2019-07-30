@@ -1,0 +1,5 @@
+<!--pages/bank/province/index.wxml-->
+
+<view class='search'><input bindinput='search'></input></view>
+<import src="../../../Components/wxSortPickerView/wxSortPickerView.wxml"/> 
+<template is="wxSortPickerView" data="{{wxSortPickerData}}"/>

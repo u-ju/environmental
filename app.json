@@ -3,6 +3,13 @@
     "pages/index/index",
     "pages/tenants/tenants",
     
+    "pages/bank/province/index",
+    "pages/bank/branchBank/index",
+    "pages/bank/headBankIndex/index",
+    "pages/bank/city/index",
+    
+    
+    
     "pages/realname_authentication/realname_authentication",
     "pages/buurtNews/index",
     "pages/buurtNoticeDetail/index",
@@ -12,7 +19,6 @@
     "pages/personal_center/personal_center",
     "pages/result/index",
     "pages/installment/installment",
-    
     "pages/convenience_service/index",
     "pages/timeout/index",
     "pages/renting/index",
@@ -23,7 +29,7 @@
     "pages/myCommunity/index",
     "pages/renting/detail/index",
     "pages/idle/list/index",
-    "pages/idle/In/index",
+    "pages/idle/In/index",  
     "pages/idle/index",
     "pages/idle/detail/index",
     "pages/realname_suc/index",

@@ -18,7 +18,7 @@
 
       <input class='size28 color9' bindinput='input' bindblur='testcall' data-contact='contactt' name='contact' value='{{contact}}' maxlength='11' disabled='{{disabled1}}'></input>
     </view>
-    
+
     <view class='item  flex align_center'>
       <text class='size28 color6'>商家类型</text>
       <view class='input flex_btw align_center' bindtap="onOpen1">
@@ -28,7 +28,7 @@
     </view>
     <view class='item  flex align_center'>
       <text class='size28 color6'>商家折扣(%)</text>
-      <input class='size28 color9' type='digit' bindinput='input' data-contact='discount_percentt'  name='discount_percent' disabled='{{disabled1}}' value='{{discount_percent}}'></input>
+      <input class='size28 color9' type='digit' bindinput='input' data-contact='discount_percentt' name='discount_percent' disabled='{{disabled1}}' value='{{discount_percent}}'></input>
     </view>
     <view class='item  flex align_center' wx:if="{{!disabled1}}">
       <text class='size28 color6'>区域</text>
@@ -54,7 +54,7 @@
 
     </view>
     <view class='zzctransp' bindtap='hiddensug' wx:if='{{suggestion.length>0}}'></view>
-    
+
     <view class='item  flex align_center'>
       <text class='size28 color6'>营业时间\n(选填)</text>
       <scroll-view scroll-x='true' class='scroll-header flex align_center featuresnav'>
@@ -194,6 +194,17 @@
     </view>
     <view class='item1 flex'>
       <text class='color6'>结算银行卡</text>
+      <view class='inputborb'>
+        <input class='size28 color9' bindinput='input' placeholder='银行卡号' data-contact='cardNot' name='bankcard[cardNo]' disabled='{{disabled1}}' value='{{cardNo}}'></input>
+        <input class='size28 color9' bindinput='input' placeholder='持卡人姓名' data-contact='cardholdert' name='bankcard[cardholder]' disabled='{{disabled1}}' value='{{cardholder}}'></input>
+        <view class='input flex_btw align_center' bindtap="subBank">
+          <input class='size28 color9' disabled='disabled' name='' placeholder='支行信息' value='{{subBank}}'></input>
+          <text class='iconfont icon-jiantou color9'></text>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='item1 flex'>
+      <text class='color6'>结算银行卡</text>
       <view>
         <view class="picture_list">
           <view wx:for="{{upload_picture_list3}}" class="picture_item" wx:key="{{index}}">
@@ -213,7 +224,7 @@
         </view>
         <input class='cardholder' name='bankcard[cardholder]' value='' placeholder='请输入持卡人姓名'></input>
       </view>
-    </view>
+    </view> -->
     <view class='item  flex align_center' wx:if='{{!status}}'>
       <text class='size28 color6'>推荐人手机号</text>
       <input class='size28 color9' bindinput='input' data-contact='share_mobilet' name='share_mobile' disabled='{{status}}' value='{{share_mobile}}'></input>

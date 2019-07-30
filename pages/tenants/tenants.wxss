@@ -413,3 +413,6 @@ radio .wx-radio-input.wx-radio-input-checked::before {
 .marginb30{
   margin-bottom: 30rpx;
 }
+.inputborb>input{
+  border-bottom: 1rpx solid #eee;
+}

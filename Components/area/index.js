@@ -140,11 +140,13 @@ Component({
         cengji: cengji,
         index: index
       });
-      if (cengji[this.data.current]['area'][0]["type"] == that.data.ban) { //在哪一层停止
+
+      if (cengji[this.data.current]['area'][index]["type"] == that.data.ban) { //在哪一层停止
+        
         var areaSelectedStr = ''
         for (var i in cengji) {
           areaSelectedStr = areaSelectedStr + " " + cengji[i].currentname
-          if (cengji[i]['area'][0]["type"] == that.data.tokonw) { //知道与之对应的选择的昵称
+          if (cengji[i]['area'][index]["type"] == that.data.tokonw) { //知道与之对应的选择的昵称
             konwname = cengji[i].currentname
           }
         }
@@ -154,19 +156,19 @@ Component({
         })
         return that.cascadeDismiss(1);
       }
-      if (cengji[this.data.current]['area'][0]["type"] == 'biotope') {
+      if (cengji[this.data.current]['area'][index]["type"] == 'biotope') {
         this.setData({
           isbiotope: true,
           biotopecurrent: this.data.current,
           biotope_name: cengji[this.data.current]['array'][index]
         })
       }
-      if (cengji[this.data.current]['area'][0]["type"] == 'dong') {
+      if (cengji[this.data.current]['area'][index]["type"] == 'dong') {
         this.setData({
           dong: cengji[this.data.current]['array'][index]
         })
       }
-      if (cengji[this.data.current]['area'][0]["type"] == 'unit') {
+      if (cengji[this.data.current]['area'][index]["type"] == 'unit') {
         this.setData({
           unit: cengji[this.data.current]['array'][index]
         })
