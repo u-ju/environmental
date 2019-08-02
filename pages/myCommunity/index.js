@@ -99,13 +99,12 @@ Page({
       })
   },
   choosearea(e) {
-    console.log(e)
+    
     var areaSelectedStr = e.detail.areaSelectedStr
     if (e.detail.biotope_name&&areaSelectedStr.indexOf(e.detail.biotope_name)>-1){
-      console.log(areaSelectedStr)
+      
       areaSelectedStr = areaSelectedStr.split(e.detail.biotope_name)[0]
     }
-    console.log(areaSelectedStr)
     this.setData({
       areaSelectedStr: areaSelectedStr,
       area_id_val: e.detail.area_id_val,

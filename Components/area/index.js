@@ -113,7 +113,7 @@ Component({
           current: that.data.current-1
         })
       }
-      console.log(that.data.current)
+      
       if (that.data.current == -1 || that.data.current==undefined){
         return this.setData({
           current: 0
