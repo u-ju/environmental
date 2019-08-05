@@ -10,20 +10,17 @@ Page({
    */
   data: {
     upload_picture_list: [],
-    
-    // 建议内容
     opinion: "",
-
     currentWordNumber:0,
     disabled: false,
-    max:300
+    max:1000,
+    content:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     wx.hideLoading()
   },
   //字数限制  
@@ -39,80 +36,33 @@ Page({
       currentWordNumber: len //当前字数  
     });
   },
-  getJm(tempFiles) {
-    for (var i in tempFiles) {
-      let promise = new Promise((resolve, reject) => {
-        wx.getFileSystemManager().readFile({
-          filePath: tempFiles[i]['path'], //选择图片返回的相对路径
-          encoding: 'base64', //编码格式
-          success: res => { //成功的回调 
-            resolve(res)
-          },
-          fail: function (error) {
-            reject(error);
-          },
-        })
-      })
-      promiseArr.push(promise)
-    }
-
-  },
-  //选择图片方法
-  uploadpic: function (e) {
-    var that = this //获取上下文
-    var upload_picture_list = that.data.upload_picture_list
-    //选择图片
-    wx.chooseImage({
-      count: 9,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        var tempFiles = res.tempFiles
-        var promiseArr = []
-        for (var i in tempFiles) {
-          let promise = new Promise((resolve, reject) => {
-            wx.getFileSystemManager().readFile({
-              filePath: tempFiles[i]['path'], //选择图片返回的相对路径
-              encoding: 'base64', //编码格式
-              success: res => { //成功的回调 
-                resolve(res)
-              },
-              fail: function (error) {
-                reject(error);
-              },
-            })
+  
+  uploadpic(e) {
+    var that = this;
+    var index = e.currentTarget.dataset.indexnum;
+    util.uploadpic(that, 9, 'upload_picture_list', '', function (images) {
+      console.log(images)
+      that.setData({
+        upload_picture_list: images,
+      });
+      for (var j in images) {
+        if (images[j]['upload_percent'] == 0) {
+          //调用函数
+          util.upload_pic(apiurl.upload_image, that, images, j, function (e) {
+            that.setData({
+              upload_picture_list: e,
+            });
+            util.hideLoading()
+          
+          }, function (e) {
+            that.setData({
+              upload_picture_list: e,
+            });
           })
-          promiseArr.push(promise)
         }
-        Promise.all(promiseArr).then((res) => {
-          //对返回的result数组进行处理
-          for (var i in res) {
-            tempFiles[i]['path_base'] = 'data:image/png;base64,' + res[i].data
-            tempFiles[i]['upload_percent'] = 0
-            tempFiles[i]['path_server'] = ''
-            upload_picture_list.push(tempFiles[i])
-          }
-          that.setData({
-            upload_picture_list: upload_picture_list,
-          });
-          that.uploadimage()
-        })
       }
     })
   },
-  //点击上传事件
-  uploadimage: function () {
-    var page = this
-    var upload_picture_list = page.data.upload_picture_list
-    //循环把图片上传到服务器 并显示进度       
-    for (var j in upload_picture_list) {
-      if (upload_picture_list[j]['upload_percent'] == 0) {
-        //调用函数
-        util.upload_file_server(apiurl.upload_image, page, upload_picture_list, j)
-      }
-    }
-  },
-
   // 删除图片
   deleteImg: function (e) {
     let upload_picture_list = this.data.upload_picture_list;
@@ -124,20 +74,16 @@ Page({
   },
   formSubmit(e) {
     console.log(e);
-    var that = this, data = {};
-    data['comment[0][comment_message]'] = e.detail.value.comment_message
-    data["comment[0][comment_level]"] = that.data.evaluations.star
-    data["comment[0][sku_id]"] = that.data.sku_id0
-    data["order_id"] = that.data.order_id
+    var that = this, data = e.detail.value;
     var upload_picture_list = that.data.upload_picture_list;
     for (var i = 0; i < upload_picture_list.length; i++) {
-      // images[i] = upload_picture_list[i]['path_server'];
-      data['comment[0][comment_images][' + i + ']'] = upload_picture_list[i]['path_server']
+      data['images[' + i + ']'] = upload_picture_list[i]['path_server']
     }
     that.setData({
       disabled: true
     })
-    util.postJSON({ apiUrl: apiurl.userOrder_comment, data: data }, function (res) {
+    console.log(data)
+    util.postJSON({ apiUrl: apiurl.feedback, data: data }, function (res) {
       var result = res.data.result
       util.hideLoading()
       wx.navigateBack()

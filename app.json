@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/feedback/index",
     "pages/index/index",
     "pages/tenants/tenants",
     
@@ -106,7 +107,7 @@
     "pages/home_orders/index",
     "pages/page/index",
     "pages/my_invitation/index",
-    "pages/feedback/index",
+    
     "pages/agentPay/index",
     "pages/qrcode/index",
     "pages/my_integral/index",

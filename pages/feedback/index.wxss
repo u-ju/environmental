@@ -25,3 +25,12 @@
 .wxgitem{
   padding-bottom: 10rpx;
 }
+.picture_item,.picture_item image{
+  width: 150rpx;
+  height: 150rpx;
+  
+}
+.add-image, .up-pic image{
+  margin: 0;
+  background-color:#ddd;
+}

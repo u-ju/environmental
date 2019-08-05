@@ -9,6 +9,7 @@ Page({
       items:[
         { title:"隐私保护政策",url:''},
         { title: "关于我们", url: '../about/about' },
+        { title: "反馈建议", url: '../feedback/index' },
       ]
   },
 
@@ -20,6 +21,7 @@ Page({
     var items = [
       { title: "隐私保护政策", url: '../page/index?url=' + app.globalData.config.protocol.privacy },
       { title: "关于我们", url: '../about/about' },
+      { title: "反馈建议", url: '../feedback/index' },
     ]
     this.setData({
       items: items,

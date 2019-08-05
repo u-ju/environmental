@@ -27,7 +27,7 @@ Page({
   onLoad: function (options) {
 
     if (options.area_arr){
-      var area_arr = JSON.parse(options.area_arr), areaSelectedStr = '', biotope_name = '', dong_name = '', unit_name = '', province = '', city = '', county = ''
+      var area_arr = JSON.parse(options.area_arr), areaSelectedStr = '', biotope_name = '', dong_name = '', unit_name = '', province = '', city = '', county = '', buurt = '', town = ''
       // console.log(area_arr)
       for (var i in area_arr){
         if (area_arr[i]['type'] == 'province') {
@@ -39,6 +39,12 @@ Page({
         if (area_arr[i]['type'] == 'county') {
           county = area_arr[i]['name']
         }
+        if (area_arr[i]['type'] == 'town') {
+          town = area_arr[i]['name']
+        }
+        if (area_arr[i]['type'] == 'buurt') {
+          buurt = area_arr[i]['name']
+        }
         if (area_arr[i]['type'] =='biotope'){
           biotope_name = area_arr[i]['name']
         }
@@ -48,14 +54,12 @@ Page({
         if (area_arr[i]['type'] == 'unit') {
           unit_name = area_arr[i]['name'].replace(/[^0-9]/ig, "")
         }
-        // if (area_arr[i]['type'] == 'door_num') {
-        //   door_num = area_arr[i]['name'].replace(/[^0-9]/ig, "")
-        // }
+        
       }
       var area_id_val = area_arr[area_arr.length - 1] && area_arr[area_arr.length - 1]["id"]? area_arr[area_arr.length - 1]["id"]:''
       this.setData({
         area_id_val: area_id_val,
-        areaSelectedStr: province + city + county,
+        areaSelectedStr: province + city + county + town + buurt,
         biotope_name: biotope_name,
         dong_name: dong_name,
         unit_name: unit_name,
