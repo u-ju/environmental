@@ -1,16 +1,13 @@
 {
   "pages": [
-    "pages/feedback/index",
+    
     "pages/index/index",
     "pages/tenants/tenants",
-    
+    "pages/feedback/index",
     "pages/bank/province/index",
     "pages/bank/branchBank/index",
     "pages/bank/headBankIndex/index",
     "pages/bank/city/index",
-    
-    
-    
     "pages/realname_authentication/realname_authentication",
     "pages/buurtNews/index",
     "pages/buurtNoticeDetail/index",

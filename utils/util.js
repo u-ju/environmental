@@ -427,7 +427,7 @@ function unique(array) {
  */
 function getToken(valuetstu='',form,cb,mothed) {
   var that = this;
-  wx.setStorageSync('token', 'zwj')
+  // wx.setStorageSync('token', 'zwj')
   var token = wx.getStorageSync('token')||"";
   // return 'zwj';
   if (token && valuetstu!= 801) {

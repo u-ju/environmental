@@ -10,9 +10,10 @@ var bmap = require('../../utils/bmap-wx.min.js');
 Page({
   data: {
     indicatorDots: false, //显示面板指示点
+    indicatorDots1:true,
     autoplay: true, //自动播放
     beforeColor: "white", //指示点颜色
-    afterColor: "coral", //当前选中的指示点颜色 
+    afterColor: "#20CD86", //当前选中的指示点颜色 
     beforeColor1: '#2EB354',
     interval: 10000,
     interval1: 6000,
@@ -70,14 +71,29 @@ Page({
     visible1: false,
     value1: [],
     pullState: 1,
+    swiperCurrent:0,
+    length:0
   },
   search(e) {
     wx.navigateTo({
       url: '../search/index',
     })
   },
+  details(e) {
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.id
+    })
+  },
+  swiperChange: function (e) {
+    // console.log(e.detail.current)
+    this.setData({
+      swiperCurrent: e.detail.current
+    })
+  },
   onLoad: function(options) {
     var that = this;
+    
     this.refreshView = this.selectComponent("#refreshView")
     var formData = wx.getStorageSync('formData')
     this.setData({
@@ -106,7 +122,6 @@ Page({
         util.pjnav(options.pjurl, options.pjdata)
       }
       that.init()
-      
     } else {
       wx.setStorageSync("token", 1)
       that.setData({
@@ -158,25 +173,33 @@ Page({
       apiUrl: apiurl.index
     }, function(res) {
       var result = res.data.result;
-      var tag = result.tag;
+      var tag = result.block_arr;
       that.setData({
-        seckill_list: result.seckill_list||'',
+        // seckill_list: result.seckill_list||'',
         popout_image: result.popout_image||'',
         popout: result.popout_image?1:0,
-        tag: result.tag || '',
-        ru_float: result.ru_float || '',
-        tag_bgi: result.tag_bgi || '',
+        // tag: result.tag || '',
+        // ru_float: result.ru_float || '',
+        // tag_bgi: result.tag_bgi || '',
+        // wallet: result.wallet || '',
+        // notify: result.notify || '',
+        banner_arr: result.banner_arr || '',
+        block_arr: result.block_arr || '',
+        notify_arr: result.notify_arr || '',
+        rail: result.rail || '',
+        tag_arr: result.tag_arr || '',
         wallet: result.wallet || '',
-        notify: result.notify || '',
       })
       console.log(that.data.popout)
       for (var i in tag ){
         if (tag[i]['control']['key'] =='front_tshop_index'){
           getApp().globalData.front_tshop_index = tag[i]["children"]
+          console.log(getApp().globalData.front_tshop_index )
         }
         
       }
-      
+
+      that.initgoods()
       util.hideLoading()
     })
     if (app.globalData.config.length == 0) {
@@ -400,25 +423,87 @@ Page({
       url: '../agriculturalDetail/index?id=' + e.currentTarget.dataset.sku_id
     })
   },
-  onPullDownRefresh: function() {
-    // 显示顶部刷新图标
-    wx.showNavigationBarLoading();
-    var that = this;
-    this.setData({
-      pullState: 0
-    })
-    setTimeout(function() {
-      that.setData({
-        pullState: 1
-      })
-      wx.hideNavigationBarLoading();
-      wx.stopPullDownRefresh();
-    }, 1500)
-  },
+  // onPullDownRefresh: function() {
+  //   // 显示顶部刷新图标
+  //   wx.showNavigationBarLoading();
+  //   var that = this;
+  //   this.setData({
+  //     pullState: 0
+  //   })
+  //   setTimeout(function() {
+  //     that.setData({
+  //       pullState: 1
+  //     })
+  //     wx.hideNavigationBarLoading();
+  //     wx.stopPullDownRefresh();
+  //   }, 1500)
+  // },
   goarea() {
     wx.navigateTo({
       url: '../area/index',
     })
+  },
+  initgoods(page = 1) {
+    var that = this;
+
+    util.getJSON({
+      apiUrl: apiurl.goods + "?page=" + page + "&source=online"
+    }, function (res) {
+      var result = res.data.result
+      var list = result.list
+      if (page != 1) {
+        list = that.data.list.concat(list)
+      }
+      that.setData({
+        list: list,
+        page: result.page,
+        last: false,
+        length: Math.ceil(list.length / 4)
+      })
+      util.hideLoading()
+    })
+  },
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+
+    var that = this;
+    util.getJSON({
+      apiUrl: apiurl.goods + "?page=" + page + "&source=online"
+    }, function (res) {
+      var result = res.data.result
+      var list = result.list
+      that.setData({
+        list: list,
+        page: result.page,
+        last: false,
+        length: Math.ceil(list.length / 4)
+      })
+      // 隐藏导航栏加载框
+      wx.hideNavigationBarLoading();
+      // 停止下拉动作
+      wx.stopPullDownRefresh();
+      util.hideLoading()
+    })
+  },
+  /**
+ * 页面上拉触底事件的处理函数
+ */
+  onReachBottom: function () {
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+      that.initgoods(Number(that.data.page.current_page) + 1)
+    } else {
+      that.setData({
+        last: true
+      })
+      wx.hideLoading()
+    }
   },
 })
 // ,

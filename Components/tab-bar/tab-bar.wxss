@@ -17,11 +17,11 @@
   position: absolute;
   background:white;
   font-size:20rpx;
-  color:#fff;
+  color:#444;
   display: flex;
   justify-content: space-between;
   z-index: 1000;
-  background-color: #5E93D7;
+  /* background-color: #5E93D7; */
 }
 
  .tabBar-item{
@@ -31,7 +31,7 @@
 }
 /*当前字体颜色*/
 .tabBartext{
-  color:#48D1CC;
+  color:#20CD86;
 }
 .tabBar_center{
   position: absolute;

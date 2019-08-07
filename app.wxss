@@ -365,7 +365,9 @@ button::after {
   color: #4fd6f0;
 }
 
-
+.color20CD86{
+  color: #20CD86
+}
 .line-through {
   text-decoration: line-through;
 }

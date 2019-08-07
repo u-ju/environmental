@@ -13,10 +13,11 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      bgi: getApp().globalData.front_tshop_index.bgi,
-      law_hall: getApp().globalData.front_tshop_index.law_hall,
-      more: getApp().globalData.front_tshop_index.more,
+      // bgi: getApp().globalData.front_tshop_index.bgi,
+      law_hall: getApp().globalData.front_tshop_index,
+      // more: getApp().globalData.front_tshop_index.more,
     })
+    console.log(this.data.law_hall)
   },
 
   /**

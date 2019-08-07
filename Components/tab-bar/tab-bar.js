@@ -15,7 +15,7 @@ function tabbarinit() {
       "pagePath": "",
       "iconPath": "",
       "selectedIconPath": "",
-      "text": "扫一扫",
+      "text": "扫码丢垃圾",
       'show':1
     },
   {
