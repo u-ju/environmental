@@ -31,7 +31,9 @@ Page({
     edit:[],
     post:false,
     spec_str:'规格：默认',
-    cate_id:''
+    cate_id:'',
+    source_name:'',
+    source:''
   },
   addsku(){
     // if (this.data.skunum + 1 > this.data.spec_group_arr.length){
@@ -131,7 +133,12 @@ Page({
       show: show
     });
   },
-
+  selectTap1(e) {
+    this.setData({
+      show1: true
+    });
+    console
+  },
   // 点击下拉列表
   optionTap(e) {
     let name = e.currentTarget.dataset.name;
@@ -158,6 +165,14 @@ Page({
       key: key,
       show: show,
       add: add
+    });
+  },
+  optionTap1(e) {
+    console
+    this.setData({
+      source_name: e.currentTarget.dataset.name,
+      source2: e.currentTarget.dataset.key,
+      show1: false,
     });
   },
   init(){
@@ -228,7 +243,8 @@ Page({
     this.setData({
       goods_cate: goods_cate,
       shop_id: options.id,
-      source: options.source||''
+      source: options.source||'',
+      buttun_list: getApp().globalData.shop.apply_info.buttun_list
     })
 
     if (options.spu_id){
@@ -435,7 +451,7 @@ Page({
     if (this.data.spu_intro[0]){
       data.spu_intro = this.data.spu_intro[0]["path_server"]
     }
-    
+    data.source = this.data.source2
     for (var i = 0; i < that.data.skunum;i++){
       data['sku_arr[' + i+'][key]'] = that.data.key[i]
       data['sku_arr[' + i + '][price]'] = e.detail.value['price['+i+']']

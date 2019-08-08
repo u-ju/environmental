@@ -9,7 +9,18 @@
       <view class='left1'>商品分类：</view>
       <input class='right1' disabled='true' bindtap='onOpen1' name='cate_id' value='{{ title1 }}'></input>
     </view>
+    <view class='flex align_center maginb50'>
+      <view class='left1'>商品来源： </view>
+      <view class='select_box'>
 
+        <view class='select' catchtap='selectTap1' data-index='{{indexnum}}'>
+          <input disabled='true' placeholder='请选择' name='source' class='width460' value='{{source_name}}'></input>
+        </view>
+        <view class='option_box' style='height:{{show1?buttun_list.length*74:0}}rpx;'>
+          <text class='option' style='{{index==buttun_list.length-1&&"border:0;"}}' wx:for='{{buttun_list}}' wx:key='this' data-key='{{item.key}}' data-name='{{item.name}}' catchtap='optionTap1' >{{item.name}}</text>
+        </view>
+      </view>
+    </view>
     <view class='flex align_center maginb50'>
       <view class='left1'>详情图：</view>
       <view class="picture_listmore">

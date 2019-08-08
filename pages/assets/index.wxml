@@ -23,9 +23,9 @@
     <text class='size72 colorFFBF1A bold'>￥{{balance}}</text>
   </view>
   <!-- <view class='flex_ard'> -->
-  <view class='size36  withdrawal'>
+  <!-- <view class='size36  withdrawal'>
     <navigator url='../withdrawal/withdrawal?money={{balance}}&is_password={{is_password}}&withdraw_flow={{balance_withdraw_flow}}&url=balanceWithdraw'>提现</navigator>
-  </view>
+  </view> -->
   <!-- <view class='size36  withdrawal zhuan color4fd6f0'>
     <navigator url='../withdrawal/transfer?type=2&money={{balance}}'>转账</navigator>
   </view> -->
@@ -34,9 +34,9 @@
   <view class='flex_ard align_center flex brx'>
     <view class=' size28 {{balanceurl=="balanceIndex"?"color299EF0":"color989898"}}' bindtap='balance' data-url='balanceIndex'>环保金明细</view>
     <view class='size28 navigator {{balanceurl=="walletBalanceFamilyIndex"?"color299EF0":"color989898"}}' wx:if="{{has_family==1}}" bindtap='balance' data-url='walletBalanceFamilyIndex'>家庭环保金记录</view>
-    <navigator url='../withdrawal_record/withdrawal_record?url=balanceWithdrawIndex'>
+    <!-- <navigator url='../withdrawal_record/withdrawal_record?url=balanceWithdrawIndex'>
       <view class=' size28 br'>提现记录</view>
-    </navigator>
+    </navigator> -->
     <!-- <navigator url='../withdrawal_record/transfer?url=walletBalanceTransferIndex'>
       <view class=' size28'>转账记录</view>
     </navigator> -->

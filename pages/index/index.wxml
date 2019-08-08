@@ -4,7 +4,7 @@
   <popupImg wx:if="{{!guidel}}" visablen="{{popout}}" dat="{{popout_image}}" bind:close="guidel" />
   <import src="../../Components/tab-bar/tab-bar.wxml" />
   <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
-  <scroll-view scroll-y class='index'>
+  <!-- <scroll-view scroll-y class='index'> -->
 
     <view class='swipercontent'>
       <view class='flex align_center top'>
@@ -23,7 +23,7 @@
         </swiper-item>
       </swiper>
       <view class="dots">
-        <block wx:for="{{banner}}" wx:key="index">
+        <block wx:for="{{banner_arr}}" wx:key="index">
           <view class="dot {{index == swiperCurrent ?'active':''}}"></view>
         </block>
       </view>
@@ -44,7 +44,7 @@
     <view class='bg marginfff'>
       <view class='flex color20CD86 align_center title_index'>
         <view class='left_bor'></view>
-        <view>资产详情</view>
+        <view>环保奖励</view>
       </view>
       <view class="container flex_btw twobr" wx:if="{{wallet.length>0}}">
         <view class='index_putin border_right left' wx:for="{{wallet}}" wx:key="index"  data-link='{{item.control}}' bindtap='link'>
@@ -91,30 +91,31 @@
       </view>
     </view>
     <view class='service_index'>
-      <view class='flex color20CD86 align_center title_index'>
-        <view class='left_bor'></view>
-        <view>惠民自营</view>
+      <view class='flex_btw color20CD86 align_center'>
+        <view class='flex color20CD86 align_center title_index'>
+          <view class='left_bor'></view>
+          <view>优品推荐</view>
+        </view>
+        <navigator url='../agriculturalRecommendation/index'>更多</navigator>
       </view>
-      <view class='wrap'>
-        <block wx:for="{{length}}" wx:key="index" wx:for-item='mulriple'>
-          <block wx:for="0123" wx:key="index" wx:for-item='num'>
-            <view class="item-ans a{{index}}" wx:if="{{list[(mulriple) * 4+(num-0)]}}" bindtap='details'  data-id='{{list[(mulriple) * 4+(num-0)].sku_id}}'>
-              <view class="avatar avatar_d {{(index+1)%2==0&&(index+1)%4!=0?'avatar_c':''}} {{(index+1)%3==0?'avatar_c':''}} {{(index+1)%4==0?'avatar_d':''}}">
-                <image class="img" src="{{list[(mulriple) * 4+(num-0)].thumb}}" mode='aspectFill'></image>
+      <view class='wrap visible flex_btw'>
+        
+            <view class="item-ans a{{index}}" wx:for="{{list}}" bindtap='details'  data-id='{{item.sku_id}}'>
+              <view class="avatar avatar_d }">
+                <image class="img" src="{{item.thumb}}" mode='aspectFill'></image>
               </view>
               <view class="expertInfo">
-                <view class="name size30 color4 one-hidden">{{list[(mulriple) * 4+(num-0)].spu_name}}</view>
+                <view class="name size30 color4 one-hidden">{{item.spu_name}}</view>
                 <view class='colorff1919'>
-                  <view>价格:￥{{list[(mulriple) * 4+(num-0)].price}}</view>
-                  <view>(积分兑换环保金{{list[(mulriple) * 4+(num-0)].user_return}})</view>
+                  <view>价格:￥{{item.price}}</view>
+                  <view>(积分兑换环保金{{item.user_return}})</view>
                 </view>
               </view>
             </view>
-          </block>
-        </block>
       </view>
     </view>
-  </scroll-view>
+    <view class='height108'></view>
+  <!-- </scroll-view> -->
 </block>
 <view class='login' wx:elif='{{token==1}}'>
   <view class='miaoshu'>登录后享受更多功能</view>

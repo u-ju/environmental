@@ -1,6 +1,6 @@
 <!--pages/order_detail/index.wxml-->
-<view class='flex_btw align_center orderTitle'>
-  <view class='width600' bindtap='link'>
+<view class='flex_btw align_center orderTitle' bindtap='link'>
+  <view class='width600'>
     <view>收货人：{{address.name}}
       <text class='marginl54'>{{address.phone}} </text> </view>
     <view class='margt42'>收货地址：{{address.area_name}} {{address.address}}</view>

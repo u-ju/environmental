@@ -11,7 +11,7 @@ Page({
   data: {
     indicatorDots: false, //显示面板指示点
     indicatorDots1:true,
-    autoplay: true, //自动播放
+    autoplay: false, //自动播放
     beforeColor: "white", //指示点颜色
     afterColor: "#20CD86", //当前选中的指示点颜色 
     beforeColor1: '#2EB354',
@@ -469,7 +469,7 @@ Page({
 
     var that = this;
     util.getJSON({
-      apiUrl: apiurl.goods + "?page=" + page + "&source=online"
+      apiUrl: apiurl.goods + "?page=" + 1 + "&source=online"
     }, function (res) {
       var result = res.data.result
       var list = result.list
@@ -495,6 +495,7 @@ Page({
     wx.showLoading({
       title: '玩命加载中',
     })
+    console.log(11111111111)
     // 页数+1
     if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
       that.initgoods(Number(that.data.page.current_page) + 1)

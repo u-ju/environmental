@@ -38,6 +38,7 @@ Page({
         avatar:'../../images/logozmn.jpg'
         // share_mobile: result.share_mobile
       })
+      
       wx.hideLoading()
     })
   },

@@ -21,14 +21,14 @@
         </view>
       </view>
       <view class='flex_btw color4'>
-        <view class='center czbtn' catchtap='linke' data-status='{{list.status}}' data-url='../agriculturalEdit/index?id={{list.shop_id}}&source=league'>
+        <!-- <view class='center czbtn' catchtap='linke' data-status='{{list.status}}' data-url='../agriculturalEdit/index?id={{list.shop_id}}&source=league'>
           <image src='../../images/addspu.png'></image>
           <view> 添加产品</view>
         </view>
         <view class='center czbtn' catchtap='linke' data-status='{{list.status}}' data-url='../agriculturalLook/index?id={{list.shop_id}}'>
           <image src='../../images/lookspu.png'></image>
           <view> 查看产品</view>
-        </view>
+        </view> -->
         <view class='center czbtn' catchtap='linke' data-status='{{list.status}}' data-url='../agriculturalMerchantsOrder/index?id={{list.shop_id}}'>
           <image src='../../images/look.png'></image>
           <view> 查看订单</view>
@@ -94,14 +94,14 @@
 
       </view>
       <view class='flex_btw color4'>
-        <view class='center czbtn' catchtap='linke' data-status='{{list.status}}' data-url='../agriculturalEdit/index?id={{list.shop_id}}&source=offline'>
+        <!-- <view class='center czbtn' catchtap='linke' data-status='{{list.status}}' data-url='../agriculturalEdit/index?id={{list.shop_id}}&source=offline'>
           <image src='../../images/addspu.png'></image>
           <view> 添加产品</view>
         </view>
         <view class='center czbtn' catchtap='linke' data-status='{{list.status}}' data-url='../agriculturalLook/index?id={{list.shop_id}}'>
           <image src='../../images/lookspu.png'></image>
           <view> 查看产品</view>
-        </view>
+        </view> -->
         <view class='center czbtn' catchtap='linke' data-status='{{list.status}}' data-url='../assets/index?id=2'>
           <image src='../../images/look.png'></image>
           <view> 查看货款</view>
