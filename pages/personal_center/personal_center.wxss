@@ -1,23 +1,24 @@
 
 page{
- background: linear-gradient(#94DECF, #5E93D7);
+ /* background: linear-gradient(#94DECF, #5E93D7); */
  
 }
 .pagetop{
   position: fixed;
   width: 100%;
   height: calc(100% - 108rpx);
-  background: linear-gradient(#94DECF, #5E93D7);
+  /* background: linear-gradient(#94DECF, #5E93D7); */
   /* padding-top: 60rpx; */
 }
 .top{
   width:566rpx;
   height:206rpx;
-  background:rgba(255,255,255,.6);
+  background:rgba(50,180,160,.65);
   border-radius:10rpx;
   margin:auto;
   position: relative;
   padding:  20rpx 10rpx 0 110rpx;
+  box-shadow: 0 0 10rpx #94decf;
 }
 .head{
   width:100rpx;
@@ -50,7 +51,7 @@ page{
 .btnhead navigator{
   width:180rpx;
   height:68rpx;
-  background:#48D1CC;
+  background:#32B4A0;
   border-radius:34rpx;
   text-align: center;
   line-height: 68rpx;
@@ -61,6 +62,7 @@ page{
     background:rgba(255,255,255,.6);
     border-radius:10rpx;
     margin: 20rpx auto 0 auto;
+    box-shadow: 0 0 10rpx #94decf;
 }
 .funitem{
   width: 25% ;
@@ -85,6 +87,7 @@ page{
 .icon-shezhi{
   font-size: 56rpx;
   margin: auto;
+  color: #444;
 }
 ::-webkit-scrollbar {
 

@@ -1,30 +1,39 @@
-<view class='submitButton {{classN}}' bindtap='tap'  data='{{data}}' style='{{styles}}' >{{title}}</view>
+<view class='submitButton {{classN}}' bindtap='tap' data='{{data}}' style='{{styles}}'>{{title}}</view>
 <wux-popup closable position="bottom" visible="{{ visible3 }}" bind:close="close3">
-    <view class='center color4 size36 csgg'>选择支付方式</view>
-    <view class='center colorFE3434 size60 csgg'>￥{{pay_amount}}</view>
-    <view  >
-      <view class='label' wx:for="{{items.payment_usable}}" wx:key ="index">
-        <view>
-        <view class='flex align_center radioitem'  bindtap='choose' data-index="{{index}}" data-key="{{item.key}}">
+  <view class='bg'>
+    <view class='pay_index'>
+      <view class='center colorFE3434 size30 csgg'><text>支付总额\n<text class='size48'>￥{{pay_amount}}</text></text></view>
+      <view class='label' wx:for="{{items.payment_usable}}" wx:key="index">
+        <view class='flex_btw align_center radioitem' bindtap='choose' data-index="{{index}}" data-key="{{item.key}}">
+          <view class='flex align_center'>
+            <image src='{{item.icon}}' class='icon' mode='aspectFit'></image>
+            <text class='size28 color4'>{{item.name}}  </text>
+          </view>
           <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
-          <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
-          <view class='left'>
-            <text class='size28 color4'>{{item.name}} \n </text>
+          <image src='../../images/choose.png' class='choose' wx:else mode='aspectFit'></image>
+        </view>
+      </view>
+    </view>
+    <view class='pay_index textL group_' wx:if="{{items.group_usable.length>0}}">
+      <view class=' '>可选组合方式</view>
+      <view class='label' wx:for="{{items.group_usable}}" wx:key="index">
+        <view class='flex_btw align_center radioitem' bindtap='chooseG' data-index="{{index}}" data-key="{{item.key}}">
+          <view class='flex align_center'>
+            <image src='{{item.icon}}' class='icon' mode='aspectFit'></image>
+            <text class='size28 color4'>{{item.name}}  </text>
           </view>
+          <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
+          <image src='../../images/choose.png' class='choose' wx:else mode='aspectFit'></image>
         </view>
-        <view wx:if="{{item.options&&item.choosed==1}}">
-          <block wx:for="{{item.options}}" wx:key="index">
-          <view class='flex align_center radioitem radioinstallment'  bindtap='choosed' data-index="{{index}}" data-key="{{item.key}}">
-            <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
-            <image src='../../images/choose.png'  class='choose' wx:else mode='aspectFit'></image>
-            <view class='left'>
-              <text class='size28 color4'>{{item.name}} </text>
-            </view>
-          </view>
-          </block>
+      </view>
+      <view class='group' wx:if="{{groupN=='balance'}}">
+        <input value='{{group_ext}}' type='digit' bindinput='onChange' bindblur='onblur' placeholder='请输入金额'></input>
+        <view class='size30'>
+          <text class='colorFE3434'>余额{{remain}} </text>
+          <text class='all' bindtap='max'> 最大额度</text>
         </view>
-        </view>
-      </view>  
-    </view> 
+      </view>
+    </view>
     <view class='submitButton' bindtap='goodsBuy'>{{title1}}</view>
+  </view>
 </wux-popup>

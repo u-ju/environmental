@@ -35,6 +35,10 @@ Component({
       type: String,
       value: ''
     },
+    groupN:{
+      type: String,
+      value: ''
+    }
   },
 
   data: {
@@ -50,7 +54,8 @@ Component({
     // isbiotope:false,
     // biotopecurrent:-1,
     // biotope_name:'',
-    visible3:false
+    visible3:false,
+    group_ext:''
   },
 
   methods: {
@@ -72,7 +77,7 @@ Component({
       // console.log(that.data.data)
       util.postJSON({ apiUrl: apiurl.create, data: that.data.data },
         function (res) {
-          var result = res.data.result
+          var result = res.data.result, min = '', max = '', remain=''
           if (result.pay_amount==0){
             that.setData({
               items: result,
@@ -85,9 +90,24 @@ Component({
           for (let i in result.payment_usable) {
             result.payment_usable[i].choosed = 0
           }
+          for (let j in result.group_usable) {
+            result.group_usable[j].choosed = 0
+          }
           result.payment_usable[0].choosed = 1
+          for (var i in result.group_usable) {
+            if (result.group_usable[i].key == 'balance') {
+              max = result.group_usable[i].max
+              min = result.group_usable[i].min
+              remain = result.group_usable[i].remain
+            }
+          }
           that.setData({
+            min: min,
+            max:max,
+            remain: remain,
             items: result,
+            groupN:'',
+            group_ext: '',
             visible3: true,
             pay_amount: result.pay_amount,
             payment: result["payment_usable"][0]["key"]
@@ -123,6 +143,45 @@ Component({
         payment: items["payment_usable"][e.currentTarget.dataset.index]["key"]
       })
     },
+    chooseG(e){
+      var item = this.data.items
+      var items = item.group_usable;
+      items[e.currentTarget.dataset.index]["choosed"] = !items[e.currentTarget.dataset.index]["choosed"]
+      this.setData({
+        items: item,
+        groupN:items[e.currentTarget.dataset.index]["choosed"] ? items[e.currentTarget.dataset.index]["key"]:''
+      })
+      console.log(items[e.currentTarget.dataset.index]["choosed"] ? items[e.currentTarget.dataset.index]["key"] : '')
+    },
+    onblur() {
+      var that = this;
+      util.testjq(that.data.group_ext, "请输入正确的金额格式", function () {
+        that.setData({
+          sure: true
+        })
+      })
+    },
+    onChange(e){
+      var max = parseFloat(this.data.max), min = parseFloat(this.data.min)
+      
+      var group_ext= e.detail.value
+      console.log(group_ext, min,max)
+      if (group_ext >= min && group_ext <= max){
+        console.log(group_ext)
+        this.setData({
+          group_ext: group_ext
+        })
+      }else{
+        this.setData({
+          group_ext: this.data.group_ext
+        })
+      }
+    },
+    max(){
+      this.setData({
+        group_ext: this.data.max
+      })
+    },
     goodsBuy() {
       var that = this;
       that.setData({
@@ -133,7 +192,14 @@ Component({
         mask: true,
         duration: 40000,
       })
-      var data = { pay_key: that.data.items.pay_key, payment: that.data.payment, pay_amount: that.data.pay_amount, pay_cash: that.data.pay_amount }
+      var data = { 
+        pay_key: that.data.items.pay_key,
+         payment: that.data.payment, 
+         pay_amount: that.data.pay_amount, 
+         pay_cash: that.data.pay_amount,
+        group: that.data.groupN,
+        group_ext: that.data.group_ext
+        }
         // , payment_ext: that.data.payment_ext
       if (that.data.payment =='wechat'){
         data.payment_ext = util.wx_appid
@@ -154,6 +220,11 @@ Component({
               
             // })
           } else if (result.payment == "wechat") {
+            if (result.pay_jump==1){
+              return wx.navigateTo({
+                url: '../result/index?pay_key=' + result.pay_key,
+              })
+            }
             wx.requestPayment({
               timeStamp: result.pay_info.timeStamp,
               nonceStr: result.pay_info.nonceStr,

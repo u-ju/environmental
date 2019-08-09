@@ -27,7 +27,7 @@
         </view>
       </navigator>
       <navigator class='assets' url='../assets/index'>
-        <view class=' flex_ard align_center'>资产详情
+        <view class=' flex_ard align_center'>环保奖励
         </view>
       </navigator>
     </view>

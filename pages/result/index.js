@@ -47,7 +47,7 @@ Page({
       })
       console.log(res2)
       wx.setNavigationBarTitle({
-        title: res2.header,
+        title: res2.data.result.hint.header,
       })
       util.hideLoading()
     }, function () {
