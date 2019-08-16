@@ -64,4 +64,4 @@
 <!-- <view class='btnsure' bindtap='open3' hidden='{{order_source=="online"}}'>立即兑换</view> -->
 <!-- <view class='btnsure' bindtap='open3' hidden='{{order_source!="online"}}'>立即支付</view> -->
 <pay wx:if="{{result.order_source=='seckill'}}" choose="{{choose}}" data="{{data}}" styles="margin:80rpx auto;" bind:open='openp' title='立即付款' title1='立即付款' />
-<pay wx:else choose="{{choose}}" data="{{data}}" styles="margin:80rpx auto;" bind:open='openp' title='{{order_source=="online"?"立即支付":"立即兑换"}}' title1='{{order_source=="online"?"立即支付":"立即兑换"}}' />
+<pay wx:else choose="{{choose}}" data="{{data}}" styles="margin:80rpx auto;" bind:open='openp' title='{{order_source=="online"||result.source=="market"?"立即支付":"立即兑换"}}' title1='{{order_source=="online"||result.source=="market"?"立即支付":"立即兑换"}}' />

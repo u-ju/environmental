@@ -1,0 +1,29 @@
+<!--pages/goodsMarket/index.wxml-->
+<view class="container">
+ 
+  <!-- <view class='xiangqing' wx:for="{{list}}" wx:key="index" bindtap="detail" data-sku_id='{{item.sku_id}}'>
+    <view class='xiangqing_img'>
+        <image src='{{item.thumb}}'  mode='aspectfit'></image>
+    </view>
+    <view class='xiangqing_info' >
+      <text class='title'>{{item.spu_name}} {{item.sku_name}}</text>
+      <view class='colorff1919'>价格：￥{{item.price}}<text class='size24' wx:if='{{item.user_return>0}}'> (积分兑环保金{{item.user_return}})</text></view>
+      
+    </view>
+  </view> -->
+  <view class='wrap visible flex_btw'>
+    <view class="item-ans a{{index}}" wx:for="{{list}}" wx:key="index" bindtap="detail" data-sku_id='{{item.sku_id}}'>
+      <view class="avatar avatar_d }">
+        <image class="img" src="{{item.thumb}}" mode='aspectFill'></image>
+      </view>
+      <view class="expertInfo">
+        <view class="name size30 color4 one-hidden">{{item.spu_name}}</view>
+        <view class='colorff1919'>
+          <view>价格:￥{{item.price}}</view>
+          <view  wx:if='{{item.user_return>0}}'>(积分兑换环保金{{item.user_return}})</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <empty wx:if='{{list.length==0}}' />
+</view>

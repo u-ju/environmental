@@ -28,7 +28,7 @@ Page({
     })
   },
   detail(e) {
-    console.log(e.currentTarget.dataset.help_id)
+    // console.log(e.currentTarget.dataset.help_id)
     wx.navigateTo({
       url: '../news_detail/news_detail?id=' + e.currentTarget.dataset.help_id,
     })

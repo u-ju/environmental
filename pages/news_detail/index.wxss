@@ -1,0 +1,8 @@
+/* pages/news_detail/index.wxss */
+@import"../dynamic/dynamic.wxss";
+.container{
+  /* overflow: hidden */
+}
+.size36{
+  margin-bottom: 10rpx;
+}

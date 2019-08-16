@@ -1,6 +1,7 @@
 /**app.wxss**/
 @import "/Components/tab-bar/tab-bar.wxss";
 @import "/style/iconfont.wxss";
+@import "./Components/appToast/appToast.wxss"; 
 .icon-share.button-hover{
   background-color: transparent;
   color: #444;
@@ -115,7 +116,7 @@ page .navigator-hover {
   width: 686rpx;
   height: 88rpx;
   /* background:linear-gradient(0deg,rgba(51,246,175,1),rgba(39,170,217,1)); */
-  background-color: #4fd6f0;
+  background-color: #32B4A0;
   border-radius: 44rpx;
   color: white;
   text-align: center;
@@ -299,7 +300,9 @@ button::after {
 .color102 {
   color: rgb(102, 102, 102);
 }
-
+.color565656{
+  color: #565656;
+}
 .color153 {
   color: rgb(153, 153, 153);
 }
@@ -362,7 +365,7 @@ button::after {
   color: #ff1919;
 }
 .color20,.color299EF0,.color6ADB7A,.color44D5A2,.color5DC47A,.color2EB354,.color46,.color4AD6A3,.color5ABB96,.color4FD7A3,.color27AAD9 ,.color4fd6f0{
-  color: #4fd6f0;
+  color: #32B4A0;
 }
 
 .color20CD86{
@@ -418,11 +421,11 @@ button::after {
 checkbox .wx-checkbox-input {
   width: 30rpx;
   height: 30rpx;
-  border-color: #4FD6F0;
+  border-color: #32B4A0;
 }
 /*checkbox选中后样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  background: #4FD6F0;
+  background: #32B4A0;
 }
 /*checkbox选中后图标样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
@@ -464,7 +467,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   margin: 0 auto;
   text-align: center;
   font-size:28rpx;
-  color: #4FD6F0;
+  color: #32B4A0;
   line-height: 30rpx;
 }
 /*普通样式*/

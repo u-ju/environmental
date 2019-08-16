@@ -1,27 +1,35 @@
 <!--pages/news/news.wxml-->
-<view class='topTabSwiper fixed'>
-  <block wx:for="{{tab}}" wc:key="index">
-    <view class='tab  {{currentData == index ? "tabBorer" : ""}}'  data-current = "{{index}}" data-cate_id = "{{item.id}}" bindtap='checkCurrent'>{{item.name}}</view>
-  </block>
-</view>
-<view class='topTabSwiper'>
-  
-</view>
+<view>
+  <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+    <block wx:for="{{tab}}" wx:key="index">
+      <view class="tab-item {{currentTab==index?'active':''}}" data-cate_id='{{item.id}}' data-current="{{index}}" bindtap="swichNav">{{item.name}}</view>
+    </block>
 
-<block wx:for="{{news}}" wx:for-item='news' wx:key="index">
-  <view class='swiper_con' bindtap='detail' data-news_id='{{news.news_id}}' >
-    <view class='news_items flex'>
-      <view class='image'>
-        <image src="{{news.thumb}}" class="slide-image" mode='aspectFill'/>
+  </scroll-view>
+  <view class='haha'>
+    <!-- <view class='wrap'> -->
+      <view class='news flex_btw' wx:for="{{news}}" wx:key="index" bindtap='details' data-id='{{item.news_id}}' wx:if='{{item.news_id}}'>
+        <view class='news_atr flex_col flex_btw'>
+          <view class='hidden2 color4'>{{item.title}}</view>
+          <!-- <view class='hidden2 color999'>{{item.intro}}</view> -->
+          <view class='flex'>
+            <view class='czbtn flex align_center'>
+              <text class='iconfont icon-zan2'></text>
+              <text>0</text>
+            </view>
+            <view class='czbtn flex align_center'>
+              <text class='iconfont icon-collection-b'></text>
+              <text>0</text>
+            </view>
+          </view> 
+        </view>
+        <image class='images' src='{{item.thumb}}'></image>
       </view>
-      <view class='describe'>
-        <view class='bold500 color51 size28'>{{news.title}}</view>
-        <view class='color102'>{{news.intro}}</view>
-        <view class='color153'>{{news.created_at}}</view>
+      <view wx:if="{{news.length==0}}" class='empty'>
+        <empty />
       </view>
-    </view>
+    <!-- </view> -->
+
   </view>
-</block>
-<view wx:if="{{last}}" class='center'>
-  已经到底啦
 </view>
+<!-- <empty wx:else /> -->

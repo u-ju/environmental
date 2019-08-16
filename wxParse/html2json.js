@@ -79,6 +79,7 @@ function html2json(html, bindName) {
     HTMLParser(html, {
         start: function (tag, attrs, unary) {
             //debug(tag, attrs, unary);
+          // console.log(tag, attrs, unary)
             // node for this element
             var node = {
                 node: 'element',
@@ -184,6 +185,7 @@ function html2json(html, bindName) {
             }
             
             if (unary) {
+              
                 // if this tag doesn't have end tag
                 // like <img src="hoge.png"/>
                 // add to parents
@@ -192,8 +194,11 @@ function html2json(html, bindName) {
                     parent.nodes = [];
                 }
                 parent.nodes.push(node);
+              // console.log(parent)
             } else {
+              // console.log(bufArray)
                 bufArray.unshift(node);
+              
             }
         },
         end: function (tag) {
@@ -252,6 +257,7 @@ function html2json(html, bindName) {
             // parent.nodes.push(node);
         },
     });
+  console.log(results)
     return results;
 };
 

@@ -1,0 +1,9 @@
+/* pages/withdrawal/goldtransfer.wxss */
+@import '../withdrawal/transfer';
+.inputnum input{
+  font-size: 28rpx;
+}
+.choosech{
+  border-bottom: none;
+  margin-top: 20rpx;
+}

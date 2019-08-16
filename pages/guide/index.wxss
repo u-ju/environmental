@@ -115,7 +115,7 @@ page {
 
 .scroll-header text.active {
   
-  background-color: #4FD6F0;
+  background-color: #32B4A0;
   color: white;
 }
 

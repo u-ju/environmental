@@ -30,6 +30,7 @@ page{
   margin:  -200rpx auto 20rpx auto;
   position: relative;
   z-index: 2;
+  margin: 40rpx auto;
 }
 .title{
   padding: 18rpx 0;
@@ -46,7 +47,7 @@ page{
 }
 .convenience{
   height: auto;
-  margin:  auto;
+  margin:　40rpx  auto;
 }
 .convenience .moreitem{
   margin: 30rpx 0 40rpx 0;

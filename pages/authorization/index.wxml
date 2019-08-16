@@ -1,0 +1,8 @@
+<!--pages/authorization/index.wxml-->
+<view class='login' >
+  <view class='miaoshu'>登录后享受更多功能</view>
+  <button class='button' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+    <image src='../../images/wx.png'></image>
+    <text>授权登录</text>
+  </button>
+</view>

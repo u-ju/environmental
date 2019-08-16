@@ -18,7 +18,6 @@ Page({
     interval: 10000,
     interval1: 6000,
     duration: 1000,
-
     indicatorDotstag: true, //显示面板指示点
     autoplaytag: false, //自动播放
     beforeColortag: "#DCDCDC", //指示点颜色
@@ -72,7 +71,8 @@ Page({
     value1: [],
     pullState: 1,
     swiperCurrent:0,
-    length:0
+    length:0,
+    is_audit:''
   },
   search(e) {
     wx.navigateTo({
@@ -97,7 +97,8 @@ Page({
     this.refreshView = this.selectComponent("#refreshView")
     var formData = wx.getStorageSync('formData')
     this.setData({
-      guidel: wx.getStorageSync('guidel')
+      guidel: wx.getStorageSync('guidel'),
+      token: util.getToken()
     })
     if (options.pjurl){
       this.setData({
@@ -114,30 +115,23 @@ Page({
     if (app.globalData.config.length == 0){
       util.loading()
     }
-    if (wx.getStorageSync('token') && wx.getStorageSync('token') != 1) {
-      that.setData({
-        token: util.getToken()
-      })
-      if (options.pjurl) {
-        util.pjnav(options.pjurl, options.pjdata)
-      }
-      that.init()
-    } else {
-      wx.setStorageSync("token", 1)
-      that.setData({
-        token: 1
-      })
-      util.hideLoading()
+    if (options.pjurl) {
+      util.pjnav(options.pjurl, options.pjdata)
     }
+    
     if (options.share_gene) { //是否携带参数
       that.setData({
         share_gene: options.share_gene
       })
+      wx.setStorageSync('share_gene', options.share_gene)
     }
     
 
   },
   onShow() {
+    console.log(wx.getStorageSync('token'))
+    // if (!wx.getStorageSync('token')) return
+    this.init()
     this.adr()
   },
   adr() {
@@ -190,11 +184,9 @@ Page({
         tag_arr: result.tag_arr || '',
         wallet: result.wallet || '',
       })
-      console.log(that.data.popout)
       for (var i in tag ){
         if (tag[i]['control']['key'] =='front_tshop_index'){
           getApp().globalData.front_tshop_index = tag[i]["children"]
-          console.log(getApp().globalData.front_tshop_index )
         }
         
       }
@@ -210,14 +202,16 @@ Page({
         var result = res.data.result;
         getApp().globalData.config = result;
         that.setData({
-          config: res.data.result
+          config: res.data.result,
+          is_audit: res.data.result.is_audit
         })
       })
 
     } else {
       util.hideLoading()
       this.setData({
-        config: app.globalData.config
+        config: app.globalData.config,
+        is_audit: app.globalData.config.is_audit
       })
     }
   },
@@ -318,94 +312,7 @@ Page({
   show() { //不跳页面
     util.scan()
   },
-  bindGetUserInfo(e) {
-    wx.setStorageSync("token", 1)
-    var that = this;
-    if (e.detail.userInfo) {
-      util.loading()
-      var token = ""
-      wx.login({
-        success: function(res) {
-          var data = {
-            wx_code: res.code,
-            wx_appid: util.wx_appid
-          }
-          if (res.code) {
-            util.postJSON({
-              apiUrl: apiurl.wechatLetAttemptLogin,
-              data: data,
-              token: "huhu"
-            }, function(res1) {
-              if (res1.data.result.token) {
-                wx.setStorageSync("token", res1.data.result.token)
-                token = res1.data.result.token
-                that.setData({
-                  token: token
-                })
-                if (that.data.pjurl) {
-                 return util.pjnav(that.data.pjur, that.data.pjdata)
-                }
-                // console.log(that.data.formData)
-                if (that.data.formData && that.data.formData.hasOwnProperty("qrcode")) {
-                  wx.setStorageSync('formData', '')
-                  wx.navigateTo({
-                    url: '../qrcode/index?q=' + that.data.formData["qrcode"],
-                  })
-                }
-                return that.init()
-              } else {
-                wx.getUserInfo({
-                  success(res2) {
-                    util.postJSON({
-                      apiUrl: apiurl.wechatLetLogin,
-                      data: {
-                        wx_appid: util.wx_appid,
-                        share_gene: that.data.share_gene,
-                        session_key: util.base64encode(util.utf16to8(res1.data.result.wx_user.session_key)),
-                        iv: util.base64encode(util.utf16to8(res2.iv)),
-                        encrypt_data: util.base64encode(util.utf16to8(res2.encryptedData))
-                      },
-                      token: "huhu"
-                    }, function(res3) {
-                      wx.setStorageSync("token", res3.data.result.token)
-                      console.log(wx.getStorageSync('token'))
-                      token = res3.data.result.token
-                      that.setData({
-                        token: token
-                      })
-                      if (that.data.pjurl) {
-                        return util.pjnav(that.data.pjur, that.data.pjdata)
-                      }
-                      // console.log(that.data.formData)
-                      if (that.data.formData && that.data.formData.hasOwnProperty("qrcode")) {
-                        // wx.sStorageSync('formData')
-                        wx.setStorageSync('formData', '')
-                        wx.navigateTo({
-                          url: '../qrcode/index?q=' + that.data.formData["qrcode"],
-                        })
-                      }
-                      return that.init()
-                    })
-                  }
-                })
-              }
-            }, function() {
-              util.alert('授权失败')
-            }, function() {
-              util.alert('授权失败')
-            })
-          }
-        },
-        fail(w) {
-          util.alert('授权失败')
-        }
-      })
-    } else {
-      // util.alert("为了您更好的体验,请先同意授权")
-      console.log(e)
-    }
-
-  },
+  
   tabarUrl(e) {
     if (this.data.tabbarid != e.currentTarget.dataset.id) {
       wx.reLaunch({
@@ -466,45 +373,50 @@ Page({
   onPullDownRefresh: function () {
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
-
-    var that = this;
-    util.getJSON({
-      apiUrl: apiurl.goods + "?page=" + 1 + "&source=online"
-    }, function (res) {
-      var result = res.data.result
-      var list = result.list
-      that.setData({
-        list: list,
-        page: result.page,
-        last: false,
-        length: Math.ceil(list.length / 4)
-      })
-      // 隐藏导航栏加载框
       wx.hideNavigationBarLoading();
       // 停止下拉动作
       wx.stopPullDownRefresh();
-      util.hideLoading()
-    })
+    
+    // wx.showNavigationBarLoading();
+    // var that = this;
+    // util.getJSON({
+    //   apiUrl: apiurl.goods + "?page=" + 1 + "&source=online"
+    // }, function (res) {
+    //   var result = res.data.result
+    //   var list = result.list
+    //   that.setData({
+    //     list: list,
+    //     page: result.page,
+    //     last: false,
+    //     length: Math.ceil(list.length / 4)
+    //   })
+    //   // 隐藏导航栏加载框
+    //   wx.hideNavigationBarLoading();
+    //   // 停止下拉动作
+    //   wx.stopPullDownRefresh();
+    //   util.hideLoading()
+    // })
   },
   /**
  * 页面上拉触底事件的处理函数
  */
   onReachBottom: function () {
-    var that = this;
-    // 显示加载图标
-    wx.showLoading({
-      title: '玩命加载中',
-    })
-    console.log(11111111111)
-    // 页数+1
-    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
-      that.initgoods(Number(that.data.page.current_page) + 1)
-    } else {
-      that.setData({
-        last: true
-      })
-      wx.hideLoading()
-    }
+    
+    // if(this.data.is_audit == 1) return
+    // var that = this;
+    // // 显示加载图标
+    // wx.showLoading({
+    //   title: '玩命加载中',
+    // })
+    // // 页数+1
+    // if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+    //   that.initgoods(Number(that.data.page.current_page) + 1)
+    // } else {
+    //   that.setData({
+    //     last: true
+    //   })
+    //   wx.hideLoading()
+    // }
   },
 })
 // ,

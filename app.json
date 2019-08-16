@@ -1,7 +1,14 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/login/login",
+    "pages/login/index",
+    
+    "pages/authorization/index",
+    "pages/news_detail/index",
+    "pages/news/news",
+    "pages/withdrawal/goldtransfer",
+    "pages/goodsMarket/index",
     "pages/tenants/tenants",
     "pages/feedback/index",
     "pages/bank/province/index",
@@ -58,8 +65,7 @@
     "pages/agriculturalDetail/index",
     "pages/installment_details/installment_details",
     "pages/order/index",
-    "pages/login/login",
-    "pages/login/index",
+    
     "pages/setting/setting",
     "pages/withdrawal_record/transfer",
     "pages/withdrawal/transfer",
@@ -152,7 +158,7 @@
     "pages/delivery_station/delivery_station",
     "pages/delivery_station_list/delivery_station_list",
     "pages/help_center/help_center",
-    "pages/news/news",
+    
     "pages/news_detail/news_detail",
     "pages/qrcode/qrcode",
     "pages/put/put",

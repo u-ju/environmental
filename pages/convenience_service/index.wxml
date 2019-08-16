@@ -18,7 +18,7 @@
   </view>
 </view> -->
 <view class='convenience'>
-  <view class='title size30'>便民服务</view>
+  <!-- <view class='title size30'>便民服务</view> -->
   <view class='flex align_center wrap'>
     <view class='moreitem' wx:for='{{law_hall}}' wx:key="index" data-link='{{item.control}}' bindtap='link'>
       <image src='{{item.image}}'></image>

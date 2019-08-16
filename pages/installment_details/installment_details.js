@@ -165,8 +165,13 @@ Page({
       // nper: app.globalData.config.protocol.nper
       // 
     })
-    that.goods(options.id)
-    that.goodsCart()
+    // that.goods(options.id)
+    // that.goodsCart()
+  },
+  onShow(){
+    if (!wx.getStorageSync('token')) return
+    this.goods(this.data.sku_id)
+    this.goodsCart()
   },
   goods(id) {
     var that = this;
@@ -728,5 +733,6 @@ Page({
     }
     return util.share('啄木鸟环保', '../installment_details/installment_details&pjdata=' + JSON.stringify(pjdata))
     // return util.share('啄木鸟环保', '/pages/installment_details/installment_details?id=' + this.data.sku_id + "&pjurl='../installment_details/installment_details?id='" + this.data.sku_id,)
-  }
+  },
+  
 })

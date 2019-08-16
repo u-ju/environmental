@@ -77,34 +77,7 @@ page {
   line-height: 42rpx;
 }
 
-.login {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
 
-.login .miaoshu {
-  margin: 400rpx 0 40rpx 0;
-  font-size: 28rpx;
-}
-
-.button {
-  width: 300rpx;
-  height: 70rpx;
-  border-radius: 60rpx;
-  display: flex;
-  align-items: center;
-  font-size: 30rpx;
-  justify-content: center;
-}
-
-.button image {
-  width: 60rpx;
-  height: 60rpx;
-  margin-right: 10rpx;
-}
 
 .swiper-notice {
   display: flex;
@@ -227,7 +200,7 @@ page {
   margin-bottom: 18rpx;
 }
 .theme_index{
-  margin: 30rpx auto;
+  margin: 30rpx auto 0rpx auto;
   width: 698rpx;
 }
 .rubbish_index{
@@ -236,7 +209,7 @@ page {
   border-radius:10rpx;
   box-shadow: 0 0 10rpx #94decf;
   padding: 0 26rpx;
-  margin: auto;
+  margin: 30rpx auto 0 auto;
 }
 .rubbish_index_pic{
   width: 284rpx;

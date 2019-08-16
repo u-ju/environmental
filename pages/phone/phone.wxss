@@ -36,7 +36,7 @@ button::after{
   font-size: 32rpx;
   color: white;
   margin-top: 60rpx;
-  background: #4FD6F0;
+  background: #32B4A0;
 }
 .bgDDDDDD{
   background: #DDDDDD;

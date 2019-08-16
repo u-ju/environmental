@@ -1,4 +1,9 @@
 {
+    "usingComponents": {
+    "dialog": "../../Components/dialog/index",
+    "menu": "../../Components/menu/index",
+    "empty": "../../Components/empty/index"
+  },
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 50
 }

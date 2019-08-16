@@ -1,4 +1,5 @@
 //app.js
+import { ToastPannel } from './Components/appToast/appToast'
 var util = require('utils/util.js');
 var apiurl = require('utils/api.js');
 // 引入SDK核心类
@@ -6,6 +7,7 @@ var QQMapWX = require('utils/qqmap-wx-jssdk.min.js');
 var bmap = require('utils/bmap-wx.min.js')
 var qqmapsdk;
 App({
+  ToastPannel,
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || [],that =this;

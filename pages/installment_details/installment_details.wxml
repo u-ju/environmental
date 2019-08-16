@@ -127,7 +127,7 @@
 
 
 </view>
-<view class='fixed' wx:if='{{result.source=="online"}}'>
+<view class='fixed' wx:if='{{result.source=="online"||result.source=="market"}}'>
   <view class='flex_btw align_center'>
     <view class='car flex_btw' bindtap='carview'>
       <view class='shopcar'>

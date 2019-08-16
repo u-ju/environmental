@@ -87,10 +87,8 @@ Page({
               util.postJSON({ apiUrl: apiurlnow, data: { order_id: that.data.order_id } }, function (res) {
                 var result = res.data.result
                 util.alert(res.data.message)
-                // wx.navigateBack()
-                wx.showLoading({
-                  title: '加载中',
-                })
+                wx.navigateBack()
+               
               })
             } else {
               console.log('用户点击取消')

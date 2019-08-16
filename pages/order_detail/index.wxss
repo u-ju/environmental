@@ -106,7 +106,7 @@ checkbox .wx-checkbox-input {
   width: 40rpx;
   height: 40rpx;
   border-radius: 5rpx;
-  border-color: #27aad9;
+  border-color: #32B4A0;
 }
 
 /*checkbox选中后图标样式  */
@@ -116,8 +116,8 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 }
 /*checkbox选中后样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  background: #27aad9;
-  border-color: #27aad9;
+  background: #32B4A0;
+  border-color: #32B4A0;
 }
 .margint40{
   margin-top: 40rpx;

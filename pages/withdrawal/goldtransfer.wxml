@@ -1,0 +1,45 @@
+<!--pages/withdrawal/goldtransfer.wxml-->
+<view class='con'>
+  <view class='inputitem'>
+      <view class='bold'>转入账户</view>
+      <view class='inputmon inputnum flex_btw align_center'>
+        <input  type='number' bindinput='blurnum' placeholder='请输入手机号' maxlength='11' ></input>
+      </view>
+    </view>
+  <block wx:if="{{list.length>0}}">
+    <view class='bold'>请选择</view>
+    <view class='choosech'>
+      <block wx:if="{{list.length>0}}">
+        <view wx:for='{{list}}' wx:key='index' class='flex_btw align_center chooseitem ' data-user_id='{{item.user_id}}' bindtap='choose' wx:if="{{item.user_id}}">
+          <view class='flex_btw align_center'>
+            <image class='moneypic' src='{{item.avatar}}'></image>
+            <view>
+              <view class='marb10'>{{item.nickname}}</view>
+              <view>{{item.mobile}}</view>
+            </view>
+          </view>
+          <image src='../../images/choosed.png' class='choose' wx:if='{{current==item.user_id}}'></image>
+          <image src='../../images/choose.png' class='choose' wx:else></image>
+        </view>
+      </block>
+    </view>
+  </block>
+  <form bindsubmit="formSubmit">
+    <view class='inputitem'>
+      <view class='bold'>转账金额</view>
+      <view class='inputmon flex_btw align_center'>
+        <text class='size60'>￥</text>
+
+        <input bindinput='onChange' type='digit' bindblur='onblur' name='amount' value='{{amount}}'></input>
+      </view>
+    </view>
+    <view class='color9 margint70 flex_btw'>
+      <view>余额
+        <text class='colorC70000'> {{yu}}元</text>
+        <text class='color299EF0' bindtap='all'>全部转账</text>
+      </view>
+    </view>
+    <button formType="submit" disabled='{{sure}}' class='sure {{sure?"bgDDDDDD":""}}'>下一步</button>
+
+  </form>
+</view>

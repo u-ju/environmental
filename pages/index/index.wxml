@@ -1,129 +1,120 @@
 <!--index.wxml-->
 
-<block wx:if="{{token&&token!=1}}">
+<block>
   <popupImg wx:if="{{!guidel}}" visablen="{{popout}}" dat="{{popout_image}}" bind:close="guidel" />
   <import src="../../Components/tab-bar/tab-bar.wxml" />
   <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
   <!-- <scroll-view scroll-y class='index'> -->
 
-    <view class='swipercontent'>
-      <view class='flex align_center top'>
-        <view class='flex align_center colorfff gotarea hidden1' bindtap='goarea'>
-          <view class='iconfont icon-dingwei locations size48'></view>
-          <view class=' hidden1 bold color4'>{{address}}</view>
+  <view class='swipercontent'>
+    <view class='flex align_center top'>
+      <view class='flex align_center colorfff gotarea hidden1' bindtap='goarea'>
+        <view class='iconfont icon-dingwei locations size48'></view>
+        <view class=' hidden1 bold color4'>{{address}}</view>
+      </view>
+      <view class='searchall flex_btw align_center' bindtap='search'>
+        <text class='iconfont icon-sousuo color4 searchall_pic'></text>
+        <input disabled='disabled' value='{{search}}' placeholder='输入想要查找的内容' name='search'></input>
+      </view>
+    </view>
+    <swiper indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' current="{{cur}}" bindchange="swiperChange">
+      <swiper-item wx:for="{{banner_arr}}" wx:key="index" data-link='{{item.control}}' bindtap='link'>
+        <image src="{{item.image}}" class="slide-image" mode='aspectFill' bindtap='previewImg' data-src='{{item}}' />
+      </swiper-item>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{banner_arr}}" wx:key="index">
+        <view class="dot {{index == swiperCurrent ?'active':''}}"></view>
+      </block>
+    </view>
+  </view>
+  <view class='flex_btw theme_index' wx:if="{{tag_arr.length>0}}">
+    <view class='theme' wx:for="{{tag_arr}}" wx:key="index" data-link='{{item.control}}' bindtap='link'>
+      <image src='{{item.image}}'></image>
+      <view>{{item.name}}</view>
+    </view>
+  </view>
+  <view class='rubbish_index flex_btw align_center' data-link='{{rail.control}}' bindtap='link'>
+    <view class='size36'>{{rail.name}}</view>
+    <image class='rubbish_index_pic' src='{{rail.image}}'></image>
+  </view>
+
+
+
+  <view class='bg marginfff' wx:if="{{wallet.length>0}}">
+    <view class='flex color20CD86 align_center title_index'>
+      <view class='left_bor'></view>
+      <view>环保奖励</view>
+    </view>
+    <view class="container flex_btw twobr" wx:if="{{wallet.length>0}}">
+      <view class='index_putin border_right left' wx:for="{{wallet}}" wx:key="index" data-link='{{item.control}}' bindtap='link'>
+        <view class='money_index flex'>
+          <text class='size30'>{{item.name}}</text>
+          <view class='wallet size24 index_putin_right'>
+            详情
+          </view>
         </view>
-        <view class='searchall flex_btw align_center' bindtap='search'>
-          <text class='iconfont icon-sousuo color4 searchall_pic'></text>
-          <input disabled='disabled' value='{{search}}' placeholder='输入想要查找的内容' name='search'></input>
+        <view>
+          <text class='size34 colorff1919'>{{item.value}}</text>
         </view>
       </view>
-      <swiper indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' current="{{cur}}" bindchange="swiperChange">
-        <swiper-item wx:for="{{banner_arr}}" wx:key="index" data-link='{{item.control}}' bindtap='link'>
-          <image src="{{item.image}}" class="slide-image" mode='aspectFill' bindtap='previewImg' data-src='{{item}}' />
+    </view>
+  </view>
+  <view class='swiper-notice'>
+    <image src='../../images/notice.png' class='className'></image>
+    <swiper class='swiper-nav' vertical='true' autoplay='false' circular='true' interval='3000'>
+      <block wx:for='{{notify_arr}}' wx:key='unique'>
+        <!-- <navigator url='{{item.url}}' hover-class='none'> -->
+        <swiper-item bindtap='link' data-link='{{item.control}}'>
+          <view class='swiper-context color9'>{{item.name}}</view>
         </swiper-item>
-      </swiper>
-      <view class="dots">
-        <block wx:for="{{banner_arr}}" wx:key="index">
-          <view class="dot {{index == swiperCurrent ?'active':''}}"></view>
-        </block>
+        <!-- </navigator> -->
+      </block>
+    </swiper>
+  </view>
+  <view class='service_index'>
+    <view class='flex color20CD86 align_center title_index'>
+      <view class='left_bor'></view>
+      <view>其他服务</view>
+    </view>
+    <view class='flex_btw'>
+      <view class='relative' data-link='{{block_arr[0].control}}' bindtap='link'>
+        <view class='block_arr_title'>{{block_arr[0].name}}</view>
+        <image class='service_index_big' src='{{block_arr[0].image}}'></image>
+      </view>
+      <view class='flex_col flex_btw'>
+        <view class='relative' wx:for="{{block_arr}}" wx:key='index' hidden='{{index==0}}' data-link='{{item.control}}' bindtap='link'>
+          <view class='block_arr_title'>{{item.name}}</view>
+          <image class='service_index_small' src='{{item.image}}'></image>
+        </view>
       </view>
     </view>
-    <view class='flex_btw theme_index' >
-      <view class='theme' wx:for="{{tag_arr}}" wx:key="index" data-link='{{item.control}}' bindtap='link'>
-        <image src='{{item.image}}'></image>
-        <view>{{item.name}}</view>
-      </view>
-    </view>
-    <view class='rubbish_index flex_btw align_center'  bindtap='show'>
-      <view class='size36'>{{rail.name}}</view>
-      <image class='rubbish_index_pic' src='{{rail.image}}'></image>
-    </view>
-
-
-
-    <view class='bg marginfff'>
+  </view>
+  <!-- <view class='service_index' hidden="{{is_audit==1}}">
+    <view class='flex_btw color20CD86 align_center'>
       <view class='flex color20CD86 align_center title_index'>
         <view class='left_bor'></view>
-        <view>环保奖励</view>
+        <view>优品推荐</view>
       </view>
-      <view class="container flex_btw twobr" wx:if="{{wallet.length>0}}">
-        <view class='index_putin border_right left' wx:for="{{wallet}}" wx:key="index"  data-link='{{item.control}}' bindtap='link'>
-          <view class='money_index flex'>
-            <text class='size30'>{{item.name}}</text>
-            <view class='wallet size24 index_putin_right'>
-              详情
-            </view>
-          </view>
-          <view>
-            <text class='size34 colorff1919'>{{item.value}}</text>
-          </view>
-        </view>
-      </view>
+      <navigator url='../agriculturalRecommendation/index'>更多</navigator>
     </view>
-    <view class='swiper-notice'>
-      <image src='../../images/notice.png' class='className'></image>
-      <swiper class='swiper-nav' vertical='true' autoplay='false' circular='true' interval='3000'>
-        <block wx:for='{{notify_arr}}' wx:key='unique'>
-          <!-- <navigator url='{{item.url}}' hover-class='none'> -->
-          <swiper-item bindtap='link' data-link='{{item.control}}'>
-            <view class='swiper-context color9'>{{item.name}}</view>
-          </swiper-item>
-          <!-- </navigator> -->
-        </block>
-      </swiper>
-    </view>
-    <view class='service_index'>
-      <view class='flex color20CD86 align_center title_index'>
-        <view class='left_bor'></view>
-        <view>其他服务</view>
-      </view>
-      <view class='flex_btw'>
-        <view class='relative' data-link='{{block_arr[0].control}}' bindtap='link'>
-          <view class='block_arr_title'>{{block_arr[0].name}}</view>
-          <image class='service_index_big' src='{{block_arr[0].image}}'></image>
+    <view class='wrap visible flex_btw'>
+      <view class="item-ans a{{index}}" wx:for="{{list}}" wx:key="index" bindtap='details' data-id='{{item.sku_id}}'>
+        <view class="avatar avatar_d }">
+          <image class="img" src="{{item.thumb}}" mode='aspectFill'></image>
         </view>
-        <view class='flex_col flex_btw'>
-          <view class='relative' wx:for="{{block_arr}}" wx:key='index' hidden='{{index==0}}' data-link='{{item.control}}' bindtap='link'>
-            <view class='block_arr_title'>{{item.name}}</view>
-            <image class='service_index_small' src='{{item.image}}'></image>
+        <view class="expertInfo">
+          <view class="name size30 color4 one-hidden">{{item.spu_name}}</view>
+          <view class='colorff1919'>
+            <view>价格:￥{{item.price}}</view>
+            <view  wx:if='{{item.user_return>0}}'>(积分兑换环保金{{item.user_return}})</view>
           </view>
         </view>
       </view>
     </view>
-    <view class='service_index'>
-      <view class='flex_btw color20CD86 align_center'>
-        <view class='flex color20CD86 align_center title_index'>
-          <view class='left_bor'></view>
-          <view>优品推荐</view>
-        </view>
-        <navigator url='../agriculturalRecommendation/index'>更多</navigator>
-      </view>
-      <view class='wrap visible flex_btw'>
-        
-            <view class="item-ans a{{index}}" wx:for="{{list}}" bindtap='details'  data-id='{{item.sku_id}}'>
-              <view class="avatar avatar_d }">
-                <image class="img" src="{{item.thumb}}" mode='aspectFill'></image>
-              </view>
-              <view class="expertInfo">
-                <view class="name size30 color4 one-hidden">{{item.spu_name}}</view>
-                <view class='colorff1919'>
-                  <view>价格:￥{{item.price}}</view>
-                  <view>(积分兑换环保金{{item.user_return}})</view>
-                </view>
-              </view>
-            </view>
-      </view>
-    </view>
-    <view class='height108'></view>
+  </view> -->
+  <!-- <view class='height108'></view> -->
   <!-- </scroll-view> -->
 </block>
-<view class='login' wx:elif='{{token==1}}'>
-  <view class='miaoshu'>登录后享受更多功能</view>
-  <button class='button' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
-    <image src='../../images/wx.png'></image>
-    <text>授权登录</text>
-  </button>
-</view>
-<view class='login' wx:else>
-</view>
+
 <wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="所在地区" options="{{ shop_cate }}" bind:close="onClose1" bind:change="onChange1" />

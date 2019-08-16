@@ -3,7 +3,7 @@
   <view class="tabTit box">
     <view class="flex align_center flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
       <text class='marginr6'>{{item}}</text>
-      <view  wx:if='{{index==0}}'>
+      <view wx:if='{{index==0}}'>
         <text class='iconfont icon-jiantou_shang size24 colorBE' wx:if='{{tab[index]==1}}'></text>
         <text class='iconfont icon-jiantou_xia size24 color4AD6A3' wx:else></text>
       </view>
@@ -23,16 +23,16 @@
       </view>
   </view>
 </view> -->
-  <view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}">
+<view class="quyu {{qyopen ?'slidown' :'slidup'}} {{qyshow ? 'disappear':''}}">
 
-    <view class='chice'>
-      <view class="qy quyu-left" style='width:{{(100/goods.length)}}%' wx:for="{{goods}}" wx:key="index" wx:for-index = "indexnum">
-        <view class="{{current[indexnum]==goods.id?'current':''}}" data-index='{{indexnum}}' wx:for="{{item}}"  wx:for-item="goods" wx:key="index" bindtap="select" data-item='{{goods}}'>
-          {{goods.name}}
-        </view>
+  <view class='chice'>
+    <view class="qy quyu-left" style='width:{{(100/goods.length)}}%' wx:for="{{goods}}" wx:key="index" wx:for-index="indexnum">
+      <view class="{{current[indexnum]==goods.id?'current':''}}" data-index='{{indexnum}}' wx:for="{{item}}" wx:for-item="goods" wx:key="index" bindtap="select" data-item='{{goods}}'>
+        {{goods.name}}
       </view>
     </view>
-    <!-- <view class="qy quyu-center">
+  </view>
+  <!-- <view class="qy quyu-center">
       <view class="{{select2 == index ? 'current2' : ''}}" wx:for="{{citycenter}}" bindtap="selectcenter" data-city='{{index}}'>
         {{index}}
       </view>
@@ -43,15 +43,15 @@
         <image src='/images/selectRight.png' style="{{select3 == index?'display:block':'display:none'}}"></image>
       </view>
     </view> -->
-    <view class='form-btn'>
-      <button class='btn-reset' bindtap='quyuEmpty'>重置</button>
-      <button class='btn-submit' bindtap='submitFilter'>确定</button>
-    </view>
+  <view class='form-btn'>
+    <button class='btn-reset' bindtap='quyuEmpty'>重置</button>
+    <button class='btn-submit' bindtap='submitFilter'>确定</button>
   </view>
- <!-- 下面列表 -->
+</view>
+<!-- 下面列表 -->
 <view class="container">
- 
-  <view class='xiangqing' wx:for="{{list}}" wx:key="index" bindtap="detail" data-sku_id='{{item.sku_id}}'>
+
+  <!-- <view class='xiangqing' wx:for="{{list}}" wx:key="index" bindtap="detail" data-sku_id='{{item.sku_id}}'>
     <view class='xiangqing_img'>
         <image src='{{item.thumb}}'  mode='aspectfit'></image>
     </view>
@@ -60,7 +60,21 @@
       <view class='colorff1919'>价格：￥{{item.price}}<text class='size24' wx:if='{{item.user_return>0}}'> (积分兑环保金{{item.user_return}})</text></view>
       
     </view>
+  </view> -->
+  <view class='wrap visible flex_btw'>
+    <view class="item-ans a{{index}}" wx:for="{{list}}" wx:key="index" bindtap="detail" data-sku_id='{{item.sku_id}}'>
+      <view class="avatar avatar_d }">
+        <image class="img" src="{{item.thumb}}" mode='aspectFill'></image>
+      </view>
+      <view class="expertInfo">
+        <view class="name size30 color4 one-hidden">{{item.spu_name}}</view>
+        <view class='colorff1919'>
+          <view>价格:￥{{item.price}}</view>
+          <view  wx:if='{{item.user_return>0}}'>(积分兑换环保金{{item.user_return}})</view>
+        </view>
+      </view>
+    </view>
   </view>
   <empty wx:if='{{list.length==0}}' />
 </view>
-<view class="fullbg {{isfull ?'fullopacity':''}}"  bindtap="hidebg"></view>
+<view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>

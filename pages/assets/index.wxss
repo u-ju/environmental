@@ -24,7 +24,7 @@ page{
   border-right:none;
 }
 .tab>view> view.active{
-  color: #4FD7F1
+  color: #32B4A0
 }
 .money image{
   width: 55rpx;

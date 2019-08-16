@@ -131,7 +131,7 @@ Page({
         news: result.list,
         page: result.page,
         last: false,
-        length: Math.ceil(list.length / 4)
+        length: Math.ceil(result.list.length / 4)
       })
       // 隐藏导航栏加载框
       wx.hideNavigationBarLoading();

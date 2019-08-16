@@ -9,8 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content_source:"",
-    content:""
+    content_source: "",
+    content: ""
   },
 
   /**
@@ -18,35 +18,35 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    
+
     // var data = { news_id: Number(options.id)}
     // if (options.id_name =="help_id"){
-    var  data = { help_id: Number(options.id) }
+    var data = { help_id: Number(options.id) }
     // }
     // console.log(data)
-    util.getJSON({ apiUrl: apiurl.help_show, data: data}, function (res) {
+    util.getJSON({ apiUrl: apiurl.help_show, data: data }, function (res) {
       var result = res.data.result
       // var result = {
       //   content_source:"url",
       //   content:"https://www.baidu.com/"
       // }
       // console.log(result)
-      if (result.content_source=="text"){
+      if (result.content_source == "text") {
         that.setData({
           content_source: result.content_source,
           content: result.content,
         })
-      } else if (result.content_source == "url"){
+      } else if (result.content_source == "url") {
         that.setData({
           content_source: result.content_source,
           content: result.content,
         })
-      }else{
-        
+      } else {
+
         WxParse.wxParse('article', 'html', result.content, that, 5);
       }
-      
-      
+
+
       util.hideLoading()
     })
   },

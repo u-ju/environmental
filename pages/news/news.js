@@ -1,127 +1,152 @@
-// pages/news/news.js 
+// pages/find/find.js
 const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
+var template = require('../../Components/tab-bar/tab-bar.js');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    currentData: 0,
-    tab: ["行业新闻","平台新闻"],
-    news:[],
-    cate_id:1,
-    last:false,
-    ecoBag_applyIndex:[],
-    page:{}
-  },
+    tab: [],
+    winHeight: "",//窗口高度
+    currentTab: 0, //预设当前项的值
+    scrollLeft: 0, //tab标题的滚动条位置
+    expertList: [
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+    ],
+    topNum: 0,
+    news: [0],
+    page: {},
+    length: 0,
+    cate_id: '',
+    tabbarid: 0
+  },
+  like(e) {
+    // if (!e.currentTarget.dataset.praise){
     var that = this;
-    wx.showLoading({
-      title: '加载中',
-    })
-    
-    util.getJSON({ apiUrl: apiurl.config }, function (res) {
-      var result = res.data.result
-      console.log(res)
+    util.postJSON({ apiUrl: apiurl.news_praiseStore, data: { news_id: e.currentTarget.dataset.id } }, function (res) {
+      var news = that.data.news
+      var praise = e.currentTarget.dataset.praise
+      var like = news[e.currentTarget.dataset.index].like
+      if (praise == 0) {
+        praise = 1
+        like = like - 0 + 1
+      } else {
+        praise = 0
+        like = like - 1
+      }
+      news[e.currentTarget.dataset.index].praise = praise
+      news[e.currentTarget.dataset.index].like = like
       that.setData({
-        tab: result.news_cate
+        news: news
       })
     })
-    that.init()
   },
-  init(page=1){
+  _addEvent() {
+    this.setData({
+      topNum: 0,
+    });
+  },
+  onReady() {
+    template.tabbar("tabBar", 0, this)
+  },
+  // 滚动切换标签样式
+  switchTab: function (e) {
+    this.setData({
+      currentTab: e.detail.current
+    });
+    this.checkCor();
+  },
+  // 点击标题切换当前页时改变样式
+  swichNav: function (e) {
+    var cur = e.target.dataset.current;
+    if (this.data.currentTaB == cur) {
+      return false;
+    } else {
+      // console.log(e)
+      this.setData({
+        currentTab: cur,
+        cate_id: e.target.dataset.cate_id
+      })
+      this.init(e.target.dataset.cate_id)
+    }
+  },
+  //判断当前滚动超过一屏时，设置tab标题滚动条。
+  checkCor: function () {
+
+  },
+  onLoad: function () {
+    
+    //  高度自适应
+    // console.log(Math.ceil(this.data.expertList.length / 4))
+    // console.log(this.data.expertList.length)
+    util.loading()
+    
+  },
+  onShow(){
     var that = this;
-    util.getJSON({ apiUrl: apiurl.ecoBag_applyIndex+"?page="+page}, function (res) {
+    if (!wx.getStorageSync('token'))return
+    wx.getSystemInfo({
+      success: function (res) {
+        var clientHeight = res.windowHeight,
+          clientWidth = res.windowWidth,
+          rpxR = 750 / clientWidth;
+        var calc = clientHeight * rpxR - 102;
+
+        that.setData({
+          winHeight: calc
+        });
+      }
+    });
+    util.getJSON({ apiUrl: apiurl.config }, function (res) {
+      that.setData({
+        tab: app.globalData.config.news_cate,
+        cate_id: app.globalData.config.news_cate[0].id
+      });
+    })
+    if (app.globalData.config.news_cate.length > 0) {
+      // console.log(app.globalData.config.news_cate)
+      that.init(app.globalData.config.news_cate[0].id);
+      // that.init();
+    } else {
+      that.init();
+    }
+  },
+  init(cate_id = '', page = 1) {
+    var that = this;
+    util.getJSON({ apiUrl: apiurl.news + "?cate_id=" + cate_id + "&page=" + page }, function (res) {
       var result = res.data.result
-      console.log(result)
+
       var list = result.list
-      if (page != 1){
-        list = that.data.list.concat(list)
+      if (page != 1) {
+        list = that.data.news.concat(list)
       }
       that.setData({
-        list: list,
+        news: list,
         page: result.page,
-        last: false
+        last: false,
+        length: Math.ceil(list.length / 4)
       })
       util.hideLoading()
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-  //获取当前滑块的index
-  bindchange: function (e) {
-    const that = this;
-    that.setData({
-      currentData: e.detail.current
-    })
-  },
-  //点击切换，滑块index赋值
-  checkCurrent: function (e) {
-    const that = this;
-    if (that.data.currentData === e.target.dataset.current) {
-      return false;
-    } else {
-      that.setData({
-        currentData: e.target.dataset.current,
-        cate_id: e.target.dataset.cate_id,
-        news:""
-      })
-      that.init(e.target.dataset.cate_id)
-    }
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  
   onPullDownRefresh: function () {
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
-    util.getJSON({ apiUrl: apiurl.news, data: { cate_id: that.data.cate_id, page: 1 }}, function (res) {
+    util.getJSON({ apiUrl: apiurl.news + "?cate_id=" + that.data.cate_id + "&page=1" }, function (res) {
       var result = res.data.result
       console.log(result)
       that.setData({
         news: result.list,
         page: result.page,
-        last:false
+        last: false,
+        length: Math.ceil(result.list.length / 4)
       })
       // 隐藏导航栏加载框
       wx.hideNavigationBarLoading();
       // 停止下拉动作
       wx.stopPullDownRefresh();
     })
-    
+
   },
 
   /**
@@ -134,27 +159,30 @@ Page({
       title: '玩命加载中',
     })
     // 页数+1
-    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)){
-      that.init(that.data.cate_id,Number(that.data.page.current_page)+1)
-    }else{
+    if (Number(that.data.page.current_page) != Number(that.data.page.last_page)) {
+      that.init(that.data.cate_id, Number(that.data.page.current_page) + 1)
+    } else {
       that.setData({
-        last:true
+        last: true
       })
       wx.hideLoading()
     }
-    
-
   },
-  detail(e){
-    console.log(e.currentTarget.dataset.news_id)
+  details(e) {
+
     wx.navigateTo({
-      url: '../news_detail/news_detail?url=news_show&id_name=news_id&id=' + e.currentTarget.dataset.news_id,
+      url: '../news_detail/index?id=' + e.currentTarget.dataset.id,
     })
   },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  show() {
+    util.scan()
+  },
+  tabarUrl(e) {
+    console.log(e);
+    if (this.data.tabbarid != e.currentTarget.dataset.id) {
+      wx.redirectTo({
+        url: e.currentTarget.dataset.url,
+      })
+    }
   }
 })

@@ -427,7 +427,7 @@ function unique(array) {
  */
 function getToken(valuetstu='',form,cb,mothed) {
   var that = this;
-  wx.setStorageSync('token', 'zwj')
+  // wx.setStorageSync('token', 'zwj')
   var token = wx.getStorageSync('token')||"";
   // return 'zwj';
   if (token && valuetstu!= 801) {
@@ -435,11 +435,11 @@ function getToken(valuetstu='',form,cb,mothed) {
 
   }
   if (valuetstu==801){
-    wx.reLaunch({
-      url: '../index/index',
+    wx.navigateTo({
+      url: '../login/login',
       fail(){
-        wx.reLaunch({
-          url: '../../index/index',
+        wx.navigateTo({
+          url: '../../login/login',
           
         })
       }
@@ -678,9 +678,9 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
         if (form.apiUrl.indexOf("config") > -1){
           return false
         }
-        wx.setStorageSync("token", 1)
-        wx.reLaunch({
-          url: '../index/index',
+        // wx.setStorageSync("token", 1)
+        wx.navigateTo({
+          url: '../login/login',
         })
         // that.getToken(801, form, call_success,"get")
       } else if (res.data.status == 802) {
@@ -785,9 +785,9 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
         }
       } else if (res.data.status == 801) {
         that.putSync('formData', formData, 600) 
-        wx.setStorageSync("token", 1)
-        wx.reLaunch({
-          url: '../index/index',
+        // wx.setStorageSync("token", 1)
+        wx.navigateTo({
+          url: '../login/login',
         })
       } else if (res.data.status == 802) {
         wx.reLaunch({

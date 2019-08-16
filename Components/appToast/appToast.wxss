@@ -1,0 +1,120 @@
+.toast_content_box {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+}
+
+.toast_content {
+  /* width: 30%;   *//* padding: 20rpx 30rpx;  
+  background: rgba(255, 255, 255,.8);  
+  border-radius: 10rpx;
+  z-index: 999999;    */
+  opacity: 1;
+  transition: all 4s;
+  position: relative;
+  width: 400rpx;
+  height: 310rpx;
+}
+
+.image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400rpx;
+  height: 310rpx;
+}
+
+.toast_content_text {
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  font-size: 34rpx;
+  text-align: center;
+  position: relative;
+  z-index: 11;
+}
+
+.jia {
+  margin: 90rpx 0 0 0;
+}
+
+/* @-webkit-keyframes buzz-out {
+
+0% {
+
+-webkit-transform: translateX(0px) rotate(3deg);
+
+}
+
+100% {
+
+-webkit-transform: translateX(-0px) rotate(-3deg);
+
+}
+
+} */
+
+.toast_content {
+  /* -webkit-animation-name: buzz-out; *//* -webkit-animation-duration: .3s;
+
+-webkit-animation-timing-function: linear;
+
+-webkit-animation-iteration-count: 2; */
+}
+
+.toast_content {
+  -webkit-animation-name: twinkling;
+  animation-name: twinkling;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes twinkling {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes twinkling {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.size72 {
+  font-size: 72rpx;
+}
+
+.size48 {
+  font-size: 48rpx;
+}
+
+.size28 {
+  font-size: 28rpx;
+}
+
+.center {
+  text-align: center;
+}

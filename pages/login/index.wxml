@@ -12,6 +12,23 @@
     <input placeholder-class='colorc size32' password='password' class='width100' placeholder='请输入密码' value='{{password}}'  name='password' ></input>
   </view>
   
-  <button formType="submit" disabled='{{sure}}'  class='sure {{sure?"bgDDDDDD":""}}'>登录</button>
+  <button formType="submit" disabled='{{sure}}'  class='sure {{sure?"bgDDDDDD":""}}'>登 录</button>
 </form>
-<view class='center color4fd6f0' bindtap='index'>手机验证码登录</view>
+<!-- <view class='login'>
+  <view class='miaoshu'>登录后享受更多功能</view>
+  <button class='button' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+    <image src='../../images/wx.png'></image>
+    <text>授权登录</text>
+  </button>
+</view> -->
+<!-- <view class='center color4fd6f0' bindtap='index'>手机验证码登录</view> -->
+<view class='flex_ard align_center czbtn'>
+  <button class='button flex_col flex_btw ' open-type="getUserInfo" hover-class="other-button-hover" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+      <text class='iconfont icon-weixin'></text>
+      <text>微信登录</text>
+  </button>
+  <view class='center loginm  flex_col flex_btw ' bindtap='index'>
+    <text class='iconfont icon-yanzhengma'></text>
+    <text>手机验证码</text>
+  </view>
+</view>

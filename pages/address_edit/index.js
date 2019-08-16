@@ -24,7 +24,7 @@ Page({
   onLoad: function (options) {
     if (options.item){
       var item = JSON.parse(options.item)
-      console.log(item)
+      
       this.setData({
         item: item,
         name: item.name,
@@ -39,7 +39,7 @@ Page({
     }
   },
   formSubmit(e){
-    // console.log(e)
+    
     var data = e.detail.value,that = this;
     data.area_id = that.data.area_id
     that.setData({
