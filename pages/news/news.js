@@ -3,6 +3,7 @@ const app = getApp()
 var util = require('../../utils/util.js');
 var apiurl = require('../../utils/api.js');
 var template = require('../../Components/tab-bar/tab-bar.js');
+var lastTime=''
 Page({
   data: {
     tab: [],
@@ -40,6 +41,40 @@ Page({
       })
     })
   },
+  like(e) {
+    var that = this;
+    var id = e.currentTarget.dataset.id, like = e.currentTarget.dataset.like, praise = e.currentTarget.dataset.praise, index = e.currentTarget.dataset.index, news = this.data.news
+    news[index]['like'] = praise == 0 ? like - 0 + 1 : like - 1
+    news[index]['praise'] = praise==0 ? 1 : 0
+    this.setData({
+      news: news
+    })
+    util.postJSON({
+      apiUrl: apiurl.news_praiseStore,
+      data: { news_id: id }
+      // apiUrl: apiurl.collectUpdate,
+      // data: { source: 'news', source_id: id }
+    }, function (res) {
+      // console.log(res)
+    })
+  },
+  collect(e) {
+    var that = this;
+    var id = e.currentTarget.dataset.id, collect_list_count = e.currentTarget.dataset.collect_list_count, collect = e.currentTarget.dataset.collect, index = e.currentTarget.dataset.index, news = this.data.news
+    news[index]['collect_list_count'] = collect == 0 ? collect_list_count - 0 + 1 : collect_list_count - 1
+    news[index]['collect'] = collect == 0 ? 1 : 0
+    this.setData({
+      news: news
+    })
+    util.postJSON({
+      // apiUrl: apiurl.news_praiseStore,
+      // data: { news_id: id }
+      apiUrl: apiurl.collectUpdate,
+      data: { source: 'news', source_id: id }
+    }, function (res) {
+      console.log(res)
+    })
+  },
   _addEvent() {
     this.setData({
       topNum: 0,
@@ -74,16 +109,7 @@ Page({
 
   },
   onLoad: function () {
-    
-    //  高度自适应
-    // console.log(Math.ceil(this.data.expertList.length / 4))
-    // console.log(this.data.expertList.length)
-    util.loading()
-    
-  },
-  onShow(){
     var that = this;
-    if (!wx.getStorageSync('token'))return
     wx.getSystemInfo({
       success: function (res) {
         var clientHeight = res.windowHeight,
@@ -96,21 +122,28 @@ Page({
         });
       }
     });
+    util.loading()
     util.getJSON({ apiUrl: apiurl.config }, function (res) {
       that.setData({
         tab: app.globalData.config.news_cate,
         cate_id: app.globalData.config.news_cate[0].id
       });
     })
-    if (app.globalData.config.news_cate.length > 0) {
-      // console.log(app.globalData.config.news_cate)
-      that.init(app.globalData.config.news_cate[0].id);
-      // that.init();
+  },
+  onShow(){
+    var that = this;
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1].route;
+    if (!wx.getStorageSync('token') && wx.getStorageSync('pagesroute') == currPage) return wx.setStorageSync('pagesroute', '')
+    
+    
+    if (this.data.cate_id !== '' && this.data.cate_id !=undefined) {
+      that.init(this.data.cate_id);
     } else {
       that.init();
     }
   },
-  init(cate_id = '', page = 1) {
+  init(cate_id = app.globalData.config.news_cate[0].id, page = 1) {
     var that = this;
     util.getJSON({ apiUrl: apiurl.news + "?cate_id=" + cate_id + "&page=" + page }, function (res) {
       var result = res.data.result

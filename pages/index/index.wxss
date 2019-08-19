@@ -19,15 +19,13 @@ page {
   height: 60rpx;
   border-radius: 39rpx;
   background-color: rgba(255,255,255,.7);
+  box-shadow: 0 0 10rpx #94decf;
 }
 
 .top {
   /* 10rpx 54rpx */
   width: 670rpx;
-  position: absolute;
-  top: 10rpx;
-  left: 10rpx;
-  z-index: 999;
+  margin: 10rpx  auto 24rpx auto;
 }
 
 .searchall input {

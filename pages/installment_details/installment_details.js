@@ -169,7 +169,9 @@ Page({
     // that.goodsCart()
   },
   onShow(){
-    if (!wx.getStorageSync('token')) return
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1].route;
+    if (!wx.getStorageSync('token') && wx.getStorageSync('pagesroute') == currPage) return wx.setStorageSync('pagesroute', '')
     this.goods(this.data.sku_id)
     this.goodsCart()
   },

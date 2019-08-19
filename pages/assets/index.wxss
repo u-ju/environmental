@@ -41,7 +41,7 @@ page{
 .withdrawal{
   width:310rpx;
   height:88rpx;
-  background:#4FD7F1;
+  background:#32B4A0;
   border-radius:10rpx;
   line-height: 88rpx;
   text-align: center;
@@ -161,6 +161,6 @@ page{
 }
 .zhuan{
   background-color: #E5E5E5;
-  color: #4FD6F0;
+  color: #32B4A0;
   
 }

@@ -60,7 +60,7 @@ Page({
   
   formSubmit(e){
     var data = {}, that = this;
-      data.step= 2
+      // data.step= 2
     data.front = that.data.upload_picture_list0[0] && that.data.upload_picture_list0[0].path_server ? that.data.upload_picture_list0[0].path_server:''
     data.back = that.data.upload_picture_list1[0] && that.data.upload_picture_list1[0].path_server ? that.data.upload_picture_list1[0].path_server: '' 
     data.avatar = that.data.upload_picture_list2[0] && that.data.upload_picture_list2[0].path_server ? that.data.upload_picture_list2[0].path_server:''  

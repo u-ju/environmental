@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "我的小区",
   "usingComponents": {
-    "area": "../../Components/area/index"
+    "area": "../../Components/area_/index"
   }
 }

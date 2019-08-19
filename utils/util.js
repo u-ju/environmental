@@ -436,65 +436,65 @@ function getToken(valuetstu='',form,cb,mothed) {
   }
   if (valuetstu==801){
     wx.navigateTo({
-      url: '../login/login',
+      url: '../authorization/index',
       fail(){
         wx.navigateTo({
-          url: '../../login/login',
+          url: '../../authorization/index',
           
         })
       }
     })
     return false
   }
-  wx.login({
-    success: function (res) {
-      var data = { wx_code: res.code, wx_appid: that.wx_appid }
-      if (res.code) {
-        that.postJSON({ apiUrl: apiurl.wechatLetAttemptLogin,data:data,token:"huhu"},function(res1){
-          if (res1.data.result.token){
-            wx.setStorageSync("token", res1.data.result.token)
-            token = res1.data.result.token
-            if(mothed=="get"){
-              that.getJSON(form, cb)
-            } else if (mothed == "post"){
-              that.postJSON(form, cb)
-            }
-            return token;
+  // wx.login({
+  //   success: function (res) {
+  //     var data = { wx_code: res.code, wx_appid: that.wx_appid }
+  //     if (res.code) {
+  //       that.postJSON({ apiUrl: apiurl.wechatLetAttemptLogin,data:data,token:"huhu"},function(res1){
+  //         if (res1.data.result.token){
+  //           wx.setStorageSync("token", res1.data.result.token)
+  //           token = res1.data.result.token
+  //           if(mothed=="get"){
+  //             that.getJSON(form, cb)
+  //           } else if (mothed == "post"){
+  //             that.postJSON(form, cb)
+  //           }
+  //           return token;
             
-          }else{
-            wx.getUserInfo({
-              success(res2) {
-                that.postJSON({ apiUrl: apiurl.wechatLetLogin, 
-                data: {
-                  wx_appid: that.wx_appid, 
-                  session_key: that.base64encode(that.utf16to8(res1.data.result.wx_user.session_key)), 
-                  iv: that.base64encode(that.utf16to8(res2.iv)), 
-                  encrypt_data: that.base64encode(that.utf16to8(res2.encryptedData))
-                  }, token: "huhu"
-                }, function (res3) {
-                  wx.setStorageSync("token", res3.data.result.token)
-                  if (mothed == "get") {
-                    that.getJSON(form, cb)
-                  } else if (mothed == "post") {
-                    that.postJSON(form, cb)
-                  }
-                  token = res3.data.result.token
-                  return token;
-                })
-              },
-              fail(){
-                wx.setStorageSync("token", '')
-                // wx.redirectTo({
-                //   url: '../index/index',
-                // })
-              }
-            })
-          }
-        })
+  //         }else{
+  //           wx.getUserInfo({
+  //             success(res2) {
+  //               that.postJSON({ apiUrl: apiurl.wechatLetLogin, 
+  //               data: {
+  //                 wx_appid: that.wx_appid, 
+  //                 session_key: that.base64encode(that.utf16to8(res1.data.result.wx_user.session_key)), 
+  //                 iv: that.base64encode(that.utf16to8(res2.iv)), 
+  //                 encrypt_data: that.base64encode(that.utf16to8(res2.encryptedData))
+  //                 }, token: "huhu"
+  //               }, function (res3) {
+  //                 wx.setStorageSync("token", res3.data.result.token)
+  //                 if (mothed == "get") {
+  //                   that.getJSON(form, cb)
+  //                 } else if (mothed == "post") {
+  //                   that.postJSON(form, cb)
+  //                 }
+  //                 token = res3.data.result.token
+  //                 return token;
+  //               })
+  //             },
+  //             fail(){
+  //               wx.setStorageSync("token", '')
+  //               // wx.redirectTo({
+  //               //   url: '../index/index',
+  //               // })
+  //             }
+  //           })
+  //         }
+  //       })
         
-      }
-    }
-  })
+  //     }
+  //   }
+  // })
   return token;
 }
 function alert(msg, time = 3000) {
@@ -575,7 +575,7 @@ function address(suc){
   });
 }
 function nav(link){
-  //console.log(link)
+  console.log(link)
   var that = this
   if (!link.control || JSON.stringify(link.control) == "{}") {
     return 
@@ -588,8 +588,8 @@ function nav(link){
       url = url + "&" + i + "=" + link.control.params[i]
     }
   }
-  if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
-    url = url + "&children=" + JSON.stringify(e.currentTarget.dataset.children)
+  if (link.children != '' && link.children != undefined) {
+    url = url + "&children=" + JSON.stringify(link.children)
   }
   if (url.indexOf('../index/index') > -1 || url.indexOf('../personal_center/personal_center') > -1) {
     wx.reLaunch({
@@ -680,7 +680,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
         }
         // wx.setStorageSync("token", 1)
         wx.navigateTo({
-          url: '../login/login',
+          url: '../authorization/index',
         })
         // that.getToken(801, form, call_success,"get")
       } else if (res.data.status == 802) {
@@ -787,7 +787,7 @@ function postJSON(form = {}, call_success, warning, ErrorMsg) {
         that.putSync('formData', formData, 600) 
         // wx.setStorageSync("token", 1)
         wx.navigateTo({
-          url: '../login/login',
+          url: '../authorization/index',
         })
       } else if (res.data.status == 802) {
         wx.reLaunch({

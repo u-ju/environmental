@@ -6,3 +6,12 @@
 .size36{
   margin-bottom: 10rpx;
 }
+.czbtn_news .iconfont{
+  margin:0 15rpx 0 62rpx;
+}
+.colorbe{
+  color: #BEBEBE
+}
+.icon-zan2{
+  font-size: 40rpx;
+}

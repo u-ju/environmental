@@ -11,8 +11,8 @@
   </view>
 </view>
 <view class='all'>
-  <view class='size28 color9'>验证号</view>
-  <input placeholder-class='colorc size32' maxlength='6' class='width100' name='code' placeholder='请输入验证号' value='{{code}}' bindinput='code'></input>    
+  <view class='size28 color9'>验证码</view>
+  <input placeholder-class='colorc size32' maxlength='6' class='width100' name='code' placeholder='请输入验证码' value='{{code}}' bindinput='code'></input>    
 </view>
   <button formType="submit" disabled='{{sure}}' bindtap='newphone' class='sure {{sure?"bgDDDDDD":""}}'>确认</button>
 <!-- </form> -->

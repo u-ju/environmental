@@ -20,7 +20,7 @@
   height: 310rpx;
 }
 
-.image {
+.toast_image {
   position: absolute;
   left: 0;
   top: 0;
@@ -38,7 +38,7 @@
   z-index: 11;
 }
 
-.jia {
+.toast_jia {
   margin: 90rpx 0 0 0;
 }
 

@@ -2,17 +2,18 @@
 <!-- <block wx:if="{{result.status！=-1}}"> -->
 <form>
   <view class='all'>
-    <view class='size28 color9'>手机号</view>
+    <view class='size28 color9' wx:if="{{type==1}}">手机号</view>
+    <view class='size28 color9' wx:else>旧手机号</view>
     <view>
       <view class='yzm flex_btw align_center'>
-        <input type='number' maxlength='11' bindinput='phone' placeholder='请输入当前手机号' name='phone' placeholder-class='colorc size32' value='{{phone}}'></input>
+        <input type='number' maxlength='11' bindinput='phone' placeholder='{{type==1?"请输入手机号":"请输入旧手机号"}}' name='phone' placeholder-class='colorc size32' value='{{phone}}'></input>
         <button disabled='{{disabled}}' class='yzm_btn {{disabled?"bgDDDDDD":""}}' data-id="2" bindtap="getVerificationCode">{{time}}</button>
       </view>
     </view>
   </view>
   <view class='all'>
-    <view class='size28 color9'>验证号</view>
-    <input placeholder-class='colorc size32' maxlength='6' class='width100' placeholder='请输入验证号' value='{{code}}' bindinput='code'></input>
+    <view class='size28 color9'>验证码</view>
+    <input placeholder-class='colorc size32' maxlength='6' class='width100' placeholder='请输入验证码' value='{{code}}' bindinput='code'></input>
   </view>
   <view wx:if="{{type==1}}" class='color299EF0 color4FD7A3 size28 center flex align_center'>
     <view class='choose flex align_center' bindtap='choose'>

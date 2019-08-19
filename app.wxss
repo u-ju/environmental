@@ -368,7 +368,7 @@ button::after {
   color: #32B4A0;
 }
 
-.color20CD86{
+.color20CD86,.color32B4A0{
   color: #32B4A0
 }
 .line-through {

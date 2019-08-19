@@ -13,7 +13,7 @@ button::after{
   color: #fff;
   font-size: 24rpx;
 	/* background: linear-gradient(#4663db,#14b8d8); */
-  background-color: #4fd6f0;
+  background-color: #32B4A0;
 }
 .all input{
   height: 62rpx;

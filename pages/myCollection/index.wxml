@@ -1,16 +1,18 @@
 <!--pages/myCollection/index.wxml-->
 <view class='tabitem flex align_center'>
-  <view class='tab flex'>
-    <view class='flex justify_center align_center {{current==0?"active":""}}' bindtap='tabcur' data-cur='0'>
-      <view>商家列表</view>
+  <block wx:for="{{tab}}" wx:key="index">
+    <view class='tab flex'>
+      <view class='flex justify_center align_center {{current==index?"active":""}}' bindtap='tabcur' data-cur='{{index}}'>
+        <view>{{item.title}}</view>
+      </view>
     </view>
-  </view>
-  <view class='xian'></view>
-  <view class='tab flex'>
+    <view class='xian' hidden='{{index==tab.length-1}}'></view>
+  </block>
+  <!-- <view class='tab flex'>
     <view class='flex justify_center align_center {{current==1?"active":""}}' bindtap='tabcur' data-cur='1'>
       <view>商品列表</view>
     </view>
-  </view>
+  </view> -->
 </view>
 <view class='person' wx:if="{{current==0}}">
   <block wx:if="{{list.length>0}}">
@@ -40,4 +42,17 @@
     </block>
   </block>
   <empty wx:else title="暂无收藏商品" />
+</view>
+<view class='person' wx:elif="{{current==2}}">
+  <block wx:if="{{list.length>0}}">
+    <block wx:if='{{list[0].source}}'>
+      <view class='flex_btw agriculturalD' wx:for="{{list}}" bindtap='newsd' data-source_id='{{item.source_id}}' wx:key="index" data-id='{{item.news_info.news_id}}'  bindlongtap='newsb' bindtouchstart='touchStart' bindtouchend='touchEnd'>
+        <image src='{{item.news_info.thumb}}'></image>
+        <view class='flex_btw flex_col'>
+          <view class='hidden2'>{{item.news_info.title}}</view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <empty wx:else title="暂无收藏文章" />
 </view>

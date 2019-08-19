@@ -143,15 +143,15 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    if (this.data.isback) return
-    wx.reLaunch({
-      url: '../index/index',
-      fail(){
-        wx.reLaunch({
-          url: '../../index/index',
-        })
-      }
-    })
+    // if (this.data.isback) return
+    // wx.reLaunch({
+    //   url: '../index/index',
+    //   fail(){
+    //     wx.reLaunch({
+    //       url: '../../index/index',
+    //     })
+    //   }
+    // })
   },
 
   /**

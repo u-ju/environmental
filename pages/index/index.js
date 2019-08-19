@@ -129,8 +129,6 @@ Page({
 
   },
   onShow() {
-    console.log(wx.getStorageSync('token'))
-    // if (!wx.getStorageSync('token')) return
     this.init()
     this.adr()
   },

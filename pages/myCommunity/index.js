@@ -103,7 +103,6 @@ Page({
       })
   },
   choosearea(e) {
-    
     var areaSelectedStr = e.detail.areaSelectedStr
     if (e.detail.biotope_name&&areaSelectedStr.indexOf(e.detail.biotope_name)>-1){
       

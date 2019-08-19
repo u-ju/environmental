@@ -1,16 +1,16 @@
 <!-- 自定义toast组件 -->
 
- <template name="toast"> 
-  <view class="toast_content_box" wx:if="{{ isHide }}">  
+<template name="toast">
+  <view class="toast_content_box" wx:if="{{ isHide }}">
     <view class="toast_content">
-    <image class='image' src='../../images/image.png'></image>  
-      <view class="toast_content_text">  
-        <view class='jia'>
-          <text class='size48'>+</text> 
+      <image class='toast_image' src='../../images/image.png'></image>
+      <view class="toast_content_text">
+        <view class='toast_jia'>
+          <text class='size48'>+</text>
           <text class='size72'>{{value}}</text>
         </view>
         <view class='size28 center'>{{content}}</view>
-      </view>  
-    </view>  
-  </view> 
- </template> 
+      </view>
+    </view>
+  </view>
+</template>

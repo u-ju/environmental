@@ -13,13 +13,13 @@
           <view class='hidden2 color4'>{{item.title}}</view>
           <!-- <view class='hidden2 color999'>{{item.intro}}</view> -->
           <view class='flex'>
-            <view class='czbtn flex align_center'>
-              <text class='iconfont icon-zan2'></text>
-              <text>0</text>
+            <view class='czbtn flex align_center' catchtap='like' data-id='{{item.news_id}}' data-praise='{{item.praise}}' data-like='{{item.like}}' data-index='{{index}}'>
+              <text class='iconfont icon-zan2 {{item.praise==1?"color32B4A0":""}}'></text>
+              <text>{{item.like}}</text>
             </view>
-            <view class='czbtn flex align_center'>
-              <text class='iconfont icon-collection-b'></text>
-              <text>0</text>
+            <view class='czbtn flex align_center' catchtap='collect' data-id='{{item.news_id}}' data-collect='{{item.collect}}' data-collect_list_count='{{item.collect_list_count}}' data-index='{{index}}'>
+              <text class='iconfont icon-collection-b {{item.collect==1?"color32B4A0":""}}'></text>
+              <text>{{item.collect_list_count}}</text>
             </view>
           </view> 
         </view>

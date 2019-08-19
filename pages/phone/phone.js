@@ -114,7 +114,9 @@ Page({
       // })
     }else{
       this.setData({
-        source:'update'
+        source:'update',
+        phone: getApp().globalData.userInfo.mobile.name,
+        disabled:false
       })
     }
     this.setData({

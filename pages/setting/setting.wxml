@@ -17,10 +17,7 @@
   </view>
 </view>
 </block>
+<view class='item flex_btw align_center' bindtap='clear' >
+  <text class='color4 size28'>清除缓存</text>
+</view>
 <view class='login' bindlongtap='login'></view>
-<!-- <view class='item flex_btw align_center'>
-  <text class='color4 size28'>关于我们</text>
-  <view class='flex_btw align_center'>
-    <image mode='aspectFill'  src='../../images/list_icon_next@2x.png'></image>
-  </view>
-</view> -->

@@ -23,8 +23,6 @@ Page({
    */
   onLoad: function (options) {
     
-    // console.log(util.getToken())
-    
   },
   init(){
     var that = this, item1 = that.data.item1, item2 = that.data.item2;
@@ -70,7 +68,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (!wx.getStorageSync('token')) return
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1].route;
+    if (!wx.getStorageSync('token') && wx.getStorageSync('pagesroute') == currPage) return wx.setStorageSync('pagesroute', '')
+    
     if (app.globalData.config.length == 0) {
       util.loading()
     }

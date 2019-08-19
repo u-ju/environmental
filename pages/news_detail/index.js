@@ -139,7 +139,21 @@ Page({
       })
     })
   },
-
+  collect(e) {
+    var that = this;
+    var collect_list_count = this.data.result.collect_list_count, collect = this.data.result.collect,  result = this.data.result
+    result['collect_list_count'] = collect == 0 ? collect_list_count - 0 + 1 : collect_list_count - 1
+    result['collect'] = collect == 0 ? 1 : 0
+    this.setData({
+      result: result
+    })
+    util.postJSON({
+      apiUrl: apiurl.collectUpdate,
+      data: { source: 'news', source_id: that.data.news_id }
+    }, function (res) {
+      console.log(res)
+    })
+  },
 
   lookall() {
     var that = this;

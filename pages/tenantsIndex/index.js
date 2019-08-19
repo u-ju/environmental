@@ -155,6 +155,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1].route;
+    if (!wx.getStorageSync('token') && wx.getStorageSync('pagesroute') == currPage) return wx.setStorageSync('pagesroute', '')
     util.loading()
     this.init()
   },

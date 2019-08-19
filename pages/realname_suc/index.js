@@ -35,16 +35,21 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    // util.getJSON({ apiUrl: apiurl.realname }, function (res) {
-    //   that.setData({
-    //     result: res.data.result,
-    //     status: res.data.result.status
-    //   })
-    // })
-    that.setData({
-      result: JSON.parse(options.result),
-      status: JSON.parse(options.result).status
-    })
+    if (options.result){
+      that.setData({
+        result: JSON.parse(options.result),
+        status: JSON.parse(options.result).status
+      })
+    }else{
+      util.getJSON({ apiUrl: apiurl.realname }, function (res) {
+        that.setData({
+          result: res.data.result,
+          status: res.data.result.status
+        })
+      })
+    }
+    
+    
     wx.hideLoading()
   },
   choose() {

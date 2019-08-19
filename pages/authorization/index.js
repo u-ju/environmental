@@ -1,18 +1,24 @@
 // pages/authorization/index.js
+const app = getApp()
+var util = require('../../utils/util.js');
+var apiurl = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isback:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2].route;
+    console.log(prevPage)
+    wx.setStorageSync('pagesroute', prevPage)
   },
   bindGetUserInfo(e) {
     // wx.setStorageSync("token", 1)
@@ -36,19 +42,11 @@ Page({
                 wx.setStorageSync("token", res1.data.result.token)
                 token = res1.data.result.token
                 that.setData({
-                  token: token
+                  token: token,
+                  isback: true
                 })
-                if (that.data.pjurl) {
-                  return util.pjnav(that.data.pjur, that.data.pjdata)
-                }
-                // console.log(that.data.formData)
-                if (that.data.formData && that.data.formData.hasOwnProperty("qrcode")) {
-                  wx.setStorageSync('formData', '')
-                  wx.navigateTo({
-                    url: '../qrcode/index?q=' + that.data.formData["qrcode"],
-                  })
-                }
-                return that.init()
+
+                return wx.navigateBack()
               } else {
                 wx.getUserInfo({
                   success(res2) {
@@ -56,7 +54,7 @@ Page({
                       apiUrl: apiurl.wechatLetLogin,
                       data: {
                         wx_appid: util.wx_appid,
-                        share_gene: that.data.share_gene,
+                        share_gene: wx.getStorageSync('share_gene'),
                         session_key: util.base64encode(util.utf16to8(res1.data.result.wx_user.session_key)),
                         iv: util.base64encode(util.utf16to8(res2.iv)),
                         encrypt_data: util.base64encode(util.utf16to8(res2.encryptedData))
@@ -64,23 +62,12 @@ Page({
                       token: "huhu"
                     }, function (res3) {
                       wx.setStorageSync("token", res3.data.result.token)
-                      console.log(wx.getStorageSync('token'))
                       token = res3.data.result.token
                       that.setData({
-                        token: token
+                        token: token,
+                        isback: true
                       })
-                      if (that.data.pjurl) {
-                        return util.pjnav(that.data.pjur, that.data.pjdata)
-                      }
-                      // console.log(that.data.formData)
-                      if (that.data.formData && that.data.formData.hasOwnProperty("qrcode")) {
-                        // wx.sStorageSync('formData')
-                        wx.setStorageSync('formData', '')
-                        wx.navigateTo({
-                          url: '../qrcode/index?q=' + that.data.formData["qrcode"],
-                        })
-                      }
-                      return that.init()
+                      return wx.navigateBack()
                     })
                   }
                 })
@@ -127,7 +114,10 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    if(this.data.isback)return
+    wx.reLaunch({
+      url: '../index/index'
+    })
   },
 
   /**

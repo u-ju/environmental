@@ -5,11 +5,9 @@
   <import src="../../Components/tab-bar/tab-bar.wxml" />
   <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
   <!-- <scroll-view scroll-y class='index'> -->
-
-  <view class='swipercontent'>
-    <view class='flex align_center top'>
+<view class='flex align_center top'>
       <view class='flex align_center colorfff gotarea hidden1' bindtap='goarea'>
-        <view class='iconfont icon-dingwei locations size48'></view>
+        <view class='iconfont icon-dingwei locations size48 color32B4A0'></view>
         <view class=' hidden1 bold color4'>{{address}}</view>
       </view>
       <view class='searchall flex_btw align_center' bindtap='search'>
@@ -17,6 +15,8 @@
         <input disabled='disabled' value='{{search}}' placeholder='输入想要查找的内容' name='search'></input>
       </view>
     </view>
+  <view class='swipercontent'>
+    
     <swiper indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{afterColor}}" indicator-color="{{beforeColor}}" class='swiperbox' current="{{cur}}" bindchange="swiperChange">
       <swiper-item wx:for="{{banner_arr}}" wx:key="index" data-link='{{item.control}}' bindtap='link'>
         <image src="{{item.image}}" class="slide-image" mode='aspectFill' bindtap='previewImg' data-src='{{item}}' />

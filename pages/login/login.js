@@ -177,15 +177,15 @@ Page({
 
   },
   onUnload: function () {
-    if (this.data.isback) return
-    wx.reLaunch({
-      url: '../index/index',
-      fail() {
-        wx.reLaunch({
-          url: '../../index/index',
-        })
-      }
-    })
+    // if (this.data.isback) return
+    // wx.reLaunch({
+    //   url: '../index/index',
+    //   fail() {
+    //     wx.reLaunch({
+    //       url: '../../index/index',
+    //     })
+    //   }
+    // })
   }
 })
 // 18583750250

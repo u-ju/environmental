@@ -11,7 +11,12 @@ Page({
     visible1: false,
     list1: [],
     list: [0],
-    current: 0
+    current: 0,
+    tab:[
+      { title: '商家列表', url: 'shop', cur: 0 },
+      { title: '商品列表', url: 'goods', cur: 1 },
+      { title: '文章列表', url: 'news', cur: 2 },
+    ]
   },
   open1() {
     this.setData({
@@ -28,7 +33,8 @@ Page({
       list: [0]
     })
     var that = this;
-    var source = this.data.current == 0 ? 'shop' : 'goods'
+    console.log(this.data.tab, this.data.current)
+    var source = this.data.tab[this.data.current]['url'] 
     var that = this;
     util.getJSON({
       apiUrl: apiurl.collectIndex + source + "&page=" + page
@@ -73,7 +79,7 @@ Page({
     var that = this;
     
     var touchTime = that.data.touchEnd - that.data.touchStart;
-    console.log(touchTime)
+    
     if (touchTime > 700) {
       
     } else {
@@ -84,6 +90,20 @@ Page({
   },
   shopb(e) {
     this.collect('是否取消收藏该商店', 'shop', e.currentTarget.dataset.source_id)
+  },
+  newsd(e){
+    var that = this;
+    var touchTime = that.data.touchEnd - that.data.touchStart;
+    if (touchTime > 700) {
+
+    } else {
+      wx.navigateTo({
+        url: '../news_detail/index?id=' + e.currentTarget.dataset.id,
+      })
+    }
+  },
+  newsb(e) {
+    this.collect('是否取消收藏该文章', 'news', e.currentTarget.dataset.source_id)
   },
   goodsb(e) {
     this.collect('是否取消收藏该商品', 'goods', e.currentTarget.dataset.source_id)
@@ -139,7 +159,7 @@ Page({
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
-    var source = this.data.current == 0 ? 'shop' : 'goods'
+    var source = this.data.tab[this.data.current]['url'] 
     util.getJSON({
       apiUrl: apiurl.collectIndex + source + "&page=" + 1
     }, function(res) {

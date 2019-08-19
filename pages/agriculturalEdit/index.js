@@ -216,7 +216,9 @@ Page({
         isHidePlaceholder:true,
         url:'shop_goodsUpdate',
         status_name: result.status_name,
-        source: result.source
+        source: result.source,
+        source_name: result.source_name,
+        source2: result.source,
       })
       that.goodsSpecFormat1(result.spec_str)
       // { upload_percent: 100, path_server: '' }
@@ -240,11 +242,18 @@ Page({
         goods_cate[i]["children"][j]["label"] = goods_cate[i]["children"][j]["name"]
       }
     }
+    var source_arr = getApp().globalData.shop.apply_info.source_arr, goods_source_options=[]
+    for (var a in source_arr){
+      if (source_arr[a]["key"] == options.source){
+        goods_source_options = source_arr[a]['goods_source_options']
+      }
+    }
     this.setData({
       goods_cate: goods_cate,
       shop_id: options.id,
       source: options.source||'',
-      buttun_list: getApp().globalData.shop.apply_info.buttun_list
+      goods_source_options: goods_source_options,
+
     })
 
     if (options.spu_id){

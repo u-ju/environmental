@@ -1,5 +1,7 @@
 // pages/setting/setting.js
 const app = getApp()
+var util = require('../../utils/util.js');
+var apiurl = require('../../utils/api.js');
 Page({
 
   /**
@@ -10,6 +12,7 @@ Page({
         { title:"隐私保护政策",url:''},
         { title: "关于我们", url: '../about/about' },
         { title: "反馈建议", url: '../feedback/index' },
+        
       ]
   },
 
@@ -37,6 +40,11 @@ Page({
     wx.navigateTo({
       url: '../login/login',
     })
+  },
+  clear(){
+    wx.clearStorage()
+    wx.clearStorageSync()
+    util.alert1('清空缓存')
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
