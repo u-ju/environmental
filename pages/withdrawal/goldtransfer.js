@@ -23,7 +23,7 @@ Page({
     this.setData({
       type: options.type,
       yu: options.money,
-      url: options.type == 1 ? "walletIntegralTransfer" : "walletBalanceTransfer"
+      url: options.type == 1 ? "walletintegralTransfer" : "walletBalanceTransfer"
     })
     // this.init()
   },

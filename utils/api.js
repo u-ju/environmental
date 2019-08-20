@@ -1,5 +1,5 @@
-const basePath = 'https://wyhb.zgwyhb.com/api';
-// const basePath = 'https://wyhb.dev.zgwyhb.com/api';
+// const basePath = 'https://wyhb.zgwyhb.com/api';
+const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
   base: basePath,
   wx_appid : "wx9af47449f54c0be7",
@@ -14,7 +14,8 @@ const apiList = {
   walletIntegralTransferIndex: basePath + '/front/wallet/integralTransferIndex',
   walletIntegralFamilyIndex: basePath + '/front/wallet/integralFamilyIndex',
   walletBalanceFamilyIndex: basePath + '/front/wallet/balanceFamilyIndex',
-  
+  walletintegralTransfer: basePath + '/front/wallet/integralTransfer',
+  walletintegralTransferIndex: basePath + '/front/wallet/integralTransferIndex',
 
   familyIndex: basePath + '/front/family/index',
   familyApplyIndex: basePath + '/front/family/applyIndex',

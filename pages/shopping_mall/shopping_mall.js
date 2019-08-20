@@ -120,7 +120,7 @@ Page({
       })
       that.areaparse()
     })
-    that.shop_conf()
+    
     if (shop_cate.length>0){
       if (options.keywords){
         var keywords = options.keywords
@@ -134,6 +134,13 @@ Page({
   }else{
     wx.hideLoading()
     }
+  },
+  onShow: function () {
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1].route;
+    if (!wx.getStorageSync('token') && wx.getStorageSync('pagesroute') == currPage) return wx.setStorageSync('pagesroute', '')
+    
+    this.shop_conf()
   },
   shop_conf(){
     var that = this;

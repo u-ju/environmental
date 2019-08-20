@@ -5,10 +5,12 @@ page{
   background-color: white;
 }
 .news{
-  padding: 28rpx 0;
+  padding: 28rpx 10rpx;
   width: 686rpx;
-  margin: auto;
-  border-bottom: 1px solid #F1F1F1
+  margin: 0 auto 20rpx auto;
+  /* border-bottom: 1px solid #F1F1F1; */
+  box-shadow:0px 4px 16px 1px rgba(86,86,86,0.2);
+  border-radius: 10rpx;
 }
 .images{
   width:240rpx;
@@ -24,6 +26,7 @@ page{
 }
 .haha{
   background-color: #fff;
+  padding: 110rpx 0 0 0;
 }
 .czbtn .iconfont{
   font-size: 34rpx;

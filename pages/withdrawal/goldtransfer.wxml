@@ -26,16 +26,25 @@
   </block>
   <form bindsubmit="formSubmit">
     <view class='inputitem'>
-      <view class='bold'>转账金额</view>
+      <view class='bold' wx:if="{{type==2}}">转账金额</view>
+      <view class='bold' wx:if="{{type==1}}">转账积分</view>
       <view class='inputmon flex_btw align_center'>
-        <text class='size60'>￥</text>
+        <!-- <text class='size60'>￥</text> -->
 
         <input bindinput='onChange' type='digit' bindblur='onblur' name='amount' value='{{amount}}'></input>
       </view>
     </view>
     <view class='color9 margint70 flex_btw'>
-      <view>余额
-        <text class='colorC70000'> {{yu}}元</text>
+      <view>
+        <block wx:if="{{type==2}}">
+          <text>余额</text>
+          <text class='colorC70000'>{{yu}}元</text>
+        </block>
+        <block wx:if="{{type==1}}">
+          <!-- <text>积分</text> -->
+          <text class='colorC70000' > {{yu}}积分</text>
+        </block>
+        
         <text class='color299EF0' bindtap='all'>全部转账</text>
       </view>
     </view>

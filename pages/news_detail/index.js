@@ -57,7 +57,7 @@ Page({
         WxParse.wxParse('article', 'html', article, that, 5);
 
       }
-      if (res.data.result.award) {
+      if (util.isempty(res.data.result.award)) {
         setTimeout(function(){
           that.showAlter(res.data.result.award.desc, res.data.result.award.value)
         },3000)

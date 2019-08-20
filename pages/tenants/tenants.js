@@ -429,7 +429,7 @@ Page({
           upload_picture_list3: upload_picture_list3,
           cardholder: result.bankcard.cardholder,
           cardNo: result.bankcard.cardNo,
-          subBank: result.bankcard.subBank.length ? result.bankcard.subBank[result.bankcard.subBank.length - 1].branchName : [],
+          subBank: util.isempty(result.bankcard) && util.isempty(result.bankcard.subBank)? result.bankcard.subBank[result.bankcard.subBank.length - 1].branchName : [],
           bankcard: result.bankcard.subBank,
           shop_cate: shop_cate,
           shop_id: options.shop_id,
