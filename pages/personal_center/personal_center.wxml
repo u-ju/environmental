@@ -1,24 +1,24 @@
 <import src="../../Components/tab-bar/tab-bar.wxml" />
 <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
-<scroll-view scroll-y  class='pagetop'>
-  
+<scroll-view scroll-y class='pagetop'>
+
   <view style='height:84rpx;'></view>
   <navigator url='../setting/setting' class='settting'>
     <view class='iconfont icon-shezhi'></view>
   </navigator>
   <view class='top flex_btw'>
     <view class='head' bindtap='uploadHeadPhoto'>
-      <image mode='aspectFill' class='header' src='{{l_one.avatar}}'></image>
+      <image mode='aspectFill' class='header' src='{{user_info.avatar}}'></image>
     </view>
     <view>
       <view class='flex align_center'>
-        <view bindtap='name' data-name='{{l_one.nickname}}' class='name'>{{l_one.nickname}}
+        <view bindtap='name' data-name='{{user_info.nickname}}' class='name'>{{user_info.nickname}}
           <image mode='aspectFill' class='pen' src='../../images/pen@2x.png'></image>
         </view>
-        <view data-link='{{l_one.realname.control}}' bindtap='link' class='realname'>({{l_one.realname.name}}) </view>
+        <view data-link='{{user_info.realname.control}}' bindtap='link' class='realname'>({{user_info.realname.name}}) </view>
       </view>
       <view class='assetsitem flex_btw '>
-        <view data-link='{{l_one.mobile.control}}' bindtap='link'>{{l_one.mobile.name||"暂未绑定手机号"}} </view>
+        <view data-link='{{user_info.mobile.control}}' bindtap='link'>{{user_info.mobile.name||"暂未绑定手机号"}} </view>
       </view>
     </view>
     <view class='flex_col_1 flex_btw btnhead'>
@@ -33,14 +33,26 @@
     </view>
   </view>
 
-
-  <view class='function flex wrap'>
+  <view class='person_item' wx:for="{{tag_arr}}" wx:key="index">
+    <view class='flex color20CD86 align_center title_index'>
+      <view class='left_bor'></view>
+      <view>{{item.name}}</view>
+    </view>
+    <view class='function flex wrap'>
+      <view class='funitem ' wx:for="{{item.children}}" wx:key='index' bindtap='link' data-link='{{item.control}}' data-attach='{{item.attach}}'>
+        <image src='{{item.icon}}'></image>
+        <view class='color4'>{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class='function flex wrap'>
     <view class='funitem {{surplus==1&&index==l_three.length-1?"funnobtm":""}} {{surplus==2&&(index==l_three.length-1||index==l_three.length-2)?"funnobtm":""}} {{surplus==0&&(index==l_three.length-1||index==l_three.length-2||index==l_three.length-3)?"funnobtm":""}}'
       wx:for="{{l_three}}" wx:key='index' bindtap='link' data-link='{{item.control}}' data-attach='{{item.attach}}'>
       <image src='{{item.icon}}'></image>
       <view class='color4'>{{item.name}}</view>
     </view>
-  </view>
+  </view> -->
+
   <!-- <view style='height:600px'>
     </view> -->
 </scroll-view>

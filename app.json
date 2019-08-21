@@ -4,7 +4,7 @@
     "pages/index/index",
     "pages/login/login",
     "pages/login/index",
-    
+    "pages/answer/index",
     "pages/authorization/index",
     "pages/news_detail/index",
     "pages/news/news",

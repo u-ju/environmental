@@ -1,0 +1,132 @@
+/* pages/answer/index.wxss */
+.answer_bgpic{
+  width: 100%;
+  height: 480rpx;
+}
+.answer_con{
+  width:630rpx;
+  min-height:600rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 4rpx 16rpx 1rpx rgba(86,86,86,0.2);
+  border-radius:10rpx;
+  margin: -212rpx auto 0 auto;
+  padding: 0 28rpx;
+  border: 1rpx solid transparent;
+  position: relative;
+  z-index: 2;
+}
+.answer_head{
+  width: 465rpx;
+  height: 86rpx;
+  margin: -36rpx auto 40rpx auto;
+  position: relative;
+}
+.one_integral{
+  position: absolute;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  /* width: 270rpx; */
+}
+.answer_answer{
+  width:428rpx;
+  height:88rpx;
+  border:2rpx solid rgba(196,196,196,1);
+  border-radius:44rpx;
+  color: #444;  
+  line-height: 88rpx;
+  margin: 0 auto 30rpx auto;
+}
+.answer_true{
+  border: 2rpx solid transparent;
+  background-color: #32B4A0;
+  color: #fff;
+}
+.answer_false{
+  border: 2rpx solid transparent;
+  background-color: #C4C4C4;
+  
+}
+.answer_progress{
+  width:270rpx;
+  height:26rpx;
+  border:1rpx solid rgba(255,192,0,1);
+  border-radius:13rpx;
+  position: relative;
+  margin: 0 10rpx 0 6rpx;
+  overflow: hidden;
+}
+.answer_progress_plan{
+  width:27rpx;
+  height:26rpx;
+  background:rgba(255,192,0,1);
+  border-radius:13rpx;
+  position: absolute;
+  transition: all .8s linear;
+  top: 0;
+  left: 0;
+}
+.integral{
+  color: #FFC000
+}
+.reward{
+  color: #FFC000;
+  margin-left: 30rpx;
+}
+.answer_problem{
+  margin: 40rpx 0 72rpx 0;
+}
+.answer_czbtn{
+  /* width: 430rpx; */
+  margin:60rpx 0 24rpx 0;
+}
+.answer_button{
+  width:160rpx;
+  height:68rpx;
+  border:2rpx solid rgba(196,196,196,1);
+  border-radius:10rpx;
+  font-size: 32rpx;
+  line-height: 68rpx;
+}
+.answer_button_next{
+  border: none;
+  background-color: #32B4A0;
+  color: #fff;
+}
+.none{
+  display: none;
+  transition: all .8s linear;
+}
+.gold_image{
+  display: block;
+  width: 64rpx;
+  height: 120rpx;
+  position: fixed;
+  z-index: 10;
+  top: 600rpx;
+  left: 50%;
+  transition: all .8s linear;
+  transform: translate(-50%,50%);
+  -webkit-animation-name: twinkling;
+  animation-name: twinkling;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@keyframes twinkling {
+  0% {
+    opacity: 1;
+    top: 600;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    top: 200rpx;
+  }
+}

@@ -1,0 +1,46 @@
+<!--pages/answer/index.wxml-->
+<wxs module="m1">
+  var indexO = function(arr, val) {
+    return arr.indexOf(val)
+  }
+  module.exports.indexO = indexO;
+</wxs>
+<view class='answer_bgpic contain'>
+  <image src='{{conf.bg_image}}'></image>
+</view>
+<view class='answer_con'>
+  <view class='contain answer_head'>
+    <image src='{{conf.flag_image}}'></image>
+    <view class='one_integral'>答对一题赢 {{conf.one_integral}} 积分</view>
+  </view>
+  <view class='flex  align_center reward'>
+      
+      <view class='integral'>今日赚取积分</view>
+      <view class='answer_progress'>
+        <view class='answer_progress_plan' style='width:{{gain_integral*(270/total_integral)}}rpx;'></view>
+      </view>
+      <view>{{gain_integral}}/{{total_integral}}积分</view>
+    </view>
+  <view class='answer_problem'>{{question.content}}</view>
+  <view class=' '>
+  <!-- {{key==cur_key?"answer_true":"answer_answer"}} {{key==wrong_key?"answer_false":"answer_answer"}} -->
+    <view  wx:for="{{question.answer}}" wx:key="index" class='answer_answer center {{choice==1&&m1.indexO(right_answer,item.key)!=-1?"answer_true":""}} {{choice==1&&index==wrong_key?"answer_false":""}}'  data-key='{{item.key}}'  data-index='{{index}}' bindtap='choose'>{{item.name}}</view>
+    <!-- <view class='flex_btw flex_col align_center reward'>
+      <view class='contain'>
+        <image></image>
+      </view>
+      <view class='integral'>+1积分</view>
+      <view class='answer_progress'>
+        <view class='answer_progress_plan'></view>
+      </view>
+      <view>今日答题 总积分10</view>
+    </view> -->
+  </view>
+  <view class='answer_czbtn flex_btw'>
+    <view class='answer_button center' bindtap='initprev'>上一题</view>
+    <view class='answer_button center answer_button_next'  bindtap='initrandom'>下一题</view>
+  </view>
+  
+</view>
+<!-- <image src='{{conf.gold_image}}' class='{{choice==1&&wrong_key==-1&&add_integral>0?"gold_image":"none"}}'></image> -->
+<image src='{{conf.gold_image}}' class='none {{choice==1&&wrong_key==-1?"gold_image":""}}'></image>

@@ -3,8 +3,8 @@ const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
   base: basePath,
   wx_appid : "wx9af47449f54c0be7",
-  // build : 99999999,
-  build : 20190819,
+  build : 99999999,
+  // build : 20190819,
   collectUpdate: basePath + '/front/collect/update',
   collectIndex: basePath + '/front/collect/index?source=',
 
@@ -549,6 +549,12 @@ const apiList = {
     countyIndex: basePath + '/common/huifu/countyIndex',//获取区列表
     headBankIndex: basePath + '/common/huifu/headBankIndex',//获取总行列表
     branchBankIndex: basePath + '/common/huifu/branchBankIndex',//获取支行行列表
+  },
+  question: {
+    conf: basePath + '/front/question/conf',//配置信息
+    random: basePath + '/front/question/random',//随机获取问题
+    respond: basePath + '/front/question/respond',//作答提交
+    prev: basePath + '/front/question/prev?id=',//获取上一题
   },
   feedback: basePath + '/front/feedback/store',//反馈提交
 }

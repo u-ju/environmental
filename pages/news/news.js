@@ -93,6 +93,11 @@ Page({
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
     var cur = e.target.dataset.current;
+    if (e.target.dataset.cate_id==''){
+     return wx.navigateTo({
+        url: '../answer/index',
+      })
+    }
     if (this.data.currentTaB == cur) {
       return false;
     } else {
@@ -123,12 +128,17 @@ Page({
       }
     });
     util.loading()
-    util.getJSON({ apiUrl: apiurl.config }, function (res) {
-      that.setData({
-        tab: app.globalData.config.news_cate,
-        cate_id: app.globalData.config.news_cate[0].id
-      });
-    })
+    var tab = app.globalData.config.news_cate;
+    tab.push({
+                "id": "",
+                "name": "答题赢积分",
+                "parent_id": "",
+                "sort": ""
+            })
+    that.setData({
+      tab: tab,
+      cate_id: app.globalData.config.news_cate[0].id
+    });
   },
   onShow(){
     var that = this;

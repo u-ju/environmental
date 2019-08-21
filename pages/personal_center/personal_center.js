@@ -29,25 +29,17 @@ Page({
     util.getJSON({ apiUrl: apiurl.user }, function (res) {
       var result = res.data.result
       
-      var l_one = result.l_one, l_three = result.l_three
-      if (!l_one.mobile.name){
-        l_one.mobile['control']['control'] = '../phone_new/phone_new'
-      }
-      for (var i in l_three){
-        if (l_three[i]['control']["key"] == 'front_bind_mobile' && l_three[i]["attach"]["is_bind"] == 0){
-          l_three[i]['control']['control'] = '../phone_new/phone_new'
-        }
-        if (l_three[i]['control']["key"] == 'front_bind_area') {
-          getApp().globalData.desc =l_three[i]['attach']['desc']
-        }
+      var user_info = result.user_info
+      if (!user_info.mobile.name){
+        user_info.mobile['control']['control'] = '../phone_new/phone_new'
       }
       that.setData({
         result: result,
-        l_one: l_one,
-        l_three: l_three,
+        user_info: result.user_info,
+        tag_arr: result.tag_arr,
         l_two: result.l_two||"",
-        surplus: result.l_three.length % 3,
-        surplusnum: parseInt(result.l_three.length % 3),
+        // surplus: result.l_three.length % 3,
+        // surplusnum: parseInt(result.l_three.length % 3),
         // tag_list: result.tag_list,
         // badge: result.badge,
         // background: result.background

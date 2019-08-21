@@ -1,7 +1,7 @@
 
 page{
  /* background: linear-gradient(#94DECF, #5E93D7); */
- 
+ background-color: #F8F8F8
 }
 .pagetop{
   position: fixed;
@@ -58,14 +58,14 @@ page{
   color: #fff;
 }
 .function{
-    width:686rpx;
+    /* width:686rpx;
     background:rgba(255,255,255,.6);
     border-radius:10rpx;
     margin: 20rpx auto 0 auto;
-    box-shadow: 0 0 10rpx #94decf;
+    box-shadow: 0 0 10rpx #94decf; */
 }
 .funitem{
-  width: 25% ;
+  width: 33.333% ;
   text-align: center;
   height: 100rpx;
   padding: 30rpx 0;
@@ -97,4 +97,21 @@ page{
 
   color: transparent;
 
+}
+.left_bor{
+  width:10rpx;
+  height:30rpx;
+  background:#32B4A0;
+  border-radius:5rpx;
+  margin-right: 13rpx;
+}
+.person_item{
+  width:686rpx;
+  background:rgba(255,255,255,1);
+  border-radius:10rpx;
+  padding: 20rpx 0;
+  margin: 30rpx auto;
+}
+.title_index{
+  margin: 0 24rpx;
 }
