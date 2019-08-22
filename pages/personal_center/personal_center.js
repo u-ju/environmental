@@ -45,6 +45,7 @@ Page({
         // background: result.background
       })
       getApp().globalData.userInfo = result.l_one
+      
       util.hideLoading()
     })
     

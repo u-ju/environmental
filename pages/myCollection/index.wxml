@@ -54,5 +54,5 @@
       </view>
     </block>
   </block>
-  <empty wx:else title="暂无收藏文章" />
+  <empty wx:else title="暂无收藏新闻" />
 </view>

@@ -58,7 +58,7 @@
   overflow: hidden;
 }
 .answer_progress_plan{
-  width:27rpx;
+  width:0;
   height:26rpx;
   background:rgba(255,192,0,1);
   border-radius:13rpx;
@@ -129,4 +129,9 @@
     opacity: 0;
     top: 200rpx;
   }
+}
+.end{
+  line-height: 360rpx;
+  color: #FFC000;
+  font-size: 32rpx;
 }

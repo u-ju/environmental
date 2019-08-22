@@ -74,7 +74,7 @@ Page({
     
     this.setData({
       door_num: door_num,
-      desc: getApp().globalData.desc
+      desc: options.desc || getApp().globalData.desc
     })
   },
   formSubmit(e) {

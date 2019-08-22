@@ -15,7 +15,7 @@ Page({
     tab:[
       { title: '商家列表', url: 'shop', cur: 0 },
       { title: '商品列表', url: 'goods', cur: 1 },
-      { title: '文章列表', url: 'news', cur: 2 },
+      { title: '新闻列表', url: 'news', cur: 2 },
     ]
   },
   open1() {

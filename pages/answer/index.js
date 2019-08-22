@@ -38,7 +38,8 @@ Page({
   },
   initprev() {
     var that = this;
-    util.getJSON({ apiUrl: apiurl.question.prev + that.data.question.id }, function (res) {
+    var id = that.data.result.respond_id == undefined ? 0 : that.data.result.respond_id 
+      util.getJSON({ apiUrl: apiurl.question.prev + id }, function (res) {
       var result = res.data.result;
       that.setData({
         result: result,
@@ -48,6 +49,7 @@ Page({
         gain_integral: result.gain_integral,
         total_integral: result.total_integral,
         right_answer: result.right_answer,
+        add_integral:0
       })
       console.log(result)
       util.hideLoading()

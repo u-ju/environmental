@@ -72,7 +72,7 @@ App({
     balance_withdraw_flow:[],
     action:'',
     code:'',
-    desc:'',
+    desc:"请填写正确的小区信息，否则将影响您的部分权益",
     hint:[],
     is_:'',
     front_share_home:[],
