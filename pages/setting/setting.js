@@ -44,7 +44,7 @@ Page({
   clear(){
     wx.clearStorage()
     wx.clearStorageSync()
-    util.alert1('清空缓存')
+    util.alert1('清空缓存成功')
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

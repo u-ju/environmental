@@ -1,7 +1,7 @@
 <!--pages/realname_suc/index.wxml-->
 <block wx:if='{{status>-1}}'>
   <view class='item' >
-    <view class='flex' wx:for='{{result.info}}' wx:key='index'>
+    <view class='flex' wx:for='{{result.info}}' wx:key='index' wx:if="{{item.value}}">
       <view class='left_item' ><text decode="{{true}}" space="{{true}}" space="ensp">{{item.name}}</text></view>
       <view class='right_item'><text>{{item.value}}</text></view>
     </view>

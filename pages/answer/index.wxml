@@ -17,7 +17,7 @@
 
     <view class='integral'>今日赚取积分</view>
     <view class='answer_progress'>
-      <view class='answer_progress_plan' style='width:{{gain_integral*(270/total_integral)}}rpx;'></view>
+      <view class='answer_progress_plan' style='width:{{gain_integral*(300/total_integral)}}rpx;'></view>
     </view>
     <view>{{gain_integral}}/{{total_integral}}积分</view>
   </view>

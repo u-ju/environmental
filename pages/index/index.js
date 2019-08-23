@@ -368,6 +368,12 @@ Page({
       util.hideLoading()
     })
   },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
   onPullDownRefresh: function () {
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();

@@ -72,7 +72,7 @@ Page({
           that.setData({
             gain_integral: (that.data.gain_integral - 0) + Number(result.add_integral)
           })
-        },3000)
+        },2600)
       }
       util.hideLoading()
     })

@@ -65,7 +65,7 @@
   position: absolute;
   transition: all .8s linear;
   top: 0;
-  left: 0;
+  left: -15rpx;
 }
 .integral{
   color: #FFC000
@@ -117,10 +117,13 @@
 }
 @keyframes twinkling {
   0% {
-    opacity: 1;
+    opacity: 0;
     top: 600;
   }
-
+  30% {
+    opacity: 1;
+    top: 500;
+  }
   80% {
     opacity: 1;
   }

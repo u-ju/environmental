@@ -17,7 +17,7 @@ Page({
   onLoad: function (options) {
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2].route;
-    console.log(prevPage)
+    wx.setStorageSync('token', '')
     wx.setStorageSync('pagesroute', prevPage)
   },
   bindGetUserInfo(e) {
