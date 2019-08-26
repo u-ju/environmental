@@ -111,7 +111,7 @@ page{
   padding: 20rpx 32rpx 32rpx 32rpx;
 }
 .icon-weibiaoti-{
-  margin-right: 8rpx;
+  /* margin-right: 8rpx; */
 }
 .location .hidden1{
   display: block;

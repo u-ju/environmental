@@ -129,12 +129,12 @@ Page({
     });
     util.loading()
     var tab = util.copyarr(app.globalData.config.news_cate) ;
-    // tab.push({
-    //             "id": "",
-    //             "name": "答题赢积分",
-    //             "parent_id": "",
-    //             "sort": ""
-    //         })
+    tab.push({
+                "id": "",
+                "name": "答题赢积分",
+                "parent_id": "",
+                "sort": ""
+            })
     that.setData({
       tab: tab,
       cate_id: app.globalData.config.news_cate[0].id

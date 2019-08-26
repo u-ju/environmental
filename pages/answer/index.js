@@ -51,12 +51,12 @@ Page({
         right_answer: result.right_answer,
         add_integral:0
       })
-      console.log(result)
+      // console.log(result)
       util.hideLoading()
     })
   },
   choose(e){
-    if (this.data.choice) return
+    if (this.data.choice) return 
     var that = this;
     var data = { id: that.data.question.id, answer: JSON.stringify([e.currentTarget.dataset.key])}
     util.postJSON({ apiUrl: apiurl.question.respond,data:data }, function (res) {
