@@ -15,9 +15,12 @@
   z-index: 999999;    */
   opacity: 1;
   transition: all 4s;
-  position: relative;
+  position: absolute;
   width: 400rpx;
   height: 310rpx;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%)
 }
 
 .toast_image {
@@ -67,24 +70,24 @@
 }
 
 .toast_content {
-  -webkit-animation-name: twinkling;
-  animation-name: twinkling;
+  -webkit-animation-name: toasttwinkling;
+  animation-name: toasttwinkling;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
-@-webkit-keyframes twinkling {
+@-webkit-keyframes toasttwinkling {
   0% {
     opacity: 0;
   }
 
-  20% {
+  30% {
     opacity: 1;
   }
   
-  80% {
+  70% {
     opacity: 1;
   }
 
@@ -93,16 +96,16 @@
   }
 }
 
-@keyframes twinkling {
-  0% {
+@keyframes toasttwinkling {
+   0% {
     opacity: 0;
   }
 
-  20% {
+  30% {
     opacity: 1;
   }
-
-  80% {
+  
+  70% {
     opacity: 1;
   }
 

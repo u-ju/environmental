@@ -37,17 +37,23 @@ Page({
   onLoad: function (options) {
     var that = this;
     
-    wx.showLoading({
-      title: '加载中',
+    
+    // this.config()
+    var guide_cate = app.globalData.config.guide_cate||''
+    var tablen = 0
+    if (guide_cate[0]["children"]) {
+      tablen = guide_cate[0]["children"].length / 3
+    }
+    that.setData({
+      guide_cate: guide_cate,
+      tablen: tablen
     })
-    this.config()
-    // var guide_cate = app.globalData.config.guide_cate||''
-    // that.setData({
-    //   guide_cate: guide_cate,
-    // })
     that.setData({
       s_height: wx.getSystemInfoSync().windowHeight - 72,
     })
+    if (options.is_auth==1){
+      this.earnIntegral()
+    }
   },
   config() {
     var that = this;
@@ -55,12 +61,10 @@ Page({
       var result = res.data.result;
       getApp().globalData.config = result;
       var guide_cate = app.globalData.config.guide_cate;
-      var tablen=0
       var tablen = 0
       if (guide_cate[0]["children"]) {
         tablen = guide_cate[0]["children"].length / 3
       }
-      // console.log(guide_cate)
       that.setData({
         guide_cate: guide_cate,
         tablen: tablen
@@ -80,6 +84,19 @@ Page({
       tablen: tablen
     })
 
+  },
+  // 赚积分
+  earnIntegral() {
+    var that = this;
+    util.postJSON({ apiUrl: apiurl.walletearnIntegral, data: { source: "read" } }, function (res) {
+      var result = res.data.result
+      if (util.isempty(res.data.result.award)) {
+        setTimeout(function () {
+          new app.ToastPannel();
+          that.showt(res.data.result.award.desc, res.data.result.award.value);
+        }, 200)
+      }
+    })
   },
   // chooseerji(e){
   //   var guide_cate = this.data.guide_cate;

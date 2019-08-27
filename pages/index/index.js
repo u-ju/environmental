@@ -181,7 +181,11 @@ Page({
         rail: result.rail || '',
         tag_arr: result.tag_arr || '',
         wallet: result.wallet || '',
+        is_auth: result.is_auth || '',
       })
+      if (result.is_auth == 1) {
+        that.earnIntegral()
+      }
       for (var i in tag ){
         if (tag[i]['control']['key'] =='front_tshop_index'){
           getApp().globalData.front_tshop_index = tag[i]["children"]
@@ -192,6 +196,7 @@ Page({
       that.initgoods()
       util.hideLoading()
     })
+    
     if (app.globalData.config.length == 0) {
       that.adr()
       util.getJSON({
@@ -210,8 +215,21 @@ Page({
       this.setData({
         config: app.globalData.config,
         is_audit: app.globalData.config.is_audit
-      })
+      })  
     }
+  },
+  // 赚积分
+  earnIntegral(){
+    var that = this;
+    util.postJSON({ apiUrl: apiurl.walletearnIntegral, data: { source:"login"} }, function (res) {
+      var result = res.data.result
+      if (util.isempty(res.data.result.award)) {
+        setTimeout(function(){
+          new app.ToastPannel();
+          that.showt(res.data.result.award.desc, res.data.result.award.value);
+        },200)
+      }
+    })
   },
   // 操作指南
   guidel(e){
@@ -277,14 +295,16 @@ Page({
       }
 
     }
-    var url = e.currentTarget.dataset.link.control
-    if (JSON.stringify(e.currentTarget.dataset.link.params) != "{}") {
-      url = url + "?1=1"
+    var url = e.currentTarget.dataset.link.control + "?1=1"
+    if (util.isempty(e.currentTarget.dataset.link.params)) {
       for (var i in e.currentTarget.dataset.link.params) {
 
         console.log(i, e.currentTarget.dataset.link.params[i])
         url = url + "&" + i + "=" + e.currentTarget.dataset.link.params[i]
       }
+    }
+    if (e.currentTarget.dataset.link.key=="front_guide_cate"){
+      url = url + "&is_auth=" + this.data.is_auth
     }
     if (e.currentTarget.dataset.children != '' && e.currentTarget.dataset.children != undefined) {
       url = url + "?children=" + JSON.stringify(e.currentTarget.dataset.children)

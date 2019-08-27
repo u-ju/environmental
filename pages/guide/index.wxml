@@ -1,4 +1,6 @@
 <!--pages/guide/index.wxml-->
+<import src="../../Components/appToast/appToast.wxml" />
+<template is="toast" data="{{ ..._toast_ }}" />
 <view class="detail" >
   <view class='hengnav' >
     <scroll-view scroll-x='true' class="scroll-header">

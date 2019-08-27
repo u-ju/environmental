@@ -1,4 +1,6 @@
 <!--pages/news/news.wxml-->
+<import src="../../Components/appToast/appToast.wxml" />
+<template is="toast" data="{{ ..._toast_ }}" />
 <view>
   <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
     <block wx:for="{{tab}}" wx:key="index">

@@ -43,6 +43,7 @@ Page({
     util.loading()
     that.index()
     that.initreplyIndex()
+    that.earnIntegral()
   },
   //提示框
   showAlter: function (name, value) {
@@ -58,11 +59,11 @@ Page({
 
       }
       util.hideLoading()
-      if (util.isempty(res.data.result.award)) {
-        setTimeout(function(){
-          that.showAlter(res.data.result.award.desc, res.data.result.award.value)
-        },200)
-      }
+      // if (util.isempty(res.data.result.award)) {
+        // setTimeout(function(){
+        //   that.showAlter(res.data.result.award.desc, res.data.result.award.value)
+        // },200)
+      // }
       that.setData({
         result: res.data.result,
         nodes: res.data.result.content
@@ -88,7 +89,19 @@ Page({
       
     })
   },
-
+  // 赚积分
+  earnIntegral() {
+    var that = this;
+    util.postJSON({ apiUrl: apiurl.walletearnIntegral, data: { source: "read" } }, function (res) {
+      var result = res.data.result
+      if (util.isempty(res.data.result.award)) {
+        setTimeout(function () {
+          new app.ToastPannel();
+          that.showt(res.data.result.award.desc, res.data.result.award.value);
+        }, 200)
+      }
+    })
+  },
 
   lookallhuifu(e, page = 1) {
     var that = this;
@@ -139,6 +152,7 @@ Page({
         result: result
       })
     })
+    that.earnIntegral()
   },
   collect(e) {
     var that = this;
@@ -154,6 +168,7 @@ Page({
     }, function (res) {
       console.log(res)
     })
+    that.earnIntegral()
   },
 
   lookall() {

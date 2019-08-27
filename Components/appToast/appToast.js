@@ -8,6 +8,7 @@ let toastPannel = {
   showt: function (data, data1) {
     let self = this;
     this.setData({ '_toast_.isHide': true, '_toast_.content': data, '_toast_.value': data1 });
+    // console.log(data, data1)
     setTimeout(function () {
       self.setData({ '_toast_.isHide': false })
     }, 3000)

@@ -20,27 +20,27 @@ Page({
     cate_id: '',
     tabbarid: 0
   },
-  like(e) {
-    // if (!e.currentTarget.dataset.praise){
-    var that = this;
-    util.postJSON({ apiUrl: apiurl.news_praiseStore, data: { news_id: e.currentTarget.dataset.id } }, function (res) {
-      var news = that.data.news
-      var praise = e.currentTarget.dataset.praise
-      var like = news[e.currentTarget.dataset.index].like
-      if (praise == 0) {
-        praise = 1
-        like = like - 0 + 1
-      } else {
-        praise = 0
-        like = like - 1
-      }
-      news[e.currentTarget.dataset.index].praise = praise
-      news[e.currentTarget.dataset.index].like = like
-      that.setData({
-        news: news
-      })
-    })
-  },
+  // like(e) {
+  //   // if (!e.currentTarget.dataset.praise){
+  //   var that = this;
+  //   util.postJSON({ apiUrl: apiurl.news_praiseStore, data: { news_id: e.currentTarget.dataset.id } }, function (res) {
+  //     var news = that.data.news
+  //     var praise = e.currentTarget.dataset.praise
+  //     var like = news[e.currentTarget.dataset.index].like
+  //     if (praise == 0) {
+  //       praise = 1
+  //       like = like - 0 + 1
+  //     } else {
+  //       praise = 0
+  //       like = like - 1
+  //     }
+  //     news[e.currentTarget.dataset.index].praise = praise
+  //     news[e.currentTarget.dataset.index].like = like
+  //     that.setData({
+  //       news: news
+  //     })
+  //   })
+  // },
   like(e) {
     var that = this;
     var id = e.currentTarget.dataset.id, like = e.currentTarget.dataset.like, praise = e.currentTarget.dataset.praise, index = e.currentTarget.dataset.index, news = this.data.news
@@ -56,7 +56,9 @@ Page({
       // data: { source: 'news', source_id: id }
     }, function (res) {
       // console.log(res)
+      
     })
+    that.earnIntegral()
   },
   collect(e) {
     var that = this;
@@ -67,12 +69,25 @@ Page({
       news: news
     })
     util.postJSON({
-      // apiUrl: apiurl.news_praiseStore,
-      // data: { news_id: id }
       apiUrl: apiurl.collectUpdate,
       data: { source: 'news', source_id: id }
     }, function (res) {
-      console.log(res)
+      // console.log(res)
+      
+    })
+    that.earnIntegral()
+  },
+  // 赚积分
+  earnIntegral() {
+    var that = this;
+    util.postJSON({ apiUrl: apiurl.walletearnIntegral, data: { source: "read" } }, function (res) {
+      var result = res.data.result
+      if (util.isempty(res.data.result.award)) {
+        setTimeout(function () {
+          new app.ToastPannel();
+          that.showt(res.data.result.award.desc, res.data.result.award.value);
+        }, 200)
+      }
     })
   },
   _addEvent() {
@@ -129,12 +144,12 @@ Page({
     });
     util.loading()
     var tab = util.copyarr(app.globalData.config.news_cate) ;
-    tab.push({
-                "id": "",
-                "name": "答题赢积分",
-                "parent_id": "",
-                "sort": ""
-            })
+    // tab.push({
+    //             "id": "",
+    //             "name": "答题赢积分",
+    //             "parent_id": "",
+    //             "sort": ""
+    //         })
     that.setData({
       tab: tab,
       cate_id: app.globalData.config.news_cate[0].id

@@ -11,9 +11,9 @@ Page({
   onLoad(e) {
     var pages = getCurrentPages(),
       that = this;
-    console.log(pages);
+    // console.log(pages);
     for (var i in pages) {
-      console.log(pages[i]['__route__'])
+      // console.log(pages[i]['__route__'])
     }
     this.setData({
       logo: getApp().globalData.config.logo

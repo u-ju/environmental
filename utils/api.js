@@ -16,6 +16,7 @@ const apiList = {
   walletBalanceFamilyIndex: basePath + '/front/wallet/balanceFamilyIndex',
   walletintegralTransfer: basePath + '/front/wallet/integralTransfer',
   walletintegralTransferIndex: basePath + '/front/wallet/integralTransferIndex',
+  walletearnIntegral: basePath + '/front/wallet/earnIntegral',
 
   familyIndex: basePath + '/front/family/index',
   familyApplyIndex: basePath + '/front/family/applyIndex',

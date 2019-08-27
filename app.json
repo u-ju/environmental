@@ -2,6 +2,7 @@
   "pages": [
     
     "pages/index/index",
+    "pages/result/index",
     "pages/login/login",
     "pages/login/index",
     "pages/answer/index",
@@ -23,7 +24,7 @@
     "pages/success/success",
     "pages/myInviteNewusers/index",
     "pages/personal_center/personal_center",
-    "pages/result/index",
+    
     "pages/installment/installment",
     "pages/convenience_service/index",
     "pages/timeout/index",
