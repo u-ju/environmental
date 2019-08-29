@@ -124,7 +124,7 @@ Page({
   openp(e) {
     var page = e.detail.page;
     if (this.data.value == "") {
-      return util.alert("请输入转账金额")
+      return util.alert("请输入支付金额")
     }
     if (!/^\d+(\.\d{1,2})?$/.test(this.data.value)) {
       return util.alert("请输入正确的金额格式")
@@ -145,7 +145,7 @@ Page({
   },
   open2() {
     if (this.data.value==""){
-      return util.alert("请输入转账金额")
+      return util.alert("请输入支付金额")
     }
     var that = this;
     util.postJSON({ apiUrl: apiurl.create, data: { pay_source: 'shop_gather', shop_id: that.data.shop_id, amount: that.data.value, bag_type: that.data.bagkey } },

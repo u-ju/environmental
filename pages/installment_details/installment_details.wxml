@@ -29,9 +29,10 @@
 
   </view>
   <view class='colorFE2C2C size36 '>
-    <text class='bold'>{{result.source=="exchange"?"社区惠民价":"价格"}}：￥{{result.price}}</text> 
+    <text class='bold'>{{result.source=="exchange"?"兑换价":"价格"}}：￥{{result.price}}</text> 
     <text class='size28' wx:if='{{result.user_return>0}}'> (积分兑环保金{{result.user_return}})</text>
   </view>
+  <view class='size36 colorFE2C2C bold' wx:if='{{result.source=="exchange"}}'>可抵扣积分:<text class=''>{{result.integral_discount}}</text></view>
   <view class='size22 color898989 flex_btw'>
     <text>运费：{{result.freight>0?result.install_fee:'免'}}</text>
     <text hidden='{{result.source=="online"}}'>安装费：{{result.install_fee>0?result.install_fee:'免'}}</text>

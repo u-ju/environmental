@@ -284,7 +284,7 @@ navigator{
 .features{
   width:120rpx;
   height:50rpx;
-  background:#4FD6F0;
+  background:#48D1CC;
   border-radius:5rpx;
   text-align: center;
   line-height: 50rpx;
@@ -350,7 +350,7 @@ navigator{
 }
 
 .xieyi{
-  color: #4FD6F0;
+  color: #48D1CC;
 }
 .submitButton {
   margin: 40rpx auto;

@@ -34,9 +34,7 @@ Page({
     // if (options.spec_value){
     //   spec_value: 
     // }
-    // console.log(JSON.parse(options.result))
     var result = getApp().globalData.order_detail
-    console.log(result)
     this.setData({
       result: result,
       order_source: result.order_source,

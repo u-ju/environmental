@@ -88,7 +88,7 @@ Page({
   // 赚积分
   earnIntegral() {
     var that = this;
-    util.postJSON({ apiUrl: apiurl.walletearnIntegral, data: { source: "read" } }, function (res) {
+    util.postJSON({ apiUrl: apiurl.walletearnIntegral, data: { source: "guide" } }, function (res) {
       var result = res.data.result
       if (util.isempty(res.data.result.award)) {
         setTimeout(function () {

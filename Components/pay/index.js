@@ -67,14 +67,12 @@ Component({
       this.loadAddress()
     },
     tap(){
-      var that = this
-      console.log(1)
+      var that = this;
       this.triggerEvent('open',{page:that})
     },
     open3() {
       var that = this;
       
-      // console.log(that.data.data)
       util.postJSON({ apiUrl: apiurl.create, data: that.data.data },
         function (res) {
           var result = res.data.result, min = '', max = '', remain=''
@@ -95,7 +93,7 @@ Component({
           }
           result.payment_usable[0].choosed = 1
           for (var i in result.group_usable) {
-            if (result.group_usable[i].key == 'balance') {
+            if (result.group_usable[i].key == 'balance' || result.group_usable[i].key == 'integral') {
               max = result.group_usable[i].max
               min = result.group_usable[i].min
               remain = result.group_usable[i].remain
@@ -151,7 +149,6 @@ Component({
         items: item,
         groupN:items[e.currentTarget.dataset.index]["choosed"] ? items[e.currentTarget.dataset.index]["key"]:''
       })
-      console.log(items[e.currentTarget.dataset.index]["choosed"] ? items[e.currentTarget.dataset.index]["key"] : '')
     },
     onblur() {
       var that = this;
@@ -165,9 +162,7 @@ Component({
       var max = parseFloat(this.data.max), min = parseFloat(this.data.min)
       
       var group_ext= e.detail.value
-      console.log(group_ext, min,max)
       if (group_ext >= min && group_ext <= max){
-        console.log(group_ext)
         this.setData({
           group_ext: group_ext
         })

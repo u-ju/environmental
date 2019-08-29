@@ -33,7 +33,6 @@ Page({
       list: [0]
     })
     var that = this;
-    console.log(this.data.tab, this.data.current)
     var source = this.data.tab[this.data.current]['url'] 
     var that = this;
     util.getJSON({

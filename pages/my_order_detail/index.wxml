@@ -46,16 +46,16 @@
   </view>
 </view>
 <view class='moneyinfor bold'>
-  <view class='flex_btw align_center reicon'>
+  <!-- <view class='flex_btw align_center reicon'>
     <text>商品总金额</text>
     <text>￥{{result.order_amount}}</text>
-  </view>
+  </view> -->
   <view class='flex_btw align_center reicon'>
     <text>运费</text>
     <text>￥{{result.order_freight}}</text>
   </view>
   <view class='flex_btw align_center reicon'>
-    <text>实付</text>
+    <text>订单总金额</text>
     <text class='colorEA2C2C'>￥{{result.order_amount}}</text>
   </view>
 </view>

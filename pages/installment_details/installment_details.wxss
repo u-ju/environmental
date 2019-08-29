@@ -99,7 +99,7 @@
   margin:  0 52rpx 30rpx 0;
 }
 .active{
-  border-color: #4FD7F1;
+  border-color: #32B4A0;
   background-color: white;
 }
 .gg_item{

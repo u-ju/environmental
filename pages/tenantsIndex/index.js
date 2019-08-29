@@ -29,12 +29,12 @@ Page({
       var result = res.data.result
       getApp().globalData.shop = result
       that.setData({
-        is_apply: result.is_apply,
-        apply_info: result.apply_info,
-        online_list: result.shop_info.online_list,
-        offline_list: result.shop_info.offline_list,
-        room_list: result.apply_info.buttun_list,
-        league_list: result.shop_info.league_list,
+        is_apply: result.is_apply || '',
+        apply_info: result.apply_info || '',
+        online_list: result.shop_info.online_list || '',
+        offline_list: result.shop_info.offline_list || '',
+        room_list: result.apply_info.buttun_list || '',
+        league_list: result.shop_info.league_list||'',
         avatar:'../../images/logozmn.jpg'
         // share_mobile: result.share_mobile
       })

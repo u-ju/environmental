@@ -19,15 +19,23 @@ Page({
     page:{},
     moredescnum:1,
     keywords:'',
-    images:[]
+    images:[],
+    swiperCurrent:0
   },
   model(){
     this.setData({
       showmodel: !this.data.showmodel
     })
   },
+  // swiper active
+  swiperChange: function (e) {
+    
+    this.setData({
+      swiperCurrent: e.detail.current
+    })
+  },
   detail(e){
-    console.log(e.currentTarget.dataset.sku_id)
+    
     wx.navigateTo({
       url: '../installment_details/installment_details?id=' + e.currentTarget.dataset.sku_id 
     })

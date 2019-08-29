@@ -126,22 +126,23 @@ Page({
       wx.setStorageSync('share_gene', options.share_gene)
     }
     
-
   },
   onShow() {
-    this.init()
     this.adr()
+    this.init()
+    
   },
   adr() {
     var that = this;
-    if (!wx.getStorageSync('token') || wx.getStorageSync('token') == 1) {
-      return false
-    }
     if (wx.getStorageSync('locAddress')) {
       return this.setData({
         address: wx.getStorageSync('locAddress')
       })
     }
+    if (!wx.getStorageSync('token') || wx.getStorageSync('token') == 1) {
+      return false
+    }
+    
     util.address(function(data) {
       console.log(data)
       util.getJSON({

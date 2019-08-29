@@ -378,7 +378,7 @@ Component({
          * 点击事件
          */
         onTap() {
-          console.log(this.data.catchval)
+          // console.log(this.data.catchval)
             this.triggerEvent('click')
         },
     },

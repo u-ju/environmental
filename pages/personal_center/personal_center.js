@@ -44,8 +44,7 @@ Page({
         // badge: result.badge,
         // background: result.background
       })
-      getApp().globalData.userInfo = result.l_one
-      
+      getApp().globalData.userInfo = result.user_info
       util.hideLoading()
     })
     

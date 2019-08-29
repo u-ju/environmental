@@ -1,6 +1,115 @@
 /* pages/withdrawal_record/withdrawal_record.wxss */
 @import '../home_orders/home_orders';
-@import '../my_gold/my_gold';
+
+.money{
+  text-align: center;
+  margin: 40rpx 0 70rpx 0;
+}
+.money image{
+  width: 40rpx;
+  height: 46rpx;
+  margin-right: 6rpx;
+}
+.withdrawal{
+  width: 304rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  border: 1px solid #FF0000;
+  margin: auto;
+  border-radius: 10rpx;
+}
+.color4588EC{
+  padding: 0 32rpx;
+  text-align: center;
+}
+.brx{
+  border-bottom: 2rpx solid #E8E8E8;
+  margin: 100rpx auto 0 auto;
+  padding: 20rpx 0;
+}
+.brx .br{
+  border-right: 2rpx solid #E8E8E8;
+}
+.item{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #E8E8E8;
+}
+.item .size28{
+  margin-bottom: 10rpx;
+}
+.detailed{
+  width: 686rpx;
+  margin: auto;
+}
+.color4{
+  padding: 20rpx 0;
+}
+.color727272{
+  width: 200rpx;
+  text-align: right;
+}
+.zuo{
+  width: 480rpx;
+}
+.xian{
+  height:1px;
+  width: 100%;
+  background-color: #E8E8E8;
+}
+/* 规则提示层  */
+.isRuleShow{
+    display: block;
+}
+.isRuleHide{
+    display: none;
+}
+.ruleZhezhao{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color:rgba(0, 0, 0, .5);
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+.ruleZhezhaoContent{
+    padding: 88rpx 40rpx 44rpx 40rpx;
+    width: 80%;
+    background: #fff;
+    margin: 40% auto;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.ruleHide{
+    height: 24rpx!important;
+    width: 24rpx!important;
+    position: absolute;
+    top: 20rpx;
+    right:50rpx;
+}
+.rule{
+    display: block;
+    border: 1px solid #fff;
+    width: 100rpx;
+    text-align: center;
+    line-height: 60rpx;
+    color: #fff;
+    height: 60rpx;
+    font-size: 30rpx;
+    border-radius: 30rpx;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+}
+.ruleZhezhaoContent text{
+  line-height: 40rpx;
+}
 page{
   padding: 0;
   /* background-color: #F7F7F7; */

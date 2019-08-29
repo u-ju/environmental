@@ -9,12 +9,8 @@ Page({
     hint:''
   },
   onLoad(e) {
-    var pages = getCurrentPages(),
-      that = this;
-    // console.log(pages);
-    for (var i in pages) {
-      // console.log(pages[i]['__route__'])
-    }
+    var pages = getCurrentPages(),that = this;
+    
     this.setData({
       logo: getApp().globalData.config.logo
     })
@@ -41,11 +37,11 @@ Page({
         hint:1
       }
     }, function (res2) {
-      console.log(res2)
+      // console.log(res2)
       that.setData({
         hint: res2.data.result.hint,
       })
-      console.log(res2)
+      // console.log(res2)
       wx.setNavigationBarTitle({
         title: res2.data.result.hint.header,
       })
@@ -62,7 +58,7 @@ Page({
       url = url + "?1=1"
       for (var i in e.currentTarget.dataset.link.params) {
 
-        console.log(i, e.currentTarget.dataset.link.params[i])
+        // console.log(i, e.currentTarget.dataset.link.params[i])
         url = url + "&" + i + "=" + e.currentTarget.dataset.link.params[i]
       }
     }

@@ -99,19 +99,11 @@ Page({
   },
   onLoad(e){
     var title = '修改手机号',that = this;
-    
     if(e.type==1){
       title = '实名认证'
       that.setData({
         type: 1
       })
-      // util.getJSON({ apiUrl: apiurl.realname }, function (res) {
-      //   var result = res.data.result
-      //   that.setData({
-      //     result: result
-      //   })
-      //   util.hideLoading()
-      // })
     }else{
       this.setData({
         source:'update',

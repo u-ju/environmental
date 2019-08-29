@@ -385,7 +385,6 @@ Page({
     cateid[0] = id
     cateid[1] = child[0]["id"]
     erji[1] = child
-    console.log(erji)
     that.setData({
       erji: erji,
       cateid: cateid
@@ -406,7 +405,6 @@ Page({
         parent_id: "0",
         sort: ""
       })
-      console.log(child)
       cateid[0] = id
       cateid[1] = child[0]["id"]
       erji[1] = child
@@ -416,7 +414,6 @@ Page({
       })
     } 
     cateid[e.currentTarget.dataset.indexnum]=id
-    console.log(cateid)
     that.setData({
       cate_id: cateid[e.currentTarget.dataset.indexnum],
       cateid: cateid,

@@ -14,7 +14,7 @@ Page({
     indicatorDots: true, //显示面板指示点
     autoplay: true, //自动播放
     beforeColor: "#DCDCDC", //指示点颜色
-    afterColor: "#27AAD9", //当前选中的指示点颜色
+    afterColor: "#32B4A0", //当前选中的指示点颜色
     interval: 5000,
     duration: 1000,
     banner: [{

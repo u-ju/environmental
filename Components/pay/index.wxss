@@ -121,3 +121,7 @@ margin-left:60rpx;
 .group_{
   padding: 32rpx;
 }
+.nozuhe{
+  line-height:240rpx;
+  text-align: center;
+}

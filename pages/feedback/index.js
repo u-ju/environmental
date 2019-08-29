@@ -41,7 +41,7 @@ Page({
     var that = this;
     var index = e.currentTarget.dataset.indexnum;
     util.uploadpic(that, 9, 'upload_picture_list', '', function (images) {
-      console.log(images)
+      
       that.setData({
         upload_picture_list: images,
       });
@@ -73,7 +73,7 @@ Page({
     });
   },
   formSubmit(e) {
-    console.log(e);
+    
     var that = this, data = e.detail.value;
     var upload_picture_list = that.data.upload_picture_list;
     for (var i = 0; i < upload_picture_list.length; i++) {
@@ -82,7 +82,6 @@ Page({
     that.setData({
       disabled: true
     })
-    console.log(data)
     util.postJSON({ apiUrl: apiurl.feedback, data: data }, function (res) {
       var result = res.data.result
       util.hideLoading()
