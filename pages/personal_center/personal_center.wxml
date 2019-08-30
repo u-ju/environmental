@@ -17,8 +17,9 @@
         </view>
         <view data-link='{{user_info.realname.control}}' bindtap='link' class='realname'>({{user_info.realname.name}}) </view>
       </view>
-      <view class='assetsitem flex_btw '>
-        <view data-link='{{user_info.mobile.control}}' bindtap='link'>{{user_info.mobile.name||"暂未绑定手机号"}} </view>
+      <view class='assetsitem flex  align_center' data-link='{{user_info.mobile.control}}' bindtap='link'>
+        <view>{{user_info.mobile.name||"暂未绑定手机号"}} </view>
+        <image mode='aspectFill' class='pen' src='../../images/pen@2x.png'></image>
       </view>
     </view>
     <view class='flex_col_1 flex_btw btnhead'>

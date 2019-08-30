@@ -36,17 +36,19 @@
             <image src='../../images/choosed.png' class='choose' wx:if="{{item.choosed==1}}" mode='aspectFit'></image>
             <image src='../../images/choose.png' class='choose' wx:else mode='aspectFit'></image>
           </view>
+          <view class='group' wx:if="{{groupN=='balance'||groupN=='integral'}}">
+            <input value='{{min==max?min:group_ext}}' disabled='{{min==max}}' type='digit' bindinput='onChange' bindblur='onblur' placeholder='请输入金额'></input>
+            <view class='size30'>
+              <text class='colorFE3434'>余额{{remain}} </text>
+              <!-- <text class='colorFE3434' wx:if="{{groupN=='integral'}}">积分{{remain}} </text> -->
+              <text>可用额度{{min}}<text hidden='{{min==max}}'>-{{max}}</text></text>
+              <!-- <text class='all' bindtap='max'> 可用额度 <text class='colorFE3434'>{{max}}</text></text> -->
+            </view>
+          </view>
         </view>
         <view wx:else class='nozuhe'>暂无可用组合方式</view>
       </block>
-      <view class='group' wx:if="{{groupN=='balance'||groupN=='integral'}}">
-        <input value='{{group_ext}}' type='digit' bindinput='onChange' bindblur='onblur' placeholder='请输入金额'></input>
-        <view class='size30'>
-          <!-- <text class='colorFE3434' wx:if="{{groupN=='balance'}}">余额{{remain}} </text>
-          <text class='colorFE3434' wx:if="{{groupN=='integral'}}">积分{{remain}} </text> -->
-          <text class='all' bindtap='max'> 可用额度 <text class='colorFE3434'>{{max}}</text></text>
-        </view>
-      </view>
+
     </view>
     <view class='submitButton' bindtap='goodsBuy'>{{title1}}</view>
   </view>

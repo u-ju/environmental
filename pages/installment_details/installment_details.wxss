@@ -331,3 +331,9 @@ web-view{
 .carcond .hidden1{
   width: 200rpx;
 }
+.goods_intr1 .size36{
+  line-height: 50rpx;
+}
+.marginb10{
+  margin: 10rpx 0 20rpx 0;
+}

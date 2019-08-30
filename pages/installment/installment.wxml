@@ -33,26 +33,25 @@
 <view class='topic marb0'>兑换商品</view>
 <view class='pageType flex wrap' wx:if="{{list.length>0}}">
   <block wx:if="{{list[0].spu_name}}">
-    <view class='goods' wx:for="{{list}}" wx:key='index' bindtap='detail' data-sku_id='{{item.sku_id}}' data-spu_id='{{item.spu_id}}'>
+    <!-- <view class='goods' wx:for="{{list}}" wx:key='index' bindtap='detail' data-sku_id='{{item.sku_id}}' data-spu_id='{{item.spu_id}}'>
       <image mode='aspectFill' src='{{item.thumb}}' class='goodspic'></image>
       <view>
         <view class='color4 size28 one-hidden margint6'>{{item.spu_name}}</view>
 
         <view class=' size28 margint6 bold'>兑换价:<text class='colorFE2C2C'>￥{{item.price}}</text></view>
-        <!-- <view class='  size28 margint6 bold'>或 环保积分:<text class='colorFE2C2C'>{{item.integral_discount}}</text>+现金:<text class='colorFE2C2C'>￥{{item.price}}</text></view> -->
-        <view class='  size28 margint6 bold'>可抵扣积分:<text class='colorFE2C2C'>{{item.integral_discount}}</text></view>
-        <view class='color898989 line-through size24 margint6 '>市场价:￥{{item.market_price}}</view>
-      </view>
-    </view>
-    <!-- <view class='installment_item flex_btw' wx:for="{{list}}" wx:key='index' bindtap='detail' data-sku_id='{{item.sku_id}}' data-spu_id='{{item.spu_id}}'>
-      <image mode='aspectFill' src='{{item.thumb}}' class='installment_pic'></image>
-      <view class='flex_btw flex_col installment_desc'>
-        <view class='color4 size28 one-hidden margint6'>{{item.spu_name}}</view>
-        <view class=' size28 margint6 bold'>环保金兑换价:<text class='colorFE2C2C'>￥{{item.price}}</text></view>
-        <view class='  size28 margint6 bold'>或环保积分:<text class='colorFE2C2C'>{{item.integral_discount}}</text>+现金:<text class='colorFE2C2C'>￥{{item.price}}</text></view>
+        <view class='  size28 margint6 bold' wx:if="{{item.integral_discount>0}}">积分可抵扣:<text class='colorFE2C2C'>￥{{item.integral_discount}}</text></view>
         <view class='color898989 line-through size24 margint6 '>市场价:￥{{item.market_price}}</view>
       </view>
     </view> -->
+    <view class='installment_item flex_btw' wx:for="{{list}}" wx:key='index' bindtap='detail' data-sku_id='{{item.sku_id}}' data-spu_id='{{item.spu_id}}'>
+      <image mode='aspectFill' src='{{item.thumb}}' class='installment_pic'></image>
+      <view class='flex_btw flex_col installment_desc'>
+        <view class='color4 size28 one-hidden margint6'>{{item.spu_name}}</view>
+        <view class=' size28  bold'>兑换价:<text class='colorFE2C2C'>￥{{item.price}}</text></view>
+        <view class='  size28  bold'>兑换价:<text class='colorFE2C2C'>￥{{item.price}}</text>+积分:<text class='colorFE2C2C'>{{item.integral_discount}}</text></view>
+        <view class='color898989 line-through size24  '>市场价:￥{{item.market_price}}</view>
+      </view>
+    </view>
   </block>
 </view>
 <empty wx:else />

@@ -125,12 +125,10 @@ Page({
       })
       wx.setStorageSync('share_gene', options.share_gene)
     }
-    
   },
   onShow() {
     this.adr()
     this.init()
-    
   },
   adr() {
     var that = this;

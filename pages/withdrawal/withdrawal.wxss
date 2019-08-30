@@ -35,8 +35,11 @@ page{
 }
 .inputmon input{
   height: 90rpx;
-  font-size: 72rpx;
+  font-size: 32rpx;
   width: 520rpx;
+}
+.inputmon .amountin{
+  font-size: 72rpx;
 }
 .inputitem{
   padding: 44rpx 0 0 0;
