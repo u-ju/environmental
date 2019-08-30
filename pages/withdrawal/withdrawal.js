@@ -27,7 +27,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    util.loading()
+    // util.loading()
     var withdraw_flow = app.globalData.settle_withdraw_flow
     if (options.url =='balanceWithdraw'){
       withdraw_flow = app.globalData.balance_withdraw_flow
@@ -136,10 +136,18 @@ Page({
       content: '是否确认提现',
       success: function (res) {
         if (res.confirm) {
+          var data={}
+          data.amount = that.data.amount
+          data.flow = that.data.current
+          data.flow_ext = app.globalData.appid
+          if (that.data.current == 'bankcard') {
+            // data=e.detail.value
+            data.flow_ext = JSON.stringify({ card_no: e.detail.value.card_no, cardholder: e.detail.value.cardholder, sub_branch: e.detail.value.sub_branch })
+          }
           that.setData({
             sure:true
           })
-          util.postJSON({ apiUrl: apiurl[that.data.url], data: { amount: that.data.amount, flow: that.data.current, flow_ext: app.globalData.appid} }, function (res) { 
+          util.postJSON({ apiUrl: apiurl[that.data.url], data:data}, function (res) { 
             util.alert(res.data.message);
             util.navigateBack();
             that.setData({

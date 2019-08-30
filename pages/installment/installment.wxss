@@ -125,7 +125,7 @@ page{
   border-bottom: 1rpx solid #ddd; 
 }
 .installment_desc{
-  width: 460rpx;
+  width: 468rpx;
 }
 .marb0{
   margin-bottom: 0;

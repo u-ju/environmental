@@ -35,7 +35,7 @@
         </view>
       </view>
     </view>
-    <view class='flex_btw align_center martop'>
+    <!-- <view class='flex_btw align_center martop'>
       <view></view>
       <view class='flex_btw align_center'>
         <view class='flex_btw align_center'>
@@ -52,7 +52,7 @@
         </view>
         <image src='../../images/fen@2x.png' class='msg' bindtap='share_zzc'></image>
       </view>
-    </view>
+    </view> -->
   </view>
   <view class='xian'></view>
   <view class='container' hidden='{{list.length==0}}'>

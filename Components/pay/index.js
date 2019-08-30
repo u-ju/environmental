@@ -168,7 +168,7 @@ Component({
         })
       }else{
         this.setData({
-          group_ext: this.data.group_ext
+          group_ext: max
         })
       }
     },
@@ -192,8 +192,8 @@ Component({
          payment: that.data.payment, 
          pay_amount: that.data.pay_amount, 
          pay_cash: that.data.pay_amount,
-        group: that.data.groupN,
-        group_ext: that.data.group_ext
+          group: that.data.groupN,
+        group_ext: that.data.group_ext ? that.data.group_ext : that.data.min
         }
         // , payment_ext: that.data.payment_ext
       if (that.data.payment =='wechat'){

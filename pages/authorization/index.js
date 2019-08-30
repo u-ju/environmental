@@ -45,8 +45,9 @@ Page({
                   token: token,
                   isback: true
                 })
-
+                
                 return wx.navigateBack()
+                console.log(res1.data.result.token)
               } else {
                 wx.getUserInfo({
                   success(res2) {
@@ -114,7 +115,8 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    if(this.data.isback)return
+    if (this.data.isback) return
+    console.log("reLaunch")
     wx.reLaunch({
       url: '../index/index'
     })

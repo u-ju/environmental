@@ -37,6 +37,7 @@ page{
 .pen{
   width:20rpx;
   height:20rpx;
+  margin-left: 10rpx;
 }
 .realname{
    margin-left: 30rpx;

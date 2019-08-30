@@ -12,9 +12,9 @@
     <!-- <view class='wrap'> -->
       <view class='news flex_btw' wx:for="{{news}}" wx:key="index" bindtap='details' data-id='{{item.news_id}}' wx:if='{{item.news_id}}'>
         <view class='news_atr flex_col flex_btw'>
-          <view class='hidden2 color4'>{{item.title}}</view>
+          <view class='hidden2 color4 size30'>{{item.title}}</view>
           <!-- <view class='hidden2 color999'>{{item.intro}}</view> -->
-          <view class='flex'>
+          <!-- <view class='flex'>
             <view class='czbtn flex align_center' catchtap='like' data-id='{{item.news_id}}' data-praise='{{item.praise}}' data-like='{{item.like}}' data-index='{{index}}'>
               <text class='iconfont icon-zan2 {{item.praise==1?"color32B4A0":""}}'></text>
               <text>{{item.like}}</text>
@@ -23,7 +23,7 @@
               <text class='iconfont icon-collection-b {{item.collect==1?"color32B4A0":""}}'></text>
               <text>{{item.collect_list_count}}</text>
             </view>
-          </view> 
+          </view>  -->
         </view>
         <image class='images' src='{{item.thumb}}'></image>
       </view>
