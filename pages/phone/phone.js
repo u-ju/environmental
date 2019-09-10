@@ -112,7 +112,7 @@ Page({
       })
     }
     this.setData({
-      about: app.globalData.config.protocol.about
+      about: app.globalData.config.protocol.about||''
       })
     wx.setNavigationBarTitle({
       title: title

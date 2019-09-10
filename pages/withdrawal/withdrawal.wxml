@@ -26,7 +26,7 @@
         </view>
       </view>
       <view class='inputitem'>
-        <view class='bold'>支行名称/编号</view>
+        <view class='bold'>开户行</view>
         <view class='inputmon flex_btw align_center'>
           <input name='sub_branch' value='{{sub_branch}}'></input>
         </view>

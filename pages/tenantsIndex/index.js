@@ -43,8 +43,20 @@ Page({
     })
   },
   link(){
+    var result = getApp().globalData.shop,that = this;
+    that.setData({
+      is_apply: result.is_apply || "",
+      apply_info: result.apply_info || "",
+      online_list: result.shop_info.online_list || "",
+      offline_list: result.shop_info.offline_list || "",
+      room_list: result.apply_info.buttun_list || "",
+      league_list: result.shop_info.league_list || "",
+      share_mobile: result.apply_info.share_mobile || "",
+      feature_list: result.apply_info.feature_list || ""
+    })
     wx.navigateTo({
-      url: '../tenantsChoice/index',
+      // url: '../tenantsChoice/index',
+      url: '../tenants/tenants?room_list=' + this.data.room_list + "&feature_list=" + JSON.stringify(this.data.feature_list) + "&source=offline"  + "&share_mobile=" + this.data.share_mobile,
     })
     // console.log('../tenantsChoice/index?apply_info=' + JSON.stringify(this.data.apply_info) + "&room_list=" + JSON.stringify(this.data.room_list))
   },

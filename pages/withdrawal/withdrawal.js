@@ -32,13 +32,16 @@ Page({
     if (options.url =='balanceWithdraw'){
       withdraw_flow = app.globalData.balance_withdraw_flow
     }
-    
+    var txxx = (wx.getStorageSync('txxx') && JSON.parse(wx.getStorageSync('txxx')))||[]
     this.setData({
       withdraw_flow: withdraw_flow,
       is_password: options.is_password,
       current: withdraw_flow[0]["key"],
       yu: options.money,
       url: options.url,
+      card_no: txxx.card_no || '',
+      cardholder: txxx.cardholder||'',
+      sub_branch: txxx.sub_branch || '',
       withdraw: app.globalData.config.protocol.withdraw
     })
     util.hideLoading();
@@ -153,6 +156,7 @@ Page({
             that.setData({
               sure: false
             })
+            wx.setStorageSync('txxx', JSON.stringify({ card_no: e.detail.value.card_no, cardholder: e.detail.value.cardholder, sub_branch: e.detail.value.sub_branch }))
           },function(){
             that.setData({
               sure: false

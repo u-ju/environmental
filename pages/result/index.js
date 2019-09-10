@@ -30,6 +30,7 @@ Page({
   },
   query(pay_key){
     var that = this;
+    console.log(pay_key)
     util.postJSON({
       apiUrl: apiurl.query,
       data: {
@@ -37,7 +38,7 @@ Page({
         hint:1
       }
     }, function (res2) {
-      // console.log(res2)
+      console.log(res2)
       that.setData({
         hint: res2.data.result.hint,
       })
@@ -46,10 +47,10 @@ Page({
         title: res2.data.result.hint.header,
       })
       util.hideLoading()
-    }, function () {
-
-    }, function () {
-
+    }, function (e) {
+      console.log(e)
+    }, function (e) {
+      console.log(e)
     })
   },
   ok(e) {

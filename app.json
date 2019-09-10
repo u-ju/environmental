@@ -1,7 +1,6 @@
 {
   "pages": [
     
-    
     "pages/index/index",
     "pages/withdrawal/withdrawal",
     "pages/result/index",
@@ -176,8 +175,8 @@
     "pages/cumulative_delivery/cumulative_delivery",
     "pages/order_details_bill/order_details_bill",
     "pages/order_details/order_details",
-    "pages/withdrawal_record/transfer"
-    
+    "pages/withdrawal_record/transfer",
+    "pages/upload/index"
     
   ],
   "permission": {

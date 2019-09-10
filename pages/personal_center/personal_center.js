@@ -29,10 +29,18 @@ Page({
     util.getJSON({ apiUrl: apiurl.user }, function (res) {
       var result = res.data.result
       
-      var user_info = result.user_info
+      var user_info = result.user_info, tag_arr= result.tag_arr
       if (!user_info.mobile.name){
-        user_info.mobile['control']['control'] = '../phone_new/phone_new'
+        user_info.mobile['control']['control'] = '../phone_new/phone_new';
+        for (var i in tag_arr){
+          for (var j in tag_arr[i]['children']){
+            if (tag_arr[i]['children'][j]['control']['key'] =='front_bind_mobile'&&tag_arr[i]['children'][j].attach.is_bind==0){
+              tag_arr[i]['children'][j]['control']['control'] = '../phone_new/phone_new';
+            }
+          }
+        }
       }
+      
       that.setData({
         result: result,
         user_info: result.user_info,

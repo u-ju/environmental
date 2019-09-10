@@ -5,7 +5,7 @@
       <video src="{{result.video}}" custom-cache='{{false}}' objectFit="contain"></video>
     </swiper-item>
     <swiper-item wx:for="{{result.images}}" wx:key="index">
-      <image src="{{item}}" class="slide-image" mode='aspectFill' bindtap='previewImg' data-src='{{item}}' />
+      <image src="{{item}}" class="slide-image" mode='aspectFit' bindtap='previewImg' data-src='{{item}}' />
     </swiper-item>
 
   </swiper>
@@ -103,7 +103,7 @@
               </view>
             </view>
             <view class='color898989 size26 pl_con'>
-              <block wx:for='{{item.comment_level}}' wx:key="index">
+              <block wx:for='{{item.comment_level-0}}' wx:key="index">
                 <image src='../../images/smasonry.png' class='xxpic' mode='aspectFill'></image>
               </block>
             </view>

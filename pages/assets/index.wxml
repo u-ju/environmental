@@ -29,9 +29,9 @@
     <text class='size72 colorFFBF1A bold'>￥{{balance}}</text>
   </view>
   <!-- <view class='flex_ard'> -->
-  <!-- <view class='size36  withdrawal'>
+  <view class='size36  withdrawal'>
     <navigator url='../withdrawal/withdrawal?money={{balance}}&is_password={{is_password}}&withdraw_flow={{balance_withdraw_flow}}&url=balanceWithdraw'>提现</navigator>
-  </view> -->
+  </view>
   <view class='size36  withdrawal zhuan color4fd6f0'>
     <navigator url='../withdrawal/goldtransfer?type=2&money={{balance}}'>转账</navigator>
   </view>
