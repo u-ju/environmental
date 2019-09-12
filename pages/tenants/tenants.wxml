@@ -41,17 +41,14 @@
     <view class='item  flex align_center'>
       <text class='size28 color6'>地址</text>
       <view class='input1'>
-        <input class='size28 color9' name='address' bindblur='czaddress' data-contact='addresst' disabled='{{disabled1}}' value='{{address}}' bindinput="getsuggest"></input>
-        <scroll-view scroll-y class='haslook' wx:if='{{suggestion.length>0}}'>
-          <view wx:for="{{suggestion}}" wx:key="index" class='addressss flex align_center' bindtap="backfill" id="{{index}}">
-            <image src='../../images/icon_location.png' class='icon_location'></image>
-            <view class='hidden1'>{{item.title}}
-              <text class='color9'>{{item.addr}}</text>
-            </view>
-          </view>
-        </scroll-view>
+        <input class='size28 color9' name='address'  data-contact='addresst' disabled='{{true}}' value='{{address}}' bindtap='chooseadr' ></input>
       </view>
-
+    </view>
+    <view class='item  flex align_center'>
+      <text class='size28 color6'>门牌号</text>
+      <view class='input1'>
+        <input class='size28 color9' name='addressxx'  data-contact='addressxxt' disabled='{{!address}}' value='{{addressxx}}' bindinput='input'></input>
+      </view>
     </view>
     <view class='zzctransp' bindtap='hiddensug' wx:if='{{suggestion.length>0}}'></view>
 

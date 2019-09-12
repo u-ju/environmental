@@ -43,9 +43,11 @@
       <view>营业中  {{result.business_time}}</view>
     </view>
     <view class='label flex_btw align_center'>
-      <view class='flex' data-latitude='{{result.latitude}}' data-longitude='{{result.longitude}}' bindtap='location'>
+      <view class='flex align_center' data-latitude='{{result.latitude}}' data-longitude='{{result.longitude}}' bindtap='location'>
         <image src='../../images/sloc.png' class='labelpic'></image>
+        <view>导航： </view>
         <view class='address'>
+        
           <view class='hidden1 '>{{result.area_name}}{{result.address}}</view>
         </view>
       </view>

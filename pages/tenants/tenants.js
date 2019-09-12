@@ -115,7 +115,8 @@ Page({
     upload_picture_list2: [],
     upload_picture_list3: [],
     isbank:0,
-    bankcard:''
+    bankcard:'',
+    disabledz:true
   },
   checkboxChange(e) {
     this.setData({
@@ -584,10 +585,6 @@ Page({
     this.setData({
       isbank: 1
     })
-    console.log(wx.getStorageSync('provIndex'))
-    console.log(wx.getStorageSync('cityIndex'))
-    console.log(wx.getStorageSync('branchBankIndex'))
-    console.log(wx.getStorageSync('headBankIndex'))
   },
   
 
@@ -718,6 +715,7 @@ Page({
     data.cate_id = that.data.cate_id
     data["longitude"] = that.data.longitude
     data["latitude"] = that.data.latitude
+    data.address = e.detail.value.address + e.detail.value.addressxx
     if(this.data.certificationval){
       data['lp_idcard[front]'] = that.data.upload_picture_list0[0] ? that.data.upload_picture_list0[0]['path_server'] : ''
       data['lp_idcard[back]'] = that.data.upload_picture_list1[0] ? that.data.upload_picture_list1[0]['path_server'] : ''
@@ -730,7 +728,7 @@ Page({
       data['images[' + b + ']'] = that.data.upload_picture_list[b]['path_server']
     }
   
-    data['bankcard[subBank]'] = wx.getStorageSync('branchBankIndex') ? JSON.stringify([wx.getStorageSync('provIndex'), wx.getStorageSync('cityIndex'), wx.getStorageSync('headBankIndex'), wx.getStorageSync('branchBankIndex')]) : that.data.bankcard
+    data['bankcard[subBank]'] = wx.getStorageSync('branchBankIndex') ? JSON.stringify([wx.getStorageSync('provIndex'), wx.getStorageSync('cityIndex'), wx.getStorageSync('headBankIndex'), wx.getStorageSync('branchBankIndex')]) : JSON.stringify(that.data.bankcard)
     data["source"] = that.data.source
     var url = apiurl.shop_apply;
     if (that.data.shop_id) {
@@ -842,6 +840,26 @@ Page({
       },
       complete: function(res) {
 
+      }
+    });
+  },
+  // 详细地址
+  chooseadr(){
+    var that = this;
+    // 打开地图选择位置
+    wx.chooseLocation({
+      success: function (res) {
+        console.log(res)
+        // res.name为地址名称  
+        console.log(res.name);
+        that.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+          address: res.name
+        })
+      },
+      fail: function (err) {
+        console.log(err)
       }
     });
   }

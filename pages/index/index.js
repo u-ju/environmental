@@ -128,7 +128,12 @@ Page({
   },
   onShow() {
     this.adr()
-    this.init()
+    
+    if (app.globalData.config.length == 0) {
+      this.getconfig()
+    }else{
+      this.init()
+    }
   },
   adr() {
     var that = this;
@@ -157,8 +162,33 @@ Page({
       })
     })
   },
+  getconfig(){
+    var that = this;
+    if (app.globalData.config.length == 0) {
+      
+      util.getJSON({
+        apiUrl: apiurl.config
+      }, function (res) {
+        var result = res.data.result;
+        getApp().globalData.config = result;
+
+        wx.setStorageSync('buildnum', Number(result.build))
+        that.setData({
+          config: res.data.result,
+          is_audit: res.data.result.is_audit
+        })
+        that.init()
+      })
+
+    } else {
+      util.hideLoading()
+      this.setData({
+        config: app.globalData.config,
+        is_audit: app.globalData.config.is_audit
+      })
+    }
+  },
   init() {
-    
     var that = this;
     util.getJSON({
       apiUrl: apiurl.index
@@ -196,26 +226,7 @@ Page({
       util.hideLoading()
     })
     
-    if (app.globalData.config.length == 0) {
-      that.adr()
-      util.getJSON({
-        apiUrl: apiurl.config
-      }, function(res) {
-        var result = res.data.result;
-        getApp().globalData.config = result;
-        that.setData({
-          config: res.data.result,
-          is_audit: res.data.result.is_audit
-        })
-      })
-
-    } else {
-      util.hideLoading()
-      this.setData({
-        config: app.globalData.config,
-        is_audit: app.globalData.config.is_audit
-      })  
-    }
+    
   },
   // 赚积分
   earnIntegral(){

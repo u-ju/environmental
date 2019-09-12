@@ -48,7 +48,7 @@
       <view class='flex_btw flex_col installment_desc'>
         <view class='color4 size28 one-hidden margint6'>{{item.spu_name}}</view>
         <view class=' size28  bold'>兑换价:<text class='colorFE2C2C'>￥{{item.price}}</text></view>
-        <view class='  size28  bold'>兑换价:<text class='colorFE2C2C'>￥{{item.price}}</text>+积分:<text class='colorFE2C2C'>{{item.integral_discount}}</text></view>
+        <!-- <view class='  size28  bold'>兑换价:<text class='colorFE2C2C'>￥{{item.price}}</text>+积分:<text class='colorFE2C2C'>{{item.integral_discount}}</text></view> -->
         <view class='color898989 line-through size24  '>市场价:￥{{item.market_price}}</view>
       </view>
     </view>

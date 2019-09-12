@@ -64,7 +64,7 @@ page{
   margin-right: 13rpx;
 }
 .address{
-  width: 550rpx;
+  width: 500rpx;
   border-right: 1px solid #EEEEEE;
   line-height: 28rpx;
 }

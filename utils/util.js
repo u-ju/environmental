@@ -1,10 +1,10 @@
 const app = getApp()
-
 var apiurl = require('api.js');
 var link = require('link.js');
 var bmap = require('bmap-wx.min.js'); 
 var bmak = 'iYSf7rFEOidOHauTz53IgGazpuQ9XeXB'
 var wx_appid = apiurl.wx_appid
+// var build = wx.getStorageSync('buildnum')||apiurl.build
 var build = apiurl.build
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
@@ -432,7 +432,6 @@ function getToken(valuetstu='',form,cb,mothed) {
   // return 'zwj';
   if (token && valuetstu!= 801) {
     return token;
-
   }
   if (valuetstu==801){
     wx.navigateTo({
@@ -619,6 +618,7 @@ function nav(link){
  */
 function getJSON(form = {}, call_success, warning, ErrorMsg) {
   var that = this;
+  // build = wx.getStorageSync('buildnum') || apiurl.build
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
   var header = { 'content-type': 'application/json', 'channel': 'let', 'build': build } // 默认值
@@ -730,6 +730,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
  */
 function postJSON(form = {}, call_success, warning, ErrorMsg) {
   var that = this;
+  // build = wx.getStorageSync('buildnum') || apiurl.build
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
   var header = { 'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', 'channel': 'let', 'build': build} // 默认值

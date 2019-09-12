@@ -12,9 +12,9 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || [],that =this;
 
-    util.address(function(e){
-      // console.log(e)
-    })
+    // util.address(function(e){
+    //   // console.log(e)
+    // })
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
