@@ -3,8 +3,8 @@ const basePath = 'https://wyhb.dev.zgwyhb.com/api';
 const apiList = {
   base: basePath,
   wx_appid : "wx9af47449f54c0be7",
-  // build : 99999999,
-  build : 20190912,
+  build : 99999999,
+  // build : 20190912,
   collectUpdate: basePath + '/front/collect/update',
   collectIndex: basePath + '/front/collect/index?source=',
 

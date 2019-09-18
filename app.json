@@ -1,8 +1,9 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/busaddress/index",
-    
+    "pages/upload/index",
     "pages/withdrawal/withdrawal",
     "pages/result/index",
     "pages/login/login",
@@ -176,8 +177,8 @@
     "pages/cumulative_delivery/cumulative_delivery",
     "pages/order_details_bill/order_details_bill",
     "pages/order_details/order_details",
-    "pages/withdrawal_record/transfer",
-    "pages/upload/index"
+    "pages/withdrawal_record/transfer"
+    
     
   ],
   "permission": {

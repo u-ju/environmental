@@ -1,25 +1,46 @@
 <!--pages/upload/index.wxml-->
-  <camera wx:if='{{isShowCamera}}' device - position="width" flash="off" style="width:{{windowWidth}}px; height:{{windowHeight}}px;">
- 
-    <cover-view class='camerabgImage-view'>
-      <cover-image class='bgImage' src='../../images/camera2x.png'> </cover-image>
- 
-      <cover-view class='cameratop-view1'>中华人民共和国机动车行驶证</cover-view>
-      <cover-view class='cameratop-view2'>（行驶证主页）</cover-view>
-      <cover-view class='cameracenter-view' style='top:{{isIphoneX==true?"52%":"62%"}}'>请对准左下角发证机关印章</cover-view>
- 
-      <!-- 拍照按钮 -->  
-      <cover-view class='camerabotton-view' style='bottom:{{isIphoneX==true?"75px":"0px"}}'>
-        <cover-image class='cancelphoto' src='../../myImage/vehicle/quxiao.png' bindtap='cancelPhotoAction'></cover-image>
-        <cover-image class='takephoto' src='../../myImage/vehicle/paizhao.png' bindtap='takePhotoAction'></cover-image>
-        
-        <cover-view class='skipphoto' bindtap='skipphotoAction'>{{skipphotoStatus==1?"跳过":""}}
-        </cover-view>
-        
-      </cover-view>
- 
+<camera wx:if='{{isShowCamera}}' device - position="width" flash="off" style="width:{{windowWidth}}px; height:{{windowHeight}}px;">
+
+  <cover-view class='camerabgImage-view'>
+    <cover-image class='bgImage' src='../../images/idCard.png'> </cover-image>
+
+    <!-- <cover-view class='cameratop-view1'>中华人民共和国机动车行驶证</cover-view>
+    <cover-view class='cameratop-view2'>（行驶证主页）</cover-view>
+    <cover-view class='cameracenter-view' style='top:{{isIphoneX==true?"52%":"62%"}}'>请对准左下角发证机关印章</cover-view> -->
+
+    <cover-view class='camerabotton-view' style='bottom:{{isIphoneX==true?"75px":"0px"}}'>
+      <cover-image class='cancelphoto' src='../../images/ch_del.png' bindtap='back'></cover-image>
+      <cover-image class='takephoto' src='../../images/camera2x.png' bindtap='takePhotoAction'></cover-image>
+
+      <cover-view class='skipphoto' bindtap='skipphotoAction'>{{skipphotoStatus==1?"跳过":""}}
     </cover-view>
- 
-  </camera>
- 
-  <canvas wx:if='{{isShowImage}}' canvas-id="image-canvas" style='width:{{windowWidth}}px; height:{{windowHeight}}px;'></canvas>
+
+    </cover-view>
+
+  </cover-view>
+
+</camera>
+
+<canvas wx:if='{{isShowImage}}' canvas-id="imageCanvas" style='width:{{windowWidth}}px; height:{{windowHeight}}px;'>
+  <cover-view class='camerabotton-view' style='bottom:{{isIphoneX==true?"75px":"0px"}}'>
+      <cover-image class='cancelphoto' src='../../images/ch_del.png' bindtap='cancelPhotoAction'></cover-image>
+      <cover-image class='choosephoto' src='../../images/ch_true.png' bindtap='uploadFile' ></cover-image>
+  </cover-view>
+</canvas>
+<!-- <view class="page-body">
+  <view class="page-body-wrapper">
+    <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 300px;"></camera>
+    <view class="btn-area">
+      <button type="primary" bindtap="takePhoto">拍照</button>
+    </view>
+    <view class="btn-area">
+      <button type="primary" bindtap="startRecord">开始录像</button>
+    </view>
+    <view class="btn-area">
+      <button type="primary" bindtap="stopRecord">结束录像</button>
+    </view>
+    <view class="preview-tips">预览</view>
+    <image wx:if="{{src}}" mode="widthFix" src="{{src}}"></image>
+    <video wx:if="{{videoSrc}}" class="video" src="{{videoSrc}}"></video>
+  </view>
+</view> -->

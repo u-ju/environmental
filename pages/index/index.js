@@ -172,7 +172,7 @@ Page({
         var result = res.data.result;
         getApp().globalData.config = result;
 
-        wx.setStorageSync('buildnum', Number(result.build))
+        // wx.setStorageSync('buildnum', Number(result.build))
         that.setData({
           config: res.data.result,
           is_audit: res.data.result.is_audit

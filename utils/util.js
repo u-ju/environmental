@@ -4,8 +4,8 @@ var link = require('link.js');
 var bmap = require('bmap-wx.min.js'); 
 var bmak = 'iYSf7rFEOidOHauTz53IgGazpuQ9XeXB'
 var wx_appid = apiurl.wx_appid
-// var build = wx.getStorageSync('buildnum')||apiurl.build
-var build = apiurl.build
+var build = wx.getStorageSync('buildnum')||apiurl.build
+// var build = apiurl.build
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -315,6 +315,7 @@ function uploadpic(page, num, names, index = '', suc) {
 }
 function upload_pic(url, that, upload_picture_list, j, suc, update) {
   //上传返回值
+  console.log(upload_picture_list)
   var _this = this;
   // //console.log(upload_picture_list[j])
   const upload_task = wx.uploadFile({
@@ -335,7 +336,7 @@ function upload_pic(url, that, upload_picture_list, j, suc, update) {
     },
     //附近数据，这里为路径     
     success: function (res) {
-      // //console.log(res)
+      //console.log(res)
       var data = JSON.parse(res.data);
       // //字符串转化为JSON  
       _this.hideLoading()
@@ -350,18 +351,21 @@ function upload_pic(url, that, upload_picture_list, j, suc, update) {
       suc(upload_picture_list)
        
       
+    },
+    fail(e){
+      console.log(e)
     }
   })
   // 上传 进度方法
 
-  upload_task.onProgressUpdate((res) => {
-    upload_picture_list[j]['upload_percent'] = 100
-    update(upload_picture_list)
-      // that.setData({
-      //   upload_picture_list: upload_picture_list
-      // });
+  // upload_task.onProgressUpdate((res) => {
+  //   upload_picture_list[j]['upload_percent'] = 100
+  //   update(upload_picture_list)
+  //     // that.setData({
+  //     //   upload_picture_list: upload_picture_list
+  //     // });
     
-  });
+  // });
 }
 function uploadV(url, that, res,  suc, update) {
   //上传返回值
@@ -618,7 +622,7 @@ function nav(link){
  */
 function getJSON(form = {}, call_success, warning, ErrorMsg) {
   var that = this;
-  // build = wx.getStorageSync('buildnum') || apiurl.build
+  build = wx.getStorageSync('buildnum') || apiurl.build
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
   var header = { 'content-type': 'application/json', 'channel': 'let', 'build': build } // 默认值
@@ -730,7 +734,7 @@ function getJSON(form = {}, call_success, warning, ErrorMsg) {
  */
 function postJSON(form = {}, call_success, warning, ErrorMsg) {
   var that = this;
-  // build = wx.getStorageSync('buildnum') || apiurl.build
+  build = wx.getStorageSync('buildnum') || apiurl.build
   var apiUrl = (form.apiUrl == "") ? '' : form.apiUrl;
   var formData = form.hasOwnProperty("data") ? form.data : {};
   var header = { 'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', 'channel': 'let', 'build': build} // 默认值
