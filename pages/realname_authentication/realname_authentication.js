@@ -26,6 +26,11 @@ Page({
   uploadpic(e) {
     var that = this;
     var list = 'upload_picture_list' + e.currentTarget.dataset.num;
+    if (e.currentTarget.dataset.num<2){
+      return wx.navigateTo({
+        url: '../upload/index?key=idcard' + e.currentTarget.dataset.num,
+      })
+    }
     util.uploadpic(that, 1, list, '', function (images) {
       console.log(images)
       that.setData({
@@ -90,6 +95,14 @@ Page({
   
   onLoad: function (options) {
     
+  },
+  onShow(){
+    var that = this;
+    console.log(wx.getStorageSync('idcard0'))
+    this.setData({
+      upload_picture_list0: (wx.getStorageSync('idcard0') && JSON.parse(wx.getStorageSync('idcard0'))) || [],
+      upload_picture_list1: (wx.getStorageSync('idcard1') && JSON.parse(wx.getStorageSync('idcard1'))) || [],
+    })
   },
   onUnload(){
     var that = this;

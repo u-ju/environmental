@@ -583,7 +583,9 @@ Page({
       })
     }
     this.setData({
-      isbank: 1
+      isbank: 1,
+      upload_picture_list0: (wx.getStorageSync('idcard0') && JSON.parse(wx.getStorageSync('idcard0'))) || [],
+      upload_picture_list1: (wx.getStorageSync('idcard1') && JSON.parse(wx.getStorageSync('idcard1'))) || [],
     })
   },
   
@@ -595,8 +597,12 @@ Page({
     var that = this;
     
     var list = 'upload_picture_list' + e.currentTarget.dataset.num||'';
-    
     var num = e.currentTarget.dataset.number||1
+    if (e.currentTarget.dataset.num < 2) {
+      return wx.navigateTo({
+        url: '../upload/index?key=idcard' + e.currentTarget.dataset.num,
+      })
+    }
     util.uploadpic(that, num, list, '', function (images) {
       
       that.setData({

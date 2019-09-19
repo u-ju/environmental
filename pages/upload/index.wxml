@@ -22,6 +22,7 @@
 </camera>
 
 <canvas wx:if='{{isShowImage}}' canvas-id="imageCanvas" style='width:{{windowWidth}}px; height:{{windowHeight}}px;'>
+  <cover-image class='bgImage' src='../../images/idCard.png'> </cover-image>
   <cover-view class='camerabotton-view' style='bottom:{{isIphoneX==true?"75px":"0px"}}'>
       <cover-image class='cancelphoto' src='../../images/ch_del.png' bindtap='cancelPhotoAction'></cover-image>
       <cover-image class='choosephoto' src='../../images/ch_true.png' bindtap='uploadFile' ></cover-image>
