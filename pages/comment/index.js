@@ -163,9 +163,7 @@ Page({
     util.postJSON({ apiUrl: apiurl.userOrder_comment, data: data }, function (res) {
       var result = res.data.result
       util.alert(res.data.message)
-      wx.reLaunch({
-        url: '../index/index',
-      })
+      wx.navigateBack()
       that.setData({
         disabled: false
       })
